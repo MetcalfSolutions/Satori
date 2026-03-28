@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/home/ubuntu/satori_banner_new.png" alt="Satori - A Clinically Informed Wisdom Companion for the Inner Life">
+  <img src="https://rockytown.neocities.org/IMG_6252.png" alt="Satori - A Clinically Informed Wisdom Companion for the Inner Life">
 </p>
 
 <p align="center">
