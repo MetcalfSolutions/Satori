@@ -97,3 +97,4 @@ Pull requests are welcome! If you extend Satori with new traditions, conversatio
 *   Insight must lead to movement
 
 _Satori (悟り) — Japanese. The experience of sudden clarity. Understanding that arrives whole._
+
