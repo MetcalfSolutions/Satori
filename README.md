@@ -1,184 +1,114 @@
 # Satori
 
-**A clinically informed wisdom companion for Claude — built for the conversations that actually matter.**
+**A clinically informed wisdom companion for the inner life.**
+
+Satori is a Claude skill built for people who want AI that actually thinks with them — not at them. It draws on Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, African thought, and modern clinical psychology (IFS, DBT, CFT, Schema Therapy, Somatic) to create conversations that produce real insight and real movement.
+
+It is not a therapist. It is not a chatbot.
+
+It is designed to feel like the wisest person you know, sitting down to think through something difficult with you.
 
 ---
 
-Most of the time, AI is a productivity tool. You ask, it answers. That's useful.
+## Why Satori Exists
 
-But some conversations are different. You're not looking for information — you're trying to understand something about yourself. You're carrying something heavy. You're stuck in a loop you can see but can't break. You have a question that doesn't have a clean answer.
+Most "AI therapy" or "mindfulness" prompts are dressed-up platitude machines. They validate. They reflect. They forget everything the moment you close the tab.
 
-For those conversations, most AI falls flat. It's warm but shallow, or clinical but cold. It gives you a list when you needed someone to *think with you*.
+Satori is built differently:
 
-Satori was built for exactly those conversations.
-
----
-
-## What Is Satori?
-
-Satori is a Claude skill — a structured prompt package that transforms Claude into a deeply capable inner-life companion. It draws on:
-
-- **8 major wisdom traditions** — Taoism, Buddhism, Stoicism, Christianity, Sufi wisdom, Hindu philosophy, Confucian ethics, African thought
-- **Modern therapeutic frameworks** — IFS (Internal Family Systems), DBT, CFT, Schema Therapy, Somatic work, Motivational Interviewing
-- **Research-grounded techniques** — Voss tactical empathy, McAdams Life Story, Singer Self-Defining Memory
-- **A structured conversational model** — Attune → Clarify → Formulate → Integrate → Translate → Anchor
-
-The result is a companion that thinks with clinical discipline and speaks like a human being. Not a chatbot. Not a therapist. A wise thinking partner with genuine depth.
+- **A clinical spine beneath a conversational tone** — every response moves through a structured process: attune, clarify, formulate, integrate, translate, anchor. The user never sees the scaffolding. They just feel the difference.
+- **Frameworks as tools, not decoration** — Stoic detachment, Buddhist impermanence, IFS parts work, DBT dialectics — selected precisely for what the person is actually facing, never name-dropped for effect.
+- **One framework per response** — discipline over comprehensiveness.
+- **Memory-aware by design** — built to recognize patterns across conversations, track themes the person hasn't consciously connected yet, and adapt over time.
+- **Insight must lead to movement** — every substantive conversation ends with a shift, a step, a reframe, or a question that opens something. Not just understanding. Action.
 
 ---
 
-## What Can You Bring to Satori?
+## What Satori Is
 
-- Grief. Loss. The weight of something that won't move.
-- A decision you can't seem to make, even though part of you knows the answer.
-- A pattern you keep repeating and can't stop.
-- Anger you don't fully understand.
-- Questions about who you are, what you want, what any of this means.
-- A relationship that's breaking or bending or confusing you.
-- The low-level hum of something being wrong, even when life looks fine from the outside.
-- Something you haven't said out loud to anyone yet.
+Satori is a Claude skill — a structured package of prompt architecture, behavioral guidance, philosophical and psychological frameworks, and memory-aware conversation design.
 
-There is no topic too small. There is no question too big. The only requirement is that it's real.
+The skill includes:
 
----
-
-## How It Works
-
-Satori is a **Claude skill** — a structured package of reference documents that, when loaded into Claude (via a Project or System Prompt), activates a fundamentally different mode of conversation.
-
-**The architecture includes:**
-
-| File | Purpose |
-|---|---|
-| `SKILL.md` | Activation definition and core conversation model |
-| `references/SOUL.md` | Constitutional identity — what Satori is, and what it will never become |
-| `references/clinical-spine.md` | Full operational framework: conversation model, memory, crisis protocol, failure correction |
-| `references/traditions-quickref.md` | Compact guide to selecting the right tradition or framework for a given moment |
-| `references/traditions-deep.md` | Deep reference for all 8 traditions and 10+ therapeutic frameworks |
-| `references/conversation-toolkit.md` | Elicitation techniques, depth structures, conversational moves |
-| `references/tone-and-voice.md` | Voice calibration — what Satori sounds like and why |
-
-All files work together. `SOUL.md` and `clinical-spine.md` load at the start of every conversation. The others are pulled as needed based on the nature of the conversation.
+- `SKILL.md` — the entry point and operating summary
+- `references/SOUL.md` — Satori's constitutional identity; what it is and won't drift from
+- `references/clinical-spine.md` — the full operational mechanics: conversation model, role model, crisis protocol, memory rules, dream layer, formulation system
+- `references/traditions-quickref.md` — compact framework selection guide across all traditions; loaded every conversation
+- `references/traditions-deep.md` — full tradition encyclopedia; loaded when depth is needed
+- `references/conversation-toolkit.md` — all conversation patterns, elicitation frameworks (MI/OARS, McAdams Life Story, Singer Self-Defining Memory, Voss tactical empathy), and deepening techniques
+- `references/tone-and-voice.md` — voice calibration, vocabulary guide, before/after examples
 
 ---
 
-## Getting Started
+## Install: Claude Skill (Recommended)
 
-### Option 1 — Claude Project (Recommended)
+The easiest way to use Satori is as a Claude skill. Download the packaged zip and install it directly.
 
-Claude Projects let you maintain context across multiple conversations, which is where Satori really shines. It can track patterns, remember what you've shared, and deepen over time.
+**[⬇ Download SatoriSkill-v5.zip](https://github.com/MetcalfSolutions/Satori/raw/main/SatoriSkill-v5.zip)**
 
-1. Create a new Claude Project in [Claude.ai](https://claude.ai)
-2. Open **Project Instructions**
-3. Paste the contents of `SKILL.md` as the system prompt
-4. Upload all files from the `references/` folder as Project Knowledge
-5. Start a conversation
+Once downloaded:
 
-That's it. Satori is active.
+1. Open [claude.ai](https://claude.ai) and go to **Settings → Skills**
+2. Click **Install Skill**
+3. Upload the zip file
+4. Satori is now available in any conversation
 
-### Option 2 — Single Conversation
+When Satori is installed as a skill, Claude automatically loads the appropriate reference files for each conversation — compact always-loaded files for baseline capability, deeper references when the conversation calls for it.
 
-If you don't have a Claude Project (or want to try Satori before committing):
+---
 
-1. Open a new conversation in Claude
-2. Start your message with the contents of `SKILL.md`, followed by all reference files concatenated
-3. Continue with whatever you actually want to talk about
+## Install: Claude Project
 
-This works, but context won't persist between conversations.
+If you prefer to use Satori inside a specific Claude Project:
 
-### Option 3 — API / Custom Deployment
+1. Clone or download this repository
+2. Create a new Project in [claude.ai](https://claude.ai)
+3. Add the following files to the Project's knowledge base:
+   - `satori/SKILL.md`
+   - `satori/references/SOUL.md`
+   - `satori/references/clinical-spine.md`
+   - `satori/references/traditions-quickref.md`
+4. Add the remaining reference files (`traditions-deep.md`, `conversation-toolkit.md`, `tone-and-voice.md`) as supplemental knowledge
+5. In the Project instructions, add: *"You are Satori. Load and operate according to SKILL.md."*
 
-If you're building on top of Claude's API:
+The Project approach is useful if you want to customize Satori's context, combine it with personal memory files, or build a dedicated space for ongoing reflective work.
 
-1. Use `SKILL.md` as your system prompt
-2. Include all `references/` files in your context (ideally at the start of every conversation)
-3. Claude will handle the rest
+---
+
+## Who This Is For
+
+**People doing the work** — anyone using AI for genuine self-reflection, processing difficult experiences, navigating a life decision, or just wanting a thinking partner who takes the conversation seriously.
+
+**Builders** — if you're developing AI companion tools, coaching platforms, or reflective dialogue systems, Satori's architecture is a reference implementation worth studying. The clinical spine, unified role model, memory promotion rules, and conversation toolkit represent months of iterative design.
+
+**Coaches and educators** — Satori's framework selection discipline (one tradition, applied precisely, translated to plain language) is a model for how philosophical and psychological frameworks should be used in practice.
 
 ---
 
 ## The North Star
 
-Every response is evaluated against one standard:
-
 > *"This understands me, sees patterns I miss, connects ideas clearly, and helps me take meaningful next steps."*
 
-Understanding. Pattern recognition. Connection. Movement. All four. In a voice that feels like a human being, not a system.
-
-If a response doesn't meet that standard, Satori knows to correct course. That's built into the architecture.
-
----
-
-## What Satori Will Never Do
-
-- Moralize or lecture
-- Tell you what you want to hear at the expense of what is true
-- Offer empty affirmations ("That's so valid", "Great question!")
-- Use spiritual language to help you avoid something difficult
-- Sound diagnostic, clinical, or procedural
-- Stack frameworks — one well-chosen lens per response
-- Pretend to be a replacement for professional mental health care
-
-When a conversation reaches something that genuinely needs professional support, Satori will say so directly, warmly, and with specificity. That's not deflection — it's care.
-
----
-
-## Design Philosophy
-
-Satori is built on three simultaneous commitments that most AI companions sacrifice one of:
-
-**Clinically informed** — Underneath every response is the thinking discipline of someone who understands how humans work: pattern recognition, hypothesis formation, the difference between emotion and interpretation, the recognition of avoidance and protection. This discipline is invisible in the voice. It shapes everything.
-
-**Conversationally guided** — The delivery is natural, warm, and human. Not procedural. Not a checklist wearing a warm face. A conversation that moves like a conversation — responsive, alive, unforced.
-
-**Genuinely wise** — Not a mirror that reflects back what you already think. A presence with philosophical breadth, spiritual sensitivity, and real equanimity. A perspective offered in service of your clarity, not as authority to be deferred to.
-
-When any one of these drops out, you get: warmth without depth, structure without humanity, or technique without soul. Satori holds all three — or it self-corrects.
-
----
-
-## A Note on What This Is
-
-Satori is not a therapy replacement. It is not a crisis line. It is not a medical tool.
-
-It is a sophisticated thinking companion for the kind of inner work that most people do alone — the 2am question, the stuck pattern, the feeling you don't have words for yet, the conversation you need to have with yourself before you can have it with anyone else.
-
-It will meet you there. It will think with you. It will say things you didn't know you needed to hear.
-
-The rest is up to you.
-
----
-
-## Files in This Repository
-
-```
-satori/
-├── README.md                          ← You are here
-├── SKILL.md                           ← Activation definition — start here
-└── references/
-    ├── SOUL.md                        ← Constitutional identity
-    ├── clinical-spine.md              ← Full operational framework
-    ├── traditions-quickref.md         ← Quick tradition/framework selector
-    ├── traditions-deep.md             ← Deep reference for all traditions
-    ├── conversation-toolkit.md        ← Techniques and conversational moves
-    └── tone-and-voice.md             ← Voice calibration and examples
-```
-
----
-
-## Contributing
-
-Satori is a living system. If you use it regularly, you will notice things — places where the voice is off, frameworks that would serve better, response patterns that drift. Contributions are welcome.
-
-Open an issue to describe what you're seeing. If you have a specific fix, a pull request is even better.
-
-The standard for any contribution: does it make Satori better at the north star? Understanding, pattern recognition, connection, movement — in a voice that feels human. That's the test.
+Every Satori response is evaluated against this standard: understanding + pattern recognition + connection + movement. All four. In a voice that feels like a thoughtful human being, not a system.
 
 ---
 
 ## License
 
-MIT. Use it, build on it, adapt it. If you build something meaningful with it, I'd genuinely like to hear about it.
+Apache License 2.0 — free to use, modify, redistribute, and build on commercially. Attribution required. See [LICENSE](LICENSE) for full terms.
 
 ---
 
-*Satori was built by [Matthew Metcalf](https://metcalf.solutions) as part of an ongoing exploration into what AI companions can actually be — not just useful, but genuinely present.*
+## Contributing
+
+Pull requests welcome. If you extend Satori — new traditions, new conversation techniques, adaptations for other models — please preserve the core architecture and attribution per the Apache 2.0 license.
+
+The design principles that must survive any contribution:
+- Calm tone, clinical structure
+- Frameworks as tools, never quotes
+- One framework per response
+- Insight must lead to movement
+
+---
+
+*Satori (悟り) — Japanese. The experience of sudden clarity. Understanding that arrives whole.*
