@@ -1,0 +1,33 @@
+{
+  "name": "satori",
+  "version": "5.0.0",
+  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement.",
+  "author": {
+    "name": "Matthew Metcalf",
+    "url": "https://github.com/MetcalfSolutions"
+  },
+  "homepage": "https://github.com/MetcalfSolutions/Satori",
+  "license": "Apache-2.0",
+  "keywords": [
+    "wisdom",
+    "introspection",
+    "mental-health",
+    "coaching",
+    "stoicism",
+    "buddhism",
+    "taoism",
+    "ifs",
+    "dbt",
+    "cft",
+    "psychology",
+    "self-reflection",
+    "inner-work",
+    "claude-skill",
+    "companion"
+  ],
+  "category": "wellness",
+  "skills": [
+    "./"
+  ],
+  "strict": false
+}
