@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://rockytown.neocities.org/IMG_6252.png" alt="Satori - A Clinically Informed Wisdom Companion for the Inner Life">
-  <img src="docs/satori-architecture.svg" alt="Satori Architecture" width="700" />
+  <img src="https://rockytown.neocities.org/satori-architecture.svg" alt="Satori Architecture" width="700" />
 </p>
 
 <p align="center">
