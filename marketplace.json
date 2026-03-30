@@ -61,8 +61,9 @@
       "recommended": true,
       "steps": [
         "Download SatoriSkill-v5.zip from the Releases page",
-        "Open claude.ai and go to Settings → Skills",
-        "Click Install Skill and select the downloaded zip",
+        "Open claude.ai and click Customize in the left sidebar",
+        "Click Skills, then the + button, then Upload a skill",
+        "Drop SatoriSkill-v5.zip into the upload area",
         "Start a conversation — Satori is ready"
       ]
     },
@@ -103,7 +104,7 @@
       "references/conversation-toolkit.md",
       "references/tone-and-voice.md"
     ],
-    "totalCharacters": 180000,
+    "totalCharacters": 178426,
     "totalReferenceLines": 2725,
     "distributionZip": "SatoriSkill-v5.zip"
   },
