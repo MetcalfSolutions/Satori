@@ -52,8 +52,6 @@ Select **Upload a skill**, then drag and drop `SatoriSkill-v5.zip` into the uplo
 
 Open a new conversation. Bring something worth exploring — a decision you can't make, something you've been sitting with, or a question about yourself. Satori activates automatically.
 
-> **About the zip format:** A Claude skill `.zip` is a self-contained package containing a `SKILL.md` entry point and its reference files. Claude loads them at the start of each conversation. You can inspect the contents of `SatoriSkill-v5.zip` by opening it like any archive — there's nothing hidden inside.
-
 ---
 
 ## Why Satori Exists
