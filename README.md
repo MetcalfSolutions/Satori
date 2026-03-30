@@ -28,6 +28,34 @@ It is designed to feel like the wisest person you know, sitting down to think th
 
 ---
 
+## 3-Minute Quick Install
+
+> **New to Claude skills? Start here.** This gets Satori running in under three minutes using a skill `.zip` — no terminal, no code.
+
+**Step 1 — Download the skill file**
+
+Go to the [Releases page](https://github.com/MetcalfSolutions/Satori/releases) and download `SatoriSkill-v5.zip`. You don't need to unzip it.
+
+**Step 2 — Open Claude.ai Settings**
+
+Head to [claude.ai](https://claude.ai), click your profile avatar in the top-right corner, and select **Settings**.
+
+**Step 3 — Go to Skills**
+
+In the left sidebar, click **Skills** (or **Beta Features → Skills** depending on your account tier). Click the **Install Skill** button (or the **+** icon).
+
+**Step 4 — Upload the zip**
+
+Select `SatoriSkill-v5.zip` from your downloads. Claude reads the skill's reference files directly — no configuration needed.
+
+**Step 5 — Start a conversation**
+
+Open a new conversation. Bring something worth exploring — a decision you can't make, something you've been sitting with, or a question about yourself. Satori activates automatically.
+
+> **About the zip format:** A Claude skill `.zip` is a self-contained package containing a `SKILL.md` entry point and its reference files. Claude loads them at the start of each conversation. You can inspect the contents of `SatoriSkill-v5.zip` by opening it like any archive — there's nothing hidden inside.
+
+---
+
 ## Why Satori Exists
 
 Most AI "therapy" or "mindfulness" prompts offer platitudes, forget context the moment a tab is closed, and treat frameworks as decoration rather than tools. Satori is architecturally different:
@@ -85,30 +113,48 @@ The architecture diagram above shows how these layers interact. The key insight:
 
 ## Installation
 
-### Option 1: Claude Code Plugin (Recommended for Developers)
+Three installation paths — choose the one that matches how you use Claude.
 
-```bash
-# Add the marketplace and install
-claude plugin marketplace add MetcalfSolutions/Satori
-```
+---
 
-### Option 2: Claude.ai Skill Upload
+### Option 1: Claude.ai Skill Upload (Recommended)
 
-1. **[Download the latest Satori Skill release](https://github.com/MetcalfSolutions/Satori/releases/)**
+The simplest path for most users. See the [3-Minute Quick Install](#3-minute-quick-install) above for a full walkthrough, or follow the short version:
+
+1. **[Download the latest release](https://github.com/MetcalfSolutions/Satori/releases/)** — grab `SatoriSkill-v5.zip`
 2. Open [claude.ai](https://claude.ai) → **Settings → Skills**
 3. Click **Install Skill** and upload `SatoriSkill-v5.zip`
-4. Satori is now available in any conversation.
+4. Satori is now available in every conversation.
 
-### Option 3: Manual Installation
+---
 
-Clone the repo and copy the skill directory into your Claude Code skills folder:
+### Option 2: Claude Code Plugin
+
+For developers using [Claude Code](https://claude.ai/code). Clone the repository — Claude Code automatically detects and loads `.claude-plugin/plugin.json` when you run from the project directory.
 
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
-cp -r Satori ~/.claude/skills/satori
+cd Satori
+claude  # Claude Code loads the plugin automatically
 ```
 
-**Memory Note:** Satori leverages Claude's native persistent memory to track insights, patterns, and commitments across sessions. The skill's internal references to memory systems are instructions for Claude's own memory — not literal files. Ensure persistent memory is enabled in your Claude.ai settings for optimal function.
+The included `plugin.json` (root) and `.claude-plugin/plugin.json` define the skill entry point and load order for the plugin system.
+
+---
+
+### Option 3: Manual Installation (Claude Code Skills Directory)
+
+Copy the skill files into your Claude Code global skills folder. Satori will be available across all Claude Code sessions.
+
+```bash
+git clone https://github.com/MetcalfSolutions/Satori.git
+mkdir -p ~/.claude/skills/satori
+cp -r Satori/SKILL.md Satori/references ~/.claude/skills/satori/
+```
+
+---
+
+**Memory Note:** Satori leverages Claude's native persistent memory to track insights, patterns, and commitments across sessions. The skill's internal references to memory systems are instructions for Claude's own memory — not literal files. Enable persistent memory in Claude.ai under **Settings → Memory** for best results.
 
 ---
 
