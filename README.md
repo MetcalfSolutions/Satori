@@ -36,17 +36,17 @@ It is designed to feel like the wisest person you know, sitting down to think th
 
 Go to the [Releases page](https://github.com/MetcalfSolutions/Satori/releases) and download `SatoriSkill-v5.zip`. You don't need to unzip it.
 
-**Step 2 — Open Claude.ai Settings**
+**Step 2 — Open Customize**
 
-Head to [claude.ai](https://claude.ai), click your profile avatar in the top-right corner, and select **Settings**.
+Head to [claude.ai](https://claude.ai) and click **Customize** in the left sidebar.
 
 **Step 3 — Go to Skills**
 
-In the left sidebar, click **Skills** (or **Beta Features → Skills** depending on your account tier). Click the **Install Skill** button (or the **+** icon).
+Click **Skills** in the Customize sidebar. Then click the **+** button in the top-right of the Skills panel.
 
 **Step 4 — Upload the zip**
 
-Select `SatoriSkill-v5.zip` from your downloads. Claude reads the skill's reference files directly — no configuration needed.
+Select **Upload a skill**, then drag and drop `SatoriSkill-v5.zip` into the upload area (or click to browse). No unzipping needed — Claude reads the skill's reference files directly.
 
 **Step 5 — Start a conversation**
 
@@ -122,8 +122,8 @@ Three installation paths — choose the one that matches how you use Claude.
 The simplest path for most users. See the [3-Minute Quick Install](#3-minute-quick-install) above for a full walkthrough, or follow the short version:
 
 1. **[Download the latest release](https://github.com/MetcalfSolutions/Satori/releases/)** — grab `SatoriSkill-v5.zip`
-2. Open [claude.ai](https://claude.ai) → **Settings → Skills**
-3. Click **Install Skill** and upload `SatoriSkill-v5.zip`
+2. Open [claude.ai](https://claude.ai) → **Customize → Skills**
+3. Click **+** → **Upload a skill** and drop in `SatoriSkill-v5.zip`
 4. Satori is now available in every conversation.
 
 ---
