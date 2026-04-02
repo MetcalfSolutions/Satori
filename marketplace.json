@@ -2,9 +2,9 @@
   "id": "metcalfsolutions/satori",
   "name": "Satori",
   "slug": "satori",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity.",
-  "longDescription": "Satori is a Claude skill built on eight wisdom traditions (Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, African thought) and modern clinical psychology (IFS, DBT, CFT, Schema Therapy, Somatic). A 180,000+ character operating system for reflective conversation, built across six interlocking reference documents with drift detection, crisis protocols, memory-aware pattern tracking, and a formulation system modeled on how clinicians actually think.",
+  "longDescription": "Satori is a Claude skill built on eight wisdom traditions (Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, African thought) and modern clinical psychology (IFS, DBT, CFT, Schema Therapy, Somatic). A 211,000+ character operating system for reflective conversation, built across ten interlocking reference documents with drift detection, crisis protocols, memory-aware pattern tracking, a formulation system modeled on how clinicians actually think, a guided onboarding sequence, a dark night of the soul protocol, and a five-session Jungian shadow work arc.",
   "author": {
     "name": "Matthew Metcalf",
     "github": "MetcalfSolutions",
@@ -32,7 +32,16 @@
     "self-reflection",
     "inner-work",
     "claude-skill",
-    "companion"
+    "companion",
+    "shadow-work",
+    "grief",
+    "onboarding",
+    "dark-night",
+    "ikigai",
+    "dream-analysis",
+    "jungian",
+    "narrative-identity",
+    "motivational-interviewing"
   ],
   "category": "wellness",
   "tags": [
@@ -43,7 +52,11 @@
     "introspection",
     "philosophy",
     "psychology",
-    "mindfulness"
+    "mindfulness",
+    "shadow-work",
+    "grief",
+    "ikigai",
+    "jungian"
   ],
   "entryPoint": "SKILL.md",
   "pluginConfig": ".claude-plugin/plugin.json",
@@ -102,12 +115,15 @@
       "references/traditions-quickref.md",
       "references/traditions-deep.md",
       "references/conversation-toolkit.md",
-      "references/tone-and-voice.md"
+      "references/tone-and-voice.md",
+      "references/onboarding.md",
+      "references/darknight-protocol.md",
+      "references/shadow-work-protocol.md"
     ],
-    "totalCharacters": 178426,
-    "totalReferenceLines": 2725,
+    "totalCharacters": 211280,
+    "totalReferenceFiles": 10,
     "distributionZip": "SatoriSkill-v5.zip"
   },
   "createdAt": "2025-01-01",
-  "updatedAt": "2026-03-30"
+  "updatedAt": "2026-04-01"
 }

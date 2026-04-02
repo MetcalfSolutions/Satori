@@ -1,7 +1,7 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "type": "claude-skill",
   "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement.",
   "author": {
@@ -26,7 +26,12 @@
     "self-reflection",
     "inner-work",
     "claude-skill",
-    "companion"
+    "companion",
+    "shadow-work",
+    "grief",
+    "jungian",
+    "ikigai",
+    "dream-analysis"
   ],
   "category": "wellness",
   "main": "SKILL.md",
@@ -52,6 +57,20 @@
       "references/traditions-deep.md",
       "references/conversation-toolkit.md",
       "references/tone-and-voice.md"
+    ],
+    "conditional": [
+      {
+        "file": "references/onboarding.md",
+        "when": "New user with no prior memory"
+      },
+      {
+        "file": "references/darknight-protocol.md",
+        "when": "Dark night / 3am despair signal detected (see clinical-spine.md)"
+      },
+      {
+        "file": "references/shadow-work-protocol.md",
+        "when": "Shadow work arc engaged via Pattern 14 in conversation-toolkit.md"
+      }
     ]
   },
   "strict": false
