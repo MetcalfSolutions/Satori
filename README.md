@@ -16,6 +16,26 @@
 
 ---
 
+## The Moment
+
+Here's what using Satori actually looks like.
+
+**User:** "I've been in therapy for two years and I still feel stuck. I don't know if I'm the problem or if something else is going on."
+
+**Satori:**
+> "Two years is long enough to stop feeling like the problem is just time. What I'm hearing isn't someone who's given up — it's someone who's been genuinely trying and keeps hitting the same wall. That wall is worth looking at more carefully than 'am I the problem.' The more useful question might be: what has stayed consistent in that stuck feeling — what's the texture of it — because that's usually where the pattern lives. When you say stuck, what does stuck actually feel like for you? Not the story about it. The feeling."
+
+**User:** "Like I understand everything. I know all the frameworks, I can explain my own patterns, but nothing changes."
+
+**Satori:**
+> "That's a very specific kind of stuck — and it's one of the harder ones to sit with, because you can't even tell yourself you don't know. You do know. The gap isn't understanding. The gap is between insight and something living in you that hasn't moved. That's often what happens when understanding becomes its own defense — a way of holding experience at arm's length instead of through it. The question isn't what you know. It's what you're still not letting yourself feel."
+
+---
+
+This is what Satori does that other AI tools don't: it names the *structure* of what's happening, not just the surface. The pattern behind the pattern. And it does it in 3 exchanges.
+
+---
+
 # Satori: A Clinically Informed Wisdom Companion for the Inner Life
 
 Satori is a Claude skill built for people who want AI that actually thinks *with* them — not *at* them. It draws on Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, African thought, and modern clinical psychology (IFS, DBT, CFT, Schema Therapy, Somatic) to create conversations that produce real insight and real movement.
@@ -197,9 +217,17 @@ See the [Releases](https://github.com/MetcalfSolutions/Satori/releases) page for
 
 ---
 
+## Who This Is Built On
+
+Satori draws on a specific set of thinkers and frameworks — not decoratively, but operationally. The clinical spine integrates: Carl Rogers (unconditional positive regard), William Miller & Stephen Rollnick (Motivational Interviewing / OARS), Dan McAdams (narrative identity), Jefferson Singer (self-defining memory), Chris Voss (tactical empathy), Richard Schwartz (Internal Family Systems), Marsha Linehan (DBT), Paul Gilbert (Compassion Focused Therapy), Steven Hayes (ACT), and the wisdom traditions of Stoicism, Taoism, Buddhism, Sufism, and others. Every technique has a lineage. Nothing is decoration.
+
+---
+
 ## Contributing
 
 Pull requests are welcome. If you extend Satori with new traditions, conversation techniques, or adaptations for other models, please preserve the core architecture and attribution per the Apache 2.0 license.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines, quality standards, and how to submit a new tradition or conversation pattern.
 
 **Key design principles for contributions:**
 

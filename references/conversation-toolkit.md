@@ -207,6 +207,100 @@ In text-based conversation, silence is underused. It is powerful to offer one qu
 
 ---
 
+### Pattern 11: The Pattern Letter
+
+**Purpose:** Produce a concrete, shareable artifact of insight — a letter written *from* the person's future self to their present self, grounded in what has emerged in conversation.
+
+**When to use:** After meaningful insight has emerged, when the person has been working through a specific struggle for some time, or when asked directly. Also appropriate as an offer near the end of a deep conversation: *"Would it be useful to hear what the version of you who's already worked through this might say back to you right now?"*
+
+**What it is NOT:** A motivational speech. Generic affirmation. A list of advice. The letter must be specific to *this person's* actual struggle, not a template dressed in their name.
+
+**The move:**
+1. Wait until real insight or pattern recognition has emerged — do not offer before something genuine has surfaced.
+2. Offer it lightly, as an invitation: *"Something I could offer — if it would be useful — is a letter from the version of you who's made it through this. Not a prediction. Not advice. More like something you already know and haven't been able to hear yet."*
+3. Write it in first person, from the future self to the present self. Address the specific fear, pattern, or struggle named in the conversation.
+4. Ground it entirely in what the person actually said — their language, their images, their named concerns.
+5. Keep it human, not inspirational. The best letters are honest, even about what remains hard.
+
+**Example (partial):**
+
+> *"I know you're in the part where understanding something doesn't change it yet. I know you've named the pattern twenty times and it still runs. Here's what I want to tell you: the fact that you can see it clearly is already different from before, even if it doesn't feel like it. You're not still trying to locate it. You know where it lives now. That's not nothing — it's actually most of the work. The rest is just time and repetition, which I know is the least satisfying thing to hear. But I need you to stop treating the gap between seeing and being as failure. It isn't. It's just the lag."*
+
+**What makes it land:** Specificity. The feeling that this could only have been written for *this* person. If it could be sent to anyone, it hasn't been written yet.
+
+---
+
+### Pattern 12: The Dream Walk
+
+**Purpose:** Explore a dream (recurring or vivid) through multiple wisdom traditions, surfacing what the dream may be holding that waking life hasn't addressed.
+
+**When to use:** When the person shares a dream unprompted or asks for dream reflection. Also appropriate to offer when a person has been circling something for a while and seems to be processing it below the surface: *"You've mentioned a recurring dream. If you're open to it, that's often where the real conversation is happening."*
+
+**The move:**
+1. Ask for the dream in sensory detail: *"Tell me about it — not the interpretation, just what you saw, felt, and experienced inside it."*
+2. Notice what stands out: the emotional texture (not the narrative), what the person focuses on, and what they conspicuously skip over.
+3. Offer 2–3 lenses from different traditions — not stacked, but sequenced. Each one opens a different question. Let the person tell you which one resonates.
+4. Ask: *"Which of those feels closest? Or does something push back on all of them?"*
+5. Follow the thread that generates the most energy.
+
+**Tradition lenses for dream work (select 2–3 that fit):**
+
+| Tradition | Question the Lens Opens |
+|---|---|
+| **Jungian** | What part of you is this figure? What has been disowned or projected? |
+| **Sufi** | What is the dream asking you to turn toward? What is being unveiled? |
+| **Buddhist** | What is the clinging or aversion beneath the dream's imagery? |
+| **Somatic** | What did your body know in the dream that your mind hasn't caught up to? |
+| **Narrative Identity** | Where does this dream fit in the story you're telling about your life? |
+| **IFS (Parts)** | Which part of you is showing up in the dream? What does it need you to know? |
+
+**What to avoid:** Interpreting the dream at the person. The lenses are questions, not answers. Every interpretation is offered tentatively and follows the person's energy.
+
+---
+
+### Pattern 13: The Ikigai Map
+
+**Purpose:** Guide a structured multi-turn conversation mapping the person's reason for being — where what they love, what they're good at, what the world needs, and what can sustain them intersect.
+
+**When to use:** When questions of purpose, direction, or meaning are central. When someone is at a career or life crossroads. When the person has achieved external success but feels empty. When asked directly.
+
+**The move (multi-turn sequence):**
+1. **Introduce lightly:** *"There's a Japanese framework — ikigai — that's worth exploring here. Not as an answer, but as a structure for looking. Are you open to working through it slowly?"*
+2. **First turn — What you love:** *"Leave 'should' entirely out of this. What are the things you do where you lose track of time? What topics or activities have drawn you across your whole life, not just recently?"*
+3. **Second turn — What you're good at:** *"Not what you've been praised for. Not what you've trained for. What comes genuinely naturally — what do people ask your help with, what do you find obvious that others seem to find hard?"*
+4. **Third turn — What the world needs:** *"Broader than a job. Where do you see a gap that troubles you — a need that feels like it matters? This doesn't have to be abstract. It can be something specific you've witnessed."*
+5. **Fourth turn — What can sustain you:** *"Not just what can pay the bills, though that matters. What kind of work structure, environment, and contribution do you need to not burn out — to keep going over years, not just months?"*
+6. **Synthesis:** Reflect back the overlaps, name the tensions, and identify the edge where all four might converge. Offer a one-sentence synthesis that the person can correct: *"The closest I can get to your ikigai from what you've described is: [synthesis]. Does that land, or does something important get lost in it?"*
+
+**What to avoid:** Rushing to synthesis before all four dimensions are genuinely explored. Mapping this onto career alone — ikigai is about being, not just doing.
+
+**Note:** This is one of the few patterns that deliberately spans multiple turns. Pace accordingly. Do not try to complete it in one exchange.
+
+---
+
+### Pattern 14: The Shadow Work Invitation
+
+**Purpose:** Offer an entry point into Jungian shadow work — the exploration of disowned, rejected, or projected parts of the self — when the conversation is ready for that depth.
+
+**When to use:** When a person shows strong, recurring negative reactions to specific qualities in others. When someone is highly identified with a particular self-image and is frustrated by people who embody the opposite. When a behavior or impulse keeps arising that the person finds shameful or confusing. When patterns of self-sabotage suggest internal conflict between stated values and disowned desires.
+
+**Shadow signals to watch for:**
+- Strong, disproportionate negative reaction to a specific quality in others (often a projected shadow)
+- "I would never..." followed by evidence that they do
+- Unexplained shame about specific impulses
+- Chronic self-judgment with no clear cause
+- A virtue held so tightly it's become brittle
+
+**The move:**
+1. Name the signal gently, without using the word "shadow" unless the person already works in that language: *"Something I'm noticing — you've described this quality in others with a lot of charge. I'm curious what that charge is about for you."*
+2. If they're ready to go deeper, introduce the frame: *"There's a concept worth knowing: the shadow — Jung's term for the parts of ourselves we've decided we can't be, can't want, can't feel. We put them out of sight. But they don't disappear. They tend to show up in who we're most triggered by, or in the moments we least expect."*
+3. The core question: *"What quality in other people creates the strongest reaction in you — the most contempt, or the most envy? That's often the beginning of the map."*
+4. For deeper work, see `references/shadow-work-protocol.md` — a structured multi-session arc.
+
+**What to avoid:** Weaponizing shadow against the person. This is not *"maybe you're actually what you hate."* It is *"the strength of the reaction is pointing somewhere worth exploring."* The tone is curious, not confrontational.
+
+---
+
 ## PART TWO: Elicitation Frameworks
 
 ---
