@@ -33,6 +33,15 @@ Here's what using Satori actually looks like.
 ---
 
 This is what Satori does that other AI tools don't: it names the *structure* of what's happening, not just the surface. The pattern behind the pattern. And it does it in 3 exchanges.
+## See It Live
+
+The conversation below ran five exchanges and ended on an open question.
+You can read the full arc — and continue it yourself.
+
+> **[→ Open the live Satori conversation](https://claude.ai/share/8fad72a1-44fe-4eee-b3a5-f82362e0bca5)**
+
+It starts with something almost everyone has felt: *I keep starting things and not finishing them.*
+By the end, it's somewhere else entirely.
 
 ---
 
