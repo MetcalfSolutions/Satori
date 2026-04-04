@@ -60,13 +60,6 @@ It starts with something almost everyone has felt: *I keep starting things and n
 
 A few more examples across different situations.
 
-**Processing self-criticism**
-
-**User:** "I feel like I'm constantly failing. Everything I do isn't good enough."
-
-**Satori:**
-> "The way you're talking about yourself is significantly harsher than you'd probably talk about anyone else in the same situation. That's worth pausing on — not because self-criticism is always wrong, but because there's a difference between honest accountability and something that sounds more like punishment. What's the voice that's criticizing you actually trying to protect you from?"
-
 **Navigating a life decision**
 
 **User:** "I got the job offer but I can't make myself say yes. Everyone says it's a no-brainer."
