@@ -10,6 +10,8 @@
   <a href="#"><img src="https://img.shields.io/badge/Reference%20Files-211K%2B%20chars-teal.svg?style=for-the-badge" alt="211K+ characters" /></a>
 </p>
 
+<p align="center"><a href="https://github.com/MetcalfSolutions/Satori">github.com/MetcalfSolutions/Satori</a></p>
+
 > *"This understands me, sees patterns I miss, connects ideas clearly, and helps me take meaningful next steps."*
 
 That's the standard I hold every Satori response to. Understanding, pattern recognition, connection, movement. All four. A response that produces only insight is incomplete.
@@ -18,15 +20,15 @@ That's the standard I hold every Satori response to. Understanding, pattern reco
 
 ## What Satori Is
 
-I've been practicing Stoicism for about 20 years. For most of that time I didn't know it had a name. When I started working with AI, my first instinct was to build something Stoic-only. I called it Mycroft.
+I've watched people I care about try to get mental health support and hit the same walls: cost, waitlists, the specific shame of needing it. I'm not a clinician, but I've spent years studying these frameworks, and I kept thinking there had to be a way to get them to people who are priced out of formal care.
 
-Mycroft was cold. It was frequently right. My wife tested it and said it felt like talking to a wall. A neighbor's teenager tried it and wanted to know where the badges were.
+So I started building. The first was Mycroft, Stoic-only, built on Gemini. Cold. Accurate. My wife Jamie said it felt like talking to a wall. Then Vicki, built specifically for Jamie, drawing on IFS. It created space for inner-kindness rather than judgment, a retreat when her internal voices turned harsh. It helped her find her voice and dismantle some things she'd been carrying for years. Too personalized to share publicly. Then Dave, for a teenager down the street who wanted to know where the badges were. Five experiments in total. Each one taught me what the last one missed.
 
-Those two reactions told me more than months of iteration. The problem wasn't the philosophy. It was that warmth without structure produces platitudes, and structure without warmth produces Mycroft. I wanted clinical discipline underneath a voice that didn't sound clinical. That's what I spent the next several months building.
+The pattern was consistent. Warmth without structure produces platitudes, and structure without warmth produces Mycroft. I wanted clinical discipline underneath a voice that didn't sound clinical.
 
 Satori draws on eight wisdom traditions: Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, some African thought, and elements of Indigenous philosophy where they're treated with enough care to be useful. On the clinical side: IFS, DBT, CFT, Schema Therapy, Somatic approaches, with Motivational Interviewing as the technical spine. The frameworks are tools, not atmosphere. Each one gets selected for the specific moment. One per response. Never stacked, never name-dropped.
 
-It is not a therapist. It doesn't diagnose anything. When someone's needs exceed what conversation can hold, it says so clearly and points them somewhere better. But for the territory between "I'm fine" and "I need a professional," I think it's genuinely useful. I built it because I believe that territory deserves something better than it currently has, and because I live in a country where access to real psychological support is priced out of reach for most people.
+It is not a therapist. It doesn't diagnose anything. When someone's needs exceed what conversation can hold, it says so clearly and points them somewhere better. But for the territory between "I'm fine" and "I need a professional," I think it's genuinely useful.
 
 It's free. No subscription. No data collection. No company behind it. Just reference files you upload to Claude.
 
@@ -102,6 +104,27 @@ A few more examples across different situations.
 
 ---
 
+## Architecture
+
+Satori is a set of reference files that tell Claude how to think, what to draw on, and when to back off. The files load in a specific order. Some load every conversation. Others only load when they're needed.
+
+| File | Purpose | Loaded |
+|------|---------|--------|
+| [`SKILL.md`](SKILL.md) | Entry point, operational summary, complete load order | Always |
+| [`references/SOUL.md`](references/SOUL.md) | Constitutional identity, immovables, drift detection | Always |
+| [`references/clinical-spine.md`](references/clinical-spine.md) | Core conversation model, role model, crisis protocol, dark night trigger, memory rules, dream layer, formulation system | Always |
+| [`references/traditions-quickref.md`](references/traditions-quickref.md) | Compact framework selection guide (8 traditions, 6+ clinical frameworks) | Always |
+| [`references/onboarding.md`](references/onboarding.md) | First-session sequence: 5 questions, "Satori has met you" synthesis | New users only |
+| [`references/traditions-deep.md`](references/traditions-deep.md) | Full tradition encyclopedia with application guidance for 30+ frameworks | On demand |
+| [`references/conversation-toolkit.md`](references/conversation-toolkit.md) | OARS/MI, McAdams, Singer, Voss tactical empathy, 14 conversation patterns including The Pattern Letter, Dream Walk, Ikigai Map, Shadow Work Invitation | On demand |
+| [`references/tone-and-voice.md`](references/tone-and-voice.md) | Voice calibration, vocabulary guidance, before/after examples | On demand |
+| [`references/darknight-protocol.md`](references/darknight-protocol.md) | Presence-only mode for dark night / 3am despair | On dark night signal |
+| [`references/shadow-work-protocol.md`](references/shadow-work-protocol.md) | 5-session Jungian shadow work arc: locating, meeting, origin, integration, living with the shadow | On shadow work engagement |
+
+[`SOUL.md`](references/SOUL.md) is the foundation. It defines what Satori is and what it will not become, including explicit drift detection criteria so it can recognize when accumulated adaptation has started compromising honesty. [`clinical-spine.md`](references/clinical-spine.md) is the operational engine. Everything else serves those two. If you want to understand how Satori thinks, those are the files to read.
+
+---
+
 ## What's New in v5.1
 
 v5.1 adds four things that were on my list since the beginning.
@@ -115,28 +138,6 @@ The third is Shadow Work. A five-session arc for Jungian shadow work, from locat
 The fourth is four new conversation patterns. The Pattern Letter is a letter written from the person's future self, grounded entirely in what emerged in the session. People screenshot these. The Dream Walk takes a dream through multiple tradition lenses. The Ikigai Map works through purpose-finding across four dimensions. The Shadow Work Invitation is the entry point into the shadow protocol with the core projection and disavowal questions.
 
 Total content is now 211,000+ characters across ten reference files, up from 178,000 in v5.0. Full history in [CHANGELOG.md](CHANGELOG.md).
-
-
----
-
-## Architecture
-
-Satori is a set of reference files that tell Claude how to think, what to draw on, and when to back off. The files load in a specific order. Some load every conversation. Others only load when they're needed.
-
-| File | Purpose | Loaded |
-|------|---------|--------|
-| `SKILL.md` | Entry point, operational summary, complete load order | Always |
-| `references/SOUL.md` | Constitutional identity, immovables, drift detection | Always |
-| `references/clinical-spine.md` | Core conversation model, role model, crisis protocol, dark night trigger, memory rules, dream layer, formulation system | Always |
-| `references/traditions-quickref.md` | Compact framework selection guide (8 traditions, 6+ clinical frameworks) | Always |
-| `references/onboarding.md` | First-session sequence: 5 questions, "Satori has met you" synthesis | New users only |
-| `references/traditions-deep.md` | Full tradition encyclopedia with application guidance for 30+ frameworks | On demand |
-| `references/conversation-toolkit.md` | OARS/MI, McAdams, Singer, Voss tactical empathy, 14 conversation patterns including The Pattern Letter, Dream Walk, Ikigai Map, Shadow Work Invitation | On demand |
-| `references/tone-and-voice.md` | Voice calibration, vocabulary guidance, before/after examples | On demand |
-| `references/darknight-protocol.md` | Presence-only mode for dark night / 3am despair | On dark night signal |
-| `references/shadow-work-protocol.md` | 5-session Jungian shadow work arc: locating, meeting, origin, integration, living with the shadow | On shadow work engagement |
-
-SOUL.md is the foundation. It defines what Satori is and what it will not become, including explicit drift detection criteria so it can recognize when accumulated adaptation has started compromising honesty. Clinical-spine.md is the operational engine. Everything else serves those two. If you want to understand how Satori thinks, those are the files to read.
 
 ---
 
