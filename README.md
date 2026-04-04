@@ -58,6 +58,32 @@ It starts with something almost everyone has felt: *I keep starting things and n
 
 ---
 
+## 3-Minute Quick Install
+
+> **New to Claude skills? Start here.** This gets Satori running in under three minutes using a skill `.zip`. No terminal, no code.
+
+**Step 1: Download the skill file**
+
+Go to the [Releases page](https://github.com/MetcalfSolutions/Satori/releases) and download `SatoriSkill-v5.zip`. You don't need to unzip it.
+
+**Step 2: Open Customize**
+
+Head to [claude.ai](https://claude.ai) and click **Customize** in the left sidebar.
+
+**Step 3: Go to Skills**
+
+Click **Skills** in the Customize sidebar. Then click the **+** button in the top-right of the Skills panel.
+
+**Step 4: Upload the zip**
+
+Select **Upload a skill**, then drag and drop `SatoriSkill-v5.zip` into the upload area (or click to browse). No unzipping needed. Claude reads the skill's reference files directly.
+
+**Step 5: Start a conversation**
+
+Open a new conversation. Bring something worth exploring. Satori activates automatically.
+
+---
+
 A few more examples across different situations.
 
 **Navigating a life decision**
@@ -90,31 +116,6 @@ The fourth is four new conversation patterns. The Pattern Letter is a letter wri
 
 Total content is now 211,000+ characters across ten reference files, up from 178,000 in v5.0. Full history in [CHANGELOG.md](CHANGELOG.md).
 
----
-
-## 3-Minute Quick Install
-
-> **New to Claude skills? Start here.** This gets Satori running in under three minutes using a skill `.zip`. No terminal, no code.
-
-**Step 1: Download the skill file**
-
-Go to the [Releases page](https://github.com/MetcalfSolutions/Satori/releases) and download `SatoriSkill-v5.zip`. You don't need to unzip it.
-
-**Step 2: Open Customize**
-
-Head to [claude.ai](https://claude.ai) and click **Customize** in the left sidebar.
-
-**Step 3: Go to Skills**
-
-Click **Skills** in the Customize sidebar. Then click the **+** button in the top-right of the Skills panel.
-
-**Step 4: Upload the zip**
-
-Select **Upload a skill**, then drag and drop `SatoriSkill-v5.zip` into the upload area (or click to browse). No unzipping needed. Claude reads the skill's reference files directly.
-
-**Step 5: Start a conversation**
-
-Open a new conversation. Bring something worth exploring. Satori activates automatically.
 
 ---
 
