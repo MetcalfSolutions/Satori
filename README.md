@@ -48,6 +48,16 @@ The exchange below is from a real session. I scrubbed the personal details. It t
 
 ---
 
+## See It Live
+
+The conversation below ran five exchanges and ended on an open question. You can read the full arc and continue it yourself.
+
+> **[→ Open the live Satori conversation](https://claude.ai/share/8fad72a1-44fe-4eee-b3a5-f82362e0bca5)**
+
+It starts with something almost everyone has felt: *I keep starting things and not finishing them.* By the end, it's somewhere else entirely.
+
+---
+
 A few more examples across different situations.
 
 **Processing self-criticism**
