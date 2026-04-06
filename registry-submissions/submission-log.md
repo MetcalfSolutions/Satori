@@ -4,15 +4,15 @@
 
 | # | Registry | Tier | PR URL | Status | Notes |
 |---|----------|------|--------|--------|-------|
-| 1 | ComposioHQ/awesome-claude-skills | 1 | | Pending | See caveat: may only accept official Anthropic skills |
-| 2 | travisvn/awesome-claude-skills | 1 | | Pending | Requires 10+ stars; no AI-generated PRs |
-| 3 | VoltAgent/awesome-agent-skills | 1 | | Pending | Requires "real community usage" |
-| 4 | sickn33/antigravity-awesome-skills | 1 | | Pending | Needs SKILL.md with YAML frontmatter |
-| 5 | karanb192/awesome-claude-skills | 2 | | Pending | Low activity (8 commits) |
-| 6 | BehiSecc/awesome-claude-skills | 2 | | Pending | Most active (8.2k stars), simple format |
-| 7 | majiayu000/claude-skill-registry | 2 | | Pending | JSON registry format |
-| 8 | e2b-dev/awesome-ai-agents | 3 | | Pending | Detailed format with expandable sections |
-| 9 | kyrolabs/awesome-agents | 3 | | Pending | Framework-focused list |
+| 1 | ComposioHQ/awesome-claude-skills | 1 | https://github.com/ComposioHQ/awesome-claude-skills/pull/599 | Submitted | External community skills accepted; added to Productivity & Organization |
+| 2 | travisvn/awesome-claude-skills | 1 | | Skip - requires human PR | PRs must NOT be explicitly generated/submitted with AI-assistance |
+| 3 | VoltAgent/awesome-agent-skills | 1 | https://github.com/VoltAgent/awesome-agent-skills/pull/380 | Submitted | Added to Productivity and Collaboration section |
+| 4 | sickn33/antigravity-awesome-skills | 1 | https://github.com/sickn33/antigravity-awesome-skills/pull/466 | Submitted | SKILL.md created, passed npm run validate (1378 skills) |
+| 5 | karanb192/awesome-claude-skills | 2 | https://github.com/karanb192/awesome-claude-skills/pull/45 | Submitted | Added to Writing & Research section |
+| 6 | BehiSecc/awesome-claude-skills | 2 | https://github.com/BehiSecc/awesome-claude-skills/pull/207 | Submitted | Added to Health & Life Sciences section |
+| 7 | majiayu000/claude-skill-registry | 2 | https://github.com/majiayu000/claude-skill-registry-core/pull/12 | Submitted | PR opened to claude-skill-registry-core (source of truth); sources/community.json updated |
+| 8 | e2b-dev/awesome-ai-agents | 3 | https://github.com/e2b-dev/awesome-ai-agents/pull/699 | Submitted | Added with full ## [Satori] block format, alphabetically before Self-operating computer |
+| 9 | kyrolabs/awesome-agents | 3 | https://github.com/kyrolabs/awesome-agents/pull/340 | Submitted | Added to Conversational / General Agents with star badge |
 | 10 | Shubhamsaboo/awesome-llm-apps | 3 | | Skip | Runnable code collection, not a link list |
 
 ## Submission Priority
