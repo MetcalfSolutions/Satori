@@ -1,7 +1,7 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "5.1.0",
-  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement.",
+  "version": "5.5.0",
+  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement. Claude Code-native with real file-backed persistence, 17 slash commands, and background pattern synthesis.",
   "keywords": [
     "wisdom",
     "introspection",
@@ -45,11 +45,13 @@
   },
   "files": [
     "SKILL.md",
+    "CLAUDE.md",
     "references/",
+    "skills/",
+    "setup.sh",
     "plugin.json",
     "marketplace.json",
     ".claude-plugin/",
-    "SatoriSkill-v5.zip",
     "LICENSE"
   ],
   "publishConfig": {

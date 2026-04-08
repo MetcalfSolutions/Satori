@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -d .satori/core ]; then echo '--- SATORI CONTEXT ---'; head -50 .satori/core/identity.md 2>/dev/null; echo '---'; head -60 .satori/core/patterns.md 2>/dev/null; echo '---'; head -30 .satori/core/formulation.md 2>/dev/null; echo '--- END SATORI CONTEXT ---'; else echo 'NO_SATORI_DIR'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

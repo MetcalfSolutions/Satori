@@ -111,33 +111,42 @@ Satori is a set of reference files that tell Claude how to think, what to draw o
 | File | Purpose | Loaded |
 |------|---------|--------|
 | [`SKILL.md`](SKILL.md) | Entry point, operational summary, complete load order | Always |
+| [`CLAUDE.md`](CLAUDE.md) | Claude Code configuration: persistence protocol, session start, slash commands, hooks | Always (Claude Code) |
 | [`references/SOUL.md`](references/SOUL.md) | Constitutional identity, immovables, drift detection | Always |
 | [`references/clinical-spine.md`](references/clinical-spine.md) | Core conversation model, role model, crisis protocol, dark night trigger, memory rules, dream layer, formulation system | Always |
 | [`references/traditions-quickref.md`](references/traditions-quickref.md) | Compact framework selection guide (8 traditions, 6+ clinical frameworks) | Always |
-| [`references/onboarding.md`](references/onboarding.md) | First-session sequence: 5 questions, "Satori has met you" synthesis | New users only |
-| [`references/traditions-deep.md`](references/traditions-deep.md) | Full tradition encyclopedia with application guidance for 30+ frameworks | On demand |
-| [`references/conversation-toolkit.md`](references/conversation-toolkit.md) | OARS/MI, McAdams, Singer, Voss tactical empathy, 14 conversation patterns including The Pattern Letter, Dream Walk, Ikigai Map, Shadow Work Invitation | On demand |
+| [`references/onboarding.md`](references/onboarding.md) | First-session sequence: 5 questions, "Satori has met you" synthesis, `.satori/` initialization | New users only |
+| [`references/traditions/[name].md`](references/traditions/) | Individual tradition files — 34 traditions, loaded surgically one at a time | On demand (specific tradition) |
+| [`references/conversation-toolkit.md`](references/conversation-toolkit.md) | OARS/MI, McAdams, Singer, Voss tactical empathy, 14 conversation patterns | On demand |
 | [`references/tone-and-voice.md`](references/tone-and-voice.md) | Voice calibration, vocabulary guidance, before/after examples | On demand |
+| [`references/persistence-engine.md`](references/persistence-engine.md) | Read/write protocol, Durable Test, file hygiene, privacy discipline, agent synthesis | On demand (Claude Code) |
+| [`references/feedback-protocol.md`](references/feedback-protocol.md) | Feedback collection, sanitization rules, storage format | On demand |
+| [`references/claude-code-integration.md`](references/claude-code-integration.md) | Tool usage for Satori, session continuity model, skill architecture | On demand (Claude Code) |
 | [`references/darknight-protocol.md`](references/darknight-protocol.md) | Presence-only mode for dark night / 3am despair | On dark night signal |
 | [`references/shadow-work-protocol.md`](references/shadow-work-protocol.md) | 5-session Jungian shadow work arc: locating, meeting, origin, integration, living with the shadow | On shadow work engagement |
+| [`skills/[command].md`](skills/) | 17 slash command skill files | When slash command invoked |
 
 [`SOUL.md`](references/SOUL.md) is the foundation. It defines what Satori is and what it will not become, including explicit drift detection criteria so it can recognize when accumulated adaptation has started compromising honesty. [`clinical-spine.md`](references/clinical-spine.md) is the operational engine. Everything else serves those two. If you want to understand how Satori thinks, those are the files to read.
 
 ---
 
-## What's New in v5.1
+## What's New in v5.5 — Claude Code Native
 
-v5.1 adds four things that were on my list since the beginning.
+v5.5 is a ground-up Claude Code integration. The wisdom companion is unchanged. What changed is everything underneath: how memory works, how context survives between sessions, how you interact with what Satori knows about you.
 
-The first is onboarding. When Satori meets someone new, it runs a short first-session sequence. Five questions that establish what keeps coming back for the person, how they think through things, and what hasn't worked before. The session ends with a synthesis statement. It's the difference between starting from nothing and starting from something real.
+**Real file-backed persistence.** Every session writes to `.satori/` — a directory in your working folder that stores your identity profile, active patterns, longitudinal formulation, session journals, and all artifacts. Nothing is lost between sessions. The pattern-tracking layer that was conceptual in prior versions is now file-backed: signals become themes, themes become patterns, patterns become formulations, with every transition dated and stored.
 
-The second is the Dark Night Protocol. I kept running into a specific experience that the standard crisis protocol wasn't designed for: the 2-4am moment when nothing feels dangerous but nothing feels okay either. Not suicidal. Not fine. Just hollow and unable to see morning. That state needs presence, not intervention. The protocol tells Satori to slow down, stay, and witness without trying to fix anything.
+**17 slash commands.** Protocol access that was previously implicit is now explicit. `/dream-walk`, `/shadow`, `/ikigai`, `/pattern-letter`, `/dark-night`, `/ground` for the main protocols. `/reflect`, `/session-review`, `/formulation`, `/status`, `/history` for analysis. `/feedback`, `/journal`, `/onboard`, `/traditions`, `/resources`, `/arc` for data and navigation.
 
-The third is Shadow Work. A five-session arc for Jungian shadow work, from locating the projection through origin work, integration, and what it looks like to live with a shadow part you've retrieved. I hesitated to include this because it's easy to do poorly. I think the protocol handles the ethics carefully. If you try it and think it doesn't, I want to know.
+**Automatic context injection.** A hook runs before every message and injects your identity profile, active patterns, and current formulation as a compact context card. Satori knows who you are from the first word of every session, without you having to remind it.
 
-The fourth is four new conversation patterns. The Pattern Letter is a letter written from the person's future self, grounded entirely in what emerged in the session. People screenshot these. The Dream Walk takes a dream through multiple tradition lenses. The Ikigai Map works through purpose-finding across four dimensions. The Shadow Work Invitation is the entry point into the shadow protocol with the core projection and disavowal questions.
+**Background pattern synthesis.** After sessions that produce significant insights, Satori launches a background agent that reads across all your session journals, identifies cross-session patterns, and updates your pattern registry. Also available on demand via `/reflect`.
 
-Total content is now 211,000+ characters across ten reference files, up from 178,000 in v5.0. Full history in [CHANGELOG.md](CHANGELOG.md).
+**Collaborative access.** Your `.satori/` files are yours. You can read, edit, and correct any of them. Satori respects manual edits as authoritative. When your formulation evolves significantly, Satori offers to show you what it has.
+
+**34 individual tradition files.** The 1019-line monolithic traditions file is replaced by 34 individual files, each ~30 lines, loaded only when that specific tradition is selected. The context window is used for the conversation, not background loading.
+
+Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -158,15 +167,39 @@ The simplest path for most users. See the [3-Minute Quick Install](#3-minute-qui
 
 ---
 
-### Option 2: Claude Code Plugin
+### Option 2: Claude Code Plugin (Recommended for v5.5)
 
-For developers using [Claude Code](https://claude.ai/code). Clone the repository. Claude Code automatically detects and loads `.claude-plugin/plugin.json` when you run from the project directory.
+For users running [Claude Code](https://claude.ai/code). This path unlocks the full v5.5 feature set: real file-backed persistence, 17 slash commands, automatic context injection, and background pattern synthesis.
 
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
 claude  # Claude Code loads the plugin automatically
 ```
+
+On first run, Satori detects the absence of `.satori/` and runs onboarding. After that, your profile and session history persist in `.satori/` and are automatically injected into every subsequent session.
+
+**Slash commands available in Claude Code:**
+
+| Command | Purpose |
+|---|---|
+| `/dream-walk` | Multi-tradition dream exploration |
+| `/shadow` | Shadow Work arc (5-session protocol) |
+| `/ikigai` | Ikigai Map multi-turn sequence |
+| `/pattern-letter` | Pattern Letter from future self |
+| `/dark-night` | Dark Night Protocol mode |
+| `/ground` | Quick grounding exercise |
+| `/reflect` | Cross-session pattern analysis |
+| `/session-review` | Current session summary |
+| `/formulation` | View/review working formulation |
+| `/status` | Satori's current understanding |
+| `/history` | Search past sessions |
+| `/feedback` | Provide feedback |
+| `/journal` | Freeform journal entry |
+| `/onboard` | Update preferences |
+| `/traditions` | Explore a specific tradition |
+| `/resources` | Curated resource suggestions |
+| `/arc` | View active arc status |
 
 ---
 
@@ -182,7 +215,38 @@ cp -r Satori/SKILL.md Satori/references ~/.claude/skills/satori/
 
 ---
 
-**Memory Note:** Satori uses Claude's native persistent memory to track patterns and insights across sessions. Enable it in Claude.ai under **Settings > Memory**. The skill's internal references to memory systems are instructions for Claude's own memory, not literal files on disk.
+**Memory Note (Claude.ai):** Satori uses Claude's native persistent memory to track patterns and insights across sessions. Enable it in Claude.ai under **Settings > Memory**. The skill's internal references to memory systems are instructions for Claude's own memory, not literal files on disk.
+
+**Memory Note (Claude Code):** In Claude Code, Satori uses real file-backed persistence in `.satori/` in your working directory. No native memory needed — all context is stored in structured Markdown files that survive indefinitely. See [`.satori/` Structure](#satori-directory-structure) below.
+
+---
+
+## .satori/ Directory Structure
+
+When running in Claude Code, Satori creates and maintains a `.satori/` directory in your working folder:
+
+```
+.satori/
+├── .gitignore              # core/, sessions/, artifacts/ excluded; feedback/ committable
+├── core/
+│   ├── identity.md         # Your profile, voice calibration, confirmed formulations
+│   ├── patterns.md         # Active pattern registry (signal → theme → pattern → formulation)
+│   ├── formulation.md      # Longitudinal formulation with dated history snapshots
+│   └── traditions.md       # Framework resonance tracking
+├── sessions/
+│   └── YYYY-MM-DD-HHmm.md  # Timestamped session journals
+├── artifacts/
+│   ├── letters/            # Pattern Letters from future self
+│   ├── dreams/             # Dream Walk journals
+│   ├── ikigai.md           # Living Ikigai Map
+│   └── journal/            # Freeform journal entries
+├── arcs/
+│   └── shadow-work.md      # Shadow Work 5-session arc tracker
+└── feedback/
+    └── YYYY-MM-DD-HHmm.md  # Sanitized feedback (committable)
+```
+
+Private files (`core/`, `sessions/`, `artifacts/`) are gitignored by default. Sanitized feedback is committable. Run `./setup.sh` to initialize the structure manually if needed.
 
 ---
 

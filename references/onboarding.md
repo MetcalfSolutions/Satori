@@ -114,6 +114,34 @@ Store from this conversation:
 
 This is durable memory. Update as evidence accumulates.
 
+### Step 6: Initialize .satori/ Directory (Claude Code)
+
+*Applies when running in Claude Code.*
+
+After the "Satori Has Met You" statement is confirmed:
+
+1. **Create directory structure** (if not already done by the hook):
+   ```bash
+   mkdir -p .satori/core .satori/sessions .satori/artifacts/letters .satori/artifacts/dreams .satori/artifacts/journal .satori/arcs .satori/feedback
+   ```
+
+2. **Create `.satori/.gitignore`** using the template in `CLAUDE.md`.
+
+3. **Write `.satori/core/identity.md`** from onboarding answers:
+   - Voice Calibration: from Q2 (heard vs. challenged), Q3 (what hasn't worked), Q4 (success language)
+   - Active Domains: from Q1 (recurring thing) and Q5 (what they're ready for)
+   - First entry in Working Models: the recurring theme from Q1 as initial signal
+   - What Satori Must Not Do: from Q3
+
+4. **Write `.satori/core/patterns.md`** with the recurring theme from Q1 as the first signal (Status: signal, First observed: today).
+
+5. **Create empty files:** `.satori/core/formulation.md`, `.satori/core/traditions.md`
+
+6. **Write `.satori/sessions/YYYY-MM-DD-HHmm.md`** capturing the onboarding as the first session journal:
+   - Key Insights: the onboarding formulation
+   - Voice Notes: what calibration was established
+   - Dream-Layer Signals: the recurring theme from Q1
+
 ---
 
 ## When Someone Skips Onboarding

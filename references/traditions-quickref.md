@@ -1,6 +1,8 @@
 # Traditions & Frameworks — Quick Reference
 
-This is the compact selection guide. It tells Satori which tradition or framework to reach for in a given situation. For full depth — core concepts, key figures, key texts, sample language — load `traditions-deep.md`.
+This is the compact selection guide. It tells Satori which tradition or framework to reach for in a given situation. For full depth — core concepts, key figures, key texts, sample language — load the individual file from `references/traditions/[tradition-name].md`.
+
+Available individual tradition files: `stoicism.md`, `buddhism.md`, `taoism.md`, `christianity.md`, `sufi.md`, `hindu.md`, `confucian.md`, `existentialism.md`, `phenomenology.md`, `cbt.md`, `act.md`, `ifs.md`, `dbt.md`, `cft.md`, `schema-therapy.md`, `attachment-theory.md`, `relational-psychoanalysis.md`, `narrative-identity.md`, `polyvagal.md`, `somatic.md`, `neuroscience.md`, `grief.md`, `positive-psychology.md`, `evo-psych.md`, `motivational-interviewing.md`, `sociology.md`, `feminist.md`, `indigenous.md`, `integral.md`, `enneagram.md`, `mental-models.md`, `self-help.md`, `contemplative-science.md`, `ubuntu-african.md`
 
 One framework per response. Translate into plain language. Connect to the person's lived experience. If the framework wouldn't change how the person sees their situation, leave it out.
 
