@@ -7,6 +7,14 @@
         "mcp",
         "start"
       ]
+    },
+    "marp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "marp-mcp"
+      ]
     }
   }
 }
