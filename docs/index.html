@@ -337,7 +337,8 @@ section { padding: 96px 0; }
   cursor: default;
 }
 .trad-card:hover { border-color: rgba(124,106,247,.5); transform: translateY(-2px); }
-.trad-card[data-cat].hidden { display: none; }
+/* visibility:hidden preserves grid space — prevents section height jump on tab switch */
+.trad-card[data-cat].hidden { visibility: hidden; pointer-events: none; opacity: 0; transition: opacity .25s; }
 .trad-icon { margin-bottom: 14px; }
 .trad-card h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
 .trad-card p { font-size: .82rem; color: var(--muted); line-height: 1.7; }
@@ -428,7 +429,14 @@ pre .comment { color: var(--muted); }
   background: var(--bg3);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 36px 28px; text-align: center;
+  padding: 36px 28px;
+  text-align: center;
+  /* Fixed height prevents page jump as quotes rotate */
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #quote-bar blockquote {
   font-family: var(--font-serif);
@@ -436,6 +444,7 @@ pre .comment { color: var(--muted); }
   font-style: italic;
   color: var(--muted);
   max-width: 700px;
+  width: 100%;
   margin: 0 auto;
   line-height: 1.7;
   transition: opacity .5s;
@@ -1085,130 +1094,98 @@ footer {
 
     </div>
 
-    <!-- ── Tradition Wheel SVG ────────────────────────────── -->
-    <figure class="trad-wheel-wrap fade-up" style="margin:56px 0 0" aria-label="Eight wisdom traditions radial diagram">
-      <svg viewBox="0 0 700 700" width="100%" style="display:block;max-width:520px;margin:0 auto"
+    <!-- ── Tradition Map SVG (4×2 card grid) ────────────────── -->
+    <figure class="trad-wheel-wrap fade-up" style="margin:56px 0 0;overflow-x:auto" aria-label="Eight wisdom traditions overview">
+      <svg viewBox="0 0 764 310" width="100%" style="display:block;min-width:580px;max-width:900px;margin:0 auto"
            role="img" aria-hidden="true">
 
-        <!-- Guide rings -->
-        <circle cx="350" cy="350" r="260" stroke="#252840" stroke-width=".8" fill="none"/>
-        <circle cx="350" cy="350" r="185" stroke="#252840" stroke-width=".5" fill="none" stroke-dasharray="3 6"/>
-        <circle cx="350" cy="350" r="110" stroke="#252840" stroke-width=".5" fill="none"/>
+        <!-- ══ Row labels ══ -->
+        <text x="6" y="12" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#7c6af7" letter-spacing=".1em" font-weight="500">ANCIENT &amp; CLASSICAL</text>
+        <text x="6" y="168" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#e07b54" letter-spacing=".1em" font-weight="500">MODERN STREAMS</text>
 
-        <!-- Spoke lines (8 × 45°) -->
-        <g stroke="#1c2030" stroke-width=".7">
-          <line x1="350" y1="90"  x2="350" y2="610"/>
-          <line x1="90"  y1="350" x2="610" y2="350"/>
-          <line x1="166" y1="166" x2="534" y2="534"/>
-          <line x1="534" y1="166" x2="166" y2="534"/>
-        </g>
+        <!-- ══ Row 1 — Ancient (y=18) ══ -->
+        <!-- Card 1: Taoism -->
+        <rect class="w-node" x="6"   y="18" width="176" height="130" rx="10"
+              fill="rgba(124,106,247,.07)" stroke="#7c6af7" stroke-width="1.3" style="animation-delay:.05s"/>
+        <rect x="6" y="18" width="5" height="130" rx="3" fill="#7c6af7" opacity=".7"/>
+        <text x="20" y="41" font-family="Inter,sans-serif" font-size="8" fill="#7c6af7" letter-spacing=".08em">01</text>
+        <text x="20" y="62" font-family="Lora,Georgia,serif" font-size="15" fill="#e4e2ef" font-weight="600">Taoism</text>
+        <text x="20" y="80" font-family="Inter,sans-serif" font-size="10.5" fill="#7c6af7">Wu wei · The Way</text>
+        <text x="20" y="100" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">When forcing outcomes,</text>
+        <text x="20" y="114" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">fighting what is.</text>
 
-        <!-- Center node -->
-        <circle class="w-node" cx="350" cy="350" r="52"
-                fill="#131620" stroke="#7c6af7" stroke-width="1.5" style="animation-delay:.0s"/>
-        <text x="350" y="344" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="16" fill="#7c6af7">Satori</text>
-        <text x="350" y="362" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#7a778e" letter-spacing=".12em">WISDOM</text>
+        <!-- Card 2: Buddhism -->
+        <rect class="w-node" x="194" y="18" width="176" height="130" rx="10"
+              fill="rgba(124,106,247,.07)" stroke="#7c6af7" stroke-width="1.3" style="animation-delay:.10s"/>
+        <rect x="194" y="18" width="5" height="130" rx="3" fill="#7c6af7" opacity=".7"/>
+        <text x="208" y="41" font-family="Inter,sans-serif" font-size="8" fill="#7c6af7" letter-spacing=".08em">02</text>
+        <text x="208" y="62" font-family="Lora,Georgia,serif" font-size="15" fill="#e4e2ef" font-weight="600">Buddhism</text>
+        <text x="208" y="80" font-family="Inter,sans-serif" font-size="10.5" fill="#7c6af7">Non-attachment</text>
+        <text x="208" y="100" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Clinging to outcomes,</text>
+        <text x="208" y="114" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">resisting change.</text>
 
-        <!-- ── Ancient traditions (purple) ── -->
-        <!-- Node 1: Taoism — top (350, 90) -->
-        <circle class="w-node" cx="350" cy="90" r="30"
-                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.08s"/>
-        <text x="350" y="86" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Taoism</text>
-        <text x="350" y="100" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#7c6af7">Wu wei</text>
+        <!-- Card 3: Stoicism -->
+        <rect class="w-node" x="382" y="18" width="176" height="130" rx="10"
+              fill="rgba(124,106,247,.07)" stroke="#7c6af7" stroke-width="1.3" style="animation-delay:.15s"/>
+        <rect x="382" y="18" width="5" height="130" rx="3" fill="#7c6af7" opacity=".7"/>
+        <text x="396" y="41" font-family="Inter,sans-serif" font-size="8" fill="#7c6af7" letter-spacing=".08em">03</text>
+        <text x="396" y="62" font-family="Lora,Georgia,serif" font-size="15" fill="#e4e2ef" font-weight="600">Stoicism</text>
+        <text x="396" y="80" font-family="Inter,sans-serif" font-size="10.5" fill="#7c6af7">Inner citadel</text>
+        <text x="396" y="100" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Suffering over what</text>
+        <text x="396" y="114" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">cannot be changed.</text>
 
-        <!-- Node 2: Buddhism — upper-right (534, 166) -->
-        <circle class="w-node" cx="534" cy="166" r="30"
-                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.14s"/>
-        <text x="534" y="162" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Buddhism</text>
-        <text x="534" y="176" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#7c6af7">Non-attach</text>
+        <!-- Card 4: Hindu Philosophy -->
+        <rect class="w-node" x="570" y="18" width="188" height="130" rx="10"
+              fill="rgba(124,106,247,.07)" stroke="#7c6af7" stroke-width="1.3" style="animation-delay:.20s"/>
+        <rect x="570" y="18" width="5" height="130" rx="3" fill="#7c6af7" opacity=".7"/>
+        <text x="584" y="41" font-family="Inter,sans-serif" font-size="8" fill="#7c6af7" letter-spacing=".08em">04</text>
+        <text x="584" y="62" font-family="Lora,Georgia,serif" font-size="14" fill="#e4e2ef" font-weight="600">Hindu Philosophy</text>
+        <text x="584" y="80" font-family="Inter,sans-serif" font-size="10.5" fill="#7c6af7">Dharma · Karma yoga</text>
+        <text x="584" y="100" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Questions of purpose,</text>
+        <text x="584" y="114" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">action without attachment.</text>
 
-        <!-- Node 3: Stoicism — right (610, 350) -->
-        <circle class="w-node" cx="610" cy="350" r="30"
-                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.20s"/>
-        <text x="610" y="346" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Stoicism</text>
-        <text x="610" y="360" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#7c6af7">Control</text>
+        <!-- ══ Row 2 — Modern (y=175) ══ -->
+        <!-- Card 5: Sufism -->
+        <rect class="w-node" x="6"   y="175" width="176" height="130" rx="10"
+              fill="rgba(224,123,84,.07)" stroke="#e07b54" stroke-width="1.3" style="animation-delay:.28s"/>
+        <rect x="6" y="175" width="5" height="130" rx="3" fill="#e07b54" opacity=".7"/>
+        <text x="20" y="198" font-family="Inter,sans-serif" font-size="8" fill="#e07b54" letter-spacing=".08em">05</text>
+        <text x="20" y="219" font-family="Lora,Georgia,serif" font-size="15" fill="#e4e2ef" font-weight="600">Sufism</text>
+        <text x="20" y="237" font-family="Inter,sans-serif" font-size="10.5" fill="#e07b54">Tawakkul · Surrender</text>
+        <text x="20" y="257" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Yearning, surrender,</text>
+        <text x="20" y="271" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">divine longing.</text>
 
-        <!-- Node 4: Hindu — lower-right (534, 534) -->
-        <circle class="w-node" cx="534" cy="534" r="30"
-                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.26s"/>
-        <text x="534" y="530" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Hindu</text>
-        <text x="534" y="544" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#7c6af7">Dharma</text>
+        <!-- Card 6: Ubuntu -->
+        <rect class="w-node" x="194" y="175" width="176" height="130" rx="10"
+              fill="rgba(224,123,84,.07)" stroke="#e07b54" stroke-width="1.3" style="animation-delay:.33s"/>
+        <rect x="194" y="175" width="5" height="130" rx="3" fill="#e07b54" opacity=".7"/>
+        <text x="208" y="198" font-family="Inter,sans-serif" font-size="8" fill="#e07b54" letter-spacing=".08em">06</text>
+        <text x="208" y="219" font-family="Lora,Georgia,serif" font-size="15" fill="#e4e2ef" font-weight="600">Ubuntu</text>
+        <text x="208" y="237" font-family="Inter,sans-serif" font-size="10.5" fill="#e07b54">I am because we are</text>
+        <text x="208" y="257" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Relational self, when</text>
+        <text x="208" y="271" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">individualism falls short.</text>
 
-        <!-- ── Modern streams (orange) ── -->
-        <!-- Node 5: Sufism — bottom (350, 610) -->
-        <circle class="w-node" cx="350" cy="610" r="30"
-                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.32s"/>
-        <text x="350" y="606" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Sufism</text>
-        <text x="350" y="620" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#e07b54">Surrender</text>
+        <!-- Card 7: Indigenous -->
+        <rect class="w-node" x="382" y="175" width="176" height="130" rx="10"
+              fill="rgba(224,123,84,.07)" stroke="#e07b54" stroke-width="1.3" style="animation-delay:.38s"/>
+        <rect x="382" y="175" width="5" height="130" rx="3" fill="#e07b54" opacity=".7"/>
+        <text x="396" y="198" font-family="Inter,sans-serif" font-size="8" fill="#e07b54" letter-spacing=".08em">07</text>
+        <text x="396" y="219" font-family="Lora,Georgia,serif" font-size="14" fill="#e4e2ef" font-weight="600">Indigenous Wisdom</text>
+        <text x="396" y="237" font-family="Inter,sans-serif" font-size="10.5" fill="#e07b54">Seven generations</text>
+        <text x="396" y="257" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Interconnection, long</text>
+        <text x="396" y="271" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">view, belonging.</text>
 
-        <!-- Node 6: Ubuntu — lower-left (166, 534) -->
-        <circle class="w-node" cx="166" cy="534" r="30"
-                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.38s"/>
-        <text x="166" y="530" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="10" fill="#e4e2ef">Ubuntu</text>
-        <text x="166" y="544" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#e07b54">We are</text>
-
-        <!-- Node 7: Indigenous — left (90, 350) -->
-        <circle class="w-node" cx="90" cy="350" r="30"
-                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.44s"/>
-        <text x="90" y="346" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="9"  fill="#e4e2ef">Indigenous</text>
-        <text x="90" y="360" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#e07b54">7 Generations</text>
-
-        <!-- Node 8: Existentialism — upper-left (166, 166) -->
-        <circle class="w-node" cx="166" cy="166" r="30"
-                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.50s"/>
-        <text x="166" y="162" text-anchor="middle" font-family="Lora,Georgia,serif"
-              font-size="9"  fill="#e4e2ef">Existentialism</text>
-        <text x="166" y="176" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="8"  fill="#e07b54">Meaning</text>
-
-        <!-- ── Inner clinical ring nodes (teal) ── -->
-        <!-- IFS — top-right inner -->
-        <circle class="w-node" cx="481" cy="218" r="22"
-                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.58s"/>
-        <text x="481" y="222" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="9" fill="#4ecdc4">IFS</text>
-
-        <!-- MI — bottom-right inner -->
-        <circle class="w-node" cx="481" cy="482" r="22"
-                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.62s"/>
-        <text x="481" y="486" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="9" fill="#4ecdc4">MI</text>
-
-        <!-- DBT — bottom-left inner -->
-        <circle class="w-node" cx="219" cy="482" r="22"
-                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.66s"/>
-        <text x="219" y="486" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="9" fill="#4ecdc4">DBT</text>
-
-        <!-- CFT — top-left inner -->
-        <circle class="w-node" cx="219" cy="218" r="22"
-                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.70s"/>
-        <text x="219" y="222" text-anchor="middle" font-family="Inter,sans-serif"
-              font-size="9" fill="#4ecdc4">CFT</text>
-
-        <!-- Legend -->
-        <circle cx="60"  cy="666" r="6" fill="none" stroke="#7c6af7" stroke-width="1.5"/>
-        <text x="72"  y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Ancient &amp; Classical</text>
-        <circle cx="220" cy="666" r="6" fill="none" stroke="#e07b54" stroke-width="1.5"/>
-        <text x="232" y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Modern Streams</text>
-        <circle cx="370" cy="666" r="6" fill="none" stroke="#4ecdc4" stroke-width="1.5"/>
-        <text x="382" y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Clinical Core</text>
+        <!-- Card 8: Existentialism -->
+        <rect class="w-node" x="570" y="175" width="188" height="130" rx="10"
+              fill="rgba(224,123,84,.07)" stroke="#e07b54" stroke-width="1.3" style="animation-delay:.43s"/>
+        <rect x="570" y="175" width="5" height="130" rx="3" fill="#e07b54" opacity=".7"/>
+        <text x="584" y="198" font-family="Inter,sans-serif" font-size="8" fill="#e07b54" letter-spacing=".08em">08</text>
+        <text x="584" y="219" font-family="Lora,Georgia,serif" font-size="14" fill="#e4e2ef" font-weight="600">Existentialism</text>
+        <text x="584" y="237" font-family="Inter,sans-serif" font-size="10.5" fill="#e07b54">Radical freedom</text>
+        <text x="584" y="257" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">Crisis of meaning,</text>
+        <text x="584" y="271" font-family="Inter,sans-serif" font-size="9.5" fill="#7a778e" font-style="italic">identity, purpose.</text>
       </svg>
       <p class="svg-caption">One framework per response — selected to fit the situation, never stacked</p>
     </figure>
