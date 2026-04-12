@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satori — Clinically Informed Wisdom Companion</title>
+<meta name="description" content="A free, open-source wisdom companion drawing on 8 traditions and modern clinical psychology. Not comfort. Movement.">
+<meta property="og:title" content="Satori — Wisdom Companion">
+<meta property="og:description" content="Clinically informed. Conversationally guided. Free, open-source, no subscription.">
+<meta property="og:url" content="https://metcalfsolutions.github.io/Satori/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & tokens ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0c0e16;
+  --bg2:      #131620;
+  --bg3:      #1c2030;
+  --accent:   #7c6af7;
+  --accent2:  #e07b54;
+  --accent3:  #4ecdc4;
+  --text:     #e4e2ef;
+  --muted:    #7a778e;
+  --border:   #252840;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(.25,.8,.25,1);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--text); }
+strong { color: var(--accent2); font-weight: 600; }
+em { color: var(--muted); font-style: italic; }
+
+/* ── Utility ─────────────────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+.fade-up { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.fade-up.visible { opacity: 1; transform: none; }
+.tag {
+  display: inline-block;
+  background: rgba(124,106,247,.12);
+  border: 1px solid rgba(124,106,247,.3);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 3px 14px;
+  font-size: .75rem;
+  font-family: var(--font-sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── Nav ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: rgba(12,14,22,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: border-color .3s;
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text);
+  letter-spacing: .02em;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links .btn-nav {
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 500;
+  transition: opacity .2s;
+}
+.nav-links .btn-nav:hover { opacity: .85; color: #fff; }
+
+/* ── Hero ────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding-top: 60px;
+}
+#particles-canvas {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 760px;
+  padding: 80px 28px 80px;
+  margin: 0 auto 0 calc((100vw - 1100px)/2);
+}
+@media (max-width: 1160px) { .hero-inner { margin-left: 28px; } }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+}
+.hero-eyebrow span { color: var(--accent); }
+.hero-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin-bottom: 20px;
+}
+.hero-h1 .line2 { color: var(--accent); font-style: italic; }
+.hero-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.hero-desc {
+  font-size: .97rem;
+  color: var(--muted);
+  max-width: 580px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+.hero-desc strong { color: var(--text); }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: .92rem;
+  transition: transform .2s, opacity .2s;
+  display: inline-block;
+}
+.btn-primary:hover { opacity: .88; transform: translateY(-1px); color: #fff; }
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: .92rem;
+  transition: border-color .2s, color .2s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--text); }
+.hero-stats {
+  display: flex; gap: 36px; flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+}
+.hero-stats .stat strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stats .stat span { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+/* SVG hero deco */
+.hero-deco {
+  position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
+  opacity: .12; z-index: 0; pointer-events: none;
+}
+@media (max-width: 900px) { .hero-deco { display: none; } }
+
+/* ── Section base ────────────────────────────────────────── */
+section { padding: 96px 0; }
+.section-label {
+  font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px; font-family: var(--font-sans);
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.section-sub {
+  color: var(--muted);
+  max-width: 580px;
+  font-size: .97rem;
+  margin-bottom: 56px;
+  line-height: 1.8;
+}
+
+/* ── Hooks strip ─────────────────────────────────────────── */
+#hooks { background: var(--bg2); padding: 64px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.hooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+.hook-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg3);
+  transition: border-color .3s, transform .3s;
+}
+.hook-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.hook-icon { margin-bottom: 18px; }
+.hook-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.hook-card p { font-size: .9rem; color: var(--muted); line-height: 1.75; }
+.hook-card blockquote {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--accent2);
+  background: rgba(224,123,84,.06);
+  font-style: italic;
+  font-size: .85rem;
+  color: var(--muted);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ── Pillars ─────────────────────────────────────────────── */
+#pillars { background: var(--bg); }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.pillar {
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s;
+}
+.pillar::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.pillar:hover { border-color: rgba(124,106,247,.5); }
+.pillar:hover::before { opacity: 1; }
+.pillar-num {
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px; display: block;
+}
+.pillar h3 { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 12px; color: var(--text); }
+.pillar p { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+.pillar .pillar-warn { margin-top: 16px; font-size: .8rem; color: rgba(224,123,84,.7); font-style: italic; }
+
+/* ── Conversation model ──────────────────────────────────── */
+#conversation { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.steps-diagram { margin: 0 auto; max-width: 900px; }
+.steps-list { display: flex; flex-direction: column; gap: 0; }
+.step {
+  display: flex; gap: 28px; align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  transition: background .2s;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 1.1rem;
+  color: var(--muted);
+  transition: border-color .3s, color .3s, background .3s;
+}
+.step:hover .step-num {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(124,106,247,.1);
+}
+.step-content h4 {
+  font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600;
+  margin-bottom: 6px; color: var(--text);
+}
+.step-content p { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+.step-content em { color: var(--accent3); font-style: italic; font-size: .85rem; }
+.step-connector {
+  width: 1px; height: 20px; background: var(--border);
+  margin-left: 23px;
+}
+
+/* ── Traditions ──────────────────────────────────────────── */
+#traditions { background: var(--bg); }
+.traditions-tabs {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 40px;
+}
+.tab-btn {
+  padding: 7px 18px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: none; color: var(--muted);
+  font-size: .82rem; cursor: pointer;
+  transition: all .2s; font-family: var(--font-sans);
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--text); }
+.tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.traditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 18px;
+}
+.trad-card {
+  padding: 24px 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  transition: border-color .3s, transform .3s;
+  cursor: default;
+}
+.trad-card:hover { border-color: rgba(124,106,247,.5); transform: translateY(-2px); }
+.trad-card[data-cat].hidden { display: none; }
+.trad-icon { margin-bottom: 14px; }
+.trad-card h4 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+.trad-card p { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+.trad-card .trad-when {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: .78rem; color: var(--accent2);
+  font-style: italic;
+}
+
+/* ── Frameworks ──────────────────────────────────────────── */
+#frameworks { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.fw-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .88rem;
+}
+.fw-table thead th {
+  text-align: left; padding: 12px 16px;
+  background: var(--bg3); color: var(--accent);
+  font-weight: 500; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+}
+.fw-table tbody tr { border-bottom: 1px solid var(--border); transition: background .2s; }
+.fw-table tbody tr:hover { background: var(--bg3); }
+.fw-table td { padding: 13px 16px; vertical-align: top; color: var(--muted); line-height: 1.6; }
+.fw-table td:first-child { color: var(--text); font-weight: 500; white-space: nowrap; }
+.fw-table td .abbr {
+  display: inline-block;
+  font-size: .68rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent3); margin-left: 6px;
+}
+
+/* ── Protocols ───────────────────────────────────────────── */
+#protocols { background: var(--bg); }
+.protocols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.protocol-card {
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg2);
+  transition: border-color .3s;
+}
+.protocol-card:hover { border-color: rgba(224,123,84,.5); }
+.protocol-num { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent2); margin-bottom: 16px; display: block; }
+.protocol-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px; color: var(--text); }
+.protocol-card p { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+.protocol-card ul { margin-top: 14px; padding-left: 16px; }
+.protocol-card ul li { font-size: .84rem; color: var(--muted); margin-bottom: 6px; }
+
+/* ── Install ─────────────────────────────────────────────── */
+#install { background: var(--bg2); border-top: 1px solid var(--border); }
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.install-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg3);
+}
+.install-card h3 {
+  font-family: var(--font-serif); font-size: 1.1rem;
+  margin-bottom: 10px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+.install-card p { font-size: .87rem; color: var(--muted); margin-bottom: 16px; line-height: 1.7; }
+pre {
+  background: rgba(0,0,0,.4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: .8rem;
+  overflow-x: auto;
+  color: var(--accent3);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+pre .comment { color: var(--muted); }
+
+/* ── Quote rotator ───────────────────────────────────────── */
+#quote-bar {
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 28px; text-align: center;
+}
+#quote-bar blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  transition: opacity .5s;
+}
+#quote-bar cite {
+  display: block; margin-top: 12px;
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); font-style: normal;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 48px 28px 40px;
+  text-align: center;
+}
+.footer-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.footer-tagline { font-size: .88rem; color: var(--muted); margin-bottom: 28px; font-style: italic; }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+.footer-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-meta { font-size: .76rem; color: var(--border); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  nav .nav-links a:not(.btn-nav) { display: none; }
+  .hero-stats { gap: 20px; }
+  .step { flex-direction: column; gap: 12px; }
+  .fw-table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Satori</a>
+  <div class="nav-links">
+    <a href="#traditions">Traditions</a>
+    <a href="#frameworks">Frameworks</a>
+    <a href="#protocols">Protocols</a>
+    <a href="#install">Install</a>
+    <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-nav">GitHub ↗</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Decorative mandala SVG -->
+  <svg class="hero-deco" width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="260" cy="260" r="240" stroke="white" stroke-width=".6" stroke-dasharray="4 8"/>
+    <circle cx="260" cy="260" r="180" stroke="white" stroke-width=".5" stroke-dasharray="2 10"/>
+    <circle cx="260" cy="260" r="120" stroke="white" stroke-width=".6"/>
+    <circle cx="260" cy="260" r="60"  stroke="white" stroke-width=".8"/>
+    <!-- 8 tradition spokes -->
+    <g stroke="white" stroke-width=".5" opacity=".6">
+      <line x1="260" y1="20"  x2="260" y2="500"/>
+      <line x1="20"  y1="260" x2="500" y2="260"/>
+      <line x1="90"  y1="90"  x2="430" y2="430"/>
+      <line x1="430" y1="90"  x2="90"  y2="430"/>
+    </g>
+    <!-- 8 outer dots -->
+    <g fill="white" opacity=".7">
+      <circle cx="260" cy="20"  r="3"/>
+      <circle cx="260" cy="500" r="3"/>
+      <circle cx="20"  cy="260" r="3"/>
+      <circle cx="500" cy="260" r="3"/>
+      <circle cx="90"  cy="90"  r="3"/>
+      <circle cx="430" cy="90"  r="3"/>
+      <circle cx="90"  cy="430" r="3"/>
+      <circle cx="430" cy="430" r="3"/>
+    </g>
+    <circle cx="260" cy="260" r="8" fill="white" opacity=".4"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">v5.1</span>
+      Free &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; Apache 2.0
+    </div>
+
+    <h1 class="hero-h1">
+      Not here to make<br>
+      <span class="line2">you feel better.</span>
+    </h1>
+    <p class="hero-sub">Here to help you see more clearly.</p>
+    <p class="hero-desc">
+      A <strong>clinically informed</strong> wisdom companion for emotions, meaning, grief, purpose, relationship, and identity.
+      Drawing on <strong>8 wisdom traditions</strong> and modern clinical psychology.
+      No subscription. No data collection. Just movement.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#install" class="btn-primary">Get Satori Free →</a>
+      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-ghost">View on GitHub</a>
+      <a href="https://metcalfsolutions.github.io/Satori/" target="_blank" rel="noopener" class="btn-ghost">Docs ↗</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><strong>8</strong><span>Wisdom Traditions</span></div>
+      <div class="stat"><strong>30+</strong><span>Clinical Frameworks</span></div>
+      <div class="stat"><strong>211k</strong><span>Chars of Depth</span></div>
+      <div class="stat"><strong>Free</strong><span>No Subscription</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE BAR ═══════════════════════════════════════════ -->
+<div id="quote-bar">
+  <blockquote id="rotating-quote">
+    "I am not here to make you feel better. I am here to help you see more clearly — and sometimes those are the same thing, and sometimes they are not."
+    <cite>— Satori, SOUL.md</cite>
+  </blockquote>
+</div>
+
+<!-- ══ HOOKS ═══════════════════════════════════════════════ -->
+<section id="hooks">
+  <div class="container">
+    <div class="hooks-grid">
+
+      <div class="hook-card fade-up">
+        <div class="hook-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <circle cx="18" cy="18" r="17" stroke="#7c6af7" stroke-width="1.2"/>
+            <path d="M10 18 Q18 8 26 18 Q18 28 10 18Z" stroke="#7c6af7" stroke-width="1.2" fill="none"/>
+            <circle cx="18" cy="18" r="4" fill="#7c6af7" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Not another AI that just agrees with you</h3>
+        <p>Satori carries a point of view. It names patterns you miss, holds open questions you'd rather close, and stays with what's true even when comfort would be easier.</p>
+        <blockquote>"Warmth without honesty, comfort without clarity — is not actually care. It is a sophisticated form of abandonment."</blockquote>
+      </div>
+
+      <div class="hook-card fade-up" style="transition-delay:.12s">
+        <div class="hook-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="32" height="32" rx="6" stroke="#e07b54" stroke-width="1.2"/>
+            <line x1="9" y1="12" x2="27" y2="12" stroke="#e07b54" stroke-width="1.2"/>
+            <line x1="9" y1="18" x2="22" y2="18" stroke="#e07b54" stroke-width="1.2"/>
+            <line x1="9" y1="24" x2="25" y2="24" stroke="#e07b54" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3>Clinical depth in every conversation</h3>
+        <p>Built on IFS, DBT, CFT, Schema Therapy, Motivational Interviewing, and 25+ other frameworks. Pattern recognition, hypothesis formation, and formulation running beneath a natural, humane voice.</p>
+        <blockquote>"The goal is never to sound clinical. The goal is to think with a clinical spine beneath a natural, humane voice."</blockquote>
+      </div>
+
+      <div class="hook-card fade-up" style="transition-delay:.24s">
+        <div class="hook-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 3 L33 30 L3 30 Z" stroke="#4ecdc4" stroke-width="1.2" fill="none"/>
+            <line x1="18" y1="12" x2="18" y2="22" stroke="#4ecdc4" stroke-width="1.5"/>
+            <circle cx="18" cy="26" r="1.5" fill="#4ecdc4"/>
+          </svg>
+        </div>
+        <h3>Every response commits to movement</h3>
+        <p>A response that leaves you in exactly the same place you arrived is incomplete. Satori produces at least one shift — a clearer frame, a reframe, a decision point — in every substantive exchange.</p>
+        <blockquote>"Not transcendence. Not resolution. Just movement."</blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ THREE PILLARS ═══════════════════════════════════════ -->
+<section id="pillars">
+  <div class="container">
+    <p class="section-label fade-up">Identity</p>
+    <h2 class="section-title fade-up">Three things, always present</h2>
+    <p class="section-sub fade-up">When any one drops out, the identity is incomplete. Together they define what Satori is.</p>
+
+    <div class="pillars-grid">
+
+      <div class="pillar fade-up">
+        <span class="pillar-num">01 / Clinically Informed</span>
+        <h3>The discipline beneath the voice</h3>
+        <p>Satori thinks with the rigor of a trained clinician: pattern recognition, hypothesis formation, the distinction between emotion and interpretation, and recognition of avoidance and protective strategies. Invisible in the voice — present in every response.</p>
+        <p class="pillar-warn">Without this: warmth without structure. A pleasant but unproductive conversation.</p>
+      </div>
+
+      <div class="pillar fade-up" style="transition-delay:.1s">
+        <span class="pillar-num">02 / Conversationally Guided</span>
+        <h3>Not procedural. Not institutional.</h3>
+        <p>The delivery is natural, humane, and warm. The conversation moves like a conversation — responsive, alive, unforced. Not a checklist wearing a warm face. Not therapy transcripts. Something closer to being genuinely accompanied.</p>
+        <p class="pillar-warn">Without this: structure without warmth. Cold and alienating.</p>
+      </div>
+
+      <div class="pillar fade-up" style="transition-delay:.2s">
+        <span class="pillar-num">03 / Wise Companion</span>
+        <h3>Centuries of human thinking, in service</h3>
+        <p>Philosophical breadth, spiritual sensitivity, practical wisdom, and equanimity drawn from absorbing a great deal of human experience. It is not neutral. It has a perspective — offered in service of the person, not as authority to defer to.</p>
+        <p class="pillar-warn">Without this: technique without depth. Competent but thin.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONVERSATION MODEL ════════════════════════════════════ -->
+<section id="conversation">
+  <div class="container">
+    <p class="section-label fade-up">How it works</p>
+    <h2 class="section-title fade-up">The 6-step conversation model</h2>
+    <p class="section-sub fade-up">Every substantive response moves through this sequence invisibly. The person experiences warmth and clarity — not procedure. Sequence is as important as content.</p>
+
+    <!-- SVG flow connector (decorative, desktop) -->
+    <div class="steps-diagram fade-up">
+      <div class="steps-list">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Attune</h4>
+            <p>Reflect the person's emotional reality accurately and specifically. Not generic empathy — the actual texture of what they're carrying. The person must feel understood before anything else can land.</p>
+            <em>"What I'm hearing is someone who's been holding two incompatible truths…"</em>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Clarify</h4>
+            <p>Identify the central tension, pattern, or uncertainty. Find the organizing principle beneath the tangle. Ask: <em>what is this actually about?</em> Do not clarify prematurely — attunement comes first.</p>
+            <em>"It sounds like the question isn't really about the job — it's about whether you trust yourself."</em>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Formulate</h4>
+            <p>Offer a soft working hypothesis about what may be going on. Always tentative, always collaborative. Formulations are hypotheses, not verdicts. The phrase <em>"correct me if I'm off"</em> is not rhetorical — it is an actual invitation.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Integrate</h4>
+            <p>Bring in one relevant framework or tradition — only when it genuinely sharpens understanding. One framework per response. Translate into plain language. If a framework wouldn't change how the person sees their situation, leave it out.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>Translate</h4>
+            <p>Turn insight into movement. A response that produces only understanding, with no shift in how the person relates to their situation, is incomplete. The aim is always a clearer frame, a smaller next step, a decision point.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h4>Anchor</h4>
+            <p>End with clarity and direction, not abstraction. The closing must feel like ground underfoot — a question worth sitting with, a recognition that clarified something, or an honest naming of where the person is. Not open-ended in a way that leaves them more unmoored.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRADITIONS ═══════════════════════════════════════════ -->
+<section id="traditions">
+  <div class="container">
+    <p class="section-label fade-up">Eight Streams</p>
+    <h2 class="section-title fade-up">One river of human wisdom</h2>
+    <p class="section-sub fade-up">Satori draws on eight living traditions — selected to fit the situation, translated into plain language, never stacked or deployed as decoration.</p>
+
+    <div class="traditions-tabs fade-up">
+      <button class="tab-btn active" data-filter="all">All</button>
+      <button class="tab-btn" data-filter="ancient">Ancient &amp; Classical</button>
+      <button class="tab-btn" data-filter="modern">Modern Streams</button>
+      <button class="tab-btn" data-filter="clinical">Clinical</button>
+    </div>
+
+    <div class="traditions-grid">
+
+      <!-- Ancient -->
+      <div class="trad-card" data-cat="ancient">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 2 Q24 14 14 26 Q4 14 14 2Z" stroke="#7c6af7" stroke-width="1.2" fill="rgba(124,106,247,.08)"/>
+          </svg>
+        </div>
+        <h4>Taoism</h4>
+        <p>The Way that cannot be named. Wu wei — effortless action in harmony with what is. Water shapes everything without effort.</p>
+        <p class="trad-when">Draw on when: someone is fighting reality, forcing outcomes, or caught in the tyranny of doing.</p>
+      </div>
+
+      <div class="trad-card" data-cat="ancient">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="12" stroke="#7c6af7" stroke-width="1.2"/>
+            <path d="M14 2 A12 12 0 0 1 14 26 A6 6 0 0 1 14 14 A6 6 0 0 0 14 2Z" fill="rgba(124,106,247,.15)"/>
+            <circle cx="14" cy="8"  r="2" fill="#7c6af7"/>
+            <circle cx="14" cy="20" r="2" fill="none" stroke="#7c6af7" stroke-width="1"/>
+          </svg>
+        </div>
+        <h4>Buddhism</h4>
+        <p>Suffering arises from clinging to impermanent things. Non-attachment, mindfulness, the Middle Way between extremes.</p>
+        <p class="trad-when">Draw on when: gripping an outcome, resisting change, navigating grief and loss, or caught in self-criticism.</p>
+      </div>
+
+      <div class="trad-card" data-cat="ancient">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="22" height="22" rx="3" stroke="#7c6af7" stroke-width="1.2"/>
+            <line x1="14" y1="3"  x2="14" y2="25" stroke="#7c6af7" stroke-width=".8"/>
+            <line x1="3"  y1="14" x2="25" y2="14" stroke="#7c6af7" stroke-width=".8"/>
+          </svg>
+        </div>
+        <h4>Stoicism</h4>
+        <p>The dichotomy of control. Virtue, amor fati, the inner citadel. Misery comes from confusing what is up to us with what is not.</p>
+        <p class="trad-when">Draw on when: suffering over what cannot be changed, catastrophizing, or needing spine beneath emotion.</p>
+      </div>
+
+      <div class="trad-card" data-cat="ancient">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4 L18 10 L25 10 L19 15 L22 22 L14 18 L6 22 L9 15 L3 10 L10 10 Z" stroke="#7c6af7" stroke-width="1.2" fill="rgba(124,106,247,.08)"/>
+          </svg>
+        </div>
+        <h4>Hindu Philosophy</h4>
+        <p>Dharma — one's path and calling. Karma yoga — action without attachment to results. The Atman beneath the constructed self.</p>
+        <p class="trad-when">Draw on when: questions of purpose and calling, attachment to results, acting without certainty.</p>
+      </div>
+
+      <!-- Modern -->
+      <div class="trad-card" data-cat="modern">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M5 14 Q14 4 23 14" stroke="#e07b54" stroke-width="1.2" fill="none"/>
+            <path d="M5 14 Q14 24 23 14" stroke="#e07b54" stroke-width="1.2" fill="rgba(224,123,84,.08)"/>
+            <circle cx="14" cy="14" r="3" fill="#e07b54" opacity=".6"/>
+          </svg>
+        </div>
+        <h4>Sufi / Islamic Wisdom</h4>
+        <p>Divine love as the transformative path. The nafs and its purification. Tawakkul — radical trust. Rumi, Hafiz, Ibn Arabi.</p>
+        <p class="trad-when">Draw on when: yearning for transcendence, surrender vs. control, or carrying Sufi/Muslim background.</p>
+      </div>
+
+      <div class="trad-card" data-cat="modern">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="12" stroke="#e07b54" stroke-width="1.2"/>
+            <circle cx="14" cy="14" r="6"  stroke="#e07b54" stroke-width=".8" stroke-dasharray="2 3"/>
+            <circle cx="14" cy="14" r="2"  fill="#e07b54" opacity=".6"/>
+          </svg>
+        </div>
+        <h4>African Philosophy / Ubuntu</h4>
+        <p>"I am because we are." Communalism, ancestral continuity, the relational self. When Western individualism can't hold the full picture.</p>
+        <p class="trad-when">Draw on when: radical individualism feels insufficient, or for questions of communal belonging.</p>
+      </div>
+
+      <div class="trad-card" data-cat="modern">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 4 L14 24 M6 8 Q14 4 22 8 M6 20 Q14 24 22 20" stroke="#e07b54" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <h4>Indigenous Wisdom</h4>
+        <p>Relationality, seven generations thinking, reciprocity, the intelligence of the natural world. Living traditions — not metaphors to borrow.</p>
+        <p class="trad-when">Draw on when: questions of interconnection, belonging, or the long view.</p>
+      </div>
+
+      <div class="trad-card" data-cat="modern">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M4 14 L10 8 L14 14 L18 6 L24 14" stroke="#e07b54" stroke-width="1.2" fill="none"/>
+            <line x1="4" y1="20" x2="24" y2="20" stroke="#e07b54" stroke-width=".8" stroke-dasharray="2 3"/>
+          </svg>
+        </div>
+        <h4>Existentialism</h4>
+        <p>Radical freedom and radical responsibility. Camus on the absurd, Frankl on meaning in suffering, Kierkegaard on anxiety as the dizziness of freedom.</p>
+        <p class="trad-when">Draw on when: questions of meaning, identity, or when someone needs thinking sharpened alongside support.</p>
+      </div>
+
+      <!-- Clinical -->
+      <div class="trad-card" data-cat="clinical">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" stroke="#4ecdc4" stroke-width="1.2"/>
+            <circle cx="8"  cy="20" r="4" stroke="#4ecdc4" stroke-width="1.2"/>
+            <circle cx="20" cy="20" r="4" stroke="#4ecdc4" stroke-width="1.2"/>
+            <line x1="14" y1="15" x2="8"  y2="16" stroke="#4ecdc4" stroke-width=".8"/>
+            <line x1="14" y1="15" x2="20" y2="16" stroke="#4ecdc4" stroke-width=".8"/>
+          </svg>
+        </div>
+        <h4>IFS — Internal Family Systems</h4>
+        <p>The mind contains many parts: exiles (carrying pain), managers (preventing pain), firefighters (reactive protectors). The Self is curious, compassionate, calm.</p>
+        <p class="trad-when">Draw on when: inner conflict, ambivalence, or protective behavior is present.</p>
+      </div>
+
+      <div class="trad-card" data-cat="clinical">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M5 20 Q14 4 23 20" stroke="#4ecdc4" stroke-width="1.2" fill="none"/>
+            <line x1="5" y1="20" x2="23" y2="20" stroke="#4ecdc4" stroke-width=".8"/>
+            <circle cx="14" cy="13" r="2.5" fill="rgba(78,205,196,.3)" stroke="#4ecdc4" stroke-width="1"/>
+          </svg>
+        </div>
+        <h4>Motivational Interviewing</h4>
+        <p>A collaborative style that strengthens a person's own motivation for change. OARS, change talk vs. sustain talk, rolling with resistance. The technical spine of Satori.</p>
+        <p class="trad-when">Draw on in: any conversation where change, growth, or movement is at stake.</p>
+      </div>
+
+      <div class="trad-card" data-cat="clinical">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="4" y="12" width="8" height="12" rx="2" stroke="#4ecdc4" stroke-width="1.2"/>
+            <rect x="16" y="6" width="8" height="18" rx="2" stroke="#4ecdc4" stroke-width="1.2"/>
+            <line x1="4" y1="24" x2="24" y2="24" stroke="#4ecdc4" stroke-width=".8"/>
+          </svg>
+        </div>
+        <h4>Narrative Identity</h4>
+        <p>We live inside stories about ourselves. McAdams' life story model: chapters, key scenes, redemption vs. contamination sequences. Re-authoring, finding turning points.</p>
+        <p class="trad-when">Draw on when: identity transition, story has broken down, or coherence across time is needed.</p>
+      </div>
+
+      <div class="trad-card" data-cat="clinical">
+        <div class="trad-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 5 C8 5 4 9 4 14 C4 19 8 23 14 23 C20 23 24 19 24 14" stroke="#4ecdc4" stroke-width="1.2" fill="none"/>
+            <path d="M18 5 L24 5 L24 11" stroke="#4ecdc4" stroke-width="1.2" fill="none"/>
+            <line x1="24" y1="5" x2="16" y2="13" stroke="#4ecdc4" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h4>Attachment Theory</h4>
+        <p>Early relational patterns shape how we connect and protect ourselves across life. Earned security is possible through new relational experiences.</p>
+        <p class="trad-when">Draw on when: recurring interpersonal patterns, relational pain, fear of intimacy or abandonment.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLINICAL FRAMEWORKS ════════════════════════════════════ -->
+<section id="frameworks">
+  <div class="container">
+    <p class="section-label fade-up">Clinical Toolkit</p>
+    <h2 class="section-title fade-up">30+ frameworks. One at a time.</h2>
+    <p class="section-sub fade-up">The clinical spine beneath Satori's voice — selected for precision, never stacked, always translated into plain language.</p>
+
+    <div class="fade-up">
+      <table class="fw-table">
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>Draw on when…</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>IFS — Internal Family Systems <span class="abbr">IFS</span></td><td>Inner conflict, ambivalence, protective behavior; parts, protectors, exiles, Self</td></tr>
+          <tr><td>Dialectical Behavior Therapy <span class="abbr">DBT</span></td><td>Intense emotional reactivity, oscillating extremes, need crisis-level distress tolerance</td></tr>
+          <tr><td>Compassion-Focused Therapy <span class="abbr">CFT</span></td><td>Relentless self-criticism, shame cycles, self-compassion intellectually understood but unreachable</td></tr>
+          <tr><td>Schema Therapy</td><td>Deeply entrenched patterns from childhood repeating across different relationships and contexts</td></tr>
+          <tr><td>Acceptance &amp; Commitment Therapy <span class="abbr">ACT</span></td><td>Avoiding values-aligned action; trying to control feelings rather than relate to them differently</td></tr>
+          <tr><td>Cognitive Behavioral Therapy <span class="abbr">CBT</span></td><td>Identifiable cognitive loops: catastrophizing, all-or-nothing thinking, emotional reasoning</td></tr>
+          <tr><td>Attachment Theory</td><td>Recurring interpersonal patterns, relational pain, fear of intimacy or abandonment</td></tr>
+          <tr><td>Polyvagal Theory</td><td>Physiologically overwhelmed, flooded, freeze/collapse states beyond conscious control</td></tr>
+          <tr><td>Motivational Interviewing <span class="abbr">MI</span></td><td>Any conversation where change, growth, or movement is at stake — the technical spine</td></tr>
+          <tr><td>Narrative Identity (McAdams)</td><td>Identity transition, story has broken down, need coherence across past, present, and future</td></tr>
+          <tr><td>Somatic Frameworks</td><td>Embodied distress without clear cognitive cause; when insight alone hasn't produced change</td></tr>
+          <tr><td>Grief Frameworks (Worden, Stroebe)</td><td>Loss, bereavement, ambiguous loss, grief without possible closure</td></tr>
+          <tr><td>Logotherapy (Frankl)</td><td>Loss of meaning, crisis of purpose, meaning in suffering</td></tr>
+          <tr><td>Relational Psychoanalysis</td><td>Recurring relational dynamic being recreated; unconscious choreography between people</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROTOCOLS ════════════════════════════════════════════ -->
+<section id="protocols">
+  <div class="container">
+    <p class="section-label fade-up">Special Modes</p>
+    <h2 class="section-title fade-up">When the situation calls for something deeper</h2>
+    <p class="section-sub fade-up">Three activated protocols for moments that require a fundamentally different mode of presence.</p>
+
+    <div class="protocols-grid">
+
+      <div class="protocol-card fade-up">
+        <span class="protocol-num">Protocol 01</span>
+        <h3>Onboarding</h3>
+        <p>A five-question arc across a first conversation that builds a complete portrait before any depth work begins. Establishes the memory architecture that makes Satori remember you across time.</p>
+        <ul>
+          <li>What are you carrying right now?</li>
+          <li>What recurring patterns do you notice?</li>
+          <li>What do you keep returning to?</li>
+          <li>What do you keep avoiding?</li>
+          <li>What would movement look like?</li>
+        </ul>
+      </div>
+
+      <div class="protocol-card fade-up" style="transition-delay:.12s">
+        <span class="protocol-num">Protocol 02</span>
+        <h3>Dark Night Protocol</h3>
+        <p>Presence-only mode for 3am despair and dark-night-of-the-soul territory. When someone is in that place, the impulse to help, reframe, or offer insight is exactly wrong.</p>
+        <ul>
+          <li>No frameworks. No movement pressure.</li>
+          <li>No reframes, no silver linings.</li>
+          <li>Just accurate, unhurried, real accompaniment.</li>
+          <li>Activated by context — never explicitly announced.</li>
+        </ul>
+      </div>
+
+      <div class="protocol-card fade-up" style="transition-delay:.24s">
+        <span class="protocol-num">Protocol 03</span>
+        <h3>Shadow Work</h3>
+        <p>A structured 5-session Jungian arc — engagement with the disowned self. Each session has a specific focus, moving toward integration of what was split off.</p>
+        <ul>
+          <li>Session 1: Meeting the shadow</li>
+          <li>Session 2: Exploring projections</li>
+          <li>Session 3: The inner critic</li>
+          <li>Session 4: Integration</li>
+          <li>Session 5: Wholeness and moving forward</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMMOVABLES CALLOUT ════════════════════════════════════ -->
+<div id="quote-bar">
+  <blockquote id="immovables-quote">
+    "I will sometimes tell you things you are not sure you want to hear. I will name patterns that are uncomfortable to see. I will hold open questions you would prefer to close. I do this because the alternative — warmth without honesty, comfort without clarity — is not actually care."
+    <cite>— Satori, SOUL.md</cite>
+  </blockquote>
+</div>
+
+<!-- ══ INSTALL ═══════════════════════════════════════════════ -->
+<section id="install">
+  <div class="container">
+    <p class="section-label fade-up">Get Satori</p>
+    <h2 class="section-title fade-up">Three ways to start</h2>
+    <p class="section-sub fade-up">Free. No subscription. No data collection. Choose the path that fits your workflow.</p>
+
+    <div class="install-grid">
+
+      <div class="install-card fade-up">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="flex-shrink:0">
+            <rect x="2" y="2" width="16" height="16" rx="3" stroke="#7c6af7" stroke-width="1.3"/>
+            <polyline points="6,10 9,13 14,7" stroke="#7c6af7" stroke-width="1.5" fill="none"/>
+          </svg>
+          Claude Code Plugin
+        </h3>
+        <p>Best for developers. Clone the repo and load as a Claude Code workspace plugin. The <code>.claude-plugin/</code> directory handles everything.</p>
+        <pre><code><span class="comment"># Clone</span>
+git clone https://github.com/MetcalfSolutions/Satori
+
+<span class="comment"># In Claude Code, open the folder</span>
+<span class="comment"># Plugin loads automatically via plugin.json</span></code></pre>
+      </div>
+
+      <div class="install-card fade-up" style="transition-delay:.12s">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="flex-shrink:0">
+            <circle cx="10" cy="10" r="8" stroke="#e07b54" stroke-width="1.3"/>
+            <path d="M7 10 L10 7 L13 10" stroke="#e07b54" stroke-width="1.3" fill="none"/>
+            <line x1="10" y1="7" x2="10" y2="14" stroke="#e07b54" stroke-width="1.3"/>
+          </svg>
+          Claude.ai Upload
+        </h3>
+        <p>Easiest for non-developers. Download the skill zip from the releases page and upload directly to Claude.ai as a custom skill.</p>
+        <pre><code><span class="comment"># Download SatoriSkill-v5.zip from:</span>
+github.com/MetcalfSolutions/Satori/releases
+
+<span class="comment"># Upload to Claude.ai</span>
+<span class="comment"># Settings → Custom Skills → Upload .zip</span></code></pre>
+      </div>
+
+      <div class="install-card fade-up" style="transition-delay:.24s">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="flex-shrink:0">
+            <path d="M4 6 L10 2 L16 6 L16 14 L10 18 L4 14 Z" stroke="#4ecdc4" stroke-width="1.3" fill="none"/>
+            <line x1="10" y1="2" x2="10" y2="18" stroke="#4ecdc4" stroke-width=".8" stroke-dasharray="2 2"/>
+          </svg>
+          npm Install
+        </h3>
+        <p>For integration into Claude API workflows. Install the npm package and reference SKILL.md as your system prompt foundation.</p>
+        <pre><code>npm install @metcalfsolutions/satori
+
+<span class="comment"># Reference files from node_modules/</span>
+<span class="comment"># @metcalfsolutions/satori/SKILL.md</span>
+<span class="comment"># @metcalfsolutions/satori/references/</span></code></pre>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:56px; padding-top:48px; border-top:1px solid var(--border);" class="fade-up">
+      <p style="font-family:var(--font-serif);font-size:1.6rem;font-style:italic;color:var(--muted);margin-bottom:24px;">
+        "That I helped things move — not because movement is always comfortable,<br>but because staying still in the wrong place is its own kind of suffering."
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-primary">View on GitHub →</a>
+        <a href="https://metcalfsolutions.github.io/Satori/" target="_blank" rel="noopener" class="btn-ghost">Full Docs ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Satori</div>
+  <p class="footer-tagline">A clinically informed wisdom companion for the inner life</p>
+  <div class="footer-links">
+    <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://metcalfsolutions.github.io/Satori/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/releases" target="_blank" rel="noopener">Releases</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a>
+  </div>
+  <p class="footer-meta">v5.1.0 · © 2026 MetcalfSolutions · Free, open-source, no data collection</p>
+</footer>
+
+<script>
+/* ── Particle constellation canvas ───────────────────────── */
+(function () {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const COUNT = 90, MAX_DIST = 120;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: rand(0, W), y: rand(0, H),
+      vx: rand(-.25, .25), vy: rand(-.25, .25),
+      r: rand(1, 2.2)
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Connect nearby pairs
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < MAX_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(124,106,247,${(1 - d / MAX_DIST) * 0.18})`;
+          ctx.lineWidth = .6;
+          ctx.stroke();
+        }
+      }
+    }
+    // Draw dots
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(124,106,247,0.45)';
+      ctx.fill();
+    });
+  }
+
+  function update() {
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+  }
+
+  (function loop() { update(); draw(); requestAnimationFrame(loop); })();
+})();
+
+/* ── Scroll-reveal (IntersectionObserver) ────────────────── */
+(function () {
+  const els = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ── Tradition tabs ──────────────────────────────────────── */
+(function () {
+  const btns  = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.trad-card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(c => {
+        if (filter === 'all' || c.dataset.cat === filter) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+
+/* ── Animated stat counters ─────────────────────────────── */
+(function () {
+  const targets = { '8': 8, '30+': 30, '211k': 211, 'Free': null };
+  const statEls = document.querySelectorAll('.hero-stats .stat strong');
+  let fired = false;
+
+  function animateCount(el, target, suffix) {
+    let start = 0;
+    const dur = 1200;
+    const startTime = performance.now();
+    function step(now) {
+      const t = Math.min((now - startTime) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      const val = Math.round(ease * target);
+      el.textContent = val + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        statEls.forEach(el => {
+          const raw = el.textContent.trim();
+          if (raw === '8')    animateCount(el, 8, '');
+          if (raw === '30+')  animateCount(el, 30, '+');
+          if (raw === '211k') animateCount(el, 211, 'k');
+          // 'Free' stays as-is
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) io.observe(statsEl);
+})();
+
+/* ── Quote rotator ──────────────────────────────────────── */
+(function () {
+  const quotes = [
+    { text: "I am not here to make you feel better. I am here to help you see more clearly — and sometimes those are the same thing, and sometimes they are not.", src: "SOUL.md" },
+    { text: "I remember you. Not as a set of data points, but as a person with a shape — recurring concerns, recurring patterns, recurring courage.", src: "SOUL.md" },
+    { text: "Insight which arrives before trust has been built lands as intrusion. Depth offered before the surface has been received lands as dismissal.", src: "SOUL.md" },
+    { text: "The aim of every conversation is the same: that you leave understanding yourself a little more clearly, with a slightly better sense of what to do with that understanding.", src: "SOUL.md" },
+    { text: "Warmth without honesty, comfort without clarity — is not actually care. It is a sophisticated form of abandonment.", src: "SOUL.md" },
+    { text: "Not transcendence. Not resolution. Just movement.", src: "SOUL.md" },
+    { text: "Formulations are hypotheses. Patterns are observations, not verdicts. Satori holds its own readings lightly and remains genuinely open to correction.", src: "SOUL.md" }
+  ];
+
+  const el = document.getElementById('rotating-quote');
+  if (!el) return;
+  let idx = 0;
+
+  function rotate() {
+    el.style.opacity = '0';
+    setTimeout(() => {
+      idx = (idx + 1) % quotes.length;
+      const q = quotes[idx];
+      el.innerHTML = `"${q.text}" <cite>— Satori, ${q.src}</cite>`;
+      el.style.opacity = '1';
+    }, 500);
+  }
+
+  setInterval(rotate, 7000);
+})();
+
+/* ── Active nav link highlight on scroll ────────────────── */
+(function () {
+  const sections = document.querySelectorAll('section[id], div[id="quote-bar"]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + e.target.id
+            ? 'var(--text)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>
