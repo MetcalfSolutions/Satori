@@ -10,7 +10,7 @@
   <a href="#"><img src="https://img.shields.io/badge/Reference%20Files-211K%2B%20chars-teal.svg?style=for-the-badge" alt="211K+ characters" /></a>
 </p>
 
-<p align="center"><a href="https://github.com/MetcalfSolutions/Satori">github.com/MetcalfSolutions/Satori</a></p>
+<p align="center"><a href="[https://github.com/MetcalfSolutions/Satori](https://metcalfsolutions.github.io/Satori/)">Web View - Less Technical Overview</a></p>
 
 > *"This understands me, sees patterns I miss, connects ideas clearly, and helps me take meaningful next steps."*
 
