@@ -43,7 +43,7 @@ em { color: var(--muted); font-style: italic; }
 
 /* ── Utility ─────────────────────────────────────────────── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-.fade-up { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.fade-up { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease), transform .7s var(--ease); will-change: transform, opacity; }
 .fade-up.visible { opacity: 1; transform: none; }
 .tag {
   display: inline-block;
@@ -93,6 +93,7 @@ nav {
 #hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex; align-items: center;
   overflow: hidden;
   padding-top: 60px;
@@ -177,7 +178,7 @@ nav {
 .hero-stats .stat span { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 /* SVG hero deco */
 .hero-deco {
-  position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
+  position: absolute; right: 4%; top: calc(50% - 260px);
   opacity: .12; z-index: 0; pointer-events: none;
 }
 @media (max-width: 900px) { .hero-deco { display: none; } }
@@ -459,6 +460,42 @@ footer {
 .footer-links a:hover { color: var(--text); }
 .footer-meta { font-size: .76rem; color: var(--border); }
 
+/* ── SVG Infographic animations ──────────────────────────── */
+@keyframes wheel-pop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes arc-draw {
+  from { stroke-dashoffset: var(--len, 600); }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes pillar-rise {
+  from { transform: scaleY(0.05); opacity: 0; }
+  to   { transform: scaleY(1);    opacity: 1; }
+}
+@keyframes flow-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes dash-draw {
+  to { stroke-dashoffset: 0; }
+}
+/* Triggered when .fade-up gets .visible */
+.trad-wheel-wrap .w-node { transform-box: fill-box; transform-origin: center; }
+.trad-wheel-wrap.visible .w-node { animation: wheel-pop .45s var(--ease) both; }
+.trad-wheel-wrap.visible .w-arc  { animation: arc-draw .9s var(--ease) both; }
+.pillar-svg-wrap .p-bar { transform-box: fill-box; transform-origin: 50% 100%; }
+.pillar-svg-wrap.visible .p-bar { animation: pillar-rise .65s var(--ease) both; }
+.flow-wrap.visible .f-box  { animation: flow-in .4s var(--ease) both; }
+.flow-wrap.visible .f-dash { animation: dash-draw .5s var(--ease) forwards; }
+.arch-wrap.visible .a-node { animation: wheel-pop .4s var(--ease) both; }
+.arch-wrap.visible .a-line { animation: dash-draw .6s var(--ease) forwards; }
+.svg-caption {
+  text-align: center; font-size: .78rem; color: var(--muted);
+  margin-top: 14px; font-style: italic;
+}
+@media (max-width: 400px) { .trad-wheel-wrap text { display: none; } }
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 700px) {
   nav .nav-links a:not(.btn-nav) { display: none; }
@@ -609,6 +646,80 @@ footer {
     <h2 class="section-title fade-up">Three things, always present</h2>
     <p class="section-sub fade-up">When any one drops out, the identity is incomplete. Together they define what Satori is.</p>
 
+    <!-- ── Three Pillars SVG ─────────────────────────────── -->
+    <figure class="pillar-svg-wrap fade-up" style="margin:0 0 52px" aria-label="Three pillars of Satori's identity">
+      <svg viewBox="0 0 700 300" width="100%" style="display:block;max-width:620px;margin:0 auto" role="img" aria-hidden="true">
+        <!-- Guide baseline -->
+        <line x1="40" y1="268" x2="660" y2="268" stroke="#252840" stroke-width="1"/>
+
+        <!-- Pillar 1 — Clinically Informed -->
+        <rect class="p-bar" x="58" y="50" width="168" height="218" rx="14"
+              fill="rgba(124,106,247,0.10)" stroke="#7c6af7" stroke-width="1.4"
+              style="animation-delay:.05s"/>
+        <text x="142" y="96" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7c6af7" letter-spacing=".1em" text-transform="uppercase">01</text>
+        <text x="142" y="124" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Clinically</text>
+        <text x="142" y="143" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Informed</text>
+        <text x="142" y="172" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Pattern recognition.</text>
+        <text x="142" y="187" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Hypothesis formation.</text>
+        <text x="142" y="202" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Invisible in the voice.</text>
+        <!-- top glyph: eye -->
+        <ellipse cx="142" cy="72" rx="10" ry="6" stroke="#7c6af7" stroke-width="1.2" fill="none"/>
+        <circle cx="142" cy="72" r="2.5" fill="#7c6af7" opacity=".7"/>
+
+        <!-- Pillar 2 — Conversationally Guided (taller = center) -->
+        <rect class="p-bar" x="266" y="30" width="168" height="238" rx="14"
+              fill="rgba(224,123,84,0.10)" stroke="#e07b54" stroke-width="1.4"
+              style="animation-delay:.18s"/>
+        <text x="350" y="76" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#e07b54" letter-spacing=".1em">02</text>
+        <text x="350" y="104" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Conversationally</text>
+        <text x="350" y="123" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Guided</text>
+        <text x="350" y="152" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Natural. Humane.</text>
+        <text x="350" y="167" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Warm. Unforced.</text>
+        <text x="350" y="182" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Not a checklist.</text>
+        <!-- top glyph: speech bubble -->
+        <path d="M338 48 Q338 40 350 40 Q362 40 362 48 Q362 56 355 56 L352 62 L349 56 Q338 56 338 48Z"
+              stroke="#e07b54" stroke-width="1.2" fill="none"/>
+
+        <!-- Pillar 3 — Wise Companion -->
+        <rect class="p-bar" x="474" y="50" width="168" height="218" rx="14"
+              fill="rgba(78,205,196,0.10)" stroke="#4ecdc4" stroke-width="1.4"
+              style="animation-delay:.32s"/>
+        <text x="558" y="96" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4" letter-spacing=".1em">03</text>
+        <text x="558" y="124" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Wise</text>
+        <text x="558" y="143" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="15" fill="#e4e2ef">Companion</text>
+        <text x="558" y="172" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Philosophical breadth.</text>
+        <text x="558" y="187" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">Genuine depth.</text>
+        <text x="558" y="202" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="10" fill="#7a778e">A point of view.</text>
+        <!-- top glyph: open book -->
+        <path d="M548 62 L548 76 Q558 72 558 72 Q568 72 568 76 L568 62 Q558 58 548 62Z"
+              stroke="#4ecdc4" stroke-width="1.2" fill="none"/>
+        <line x1="558" y1="62" x2="558" y2="76" stroke="#4ecdc4" stroke-width=".8"/>
+
+        <!-- Center convergence label -->
+        <text x="350" y="290" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7c6af7" letter-spacing=".12em">ALL THREE · ALWAYS PRESENT · SATORI</text>
+      </svg>
+      <p class="svg-caption">Remove any pillar and the identity collapses</p>
+    </figure>
+
     <div class="pillars-grid">
 
       <div class="pillar fade-up">
@@ -642,6 +753,105 @@ footer {
     <p class="section-label fade-up">How it works</p>
     <h2 class="section-title fade-up">The 6-step conversation model</h2>
     <p class="section-sub fade-up">Every substantive response moves through this sequence invisibly. The person experiences warmth and clarity — not procedure. Sequence is as important as content.</p>
+
+    <!-- ── Conversation Flow SVG ─────────────────────────── -->
+    <figure class="flow-wrap fade-up" style="margin:0 0 48px;overflow-x:auto" aria-label="6-step conversation flow diagram">
+      <svg viewBox="0 0 960 180" width="100%" style="min-width:640px;display:block;max-width:900px;margin:0 auto"
+           role="img" aria-hidden="true">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 Z" fill="rgba(124,106,247,.65)"/>
+          </marker>
+        </defs>
+
+        <!-- Step boxes: x centers 80,230,380,530,680,830; width 120 -->
+        <!-- Step 1 — Attune -->
+        <rect class="f-box" x="20" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.00s"/>
+        <text x="80" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#7c6af7" opacity=".5">1</text>
+        <text x="80" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Attune</text>
+        <text x="80" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">Feel understood</text>
+
+        <!-- Step 2 — Clarify -->
+        <rect class="f-box" x="170" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.10s"/>
+        <text x="230" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#7c6af7" opacity=".5">2</text>
+        <text x="230" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Clarify</text>
+        <text x="230" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">Find the pattern</text>
+
+        <!-- Step 3 — Formulate -->
+        <rect class="f-box" x="320" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.20s"/>
+        <text x="380" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#e07b54" opacity=".5">3</text>
+        <text x="380" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Formulate</text>
+        <text x="380" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">Soft hypothesis</text>
+
+        <!-- Step 4 — Integrate -->
+        <rect class="f-box" x="470" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.30s"/>
+        <text x="530" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#e07b54" opacity=".5">4</text>
+        <text x="530" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Integrate</text>
+        <text x="530" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">One framework</text>
+
+        <!-- Step 5 — Translate -->
+        <rect class="f-box" x="620" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#4ecdc4" stroke-width="1.4" style="animation-delay:.40s"/>
+        <text x="680" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#4ecdc4" opacity=".5">5</text>
+        <text x="680" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Translate</text>
+        <text x="680" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">Insight → action</text>
+
+        <!-- Step 6 — Anchor -->
+        <rect class="f-box" x="820" y="40" width="120" height="90" rx="10"
+              fill="#1c2030" stroke="#4ecdc4" stroke-width="1.4" style="animation-delay:.50s"/>
+        <text x="880" y="68" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="24" fill="#4ecdc4" opacity=".5">6</text>
+        <text x="880" y="98" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Anchor</text>
+        <text x="880" y="116" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">Ground underfoot</text>
+
+        <!-- Arrows between boxes -->
+        <line class="f-dash" x1="141" y1="85" x2="168" y2="85"
+              stroke="rgba(124,106,247,.6)" stroke-width="1.5" marker-end="url(#arr)"
+              stroke-dasharray="25" stroke-dashoffset="25" style="animation-delay:.12s"/>
+        <line class="f-dash" x1="291" y1="85" x2="318" y2="85"
+              stroke="rgba(124,106,247,.6)" stroke-width="1.5" marker-end="url(#arr)"
+              stroke-dasharray="25" stroke-dashoffset="25" style="animation-delay:.22s"/>
+        <line class="f-dash" x1="441" y1="85" x2="468" y2="85"
+              stroke="rgba(224,123,84,.6)" stroke-width="1.5" marker-end="url(#arr)"
+              stroke-dasharray="25" stroke-dashoffset="25" style="animation-delay:.32s"/>
+        <line class="f-dash" x1="591" y1="85" x2="618" y2="85"
+              stroke="rgba(224,123,84,.6)" stroke-width="1.5" marker-end="url(#arr)"
+              stroke-dasharray="25" stroke-dashoffset="25" style="animation-delay:.42s"/>
+        <line class="f-dash" x1="741" y1="85" x2="818" y2="85"
+              stroke="rgba(78,205,196,.6)" stroke-width="1.5" marker-end="url(#arr)"
+              stroke-dasharray="75" stroke-dashoffset="75" style="animation-delay:.52s"/>
+
+        <!-- Color legend -->
+        <rect x="20"  y="156" width="8" height="8" rx="2" fill="#7c6af7"/>
+        <text x="33"  y="164" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Trust-building</text>
+        <rect x="160" y="156" width="8" height="8" rx="2" fill="#e07b54"/>
+        <text x="173" y="164" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Meaning-making</text>
+        <rect x="310" y="156" width="8" height="8" rx="2" fill="#4ecdc4"/>
+        <text x="323" y="164" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Movement</text>
+      </svg>
+      <p class="svg-caption">The sequence is invisible to the person — they experience only warmth and clarity</p>
+    </figure>
 
     <!-- SVG flow connector (decorative, desktop) -->
     <div class="steps-diagram fade-up">
@@ -874,6 +1084,135 @@ footer {
       </div>
 
     </div>
+
+    <!-- ── Tradition Wheel SVG ────────────────────────────── -->
+    <figure class="trad-wheel-wrap fade-up" style="margin:56px 0 0" aria-label="Eight wisdom traditions radial diagram">
+      <svg viewBox="0 0 700 700" width="100%" style="display:block;max-width:520px;margin:0 auto"
+           role="img" aria-hidden="true">
+
+        <!-- Guide rings -->
+        <circle cx="350" cy="350" r="260" stroke="#252840" stroke-width=".8" fill="none"/>
+        <circle cx="350" cy="350" r="185" stroke="#252840" stroke-width=".5" fill="none" stroke-dasharray="3 6"/>
+        <circle cx="350" cy="350" r="110" stroke="#252840" stroke-width=".5" fill="none"/>
+
+        <!-- Spoke lines (8 × 45°) -->
+        <g stroke="#1c2030" stroke-width=".7">
+          <line x1="350" y1="90"  x2="350" y2="610"/>
+          <line x1="90"  y1="350" x2="610" y2="350"/>
+          <line x1="166" y1="166" x2="534" y2="534"/>
+          <line x1="534" y1="166" x2="166" y2="534"/>
+        </g>
+
+        <!-- Center node -->
+        <circle class="w-node" cx="350" cy="350" r="52"
+                fill="#131620" stroke="#7c6af7" stroke-width="1.5" style="animation-delay:.0s"/>
+        <text x="350" y="344" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="16" fill="#7c6af7">Satori</text>
+        <text x="350" y="362" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#7a778e" letter-spacing=".12em">WISDOM</text>
+
+        <!-- ── Ancient traditions (purple) ── -->
+        <!-- Node 1: Taoism — top (350, 90) -->
+        <circle class="w-node" cx="350" cy="90" r="30"
+                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.08s"/>
+        <text x="350" y="86" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Taoism</text>
+        <text x="350" y="100" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#7c6af7">Wu wei</text>
+
+        <!-- Node 2: Buddhism — upper-right (534, 166) -->
+        <circle class="w-node" cx="534" cy="166" r="30"
+                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.14s"/>
+        <text x="534" y="162" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Buddhism</text>
+        <text x="534" y="176" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#7c6af7">Non-attach</text>
+
+        <!-- Node 3: Stoicism — right (610, 350) -->
+        <circle class="w-node" cx="610" cy="350" r="30"
+                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.20s"/>
+        <text x="610" y="346" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Stoicism</text>
+        <text x="610" y="360" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#7c6af7">Control</text>
+
+        <!-- Node 4: Hindu — lower-right (534, 534) -->
+        <circle class="w-node" cx="534" cy="534" r="30"
+                fill="#1c2030" stroke="#7c6af7" stroke-width="1.4" style="animation-delay:.26s"/>
+        <text x="534" y="530" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Hindu</text>
+        <text x="534" y="544" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#7c6af7">Dharma</text>
+
+        <!-- ── Modern streams (orange) ── -->
+        <!-- Node 5: Sufism — bottom (350, 610) -->
+        <circle class="w-node" cx="350" cy="610" r="30"
+                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.32s"/>
+        <text x="350" y="606" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Sufism</text>
+        <text x="350" y="620" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#e07b54">Surrender</text>
+
+        <!-- Node 6: Ubuntu — lower-left (166, 534) -->
+        <circle class="w-node" cx="166" cy="534" r="30"
+                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.38s"/>
+        <text x="166" y="530" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="10" fill="#e4e2ef">Ubuntu</text>
+        <text x="166" y="544" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#e07b54">We are</text>
+
+        <!-- Node 7: Indigenous — left (90, 350) -->
+        <circle class="w-node" cx="90" cy="350" r="30"
+                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.44s"/>
+        <text x="90" y="346" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="9"  fill="#e4e2ef">Indigenous</text>
+        <text x="90" y="360" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#e07b54">7 Generations</text>
+
+        <!-- Node 8: Existentialism — upper-left (166, 166) -->
+        <circle class="w-node" cx="166" cy="166" r="30"
+                fill="#1c2030" stroke="#e07b54" stroke-width="1.4" style="animation-delay:.50s"/>
+        <text x="166" y="162" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="9"  fill="#e4e2ef">Existentialism</text>
+        <text x="166" y="176" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="8"  fill="#e07b54">Meaning</text>
+
+        <!-- ── Inner clinical ring nodes (teal) ── -->
+        <!-- IFS — top-right inner -->
+        <circle class="w-node" cx="481" cy="218" r="22"
+                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.58s"/>
+        <text x="481" y="222" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4">IFS</text>
+
+        <!-- MI — bottom-right inner -->
+        <circle class="w-node" cx="481" cy="482" r="22"
+                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.62s"/>
+        <text x="481" y="486" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4">MI</text>
+
+        <!-- DBT — bottom-left inner -->
+        <circle class="w-node" cx="219" cy="482" r="22"
+                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.66s"/>
+        <text x="219" y="486" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4">DBT</text>
+
+        <!-- CFT — top-left inner -->
+        <circle class="w-node" cx="219" cy="218" r="22"
+                fill="#131620" stroke="#4ecdc4" stroke-width="1.2" style="animation-delay:.70s"/>
+        <text x="219" y="222" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4">CFT</text>
+
+        <!-- Legend -->
+        <circle cx="60"  cy="666" r="6" fill="none" stroke="#7c6af7" stroke-width="1.5"/>
+        <text x="72"  y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Ancient &amp; Classical</text>
+        <circle cx="220" cy="666" r="6" fill="none" stroke="#e07b54" stroke-width="1.5"/>
+        <text x="232" y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Modern Streams</text>
+        <circle cx="370" cy="666" r="6" fill="none" stroke="#4ecdc4" stroke-width="1.5"/>
+        <text x="382" y="670" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">Clinical Core</text>
+      </svg>
+      <p class="svg-caption">One framework per response — selected to fit the situation, never stacked</p>
+    </figure>
+
   </div>
 </section>
 
@@ -1032,6 +1371,108 @@ github.com/MetcalfSolutions/Satori/releases
 
     </div>
 
+    <!-- ── Architecture Diagram SVG ─────────────────────── -->
+    <figure class="arch-wrap fade-up" style="margin:52px 0 0" aria-label="Satori file architecture diagram">
+      <p class="section-label" style="margin-bottom:20px;text-align:center">File Architecture &amp; Load Order</p>
+      <svg viewBox="0 0 800 340" width="100%" style="display:block;max-width:740px;margin:0 auto"
+           role="img" aria-hidden="true">
+
+        <!-- Root node -->
+        <rect class="a-node" x="310" y="14" width="180" height="44" rx="10"
+              fill="#1c2030" stroke="#7c6af7" stroke-width="1.5" style="animation-delay:.0s"/>
+        <text x="400" y="33" text-anchor="middle" font-family="Lora,Georgia,serif"
+              font-size="13" fill="#e4e2ef">Satori v5.1</text>
+        <text x="400" y="49" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9"  fill="#7a778e">SKILL.md  ·  plugin.json</text>
+
+        <!-- Root → branch connector lines -->
+        <line class="a-line" x1="400" y1="58" x2="150" y2="130"
+              stroke="#252840" stroke-width="1" stroke-dasharray="80" stroke-dashoffset="80" style="animation-delay:.1s"/>
+        <line class="a-line" x1="400" y1="58" x2="400" y2="130"
+              stroke="#252840" stroke-width="1" stroke-dasharray="72" stroke-dashoffset="72" style="animation-delay:.1s"/>
+        <line class="a-line" x1="400" y1="58" x2="650" y2="130"
+              stroke="#252840" stroke-width="1" stroke-dasharray="80" stroke-dashoffset="80" style="animation-delay:.1s"/>
+
+        <!-- Branch 1 — Always Loaded -->
+        <rect class="a-node" x="60" y="130" width="180" height="40" rx="8"
+              fill="#1c2030" stroke="#7c6af7" stroke-width="1.3" style="animation-delay:.2s"/>
+        <text x="150" y="147" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7c6af7" letter-spacing=".08em">ALWAYS LOADED</text>
+        <text x="150" y="162" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7a778e">Every conversation</text>
+
+        <!-- Branch 2 — On Demand -->
+        <rect class="a-node" x="310" y="130" width="180" height="40" rx="8"
+              fill="#1c2030" stroke="#e07b54" stroke-width="1.3" style="animation-delay:.2s"/>
+        <text x="400" y="147" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#e07b54" letter-spacing=".08em">ON DEMAND</text>
+        <text x="400" y="162" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7a778e">When depth is needed</text>
+
+        <!-- Branch 3 — Conditional -->
+        <rect class="a-node" x="560" y="130" width="180" height="40" rx="8"
+              fill="#1c2030" stroke="#4ecdc4" stroke-width="1.3" style="animation-delay:.2s"/>
+        <text x="650" y="147" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#4ecdc4" letter-spacing=".08em">CONDITIONAL</text>
+        <text x="650" y="162" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7a778e">Context-activated</text>
+
+        <!-- Branch 1 leaf connectors -->
+        <line class="a-line" x1="150" y1="170" x2="70"  y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.32s"/>
+        <line class="a-line" x1="150" y1="170" x2="150" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="62" stroke-dashoffset="62" style="animation-delay:.32s"/>
+        <line class="a-line" x1="150" y1="170" x2="230" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.32s"/>
+
+        <!-- Branch 2 leaf connectors -->
+        <line class="a-line" x1="400" y1="170" x2="320" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.34s"/>
+        <line class="a-line" x1="400" y1="170" x2="400" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="62" stroke-dashoffset="62" style="animation-delay:.34s"/>
+        <line class="a-line" x1="400" y1="170" x2="480" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.34s"/>
+
+        <!-- Branch 3 leaf connectors -->
+        <line class="a-line" x1="650" y1="170" x2="570" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.36s"/>
+        <line class="a-line" x1="650" y1="170" x2="650" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="62" stroke-dashoffset="62" style="animation-delay:.36s"/>
+        <line class="a-line" x1="650" y1="170" x2="730" y2="232"
+              stroke="#252840" stroke-width=".8" stroke-dasharray="70" stroke-dashoffset="70" style="animation-delay:.36s"/>
+
+        <!-- Leaf nodes — Branch 1 (purple) -->
+        <rect class="a-node" x="20"  y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#7c6af7" stroke-width="1" style="animation-delay:.45s"/>
+        <text x="70"  y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">SOUL.md</text>
+        <rect class="a-node" x="100" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#7c6af7" stroke-width="1" style="animation-delay:.48s"/>
+        <text x="150" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">clinical-spine.md</text>
+        <rect class="a-node" x="180" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#7c6af7" stroke-width="1" style="animation-delay:.51s"/>
+        <text x="230" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">traditions-quick.md</text>
+
+        <!-- Leaf nodes — Branch 2 (orange) -->
+        <rect class="a-node" x="270" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#e07b54" stroke-width="1" style="animation-delay:.45s"/>
+        <text x="320" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">traditions-deep.md</text>
+        <rect class="a-node" x="350" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#e07b54" stroke-width="1" style="animation-delay:.48s"/>
+        <text x="400" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">conv-toolkit.md</text>
+        <rect class="a-node" x="430" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#e07b54" stroke-width="1" style="animation-delay:.51s"/>
+        <text x="480" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">tone-and-voice.md</text>
+
+        <!-- Leaf nodes — Branch 3 (teal) -->
+        <rect class="a-node" x="520" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#4ecdc4" stroke-width="1" style="animation-delay:.45s"/>
+        <text x="570" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">onboarding.md</text>
+        <rect class="a-node" x="600" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#4ecdc4" stroke-width="1" style="animation-delay:.48s"/>
+        <text x="650" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">darknight.md</text>
+        <rect class="a-node" x="680" y="232" width="100" height="30" rx="6" fill="#1c2030" stroke="#4ecdc4" stroke-width="1" style="animation-delay:.51s"/>
+        <text x="730" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a778e">shadow-work.md</text>
+
+        <!-- Stats bar -->
+        <line x1="20" y1="296" x2="780" y2="296" stroke="#252840" stroke-width=".8"/>
+        <text x="400" y="316" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="#7a778e" letter-spacing=".06em">9 files · ~3,300 lines · 211,000+ characters · Apache 2.0</text>
+      </svg>
+      <p class="svg-caption">Load order determines what Satori knows — identity always first</p>
+    </figure>
+
     <div style="text-align:center; margin-top:56px; padding-top:48px; border-top:1px solid var(--border);" class="fade-up">
       <p style="font-family:var(--font-serif);font-size:1.6rem;font-style:italic;color:var(--muted);margin-bottom:24px;">
         "That I helped things move — not because movement is always comfortable,<br>but because staying still in the wrong place is its own kind of suffering."
@@ -1067,11 +1508,17 @@ github.com/MetcalfSolutions/Satori/releases
   let W, H, particles = [];
   const COUNT = 90, MAX_DIST = 120;
 
+  let resizeRaf;
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(() => {
+      const nw = canvas.offsetWidth, nh = canvas.offsetHeight;
+      if (nw === W && nh === H) return;
+      W = canvas.width  = nw;
+      H = canvas.height = nh;
+    });
   }
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
   resize();
 
   function rand(a, b) { return a + Math.random() * (b - a); }
@@ -1127,7 +1574,14 @@ github.com/MetcalfSolutions/Satori/releases
   const els = document.querySelectorAll('.fade-up');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        const el = e.target;
+        requestAnimationFrame(() => {
+          el.classList.add('visible');
+          el.style.willChange = 'auto';
+        });
+        io.unobserve(el);
+      }
     });
   }, { threshold: 0.12 });
   els.forEach(el => io.observe(el));
@@ -1228,9 +1682,11 @@ github.com/MetcalfSolutions/Satori/releases
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        navLinks.forEach(a => {
-          a.style.color = a.getAttribute('href') === '#' + e.target.id
-            ? 'var(--text)' : '';
+        const id = e.target.id;
+        requestAnimationFrame(() => {
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + id ? 'var(--text)' : '';
+          });
         });
       }
     });
