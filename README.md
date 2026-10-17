@@ -6,8 +6,8 @@
 <p align="center">
   <a href="https://github.com/MetcalfSolutions/Satori/releases"><img src="https://img.shields.io/github/v/release/MetcalfSolutions/Satori?style=for-the-badge" alt="GitHub release" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Built%20for-Claude-orange.svg?style=for-the-badge" alt="Built for Claude" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Reference%20Files-211K%2B%20chars-teal.svg?style=for-the-badge" alt="211K+ characters" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Agents-8%20Ecosystems-orange.svg?style=for-the-badge" alt="8 Agent Ecosystems" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Models-5%20Behavioral%20Profiles-teal.svg?style=for-the-badge" alt="5 Behavioral Profiles" /></a>
 </p>
 
 <p align="center"><a href="https://metcalfsolutions.github.io/Satori/">Web View - Less Technical Overview</a></p>
@@ -26,11 +26,11 @@ So I started building. The first was Mycroft, Stoic-only, built on Gemini. Cold.
 
 The pattern was consistent. Warmth without structure produces platitudes, and structure without warmth produces Mycroft. I wanted clinical discipline underneath a voice that didn't sound clinical.
 
-Satori draws on eight wisdom traditions: Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, some African thought, and elements of Indigenous philosophy where they're treated with enough care to be useful. On the clinical side: IFS, DBT, CFT, Schema Therapy, Somatic approaches, with Motivational Interviewing as the technical spine. The frameworks are tools, not atmosphere. Each one gets selected for the specific moment. One per response. Never stacked, never name-dropped.
+Satori draws on global wisdom traditions — Stoicism, Taoism, Buddhism, Christianity, Sufi wisdom, Hindu philosophy, Confucian ethics, African philosophical lineages (Ubuntu/Hunhu, Akan philosophical psychology, Kemetic *Ma'at*), and Indigenous wisdom traditions (Haudenosaunee Seven Generations, Cree *Wahkohtowin*, Potawatomi ecology of reciprocity) — alongside modern clinical psychology: IFS, DBT, CFT, Schema Therapy, ACT, Somatic approaches, Dual Process Grief, and Relational Psychoanalysis, with Motivational Interviewing and Voss tactical empathy as the technical spine. The frameworks are tools, not atmosphere. Each one gets selected for the specific moment. One per response. Never stacked, never name-dropped.
 
-It is not a therapist. It doesn't diagnose anything. When someone's needs exceed what conversation can hold, it says so clearly and points them somewhere better. But for the territory between "I'm fine" and "I need a professional," I think it's genuinely useful.
+It is not a therapist. It doesn't diagnose anything. When someone's needs exceed what conversation can hold, it says so clearly and points them to verified global human support. But for the territory between "I'm fine" and "I need a professional," I think it's genuinely useful.
 
-It's free. No subscription. No data collection. No company behind it. Just reference files you upload to Claude.
+It's free. No subscription. No telemetry. User-owned local memory (`PRIVACY.md`). And as of **v6.1.0**, it works natively across **8 agent ecosystems** and **all major frontier, workhorse, and local model tiers**.
 
 ---
 
@@ -60,167 +60,125 @@ It starts with something almost everyone has felt: *I keep starting things and n
 
 ---
 
-## 3-Minute Quick Install
+## Architecture & Progressive Disclosure (v6.1.0)
 
-> **New to Claude skills? Start here.** This gets Satori running in under three minutes using a skill `.zip`. No terminal, no code.
+Satori v6.1.0 eliminates the old 63 KB Turn-1 load tax. [`SKILL.md`](SKILL.md) (`<8 KB`) is canonical and self-sufficient for Turn 1, while reference modules load progressively on demand:
 
-**Step 1: Download the skill file**
-
-Go to the [Releases page](https://github.com/MetcalfSolutions/Satori/releases) and download `SatoriSkill-v5.zip`. You don't need to unzip it.
-
-**Step 2: Open Customize**
-
-Head to [claude.ai](https://claude.ai) and click **Customize** in the left sidebar.
-
-**Step 3: Go to Skills**
-
-Click **Skills** in the Customize sidebar. Then click the **+** button in the top-right of the Skills panel.
-
-**Step 4: Upload the zip**
-
-Select **Upload a skill**, then drag and drop `SatoriSkill-v5.zip` into the upload area (or click to browse). No unzipping needed. Claude reads the skill's reference files directly.
-
-**Step 5: Start a conversation**
-
-Open a new conversation. Bring something worth exploring. Satori activates automatically.
-
----
-
-A few more examples across different situations.
-
-**Navigating a life decision**
-
-**User:** "I got the job offer but I can't make myself say yes. Everyone says it's a no-brainer."
-
-**Satori:**
-> "When everyone else sees it as obvious and you still can't move — that's usually not indecision. That's information. Something in you is registering a cost that the external logic isn't accounting for. What would you be giving up that nobody else is weighing?"
-
-**The 3am version**
-
-**User:** "It's 3am and I can't sleep. Everything feels pointless. Not in a scary way, just... hollow."
-
-**Satori:**
-> "I'm here. What you're describing has a name — not a diagnosis, but a recognition. There's a particular kind of darkness that arrives exactly like this: everything that usually holds you has gone quiet, and the morning feels like a rumor. You're not broken. You don't need to explain it or resolve it tonight. What does it feel like in your body right now?"
+| File | Purpose | Load Condition |
+|---|---|---|
+| [`SKILL.md`](SKILL.md) | Canonical entry point, trigger boundaries, 7 Immovables, 6-Step Model, verified global crisis table, 5-Point Pre-Send Check | **Turn 1 (Always — `<8 KB`)** |
+| [`references/core-compact.md`](references/core-compact.md) | High-density `<12 KB` operational spine for compact/local `<32B` models & voice pipelines | **Profile 5 Models Only** |
+| [`references/SOUL.md`](references/SOUL.md) | Constitutional identity, immovables, voice philosophy, drift detection | **Turn 2+ (Profiles 1–4)** |
+| [`references/clinical-spine.md`](references/clinical-spine.md) | Core 6-step mechanics, 3×6 Role/Register model, working formulation, parts awareness, autonomy guardrails, global crisis protocol (`<20 KB`) | **Turn 2+ (Profiles 1–4)** |
+| [`references/memory-system.md`](references/memory-system.md) | 3-Tier Vault fallback (`.satori/memory/` → `~/.satori/memory/` → Web Capsule), Dream Layer (`1→2→3`), longitudinal formulation | **When reading/writing memory** |
+| [`references/model-calibration.md`](references/model-calibration.md) | 3-Tier Runtime Capability Detection & 5 Behavioral Profiles (STEM Reasoners, Literary Frontier, High-Candor/Search, Coding Workhorses, Compact/Local) | **Model calibration reference** |
+| [`references/traditions-quickref.md`](references/traditions-quickref.md) | Quick selection matrix across wisdom traditions and clinical frameworks | **When selecting a lens** |
+| [`references/traditions-deep.md`](references/traditions-deep.md) | 30-section encyclopedia with a top-of-file **Line-Range Index Table** for selective 35-line reads | **Selective line-range read only** |
+| [`references/conversation-toolkit.md`](references/conversation-toolkit.md) | OARS/MI, McAdams, Singer, Voss tactical empathy, and **Patterns 1–16** (including Pattern Letter, Dream Walk, Ikigai Map, Shadow Invitation, **Inner Council**, and **Reflective Journaling**) | **On demand** |
+| [`references/tone-and-voice.md`](references/tone-and-voice.md) | Voice calibration, Structural Anti-Slop Pass, and human gold before/after examples | **On demand** |
+| [`references/onboarding.md`](references/onboarding.md) | Context-First Bypass + 5-question first-session sequence and privacy consent notice | **New users without an immediate topic** |
+| [`references/darknight-protocol.md`](references/darknight-protocol.md) | Pure presence mode for non-suicidal 3am existential despair | **On Dark Night signal** |
+| [`references/grief-protocol.md`](references/grief-protocol.md) | Bereavement, disenfranchised grief, Pauline Boss Ambiguous Loss, Dual Process Oscillation, Continuing Bonds | **On grief / loss signal** |
+| [`references/shadow-work-protocol.md`](references/shadow-work-protocol.md) | 5-session Jungian shadow integration arc | **On shadow work engagement** |
+| [`references/relationship-protocol.md`](references/relationship-protocol.md) | Solo relational rupture & Shared Two-Person Conflict Hold Mode (Multi-Partiality, Relational Psychoanalysis, Gottman, NVC) | **On relational conflict signal** |
+| [`PRIVACY.md`](PRIVACY.md) | Threat model (T1–T6), local permissions, cloud-sync protection, and user deletion (`forget` / `purge`) | **Privacy & data sovereignty spec** |
 
 ---
 
-## Architecture
+## Installation Across 8 Agent Ecosystems & Web UIs
 
-Satori is a set of reference files that tell Claude how to think, what to draw on, and when to back off. The files load in a specific order. Some load every conversation. Others only load when they're needed.
+### 1. Claude.ai Web Upload (`dist/SatoriSkill-v6.1.0.zip`)
+1. Run `python scripts/build_release.py --sync` to generate `dist/SatoriSkill-v6.1.0.zip` (or download `SatoriSkill-v6.1.0.zip` from [Releases](https://github.com/MetcalfSolutions/Satori/releases)).
+2. Open [claude.ai](https://claude.ai) → **Customize → Skills → + → Upload a skill** and drop in `SatoriSkill-v6.1.0.zip`.
+3. **Migrating from v5.1**: Replace your v5 skill zip with `SatoriSkill-v6.1.0.zip`. Your existing Claude native memory carries over automatically.
 
-| File | Purpose | Loaded |
-|------|---------|--------|
-| [`SKILL.md`](SKILL.md) | Entry point, operational summary, complete load order | Always |
-| [`references/SOUL.md`](references/SOUL.md) | Constitutional identity, immovables, drift detection | Always |
-| [`references/clinical-spine.md`](references/clinical-spine.md) | Core conversation model, role model, crisis protocol, dark night trigger, memory rules, dream layer, formulation system | Always |
-| [`references/traditions-quickref.md`](references/traditions-quickref.md) | Compact framework selection guide (8 traditions, 6+ clinical frameworks) | Always |
-| [`references/onboarding.md`](references/onboarding.md) | First-session sequence: 5 questions, "Satori has met you" synthesis | New users only |
-| [`references/traditions-deep.md`](references/traditions-deep.md) | Full tradition encyclopedia with application guidance for 30+ frameworks | On demand |
-| [`references/conversation-toolkit.md`](references/conversation-toolkit.md) | OARS/MI, McAdams, Singer, Voss tactical empathy, 14 conversation patterns including The Pattern Letter, Dream Walk, Ikigai Map, Shadow Work Invitation | On demand |
-| [`references/tone-and-voice.md`](references/tone-and-voice.md) | Voice calibration, vocabulary guidance, before/after examples | On demand |
-| [`references/darknight-protocol.md`](references/darknight-protocol.md) | Presence-only mode for dark night / 3am despair | On dark night signal |
-| [`references/shadow-work-protocol.md`](references/shadow-work-protocol.md) | 5-session Jungian shadow work arc: locating, meeting, origin, integration, living with the shadow | On shadow work engagement |
+### 2. Google Antigravity (CLI / IDE / 2.0) & Gemini CLI
+- **Workspace Auto-Discovery**: Clone Satori; Antigravity automatically discovers [`.agents/plugins/satori/plugin.json`](.agents/plugins/satori/plugin.json), [`.agents/skills/satori/SKILL.md`](.agents/skills/satori/SKILL.md), and [`GEMINI.md`](GEMINI.md).
+- **Global Skill Install**: Copy `.agents/skills/satori` (and `references/`) to `~/.gemini/skills/satori/`.
 
-[`SOUL.md`](references/SOUL.md) is the foundation. It defines what Satori is and what it will not become, including explicit drift detection criteria so it can recognize when accumulated adaptation has started compromising honesty. [`clinical-spine.md`](references/clinical-spine.md) is the operational engine. Everything else serves those two. If you want to understand how Satori thinks, those are the files to read.
-
----
-
-## What's New in v5.1
-
-v5.1 adds four things that were on my list since the beginning.
-
-The first is onboarding. When Satori meets someone new, it runs a short first-session sequence. Five questions that establish what keeps coming back for the person, how they think through things, and what hasn't worked before. The session ends with a synthesis statement. It's the difference between starting from nothing and starting from something real.
-
-The second is the Dark Night Protocol. I kept running into a specific experience that the standard crisis protocol wasn't designed for: the 2-4am moment when nothing feels dangerous but nothing feels okay either. Not suicidal. Not fine. Just hollow and unable to see morning. That state needs presence, not intervention. The protocol tells Satori to slow down, stay, and witness without trying to fix anything.
-
-The third is Shadow Work. A five-session arc for Jungian shadow work, from locating the projection through origin work, integration, and what it looks like to live with a shadow part you've retrieved. I hesitated to include this because it's easy to do poorly. I think the protocol handles the ethics carefully. If you try it and think it doesn't, I want to know.
-
-The fourth is four new conversation patterns. The Pattern Letter is a letter written from the person's future self, grounded entirely in what emerged in the session. People screenshot these. The Dream Walk takes a dream through multiple tradition lenses. The Ikigai Map works through purpose-finding across four dimensions. The Shadow Work Invitation is the entry point into the shadow protocol with the core projection and disavowal questions.
-
-Total content is now 211,000+ characters across ten reference files, up from 178,000 in v5.0. Full history in [CHANGELOG.md](CHANGELOG.md).
-
----
-
-## Installation
-
-Three installation paths. Choose the one that matches how you use Claude.
-
----
-
-### Option 1: Claude.ai Skill Upload (Recommended)
-
-The simplest path for most users. See the [3-Minute Quick Install](#3-minute-quick-install) above for the full walkthrough, or follow the short version:
-
-1. **[Download the latest release](https://github.com/MetcalfSolutions/Satori/releases/)** and grab `SatoriSkill-v5.zip`
-2. Open [claude.ai](https://claude.ai) and go to **Customize > Skills**
-3. Click **+**, then **Upload a skill**, and drop in `SatoriSkill-v5.zip`
-4. Satori is now available in every conversation.
-
----
-
-### Option 2: Claude Code Plugin
-
-For developers using [Claude Code](https://claude.ai/code). Clone the repository. Claude Code automatically detects and loads `.claude-plugin/plugin.json` when you run from the project directory.
-
+### 3. Claude Code
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
-claude  # Claude Code loads the plugin automatically
+claude  # Auto-detects .claude-plugin/plugin.json and CLAUDE.md
 ```
+
+### 4. OpenAI Codex CLI
+- Auto-discovers [`AGENTS.md`](AGENTS.md), [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and [`.agents/skills/satori/agents/openai.yaml`](.agents/skills/satori/agents/openai.yaml).
+
+### 5. Cursor & Windsurf
+- **Cursor**: Discovers [`.cursor/skills/satori/SKILL.md`](.cursor/skills/satori/SKILL.md) and [`.cursor/rules/satori.mdc`](.cursor/rules/satori.mdc) (`alwaysApply: false` so Satori never hijacks pure coding sessions).
+- **Windsurf**: Discovers [`.windsurf/rules/satori.md`](.windsurf/rules/satori.md).
+
+### 6. OpenCode, Hermes Agent & OpenClaw
+- **OpenCode**: Discovers [`.opencode/skills/satori/SKILL.md`](.opencode/skills/satori/SKILL.md) and the `/satori` slash command in [`.opencode/command/satori.md`](.opencode/command/satori.md).
+- **Hermes Agent**: Discovers [`.hermes/skills/satori/SKILL.md`](.hermes/skills/satori/SKILL.md).
+- **OpenClaw / ClawHub**: Configured via [`openclaw.plugin.json`](openclaw.plugin.json) with `SHA-256` constitutional verification of `references/SOUL.md`.
 
 ---
 
-### Option 3: Manual Installation (Claude Code Skills Directory)
+## Privacy-First Local Memory CLI (`scripts/satori_memory.py`)
 
-Copy the skill files into your Claude Code global skills folder. Satori will be available across all Claude Code sessions.
+When running in any CLI or IDE agent, Satori provides a zero-dependency Python 3 stdlib memory engine governed by [`PRIVACY.md`](PRIVACY.md):
 
 ```bash
-git clone https://github.com/MetcalfSolutions/Satori.git
-mkdir -p ~/.claude/skills/satori
-cp -r Satori/SKILL.md Satori/references ~/.claude/skills/satori/
+# Initialize vault (.satori/memory/ or ~/.satori/memory/) with 0700 permissions & .gitignore protection
+python scripts/satori_memory.py init
+
+# View active longitudinal themes and Dream-Layer watch items
+python scripts/satori_memory.py status
+
+# Search longitudinal patterns via SQLite FTS5
+python scripts/satori_memory.py search --query "autonomy"
+
+# Permanently forget a theme or session (executes PRAGMA secure_delete = ON + VACUUM)
+python scripts/satori_memory.py forget --theme "career"
+
+# Wipe the entire vault
+python scripts/satori_memory.py purge --all --confirm
+
+# Export a portable capsule for web UIs
+python scripts/satori_memory.py export-capsule
 ```
 
 ---
 
-**Memory Note:** Satori uses Claude's native persistent memory to track patterns and insights across sessions. Enable it in Claude.ai under **Settings > Memory**. The skill's internal references to memory systems are instructions for Claude's own memory, not literal files on disk.
+## Validation & Two-Stage Anti-Gaming Evaluation Suite
+
+Run Satori's full verification and red-team suite locally with zero external dependencies:
+
+```bash
+# 1. Sync per-agent SKILL.md mirrors and build dist/SatoriSkill-v6.1.0.zip
+python scripts/build_release.py --sync
+
+# 2. Validate frontmatter, <24KB caps, <=15-line pointer stubs, SHA-256 mirrors, and crisis numbers
+python scripts/validate_skill.py
+
+# 3. Run unit & privacy tests for satori_memory.py (T1-T6 mitigations)
+python scripts/satori_memory.py self-test
+
+# 4. Run red-team judge calibration & 50-case 3-strata trigger boundary suite
+python scripts/test_judge_calibration.py
+python scripts/run_evals.py --suite trigger --mode lint
+```
 
 ---
 
-## Cross-Model Compatibility
+## Credits, Architectural Lineage & Acknowledgments
 
-Satori is built for Claude and calibrated for its reasoning and memory capabilities. The reference files are plain Markdown and will work as system prompt material in any LLM. The memory continuity features are Claude-specific. If you adapt Satori for another model, the core architecture translates reasonably well. The voice and pacing will need work.
+### Clinical & Philosophical Lineage
+Carl Rogers (unconditional positive regard), William Miller & Stephen Rollnick (Motivational Interviewing), Dan P. McAdams (narrative identity), Jefferson Singer (self-defining memories), Chris Voss (tactical empathy), Richard Schwartz (IFS), Marsha Linehan (DBT), Paul Gilbert (CFT), Steven Hayes (ACT), Jeffrey Young (Schema Therapy), Pauline Boss (Ambiguous Loss), Margaret Stroebe & Henk Schut (Dual Process Bereavement), Robert Worden (Tasks of Mourning), Jessica Benjamin (Relational Psychoanalysis), John Gottman, Marshall Rosenberg (NVC), C.G. Jung (Shadow & Dream work), Viktor Frankl (Logotherapy), Desmond Tutu & Mogobe Ramose (Ubuntu), Kwame Gyekye & Kwasi Wiredu (Akan philosophy), Maulana Karenga (Kemetic *Ma'at*), Robin Wall Kimmerer (Potawatomi ecology of reciprocity), and Vine Deloria Jr.
 
----
-
-## What This Is Built On
-
-I used Claude to help write a significant portion of the framework content. I want to be honest about that upfront. The clinical and philosophical lineage it draws on is real. Carl Rogers (unconditional positive regard), William Miller and Stephen Rollnick (Motivational Interviewing), Dan McAdams (narrative identity), Jefferson Singer (self-defining memory), Chris Voss (tactical empathy), Richard Schwartz (IFS), Marsha Linehan (DBT), Paul Gilbert (CFT), Steven Hayes (ACT), C.G. Jung (shadow and dream work). The wisdom traditions are not window dressing. Every one of them is operationalized in the reference files with selection criteria and failure modes.
-
----
-
-## Roadmap
-
-v5.2 is next. The main priorities are expanding the African philosophical traditions (Ubuntu, Akan thought, Kemetic wisdom) and Indigenous traditions with proper cultural specificity rather than the generic treatment they currently get, a dedicated Grief Companion arc, and documentation for developers who want to use Satori's reference architecture in their own Claude applications.
-
-v6 is further out. Relationship Mode, where Satori holds two perspectives in a conflict rather than just one. Journaling integration. I'm open to how that develops.
-
-Full version history is in [CHANGELOG.md](CHANGELOG.md) and on the [Releases](https://github.com/MetcalfSolutions/Satori/releases) page.
+### Open-Source Agent Skill Lineage (v6.0 Benchmark Cohort)
+Satori v6.0's multi-agent packaging, progressive disclosure, anti-slop voice gates, and evaluation harness were informed by examining best practices across the open-source agent skill ecosystem. We gratefully acknowledge:
+- **Domain & Coaching Skills**: [`blader/humanizer`](https://github.com/blader/humanizer) (structural anti-AI-slop rules), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd) (5-point pre-send check & rule hierarchy), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills) (quickref vs. deep reference split), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills) (local-first Markdown vault conventions), [`sickn33/agentic-awesome-skills`](https://github.com/sickn33/agentic-awesome-skills) (`explain-like-socrates` single-analogy rule, `interview-coach`, `bdi-mental-states`), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills) (`founder-coach` stdlib companion scripts), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills) (per-turn token discipline), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric) (`extract_wisdom` & constitutional context), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian) (longitudinal session notes), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills) (context-first onboarding bypass), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council) (negative trigger guards & Inner Council inspiration), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect) (Factory vs. Product state separation), [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec) (`SOUL.md` integrity hashing), [`huifer/WellAlly-health`](https://github.com/huifer/WellAlly-health), [`tizzy916/humanities-writing-companion`](https://github.com/tizzy916/humanities-writing-companion), and [`bevibing/socrates-skill`](https://github.com/bevibing/socrates-skill).
+- **Cross-Harness Infrastructure**: [`obra/superpowers`](https://github.com/obra/superpowers), [`affaan-m/ECC`](https://github.com/affaan-m/ECC), [`garrytan/gstack`](https://github.com/garrytan/gstack), [`JuliusBrussee/caveman`](https://github.com/JuliusBrussee/caveman), [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem), and [`microsoft/SkillOpt`](https://github.com/microsoft/SkillOpt).
 
 ---
 
-## Contributing
+## Contributing & License
 
-If you're doing the work on yourself and want a thinking partner that won't rush you toward an answer, this is for you.
-
-Pull requests are welcome. The bar for contributions is the same bar the conversations hold: understanding, pattern recognition, connection, movement. Frameworks should work as precision tools, not decoration. One per response. The voice needs to stay honest, and honest in Satori's sense means not comfortable over true.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, quality standards, and cultural sensitivity requirements for tradition contributions.
-
----
-
-## License
-
-Satori is released under the [Apache License 2.0](LICENSE). Free to use, modify, redistribute, and build upon commercially. Attribution required.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, quality standards, and cultural sensitivity requirements. Released under the [Apache License 2.0](LICENSE).
 
 ---
 

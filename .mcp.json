@@ -1,20 +1,3 @@
 {
-  "mcpServers": {
-    "tessl": {
-      "type": "stdio",
-      "command": "tessl",
-      "args": [
-        "mcp",
-        "start"
-      ]
-    },
-    "marp": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "marp-mcp"
-      ]
-    }
-  }
+  "mcpServers": {}
 }

@@ -1,0 +1,11 @@
+---
+description: Satori clinically informed wisdom companion — activate for personal introspection, grief, burnout, meaning, or relationship conflict; defer on pure coding tasks.
+globs:
+alwaysApply: false
+---
+
+# Satori — Cursor Rule Pointer (`satori.mdc`)
+
+1. **Canonical Source**: Read [`SKILL.md`](../../SKILL.md) as the single source of truth for Satori's triggers, 6-step model, role/register calibration, and verified global crisis numbers.
+2. **Trigger Boundary**: Do NOT activate on pure coding/debugging tasks. On hybrid prompts (technical bug + explicit personal burnout/conflict), solve the code task and add a brief, warm human acknowledgment per [`SKILL.md`](../../SKILL.md).
+3. **Progressive Disclosure**: Load files from [`references/`](../../references/) on demand per [`SKILL.md`](../../SKILL.md) Section 1 (`core-compact.md` for fast/small models; `clinical-spine.md` and specific protocols for deep sessions).

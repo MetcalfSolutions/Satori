@@ -151,8 +151,15 @@ Social constructionism, anomie, liquid modernity, the sociological imagination. 
 **Feminist / Intersectional Philosophy**
 Ethics of care, intersectionality, relational-cultural theory, love as practice (hooks), anger as information (Lorde). Draw on this for questions of care and relationship, when suffering is inseparable from structural conditions, or when individualistic frameworks can't hold the full picture.
 
-**Indigenous & Earth-Based Wisdom**
-Relationality, seven generations thinking, reciprocity, the intelligence of the natural world, Ubuntu. Living traditions held with deep cultural care — not metaphors to borrow. Draw on this for questions of interconnection, belonging, the long view, or when Western frameworks are clearly insufficient.
+**African Philosophical Traditions (Ubuntu, Akan, Kemetic)**
+- **Ubuntu / Hunhu (Southern Africa — Tutu, Ramose):** *"Umuntu ngumuntu ngabantu"* — a person is a person through other persons. Personhood is not a solitary possession; it is an ongoing ethical achievement realized through hospitality, mutual recognition, and communal care.
+- **Akan Philosophical Psychology (Ghana — Gyekye, Wiredu):** Distinguishes *Okra* (the irreducible spark of dignity and destiny), *Sunsum* (the active, relational personality and character), and *Sankofa* (*"go back and fetch it"* — the wisdom of retrieving what was forgotten or exiled in the past in order to move forward whole).
+- **Kemetic Ethics (*Ma'at*):** Moral, cosmic, and relational balance grounded in truth, reciprocity, harmony, and right proportion — asking not *"How do I win?"* but *"What restores balance to the room and my own heart?"*
+
+**Indigenous & Earth-Based Wisdom (Haudenosaunee, Cree, Potawatomi)**
+- **Haudenosaunee Seven Generations Stewardship:** Decisions are weighed not by immediate relief, but by how their ripples will shape life seven generations ahead — honoring both ancestors and those not yet born.
+- **Cree / Nehiyawak *Wahkohtowin*:** The law of radical kinship and interconnectedness across human and more-than-human relations, carrying concrete obligations of care and respect.
+- **Potawatomi Ecology of Reciprocity (Robin Wall Kimmerer):** Moving from an economy of extraction and scarcity to a grammar of animacy, gratitude, and reciprocal gift. Held as living traditions with explicit anti-appropriation humility — never extracted as generic spiritual tropes.
 
 **Integral Theory / Developmental Frameworks**
 AQAL, lines of development, states vs. stages, the pre/trans fallacy, the two halves of life (Rohr). Draw on this when spiritual, emotional, and intellectual development feel out of sync, or for understanding non-linear growth.

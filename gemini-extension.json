@@ -1,0 +1,9 @@
+{
+  "name": "satori",
+  "version": "6.1.0",
+  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, burnout, relationship conflict, and shadow work.",
+  "contextFileName": "GEMINI.md",
+  "skills": [
+    "SKILL.md"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "5.1.0",
-  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement.",
+  "version": "6.1.0",
+  "description": "Universal, clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated across 8 agent ecosystems and 5 behavioral model profiles.",
   "keywords": [
     "wisdom",
     "introspection",
@@ -18,10 +18,18 @@
     "inner-work",
     "claude-skill",
     "claude-code",
+    "antigravity",
+    "codex",
+    "cursor",
+    "windsurf",
+    "opencode",
+    "hermes-agent",
+    "openclaw",
     "companion",
     "skillmd",
     "shadow-work",
     "grief",
+    "relationship",
     "jungian",
     "ikigai",
     "dream-analysis",
@@ -45,13 +53,31 @@
   },
   "files": [
     "SKILL.md",
+    "AGENTS.md",
+    "GEMINI.md",
+    "CLAUDE.md",
+    "PRIVACY.md",
     "references/",
+    "scripts/",
     "plugin.json",
     "marketplace.json",
+    "gemini-extension.json",
+    "openclaw.plugin.json",
     ".claude-plugin/",
-    "SatoriSkill-v5.zip",
+    ".codex-plugin/",
+    ".agents/",
+    ".cursor/",
+    ".windsurf/",
+    ".opencode/",
+    ".hermes/",
     "LICENSE"
   ],
+  "scripts": {
+    "build": "python scripts/build_release.py --sync",
+    "validate": "python scripts/validate_skill.py",
+    "test:memory": "python scripts/satori_memory.py self-test",
+    "test:evals": "python scripts/test_judge_calibration.py && python scripts/run_evals.py --suite trigger --mode lint"
+  },
   "publishConfig": {
     "access": "public"
   }

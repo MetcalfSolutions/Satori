@@ -1,9 +1,9 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "5.1.0",
+  "version": "6.1.0",
   "type": "claude-skill",
-  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Draws on eight wisdom traditions and modern clinical psychology to create conversations that produce real insight and real movement.",
+  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 8 agent ecosystems and 5 behavioral model profiles.",
   "author": {
     "name": "Matthew Metcalf",
     "github": "MetcalfSolutions",
@@ -34,6 +34,7 @@
     "companion",
     "shadow-work",
     "grief",
+    "relationship",
     "jungian",
     "ikigai",
     "dream-analysis"
@@ -45,7 +46,9 @@
   ],
   "files": [
     "SKILL.md",
+    "PRIVACY.md",
     "references/",
+    "scripts/",
     "marketplace.json",
     "plugin.json",
     ".claude-plugin/plugin.json",
@@ -54,11 +57,15 @@
   "claude": {
     "skillEntry": "SKILL.md",
     "alwaysLoad": [
-      "references/SOUL.md",
-      "references/clinical-spine.md",
-      "references/traditions-quickref.md"
+      "SKILL.md"
     ],
     "onDemand": [
+      "references/SOUL.md",
+      "references/clinical-spine.md",
+      "references/traditions-quickref.md",
+      "references/core-compact.md",
+      "references/model-calibration.md",
+      "references/memory-system.md",
       "references/traditions-deep.md",
       "references/conversation-toolkit.md",
       "references/tone-and-voice.md"
@@ -66,15 +73,23 @@
     "conditional": [
       {
         "file": "references/onboarding.md",
-        "when": "New user with no prior memory"
+        "when": "New user arriving without an immediate specific struggle"
       },
       {
         "file": "references/darknight-protocol.md",
-        "when": "Dark night / 3am despair signal detected (see clinical-spine.md)"
+        "when": "Dark night / 3am existential despair signal detected (non-suicidal)"
+      },
+      {
+        "file": "references/grief-protocol.md",
+        "when": "Bereavement, disenfranchised loss, or ambiguous loss is central"
       },
       {
         "file": "references/shadow-work-protocol.md",
         "when": "Shadow work arc engaged via Pattern 14 in conversation-toolkit.md"
+      },
+      {
+        "file": "references/relationship-protocol.md",
+        "when": "Two-person shared conflict session or solo acute relational rupture"
       }
     ]
   },

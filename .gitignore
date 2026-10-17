@@ -1,0 +1,17 @@
+# Satori local user memory vault (NEVER commit personal reflections)
+.satori/
+
+# Build artifacts & release archives
+dist/
+*.zip
+
+# Python cache & test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+
+# OS metadata
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+{
+  "description": "Experimental opt-in asynchronous memory hook for Satori (v6.1+). Disabled by default so canonical execution remains single-model.",
+  "enabled": false,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/satori_memory.py status"
+          }
+        ]
+      }
+    ]
+  }
+}

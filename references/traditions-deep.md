@@ -4,43 +4,43 @@ Comprehensive reference for every wisdom tradition and modern framework Satori d
 
 ---
 
-## Table of Contents
+## Selective Line-Range Index Table (Progressive Disclosure)
 
-### Part One: Ancient & Classical Traditions
-1. [Taoism](#taoism-primary)
-2. [Buddhism](#buddhism-primary)
-3. [Stoicism](#stoicism-primary)
-4. [Christianity](#christianity)
-5. [Sufi / Islamic Wisdom](#sufi--islamic-wisdom) *(new in v5)*
-6. [Hindu Philosophy](#hindu-philosophy) *(new in v5)*
-7. [Confucian / East Asian Relational Ethics](#confucian--east-asian-relational-ethics) *(new in v5)*
-8. [Philosophy (Existentialism, Virtue Ethics, Other)](#philosophy)
+> **Agent Instruction**: Never load all 79 KB of this file at once. Use your file-viewing tool with `StartLine` and `EndLine` from the table below to read only the single relevant tradition (`~1.5–2.5 KB`).
+> **Constraint**: Select at most **one** framework per response and translate into plain everyday language.
 
-### Part Two: Modern Frameworks & Contemporary Traditions
-9. [Modern Psychology (Foundation)](#modern-psychology-foundation)
-10. [Neuroscience & the Science of the Mind](#neuroscience--the-science-of-the-mind)
-11. [Trauma-Informed Frameworks](#trauma-informed-frameworks)
-12. [DBT (Dialectical Behavior Therapy)](#dbt-dialectical-behavior-therapy) *(new in v5)*
-13. [CFT (Compassion-Focused Therapy)](#cft-compassion-focused-therapy) *(new in v5)*
-14. [Schema Therapy](#schema-therapy) *(new in v5)*
-15. [Relational Psychoanalysis](#relational-psychoanalysis) *(new in v5)*
-16. [Grief-Specific Frameworks](#grief-specific-frameworks) *(new in v5)*
-17. [Positive Psychology & Wellbeing Research](#positive-psychology--wellbeing-research)
-18. [Neuroscience of Mindfulness & Secular Contemplative Science](#neuroscience-of-mindfulness--secular-contemplative-science)
-19. [Phenomenology](#phenomenology) *(new in v5)*
-20. [Integral Theory & Developmental Frameworks](#integral-theory--developmental-frameworks)
-21. [Enneagram & Personality Frameworks](#enneagram--personality-frameworks)
-22. [Evolutionary Psychology & Behavioral Science](#evolutionary-psychology--behavioral-science)
-
-### Part Three: Social, Cultural & Practical Traditions
-23. [Sociology & Cultural Theory](#sociology--cultural-theory)
-24. [African Philosophy (Expanded)](#african-philosophy-expanded) *(expanded in v5)*
-25. [Indigenous & Earth-Based Wisdom Traditions](#indigenous--earth-based-wisdom-traditions)
-26. [Feminist & Intersectional Philosophy](#feminist--intersectional-philosophy)
-27. [Motivational Interviewing](#motivational-interviewing)
-28. [Narrative Identity & Life Story Research](#narrative-identity--life-story-research)
-29. [Mental Models & Practical Frameworks](#mental-models--practical-frameworks)
-30. [Self-Help & Practical Wisdom](#self-help--practical-wisdom)
+| # | Tradition / Framework | Part | Line Range (`StartLine–EndLine`) |
+|---|---|---|---|
+| 1 | [Taoism (Primary)](#taoism-primary) | Part 1 | `51–83` |
+| 2 | [Buddhism (Primary)](#buddhism-primary) | Part 1 | `84–125` |
+| 3 | [Stoicism (Primary)](#stoicism-primary) | Part 1 | `126–158` |
+| 4 | [Christianity](#christianity) | Part 1 | `159–199` |
+| 5 | [Sufi / Islamic Wisdom](#sufi--islamic-wisdom) | Part 1 | `200–244` |
+| 6 | [Hindu Philosophy](#hindu-philosophy) | Part 1 | `245–289` |
+| 7 | [Confucian / East Asian Relational Ethics](#confucian--east-asian-relational-ethics) | Part 1 | `290–330` |
+| 8 | [Philosophy (Existentialism, Virtue Ethics, Other)](#philosophy) | Part 1 | `331–362` |
+| 9 | [Modern Psychology (Foundation)](#modern-psychology-foundation) | Part 2 | `363–391` |
+| 10 | [Neuroscience & the Science of the Mind](#neuroscience--the-science-of-the-mind) | Part 2 | `392–419` |
+| 11 | [Trauma-Informed Frameworks](#trauma-informed-frameworks) | Part 2 | `420–453` |
+| 12 | [DBT (Dialectical Behavior Therapy)](#dbt-dialectical-behavior-therapy) | Part 2 | `454–487` |
+| 13 | [CFT (Compassion-Focused Therapy)](#cft-compassion-focused-therapy) | Part 2 | `488–514` |
+| 14 | [Schema Therapy](#schema-therapy) | Part 2 | `515–547` |
+| 15 | [Relational Psychoanalysis](#relational-psychoanalysis) | Part 2 | `548–577` |
+| 16 | [Grief-Specific Frameworks](#grief-specific-frameworks) | Part 2 | `578–624` |
+| 17 | [Positive Psychology & Wellbeing Research](#positive-psychology--wellbeing-research) | Part 2 | `625–649` |
+| 18 | [Neuroscience of Mindfulness & Secular Contemplative Science](#neuroscience-of-mindfulness--secular-contemplative-science) | Part 2 | `650–672` |
+| 19 | [Phenomenology](#phenomenology) | Part 2 | `673–706` |
+| 20 | [Integral Theory & Developmental Frameworks](#integral-theory--developmental-frameworks) | Part 2 | `707–729` |
+| 21 | [Enneagram & Personality Frameworks](#enneagram--personality-frameworks) | Part 2 | `730–752` |
+| 22 | [Evolutionary Psychology & Behavioral Science](#evolutionary-psychology--behavioral-science) | Part 2 | `753–783` |
+| 23 | [Sociology & Cultural Theory](#sociology--cultural-theory) | Part 3 | `784–808` |
+| 24 | [African Philosophy (Expanded: Ubuntu, Akan & Kemetic Lineages)](#african-philosophy-expanded-ubuntu-akan--kemetic-lineages) | Part 3 | `809–844` |
+| 25 | [Indigenous & Earth-Based Wisdom Traditions (Lineage-Specific)](#indigenous--earth-based-wisdom-traditions-lineage-specific) | Part 3 | `845–880` |
+| 26 | [Feminist & Intersectional Philosophy](#feminist--intersectional-philosophy) | Part 3 | `881–907` |
+| 27 | [Motivational Interviewing](#motivational-interviewing) | Part 3 | `908–949` |
+| 28 | [Narrative Identity & Life Story Research](#narrative-identity--life-story-research) | Part 3 | `950–978` |
+| 29 | [Mental Models & Practical Frameworks](#mental-models--practical-frameworks) | Part 3 | `979–1007` |
+| 30 | [Self-Help & Practical Wisdom](#self-help--practical-wisdom) | Part 3 | `1008–1029` |
 
 ---
 
@@ -806,65 +806,75 @@ You do not practice therapy. But these frameworks inform how you hold people. A 
 
 ---
 
-## African Philosophy (Expanded)
+## African Philosophy (Expanded: Ubuntu, Akan & Kemetic Lineages)
 
-### Core Concepts
-- **Ubuntu** — *"I am because we are."* Not a proverb but an ontological claim: personhood is constituted by relationship and community. A person is a person through other persons.
-- **Ujamaa** — Julius Nyerere. Collective economics, cooperative living, and the idea that the community's wellbeing is inseparable from the individual's.
-- **Sankofa** — Akan concept: *"Go back and get it."* The necessity of understanding the past to move forward. The past is not behind you — it is a resource you carry.
-- **Communalism** — Not collectivism imposed from above but the organic understanding that individual flourishing requires communal health. The African philosophical critique of Western atomistic individualism.
-- **Ancestral Continuity** — The community includes the living, the dead (ancestors), and the yet-to-be-born. Obligation extends in all three directions. The dead are not gone — they participate in the ongoing life of the community.
-- **Oral Tradition and Embodied Knowledge** — Wisdom carried in stories, proverbs, songs, and practice rather than in texts. Knowledge lives in relationship and in the body, not just in the mind.
-- **Négritude** — Senghor, Césaire. The assertion of Black African cultural identity and values as a counter-narrative to colonial devaluation. Cultural pride as resistance.
+African philosophy spans thousands of distinct linguistic and intellectual lineages across the continent and diaspora. Rather than treating "African thought" as a monolith, Satori draws from three distinct, well-documented philosophical traditions with explicit lineage attribution:
 
-### Key Figures
-- **Kwame Gyekye** — *An Essay on African Philosophical Thought*. The most rigorous philosophical treatment of Akan thought.
-- **Paulin Hountondji** — *African Philosophy: Myth and Reality*. Critical engagement with what constitutes African philosophy.
-- **Achille Mbembe** — *On the Postcolony*, *Critique of Black Reason*. Postcolonial thought and the conditions of contemporary African existence.
-- **Julius Nyerere** — *Ujamaa: Essays on Socialism*. Tanzania's first president and the philosopher of African socialism.
-- **Leopold Sédar Senghor** — Poet and philosopher of Négritude. Senegal's first president.
-- **Mogobe Ramose** — On Ubuntu as a philosophical concept, not just a cultural slogan.
-- **Desmond Tutu** — Ubuntu philosophy applied to restorative justice. *No Future Without Forgiveness*.
+### 1. Southern African Lineage — Ubuntu / Hunhu (Nguni / Bantu / Shona)
+- ***Umuntu ngumuntu ngabantu*** (*"A person is a person through other persons"*): Not a sentimental slogan, but a rigorous ontological and ethical claim (Mogobe Ramose, Desmond Tutu). Personhood (*ubuntu* / *hunhu*) is not an automatic biological given; it is an ongoing ethical becoming achieved through mutual recognition, hospitality, and responsiveness to others.
+- **Restorative Justice & Relational Repair:** Harm is understood not merely as breaking an abstract rule, but as tearing the relational fabric that sustains everyone's humanity. Repair requires truth-telling and restoring dignity to the wounded field.
 
-### A Note on Cultural Care
-African philosophy is not a monolith. The continent contains thousands of distinct cultures, languages, and intellectual traditions. "African philosophy" as a category is itself a site of debate. Satori engages with these frameworks as genuine philosophical traditions that offer something Western philosophy often lacks — particularly around relationality, communalism, and the long view. They are not metaphors to borrow or spiritual aesthetics to adopt.
+### 2. West African Lineage — Akan Philosophical Psychology (Ghana)
+- **Tripartite Concept of the Person (Kwame Gyekye, Kwasi Wiredu):**
+  - ***Okra***: The irreducible spark of life, inner dignity, and bearer of destiny (*nkrabea*) — the part of a person that makes their worth unconditional.
+  - ***Sunsum***: The active, cultivated personality, character, and relational presence that can be strengthened or weighed down by lived choices.
+  - ***Honam / Mogya***: The embodied, lineage-connected self linking the person to family and community.
+- ***Sankofa*** (*"Se wo were fi na wosan kofa a yenkyiri"* — *"It is not taboo to go back and fetch what you forgot"*): Symbolized by the bird looking backward while its feet face forward, carrying an egg. Moving forward whole often requires returning to retrieve a forgotten truth, exiled grief, or abandoned value from one's past.
+- **Moderate Communalism (Gyekye):** Balances communal belonging with individual moral agency, responsibility, and capacity to critique inherited norms.
+
+### 3. Northeast African / Classical Lineage — Kemetic Ethics (*Ma'at*)
+- ***Ma'at* (Truth, Balance, Reciprocity, Right Order):** Ancient Egyptian / Kemetic moral philosophy (expounded in the *Instructions of Ptahhotep* and *The Eloquent Peasant*, and analyzed by Maulana Karenga). *Ma'at* asks whether one's speech and action bring truth, harmony, and reciprocity into the world — or *Isfet* (chaos, deceit, extraction, imbalance).
+- **The Weighing of the Heart (*Ib*):** Integrity as having a heart unburdened by unspoken cruelty or self-betrayal — light enough to rest in balance with the feather of truth.
+
+### Key Figures & Texts
+- **Kwame Gyekye** — *An Essay on African Philosophical Thought: The Akan Conceptual Scheme* (1987); *Tradition and Modernity* (1997).
+- **Kwasi Wiredu** — *Cultural Universals and Particulars: An African Perspective* (1996).
+- **Mogobe B. Ramose** — *African Philosophy Through Ubuntu* (1999).
+- **Desmond Tutu** — *No Future Without Forgiveness* (1999).
+- **Maulana Karenga** — *Maat, The Moral Ideal in Ancient Egypt: A Study in Classical African Ethics* (2004).
+- **Paulin Hountondji**, **Achille Mbembe**, **Julius Nyerere** (*Ujamaa*), **Léopold Sédar Senghor** (*Négritude*).
 
 ### When to Draw On This
-- Questions of community, belonging, and what it means to be a person in relation
-- The limits of radical individualism
-- Ancestral connection and obligation
-- Identity in diaspora
-- The social production of meaning
-- When Western frameworks of autonomous selfhood feel insufficient
+- When hyper-individualistic Western frameworks (*"you don't owe anyone anything"*) flatten a person's real moral commitments to family, elders, or community
+- When someone needs to retrieve something left behind in an earlier chapter (*Sankofa*)
+- When restoring balance and truth (*Ma'at*) matters more than winning an argument
+- When loneliness stems from disconnection from mutual recognition (*Ubuntu*)
 
 ---
 
-## Indigenous & Earth-Based Wisdom Traditions
+## Indigenous & Earth-Based Wisdom Traditions (Lineage-Specific)
 
-### Core Concepts
-- **Relationality** — Identity and existence are fundamentally relational. We are who we are through our relationships — with each other, with the land, with ancestors, with future generations.
-- **Seven Generations Thinking** — Haudenosaunee principle: decisions should consider effects on the next seven generations.
-- **The Medicine Wheel** — Balance, wholeness, and cyclical experience. Four directions, four seasons, four aspects of being.
-- **Reciprocity** — The fundamental ethic of relationship with the natural world. Taking only what is needed. Giving back.
-- **The Intelligence of the Natural World** — Plants, animals, and ecosystems as teachers and relatives. Robin Wall Kimmerer.
-- **Ubuntu** — *"I am because we are."* (See also African Philosophy section.)
-- **Oral Tradition** — Knowledge lives in stories, songs, and relationship.
+Indigenous philosophies are living intellectual, legal, and spiritual traditions rooted in specific lands, languages, and sovereign nations. Satori references them with explicit nation attribution and epistemic humility — never as generic tropes:
 
-### Key Figures
-- **Robin Wall Kimmerer** — *Braiding Sweetgrass*. Potawatomi botanist and writer.
-- **Vine Deloria Jr.** — *God Is Red*. Lakota scholar.
-- **Joanna Macy** — *World as Lover, World as Self*. Bridges Buddhism, systems theory, ecology.
-- **Desmond Tutu** — Ubuntu and restorative justice.
+### 1. Haudenosaunee (Iroquois Confederacy) — The Seventh Generation & The Good Mind
+- **Seven Generations Stewardship (*Kaianerekowa* / Great Law of Peace):** Major choices are weighed across a horizon stretching seven generations back and seven generations forward. Zooms out from frantic short-term urgency to ask: *What kind of ancestor does this choice make me?*
+- ***Kanikonriio* (The Good Mind):** Cultivating peace, thanksgiving (*Ohén:ton Karihwatéhkwen*), and clear-sighted reason even amidst grief or conflict (as practiced in the Haudenosaunee *Condolence Ceremony*, which wipes the tears from the eyes and clears the throat before council begins).
 
-### A Note on Cultural Care
-These traditions are living, not historical. They belong to specific communities and are inseparable from land, language, and relationship. Satori engages with them as windows onto ways of knowing that Western frameworks miss. They are not spiritual aesthetics to adopt casually. When referencing them, maintain appropriate epistemic humility and encourage authentic sources and relationships.
+### 2. Cree / Nehiyawak & Michif — *Wahkohtowin* (Radical Kinship)
+- ***Wahkohtowin*:** The foundational Cree natural law that everything is related — human beings, land, waters, animals, and ancestors exist in a web of mutual obligation (Maria Campbell, Harold Cardinal).
+- **Relational Accountability:** Because we exist inside *Wahkohtowin*, healing is never purely private; it involves repairing how we walk with our relations.
+
+### 3. Citizen Potawatomi / Anishinaabe — The Honorable Harvest & Grammar of Animacy
+- **Ecology of Reciprocity (Robin Wall Kimmerer, *Braiding Sweetgrass*):** Moving from viewing the world as a collection of dead objects ("it") to a community of living subjects ("who").
+- **The Honorable Harvest:** Take only what is genuinely needed, never take the first or the last, ask permission, use everything you take respectfully, and give a gift in return. Applicable both to ecological life and to how a person treats their own bodily energy and relationships.
+
+### 4. Lakota / Oceti Sakowin — *Mitákuye Oyás'iŋ* & Spatial-Temporal Wholeness
+- **Vine Deloria Jr. (*God Is Red*):** Contrasts Western obsessions with linear time and abstract dogma against Indigenous grounding in *place*, lived relationship, and the sacredness of the concrete world here and now.
+
+### Key Figures & Texts
+- **Robin Wall Kimmerer (Citizen Potawatomi)** — *Braiding Sweetgrass* (2013).
+- **Vine Deloria Jr. (Standing Rock Sioux / Lakota)** — *God Is Red* (1973).
+- **Shawn Wilson (Opaskwayak Cree)** — *Research Is Ceremony* (2008) on relational accountability.
+- **Leanne Betasamosake Simpson (Michi Saagiig Nishnaabeg)** — *As We Have Always Done* (2017).
+- **Joanna Macy** — *Active Hope* & *World as Lover, World as Self* (systems theory & ecological grief).
+
+### Anti-Appropriation & Cultural Care Boundary
+Never encourage users to adopt closed Indigenous ceremonies (e.g., sweat lodges, vision quests, sacred pipe rituals) or use sacred terms casually. Offer these lineages as rigorous philosophical perspectives on kinship, long-horizon responsibility, and reciprocity, always naming the specific nation or thinker.
 
 ### When to Draw On This
-- Interconnection, belonging, or the loneliness of radical individualism
-- Deeper relationship with the natural world
-- The long view — zooming out from immediate urgency
-- When Western psychological frameworks feel insufficient
-- Meaning, place, and the relationship between individual and something larger
+- Ecological grief, burnout from extractive work cultures, or feeling severed from the living world
+- Decisions requiring a generational horizon beyond immediate self-interest (Seven Generations)
+- Healing the loneliness of atomized modern life through relational accountability (*Wahkohtowin*)
 
 ---
 

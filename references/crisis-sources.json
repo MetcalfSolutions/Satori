@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastVerified": "2026-10-17",
+  "description": "Primary-source verified global crisis helplines and emergency numbers for Satori. Verified at build time by scripts/validate_skill.py.",
+  "regions": [
+    {
+      "id": "US",
+      "name": "United States",
+      "emergency": "911",
+      "callLines": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "number": "988",
+          "availability": "24/7, free, confidential"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "number": "988",
+          "instruction": "Text 988"
+        },
+        {
+          "name": "Crisis Text Line (US)",
+          "number": "741741",
+          "instruction": "Text HOME to 741741"
+        }
+      ],
+      "primarySources": [
+        "https://988lifeline.org",
+        "https://www.crisistextline.org"
+      ]
+    },
+    {
+      "id": "CA",
+      "name": "Canada",
+      "emergency": "911",
+      "callLines": [
+        {
+          "name": "Suicide Crisis Helpline (Canada)",
+          "number": "988",
+          "availability": "24/7, bilingual (English & French)"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "Suicide Crisis Helpline (Canada)",
+          "number": "988",
+          "instruction": "Text 988"
+        },
+        {
+          "name": "Crisis Text Line (Canada)",
+          "number": "686868",
+          "instruction": "Text CONNECT to 686868"
+        }
+      ],
+      "primarySources": [
+        "https://988.ca",
+        "https://www.crisistextline.ca"
+      ]
+    },
+    {
+      "id": "UK",
+      "name": "United Kingdom",
+      "emergency": "999",
+      "callLines": [
+        {
+          "name": "NHS Mental Health Services",
+          "number": "111",
+          "availability": "24/7 (call 111 and select the mental health option)"
+        },
+        {
+          "name": "Samaritans (UK & Ireland)",
+          "number": "116 123",
+          "availability": "24/7, free"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "Shout (UK)",
+          "number": "85258",
+          "instruction": "Text SHOUT to 85258"
+        }
+      ],
+      "primarySources": [
+        "https://www.nhs.uk/nhs-services/mental-health-services/",
+        "https://www.samaritans.org"
+      ]
+    },
+    {
+      "id": "IE",
+      "name": "Ireland",
+      "emergency": "999 / 112",
+      "callLines": [
+        {
+          "name": "Samaritans Ireland",
+          "number": "116 123",
+          "availability": "24/7, free"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "Text About It (Ireland)",
+          "number": "50808",
+          "instruction": "Text HELLO to 50808"
+        }
+      ],
+      "primarySources": [
+        "https://www.samaritans.org/ireland/",
+        "https://text50808.ie"
+      ]
+    },
+    {
+      "id": "AU",
+      "name": "Australia",
+      "emergency": "000",
+      "callLines": [
+        {
+          "name": "Lifeline Australia",
+          "number": "13 11 14",
+          "availability": "24/7"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "Lifeline Australia Text",
+          "number": "0477 13 11 14",
+          "instruction": "Text 0477 13 11 14"
+        }
+      ],
+      "primarySources": [
+        "https://www.lifeline.org.au"
+      ]
+    },
+    {
+      "id": "NZ",
+      "name": "New Zealand",
+      "emergency": "111",
+      "callLines": [
+        {
+          "name": "1737 Need to Talk?",
+          "number": "1737",
+          "availability": "24/7, free call or text"
+        }
+      ],
+      "textLines": [
+        {
+          "name": "1737 Need to Talk?",
+          "number": "1737",
+          "instruction": "Text 1737"
+        }
+      ],
+      "primarySources": [
+        "https://1737.org.nz"
+      ]
+    },
+    {
+      "id": "IN",
+      "name": "India",
+      "emergency": "112",
+      "callLines": [
+        {
+          "name": "Tele-MANAS (Ministry of Health & Family Welfare)",
+          "number": "14416",
+          "availability": "24/7, toll-free, multi-language"
+        },
+        {
+          "name": "Tele-MANAS Toll-Free Alternate",
+          "number": "1800-891-4416",
+          "availability": "24/7, toll-free"
+        }
+      ],
+      "textLines": [],
+      "primarySources": [
+        "https://telemanas.mohfw.gov.in"
+      ]
+    },
+    {
+      "id": "EU",
+      "name": "European Union",
+      "emergency": "112",
+      "callLines": [
+        {
+          "name": "EU Emotional Support Helpline (Participating Member States)",
+          "number": "116 123",
+          "availability": "Harmonized EU emotional support number where active"
+        }
+      ],
+      "textLines": [],
+      "primarySources": [
+        "https://digital-strategy.ec.europa.eu/en/policies/116-helplines"
+      ]
+    },
+    {
+      "id": "GLOBAL",
+      "name": "Global & International Directories",
+      "emergency": "Local Emergency Services",
+      "callLines": [],
+      "textLines": [],
+      "directories": [
+        "https://findahelpline.com",
+        "https://www.iasp.info/resources/Crisis_Centres/"
+      ],
+      "primarySources": [
+        "https://findahelpline.com",
+        "https://www.iasp.info/resources/Crisis_Centres/"
+      ]
+    }
+  ],
+  "requiredTokensInDocs": [
+    "988",
+    "741741",
+    "686868",
+    "111",
+    "999",
+    "116 123",
+    "85258",
+    "50808",
+    "13 11 14",
+    "0477 13 11 14",
+    "1737",
+    "14416",
+    "1800-891-4416",
+    "112",
+    "findahelpline.com",
+    "iasp.info/resources/Crisis_Centres/"
+  ]
+}
