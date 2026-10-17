@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Satori Pre-Commit Hook — Enforces 21/21 static, size, pointer-stub, mirror-SHA256, crisis-table, and SOUL.md integrity checks
+set -e
+
+if command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="python3"
+else
+  PYTHON_BIN="python"
+fi
+
+echo "[satori pre-commit] Running scripts/validate_skill.py..."
+"$PYTHON_BIN" scripts/validate_skill.py

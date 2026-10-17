@@ -37,7 +37,7 @@ WEB_ZIP_FILES = [
 
 
 def sha256_file(path: pathlib.Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def sync_mirrors_and_hashes() -> dict[str, str]:

@@ -52,7 +52,7 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
 def sha256_file(path: pathlib.Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def parse_frontmatter(text: str) -> dict[str, str]:
@@ -218,10 +218,12 @@ def main() -> int:
 
     openclaw_path = ROOT_DIR / "openclaw.plugin.json"
     soul_path = ROOT_DIR / "references" / "SOUL.md"
+    oc_version = "6.1.0"
     if not openclaw_path.exists():
         errors.append("Missing openclaw.plugin.json")
     else:
         oc_data = json.loads(openclaw_path.read_text(encoding="utf-8"))
+        oc_version = oc_data.get("version", "6.1.0")
         recorded_hash = oc_data.get("integrity", {}).get("files", {}).get("references/SOUL.md")
         actual_hash = sha256_file(soul_path)
         if recorded_hash != actual_hash:
@@ -240,7 +242,8 @@ def main() -> int:
             {
                 "status": "PASSED",
                 "checks_passed": checks_passed,
-                "message": "All Satori v6.0 static, size, pointer-stub, mirror-SHA256, crisis-table, and hygiene checks passed.",
+                "version": f"v{oc_version}",
+                "message": f"All Satori v{oc_version} static, size, pointer-stub, mirror-SHA256, crisis-table, and hygiene checks passed.",
             },
             indent=2,
         )
