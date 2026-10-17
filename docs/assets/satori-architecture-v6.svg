@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" role="img" aria-label="Satori v6.1.0 Progressive Disclosure and Multi-Agent Architecture">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c0e16"/>
+      <stop offset="100%" stop-color="#151928"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c6af7"/>
+      <stop offset="50%" stop-color="#e07b54"/>
+      <stop offset="100%" stop-color="#4ecdc4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Self-contained card background for dark & light mode legibility -->
+  <rect x="2" y="2" width="876" height="416" rx="16" fill="url(#bgGrad)" stroke="#252840" stroke-width="1.5"/>
+  <rect x="2" y="2" width="876" height="4" rx="2" fill="url(#accentGrad)"/>
+
+  <!-- Root Node -->
+  <rect x="250" y="22" width="380" height="54" rx="10" fill="#1c2030" stroke="#7c6af7" stroke-width="1.6"/>
+  <text x="440" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#e4e2ef">Satori v6.1.0 — Progressive Disclosure</text>
+  <text x="440" y="63" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#9a96b0">Canonical SKILL.md (&lt;8 KB) · 8 Agent Ecosystems · 5 Model Profiles</text>
+
+  <!-- Root -> Tier Connectors -->
+  <line x1="440" y1="76" x2="155" y2="128" stroke="#363b5c" stroke-width="1.3"/>
+  <line x1="440" y1="76" x2="440" y2="128" stroke="#363b5c" stroke-width="1.3"/>
+  <line x1="440" y1="76" x2="725" y2="128" stroke="#363b5c" stroke-width="1.3"/>
+
+  <!-- Tier 1 Header (Purple) -->
+  <rect x="45" y="128" width="220" height="44" rx="8" fill="#1c2030" stroke="#7c6af7" stroke-width="1.4"/>
+  <text x="155" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#7c6af7" letter-spacing="0.08em">TIER 1 · TURN 1 &amp; COMPACT</text>
+  <text x="155" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#9a96b0">Zero 63 KB Turn-1 Load Tax</text>
+
+  <!-- Tier 2 Header (Warm Orange) -->
+  <rect x="330" y="128" width="220" height="44" rx="8" fill="#1c2030" stroke="#e07b54" stroke-width="1.4"/>
+  <text x="440" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#e07b54" letter-spacing="0.08em">TIER 2 · TURN 2+ ON DEMAND</text>
+  <text x="440" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#9a96b0">Clinical Spine &amp; Wisdom Lenses</text>
+
+  <!-- Tier 3 Header (Teal) -->
+  <rect x="615" y="128" width="220" height="44" rx="8" fill="#1c2030" stroke="#4ecdc4" stroke-width="1.4"/>
+  <text x="725" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#4ecdc4" letter-spacing="0.08em">TIER 3 · PROTOCOLS &amp; VAULT</text>
+  <text x="725" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#9a96b0">Activated Arcs &amp; Local Memory CLI</text>
+
+  <!-- Tier 1 Leaf Cards -->
+  <rect x="35" y="192" width="240" height="36" rx="6" fill="#151826" stroke="#7c6af7" stroke-width="1"/>
+  <text x="155" y="208" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">SKILL.md (&lt;8 KB Canonical)</text>
+  <text x="155" y="221" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">Positive / Negative / Hybrid Triggers + 4 Mirrors</text>
+
+  <rect x="35" y="238" width="240" height="36" rx="6" fill="#151826" stroke="#7c6af7" stroke-width="1"/>
+  <text x="155" y="254" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">references/core-compact.md (&lt;12 KB)</text>
+  <text x="155" y="267" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">Profile 5 (&lt;32B Local &amp; Voice) Single-File Spine</text>
+
+  <rect x="35" y="284" width="240" height="36" rx="6" fill="#151826" stroke="#7c6af7" stroke-width="1"/>
+  <text x="155" y="300" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">references/model-calibration.md</text>
+  <text x="155" y="313" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">3-Tier Detection · Behavioral Profiles 1–5</text>
+
+  <rect x="35" y="330" width="240" height="36" rx="6" fill="#151826" stroke="#7c6af7" stroke-width="1"/>
+  <text x="155" y="346" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">references/crisis-sources.json</text>
+  <text x="155" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">Primary-Source Verified Global Helplines (9 Regions)</text>
+
+  <!-- Tier 2 Leaf Cards -->
+  <rect x="320" y="192" width="240" height="36" rx="6" fill="#151826" stroke="#e07b54" stroke-width="1"/>
+  <text x="440" y="208" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">references/SOUL.md (SHA-256 Locked)</text>
+  <text x="440" y="221" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">7 Constitutional Immovables &amp; Drift Detection</text>
+
+  <rect x="320" y="238" width="240" height="36" rx="6" fill="#151826" stroke="#e07b54" stroke-width="1"/>
+  <text x="440" y="254" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">references/clinical-spine.md (&lt;20 KB)</text>
+  <text x="440" y="267" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">6-Step Loop · 3×6 Role/Register · Formulation</text>
+
+  <rect x="320" y="284" width="240" height="36" rx="6" fill="#151826" stroke="#e07b54" stroke-width="1"/>
+  <text x="440" y="300" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">traditions-quickref &amp; deep.md</text>
+  <text x="440" y="313" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">30-Row Line-Range Index (~35-line Selective Read)</text>
+
+  <rect x="320" y="330" width="240" height="36" rx="6" fill="#151826" stroke="#e07b54" stroke-width="1"/>
+  <text x="440" y="346" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">conversation-toolkit &amp; tone.md</text>
+  <text x="440" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">OARS/MI · Voss · Patterns 1–16 · Anti-Slop Gate</text>
+
+  <!-- Tier 3 Leaf Cards -->
+  <rect x="605" y="192" width="240" height="36" rx="6" fill="#151826" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="725" y="208" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">onboarding &amp; darknight-protocol.md</text>
+  <text x="725" y="221" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">Context-First Bypass · 3am Presence-Only Mode</text>
+
+  <rect x="605" y="238" width="240" height="36" rx="6" fill="#151826" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="725" y="254" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">grief, shadow &amp; relationship.md</text>
+  <text x="725" y="267" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">Ambiguous Loss · 5-Phase Shadow · Dual Hold Mode</text>
+
+  <rect x="605" y="284" width="240" height="36" rx="6" fill="#151826" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="725" y="300" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">scripts/satori_memory.py &amp; PRIVACY.md</text>
+  <text x="725" y="313" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">SQLite FTS5 · 0700 · forget + VACUUM · AES-256-GCM</text>
+
+  <rect x="605" y="330" width="240" height="36" rx="6" fill="#151826" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="725" y="346" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">validate_skill &amp; run_evals.py</text>
+  <text x="725" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">21/21 Static Gates · 50/50 3-Strata Trigger Suite</text>
+
+  <!-- Footer Status Bar -->
+  <line x1="35" y1="382" x2="845" y2="382" stroke="#252840" stroke-width="1"/>
+  <text x="440" y="401" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#9a96b0" letter-spacing="0.05em">
+    v6.1.0 · Claude · Antigravity · Gemini CLI · Codex · Cursor · Windsurf · OpenCode · Hermes · OpenClaw · Apache 2.0
+  </text>
+</svg>

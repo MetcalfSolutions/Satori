@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220" role="img" aria-label="Satori v6.1.0 — A Clinically Informed Wisdom Companion for the Inner Life">
+  <defs>
+    <radialGradient id="heroGlow" cx="78%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#2a1f4d"/>
+      <stop offset="60%" stop-color="#111422"/>
+      <stop offset="100%" stop-color="#0c0e16"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="2" y="2" width="876" height="216" rx="16" fill="url(#heroGlow)" stroke="#252840" stroke-width="1.5"/>
+
+  <!-- Subtle 8-tradition mandala on right -->
+  <g transform="translate(740, 110)" opacity="0.22">
+    <circle cx="0" cy="0" r="84" stroke="#7c6af7" stroke-width="1" stroke-dasharray="3 6" fill="none"/>
+    <circle cx="0" cy="0" r="58" stroke="#e07b54" stroke-width="0.9" stroke-dasharray="2 5" fill="none"/>
+    <circle cx="0" cy="0" r="34" stroke="#4ecdc4" stroke-width="1" fill="none"/>
+    <line x1="0" y1="-90" x2="0" y2="90" stroke="#e4e2ef" stroke-width="0.7"/>
+    <line x1="-90" y1="0" x2="90" y2="0" stroke="#e4e2ef" stroke-width="0.7"/>
+    <line x1="-64" y1="-64" x2="64" y2="64" stroke="#e4e2ef" stroke-width="0.7"/>
+    <line x1="64" y1="-64" x2="-64" y2="64" stroke="#e4e2ef" stroke-width="0.7"/>
+    <circle cx="0" cy="0" r="5" fill="#7c6af7"/>
+  </g>
+
+  <!-- Eyebrow tag -->
+  <rect x="44" y="34" width="350" height="24" rx="12" fill="rgba(124,106,247,0.14)" stroke="rgba(124,106,247,0.4)" stroke-width="1"/>
+  <text x="219" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="600" fill="#a599ff" letter-spacing="0.08em">
+    SATORI v6.1.0 · UNIVERSAL MULTI-AGENT SKILL
+  </text>
+
+  <!-- Title & Subtitle -->
+  <text x="44" y="102" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#e4e2ef" letter-spacing="-0.01em">Satori</text>
+  <text x="166" y="101" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#7c6af7">悟り — sudden clarity</text>
+
+  <text x="44" y="136" font-family="Georgia, 'Times New Roman', serif" font-size="16.5" font-style="italic" fill="#c7c4d9">
+    "Not here to make you feel better. Here to help you see more clearly."
+  </text>
+
+  <text x="44" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#8b879f">
+    Clinically Informed · Conversationally Guided · Wise Companion · 8 Agent Ecosystems · 5 Model Profiles · Local Privacy Vault
+  </text>
+</svg>

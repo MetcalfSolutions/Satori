@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import pathlib
 import re
 import sys
@@ -186,14 +187,157 @@ def run_trigger_suite(mode: str, model: str | None = None) -> int:
     return 0 if passed else 1
 
 
+def get_env_var(name: str) -> str | None:
+    """Retrieve environment variable from os.environ, .env files, or Windows User Registry."""
+    val = os.environ.get(name)
+    if val:
+        return val
+    for p in [ROOT_DIR / ".env", pathlib.Path.home() / ".env"]:
+        if p.exists():
+            try:
+                for line in p.read_text(encoding="utf-8").splitlines():
+                    line = line.strip()
+                    if line.startswith(f"{name}="):
+                        return line.split("=", 1)[1].strip().strip('"').strip("'")
+            except Exception:
+                pass
+    if sys.platform == "win32":
+        try:
+            import winreg
+
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment") as key:
+                v, _ = winreg.QueryValueEx(key, name)
+                if v:
+                    return str(v)
+        except Exception:
+            pass
+    return None
+
+
+def _call_stage2_llm_judge_single(
+    user_prompt: str,
+    first_text: str,
+    second_text: str,
+    judge_model: str = "claude-4.5-opus",
+) -> str:
+    """Call Frontier LLM Judge via stdlib urllib.request and return 'FIRST', 'SECOND', or 'TIE'."""
+    import os
+    import urllib.error
+    import urllib.request
+
+    system_prompt = (
+        "You are Satori's Stage-2 Clinical & Voice Judge. Compare Candidate FIRST and Candidate SECOND "
+        "in response to the user's prompt. Score on: (1) Emotional Attunement & Specificity, "
+        "(2) Plain-Spoken Human Voice (penalizing AI-therapy clichés, lists, or numbered action plans), "
+        "(3) Movement & Single-Question Discipline. Reply with ONLY one word: FIRST, SECOND, or TIE."
+    )
+    eval_msg = (
+        f"USER PROMPT:\n{user_prompt}\n\n"
+        f"=== CANDIDATE FIRST ===\n{first_text}\n\n"
+        f"=== CANDIDATE SECOND ===\n{second_text}\n\n"
+        "Which candidate better embodies Satori's voice and clinical spine? Reply ONLY with FIRST, SECOND, or TIE."
+    )
+
+    anthropic_key = get_env_var("ANTHROPIC_API_KEY")
+    gemini_key = get_env_var("GEMINI_API_KEY") or get_env_var("GOOGLE_API_KEY")
+    openai_key = get_env_var("OPENAI_API_KEY")
+
+    if anthropic_key:
+        api_model = "claude-opus-4-20250514" if "4.5" in judge_model else judge_model
+        payload = json.dumps(
+            {
+                "model": api_model,
+                "max_tokens": 16,
+                "temperature": 0.0,
+                "system": system_prompt,
+                "messages": [{"role": "user", "content": eval_msg}],
+            }
+        ).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=payload,
+            headers={
+                "content-type": "application/json",
+                "x-api-key": anthropic_key,
+                "anthropic-version": "2023-06-01",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+                text = body.get("content", [{}])[0].get("text", "").strip().upper()
+        except urllib.error.HTTPError as e:
+            err_msg = e.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"Anthropic API ({api_model}) error HTTP {e.code}: {err_msg}")
+    elif gemini_key:
+        api_model = judge_model if ("gemini" in judge_model or "gemma" in judge_model) else "gemini-3.1-pro-preview"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{api_model}:generateContent?key={gemini_key}"
+        payload = json.dumps(
+            {
+                "systemInstruction": {"parts": [{"text": system_prompt}]},
+                "contents": [{"parts": [{"text": eval_msg}]}],
+                "generationConfig": {"temperature": 0.0, "maxOutputTokens": 16},
+            }
+        ).encode("utf-8")
+        req = urllib.request.Request(url, data=payload, headers={"content-type": "application/json"}, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+                text = (
+                    body.get("candidates", [{}])[0]
+                    .get("content", {})
+                    .get("parts", [{}])[0]
+                    .get("text", "")
+                    .strip()
+                    .upper()
+                )
+        except urllib.error.HTTPError as e:
+            err_msg = e.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"Gemini API ({api_model}) error HTTP {e.code}: {err_msg}")
+    elif openai_key:
+        payload = json.dumps(
+            {
+                "model": "gpt-4o",
+                "temperature": 0.0,
+                "max_tokens": 16,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": eval_msg},
+                ],
+            }
+        ).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.openai.com/v1/chat/completions",
+            data=payload,
+            headers={"content-type": "application/json", "authorization": f"Bearer {openai_key}"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+            text = body.get("choices", [{}])[0].get("message", {}).get("content", "").strip().upper()
+    else:
+        raise RuntimeError(
+            "No Frontier Judge API key found in environment. Export ANTHROPIC_API_KEY, GEMINI_API_KEY, or OPENAI_API_KEY."
+        )
+
+    if "FIRST" in text:
+        return "FIRST"
+    if "SECOND" in text:
+        return "SECOND"
+    return "TIE"
+
+
 def pairwise_compare_debiased(
     option_a: str,
     option_b: str,
     case_category: str = "standard",
     register: str = "Engaged",
     judge_model: str = "claude-4.5-opus",
+    prompt: str = "",
+    mode: str = "lint",
 ) -> dict[str, Any]:
-    """Compare Option A vs Option B in both (A,B) and (B,A) orders using Stage-1 + Voice heuristics."""
+    """Compare Option A vs Option B in both (A,B) and (B,A) orders using Stage-1 + optional Live Stage-2 Judge."""
     lower_model = judge_model.lower()
     if any(pat in lower_model for pat in BLOCKED_STAGE2_JUDGE_PATTERNS):
         raise ValueError(
@@ -204,24 +348,39 @@ def pairwise_compare_debiased(
     s1_a = score_stage1_deterministic(option_a, case_category=case_category, register=register)
     s1_b = score_stage1_deterministic(option_b, case_category=case_category, register=register)
 
-    # Pass 1: (A, B)
-    winner_ab = "A" if s1_a["score"] > s1_b["score"] else ("B" if s1_b["score"] > s1_a["score"] else "TIE")
-    # Pass 2: Position-swapped (B, A)
-    winner_ba_swapped = "B" if s1_b["score"] > s1_a["score"] else ("A" if s1_a["score"] > s1_b["score"] else "TIE")
+    stage2_ab = None
+    stage2_ba = None
+    if mode == "live":
+        # Pass 1: (A, B) -> FIRST=A, SECOND=B
+        res_ab = _call_stage2_llm_judge_single(prompt, option_a, option_b, judge_model=judge_model)
+        stage2_ab = "A" if res_ab == "FIRST" else ("B" if res_ab == "SECOND" else "TIE")
+        # Pass 2: Position-swapped (B, A) -> FIRST=B, SECOND=A
+        res_ba = _call_stage2_llm_judge_single(prompt, option_b, option_a, judge_model=judge_model)
+        stage2_ba = "B" if res_ba == "FIRST" else ("A" if res_ba == "SECOND" else "TIE")
+        winner_ab = stage2_ab if s1_a["score"] >= s1_b["score"] else "B"
+        winner_ba_swapped = stage2_ba if s1_a["score"] >= s1_b["score"] else "B"
+    else:
+        # Pass 1: (A, B)
+        winner_ab = "A" if s1_a["score"] > s1_b["score"] else ("B" if s1_b["score"] > s1_a["score"] else "TIE")
+        # Pass 2: Position-swapped (B, A)
+        winner_ba_swapped = "B" if s1_b["score"] > s1_a["score"] else ("A" if s1_a["score"] > s1_b["score"] else "TIE")
 
     consistent = winner_ab == winner_ba_swapped
     return {
         "winner": winner_ab if consistent else "TIE",
         "position_consistent": consistent,
+        "evaluation_mode": mode,
         "score_a": s1_a["score"],
         "score_b": s1_b["score"],
+        "stage2_ab": stage2_ab,
+        "stage2_ba": stage2_ba,
         "violations_a": s1_a["violations"],
         "violations_b": s1_b["violations"],
     }
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.0 Evaluation & Trigger Suite Runner")
+    parser = argparse.ArgumentParser(description="Satori v6.1.0 Evaluation & Trigger Suite Runner")
     parser.add_argument("--suite", choices=["trigger", "response"], default="trigger")
     parser.add_argument("--mode", choices=["lint", "live"], default="lint")
     parser.add_argument("--model", default="claude-4.5-opus", help="Target or Judge model identifier")
@@ -231,7 +390,6 @@ def main(argv: list[str] | None = None) -> int:
     if args.suite == "trigger":
         return run_trigger_suite(mode=args.mode, model=args.model)
 
-    # Default response suite check on gold anchors
     anchors_path = EVALS_DIR / "gold_anchors.jsonl"
     anchors = [json.loads(line) for line in anchors_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     cases_map = {
@@ -252,10 +410,12 @@ def main(argv: list[str] | None = None) -> int:
             case_category=case_meta["category"],
             register=case_meta["register"],
             judge_model=args.model,
+            prompt=item.get("prompt", ""),
+            mode=args.mode,
         )
         results.append({"anchor_id": item["id"], "tier": item["tier"], **comp})
 
-    print(json.dumps({"suite": "response", "results": results}, indent=2))
+    print(json.dumps({"suite": "response", "mode": args.mode, "results": results}, indent=2))
     return 0
 
 

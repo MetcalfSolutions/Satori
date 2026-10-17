@@ -6,10 +6,10 @@ All notable changes to Satori are documented here.
 
 ## v6.0.0 & v6.1.0 — Universal Multi-Agent & Behavior-Calibrated Overhaul (Current)
 
-### Migrating from v5.1 to v6.0 (Claude.ai Web & CLI Users)
-- **Claude.ai Web Users (`SatoriSkill-v6.0.0.zip`)**:
-  1. Generate `dist/SatoriSkill-v6.0.0.zip` by running `python scripts/build_release.py --sync` (or download `SatoriSkill-v6.0.0.zip` from GitHub Releases).
-  2. In [claude.ai](https://claude.ai), open **Customize → Skills**, remove the old v5 skill (or click update), and upload `SatoriSkill-v6.0.0.zip`.
+### Migrating from v5.1 to v6.1.0 (Claude.ai Web & CLI Users)
+- **Claude.ai Web Users (`SatoriSkill-v6.1.0.zip`)**:
+  1. Generate `dist/SatoriSkill-v6.1.0.zip` by running `python scripts/build_release.py --sync` (or download `SatoriSkill-v6.1.0.zip` from GitHub Releases).
+  2. In [claude.ai](https://claude.ai), open **Customize → Skills**, remove the old v5 skill (or click update), and upload `SatoriSkill-v6.1.0.zip`.
   3. **Memory Continuity**: Your existing Claude.ai native memory remains intact automatically. To bring your web context into a local CLI agent (or vice versa), ask Satori for a **Portable Continuity Capsule** or run `python scripts/satori_memory.py export-capsule`.
 - **CLI & IDE Agent Users (Antigravity, Claude Code, Codex, Cursor, Windsurf, OpenCode, Hermes, OpenClaw)**:
   - Clone the repository and run `python scripts/satori_memory.py init` to initialize your local privacy-first memory vault (`./.satori/memory/` or `~/.satori/memory/`).

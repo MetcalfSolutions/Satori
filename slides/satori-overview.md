@@ -173,7 +173,7 @@ style: |
 
 <div class="subtitle">A clinically informed wisdom companion<br>for navigating the inner life</div>
 
-<div class="version">v5.1 · MetcalfSolutions · Apache 2.0</div>
+<div class="version">v6.1.0 · MetcalfSolutions · Apache 2.0</div>
 
 ---
 
@@ -461,47 +461,47 @@ Satori builds understanding **across time**, not just across a single conversati
 
 ---
 
-# Getting Started
+# Getting Started (v6.1.0)
 
-**Option 1 — Claude Code Plugin**
+**Option 1 — 8-Agent CLI & IDE Auto-Discovery**
 ```bash
-# .claude-plugin/plugin.json is already configured
-# Add to your Claude Code workspace
+git clone https://github.com/MetcalfSolutions/Satori.git
+cd Satori && python scripts/satori_memory.py init
 ```
 
 **Option 2 — Claude.ai Upload**
-Upload `SatoriSkill-v5.zip` directly to Claude.ai as a custom skill.
+Upload `SatoriSkill-v6.1.0.zip` directly to Claude.ai as a custom skill.
 
-**Option 3 — Manual Installation**
-Copy the contents of `SKILL.md` into a custom system prompt or project instruction block.
+**Option 3 — Compact / Local (`<32B`) & Manual**
+Load `SKILL.md` (`<8 KB`) + `references/core-compact.md` (`<12 KB`).
 
-**Load Order:**
+**Progressive Disclosure Load Order:**
 ```
-Always:      SOUL.md  clinical-spine.md  traditions-quickref.md
-On demand:   traditions-deep.md  conversation-toolkit.md  tone-and-voice.md
-Conditional: onboarding.md  darknight-protocol.md  shadow-work-protocol.md
+Turn 1:      SKILL.md (<8 KB canonical entry point)
+Profile 5:   references/core-compact.md (<12 KB single-file spine)
+Turn 2+:     SOUL.md  clinical-spine.md (<20 KB)  traditions-quickref.md
+Selective:   traditions-deep.md (30-row Line-Range Index)  conversation-toolkit.md (Patterns 1-16)
+Protocols:   onboarding  darknight  grief  shadow-work  relationship
 ```
 
 ---
 
-# Architecture at a Glance
+# Architecture at a Glance (v6.1.0)
 
 ```
-SOUL.md                      ← Constitutional layer (identity, immovables)
+SKILL.md (<8 KB Canonical Entry + 4 SHA-256 Mirrors + 6 Pointer Stubs)
   │
-  ├── clinical-spine.md      ← Conversation model, memory, formulation
-  ├── traditions-quickref.md ← Framework selection guide
-  │
-  ├── traditions-deep.md     ← Full tradition encyclopedia (30+ frameworks)
-  ├── conversation-toolkit.md ← OARS/MI, tactical empathy, 14 patterns
-  ├── tone-and-voice.md      ← Register calibration, vocabulary, examples
-  │
-  ├── onboarding.md          ← First-session 5-question sequence
-  ├── darknight-protocol.md  ← Presence-only mode for 3am despair
-  └── shadow-work-protocol.md ← 5-session Jungian arc
+  ├── references/SOUL.md             ← Constitutional layer (SHA-256 verified)
+  ├── references/clinical-spine.md   ← 6-step model, 3×6 role/register, crisis (<20 KB)
+  ├── references/core-compact.md     ← <12 KB spine for <32B local & voice models
+  ├── references/model-calibration.md ← 3-Tier detection & Behavioral Profiles 1–5
+  ├── references/memory-system.md    ← 3-Tier vault + scripts/satori_memory.py (SQLite FTS5)
+  ├── references/traditions-deep.md  ← 30+ lenses with top Line-Range Index Table
+  ├── references/conversation-toolkit.md ← OARS/MI, Voss, Patterns 1–16
+  └── 5 Activated Protocols          ← onboarding, darknight, grief, shadow, relationship
 ```
 
-**Total:** ~3,300 lines · ~211,000 characters · 9 reference files
+**Total:** 15 reference & spec modules · 8 agent ecosystems · 5 behavioral model profiles
 
 ---
 
