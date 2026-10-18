@@ -1,0 +1,10 @@
+# Enforce LF line endings across all platforms to prevent CRLF size inflation
+* text=auto eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.svg text eol=lf
+*.html text eol=lf

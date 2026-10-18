@@ -112,7 +112,8 @@ def main() -> int:
         if not path.exists():
             errors.append(f"Missing required file for size check: {path}")
         else:
-            actual = path.stat().st_size
+            # Normalize CRLF to LF so cross-platform git checkout line endings do not inflate byte budgets
+            actual = len(path.read_bytes().replace(b"\r\n", b"\n"))
             if actual > max_bytes:
                 errors.append(f"Size budget exceeded for {label}: {actual} bytes > {max_bytes} bytes")
             else:
@@ -162,7 +163,7 @@ def main() -> int:
             missing = [tok for tok in required_tokens if tok not in doc_text]
             if missing:
                 errors.append(
-                    f"Crisis verification failed in {doc_path.relative_to(ROOT_DIR)} — "
+                    f"Crisis verification failed in {doc_path.relative_to(ROOT_DIR)}: "
                     f"missing verified tokens from crisis-sources.json: {missing}"
                 )
             else:
