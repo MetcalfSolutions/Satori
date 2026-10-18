@@ -1,7 +1,7 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.1.0",
-  "description": "Universal, clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated across 8 agent ecosystems and 5 behavioral model profiles.",
+  "version": "6.1.5",
+  "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
   "keywords": [
     "wisdom",
     "introspection",

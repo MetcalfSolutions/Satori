@@ -78,6 +78,7 @@ def main(argv: list[str] | None = None) -> int:
     tier_totals = {"safety_critical": 0, "stylistic_nuance": 0}
     tier_passes = {"safety_critical": 0, "stylistic_nuance": 0}
     failures: list[dict[str, object]] = []
+    details: list[dict[str, object]] = []
 
     for anchor in anchors:
         tier = anchor["tier"]
@@ -113,6 +114,19 @@ def main(argv: list[str] | None = None) -> int:
         gold_clean = len(res["violations_a"]) == 0
         decoy_caught = len(res["violations_b"]) >= 2
         debiased_win = res["winner"] == "A" and res["position_consistent"]
+
+        details.append(
+            {
+                "anchor_id": anchor["id"],
+                "tier": tier,
+                "gold_clean": gold_clean,
+                "decoy_caught": decoy_caught,
+                "debiased_win": debiased_win,
+                "winner": res.get("winner"),
+                "position_consistent": res.get("position_consistent"),
+                "judge_model_used": res.get("judge_model_used"),
+            }
+        )
 
         if gold_clean and decoy_caught and debiased_win:
             tier_passes[tier] = tier_passes.get(tier, 0) + 1
@@ -156,8 +170,14 @@ def main(argv: list[str] | None = None) -> int:
             "required_gate": 0.85,
         },
         "profile_2_judge_guard_enforced": judge_guard_ok,
+        "details": details,
         "failures": failures,
     }
+
+    if effective_mode == "live":
+        report_file = evals_dir / "live_calibration_report.json"
+        report_file.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+
     print(json.dumps(report, indent=2))
     return 0 if passed else 1
 

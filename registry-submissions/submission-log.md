@@ -1,29 +1,25 @@
 # Satori Registry Submission Log
 
-> Generated April 5, 2026. Track all registry submissions here.
+> Last audited: October 17, 2026. Next follow-up audit scheduled: October 31, 2026.
 
-| # | Registry | Tier | PR URL | Status | Notes |
-|---|----------|------|--------|--------|-------|
-| 1 | ComposioHQ/awesome-claude-skills | 1 | https://github.com/ComposioHQ/awesome-claude-skills/pull/599 | Submitted | External community skills accepted; added to Productivity & Organization |
-| 2 | travisvn/awesome-claude-skills | 1 | | Skip - requires human PR | PRs must NOT be explicitly generated/submitted with AI-assistance |
-| 3 | VoltAgent/awesome-agent-skills | 1 | https://github.com/VoltAgent/awesome-agent-skills/pull/380 | Submitted | Added to Productivity and Collaboration section |
-| 4 | sickn33/antigravity-awesome-skills | 1 | https://github.com/sickn33/antigravity-awesome-skills/pull/466 | Submitted | SKILL.md created, passed npm run validate (1378 skills) |
-| 5 | karanb192/awesome-claude-skills | 2 | https://github.com/karanb192/awesome-claude-skills/pull/45 | Submitted | Added to Writing & Research section |
-| 6 | BehiSecc/awesome-claude-skills | 2 | https://github.com/BehiSecc/awesome-claude-skills/pull/207 | Submitted | Added to Health & Life Sciences section |
-| 7 | majiayu000/claude-skill-registry | 2 | https://github.com/majiayu000/claude-skill-registry-core/pull/12 | Submitted | PR opened to claude-skill-registry-core (source of truth); sources/community.json updated |
-| 8 | e2b-dev/awesome-ai-agents | 3 | https://github.com/e2b-dev/awesome-ai-agents/pull/699 | Submitted | Added with full ## [Satori] block format, alphabetically before Self-operating computer |
-| 9 | kyrolabs/awesome-agents | 3 | https://github.com/kyrolabs/awesome-agents/pull/340 | Submitted | Added to Conversational / General Agents with star badge |
-| 10 | Shubhamsaboo/awesome-llm-apps | 3 | | Skip | Runnable code collection, not a link list |
+| # | Registry | Tier | PR / Listing URL | Status | Audit Date | Verified Baseline Notes |
+|---|----------|------|------------------|--------|------------|-------------------------|
+| 1 | ComposioHQ/awesome-claude-skills | 1 | https://github.com/ComposioHQ/awesome-claude-skills/pull/599 | Submitted | 2026-10-17 | Verified unversioned description and repo URL. |
+| 2 | travisvn/awesome-claude-skills | 1 | | Deferred | 2026-10-17 | Manual submission policy verified. |
+| 3 | VoltAgent/awesome-agent-skills | 1 | https://github.com/VoltAgent/awesome-agent-skills/pull/380 | Submitted | 2026-10-17 | Verified repo link. No hardcoded metrics in copy. |
+| 4 | sickn33/antigravity-awesome-skills | 1 | https://github.com/sickn33/antigravity-awesome-skills/pull/466 | Submitted | 2026-10-17 | SKILL.md validated against v6.1.5 schema. |
+| 5 | karanb192/awesome-claude-skills | 2 | https://github.com/karanb192/awesome-claude-skills/pull/45 | Submitted | 2026-10-17 | Verified description matches canonical copy. |
+| 6 | BehiSecc/awesome-claude-skills | 2 | https://github.com/BehiSecc/awesome-claude-skills/pull/207 | Submitted | 2026-10-17 | Health & Life Sciences entry verified. |
+| 7 | majiayu000/claude-skill-registry | 2 | https://github.com/majiayu000/claude-skill-registry-core/pull/12 | Submitted | 2026-10-17 | Core JSON schema verified; npm install path documented. |
+| 8 | e2b-dev/awesome-ai-agents | 3 | https://github.com/e2b-dev/awesome-ai-agents/pull/699 | Submitted | 2026-10-17 | Verified description and live GitHub link. |
+| 9 | kyrolabs/awesome-agents | 3 | https://github.com/kyrolabs/awesome-agents/pull/340 | Submitted | 2026-10-17 | Verified live GitHub link. Hardcoded star count removed. |
+| 10 | Shubhamsaboo/awesome-llm-apps | 3 | | Skip | 2026-10-17 | Runnable code collection, not a link directory. |
 
-## Submission Priority
+---
 
-Start with registries that have the simplest process and fewest barriers:
-1. **BehiSecc/awesome-claude-skills** (simple format, very active, 8.2k stars)
-2. **majiayu000/claude-skill-registry** (JSON entry, automated pipeline)
-3. **karanb192/awesome-claude-skills** (simple format)
-4. **VoltAgent/awesome-agent-skills** (if community traction exists)
-5. **sickn33/antigravity-awesome-skills** (structured SKILL.md required)
-6. **ComposioHQ/awesome-claude-skills** (may need to verify external submissions accepted)
-7. **travisvn/awesome-claude-skills** (star threshold, manual PR required)
-8. **e2b-dev/awesome-ai-agents** (detailed format, position as cognitive agent)
-9. **kyrolabs/awesome-agents** (framework-focused)
+## October 17, 2026 Audit Summary
+
+1. **Third-Party Metric Audit**: Requested correction of any third-party scraper caches showing inflated star numbers. Repo URL (`https://github.com/MetcalfSolutions/Satori`) provided as canonical polling endpoint.
+2. **Canonical Description**: Standardized all directory descriptions to match the canonical one-line description: *"A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist."*
+3. **Package Distribution**: Documented the live npm install path (`npm install @metcalfsolutions/satori`) for developer and programmatic agent pipelines.
+4. **Follow-Up Schedule**: Re-check all 9 directory PRs and external listings on October 31, 2026.

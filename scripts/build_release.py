@@ -14,7 +14,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import pathlib
+import shutil
+import stat
 import sys
 import zipfile
 
@@ -64,6 +67,17 @@ def sync_mirrors_and_hashes() -> dict[str, str]:
     legacy_zip = ROOT_DIR / "SatoriSkill-v5.zip"
     if legacy_zip.exists():
         legacy_zip.unlink()
+
+    # Auto-install pre-commit hook if .git/hooks exists
+    hook_src = ROOT_DIR / "scripts" / "pre-commit"
+    hooks_dir = ROOT_DIR / ".git" / "hooks"
+    if hook_src.exists() and hooks_dir.exists():
+        hook_dst = hooks_dir / "pre-commit"
+        shutil.copyfile(hook_src, hook_dst)
+        try:
+            os.chmod(hook_dst, os.stat(hook_dst).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        except OSError:
+            pass
 
     return {
         "skill_sha256": sha256_file(canonical_skill),

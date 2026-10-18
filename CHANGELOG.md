@@ -4,7 +4,19 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.0.0 & v6.1.0 — Universal Multi-Agent & Behavior-Calibrated Overhaul (Current)
+## v6.1.5 : Documentation, Audience Routing & npm Pipeline Release (Current)
+
+- **Documentation & Audience Routing**:
+  - Implemented dual-audience funnel routing: GitHub Pages focuses on end-user experience, while GitHub README focuses on developer evaluation and verification.
+  - Documented the live npm install path (`npm install @metcalfsolutions/satori`) with clear framing and usage guidance.
+  - Reordered the GitHub README to place installation in the first screen (position 4) and promoted trigger boundary discipline.
+  - Trimmed the GitHub Pages site from 555 lines to a lean, focused landing page, eliminating machinery leaks and consolidating duplicated FAQs into a single 7-question reference.
+  - Removed outdated third-party live share links and corrected third-party metrics.
+  - Standardized copy rules: eliminated em dashes, added author byline, and unified project descriptions. No functional skill changes.
+
+---
+
+## v6.0.0 & v6.1.0 : Universal Multi-Agent & Behavior-Calibrated Overhaul
 
 ### Migrating from v5.1 to v6.1.0 (Claude.ai Web & CLI Users)
 - **Claude.ai Web Users (`SatoriSkill-v6.1.0.zip`)**:
@@ -14,7 +26,7 @@ All notable changes to Satori are documented here.
 - **CLI & IDE Agent Users (Antigravity, Claude Code, Codex, Cursor, Windsurf, OpenCode, Hermes, OpenClaw)**:
   - Clone the repository and run `python scripts/satori_memory.py init` to initialize your local privacy-first memory vault (`./.satori/memory/` or `~/.satori/memory/`).
 
-### Phase 1 (`v6.0.0`) — Platform, Progressive Disclosure, Privacy-First Memory, Evals & v5.2 Roadmap Completion
+### Phase 1 (`v6.0.0`) : Platform, Progressive Disclosure, Privacy-First Memory, Evals & v5.2 Roadmap Completion
 - **Eliminated the 63 KB Turn-1 Load Tax**:
   - `SKILL.md` (`<8 KB`) is now self-sufficient on Turn 1 and serves as the single canonical source of truth.
   - Extracted memory mechanics from `references/clinical-spine.md` (`32.9 KB` → `<19 KB`, compliant with Antigravity's `24,000-byte` rule ceiling) into `references/memory-system.md`.
@@ -38,7 +50,7 @@ All notable changes to Satori are documented here.
 - **Two-Stage Anti-Gaming Evaluation & Trigger Suite (`evals/`, `scripts/run_evals.py`, `scripts/test_judge_calibration.py`)**:
   - Added a 50-case 3-strata trigger benchmark (`evals/trigger_boundary.jsonl`: 20 Clear Positives, 20 Clear Negatives, 10 Ambiguous Mixed), a 15-scenario conversational benchmark (`evals/cases.jsonl`), human v5 canonical gold anchors (`evals/gold_anchors.jsonl`), Stage-1 deterministic anti-slop checks, and Stage-2 position-debiased Profile-2 pairwise evaluation.
 
-### Phase 2 (`v6.1.0`) — Relational Hold Mode, Inner Council & Opt-In Hooks
+### Phase 2 (`v6.1.0`) : Relational Hold Mode, Inner Council & Opt-In Hooks
 - **Relationship & Conflict Hold Protocol (`references/relationship-protocol.md`)**:
   - Supports both Solo Relational Rupture and Shared Two-Person Conflict Sessions using Multi-Partiality, Relational Psychoanalysis ("The Third Thing"), Gottman Softened Start-Up & Repair, and Nonviolent Communication (NVC), with a hard domestic-abuse safety override.
 - **Pattern 15: The Inner Council (`references/conversation-toolkit.md`)**:
@@ -51,34 +63,34 @@ All notable changes to Satori are documented here.
 ## v5.1
 
 ### Added
-- **Onboarding protocol** (`references/onboarding.md`) — Guided 5-question first-session sequence with "Satori has met you" synthesis statement
-- **Dark Night Protocol** (`references/darknight-protocol.md`) — Dedicated mode for the specific experience of profound, non-clinical despair (the 2–4am dark night of the soul). Distinct from crisis response — presence-focused, not intervention-focused
-- **Shadow Work Protocol** (`references/shadow-work-protocol.md`) — Structured 5-session arc for Jungian shadow work: locating shadow, meeting the first figure, origin work, integration, and living with the shadow
+- **Onboarding protocol** (`references/onboarding.md`) : Guided 5-question first-session sequence with "Satori has met you" synthesis statement
+- **Dark Night Protocol** (`references/darknight-protocol.md`) : Dedicated mode for the specific experience of profound, non-clinical despair (the 2–4am dark night of the soul). Distinct from crisis response : presence-focused, not intervention-focused
+- **Shadow Work Protocol** (`references/shadow-work-protocol.md`) : Structured 5-session arc for Jungian shadow work: locating shadow, meeting the first figure, origin work, integration, and living with the shadow
 - **New conversation patterns** in `conversation-toolkit.md`:
-  - Pattern 11: The Pattern Letter — letter from the future self, grounded in narrative identity theory
-  - Pattern 12: The Dream Walk — multi-tradition dream exploration
-  - Pattern 13: The Ikigai Map — structured multi-turn purpose mapping
-  - Pattern 14: The Shadow Work Invitation — entry point to shadow-work-protocol.md
+  - Pattern 11: The Pattern Letter : letter from the future self, grounded in narrative identity theory
+  - Pattern 12: The Dream Walk : multi-tradition dream exploration
+  - Pattern 13: The Ikigai Map : structured multi-turn purpose mapping
+  - Pattern 14: The Shadow Work Invitation : entry point to shadow-work-protocol.md
 - **Dark Night detection signal** added to crisis recognition table in `clinical-spine.md`
-- **Expanded warm-handoff language** in crisis protocol — specific, humane language for redirecting to professional support without closing the door
+- **Expanded warm-handoff language** in crisis protocol : specific, humane language for redirecting to professional support without closing the door
 
 ### Changed
 - README hero section rewritten to lead with a compelling "before/after" pattern-naming transcript ("The Moment") rather than install instructions
 - Contributing section updated with link to CONTRIBUTING.md
-- "Who This Is Built On" section added to README — documents the specific clinical and philosophical lineages Satori draws from
+- "Who This Is Built On" section added to README : documents the specific clinical and philosophical lineages Satori draws from
 
 ---
 
 ## v5.0
 
 ### Architecture
-- Restructured as a formal Claude skill package (`SatoriSkill-v5.zip`) — uploadable directly to claude.ai without terminal access
+- Restructured as a formal Claude skill package (`SatoriSkill-v5.zip`) : uploadable directly to claude.ai without terminal access
 - Added `.claude-plugin/plugin.json` for Claude Code plugin auto-detection
 - Added `marketplace.json` for Claude marketplace listing
 
 ### Core System
-- `SOUL.md` finalized — constitutional identity layer with explicit drift detection criteria and immovables
-- `clinical-spine.md` completed — full operational manual including the Unified Role Model (3 roles × 6 registers), Working Formulation system, Memory and Continuity architecture, Dream/Auto-Dream layer, Longitudinal Pattern Tracking, and Adaptive Self-Improvement loop
+- `SOUL.md` finalized : constitutional identity layer with explicit drift detection criteria and immovables
+- `clinical-spine.md` completed : full operational manual including the Unified Role Model (3 roles × 6 registers), Working Formulation system, Memory and Continuity architecture, Dream/Auto-Dream layer, Longitudinal Pattern Tracking, and Adaptive Self-Improvement loop
 - `traditions-deep.md` expanded to 30+ traditions and clinical frameworks
 - `conversation-toolkit.md` expanded with Voss tactical empathy framework and advanced deepening patterns
 
@@ -114,6 +126,6 @@ All notable changes to Satori are documented here.
 
 ## v1.0
 
-- Initial release — single system prompt with embedded wisdom tradition references
+- Initial release : single system prompt with embedded wisdom tradition references
 - Core positioning established: clinically informed wisdom companion, not therapist, not chatbot
 - North Star metric established: *understanding + pattern recognition + connection + movement*

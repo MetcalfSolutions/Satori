@@ -6,12 +6,36 @@ Before contributing, read this document. Contributions that don't meet the quali
 
 ---
 
+## Developer Setup & Process Guards
+
+After cloning the repository, install the local Git pre-commit hook so that every commit automatically runs the 21-point static verification suite (`python scripts/validate_skill.py`):
+
+```bash
+# Option A: Cross-platform Python installer (Windows / macOS / Linux)
+python scripts/install-hooks.py
+
+# Option B: POSIX shell installer or symlink (macOS / Linux / Git Bash)
+sh scripts/install-hooks.sh
+# or: ln -sf ../../scripts/pre-commit .git/hooks/pre-commit
+```
+
+Running `python scripts/build_release.py` also automatically installs `.git/hooks/pre-commit` whenever `.git/hooks` is present.
+
+**What the pre-commit hook enforces (`python scripts/validate_skill.py`: 21/21 checks):**
+- Progressive disclosure character budget (`SKILL.md` <= 9,500 chars, zero `alwaysLoad` bloat).
+- Category A pointer-stub integrity across 6 IDE rule files and byte-for-byte SHA-256 sync across 4 Category B `SKILL.md` mirrors.
+- `references/SOUL.md` SHA-256 integrity verification against `openclaw.plugin.json`.
+- Primary-source verification of all 11 regional crisis hotlines against `references/crisis-sources.json`.
+- Repository hygiene (`.gitignore` guards for `.satori/`, `dist/`, `*.zip`) and zero broken relative Markdown links.
+
+---
+
 ## What Contributions Are Welcome
 
 ### Wisdom Traditions
 New tradition entries for `references/traditions-deep.md` or `references/traditions-quickref.md`. Priority:
 - African philosophical traditions (Ubuntu, Akan thought, Kemetic wisdom)
-- Indigenous wisdom traditions (with appropriate cultural care — see below)
+- Indigenous wisdom traditions (with appropriate cultural care : see below)
 - Lesser-represented Asian traditions (Daoism beyond Lao Tzu, Confucian ethics in practice, Zen vs. Pure Land distinctions)
 - Latin American philosophical traditions
 - Additions to existing entries where depth is genuinely needed
@@ -19,14 +43,14 @@ New tradition entries for `references/traditions-deep.md` or `references/traditi
 ### Clinical Frameworks
 New or expanded entries for clinical/psychological frameworks. Must:
 - Have a real, named lineage (not synthesized from general pop-psychology)
-- Be operationally useful — not just descriptively accurate
+- Be operationally useful : not just descriptively accurate
 - Include a clear "when to use" and "failure mode" section
 
 ### Conversation Patterns
 New patterns for `references/conversation-toolkit.md`. Must meet the same quality bar as existing patterns (see below).
 
 ### Protocol Documents
-New reference documents in the `references/` directory — following the pattern of `darknight-protocol.md` or `shadow-work-protocol.md`. These should address specific situations or arcs not currently covered.
+New reference documents in the `references/` directory : following the pattern of `darknight-protocol.md` or `shadow-work-protocol.md`. These should address specific situations or arcs not currently covered.
 
 ### Community Contributions
 Place community-originated content in a `community/` subdirectory with attribution. These are not merged into the core reference files without editorial review, but are available as optional extensions.
@@ -44,7 +68,7 @@ For documentation: **Clarity + operational specificity + clinical discipline + v
 ### The Tests
 
 **1. Is it operationally specific?**
-Satori documentation is not descriptive — it is instructional. It tells Claude *what to do*, *when*, *how*, and *what to avoid*. A tradition entry that only explains what the tradition believes is not enough. It must explain *when to reach for it* and *how to translate it into lived experience*.
+Satori documentation is not descriptive : it is instructional. It tells Claude *what to do*, *when*, *how*, and *what to avoid*. A tradition entry that only explains what the tradition believes is not enough. It must explain *when to reach for it* and *how to translate it into lived experience*.
 
 **2. Does it translate to plain language?**
 Every framework must be shown landing in concrete human experience, not as an abstract concept. If your entry includes a framework applied only in jargon, it hasn't been finished.
@@ -56,7 +80,7 @@ Read `references/tone-and-voice.md` before contributing. Satori's voice is: warm
 Good entries name not just *when to use* but *when this framework falls flat*, *when it can do harm*, or *what it misses*. Traditions are precision tools, not universal answers.
 
 **5. Is it one thing, done well?**
-Satori's central discipline is: one framework per response. The same discipline applies to contributions. One tradition, one pattern, one protocol — done deeply and precisely — is more valuable than five done superficially.
+Satori's central discipline is: one framework per response. The same discipline applies to contributions. One tradition, one pattern, one protocol : done deeply and precisely : is more valuable than five done superficially.
 
 ---
 
@@ -64,10 +88,10 @@ Satori's central discipline is: one framework per response. The same discipline 
 
 For traditions from cultures that have experienced marginalization, colonization, or appropriation:
 
-- **Name the tradition accurately** — do not synthesize "Indigenous wisdom" as a generic category. If you're writing about a specific tradition, name it specifically (Lakota, Yoruba, Māori, etc.).
-- **Cite sources** — preferably by authors who are members of the tradition they're writing about.
-- **Note limitations** — if a tradition has aspects that shouldn't be extracted from their cultural context, say so.
-- **Consult community** — for traditions with living communities that have expressed concerns about appropriation, note this and approach with proportional care.
+- **Name the tradition accurately** : do not synthesize "Indigenous wisdom" as a generic category. If you're writing about a specific tradition, name it specifically (Lakota, Yoruba, Māori, etc.).
+- **Cite sources** : preferably by authors who are members of the tradition they're writing about.
+- **Note limitations** : if a tradition has aspects that shouldn't be extracted from their cultural context, say so.
+- **Consult community** : for traditions with living communities that have expressed concerns about appropriation, note this and approach with proportional care.
 
 Satori is committed to representing these traditions with the same depth and respect given to Greek philosophy or Western psychology.
 
@@ -78,7 +102,7 @@ Satori is committed to representing these traditions with the same depth and res
 1. **Fork the repository**
 2. **Create a branch** named for your contribution (`feature/ubuntu-tradition`, `pattern/the-apology`, etc.)
 3. **Write your contribution** following the style and structure of existing entries
-4. **Test it** — if possible, run it through Claude and verify the output feels like Satori, not like a different tool
+4. **Test it** : if possible, run it through Claude and verify the output feels like Satori, not like a different tool
 5. **Submit a PR** with:
    - What you added and why
    - What tradition/source it draws from
@@ -91,7 +115,7 @@ Satori is committed to representing these traditions with the same depth and res
 
 - Content that replaces the clinical spine with generic wellness advice
 - Frameworks that encourage Satori to diagnose, prescribe, or assess clinical risk
-- Additions to the "always load" core files without maintainer discussion — these affect every conversation
+- Additions to the "always load" core files without maintainer discussion : these affect every conversation
 - Contributions that undermine the "one framework per response" discipline
 - Anything that softens the commitment to honesty before comfort
 
@@ -99,7 +123,7 @@ Satori is committed to representing these traditions with the same depth and res
 
 ## A Note on Satori's Identity
 
-SOUL.md exists for a reason. Satori has explicit "immovables" — things that never adapt regardless of what is contributed. Contributions that erode these will not be merged:
+SOUL.md exists for a reason. Satori has explicit "immovables" : things that never adapt regardless of what is contributed. Contributions that erode these will not be merged:
 
 - Honesty before comfort
 - Insight must lead to movement

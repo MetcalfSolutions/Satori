@@ -62,6 +62,12 @@ PERSONAL_DISTRESS_RE = re.compile(
 BLOCKED_STAGE2_JUDGE_PATTERNS = ("flash", "haiku", "nano", "-mini", "ministral", "lite", "8b", "14b")
 
 
+def is_blocked_judge_model(model_name: str) -> bool:
+    """Return True if model_name is a Profile 4/5 fast/workhorse model blocked from Stage-2 judging."""
+    lower = model_name.lower()
+    return any(pat in lower for pat in BLOCKED_STAGE2_JUDGE_PATTERNS)
+
+
 def score_stage1_deterministic(text: str, case_category: str = "standard", register: str = "Engaged") -> dict[str, Any]:
     """Run Stage-1 deterministic structural & safety checks (0..100 score + violation list)."""
     violations: list[str] = []
@@ -214,14 +220,28 @@ def get_env_var(name: str) -> str | None:
     return None
 
 
+_ACTIVE_GEMINI_FALLBACK_MODEL: str | None = None
+_LAST_USED_JUDGE_MODEL: str | None = None
+
+
+def has_any_api_key() -> bool:
+    return bool(
+        get_env_var("ANTHROPIC_API_KEY")
+        or get_env_var("GEMINI_API_KEY")
+        or get_env_var("GOOGLE_API_KEY")
+        or get_env_var("OPENAI_API_KEY")
+    )
+
+
 def _call_stage2_llm_judge_single(
     user_prompt: str,
     first_text: str,
     second_text: str,
     judge_model: str = "claude-4.5-opus",
 ) -> str:
-    """Call Frontier LLM Judge via stdlib urllib.request and return 'FIRST', 'SECOND', or 'TIE'."""
-    import os
+    """Call Frontier LLM Judge via stdlib urllib.request with exponential backoff & fallback."""
+    global _ACTIVE_GEMINI_FALLBACK_MODEL, _LAST_USED_JUDGE_MODEL
+    import time
     import urllib.error
     import urllib.request
 
@@ -241,61 +261,115 @@ def _call_stage2_llm_judge_single(
     anthropic_key = get_env_var("ANTHROPIC_API_KEY")
     gemini_key = get_env_var("GEMINI_API_KEY") or get_env_var("GOOGLE_API_KEY")
     openai_key = get_env_var("OPENAI_API_KEY")
+    backoff_schedule = (2.0, 4.0, 8.0)
+    text = ""
 
     if anthropic_key:
         api_model = "claude-opus-4-20250514" if "4.5" in judge_model else judge_model
+        _LAST_USED_JUDGE_MODEL = api_model
         payload = json.dumps(
             {
                 "model": api_model,
-                "max_tokens": 16,
+                "max_tokens": 32,
                 "temperature": 0.0,
                 "system": system_prompt,
                 "messages": [{"role": "user", "content": eval_msg}],
             }
         ).encode("utf-8")
-        req = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=payload,
-            headers={
-                "content-type": "application/json",
-                "x-api-key": anthropic_key,
-                "anthropic-version": "2023-06-01",
-            },
-            method="POST",
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                body = json.loads(resp.read().decode("utf-8"))
-                text = body.get("content", [{}])[0].get("text", "").strip().upper()
-        except urllib.error.HTTPError as e:
-            err_msg = e.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"Anthropic API ({api_model}) error HTTP {e.code}: {err_msg}")
+        last_err = None
+        for attempt in range(4):
+            req = urllib.request.Request(
+                "https://api.anthropic.com/v1/messages",
+                data=payload,
+                headers={
+                    "content-type": "application/json",
+                    "x-api-key": anthropic_key,
+                    "anthropic-version": "2023-06-01",
+                },
+                method="POST",
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    body = json.loads(resp.read().decode("utf-8"))
+                    text = body.get("content", [{}])[0].get("text", "").strip().upper()
+                    break
+            except urllib.error.HTTPError as e:
+                err_msg = e.read().decode("utf-8", errors="replace")
+                last_err = f"Anthropic API ({api_model}) error HTTP {e.code}: {err_msg}"
+                if e.code in (503, 429, 500) and attempt < 3:
+                    time.sleep(backoff_schedule[attempt])
+                    continue
+                raise RuntimeError(last_err)
     elif gemini_key:
-        api_model = judge_model if ("gemini" in judge_model or "gemma" in judge_model) else "gemini-3.1-pro-preview"
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{api_model}:generateContent?key={gemini_key}"
-        payload = json.dumps(
-            {
-                "systemInstruction": {"parts": [{"text": system_prompt}]},
-                "contents": [{"parts": [{"text": eval_msg}]}],
-                "generationConfig": {"temperature": 0.0, "maxOutputTokens": 16},
-            }
-        ).encode("utf-8")
-        req = urllib.request.Request(url, data=payload, headers={"content-type": "application/json"}, method="POST")
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                body = json.loads(resp.read().decode("utf-8"))
-                text = (
-                    body.get("candidates", [{}])[0]
-                    .get("content", {})
-                    .get("parts", [{}])[0]
-                    .get("text", "")
-                    .strip()
-                    .upper()
-                )
-        except urllib.error.HTTPError as e:
-            err_msg = e.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"Gemini API ({api_model}) error HTTP {e.code}: {err_msg}")
+        primary_gemini = (
+            judge_model
+            if ("gemini" in judge_model.lower() or "gemma" in judge_model.lower())
+            else "gemini-3.1-pro-preview"
+        )
+        fallback_chain: list[str] = []
+        if _ACTIVE_GEMINI_FALLBACK_MODEL:
+            fallback_chain.append(_ACTIVE_GEMINI_FALLBACK_MODEL)
+        for m in (primary_gemini, "gemini-3.1-pro-preview", "gemini-2.5-pro", "gemma-4-26b-a4b-it"):
+            if m not in fallback_chain:
+                fallback_chain.append(m)
+
+        model_idx = 0
+        attempts_on_current_model = 0
+        last_err = None
+        total_attempts = 0
+        max_total_attempts = 6
+
+        while total_attempts < max_total_attempts and model_idx < len(fallback_chain):
+            api_model = fallback_chain[model_idx]
+            total_attempts += 1
+            attempts_on_current_model += 1
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{api_model}:generateContent?key={gemini_key}"
+            payload = json.dumps(
+                {
+                    "systemInstruction": {"parts": [{"text": system_prompt}]},
+                    "contents": [{"parts": [{"text": eval_msg}]}],
+                    "generationConfig": {"temperature": 0.0, "maxOutputTokens": 1024},
+                }
+            ).encode("utf-8")
+            req = urllib.request.Request(url, data=payload, headers={"content-type": "application/json"}, method="POST")
+            try:
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    body = json.loads(resp.read().decode("utf-8"))
+                    parts = body.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+                    non_thought = [p.get("text", "") for p in parts if not p.get("thought") and p.get("text")]
+                    raw_text = non_thought[-1] if non_thought else (parts[-1].get("text", "") if parts else "")
+                    text = raw_text.strip().upper()
+                    _LAST_USED_JUDGE_MODEL = api_model
+                    if model_idx > 0 or _ACTIVE_GEMINI_FALLBACK_MODEL:
+                        _ACTIVE_GEMINI_FALLBACK_MODEL = api_model
+                    break
+            except urllib.error.HTTPError as e:
+                err_msg = e.read().decode("utf-8", errors="replace")
+                last_err = f"Gemini API ({api_model}) error HTTP {e.code}: {err_msg}"
+                if e.code == 404 and model_idx + 1 < len(fallback_chain):
+                    model_idx += 1
+                    attempts_on_current_model = 0
+                    continue
+                if e.code in (503, 429, 500):
+                    delay = backoff_schedule[min(attempts_on_current_model - 1, len(backoff_schedule) - 1)]
+                    if attempts_on_current_model >= 2 and model_idx + 1 < len(fallback_chain):
+                        model_idx += 1
+                        attempts_on_current_model = 0
+                    time.sleep(delay)
+                    continue
+                raise RuntimeError(last_err)
+            except (TimeoutError, urllib.error.URLError) as e:
+                last_err = f"Gemini API ({api_model}) timeout/network error: {e}"
+                delay = backoff_schedule[min(attempts_on_current_model - 1, len(backoff_schedule) - 1)]
+                if attempts_on_current_model >= 2 and model_idx + 1 < len(fallback_chain):
+                    model_idx += 1
+                    attempts_on_current_model = 0
+                time.sleep(delay)
+                continue
+        else:
+            raise RuntimeError(last_err or "Gemini API failed after retry and fallback chain")
     elif openai_key:
+        _LAST_USED_JUDGE_MODEL = "gpt-4o"
         payload = json.dumps(
             {
                 "model": "gpt-4o",
@@ -307,20 +381,33 @@ def _call_stage2_llm_judge_single(
                 ],
             }
         ).encode("utf-8")
-        req = urllib.request.Request(
-            "https://api.openai.com/v1/chat/completions",
-            data=payload,
-            headers={"content-type": "application/json", "authorization": f"Bearer {openai_key}"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            body = json.loads(resp.read().decode("utf-8"))
-            text = body.get("choices", [{}])[0].get("message", {}).get("content", "").strip().upper()
+        for attempt in range(4):
+            req = urllib.request.Request(
+                "https://api.openai.com/v1/chat/completions",
+                data=payload,
+                headers={"content-type": "application/json", "authorization": f"Bearer {openai_key}"},
+                method="POST",
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    body = json.loads(resp.read().decode("utf-8"))
+                    text = body.get("choices", [{}])[0].get("message", {}).get("content", "").strip().upper()
+                    break
+            except urllib.error.HTTPError as e:
+                err_msg = e.read().decode("utf-8", errors="replace")
+                if e.code in (503, 429, 500) and attempt < 3:
+                    time.sleep(backoff_schedule[attempt])
+                    continue
+                raise RuntimeError(f"OpenAI API error HTTP {e.code}: {err_msg}")
     else:
         raise RuntimeError(
             "No Frontier Judge API key found in environment. Export ANTHROPIC_API_KEY, GEMINI_API_KEY, or OPENAI_API_KEY."
         )
 
+    tokens = re.sub(r"[^A-Z]", " ", text).split()
+    for tok in reversed(tokens):
+        if tok in ("FIRST", "SECOND", "TIE"):
+            return tok
     if "FIRST" in text:
         return "FIRST"
     if "SECOND" in text:
@@ -338,19 +425,20 @@ def pairwise_compare_debiased(
     mode: str = "lint",
 ) -> dict[str, Any]:
     """Compare Option A vs Option B in both (A,B) and (B,A) orders using Stage-1 + optional Live Stage-2 Judge."""
-    lower_model = judge_model.lower()
-    if any(pat in lower_model for pat in BLOCKED_STAGE2_JUDGE_PATTERNS):
+    if is_blocked_judge_model(judge_model):
         raise ValueError(
             f"Judge model '{judge_model}' is a Profile 4/5 fast/workhorse model. "
             "Stage-2 voice evaluation requires a Profile-2 Frontier Judge (e.g., Claude 4.5 Opus or Gemini 4 Argon)."
         )
+
+    effective_mode = "live" if (mode == "live" or (mode == "auto" and has_any_api_key())) else "lint"
 
     s1_a = score_stage1_deterministic(option_a, case_category=case_category, register=register)
     s1_b = score_stage1_deterministic(option_b, case_category=case_category, register=register)
 
     stage2_ab = None
     stage2_ba = None
-    if mode == "live":
+    if effective_mode == "live":
         # Pass 1: (A, B) -> FIRST=A, SECOND=B
         res_ab = _call_stage2_llm_judge_single(prompt, option_a, option_b, judge_model=judge_model)
         stage2_ab = "A" if res_ab == "FIRST" else ("B" if res_ab == "SECOND" else "TIE")
@@ -369,7 +457,8 @@ def pairwise_compare_debiased(
     return {
         "winner": winner_ab if consistent else "TIE",
         "position_consistent": consistent,
-        "evaluation_mode": mode,
+        "evaluation_mode": effective_mode,
+        "judge_model_used": _LAST_USED_JUDGE_MODEL if effective_mode == "live" else "stage1-deterministic",
         "score_a": s1_a["score"],
         "score_b": s1_b["score"],
         "stage2_ab": stage2_ab,
@@ -382,13 +471,15 @@ def pairwise_compare_debiased(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Satori v6.1.0 Evaluation & Trigger Suite Runner")
     parser.add_argument("--suite", choices=["trigger", "response"], default="trigger")
-    parser.add_argument("--mode", choices=["lint", "live"], default="lint")
+    parser.add_argument("--mode", choices=["auto", "lint", "live"], default="lint")
     parser.add_argument("--model", default="claude-4.5-opus", help="Target or Judge model identifier")
     parser.add_argument("--temperature", type=float, default=0.0)
     args = parser.parse_args(argv)
 
+    effective_mode = "live" if (args.mode == "live" or (args.mode == "auto" and has_any_api_key())) else "lint"
+
     if args.suite == "trigger":
-        return run_trigger_suite(mode=args.mode, model=args.model)
+        return run_trigger_suite(mode=effective_mode if args.mode != "auto" else "lint", model=args.model)
 
     anchors_path = EVALS_DIR / "gold_anchors.jsonl"
     anchors = [json.loads(line) for line in anchors_path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -411,11 +502,11 @@ def main(argv: list[str] | None = None) -> int:
             register=case_meta["register"],
             judge_model=args.model,
             prompt=item.get("prompt", ""),
-            mode=args.mode,
+            mode=effective_mode,
         )
         results.append({"anchor_id": item["id"], "tier": item["tier"], **comp})
 
-    print(json.dumps({"suite": "response", "mode": args.mode, "results": results}, indent=2))
+    print(json.dumps({"suite": "response", "mode": effective_mode, "results": results}, indent=2))
     return 0
 
 
