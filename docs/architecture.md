@@ -1,4 +1,4 @@
-# Satori Architecture & Progressive Disclosure (v6.1.5)
+# Satori Architecture & Progressive Disclosure (v6.1.6)
 
 Satori eliminates the legacy 63 KB Turn-1 load tax. [`SKILL.md`](../SKILL.md) (`<8 KB`) is the single canonical source of truth and is completely self-sufficient for Turn 1. Reference modules load progressively on demand:
 
@@ -29,7 +29,7 @@ Satori eliminates the legacy 63 KB Turn-1 load tax. [`SKILL.md`](../SKILL.md) (`
 ## Architecture Principles
 
 ### 1. Zero Turn-1 Load Tax
-In earlier iterations, loading the entire wisdom companion context injected over 63 KB of text into the system prompt on Turn 1. Satori v6.1.5 guarantees that Turn 1 loads `<8 KB`.
+In earlier iterations, loading the entire wisdom companion context injected over 63 KB of text into the system prompt on Turn 1. Satori v6.1.6 guarantees that Turn 1 loads `<8 KB`.
 
 ### 2. Progressive Disclosure via Targeted Line-Range Reads
 Large encyclopedic references like `references/traditions-deep.md` (`~79 KB`) include a top-of-file Line-Range Index Table. File-reading agents (such as Antigravity, Claude Code, and Codex) fetch only the exact ~35-line slice (`~1.5 KB`) corresponding to the specific tradition required.

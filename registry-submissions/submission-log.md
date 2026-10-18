@@ -7,7 +7,7 @@
 | 1 | ComposioHQ/awesome-claude-skills | 1 | https://github.com/ComposioHQ/awesome-claude-skills/pull/599 | Submitted | 2026-10-17 | Verified unversioned description and repo URL. |
 | 2 | travisvn/awesome-claude-skills | 1 | | Deferred | 2026-10-17 | Manual submission policy verified. |
 | 3 | VoltAgent/awesome-agent-skills | 1 | https://github.com/VoltAgent/awesome-agent-skills/pull/380 | Submitted | 2026-10-17 | Verified repo link. No hardcoded metrics in copy. |
-| 4 | sickn33/antigravity-awesome-skills | 1 | https://github.com/sickn33/antigravity-awesome-skills/pull/466 | Submitted | 2026-10-17 | SKILL.md validated against v6.1.5 schema. |
+| 4 | sickn33/antigravity-awesome-skills | 1 | https://github.com/sickn33/antigravity-awesome-skills/pull/466 | Submitted | 2026-10-17 | SKILL.md validated against v6.1.6 schema. |
 | 5 | karanb192/awesome-claude-skills | 2 | https://github.com/karanb192/awesome-claude-skills/pull/45 | Submitted | 2026-10-17 | Verified description matches canonical copy. |
 | 6 | BehiSecc/awesome-claude-skills | 2 | https://github.com/BehiSecc/awesome-claude-skills/pull/207 | Submitted | 2026-10-17 | Health & Life Sciences entry verified. |
 | 7 | majiayu000/claude-skill-registry | 2 | https://github.com/majiayu000/claude-skill-registry-core/pull/12 | Submitted | 2026-10-17 | Core JSON schema verified; npm install path documented. |

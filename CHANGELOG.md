@@ -4,7 +4,16 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.1.5 : Documentation, Audience Routing & npm Pipeline Release (Current)
+## v6.1.6: Automated npm OIDC Trusted Publishing & Release Packaging (Current)
+
+- **Release Packaging & Distribution**:
+  - Incremented release version to `v6.1.6` for automated npm trusted-publishing workflow via Sigstore/OIDC.
+  - Rebuilt `dist/SatoriSkill-v6.1.6.zip` with normalized cross-platform line endings and updated release assets.
+  - Verified 21/21 static checks, 8/8 memory privacy tests, and 50/50 trigger boundary suite.
+
+---
+
+## v6.1.5: Documentation, Audience Routing & npm Pipeline Release
 
 - **Documentation & Audience Routing**:
   - Implemented dual-audience funnel routing: GitHub Pages focuses on end-user experience, while GitHub README focuses on developer evaluation and verification.
