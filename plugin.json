@@ -1,7 +1,7 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "6.1.0",
+  "version": "6.1.7",
   "type": "claude-skill",
   "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 8 agent ecosystems and 5 behavioral model profiles.",
   "author": {
@@ -52,7 +52,7 @@
     "marketplace.json",
     "plugin.json",
     ".claude-plugin/plugin.json",
-    "LICENSE"
+    "LICENSE.md"
   ],
   "claude": {
     "skillEntry": "SKILL.md",

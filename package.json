@@ -1,6 +1,6 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.1.6",
+  "version": "6.1.7",
   "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
   "keywords": [
     "wisdom",
@@ -70,7 +70,7 @@
     ".windsurf/",
     ".opencode/",
     ".hermes/",
-    "LICENSE"
+    "LICENSE.md"
   ],
   "scripts": {
     "build": "python scripts/build_release.py --sync",

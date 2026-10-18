@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.1.6: A Clinically Informed Wisdom Companion for the Inner Life" width="820" />
+  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.1.7: A Clinically Informed Wisdom Companion for the Inner Life" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.1.6 Progressive Disclosure & Multi-Agent Architecture" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.1.7 Progressive Disclosure & Multi-Agent Architecture" width="820" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.6"><img src="https://img.shields.io/badge/Release-v6.1.6-7c6af7.svg?style=for-the-badge" alt="Satori v6.1.6 Release" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.7"><img src="https://img.shields.io/badge/Release-v6.1.7-7c6af7.svg?style=for-the-badge" alt="Satori v6.1.7 Release" /></a>
+  <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
   <a href="#install-for-your-harness"><img src="https://img.shields.io/badge/Agents-8%20Ecosystems-e07b54.svg?style=for-the-badge" alt="8 Agent Ecosystems" /></a>
   <a href="#cross-model-compatibility"><img src="https://img.shields.io/badge/Models-5%20Behavioral%20Profiles-4ecdc4.svg?style=for-the-badge" alt="5 Behavioral Profiles" /></a>
 </p>
@@ -33,13 +33,13 @@ That is the standard I hold every Satori response to. Understanding, pattern rec
 
 ## Install for Your Harness
 
-> **Fastest path (Claude.ai, no code):** download `SatoriSkill-v6.1.6.zip` from GitHub Releases, then in Claude.ai go to Customize, Skills, +, Upload a skill.
+> **Fastest path (Claude.ai, no code):** download `SatoriSkill-v6.1.7.zip` from GitHub Releases, then in Claude.ai go to Customize, Skills, +, Upload a skill.
 > **Fastest path (CLI and IDE agents):** clone this repo. Satori is auto-discovered by Claude Code, Antigravity and Gemini CLI, Codex, Cursor, Windsurf, OpenCode, Hermes, and OpenClaw.
 > **Full per-harness details:** follow the numbered list below.
 
-### 1. Claude.ai Web Upload (`SatoriSkill-v6.1.6.zip`)
-1. Download [`SatoriSkill-v6.1.6.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.6.zip) from [GitHub Releases](https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.6) (or build locally via `python scripts/build_release.py --sync`).
-2. Open [claude.ai](https://claude.ai) -> **Customize -> Skills -> + -> Upload a skill** and upload `SatoriSkill-v6.1.6.zip`.
+### 1. Claude.ai Web Upload (`SatoriSkill-v6.1.7.zip`)
+1. Download [`SatoriSkill-v6.1.7.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.7.zip) from [GitHub Releases](https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.7) (or build locally via `python scripts/build_release.py --sync`).
+2. Open [claude.ai](https://claude.ai) -> **Customize -> Skills -> + -> Upload a skill** and upload `SatoriSkill-v6.1.7.zip`.
 *Files it reads: `SKILL.md` and `references/`.*
 
 ### 2. Google Antigravity (CLI / IDE / 2.0) & Gemini CLI
@@ -205,7 +205,7 @@ When acute crisis indicators appear (suicidal ideation, self-harm, severe dissoc
 Stages 1 to 4 run offline with no API key. Stage 5, the live judge calibration, needs an Anthropic, Gemini, or OpenAI key and is optional for evaluation.
 
 ```bash
-# 1. Sync per-agent SKILL.md mirrors, stamp SOUL.md SHA-256, and build dist/SatoriSkill-v6.1.6.zip
+# 1. Sync per-agent SKILL.md mirrors, stamp SOUL.md SHA-256, and build dist/SatoriSkill-v6.1.7.zip
 python scripts/build_release.py --sync
 
 # 2. Run 21/21 static checks (frontmatter, <8KB/<12KB/<24KB caps, <=15-line pointer stubs,
@@ -247,7 +247,7 @@ Satori's multi-agent packaging, progressive disclosure, anti-slop voice gates, a
 
 ## Contributing & License
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, quality standards, and verification guards, and [CHANGELOG.md](CHANGELOG.md) for full release history. Released under the [Apache License 2.0](LICENSE).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, quality standards, and verification guards, and [CHANGELOG.md](CHANGELOG.md) for full release history. Released under the [Apache License 2.0](LICENSE.md).
 
 ---
 

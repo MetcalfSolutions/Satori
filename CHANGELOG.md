@@ -4,7 +4,17 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.1.6: Automated npm OIDC Trusted Publishing & Release Packaging (Current)
+## v6.1.7: Gemini Skills Compatibility, Extensionless File Fix & Release Packaging (Current)
+
+- **Gemini Skills Web & Desktop Compatibility**:
+  - Renamed `LICENSE` to `LICENSE.md` across the repository, zip packaging manifests, and documentation.
+  - Fixes Gemini Web (`gemini.google.com`) and Gemini Desktop skill upload rejection caused by extensionless files.
+  - Updated all manifest files (`package.json`, `plugin.json`, `.claude-plugin/plugin.json`), build scripts, and documentation links to reference `LICENSE.md`.
+  - Rebuilt `dist/SatoriSkill-v6.1.7.zip` with `LICENSE.md` included.
+
+---
+
+## v6.1.6: Automated npm OIDC Trusted Publishing & Release Packaging
 
 - **Release Packaging & Distribution**:
   - Incremented release version to `v6.1.6` for automated npm trusted-publishing workflow via Sigstore/OIDC.

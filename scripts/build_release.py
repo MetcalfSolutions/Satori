@@ -35,7 +35,7 @@ WEB_ZIP_FILES = [
     "README.md",
     "CHANGELOG.md",
     "PRIVACY.md",
-    "LICENSE",
+    "LICENSE.md",
 ]
 
 
