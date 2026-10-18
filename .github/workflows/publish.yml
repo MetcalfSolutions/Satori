@@ -1,0 +1,45 @@
+name: Publish to npm
+
+# Publishes @metcalfsolutions/satori to the npm registry whenever a GitHub
+# Release is published. Uses npm Trusted Publishing (OIDC): no long-lived
+# tokens, no 2FA ceremony. The trust relationship is configured once on
+# npmjs.com at package Settings -> Publishing access -> Trusted publishing
+# with:
+#   Repository owner: MetcalfSolutions
+#   Repository name:  Satori
+#   Workflow filename: publish.yml
+#
+# NOTE: npm expires an unused trusted-publisher configuration 48 hours after
+# it is created, so configure it only when you are ready to cut the release.
+# The first OIDC publish binds the configuration permanently.
+#
+# Release discipline: bump "version" in package.json to the new version
+# BEFORE publishing the GitHub Release, or npm will reject the publish
+# because the version already exists.
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write # required for npm trusted publishing (OIDC)
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+
+      - name: Run Satori validator (21/21 gate)
+        run: python scripts/validate_skill.py
+
+      - name: Publish to npm (trusted publisher + provenance)
+        run: npm publish --provenance --access public
