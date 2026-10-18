@@ -59,7 +59,7 @@ PERSONAL_DISTRESS_RE = re.compile(
     re.IGNORECASE,
 )
 
-BLOCKED_STAGE2_JUDGE_PATTERNS = ("flash", "haiku", "nano", "mini", "ministral", "lite", "8b", "14b")
+BLOCKED_STAGE2_JUDGE_PATTERNS = ("flash", "haiku", "nano", "-mini", "ministral", "lite", "8b", "14b")
 
 
 def score_stage1_deterministic(text: str, case_category: str = "standard", register: str = "Engaged") -> dict[str, Any]:
