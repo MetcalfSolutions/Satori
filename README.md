@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.1.7: A Clinically Informed Wisdom Companion for the Inner Life" width="820" />
+  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.1.8: A Clinically Informed Wisdom Companion for the Inner Life" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.1.7 Progressive Disclosure & Multi-Agent Architecture" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.1.8 Progressive Disclosure & Multi-Agent Architecture" width="820" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.7"><img src="https://img.shields.io/badge/Release-v6.1.7-7c6af7.svg?style=for-the-badge" alt="Satori v6.1.7 Release" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.8"><img src="https://img.shields.io/badge/Release-v6.1.8-7c6af7.svg?style=for-the-badge" alt="Satori v6.1.8 Release" /></a>
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
-  <a href="#install-for-your-harness"><img src="https://img.shields.io/badge/Agents-8%20Ecosystems-e07b54.svg?style=for-the-badge" alt="8 Agent Ecosystems" /></a>
+  <a href="#install-for-your-harness"><img src="https://img.shields.io/badge/Agents-9%20Ecosystems-e07b54.svg?style=for-the-badge" alt="9 Agent Ecosystems" /></a>
   <a href="#cross-model-compatibility"><img src="https://img.shields.io/badge/Models-5%20Behavioral%20Profiles-4ecdc4.svg?style=for-the-badge" alt="5 Behavioral Profiles" /></a>
 </p>
 
@@ -33,13 +33,13 @@ That is the standard I hold every Satori response to. Understanding, pattern rec
 
 ## Install for Your Harness
 
-> **Fastest path (Claude.ai, no code):** download `SatoriSkill-v6.1.7.zip` from GitHub Releases, then in Claude.ai go to Customize, Skills, +, Upload a skill.
-> **Fastest path (CLI and IDE agents):** clone this repo. Satori is auto-discovered by Claude Code, Antigravity and Gemini CLI, Codex, Cursor, Windsurf, OpenCode, Hermes, and OpenClaw.
+> **Fastest path (Claude.ai, no code):** download `SatoriSkill-v6.1.8.zip` from GitHub Releases, then in Claude.ai go to Customize, Skills, +, Upload a skill.
+> **Fastest path (CLI and IDE agents):** clone this repo. Satori is auto-discovered by Claude Code, Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, and OpenClaw.
 > **Full per-harness details:** follow the numbered list below.
 
-### 1. Claude.ai Web Upload (`SatoriSkill-v6.1.7.zip`)
-1. Download [`SatoriSkill-v6.1.7.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.7.zip) from [GitHub Releases](https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.7) (or build locally via `python scripts/build_release.py --sync`).
-2. Open [claude.ai](https://claude.ai) -> **Customize -> Skills -> + -> Upload a skill** and upload `SatoriSkill-v6.1.7.zip`.
+### 1. Claude.ai Web Upload (`SatoriSkill-v6.1.8.zip`)
+1. Download [`SatoriSkill-v6.1.8.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.8.zip) from [GitHub Releases](https://github.com/MetcalfSolutions/Satori/releases/tag/v6.1.8) (or build locally via `python scripts/build_release.py --sync`).
+2. Open [claude.ai](https://claude.ai) -> **Customize -> Skills -> + -> Upload a skill** and upload `SatoriSkill-v6.1.8.zip`.
 *Files it reads: `SKILL.md` and `references/`.*
 
 ### 2. Google Antigravity (CLI / IDE / 2.0) & Gemini CLI
@@ -88,7 +88,7 @@ Satori draws on global wisdom traditions and 30+ clinical frameworks, including 
 
 Satori is not a therapist and does not diagnose. If your needs go beyond what conversation can hold, it will say so and point you to human support.
 
-Free and open source under Apache 2.0. Maintained by one builder, used across 8 agent ecosystems, and verified by a test suite that runs in the open.
+Free and open source under Apache 2.0. Maintained by one builder, used across 9 agent ecosystems, and verified by a test suite that runs in the open.
 
 Built by Matthew Metcalf (Metcalf Solutions). Not a clinician. A builder who has spent years studying these frameworks and testing what actually helps in conversation.
 
@@ -98,7 +98,7 @@ Built by Matthew Metcalf (Metcalf Solutions). Not a clinician. A builder who has
 
 The exchange below is from a real session. I scrubbed the personal details. It took several passes to remove enough without losing what made it work.
 
-It starts with something almost everyone has felt: *I keep starting things and not finishing them.* By the end, it is somewhere else entirely.
+It starts with a question anyone who has spent time in self-reflection has asked: *I know all the concepts, so why am I still stuck?* By the end, it is somewhere else entirely.
 
 **User:** "I've been in therapy for two years and I still feel stuck. I don't know if I'm the problem or if something else is going on."
 
@@ -142,11 +142,11 @@ Satori is model-agnostic. Instead of brittle model-name tables that rot as provi
 
 1. **Tier 1: Explicit Environment Override**: Checks `SATORI_MODEL_PROFILE=1..5` (or explicit `references/core-compact.md` loading).
 2. **Tier 2: Capability-Based Calibration across 5 Behavioral Profiles**:
-   - **Profile 1 (Deep CoT & Extended Thinking)**: e.g., Claude 3.7 Sonnet Thinking, Gemini 2.5 Pro. Enforces CoT emotional bypassing gates.
-   - **Profile 2 (Open-Weights RL Reasoning)**: e.g., DeepSeek R1, Qwen 2.5 Max. Enforces zero machinery leaks.
-   - **Profile 3 (Search-Augmented Synthesis)**: e.g., Grok 2. Enforces search tool restraint during emotional attunement.
-   - **Profile 4 (Coding & Agentic Workhorses)**: e.g., Claude 3.5 Sonnet, GPT-4o. Enforces prose-only lock (no bullet lists or action plans).
-   - **Profile 5 (Compact Edge `<32B` & Voice)**: e.g., Llama 3.1 8B, Gemma 2 9B. Enforces `<12 KB` context ceiling and brevity.
+   - **Profile 1 (Recursive / STEM Reasoners & Deep CoT)**: e.g., Claude Fable 5.1, Gemini 4 Argon, GPT-6 Astra, DeepSeek-V4-Pro. Enforces CoT emotional bypassing gates.
+   - **Profile 2 (Literary & Constitutional Frontier Models)**: e.g., Claude Opus 5.5, GPT-6.1 Sol, Llama 5 (405B), Mistral Large 3. Enforces plain-language grounding and memory restraint.
+   - **Profile 3 (High-Candor & Search-Native)**: e.g., Grok 4.7, Perplexity Sonar Pro. Enforces search tool restraint during emotional attunement.
+   - **Profile 4 (High-Velocity Coding & RAG Workhorses)**: e.g., Claude Sonnet 5.5, Gemini 3.8 Flash, DeepSeek-V4.1-Flash. Enforces prose-only lock (no bullet lists or action plans).
+   - **Profile 5 (Compact Edge `<32B` & Voice)**: e.g., Claude Haiku 5.5, Gemini 3.5 Flash-Lite, Llama 5 8B/14B, Grok Voice 3.0. Enforces `<12 KB` context ceiling and brevity.
 3. **Tier 3: Conservative Safe Default**: When uncertain, enforces all behavioral guards simultaneously.
 
 Detailed per-profile gate mechanics and detection logic live in [`references/model-calibration.md`](references/model-calibration.md).
@@ -205,7 +205,7 @@ When acute crisis indicators appear (suicidal ideation, self-harm, severe dissoc
 Stages 1 to 4 run offline with no API key. Stage 5, the live judge calibration, needs an Anthropic, Gemini, or OpenAI key and is optional for evaluation.
 
 ```bash
-# 1. Sync per-agent SKILL.md mirrors, stamp SOUL.md SHA-256, and build dist/SatoriSkill-v6.1.7.zip
+# 1. Sync per-agent SKILL.md mirrors, stamp SOUL.md SHA-256, and build dist/SatoriSkill-v6.1.8.zip
 python scripts/build_release.py --sync
 
 # 2. Run 21/21 static checks (frontmatter, <8KB/<12KB/<24KB caps, <=15-line pointer stubs,

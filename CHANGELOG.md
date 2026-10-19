@@ -4,7 +4,27 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.1.7: Gemini Skills Compatibility, Extensionless File Fix & Release Packaging (Current)
+## v6.1.8: Ecosystem Count Realignment, October 2026 Model Checkpoints & Gemini Extension Sync (Current)
+
+- **October 2026 Model Calibration Realignment**:
+  - Realigned model calibration examples and documentation across all 5 profiles with verified October 2026 production checkpoints (Claude Fable 5.1 / Opus 5.5 / Sonnet 5.5 / Haiku 5.5, Gemini 4 Argon / 3.8 Flash / 3.5 Flash-Lite, GPT-6 Astra / Sol / Luna, o4-mini, Grok 4.7 / 4.3 / Grok Voice 3.0, DeepSeek-V4-Pro / Flash, Llama 5 405B / 70B / 8B).
+  - Purged deprecated 2024/early 2025 model references (Claude 3.5/3.7, Gemini 2.5, GPT-4o, o1, Llama 3.1/3.3, Grok 2/3, DeepSeek R1/R3) from `references/model-calibration.md`, `README.md`, and `docs/index.html`.
+  - Corrected provider misattribution of "Fable" to Anthropic.
+- **Manifest & Extension Synchronization**:
+  - Synchronized `gemini-extension.json` from stale `6.1.0` to `6.1.8` with updated psychologically grounded register.
+  - Bumped all project manifests (`package.json`, `plugin.json`, `.claude-plugin/plugin.json`, `openclaw.plugin.json`, `marketplace.json`) to `6.1.8`.
+- **Ecosystem Count Realignment**:
+  - Reconciled badges, hero stats, and install headings from "8 Agent Ecosystems" to the canonical 9 platforms (Claude Code, Antigravity, Gemini CLI, Codex, Cursor, Windsurf, OpenCode, Hermes Agent, OpenClaw).
+- **Claims & Copy Discipline**:
+  - Realigned conversation transcript lead-in from project-starting disconnect to actual therapy stuckness query.
+  - Corrected landing page claim from "Satori is trained" to "Satori is structured".
+  - Added native Google Gemini Web installation guidance to `docs/index.html` alongside Claude.ai.
+- **Reference & Tool Repair**:
+  - Repaired broken pointer in `.opencode/command/satori.md` targeting `references/onboarding.md`.
+
+---
+
+## v6.1.7: Gemini Skills Compatibility, Extensionless File Fix & Release Packaging
 
 - **Gemini Skills Web & Desktop Compatibility**:
   - Renamed `LICENSE` to `LICENSE.md` across the repository, zip packaging manifests, and documentation.

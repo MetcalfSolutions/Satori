@@ -1,9 +1,9 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "6.1.7",
+  "version": "6.1.8",
   "type": "claude-skill",
-  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 8 agent ecosystems and 5 behavioral model profiles.",
+  "description": "Clinically informed wisdom companion for navigating the inner life — emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 9 agent ecosystems and 5 behavioral model profiles.",
   "author": {
     "name": "Matthew Metcalf",
     "url": "https://github.com/MetcalfSolutions"
