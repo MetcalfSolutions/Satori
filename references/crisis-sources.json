@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-10-17",
+  "lastVerified": "2026-10-20",
   "description": "Primary-source verified global crisis helplines and emergency numbers for Satori. Verified at build time by scripts/validate_skill.py.",
   "regions": [
     {
@@ -29,7 +29,8 @@
       "primarySources": [
         "https://988lifeline.org",
         "https://www.crisistextline.org"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "CA",
@@ -57,7 +58,8 @@
       "primarySources": [
         "https://988.ca",
         "https://www.crisistextline.ca"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "UK",
@@ -85,7 +87,8 @@
       "primarySources": [
         "https://www.nhs.uk/nhs-services/mental-health-services/",
         "https://www.samaritans.org"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "IE",
@@ -108,7 +111,8 @@
       "primarySources": [
         "https://www.samaritans.org/ireland/",
         "https://text50808.ie"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "AU",
@@ -130,7 +134,8 @@
       ],
       "primarySources": [
         "https://www.lifeline.org.au"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "NZ",
@@ -152,7 +157,8 @@
       ],
       "primarySources": [
         "https://1737.org.nz"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "IN",
@@ -173,7 +179,8 @@
       "textLines": [],
       "primarySources": [
         "https://telemanas.mohfw.gov.in"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "EU",
@@ -189,7 +196,8 @@
       "textLines": [],
       "primarySources": [
         "https://digital-strategy.ec.europa.eu/en/policies/116-helplines"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     },
     {
       "id": "GLOBAL",
@@ -204,7 +212,8 @@
       "primarySources": [
         "https://findahelpline.com",
         "https://www.iasp.info/resources/Crisis_Centres/"
-      ]
+      ],
+      "lastVerified": "2026-10-20"
     }
   ],
   "requiredTokensInDocs": [

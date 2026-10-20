@@ -98,15 +98,26 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"SKILL.md frontmatter error: {exc}")
 
+    # Load facts.json Single Source of Truth
+    facts_path = ROOT_DIR / "facts.json"
+    facts: dict = {}
+    if not facts_path.exists():
+        errors.append("Missing root facts.json Single Source of Truth")
+    else:
+        try:
+            facts = json.loads(facts_path.read_text(encoding="utf-8"))
+            checks_passed += 1
+        except Exception as exc:
+            errors.append(f"facts.json JSON parse error: {exc}")
+
+    skill_entry_budget = facts.get("budgets", {}).get("skill_entry_max_bytes", 8_000)
+    compact_spine_budget = facts.get("budgets", {}).get("compact_spine_max_bytes", 12_000)
+    ref_ceiling_budget = facts.get("budgets", {}).get("reference_rule_ceiling_bytes", 24_000)
+
     # 2. Validate file size budgets (<24,000 byte Antigravity rule cap)
     size_budgets = [
-        (ROOT_DIR / "SKILL.md", 8_000, "SKILL.md (<8 KB Turn-1 budget)"),
-        (ROOT_DIR / "references" / "core-compact.md", 12_000, "core-compact.md (<12 KB Profile-5 budget)"),
-        (
-            ROOT_DIR / "references" / "clinical-spine.md",
-            24_000,
-            "clinical-spine.md (<24,000 byte Antigravity rule ceiling)",
-        ),
+        (ROOT_DIR / "SKILL.md", skill_entry_budget, f"SKILL.md (<{skill_entry_budget} B Turn-1 budget)"),
+        (ROOT_DIR / "references" / "core-compact.md", compact_spine_budget, f"core-compact.md (<{compact_spine_budget} B Compact budget)"),
     ]
     for path, max_bytes, label in size_budgets:
         if not path.exists():
@@ -119,18 +130,46 @@ def main() -> int:
             else:
                 checks_passed += 1
 
-    # 3. Validate Category A Pointer Stubs (strictly <=15 lines, zero duplicated tables)
+    # Universal check: EVERY markdown file in references/ must be strictly <= ref_ceiling_budget (<24 KB)
+    refs_dir = ROOT_DIR / "references"
+    for ref_md in sorted(refs_dir.glob("*.md")):
+        actual_len = len(ref_md.read_bytes().replace(b"\r\n", b"\n"))
+        if actual_len > ref_ceiling_budget:
+            errors.append(
+                f"Universal size ceiling exceeded in {ref_md.relative_to(ROOT_DIR)}: {actual_len} bytes > {ref_ceiling_budget} bytes"
+            )
+        else:
+            checks_passed += 1
+
+    # 3. Validate Category A Pointer Stubs (strictly <=15 lines for Satori stub, <=30 lines total with ## Agent skills)
     for stub in CATEGORY_A_POINTER_STUBS:
         if not stub.exists():
             errors.append(f"Missing Category A pointer stub: {stub.relative_to(ROOT_DIR)}")
             continue
-        lines = stub.read_text(encoding="utf-8").splitlines()
-        if len(lines) > 15:
-            errors.append(
-                f"Category A pointer stub {stub.relative_to(ROOT_DIR)} has {len(lines)} lines (strictly <=15 allowed)"
-            )
-        if any("|---|" in ln for ln in lines):
-            errors.append(f"Category A pointer stub {stub.relative_to(ROOT_DIR)} contains a duplicated Markdown table")
+        raw_lines = stub.read_text(encoding="utf-8").splitlines()
+        # Find if downstream ## Agent skills section exists
+        agent_skills_idx = next((i for i, ln in enumerate(raw_lines) if ln.strip().startswith("## Agent skills")), None)
+        if agent_skills_idx is not None:
+            satori_lines = raw_lines[:agent_skills_idx]
+            while satori_lines and not satori_lines[-1].strip():
+                satori_lines.pop()
+            if len(satori_lines) > 15:
+                errors.append(
+                    f"Category A pointer stub {stub.relative_to(ROOT_DIR)} has {len(satori_lines)} lines in Satori section (strictly <=15 allowed)"
+                )
+            if len(raw_lines) > 30:
+                errors.append(
+                    f"Category A pointer stub {stub.relative_to(ROOT_DIR)} total lines {len(raw_lines)} exceeds ceiling of <=30 lines"
+                )
+        else:
+            if len(raw_lines) > 15:
+                errors.append(
+                    f"Category A pointer stub {stub.relative_to(ROOT_DIR)} has {len(raw_lines)} lines (strictly <=15 allowed)"
+                )
+            satori_lines = raw_lines
+
+        if any("|---|" in ln for ln in satori_lines):
+            errors.append(f"Category A pointer stub {stub.relative_to(ROOT_DIR)} contains a duplicated Markdown table in Satori section")
         checks_passed += 1
 
     # 4. Validate Category B Per-Agent Skill Mirrors (byte-identical SHA-256 to root SKILL.md)
@@ -154,6 +193,19 @@ def main() -> int:
         errors.append("Missing references/crisis-sources.json primary-source crisis manifest")
     else:
         manifest = json.loads(crisis_manifest_path.read_text(encoding="utf-8"))
+        last_verified_str = manifest.get("lastVerified")
+        if last_verified_str:
+            import datetime as dt
+            try:
+                lv_date = dt.date.fromisoformat(last_verified_str)
+                age_days = (dt.date.today() - lv_date).days
+                if age_days > 120:
+                    errors.append(f"crisis-sources.json lastVerified date {last_verified_str} is stale ({age_days} days old > 120 days)")
+                else:
+                    checks_passed += 1
+            except Exception as e:
+                errors.append(f"Invalid lastVerified date format in crisis-sources.json: {e}")
+
         required_tokens: list[str] = manifest.get("requiredTokensInDocs", [])
         for doc_path in CRISIS_DOC_TARGETS:
             if not doc_path.exists():

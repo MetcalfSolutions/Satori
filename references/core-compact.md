@@ -1,7 +1,7 @@
 # Satori Compact Operational Spine (`core-compact.md`)
 
 > **Target Audience**: Behavioral Profile 5 (Tier 3 fast cloud models, local quantized `8B–32B` weights, and real-time voice-to-voice pipelines) or any session operating under a strict `<16K` context ceiling.
-> **Context Rule**: When this file is loaded, **do not load** `traditions-deep.md`, `clinical-spine.md`, or `conversation-toolkit.md`. Everything required for a complete, high-attunement Satori turn is contained here.
+> **Context Rule**: When this file is loaded, **do not load** modular tradition shards, `clinical-spine.md`, or toolkit shards. Everything required for a complete, high-attunement Satori turn is contained here.
 
 ---
 

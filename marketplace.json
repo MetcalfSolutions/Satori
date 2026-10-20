@@ -2,7 +2,7 @@
   "id": "metcalfsolutions/satori",
   "name": "Satori",
   "slug": "satori",
-  "version": "6.1.8",
+  "version": "6.5.0",
   "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
   "longDescription": "Satori is a universal multi-agent wisdom companion built on global wisdom traditions (Stoicism, Taoism, Buddhism, Sufi wisdom, Hindu philosophy, Confucian ethics, Ubuntu/Akan/Kemetic African philosophy, Haudenosaunee/Cree/Potawatomi Indigenous thought) and modern clinical psychology (IFS, DBT, CFT, Schema Therapy, ACT, Somatic, Dual Process Grief, Relational Psychoanalysis). Calibrated across 9 agent harnesses and 5 behavioral model profiles with progressive disclosure, a privacy-first local memory vault, and a two-stage anti-gaming evaluation suite.",
   "author": {

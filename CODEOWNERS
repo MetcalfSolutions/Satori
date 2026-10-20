@@ -1,0 +1,17 @@
+# Satori Repository Code Owners
+# Directs changes to safety-critical, prompt-routing, and crisis files to repository maintainers.
+
+* @MetcalfSolutions
+
+# Safety, Crisis, and Constitutional Protocols
+/SKILL.md @MetcalfSolutions
+/SAFETY.md @MetcalfSolutions
+/PRIVACY.md @MetcalfSolutions
+/references/clinical-spine.md @MetcalfSolutions
+/references/crisis-sources.json @MetcalfSolutions
+/references/SOUL.md @MetcalfSolutions
+/references/core-compact.md @MetcalfSolutions
+
+# Verification & Build Tooling
+/scripts/ @MetcalfSolutions
+/facts.json @MetcalfSolutions
