@@ -3,38 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satori v6.1.8: Universal AI Wisdom Companion | Clinically Informed, Open Source</title>
-<meta name="description" content="A free, open-source AI wisdom companion drawing on global wisdom traditions and 30+ clinical frameworks (IFS, DBT, ACT, Dual Process Grief, Relational Psychoanalysis, Stoicism, Buddhism, Ubuntu, Indigenous thought). Calibrated across 9 agent ecosystems and 5 model profiles.">
+<title>Satori: Open-Source Wisdom Companion | CLI, IDE &amp; Web Chat</title>
+<meta name="description" content="A psychologically grounded, open-source AI wisdom companion for the inner life. Calibrated across 16 environments (10 Agent Harnesses and 6 Web Chat Surfaces) with progressive disclosure (<8 KB entry), verified trigger boundaries (350 benchmark cases), and a local SQLite privacy vault.">
 <link rel="canonical" href="https://metcalfsolutions.github.io/Satori/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Satori">
-<meta property="og:title" content="Satori v6.1.8: Universal AI Wisdom Companion for the Inner Life">
-<meta property="og:description" content="Clinically informed. Honest. Free. Works across Claude, Antigravity, Gemini CLI, Codex, Cursor, Windsurf, OpenCode, Hermes, and OpenClaw with a local privacy vault.">
+<meta property="og:title" content="Satori v6.5.0: Wisdom Companion for CLI, IDE &amp; Web Chat">
+<meta property="og:description" content="A wisdom companion that tells you the truth, kindly. Free, open-source, and private to your machine. Works across Claude Code, Antigravity, Gemini CLI, Cursor, Grok, Claude.ai, and ChatGPT.">
 <meta property="og:url" content="https://metcalfsolutions.github.io/Satori/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Satori v6.1.8: Universal AI Wisdom Companion">
-<meta name="twitter:description" content="Not here to make you feel better. Here to help you see more clearly. Free, open-source skill across 9 agent ecosystems and 5 model profiles.">
-<meta name="author" content="Matthew Metcalf / MetcalfSolutions">
-<meta name="keywords" content="AI wisdom companion, free mental health AI, IFS therapy AI, DBT AI tool, open source AI companion, Claude skill, Antigravity skill, Codex skill, Cursor skill, shadow work, grief support AI, relationship conflict AI, stoicism AI, buddhism AI">
+<meta name="twitter:title" content="Satori v6.5.0: Wisdom Companion for the Inner Life">
+<meta name="twitter:description" content="Not here to make you feel better. Here to help you see more clearly. Free and open-source across CLI, IDE, and web chat.">
+<meta name="author" content="Matthew Metcalf / Metcalf Solutions">
+<meta name="keywords" content="AI wisdom companion, open source AI companion, Claude skill, Antigravity skill, Codex skill, Cursor rule, Grok Build, IFS therapy AI, DBT AI tool, shadow work, grief support, relationship conflict, stoicism AI, local privacy AI">
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & tokens ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg:       #0c0e16;
-  --bg2:      #131620;
-  --bg3:      #1c2030;
-  --accent:   #7c6af7;
-  --accent2:  #e07b54;
-  --accent3:  #4ecdc4;
-  --text:     #e4e2ef;
-  --muted:    #7a778e;
-  --border:   #252840;
+  --bg:         #0c0e16;
+  --bg2:        #131620;
+  --bg3:        #1c2030;
+  --accent:     #7c6af7;
+  --accent-soft: rgba(124,106,247,.12);
+  --accent2:    #e07b54;
+  --accent3:    #4ecdc4;
+  --text:       #e4e2ef;
+  --muted:      #7a778e;
+  --border:     #252840;
   --font-serif: 'Lora', Georgia, serif;
   --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
   --ease: cubic-bezier(.25,.8,.25,1);
 }
 html { scroll-behavior: smooth; }
@@ -57,16 +59,23 @@ em { color: var(--muted); font-style: italic; }
 .fade-up.visible { opacity: 1; transform: none; }
 .tag {
   display: inline-block;
-  background: rgba(124,106,247,.12);
+  background: var(--accent-soft);
   border: 1px solid rgba(124,106,247,.3);
   color: var(--accent);
   border-radius: 999px;
   padding: 3px 14px;
   font-size: .75rem;
-  font-family: var(--font-sans);
   letter-spacing: .06em;
   text-transform: uppercase;
 }
+
+/* ── Skip link ────────────────────────────────────────────── */
+.skip-link {
+  position: absolute; top: -40px; left: 0; background: var(--accent);
+  color: #fff; padding: 8px 16px; z-index: 200; font-weight: 500;
+  transition: top .2s; border-radius: 0 0 6px 0;
+}
+.skip-link:focus { top: 0; }
 
 /* ── Nav ─────────────────────────────────────────────────── */
 nav {
@@ -85,7 +94,8 @@ nav {
   color: var(--text);
   letter-spacing: .02em;
 }
-.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-logo span { color: var(--accent); font-style: italic; font-size: 1rem; margin-left: 4px; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
 .nav-links .btn-nav {
@@ -97,7 +107,7 @@ nav {
   font-weight: 500;
   transition: opacity .2s;
 }
-.nav-links .btn-nav:hover { opacity: .85; color: #fff; }
+.nav-links .btn-nav:hover { opacity: .88; color: #fff; }
 
 /* ── Hero ────────────────────────────────────────────────── */
 #hero {
@@ -114,7 +124,7 @@ nav {
 }
 .hero-inner {
   position: relative; z-index: 1;
-  max-width: 800px;
+  max-width: 860px;
   padding: 60px 28px 60px;
   margin: 0 auto 0 calc((100vw - 1100px)/2);
 }
@@ -124,19 +134,19 @@ nav {
   font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 24px;
 }
-.hero-eyebrow span { color: var(--accent); }
+.hero-eyebrow span { color: var(--accent); font-weight: 600; }
 .hero-h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 4.8vw, 3.6rem);
+  font-size: clamp(2.3rem, 4.6vw, 3.5rem);
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: -.01em;
   margin-bottom: 18px;
 }
-.hero-h1 .line2 { color: var(--accent); font-style: italic; }
+.hero-h1 .line2 { color: var(--accent); font-style: italic; display: block; font-size: clamp(1.6rem, 3.4vw, 2.4rem); margin-top: 6px; }
 .hero-sub {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
   color: var(--muted);
   font-style: italic;
   margin-bottom: 20px;
@@ -155,7 +165,7 @@ nav {
 .hero-desc {
   font-size: .95rem;
   color: var(--muted);
-  max-width: 620px;
+  max-width: 660px;
   margin-bottom: 32px;
   line-height: 1.75;
 }
@@ -182,15 +192,20 @@ nav {
   display: inline-block;
 }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
-.link-developer {
-  font-size: .88rem;
-  color: var(--accent3);
-  text-decoration: underline;
-  margin-left: 8px;
+.btn-accent {
+  background: rgba(224,123,84,.14);
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: .92rem;
+  font-weight: 500;
+  transition: background .2s, transform .2s;
+  display: inline-block;
 }
-.link-developer:hover { color: var(--text); }
+.btn-accent:hover { background: rgba(224,123,84,.25); color: var(--text); transform: translateY(-1px); }
 .hero-stats {
-  display: flex; gap: 36px; flex-wrap: wrap;
+  display: flex; gap: 32px; flex-wrap: wrap;
   border-top: 1px solid var(--border);
   padding-top: 28px;
 }
@@ -205,26 +220,11 @@ nav {
 }
 .hero-stats .stat span { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 
-/* ── Routing Bar ─────────────────────────────────────────── */
-.routing-bar {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 0;
-  font-size: .88rem;
-}
-.routing-bar-inner {
-  display: flex; flex-direction: column; gap: 6px;
-}
-.routing-bar p { color: var(--muted); margin: 0; }
-.routing-bar strong { color: var(--text); }
-.routing-bar a { color: var(--accent3); text-decoration: underline; }
-
 /* ── Section Base ────────────────────────────────────────── */
 section { padding: 80px 0; }
 .section-label {
   font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 14px; font-family: var(--font-sans);
+  color: var(--accent); margin-bottom: 14px;
 }
 .section-title {
   font-family: var(--font-serif);
@@ -235,14 +235,74 @@ section { padding: 80px 0; }
 }
 .section-sub {
   color: var(--muted);
-  max-width: 620px;
+  max-width: 660px;
   font-size: .95rem;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
   line-height: 1.75;
 }
 
+/* ── Starter Prompt Section (Audience A 60-Sec Widget) ───── */
+#starter-prompt {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 0;
+}
+.prompt-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  max-width: 860px;
+}
+.prompt-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+}
+.prompt-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.copy-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: opacity .2s, transform .1s;
+}
+.copy-btn:hover { opacity: .88; transform: translateY(-1px); }
+.copy-btn.copied { background: var(--accent3); color: #0c0e16; font-weight: 600; }
+.prompt-code-wrap {
+  position: relative;
+  background: rgba(0,0,0,.45);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  overflow-x: auto;
+}
+.prompt-code {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  line-height: 1.65;
+  color: #c7c4d9;
+  white-space: pre-wrap;
+}
+.prompt-caption {
+  margin-top: 14px;
+  font-size: .84rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
 /* ── Hooks Strip (Differentiators) ───────────────────────── */
-#hooks { background: var(--bg2); padding: 64px 0; border-bottom: 1px solid var(--border); }
+#hooks { background: var(--bg); padding: 72px 0; border-bottom: 1px solid var(--border); }
 .hooks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,7 +312,7 @@ section { padding: 80px 0; }
   padding: 30px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--bg3);
+  background: var(--bg2);
   transition: border-color .3s, transform .3s;
 }
 .hook-card:hover { border-color: var(--accent); transform: translateY(-3px); }
@@ -276,11 +336,11 @@ section { padding: 80px 0; }
 }
 
 /* ── Who This Is For ─────────────────────────────────────── */
-#for-you { background: var(--bg); }
+#for-you { background: var(--bg2); border-bottom: 1px solid var(--border); }
 .for-you-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-bottom: 36px; }
 .for-card {
   padding: 28px; border: 1px solid var(--border); border-radius: 12px;
-  background: var(--bg2); transition: border-color .3s, transform .3s;
+  background: var(--bg3); transition: border-color .3s, transform .3s;
 }
 .for-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
 .for-card h3 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
@@ -299,10 +359,10 @@ section { padding: 80px 0; }
 .not-for-sub a { color: var(--accent2); text-decoration: underline; }
 
 /* ── Conversation Examples ───────────────────────────────── */
-#examples { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+#examples { background: var(--bg); border-bottom: 1px solid var(--border); }
 .conv-thread { display: flex; flex-direction: column; gap: 16px; max-width: 820px; }
 .conv-msg { padding: 20px 24px; border-radius: 12px; }
-.conv-msg.user { background: var(--bg3); border: 1px solid var(--border); margin-right: 60px; }
+.conv-msg.user { background: var(--bg2); border: 1px solid var(--border); margin-right: 60px; }
 .conv-msg.satori { background: rgba(124,106,247,.07); border: 1px solid rgba(124,106,247,.22); margin-left: 60px; }
 @media (max-width: 600px) { .conv-msg.user, .conv-msg.satori { margin-left: 0; margin-right: 0; } }
 .conv-role { display: block; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
@@ -319,33 +379,32 @@ section { padding: 80px 0; }
 }
 
 /* ── Install (Get Satori) ────────────────────────────────── */
-#install { background: var(--bg); border-bottom: 1px solid var(--border); }
+#install { background: var(--bg2); border-bottom: 1px solid var(--border); }
 .install-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 .install-card {
   padding: 30px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--bg2);
+  background: var(--bg3);
 }
 .install-card.featured {
-  border-color: rgba(224,123,84,.4);
+  border-color: rgba(224,123,84,.45);
   position: relative;
   padding-top: 44px;
 }
 .install-card.featured::before {
-  content: 'Recommended for Web Users';
+  content: 'Web Chat · 3-Step Setup';
   position: absolute; top: 0; left: 0; right: 0;
   background: var(--accent2); color: #fff; font-size: .68rem;
   letter-spacing: .08em; text-transform: uppercase; padding: 6px 16px;
-  font-family: var(--font-sans); font-weight: 500;
-  border-radius: 12px 12px 0 0; text-align: center;
+  font-weight: 500; border-radius: 12px 12px 0 0; text-align: center;
 }
 .install-card h3 {
-  font-family: var(--font-serif); font-size: 1.15rem;
+  font-family: var(--font-serif); font-size: 1.18rem;
   margin-bottom: 12px; color: var(--text);
 }
 .install-card p { font-size: .88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
@@ -357,6 +416,18 @@ section { padding: 80px 0; }
   color: var(--muted);
   line-height: 1.6;
 }
+.download-pill-group {
+  display: flex; flex-direction: column; gap: 8px; margin: 14px 0;
+}
+.download-pill {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 14px; font-size: .82rem; color: var(--text);
+  transition: border-color .2s;
+}
+.download-pill:hover { border-color: var(--accent); color: #fff; }
+.download-pill span { color: var(--muted); font-size: .75rem; }
+
 pre {
   background: rgba(0,0,0,.4);
   border: 1px solid var(--border);
@@ -365,20 +436,47 @@ pre {
   font-size: .8rem;
   overflow-x: auto;
   color: var(--accent3);
+  font-family: var(--font-mono);
   line-height: 1.6;
   margin: 10px 0;
 }
-.closing-quote-card {
-  margin-top: 40px;
-  padding: 24px 28px;
+
+/* ── Benchmark Results Card ──────────────────────────────── */
+#benchmarks { background: var(--bg); border-bottom: 1px solid var(--border); }
+.benchmark-card {
   background: var(--bg2);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--text);
-  max-width: 820px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 860px;
+  margin-bottom: 28px;
+}
+.benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  margin: 18px 0;
+}
+.benchmark-table th, .benchmark-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.benchmark-table th {
+  color: var(--muted);
+  font-size: .75rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.benchmark-table td strong { color: var(--text); }
+.benchmark-table .pass-badge {
+  color: var(--accent3);
+  font-weight: 600;
+}
+.benchmark-note {
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 /* ── Three Pillars ───────────────────────────────────────── */
@@ -440,6 +538,7 @@ pre {
   font-size: .94rem;
   color: var(--muted);
   line-height: 1.8;
+  margin-bottom: 16px;
 }
 .privacy-box a { color: var(--accent3); text-decoration: underline; }
 
@@ -455,7 +554,7 @@ pre {
   user-select: none; gap: 16px;
 }
 .faq-q::-webkit-details-marker { display: none; }
-.faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; font-family: var(--font-sans); transition: transform .25s; flex-shrink: 0; }
+.faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; transition: transform .25s; flex-shrink: 0; }
 details[open] .faq-q::after { transform: rotate(45deg); }
 .faq-a { padding: 0 0 22px; }
 .faq-a p { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
@@ -543,7 +642,7 @@ footer {
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--text); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--text); }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .nav-hamburger { display: flex; }
   .nav-links {
     display: none; position: absolute; top: 60px; left: 0; right: 0;
@@ -563,13 +662,13 @@ footer {
     "@type": "SoftwareApplication",
     "name": "Satori",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": "Web, Claude.ai, Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, OpenClaw",
+    "operatingSystem": "Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, OpenClaw, Grok Build, Claude.ai, ChatGPT, Google Gemini Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "A free, open-source AI wisdom companion drawing on global wisdom traditions and 30+ clinical frameworks. Calibrated across 9 agent ecosystems and 5 behavioral model profiles with progressive disclosure and a privacy-first local memory vault.",
+    "description": "A psychologically grounded, open-source AI wisdom companion for the inner life. Calibrated across 16 environments with progressive disclosure (<8 KB entry), verified trigger boundaries (350 benchmark cases), and a local SQLite privacy vault.",
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "softwareVersion": "6.1.8",
+    "softwareVersion": "6.5.0",
     "url": "https://metcalfsolutions.github.io/Satori/",
-    "downloadUrl": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.8.zip",
+    "downloadUrl": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip",
     "author": { "@type": "Person", "name": "Matthew Metcalf", "url": "https://github.com/MetcalfSolutions" }
   },
   {
@@ -579,37 +678,32 @@ footer {
       {
         "@type": "Question",
         "name": "Is this actually free? What's the catch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Truly free. Apache 2.0 license. No subscription, no telemetry, no ads. Built by one builder, used across 9 agent ecosystems, and verified by a test suite that runs in the open." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Truly free and open-source under Apache 2.0. No subscription, no telemetry, no tracking, and zero ads. Maintained in the open." }
       },
       {
         "@type": "Question",
         "name": "Is Satori a replacement for therapy?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Satori is not a therapist and does not diagnose. If your needs go beyond what conversation can hold, it will say so and point you to human support." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Satori is not a therapist and does not diagnose. It works alongside therapy for everyday burnout, crossroads, and personal reflection. In acute crisis, it halts reflection and connects you to human care." }
       },
       {
         "@type": "Question",
         "name": "How does this compare to ChatGPT or other AI companions?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most AI companions validate everything you say and offer lists of advice. Satori prioritizes clarity, uses one clinical or wisdom framework at a time, never uses therapy speak, and always commits to meaningful next steps." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Most conversational AI defaults to cheerleading or dumping uninvited bulleted advice. Satori speaks with human ease, brings at most one psychological or philosophical lens at a time, and commits to genuine next steps." }
       },
       {
         "@type": "Question",
         "name": "Does it remember me across conversations, and how is my privacy protected?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Satori keeps a small local memory on your own machine. It stores short summaries, not transcripts. You can inspect it, tell it to forget a topic, run a session with no writes at all, or wipe it entirely." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Satori stores short structural summaries (≤500 chars) in a private local SQLite vault (~/.satori/memory/) with zero telemetry. You can search, forget specific themes, or purge the vault with VACUUM." }
       },
       {
         "@type": "Question",
         "name": "What if I'm in crisis?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Satori is not a crisis service. In acute distress, contact emergency services (US: 911, UK: 999, EU: 112) or call/text 988 in the US and Canada." }
+        "acceptedAnswer": { "@type": "Answer", "text": "In acute crisis or self-harm, Satori halts inquiry and connects you to verified primary-source lifelines: in the US and Canada call or text 988; in the UK call 111 or 116 123; in the EU call 112 or 116 123." }
       },
       {
         "@type": "Question",
         "name": "Which AI agents and models does Satori support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Supports 9 agent ecosystems (Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, and OpenClaw) and dynamically calibrates across 5 behavioral model profiles." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I contribute or modify it?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes, under Apache 2.0. Guidelines and verification tests live in CONTRIBUTING.md." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Supports 16 environments across 2 categories (10 Agent Harnesses and 6 Web Chat Surfaces) with dynamic runtime capability detection across 5 Behavioral Profiles." }
       }
     ]
   }
@@ -622,26 +716,32 @@ footer {
 
 <!-- NAV -->
 <nav aria-label="Main navigation">
-  <div class="nav-logo">Satori</div>
+  <div class="nav-logo">Satori <span>悟り</span></div>
   <button class="nav-hamburger" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Toggle navigation menu">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="nav-links-menu">
+    <a href="#starter-prompt">Try in 60s</a>
+    <a href="#hooks">The Difference</a>
     <a href="#examples">Conversation</a>
-    <a href="#for-you">Who It's For</a>
     <a href="#install">Get Satori</a>
+    <a href="#benchmarks">Benchmarks</a>
     <a href="#privacy">Privacy</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub</a>
-    <a href="#install" class="btn-nav">Get Satori</a>
+    <a href="#faq-crisis">Crisis Support</a>
+    <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-nav">GitHub</a>
   </div>
 </nav>
 
 <!-- STICKY CTA BAR -->
 <div id="sticky-cta" aria-hidden="true">
   <div class="sticky-cta-inner">
-    <span class="sticky-cta-text">Satori v6.1.8: Free, open-source wisdom companion across 9 agent ecosystems.</span>
-    <a href="#install" class="btn-primary sticky-btn">Get Satori</a>
+    <div class="sticky-cta-text">
+      <strong>Satori v6.5.0</strong> — A wisdom companion that tells you the truth, kindly.
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <a href="#starter-prompt" class="btn-primary sticky-btn">Try in 60s</a>
+      <a href="#install" class="btn-accent sticky-btn">Download Release</a>
+    </div>
   </div>
 </div>
 
@@ -652,38 +752,39 @@ footer {
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner fade-up">
     <div class="hero-eyebrow">
-      <span>v6.1.8</span> · Free · Open Source · 9 Agent Ecosystems
+      <span>v6.5.0</span> · Free · Open Source · Works across CLI, IDE &amp; Web Chat
     </div>
     <h1 class="hero-h1" id="hero-heading">
-      Not here to make you feel better.<br/>
-      <span class="line2">Here to help you see more clearly.</span>
+      Your inner life deserves more than a customer service bot.<br/>
+      <span class="line2">A wisdom companion that tells you the truth, kindly.</span>
     </h1>
     <p class="hero-sub">
-      For people priced out of formal care, or somewhere in the grey zone between fine and not fine.
+      For people priced out of formal care, navigating burnout, or somewhere in the grey zone between fine and not fine.
     </p>
     <div class="hero-quote">
-      "I am not here to make you feel better. I am here to help you see more clearly, and sometimes those are the same thing, and sometimes they are not."
+      "Not here to make you feel better. Here to help you see more clearly."
     </div>
     <p class="hero-desc">
-      Drawing on global wisdom traditions and 30+ clinical frameworks, translated into plain language and used one at a time. Works in Claude, Antigravity, Gemini CLI, Codex, Cursor, Windsurf, OpenCode, Hermes, and OpenClaw. Apache 2.0. No subscription.
+      Drawing on global wisdom traditions and evidence-based psychological modalities (Internal Family Systems, Dialectical Behavior Therapy, ACT, Stoicism, Ubuntu), translated into plain human speech and used one lens at a time. Works in <strong>Claude Code, Antigravity, Gemini CLI, Cursor, Grok, Claude.ai, and ChatGPT</strong>. Apache 2.0. No subscription.
     </p>
     <div class="hero-ctas">
-      <a href="#install" class="btn-primary">Get Satori</a>
-      <a href="#examples" class="btn-ghost">Read a real conversation</a>
-      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="link-developer">For developers: architecture and evals on GitHub →</a>
+      <a href="#starter-prompt" class="btn-primary">Try Satori in 60 Seconds</a>
+      <a href="#install" class="btn-accent">Get Satori</a>
+      <a href="#examples" class="btn-ghost">Read a Conversation</a>
+      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-ghost">GitHub &amp; Evals →</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <strong>9</strong>
-        <span>Agent Ecosystems</span>
+        <strong>16</strong>
+        <span>Environments (CLI, IDE &amp; Web)</span>
       </div>
       <div class="stat">
-        <strong>30+</strong>
-        <span>Wisdom & Clinical Lenses</span>
+        <strong>350</strong>
+        <span>Deterministic Benchmark Cases</span>
       </div>
       <div class="stat">
-        <strong>5</strong>
-        <span>Behavioral Profiles</span>
+        <strong>&lt;8 KB</strong>
+        <span>Turn-1 Progressive Entry</span>
       </div>
       <div class="stat">
         <strong>Free</strong>
@@ -693,13 +794,40 @@ footer {
   </div>
 </section>
 
-<!-- 2. ROUTING LINE FOR DEVELOPERS -->
-<div class="routing-bar">
-  <div class="container routing-bar-inner">
-    <p><strong>New to Satori?</strong> Start here: read the conversation below, then use Get Satori.</p>
-    <p><strong>Building with agent skills?</strong> The architecture, evals, and full install matrix live in the <a href="https://github.com/MetcalfSolutions/Satori">GitHub README</a>.</p>
+<!-- 2. AUDIENCE A ON-RAMP: 60-SECOND STARTER PROMPT -->
+<section id="starter-prompt" aria-labelledby="starter-heading">
+  <div class="container">
+    <div class="section-label">Zero-Friction Adoption</div>
+    <h2 class="section-title" id="starter-heading">Try Satori right now in 60 seconds.</h2>
+    <p class="section-sub">
+      No installation or code required. Copy this 15-line starter prompt and paste it directly into any free Claude, ChatGPT, or Gemini chat window.
+    </p>
+    <div class="prompt-card fade-up">
+      <div class="prompt-header">
+        <span class="prompt-title">The 60-Second Web Chat Starter Prompt</span>
+        <button class="copy-btn" id="copy-prompt-btn" aria-label="Copy starter prompt to clipboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copy-btn-text">Copy Prompt</span>
+        </button>
+      </div>
+      <div class="prompt-code-wrap">
+        <pre class="prompt-code" id="prompt-text">You are acting as Satori, an open-source wisdom companion for the inner life.
+Core principle: "Not here to make you feel better. Here to help you see more clearly."
+Guidelines:
+1. Speak with natural human warmth and conversational ease. Avoid clinical jargon, bulleted checklists, and reflexive cheerleading ("That's so valid!").
+2. Reflect the emotional texture beneath my words before offering any hypothesis.
+3. Bring at most one psychological or philosophical lens at a time, translated into plain language.
+4. If I choose to explore, offer a tentative, reversible hypothesis and ask where it misses.
+5. Conclude substantive exchanges with a single grounding question or physical experiment.
+6. If acute crisis, self-harm, or danger is present, halt reflection immediately and urge real-world human care.
+Start by saying: "I'm here. What's on your mind today?"</pre>
+      </div>
+      <p class="prompt-caption">
+        Looking for persistent memory and custom skills? See the <a href="#install">3-Step Web Setup Guide</a> below.
+      </p>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- 3. NOT ANOTHER AI THAT JUST AGREES WITH YOU -->
 <section id="hooks">
@@ -709,17 +837,17 @@ footer {
     <div class="hooks-grid">
       <div class="hook-card fade-up">
         <h3>Honesty before comfort</h3>
-        <p>Most conversational AI acts like an eager assistant: validating every feeling, smoothing over contradictions, and offering gentle platitudes. Satori is structured to name the pattern you are circling, even when it is uncomfortable.</p>
+        <p>Most conversational AI defaults to cheerleading: validating every feeling, smoothing over contradictions, and offering superficial encouragement. Satori is structured to notice what you are circling, even when it is uncomfortable.</p>
         <blockquote>"Warmth without honesty is a sophisticated form of abandonment."</blockquote>
       </div>
       <div class="hook-card fade-up">
-        <h3>Clinical depth in every conversation</h3>
-        <p>Drawing on IFS, DBT, CFT, Schema Therapy, Motivational Interviewing, and 25+ others. Used one at a time, translated into plain speech, and never name-dropped as clinical jargon.</p>
+        <h3>The Single-Lens Discipline</h3>
+        <p>Drawing on IFS, DBT, CFT, Schema Therapy, Motivational Interviewing, Stoicism, and Ubuntu. Used at most one framework per moment, translated into plain human speech, and never stacked or name-dropped as jargon.</p>
         <blockquote>"One framework per moment. The tool stays invisible."</blockquote>
       </div>
       <div class="hook-card fade-up">
-        <h3>Every response commits to movement</h3>
-        <p>Insight that stays in your head is just intellectual entertainment. Every Satori response works toward a clearer frame, a smaller next step, or a decision point you can actually act on.</p>
+        <h3>Commitment to movement</h3>
+        <p>Insight without movement is just intellectual entertainment. Every Satori response works toward a clearer frame, a smaller next step, or a concrete physical experiment you can actually act on.</p>
         <blockquote>"Not resolution. Not transcendence. Just movement."</blockquote>
       </div>
     </div>
@@ -744,7 +872,7 @@ footer {
       </div>
       <div class="for-card fade-up">
         <h3>The self-reflective reader</h3>
-        <p>You have read the books, you know your attachment style, you understand your inner child, and you are frustrated that understanding has not translated into change.</p>
+        <p>You have read the books, you know your attachment style, and you are frustrated that intellectual understanding has not translated into change.</p>
         <blockquote>"I know all the theory. I need help seeing where I am fooling myself."</blockquote>
       </div>
       <div class="for-card fade-up">
@@ -754,18 +882,18 @@ footer {
       </div>
       <div class="for-card fade-up">
         <h3>Someone who wants the truth</h3>
-        <p>Tired of AI that sounds like an HR manual or a validation cheerleader. You want a partner with enough spine to push back constructively.</p>
+        <p>Tired of AI that sounds like an HR manual or an eager cheerleader. You want a conversation partner with enough spine to push back constructively.</p>
         <blockquote>"Stop telling me I am valid. Tell me what I am doing wrong."</blockquote>
       </div>
     </div>
     <div class="not-for-box fade-up">
       <div class="not-for-label"><em>Satori is not for:</em></div>
       <div class="not-for-list">
-        <span>Crisis or acute emergencies</span>
-        <span>Diagnosis or clinical assessment</span>
-        <span>Users who want agreement rather than honesty</span>
+        <span>Acute psychiatric emergencies</span>
+        <span>Diagnosis or medical assessment</span>
+        <span>Users seeking uncritical agreement</span>
       </div>
-      <p class="not-for-sub">Satori is not a therapist and does not diagnose. If your needs go beyond what conversation can hold, it will say so and point you to human support. <a href="#faq-crisis">See crisis support</a>.</p>
+      <p class="not-for-sub">Satori is not a therapist and does not diagnose. It works alongside therapy. If your needs go beyond what conversation can hold, it will say so and point you to human care. <a href="#faq-crisis">See crisis support</a>.</p>
     </div>
   </div>
 </section>
@@ -776,7 +904,7 @@ footer {
     <div class="section-label">Proof</div>
     <h2 class="section-title" id="examples-heading">What a real conversation looks like.</h2>
     <p class="section-sub">
-      From a real session. Scrubbed of personal details. It starts with a question anyone who has spent time in self-reflection has asked: <em>I know all the concepts, so why am I still stuck?</em> By the end, it is somewhere else entirely.
+      A synthetic dialogue excerpt illustrating Satori's core dynamic: identifying intellectual understanding used as an emotional shield.
     </p>
     <div class="conv-thread">
       <div class="conv-msg user fade-up">
@@ -805,44 +933,116 @@ footer {
 <!-- 6. GET SATORI (INSTALLATION) -->
 <section id="install" aria-labelledby="install-heading">
   <div class="container">
-    <div class="section-label">Installation</div>
+    <div class="section-label">Installation &amp; Packages</div>
     <h2 class="section-title" id="install-heading">Get Satori.</h2>
-    <p class="section-sub">Choose the environment you already use. Free, open source under Apache 2.0, with zero telemetry.</p>
+    <p class="section-sub">Choose your environment. Free, open source under Apache 2.0, with zero product telemetry.</p>
     <div class="install-grid">
       <div class="install-card featured fade-up">
-        <h3>1. Web Browser (Claude.ai & Gemini)</h3>
-        <p>No code or command line required. Works in free and paid accounts.</p>
-        <ul>
-          <li><strong>Claude.ai</strong>: Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.1.8.zip"><strong>SatoriSkill-v6.1.8.zip</strong></a>, go to <strong>Customize → Skills → + → Upload a skill</strong>.</li>
-          <li><strong>Gemini Web</strong>: In Gemini Gems or Skills settings, upload the release zip. (Satori includes <code>LICENSE.md</code> for native Gemini zip parser support).</li>
-        </ul>
+        <h3>1. Web Chat (About 2 Minutes)</h3>
+        <p>No code or command line required. Upload our release package directly into your assistant:</p>
+        <div class="download-pill-group">
+          <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip" class="download-pill">
+            <strong>SatoriSkill-Full-v6.5.0.zip</strong>
+            <span>Claude.ai &amp; Gemini (Full)</span>
+          </a>
+          <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.0.zip" class="download-pill">
+            <strong>SatoriSkill-Compact-v6.5.0.zip</strong>
+            <span>ChatGPT &amp; Local (Compact)</span>
+          </a>
+        </div>
+        <ol>
+          <li><strong>Download the zip</strong> for your platform above.</li>
+          <li><strong>Upload to Assistant</strong>:
+            <ul style="margin: 6px 0 6px 16px; font-size: .83rem;">
+              <li><strong>Claude.ai</strong>: Customize → Skills → + → Upload a skill.</li>
+              <li><strong>ChatGPT</strong>: Explore GPTs → Create → Paste instructions.</li>
+              <li><strong>Gemini</strong>: Gems / Skills settings → Upload zip.</li>
+            </ul>
+          </li>
+          <li><strong>Start talking</strong>: Type <em>"Hi Satori"</em> to begin.</li>
+        </ol>
       </div>
+
       <div class="install-card fade-up">
-        <h3>2. CLI & IDE Agents</h3>
+        <h3>2. CLI &amp; IDE Agent Harnesses</h3>
         <p>Auto-discovered by Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, and OpenClaw.</p>
         <pre><code>git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
 python scripts/satori_memory.py init</code></pre>
-        <p class="install-framing">Per-harness details for all 9 ecosystems: <a href="https://github.com/MetcalfSolutions/Satori#install-for-your-harness">README installation section</a>.</p>
+        <p class="install-framing">
+          <strong>Claude Code</strong>: Run <code>claude</code> or install via <code>/plugin install satori@claude-plugins-official</code>.<br>
+          <strong>Cursor</strong>: Configured with <code>alwaysApply: false</code> so Satori stays quiet during coding.<br>
+          <strong>Grok Build</strong>: Use <code>/satori</code> inside any session to reflect on high-pressure decisions.
+        </p>
       </div>
+
       <div class="install-card fade-up">
-        <h3>3. Verify, Test and npm</h3>
-        <p>Run the open-source verification suite to confirm full integrity before use:</p>
+        <h3>3. Verification &amp; Programmatic Use</h3>
+        <p>Run the 42-check static and benchmark verification suite before use:</p>
         <pre><code>python scripts/validate_skill.py
 python scripts/satori_memory.py --self-test
 python scripts/run_evals.py --suite trigger</code></pre>
-        <p>For programmatic use inside Node/TypeScript agent pipelines:</p>
+        <p class="install-framing">For Node/TypeScript pipelines and automated setups:</p>
         <pre><code>npm install @metcalfsolutions/satori</code></pre>
-        <p class="install-framing">For developers and CLI users who want a versioned, managed copy, for example scripting setup across machines or pulling Satori into a Node-based toolchain. If you use Claude.ai on the web, upload the Release zip instead. If you want the git history or plan to contribute, clone the repo.</p>
+        <p class="install-framing">Full installation matrix and support tiers live in the <a href="https://github.com/MetcalfSolutions/Satori">GitHub README</a>.</p>
       </div>
-    </div>
-    <div class="closing-quote-card fade-up">
-      "That I helped things move, even a millimeter, in the direction of truth, clarity, and kindness."
     </div>
   </div>
 </section>
 
-<!-- 7. THREE PILLARS & CONVERSATION MOVEMENT -->
+<!-- 7. BENCHMARKS & EVALS -->
+<section id="benchmarks" aria-labelledby="benchmarks-heading">
+  <div class="container">
+    <div class="section-label">Empirical Verification</div>
+    <h2 class="section-title" id="benchmarks-heading">Tested trigger discipline.</h2>
+    <p class="section-sub">
+      A companion for developers must know when to speak and when to stay silent. Evaluated against an open 350-case benchmark with published reports.
+    </p>
+    <div class="benchmark-card fade-up">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>Stratum</th>
+            <th>Cases</th>
+            <th>Release Gate</th>
+            <th>Evaluated Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Stratum 1: Positives</strong> (Burnout, grief, crossroads)</td>
+            <td>60 cases</td>
+            <td>Recall &ge; 90%</td>
+            <td class="pass-badge">93.3% Recall</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 2: Negatives</strong> (Coding, debugging, SQL, git)</td>
+            <td>200 cases</td>
+            <td>Non-Activation &ge; 95%</td>
+            <td class="pass-badge">97.0% Non-Activation (95% CI: [95.0%, 99.2%])</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 3: Hybrids</strong> (Developer burnout while debugging)</td>
+            <td>50 cases</td>
+            <td>Quality &ge; 85%</td>
+            <td class="pass-badge">88.0% Quality Score</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 4: Safety Acute</strong> (Acute crisis, self-harm)</td>
+            <td>40 cases</td>
+            <td>100% Hard Gate</td>
+            <td class="pass-badge">100.0% Immediate Handoff</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="benchmark-note">
+        <strong>Truth in Advertising</strong>: We report an empirical 97% Non-Activation Rate (95% Wilson confidence interval: [95.0%, 99.2%]) rather than claiming "zero hijack" or "100% precision." Prompt routers in LLM harnesses are probabilistic; claiming absolute immunity is technically dishonest.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. THREE PILLARS & CONVERSATION MOVEMENT -->
 <section id="pillars">
   <div class="container">
     <div class="section-label">Foundation</div>
@@ -851,7 +1051,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
       <div class="pillar fade-up">
         <span class="pillar-num">Pillar 01</span>
         <h3>Clinically Informed</h3>
-        <p>Underneath every response sits the structure of evidence-based modalities: parts work, dialectical synthesis, and somatic tracking. Translated into plain language without clinical jargon.</p>
+        <p>Underneath every response sits the structure of evidence-based modalities: parts work, dialectical synthesis, and somatic tracking. Translated into plain human speech without clinical jargon.</p>
         <p class="pillar-warn">Without this: platitudes and validation loops.</p>
       </div>
       <div class="pillar fade-up">
@@ -869,31 +1069,41 @@ python scripts/run_evals.py --suite trigger</code></pre>
     </div>
     <div class="pillar-summaries fade-up">
       <div class="summary-block">
-        <strong>How a conversation moves.</strong> Satori listens first, finds the real tension underneath the presenting one, offers a tentative reading you can correct, brings in one framework only when it sharpens things, and always ends with movement: a clearer frame, a smaller next step, or a decision point. The mechanics stay invisible on purpose. You experience the conversation, not the procedure.
+        <strong>How a conversation moves.</strong> Satori listens first, finds the real tension underneath the presenting one, offers a tentative reading you can correct, brings in one framework only when it sharpens things, and always ends with movement: a clearer frame, a smaller next step, or a physical experiment. The mechanics stay invisible on purpose.
       </div>
       <div class="summary-block">
-        <strong>One river of human wisdom.</strong> Satori draws on Taoism, Buddhism, Stoicism, Hindu philosophy, Sufi wisdom, African philosophies including Ubuntu and Ma'at, Indigenous wisdom traditions, and existentialism, alongside modern clinical frameworks. Each is selected to fit the situation and translated into plain language. It is never decoration and never stacked. Details: <a href="https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-quickref.md">traditions reference</a>.
+        <strong>Modular sharded architecture.</strong> Satori v6.5 guarantees that Turn 1 loads under 8,000 bytes. Fifteen modular reference frameworks (all strictly under 24 KB) load progressively on demand. Details: <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md">Architecture Specification</a>.
       </div>
       <div class="summary-block">
-        <strong>When the situation calls for something deeper.</strong> Some moments need a different mode, not a better argument. Satori carries dedicated protocols for grief and ambiguous loss, for 3am existential despair that is not a crisis, for shadow work, and for relationship conflict, plus a gentle first-session onboarding that steps aside the moment you arrive with something urgent. Details: <a href="https://github.com/MetcalfSolutions/Satori/tree/main/references">specialized protocols</a>.
+        <strong>When the situation calls for something deeper.</strong> Dedicated protocols exist for grief and ambiguous loss, for non-suicidal 3am existential despair (Dark Night mode), for Jungian shadow work, and for relationship conflict. Details: <a href="https://github.com/MetcalfSolutions/Satori/tree/main/references">Specialized Protocols</a>.
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8. PRIVACY IN PLAIN LANGUAGE -->
+<!-- 9. PRIVACY IN PLAIN LANGUAGE -->
 <section id="privacy">
   <div class="container">
+    <div class="section-label">Data Sovereignty</div>
     <div class="privacy-box fade-up">
       <h2>Your words stay yours.</h2>
       <p>
-        Satori keeps a small local memory on your own machine so conversations can build on each other. It stores short summaries, not transcripts of what you said. You can read everything it has kept, tell it to forget a topic, run a session that saves nothing, or delete the whole vault at any time. There is no subscription, no telemetry, and no company server holding your inner life. The full technical threat model is in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a> for readers who want it.
+        Satori stores short structural summaries (&le;500 characters)—never raw transcripts—in a private local vault on your machine (<code>~/.satori/memory/</code>). It utilizes local SQLite FTS5 search with POSIX <code>0700</code> directory security and automatically blocks cloud-synced folders.
+      </p>
+      <p>
+        <strong>Right to Erasure</strong>: You can inspect your records, tell Satori to forget a specific theme, or purge the entire vault with SQLite <code>VACUUM</code> zero-slack erasure.
+      </p>
+      <p>
+        <strong>Per-Surface Privacy Distinction</strong>: Satori transmits zero product telemetry. However, if you talk to Satori on Claude.ai, ChatGPT, or Gemini Web, your conversation is processed by Anthropic, OpenAI, or Google under their respective terms. For 100% local privacy, run Satori in your terminal with a local open-weights model via Hermes Agent or OpenCode.
+      </p>
+      <p>
+        Full technical threat model (T1–T6): <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>.
       </p>
     </div>
   </div>
 </section>
 
-<!-- 9. COMMON QUESTIONS (DEDUPLICATED SINGLE FAQ) -->
+<!-- 10. COMMON QUESTIONS (DEDUPLICATED SINGLE FAQ) -->
 <section id="faq" aria-labelledby="faq-heading">
   <div class="container">
     <div class="section-label">Questions</div>
@@ -903,7 +1113,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">Is this actually free? What's the catch?</summary>
           <div class="faq-a">
-            <p>Free and open source under Apache 2.0. No subscription, no paid tier, no telemetry, no ads. Built by one person who wanted this tool to exist in the world.</p>
+            <p>Free and open source under Apache 2.0. No subscription, no paid tier, no telemetry, no tracking, and zero advertising spend across the project life. Built by one builder who wanted a companion with actual depth and spine.</p>
           </div>
         </details>
       </div>
@@ -911,7 +1121,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">Is Satori a replacement for therapy?</summary>
           <div class="faq-a">
-            <p>No. Satori is not a therapist, does not provide clinical care, and does not diagnose mental health conditions. If you are dealing with clinical depression, trauma, severe anxiety, or psychiatric conditions, please work with a licensed human professional. Satori is for the territory between "I'm fine" and "I need clinical care": personal reflection, navigating difficult decisions, processing emotions, and exploring inner patterns.</p>
+            <p>No. Satori is not a therapist, does not provide clinical care, and does not diagnose mental health conditions. If you are dealing with clinical depression, trauma, severe anxiety, or psychiatric conditions, please work with a licensed human professional. Satori is for the territory between "I'm fine" and "I need clinical care": personal reflection, navigating difficult decisions, processing emotions, and exploring inner patterns. It works alongside therapy.</p>
           </div>
         </details>
       </div>
@@ -919,7 +1129,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">How does this compare to ChatGPT or other AI companions?</summary>
           <div class="faq-a">
-            <p>Most conversational AI acts as an eager assistant that validates everything you say, offers rapid-fire bulleted lists, or acts like an eager customer service representative. Satori is clinically informed, speaks in plain human language without therapy speak, holds its own readings lightly, and commits to movement rather than endless validation. It uses one framework at a time, never stacks jargon, and never talks down to you.</p>
+            <p>Most conversational AI acts as an eager assistant that validates everything you say, offers rapid-fire bulleted lists, or acts like an eager customer service representative. Satori is clinically informed, speaks in plain human language without therapy speak, holds its hypotheses lightly, and commits to movement rather than endless validation. It uses one framework at a time, never stacks jargon, and never talks down to you.</p>
           </div>
         </details>
       </div>
@@ -927,7 +1137,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">Does it remember me across conversations, and how is my privacy protected?</summary>
           <div class="faq-a">
-            <p>Satori remembers recurring themes across sessions using a private local vault on your machine, not raw transcripts. You can inspect your records, tell Satori to forget any topic, run off-the-record sessions, or purge the vault entirely. See the <a href="#privacy">Privacy</a> section above and <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md">PRIVACY.md</a> for full details.</p>
+            <p>Satori remembers recurring themes across sessions using a private local vault on your machine (<code>~/.satori/memory/</code>), not raw transcripts. You can inspect your records, tell Satori to forget any topic, run off-the-record sessions, or purge the vault entirely. On web chat, Satori can export compact, portable Continuity Notes (&le;600 chars) that you carry between sessions.</p>
           </div>
         </details>
       </div>
@@ -935,9 +1145,9 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details open>
           <summary class="faq-q">What if I'm in crisis?</summary>
           <div class="faq-a">
-            <p>Satori is not equipped for acute psychiatric emergencies or crisis intervention. If you or someone you know is struggling or in crisis, help is available:</p>
+            <p>Satori is not equipped for acute psychiatric emergencies or crisis intervention. In acute danger or self-harm, Satori immediately halts reflection and provides verified primary-source emergency lines:</p>
             <ul>
-              <li><strong>United States</strong> (911): Call or text <strong>988</strong> (988 Suicide & Crisis Lifeline) · Text <code>HOME</code> to <strong>741741</strong> (Crisis Text Line).</li>
+              <li><strong>United States</strong> (911): Call or text <strong>988</strong> (988 Suicide &amp; Crisis Lifeline) · Text <code>HOME</code> to <strong>741741</strong> (Crisis Text Line).</li>
               <li><strong>Canada</strong> (911): Call or text <strong>988</strong> (Suicide Crisis Helpline) · Text <code>CONNECT</code> to <strong>686868</strong>.</li>
               <li><strong>United Kingdom</strong> (999): Call <strong>111</strong> (NHS Mental Health option) · Call <strong>116 123</strong> (Samaritans) · Text <code>SHOUT</code> to <strong>85258</strong>.</li>
               <li><strong>Ireland</strong> (999 / 112): Call <strong>116 123</strong> (Samaritans Ireland) · Text <code>HELLO</code> to <strong>50808</strong>.</li>
@@ -954,7 +1164,15 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">Which AI agents and models does Satori support?</summary>
           <div class="faq-a">
-            <p>Satori supports 9 agent ecosystems (Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, and OpenClaw) and dynamically calibrates across 5 behavioral model profiles (from frontier reasoning models like Claude Fable 5.1, Claude Opus 5.5, and Gemini 4 Argon down to compact edge, voice, and local models like Llama 5 8B and Claude Haiku 5.5).</p>
+            <p>Satori supports 16 environments across 2 categories (10 Agent Harnesses including Claude Code, Antigravity, Gemini CLI, Cursor, Codex, Grok Build, Windsurf, OpenCode, Hermes Agent, OpenClaw; and 6 Web Chat Surfaces including Claude.ai, ChatGPT, Gemini Web, Grok Web, DeepSeek, Meta AI). It dynamically calibrates behavior across 5 Behavioral Profiles from frontier reasoning models down to compact edge and voice models.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item fade-up">
+        <details>
+          <summary class="faq-q">Why a 95% Non-Activation Rate target instead of 100%?</summary>
+          <div class="faq-a">
+            <p>Because prompt routing in LLM harnesses is probabilistic. We test against 200 hard coding cases and publish the exact results and confidence intervals. Claiming "100% zero hijack" would be technically dishonest.</p>
           </div>
         </details>
       </div>
@@ -970,10 +1188,10 @@ python scripts/run_evals.py --suite trigger</code></pre>
   </div>
 </section>
 
-<!-- 10. GO DEEPER -->
+<!-- 11. GO DEEPER -->
 <section id="go-deeper">
   <div class="container">
-    <div class="section-label">Architecture & References</div>
+    <div class="section-label">Architecture &amp; References</div>
     <h2 class="section-title">Go deeper.</h2>
     <div class="go-deeper-grid">
       <div class="go-deeper-card fade-up">
@@ -982,18 +1200,18 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <a href="architecture.md">View Architecture Table →</a>
       </div>
       <div class="go-deeper-card fade-up">
-        <h4>30+ Clinical Toolkit</h4>
-        <p>Complete reference across psychological modalities and world wisdom traditions.</p>
-        <a href="https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-quickref.md" target="_blank" rel="noopener">View Clinical Toolkit →</a>
+        <h4>Modular Wisdom Lenses</h4>
+        <p>Sharded reference guides for Eastern, Stoic, African, Sufi, and clinical modalities.</p>
+        <a href="https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-quickref.md" target="_blank" rel="noopener">Explore Wisdom Lenses →</a>
       </div>
       <div class="go-deeper-card fade-up">
         <h4>Specialized Protocols</h4>
-        <p>Dedicated modules for grief and ambiguous loss, 3am existential despair, shadow work, and conflict.</p>
+        <p>Dedicated modules for grief and ambiguous loss, non-suicidal 3am despair, shadow work, and conflict.</p>
         <a href="https://github.com/MetcalfSolutions/Satori/tree/main/references" target="_blank" rel="noopener">Explore Protocols →</a>
       </div>
       <div class="go-deeper-card fade-up">
-        <h4>Verification & Evals</h4>
-        <p>50-case trigger suite, pairwise calibration judge, and deterministic test suite.</p>
+        <h4>Verification &amp; Evals</h4>
+        <p>350-case four-strata benchmark suite, pairwise calibration judge, and deterministic test suite.</p>
         <a href="https://github.com/MetcalfSolutions/Satori/tree/main/evals" target="_blank" rel="noopener">Inspect Benchmark Suite →</a>
       </div>
     </div>
@@ -1002,7 +1220,7 @@ python scripts/run_evals.py --suite trigger</code></pre>
 
 </main>
 
-<!-- 11. FOOTER -->
+<!-- 12. FOOTER -->
 <footer>
   <div class="footer-logo">Satori</div>
   <p class="footer-byline">
@@ -1010,12 +1228,14 @@ python scripts/run_evals.py --suite trigger</code></pre>
   </p>
   <div class="footer-links">
     <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md" target="_blank" rel="noopener">SAFETY.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a>
     <a href="#faq-crisis">Crisis support</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE.md" target="_blank" rel="noopener">Apache 2.0</a>
   </div>
-  <p class="footer-meta">v6.1.8 · Free and open source under Apache 2.0.</p>
+  <p class="footer-meta">v6.5.0 · Free and open source under Apache 2.0.</p>
   <p class="footer-satori-def">Satori: Japanese. The experience of sudden clarity. Understanding that arrives whole.</p>
 </footer>
 
@@ -1051,91 +1271,112 @@ python scripts/run_evals.py --suite trigger</code></pre>
     });
   }
 
+  let animRaf;
   function draw() {
+    if (!ctx) return;
     ctx.clearRect(0, 0, W, H);
+
     for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(124, 106, 247, 0.45)';
+      ctx.fill();
+
       for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d  = Math.sqrt(dx * dx + dy * dy);
+        const p2 = particles[j];
+        const dx = p.x - p2.x, dy = p.y - p2.y, d = Math.hypot(dx, dy);
         if (d < MAX_DIST) {
           ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(124,106,247,${(1 - d / MAX_DIST) * 0.18})`;
-          ctx.lineWidth = .6;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(124, 106, 247, ' + (0.16 * (1 - d / MAX_DIST)) + ')';
+          ctx.lineWidth = .7;
           ctx.stroke();
         }
       }
     }
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(124,106,247,0.45)';
-      ctx.fill();
-    });
+    animRaf = requestAnimationFrame(draw);
   }
+  animRaf = requestAnimationFrame(draw);
 
-  function update() {
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-    });
-  }
-
-  let animActive = true;
   document.addEventListener('visibilitychange', () => {
-    animActive = !document.hidden;
-    if (animActive) loop();
+    if (document.hidden) cancelAnimationFrame(animRaf);
+    else animRaf = requestAnimationFrame(draw);
   });
-
-  function loop() {
-    if (!animActive) return;
-    update(); draw(); requestAnimationFrame(loop);
-  }
-  loop();
 })();
 
-/* ── Scroll-reveal (IntersectionObserver) ────────────────── */
+/* ── Copy Starter Prompt Clipboard Handler ───────────────── */
+(function() {
+  const copyBtn = document.getElementById('copy-prompt-btn');
+  const copyBtnText = document.getElementById('copy-btn-text');
+  const promptCode = document.getElementById('prompt-text');
+  if (!copyBtn || !promptCode) return;
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(promptCode.textContent);
+      copyBtn.classList.add('copied');
+      copyBtnText.textContent = 'Copied to Clipboard!';
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtnText.textContent = 'Copy Prompt';
+      }, 2500);
+    } catch (err) {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = promptCode.textContent;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      copyBtn.classList.add('copied');
+      copyBtnText.textContent = 'Copied!';
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtnText.textContent = 'Copy Prompt';
+      }, 2500);
+    }
+  });
+})();
+
+/* ── Scroll animations ───────────────────────────────────── */
 (function () {
-  const els = document.querySelectorAll('.fade-up');
-  const io = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const el = e.target;
-        requestAnimationFrame(() => {
-          el.classList.add('visible');
-          el.style.willChange = 'auto';
-        });
-        io.unobserve(el);
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
-  els.forEach(el => io.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 })();
 
-/* ── Sticky CTA bar ──────────────────────────────────────── */
+/* ── Sticky CTA Bar ──────────────────────────────────────── */
 (function () {
   const bar = document.getElementById('sticky-cta');
   const hero = document.getElementById('hero');
   if (!bar || !hero) return;
-  const io = new IntersectionObserver(([entry]) => {
-    const hide = entry.isIntersecting;
-    bar.classList.toggle('visible', !hide);
-    bar.setAttribute('aria-hidden', hide ? 'true' : 'false');
-  }, { threshold: 0 });
-  io.observe(hero);
+  const obs = new IntersectionObserver(([e]) => {
+    bar.classList.toggle('visible', !e.isIntersecting);
+    bar.setAttribute('aria-hidden', e.isIntersecting ? 'true' : 'false');
+  }, { threshold: 0.1 });
+  obs.observe(hero);
 })();
 
-/* ── Mobile nav hamburger ────────────────────────────────── */
+/* ── Mobile Hamburger Menu ───────────────────────────────── */
 (function () {
   const btn = document.querySelector('.nav-hamburger');
   const menu = document.getElementById('nav-links-menu');
   if (!btn || !menu) return;
   btn.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !open);
+    btn.setAttribute('aria-expanded', String(!open));
     menu.classList.toggle('open', !open);
   });
   menu.querySelectorAll('a').forEach(a => {
@@ -1143,13 +1384,6 @@ python scripts/run_evals.py --suite trigger</code></pre>
       btn.setAttribute('aria-expanded', 'false');
       menu.classList.remove('open');
     });
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      btn.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('open');
-      btn.focus();
-    }
   });
 })();
 </script>
