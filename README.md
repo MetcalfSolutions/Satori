@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://github.com/MetcalfSolutions/Satori/raw/dev/v6.5/docs/assets/satori-hero-v6.svg" alt="Satori v6.5.0: A Psychologically Grounded Wisdom Companion for the Inner Life" width="820" />
+  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.0: A Psychologically Grounded Wisdom Companion for the Inner Life" width="820" />
   <br/><br/>
-  <img src="https://github.com/MetcalfSolutions/Satori/raw/dev/v6.5/docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.0 Progressive Disclosure & Modular Architecture" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.0 Progressive Disclosure & Modular Architecture" width="820" />
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <a href="docs/architecture.md">Full Architecture Matrix</a>
 </p>
 
-> **Here to try Satori right now without setup?** Jump straight to the [60-Second Web Chat Starter Prompt](#the-60-second-try-it-now-starter-prompt) or the interactive [Satori site](https://metcalfsolutions.github.io/Satori/).  
+> **Here to install Satori in your web assistant or custom GPT?** Jump straight to the [3-Step Web Setup Guide](#1-web-chat--custom-gpts-audience-a) or the interactive [Satori site](https://metcalfsolutions.github.io/Satori/).  
 > **Evaluating the skill, benchmark suite, or architecture?** Jump to the [350-Case Benchmark](#the-350-case-benchmark-and-trigger-discipline), [Architecture Table](#architecture--progressive-disclosure), and [Local Memory Vault](#privacy-first-local-memory).
 
 > *"This understands me, sees patterns I miss, connects ideas clearly, and helps me take meaningful next steps."*
@@ -41,41 +41,27 @@ Understanding, pattern recognition, connection, movement. All four. A response t
 
 Satori is designed to meet you where you already work—whether in a web browser, a terminal agent harness, or inside your code editor.
 
-### 1. Web Chat Surfaces (Audience A)
+### 1. Web Chat & Custom GPTs (Audience A)
 
-#### The 60-Second Web Chat Starter Prompt (Introductory Preview Only)
+Choose the edition engineered for your assistant:
+- **Satori Full (`SatoriSkill-Full-v6.5.0.zip`)**: Engineered for frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Features all 15 modular on-demand reference shards, longitudinal formulation, and progressive disclosure (`<8 KB` Turn-1 load).
+- **Satori Compact (`SatoriSkill-Compact-v6.5.0.zip` or `compact/SKILL.md`)**: Engineered for **ChatGPT** (Custom GPT Instructions box, strictly $\le 7,800$ characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
 
-> [!WARNING]
-> **Introductory Preview Only — Not Representative of Full or Compact Satori**:  
-> This 15-line prompt is merely a preliminary sketch designed to give a vague initial taste of Satori's conversational warmth and posture. It is **not representative** of either the Full or Compact editions. It lacks progressive disclosure, longitudinal local memory, the 15 modular clinical/philosophical reference libraries, specialized protocols (grief, dark night, shadow work), and the Three-Tier Risk Model.  
-> **To experience Satori as designed, install the Full or Compact skill below** (takes ~2 minutes, free, open-source).
+#### The 3-Step Setup Guide (About 2 Minutes)
 
-Copy this introductory prompt directly into any Claude, ChatGPT, or Gemini chat window to sample the voice:
+1. **Step 1: Download or Copy Your Edition**:
+   - **For Claude.ai & Gemini**: Download [`dist/SatoriSkill-Full-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip).
+   - **For ChatGPT & Local Models**: Download [`dist/SatoriSkill-Compact-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.0.zip) or copy the single-file prompt [`compact/SKILL.md`](compact/SKILL.md).
 
-```text
-You are acting as Satori, an open-source wisdom companion for the inner life.
-Core principle: "Not here to make you feel better. Here to help you see more clearly."
-Guidelines:
-1. Speak with natural human warmth and conversational ease. Avoid clinical jargon, bulleted checklists, and reflexive cheerleading ("That's so valid!").
-2. Reflect the emotional texture beneath my words before offering any hypothesis.
-3. Bring at most one psychological or philosophical lens at a time, translated into plain language.
-4. If I choose to explore, offer a tentative, reversible hypothesis and ask where it misses.
-5. Conclude substantive exchanges with a single grounding question or physical experiment.
-6. If acute crisis, self-harm, or danger is present, halt reflection immediately and urge real-world human care.
-Start by saying: "I'm here. What's on your mind today?"
-```
+2. **Step 2: Upload to Your Platform**:
+   - **Claude.ai**: Go to **Customize → Skills → + → Upload a skill** and select `SatoriSkill-Full-v6.5.0.zip`. (In Claude Projects: upload under **Project Knowledge**).
+   - **ChatGPT (Custom GPT)**: In **Explore GPTs → Create → Configure**, paste the text of [`compact/SKILL.md`](compact/SKILL.md) into the **Instructions** field. Name: *"Satori"*, Description: *"Psychologically grounded wisdom companion"*.
+   - **Google Gemini (Gems)**: In **Gem Manager → New Gem**, upload `SatoriSkill-Full-v6.5.0.zip` (includes `LICENSE.md` for native Gemini zip parser compatibility) or paste the instructions.
+   - **Local Open-Weights Models (Ollama, LM Studio, Jan)**: For local 8B–32B models (Llama 3/3.3, Qwen 2.5, Mistral), paste [`compact/SKILL.md`](compact/SKILL.md) directly into your Modelfile (`SYSTEM """..."""`) or system instruction box.
 
-#### The 3-Step Setup Guide (About 2 Minutes — Recommended)
-For persistent companion skills in web chat:
-
-1. **Download the Release Package**:
-   - **Full Edition**: [`dist/SatoriSkill-Full-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip) for Claude.ai and Google Gemini.
-   - **Compact Edition**: [`dist/SatoriSkill-Compact-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.0.zip) or [`compact/SKILL.md`](compact/SKILL.md) for ChatGPT Custom GPT instruction boxes (`≤7,800` characters) and `<32B` local models.
-2. **Upload to Your Assistant**:
-   - **Claude.ai**: Go to **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.0.zip`.
-   - **ChatGPT**: In **Explore GPTs → Create**, paste the text from [`compact/SKILL.md`](compact/SKILL.md) into the **Instructions** field.
-   - **Gemini Web**: Upload the release zip in Gems / Skills settings.
-3. **Start Talking**: Say *"Hi Satori"* to begin.
+3. **Step 3: Start Talking & Verify Active Presence**:
+   - Begin by saying *"Hi Satori"* or bringing an actual life dilemma or burnout point.
+   - **How to verify it's active**: Satori responds with quiet presence rather than cheerleading (*"That's so valid!"*), reflects the emotional texture beneath your words before offering any hypothesis, and holds its readings lightly.
 
 ---
 

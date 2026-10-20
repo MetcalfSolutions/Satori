@@ -241,59 +241,7 @@ section { padding: 80px 0; }
   line-height: 1.75;
 }
 
-/* ── Starter Prompt Section (Audience A 60-Sec Widget) ───── */
-#starter-prompt {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 72px 0;
-}
-.prompt-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  position: relative;
-  max-width: 860px;
-}
-.preview-warning-banner {
-  background: rgba(224,123,84,.08);
-  border: 1px solid rgba(224,123,84,.35);
-  border-left: 4px solid var(--accent2);
-  border-radius: 8px;
-  padding: 16px 20px;
-  margin-bottom: 22px;
-}
-.preview-warning-tag {
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--accent2);
-  margin-bottom: 6px;
-}
-.preview-warning-banner p {
-  font-size: .86rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin: 0;
-}
-.preview-warning-banner p strong {
-  color: var(--text);
-}
-.preview-install-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  font-size: .84rem;
-  color: var(--accent2);
-  font-weight: 500;
-  text-decoration: underline;
-}
-.preview-install-cta:hover {
-  color: var(--text);
-}
+/* ── Installation & Tier Tags ────────────────────────────── */
 .tier-tag {
   display: inline-block;
   padding: 2px 8px;
@@ -318,50 +266,6 @@ section { padding: 80px 0; }
   background: rgba(224,123,84,.15);
   border: 1px solid rgba(224,123,84,.4);
   color: var(--accent2);
-}
-.prompt-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
-}
-.prompt-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  color: var(--text);
-}
-.copy-btn {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 18px;
-  font-size: .85rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: opacity .2s, transform .1s;
-}
-.copy-btn:hover { opacity: .88; transform: translateY(-1px); }
-.copy-btn.copied { background: var(--accent3); color: #0c0e16; font-weight: 600; }
-.prompt-code-wrap {
-  position: relative;
-  background: rgba(0,0,0,.45);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px 20px;
-  overflow-x: auto;
-}
-.prompt-code {
-  font-family: var(--font-mono);
-  font-size: .85rem;
-  line-height: 1.65;
-  color: #c7c4d9;
-  white-space: pre-wrap;
-}
-.prompt-caption {
-  margin-top: 14px;
-  font-size: .84rem;
-  color: var(--muted);
-  font-style: italic;
 }
 
 /* ── Hooks Strip (Differentiators) ───────────────────────── */
@@ -784,10 +688,9 @@ footer {
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="nav-links-menu">
-    <a href="#starter-prompt">Try in 60s</a>
+    <a href="#install">Get Satori</a>
     <a href="#hooks">The Difference</a>
     <a href="#examples">Conversation</a>
-    <a href="#install">Get Satori</a>
     <a href="#benchmarks">Benchmarks</a>
     <a href="#privacy">Privacy</a>
     <a href="#faq-crisis">Crisis Support</a>
@@ -802,8 +705,8 @@ footer {
       <strong>Satori v6.5.0</strong> — A wisdom companion that tells you the truth, kindly.
     </div>
     <div style="display: flex; gap: 10px;">
-      <a href="#starter-prompt" class="btn-primary sticky-btn">Try in 60s</a>
-      <a href="#install" class="btn-accent sticky-btn">Download Release</a>
+      <a href="#install" class="btn-primary sticky-btn">Get Satori (2-Min Setup)</a>
+      <a href="#examples" class="btn-ghost sticky-btn">Read Conversation</a>
     </div>
   </div>
 </div>
@@ -831,8 +734,7 @@ footer {
       Drawing on global wisdom traditions and evidence-based psychological modalities (Internal Family Systems, Dialectical Behavior Therapy, ACT, Stoicism, Ubuntu), translated into plain human speech and used one lens at a time. Works in <strong>Claude Code, Antigravity, Gemini CLI, Cursor, Grok, Claude.ai, and ChatGPT</strong>. Apache 2.0. No subscription.
     </p>
     <div class="hero-ctas">
-      <a href="#starter-prompt" class="btn-primary">Try Satori in 60 Seconds</a>
-      <a href="#install" class="btn-accent">Get Satori</a>
+      <a href="#install" class="btn-primary">Get Satori (2-Min Setup)</a>
       <a href="#examples" class="btn-ghost">Read a Conversation</a>
       <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-ghost">GitHub &amp; Evals →</a>
     </div>
@@ -857,50 +759,7 @@ footer {
   </div>
 </section>
 
-<!-- 2. AUDIENCE A PREVIEW: 60-SECOND STARTER PROMPT -->
-<section id="starter-prompt" aria-labelledby="starter-heading">
-  <div class="container">
-    <div class="section-label">Introductory Preview Only</div>
-    <h2 class="section-title" id="starter-heading">A 60-second taste of the voice.</h2>
-    <p class="section-sub">
-      Curious how Satori sounds before installing? Copy this 15-line preview prompt to test conversational warmth in any chat window.
-    </p>
-    <div class="prompt-card fade-up">
-      <div class="preview-warning-banner">
-        <div class="preview-warning-tag">⚠️ Minimal Preview Only — Not the Full Experience</div>
-        <p>
-          This 15-line prompt is merely a preliminary sketch designed to give a <strong>vague initial idea</strong> of Satori's conversational posture. It is <strong>not representative</strong> of either the Full or Compact editions. It lacks progressive disclosure, longitudinal local memory, the 15 modular clinical/philosophical reference libraries, specialized protocols (grief, dark night, shadow work), and the Three-Tier Risk Model.
-        </p>
-        <a href="#install" class="preview-install-cta">Install the official Full or Compact skill packages (About 2 minutes) →</a>
-      </div>
-
-      <div class="prompt-header">
-        <span class="prompt-title">The 60-Second Web Chat Starter Prompt</span>
-        <button class="copy-btn" id="copy-prompt-btn" aria-label="Copy starter prompt to clipboard">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span id="copy-btn-text">Copy Sample Prompt</span>
-        </button>
-      </div>
-      <div class="prompt-code-wrap">
-        <pre class="prompt-code" id="prompt-text">You are acting as Satori, an open-source wisdom companion for the inner life.
-Core principle: "Not here to make you feel better. Here to help you see more clearly."
-Guidelines:
-1. Speak with natural human warmth and conversational ease. Avoid clinical jargon, bulleted checklists, and reflexive cheerleading ("That's so valid!").
-2. Reflect the emotional texture beneath my words before offering any hypothesis.
-3. Bring at most one psychological or philosophical lens at a time, translated into plain language.
-4. If I choose to explore, offer a tentative, reversible hypothesis and ask where it misses.
-5. Conclude substantive exchanges with a single grounding question or physical experiment.
-6. If acute crisis, self-harm, or danger is present, halt reflection immediately and urge real-world human care.
-Start by saying: "I'm here. What's on your mind today?"</pre>
-      </div>
-      <p class="prompt-caption">
-        Ready for the authentic, persistent companion experience? Jump straight to the <a href="#install">3-Step Web Setup Guide</a> below to download the official release package.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- 3. NOT ANOTHER AI THAT JUST AGREES WITH YOU -->
+<!-- 2. NOT ANOTHER AI THAT JUST AGREES WITH YOU -->
 <section id="hooks">
   <div class="container">
     <div class="section-label">The Difference</div>
@@ -1010,31 +869,43 @@ Start by saying: "I'm here. What's on your mind today?"</pre>
     <div class="install-grid">
       <div class="install-card featured fade-up">
         <div style="margin-bottom: 8px;">
-          <span class="tier-tag tier-a">Tier A (Verified)</span>
-          <span class="tier-tag tier-b">Tier B (Community)</span>
+          <span class="tier-tag tier-a">Tier A (Verified: Claude.ai, ChatGPT)</span>
+          <span class="tier-tag tier-b">Tier B (Gemini, Local)</span>
         </div>
-        <h3>1. Web Chat (About 2 Minutes)</h3>
-        <p>No code or command line required. Upload our release package directly into your assistant:</p>
+        <h3>1. Web Chat &amp; Custom GPTs (About 2 Minutes)</h3>
+        <p>No code or command line required. Choose the edition engineered for your assistant:</p>
         <div class="download-pill-group">
           <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip" class="download-pill">
-            <strong>SatoriSkill-Full-v6.5.0.zip</strong>
-            <span>Claude.ai &amp; Gemini (Full)</span>
+            <strong>Satori Full (v6.5.0.zip)</strong>
+            <span>Claude.ai &amp; Gemini Web (15 modular shards)</span>
           </a>
           <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.0.zip" class="download-pill">
-            <strong>SatoriSkill-Compact-v6.5.0.zip</strong>
-            <span>ChatGPT &amp; Local (Compact)</span>
+            <strong>Satori Compact (v6.5.0.zip)</strong>
+            <span>ChatGPT &amp; Local &lt;32B (&le;7,800 chars)</span>
           </a>
         </div>
         <ol>
-          <li><strong>Download the zip</strong> for your platform above.</li>
-          <li><strong>Upload to Assistant</strong>:
-            <ul style="margin: 6px 0 6px 16px; font-size: .83rem;">
-              <li><strong>Claude.ai</strong>: Customize → Skills → + → Upload a skill.</li>
-              <li><strong>ChatGPT</strong>: Explore GPTs → Create → Paste instructions.</li>
-              <li><strong>Gemini</strong>: Gems / Skills settings → Upload zip.</li>
+          <li>
+            <strong>Step 1: Download or copy your edition</strong>:
+            <div class="install-framing" style="margin-top: 4px; margin-bottom: 8px;">
+              Download <strong>SatoriSkill-Full-v6.5.0.zip</strong> for Claude/Gemini, or <strong>SatoriSkill-Compact-v6.5.0.zip</strong> (or grab single-file <a href="https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md" style="color: var(--accent2);"><code>compact/SKILL.md</code></a>) for ChatGPT and local runners.
+            </div>
+          </li>
+          <li>
+            <strong>Step 2: Upload to your platform</strong>:
+            <ul style="margin: 6px 0 8px 16px; font-size: .83rem; line-height: 1.6;">
+              <li><strong>Claude.ai</strong>: Go to <em>Customize &rarr; Skills &rarr; + &rarr; Upload a skill</em> and select the Full zip. (In Claude Projects: upload under <em>Project Knowledge</em>).</li>
+              <li><strong>ChatGPT (Custom GPT)</strong>: In <em>Explore GPTs &rarr; Create &rarr; Configure</em>, paste the text of <code>compact/SKILL.md</code> into the <em>Instructions</em> box. Name: <em>"Satori"</em>.</li>
+              <li><strong>Google Gemini (Gems)</strong>: In <em>Gem Manager &rarr; New Gem</em>, upload <code>SatoriSkill-Full-v6.5.0.zip</code> or paste system instructions.</li>
+              <li><strong>Local Open-Weights (Ollama / LM Studio / Jan)</strong>: For 8B&ndash;32B models, paste <code>compact/SKILL.md</code> directly into your Modelfile (<code>SYSTEM """..."""</code>) or system instruction box.</li>
             </ul>
           </li>
-          <li><strong>Start talking</strong>: Type <em>"Hi Satori"</em> to begin.</li>
+          <li>
+            <strong>Step 3: Start talking &amp; verify active presence</strong>:
+            <div class="install-framing" style="margin-top: 4px;">
+              Say <em>"Hi Satori"</em> or bring an authentic dilemma. Satori responds with quiet presence rather than cheerleading (<em>"That's so valid!"</em>), reflects emotional texture before hypotheses, and holds readings lightly.
+            </div>
+          </li>
         </ol>
       </div>
 
@@ -1397,40 +1268,6 @@ python scripts/run_evals.py --suite trigger</code></pre>
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(animRaf);
     else animRaf = requestAnimationFrame(draw);
-  });
-})();
-
-/* ── Copy Starter Prompt Clipboard Handler ───────────────── */
-(function() {
-  const copyBtn = document.getElementById('copy-prompt-btn');
-  const copyBtnText = document.getElementById('copy-btn-text');
-  const promptCode = document.getElementById('prompt-text');
-  if (!copyBtn || !promptCode) return;
-
-  copyBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(promptCode.textContent);
-      copyBtn.classList.add('copied');
-      copyBtnText.textContent = 'Copied to Clipboard!';
-      setTimeout(() => {
-        copyBtn.classList.remove('copied');
-        copyBtnText.textContent = 'Copy Prompt';
-      }, 2500);
-    } catch (err) {
-      // Fallback for older browsers
-      const textarea = document.createElement('textarea');
-      textarea.value = promptCode.textContent;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      copyBtn.classList.add('copied');
-      copyBtnText.textContent = 'Copied!';
-      setTimeout(() => {
-        copyBtn.classList.remove('copied');
-        copyBtnText.textContent = 'Copy Prompt';
-      }, 2500);
-    }
   });
 })();
 
