@@ -6,8 +6,10 @@
    skill mirror paths (.agents, .cursor, .opencode, .hermes).
 3. Updates the SHA-256 integrity digest of `references/SOUL.md` in `openclaw.plugin.json`.
 4. Normalizes all line endings to LF (`\n`) for cross-platform archive determinism.
-5. Builds clean Claude.ai web-uploadable zip archives at `dist/SatoriSkill-Full-v{version}.zip`
-   and `dist/SatoriSkill-v{version}.zip`.
+5. Builds clean Claude.ai web-uploadable zip archives:
+   - `dist/SatoriSkill-Full-v{version}.zip`: Complete Full edition with all reference shards
+   - `dist/SatoriSkill-Compact-v{version}.zip`: Self-contained Compact edition (<=7,800 chars)
+   - `dist/SatoriSkill-v{version}.zip`: Backward-compatible alias for automated tools
 6. Executes `scripts/validate_skill.py` to ensure all verification checks pass before finishing.
 """
 
@@ -41,6 +43,15 @@ FULL_ZIP_FILES = [
     "SAFETY.md",
     "NOTICE.md",
     "LICENSE.md",
+]
+
+COMPACT_ZIP_FILES = [
+    ("compact/SKILL.md", "SKILL.md"),
+    ("references/core-compact.md", "references/core-compact.md"),
+    ("README.md", "README.md"),
+    ("PRIVACY.md", "PRIVACY.md"),
+    ("SAFETY.md", "SAFETY.md"),
+    ("LICENSE.md", "LICENSE.md"),
 ]
 
 
@@ -105,7 +116,6 @@ def build_full_zip() -> tuple[pathlib.Path, pathlib.Path]:
             for rel_name in FULL_ZIP_FILES:
                 src = ROOT_DIR / rel_name
                 if src.exists():
-                    # Normalize line endings to LF
                     content = src.read_bytes().replace(b"\r\n", b"\n")
                     zf.writestr(rel_name, content)
 
@@ -129,6 +139,36 @@ def build_full_zip() -> tuple[pathlib.Path, pathlib.Path]:
     return full_zip_path, compat_zip_path
 
 
+def build_compact_zip() -> pathlib.Path:
+    pkg_path = ROOT_DIR / "package.json"
+    pkg_data = json.loads(pkg_path.read_text(encoding="utf-8"))
+    version = pkg_data.get("version", "6.5.0")
+
+    dist_dir = ROOT_DIR / "dist"
+    dist_dir.mkdir(parents=True, exist_ok=True)
+    compact_zip_path = dist_dir / f"SatoriSkill-Compact-v{version}.zip"
+
+    with zipfile.ZipFile(compact_zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for src_rel, arc_name in COMPACT_ZIP_FILES:
+            src = ROOT_DIR / src_rel
+            if src.exists():
+                content = src.read_bytes().replace(b"\r\n", b"\n")
+                zf.writestr(arc_name, content)
+
+    # Verify archive integrity
+    with zipfile.ZipFile(compact_zip_path, "r") as zf:
+        bad_file = zf.testzip()
+        if bad_file is not None:
+            raise RuntimeError(f"Corrupted file inside compact zip archive: {bad_file}")
+        names = zf.namelist()
+        if "SKILL.md" not in names:
+            raise RuntimeError("Compact archive missing root SKILL.md")
+        if any(n.startswith(".") or n.startswith("evals/") for n in names):
+            raise RuntimeError("Compact archive contains CLI dotfiles or evals that should be excluded")
+
+    return compact_zip_path
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Sync Satori skill mirrors and build release packages.")
     parser.add_argument("--sync", action="store_true", help="Sync per-agent SKILL.md mirrors and SOUL.md hash")
@@ -136,6 +176,7 @@ def main(argv: list[str] | None = None) -> int:
 
     hashes = sync_mirrors_and_hashes()
     full_zip, compat_zip = build_full_zip()
+    compact_zip = build_compact_zip()
 
     # Validate skill build
     validate_script = ROOT_DIR / "scripts" / "validate_skill.py"
@@ -149,9 +190,11 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(
             {
                 "status": "built",
-                "archive": str(full_zip.relative_to(ROOT_DIR)),
+                "archive_full": str(full_zip.relative_to(ROOT_DIR)),
+                "archive_compact": str(compact_zip.relative_to(ROOT_DIR)),
                 "compat_archive": str(compat_zip.relative_to(ROOT_DIR)),
-                "size_bytes": full_zip.stat().st_size,
+                "size_bytes_full": full_zip.stat().st_size,
+                "size_bytes_compact": compact_zip.stat().st_size,
                 "synced_mirrors": [str(p.relative_to(ROOT_DIR)) for p in MIRROR_SKILL_PATHS],
                 **hashes,
             },

@@ -44,6 +44,7 @@ CATEGORY_B_SKILL_MIRRORS = [
 
 CRISIS_DOC_TARGETS = [
     ROOT_DIR / "SKILL.md",
+    ROOT_DIR / "compact" / "SKILL.md",
     ROOT_DIR / "references" / "clinical-spine.md",
     ROOT_DIR / "references" / "core-compact.md",
 ]
@@ -117,6 +118,7 @@ def main() -> int:
     # 2. Validate file size budgets (<24,000 byte Antigravity rule cap)
     size_budgets = [
         (ROOT_DIR / "SKILL.md", skill_entry_budget, f"SKILL.md (<{skill_entry_budget} B Turn-1 budget)"),
+        (ROOT_DIR / "compact" / "SKILL.md", skill_entry_budget, f"compact/SKILL.md (<{skill_entry_budget} B Turn-1 budget)"),
         (ROOT_DIR / "references" / "core-compact.md", compact_spine_budget, f"core-compact.md (<{compact_spine_budget} B Compact budget)"),
     ]
     for path, max_bytes, label in size_budgets:
@@ -129,6 +131,15 @@ def main() -> int:
                 errors.append(f"Size budget exceeded for {label}: {actual} bytes > {max_bytes} bytes")
             else:
                 checks_passed += 1
+
+    # Compact single-file prompt character limit check (ChatGPT Custom GPT <=8,000 char ceiling)
+    compact_skill = ROOT_DIR / "compact" / "SKILL.md"
+    if compact_skill.exists():
+        compact_chars = len(compact_skill.read_text(encoding="utf-8"))
+        if compact_chars > 7800:
+            errors.append(f"Compact SKILL.md character ceiling exceeded: {compact_chars} chars > 7800 chars")
+        else:
+            checks_passed += 1
 
     # Universal check: EVERY markdown file in references/ must be strictly <= ref_ceiling_budget (<24 KB)
     refs_dir = ROOT_DIR / "references"
