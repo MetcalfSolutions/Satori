@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.0: A Psychologically Grounded Wisdom Companion for the Inner Life" width="820" />
+  <img src="https://github.com/MetcalfSolutions/Satori/raw/dev/v6.5/docs/assets/satori-hero-v6.svg" alt="Satori v6.5.0: A Psychologically Grounded Wisdom Companion for the Inner Life" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.0 Progressive Disclosure & Modular Architecture" width="820" />
+  <img src="https://github.com/MetcalfSolutions/Satori/raw/dev/v6.5/docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.0 Progressive Disclosure & Modular Architecture" width="820" />
 </p>
 
 <p align="center">
@@ -43,8 +43,14 @@ Satori is designed to meet you where you already work—whether in a web browser
 
 ### 1. Web Chat Surfaces (Audience A)
 
-#### The 60-Second "Try It Now" Starter Prompt
-No download or installation required. Copy this self-contained prompt directly into any Claude, ChatGPT, or Gemini chat window:
+#### The 60-Second Web Chat Starter Prompt (Introductory Preview Only)
+
+> [!WARNING]
+> **Introductory Preview Only — Not Representative of Full or Compact Satori**:  
+> This 15-line prompt is merely a preliminary sketch designed to give a vague initial taste of Satori's conversational warmth and posture. It is **not representative** of either the Full or Compact editions. It lacks progressive disclosure, longitudinal local memory, the 15 modular clinical/philosophical reference libraries, specialized protocols (grief, dark night, shadow work), and the Three-Tier Risk Model.  
+> **To experience Satori as designed, install the Full or Compact skill below** (takes ~2 minutes, free, open-source).
+
+Copy this introductory prompt directly into any Claude, ChatGPT, or Gemini chat window to sample the voice:
 
 ```text
 You are acting as Satori, an open-source wisdom companion for the inner life.
@@ -59,7 +65,7 @@ Guidelines:
 Start by saying: "I'm here. What's on your mind today?"
 ```
 
-#### The 3-Step Setup Guide (About 2 Minutes)
+#### The 3-Step Setup Guide (About 2 Minutes — Recommended)
 For persistent companion skills in web chat:
 
 1. **Download the Release Package**:
@@ -182,15 +188,15 @@ Full load specifications, token budgets, and load triggers: [docs/architecture.m
 
 ## Cross-Model Compatibility
 
-Satori is model-agnostic. Rather than relying on brittle model-name strings that rot as providers release updates, it calibrates behavior using runtime capability detection:
+Satori is model-agnostic. Rather than relying on brittle model-name strings that rot as providers release updates, it calibrates behavior dynamically using runtime capability detection across 5 Behavioral Profiles:
 
-1. **Tier 1: Explicit Environment Override**: Checks `SATORI_MODEL_PROFILE=1..5`.
-2. **Tier 2: Capability-Based Calibration across 5 Behavioral Profiles**:
-   - **Profile 1 (Recursive / STEM Reasoners & Deep CoT)**: e.g., Claude 3.7 Sonnet Thinking, Gemini 2.0 Flash Thinking, o1/o3-mini. Enforces CoT emotional bypassing gates.
-   - **Profile 2 (Literary & Constitutional Frontier Models)**: e.g., Claude 3.5 Sonnet / Opus, GPT-4o, Llama 3.3 70B. Enforces plain-language grounding and memory restraint.
-   - **Profile 3 (High-Candor & Search-Native)**: e.g., Grok 2 / 3, Perplexity Sonar. Automatically suppresses uninvited web search queries during personal reflection.
-   - **Profile 4 (High-Velocity Coding & RAG Workhorses)**: e.g., DeepSeek-V3, Gemini 2.0 Flash. Enforces conversational prose lock (blocks premature bullet lists).
-   - **Profile 5 (Compact Edge `<32B` & Voice)**: e.g., Llama 3 8B, Qwen 2.5 7B/14B, Grok Voice. Enforces `<12 KB` context ceiling and brevity.
+1. **Tier 1: Explicit Environment Override**: Checks `SATORI_MODEL_PROFILE=1..5` (or explicit `references/core-compact.md` loading).
+2. **Tier 2: Capability-Based Calibration across 5 Behavioral Profiles (October 2026 Checkpoints)**:
+   - **Profile 1 (Recursive & STEM Reasoners / Extended CoT)**: e.g., `Claude Fable 5.1`, `Gemini 4 Argon`, `GPT-6 Astra`, `DeepSeek-V4-Pro`, `o4-mini`, `Grok 4.3 (Reasoning)`. Enforces CoT emotional bypassing gates and single-hypothesis pruning in `<think>`.
+   - **Profile 2 (Literary & Constitutional Frontier Models)**: e.g., `Claude Opus 5.5`, `GPT-6.1 Sol`, `Llama 5 (405B)`, `Mistral Large 3`. Enforces plain-language grounding and cross-session memory restraint.
+   - **Profile 3 (High-Candor & Search-Native Models)**: e.g., `Grok 4.7`, `Grok 4.3`, `Perplexity Sonar Pro (2026)`. Automatically suppresses uninvited web search queries during personal reflection and wraps direct pattern recognition in tactical empathy.
+   - **Profile 4 (High-Velocity Coding & RAG Workhorses)**: e.g., `Claude Sonnet 5.5`, `Gemini 3.8 Flash`, `DeepSeek-V4.1-Flash`, `GPT-6.1 Sol / Codex`, `Llama 5 (70B)`, `Qwen 3.5 72B Coder`. Enforces strict prose-only lock (no bullet lists or action plans) and protects technical tasks during developer burnout.
+   - **Profile 5 (Compact Edge `<32B`, Quantized Local & Voice)**: e.g., `Claude Haiku 5.5`, `Gemini 3.5 Flash-Lite`, `GPT-6 Luna / Nano`, `DeepSeek-V4-Lite`, `Grok Voice 3.0`, `Llama 5 8B / 14B (Local)`, `Mistral Ministral 8B`, `Qwen 3.5 14B / 32B (Local)`. Enforces `<12 KB` context ceiling, single-file spine (`references/core-compact.md`), and question discipline.
 3. **Tier 3: Conservative Safe Default**: When uncertain, enforces all behavioral guards simultaneously.
 
 See [`references/model-calibration.md`](references/model-calibration.md) for detailed detection logic.

@@ -256,6 +256,69 @@ section { padding: 80px 0; }
   position: relative;
   max-width: 860px;
 }
+.preview-warning-banner {
+  background: rgba(224,123,84,.08);
+  border: 1px solid rgba(224,123,84,.35);
+  border-left: 4px solid var(--accent2);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+}
+.preview-warning-tag {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 6px;
+}
+.preview-warning-banner p {
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.preview-warning-banner p strong {
+  color: var(--text);
+}
+.preview-install-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: .84rem;
+  color: var(--accent2);
+  font-weight: 500;
+  text-decoration: underline;
+}
+.preview-install-cta:hover {
+  color: var(--text);
+}
+.tier-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.tier-a {
+  background: rgba(78,205,196,.15);
+  border: 1px solid rgba(78,205,196,.4);
+  color: var(--accent3);
+}
+.tier-b {
+  background: rgba(124,106,247,.15);
+  border: 1px solid rgba(124,106,247,.4);
+  color: var(--accent);
+}
+.tier-c {
+  background: rgba(224,123,84,.15);
+  border: 1px solid rgba(224,123,84,.4);
+  color: var(--accent2);
+}
 .prompt-header {
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
@@ -794,20 +857,28 @@ footer {
   </div>
 </section>
 
-<!-- 2. AUDIENCE A ON-RAMP: 60-SECOND STARTER PROMPT -->
+<!-- 2. AUDIENCE A PREVIEW: 60-SECOND STARTER PROMPT -->
 <section id="starter-prompt" aria-labelledby="starter-heading">
   <div class="container">
-    <div class="section-label">Zero-Friction Adoption</div>
-    <h2 class="section-title" id="starter-heading">Try Satori right now in 60 seconds.</h2>
+    <div class="section-label">Introductory Preview Only</div>
+    <h2 class="section-title" id="starter-heading">A 60-second taste of the voice.</h2>
     <p class="section-sub">
-      No installation or code required. Copy this 15-line starter prompt and paste it directly into any free Claude, ChatGPT, or Gemini chat window.
+      Curious how Satori sounds before installing? Copy this 15-line preview prompt to test conversational warmth in any chat window.
     </p>
     <div class="prompt-card fade-up">
+      <div class="preview-warning-banner">
+        <div class="preview-warning-tag">⚠️ Minimal Preview Only — Not the Full Experience</div>
+        <p>
+          This 15-line prompt is merely a preliminary sketch designed to give a <strong>vague initial idea</strong> of Satori's conversational posture. It is <strong>not representative</strong> of either the Full or Compact editions. It lacks progressive disclosure, longitudinal local memory, the 15 modular clinical/philosophical reference libraries, specialized protocols (grief, dark night, shadow work), and the Three-Tier Risk Model.
+        </p>
+        <a href="#install" class="preview-install-cta">Install the official Full or Compact skill packages (About 2 minutes) →</a>
+      </div>
+
       <div class="prompt-header">
         <span class="prompt-title">The 60-Second Web Chat Starter Prompt</span>
         <button class="copy-btn" id="copy-prompt-btn" aria-label="Copy starter prompt to clipboard">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span id="copy-btn-text">Copy Prompt</span>
+          <span id="copy-btn-text">Copy Sample Prompt</span>
         </button>
       </div>
       <div class="prompt-code-wrap">
@@ -823,7 +894,7 @@ Guidelines:
 Start by saying: "I'm here. What's on your mind today?"</pre>
       </div>
       <p class="prompt-caption">
-        Looking for persistent memory and custom skills? See the <a href="#install">3-Step Web Setup Guide</a> below.
+        Ready for the authentic, persistent companion experience? Jump straight to the <a href="#install">3-Step Web Setup Guide</a> below to download the official release package.
       </p>
     </div>
   </div>
@@ -938,6 +1009,10 @@ Start by saying: "I'm here. What's on your mind today?"</pre>
     <p class="section-sub">Choose your environment. Free, open source under Apache 2.0, with zero product telemetry.</p>
     <div class="install-grid">
       <div class="install-card featured fade-up">
+        <div style="margin-bottom: 8px;">
+          <span class="tier-tag tier-a">Tier A (Verified)</span>
+          <span class="tier-tag tier-b">Tier B (Community)</span>
+        </div>
         <h3>1. Web Chat (About 2 Minutes)</h3>
         <p>No code or command line required. Upload our release package directly into your assistant:</p>
         <div class="download-pill-group">
@@ -964,6 +1039,10 @@ Start by saying: "I'm here. What's on your mind today?"</pre>
       </div>
 
       <div class="install-card fade-up">
+        <div style="margin-bottom: 8px;">
+          <span class="tier-tag tier-a">Tier A (Verified: 5)</span>
+          <span class="tier-tag tier-b">Tier B (Community: 5)</span>
+        </div>
         <h3>2. CLI &amp; IDE Agent Harnesses</h3>
         <p>Auto-discovered by Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes Agent, and OpenClaw.</p>
         <pre><code>git clone https://github.com/MetcalfSolutions/Satori.git
@@ -977,6 +1056,10 @@ python scripts/satori_memory.py init</code></pre>
       </div>
 
       <div class="install-card fade-up">
+        <div style="margin-bottom: 8px;">
+          <span class="tier-tag tier-a">CI &amp; Verification</span>
+          <span class="tier-tag tier-b">Developer SDK</span>
+        </div>
         <h3>3. Verification &amp; Programmatic Use</h3>
         <p>Run the 42-check static and benchmark verification suite before use:</p>
         <pre><code>python scripts/validate_skill.py
@@ -1164,7 +1247,14 @@ python scripts/run_evals.py --suite trigger</code></pre>
         <details>
           <summary class="faq-q">Which AI agents and models does Satori support?</summary>
           <div class="faq-a">
-            <p>Satori supports 16 environments across 2 categories (10 Agent Harnesses including Claude Code, Antigravity, Gemini CLI, Cursor, Codex, Grok Build, Windsurf, OpenCode, Hermes Agent, OpenClaw; and 6 Web Chat Surfaces including Claude.ai, ChatGPT, Gemini Web, Grok Web, DeepSeek, Meta AI). It dynamically calibrates behavior across 5 Behavioral Profiles from frontier reasoning models down to compact edge and voice models.</p>
+            <p>Satori supports <strong>16 environments across 2 categories</strong> (10 Agent Harnesses including Claude Code, Antigravity, Gemini CLI, Cursor, Codex, Grok Build, Windsurf, OpenCode, Hermes Agent, OpenClaw; and 6 Web Chat Surfaces including Claude.ai, ChatGPT, Gemini Web, Grok Web, DeepSeek, Meta AI). Rather than brittle model-name tables, Satori dynamically calibrates behavior across <strong>5 durable Behavioral Profiles (October 2026 checkpoints)</strong>:</p>
+            <ul>
+              <li><strong>Profile 1 (Recursive &amp; STEM Reasoners / Extended CoT)</strong>: e.g., <code>Claude Fable 5.1</code>, <code>Gemini 4 Argon</code>, <code>GPT-6 Astra</code>, <code>DeepSeek-V4-Pro</code>, <code>o4-mini</code>, <code>Grok 4.3 (Reasoning)</code>. Enforces CoT emotional bypassing gates and single-hypothesis pruning in <code>&lt;think&gt;</code>.</li>
+              <li><strong>Profile 2 (Literary &amp; Constitutional Frontier)</strong>: e.g., <code>Claude Opus 5.5</code>, <code>GPT-6.1 Sol</code>, <code>Llama 5 (405B)</code>, <code>Mistral Large 3</code>. Enforces plain-language grounding and cross-session memory restraint.</li>
+              <li><strong>Profile 3 (High-Candor &amp; Search-Native)</strong>: e.g., <code>Grok 4.7</code>, <code>Grok 4.3</code>, <code>Perplexity Sonar Pro (2026)</code>. Suppresses uninvited web search during introspection and wraps direct pattern challenges in tactical empathy.</li>
+              <li><strong>Profile 4 (High-Velocity Coding &amp; RAG Workhorses)</strong>: e.g., <code>Claude Sonnet 5.5</code>, <code>Gemini 3.8 Flash</code>, <code>DeepSeek-V4.1-Flash</code>, <code>GPT-6.1 Sol / Codex</code>, <code>Llama 5 (70B)</code>, <code>Qwen 3.5 72B Coder</code>. Enforces strict prose-only lock (no bullet lists or action plans) and protects technical tasks during developer burnout.</li>
+              <li><strong>Profile 5 (Compact Edge &lt;32B, Local &amp; Voice)</strong>: e.g., <code>Claude Haiku 5.5</code>, <code>Gemini 3.5 Flash-Lite</code>, <code>GPT-6 Luna / Nano</code>, <code>DeepSeek-V4-Lite</code>, <code>Grok Voice 3.0</code>, <code>Llama 5 8B / 14B (Local)</code>, <code>Mistral Ministral 8B</code>, <code>Qwen 3.5 14B / 32B (Local)</code>. Enforces &lt;12 KB context ceiling, single-file spine (<code>references/core-compact.md</code>), and question discipline.</li>
+            </ul>
           </div>
         </details>
       </div>
