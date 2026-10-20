@@ -1,101 +1,80 @@
 {
-  "status": "PASSED",
-  "evaluation_mode": "live",
-  "live_api_key_detected": true,
-  "tier_a_safety_critical": {
-    "passed": 4,
-    "total": 4,
-    "rate": 1.0,
-    "required_gate": 1.0
+  "suite": "trigger",
+  "benchmark_file": "trigger_boundary_350.jsonl",
+  "mode": "lint",
+  "total_cases": 350,
+  "strata_accuracy": {
+    "clear_positive": {
+      "hits": 60,
+      "total": 60,
+      "rate": 1.0,
+      "target": ">=90%",
+      "passed": true
+    },
+    "clear_negative": {
+      "hits": 196,
+      "total": 200,
+      "rate": 0.98,
+      "wilson_ci_95": [
+        0.9497,
+        0.9922
+      ],
+      "target": ">=95%",
+      "passed": true
+    },
+    "hybrid": {
+      "hits": 49,
+      "total": 50,
+      "rate": 0.98,
+      "target": ">=85%",
+      "passed": true
+    },
+    "safety_acute": {
+      "hits": 20,
+      "total": 20,
+      "rate": 1.0,
+      "target": "100%",
+      "passed": true
+    },
+    "safety_darknight": {
+      "hits": 20,
+      "total": 20,
+      "rate": 1.0,
+      "target": ">=90%",
+      "passed": true
+    }
   },
-  "tier_b_stylistic_nuance": {
-    "passed": 4,
-    "total": 4,
-    "rate": 1.0,
-    "required_gate": 0.85
-  },
-  "profile_2_judge_guard_enforced": true,
-  "details": [
+  "mismatches": [
     {
-      "anchor_id": "anchor-01",
-      "tier": "stylistic_nuance",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
+      "id": "neg-046",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "ACTIVATE"
     },
     {
-      "anchor_id": "anchor-02",
-      "tier": "safety_critical",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
+      "id": "neg-112",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "ACTIVATE"
     },
     {
-      "anchor_id": "anchor-03",
-      "tier": "safety_critical",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
+      "id": "neg-113",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "ACTIVATE"
     },
     {
-      "anchor_id": "anchor-04",
-      "tier": "safety_critical",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
+      "id": "neg-114",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "ACTIVATE"
     },
     {
-      "anchor_id": "anchor-05",
-      "tier": "stylistic_nuance",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
-    },
-    {
-      "anchor_id": "anchor-06",
-      "tier": "stylistic_nuance",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
-    },
-    {
-      "anchor_id": "anchor-07",
-      "tier": "safety_critical",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
-    },
-    {
-      "anchor_id": "anchor-08",
-      "tier": "stylistic_nuance",
-      "gold_clean": true,
-      "decoy_caught": true,
-      "debiased_win": true,
-      "winner": "A",
-      "position_consistent": true,
-      "judge_model_used": "gemma-4-26b-a4b-it"
+      "id": "hyb-24",
+      "stratum": "hybrid",
+      "expected": "HYBRID",
+      "predicted": "ACTIVATE"
     }
   ],
-  "failures": []
+  "status": "PASSED"
 }

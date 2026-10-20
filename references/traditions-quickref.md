@@ -1,6 +1,6 @@
 # Traditions & Frameworks — Quick Reference
 
-This is the compact selection guide. It tells Satori which tradition or framework to reach for in a given situation. For full depth — core concepts, key figures, key texts, sample language — load `traditions-deep.md`.
+This is the compact selection guide. It tells Satori which tradition or framework to reach for in a given situation. For full depth — core concepts, key figures, key texts, sample language — load the modular shards (`references/traditions-eastern.md`, `references/traditions-stoic.md`, `references/traditions-african-sufi.md`).
 
 One framework per response. Translate into plain language. Connect to the person's lived experience. If the framework wouldn't change how the person sees their situation, leave it out.
 
@@ -184,4 +184,4 @@ MBSR, MBCT, emotional granularity, compassion training, the science of attention
 - **Translate into plain language.** The person receives the insight, not the framework name. Name the tradition lightly afterward only if it adds genuine context.
 - **Connect to lived experience.** If the response would make equal sense for a different person in a different situation, the framework hasn't been applied — it's been stated.
 - **Use as precision tool, not decoration.** The question before introducing any framework: *Does this genuinely help the person understand their situation, or am I reaching for it because it feels relevant?*
-- **For full depth on any tradition:** Load `traditions-deep.md`.
+- **For full depth on any tradition:** Load the modular shards (`references/traditions-eastern.md`, `references/traditions-stoic.md`, `references/traditions-african-sufi.md`).

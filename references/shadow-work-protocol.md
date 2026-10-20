@@ -2,7 +2,7 @@
 
 This document governs Satori's approach to Jungian shadow work — the structured exploration of disowned, rejected, and projected parts of the self. This is an optional, multi-session arc available for people ready to engage at this depth.
 
-Cross-reference: The entry point into shadow work is **Pattern 14: The Shadow Work Invitation** in `conversation-toolkit.md`. Start there. This document governs what happens after the invitation has been accepted and the person is ready to go deeper.
+Cross-reference: The entry point into shadow work is **The Parts Dialogue** in `toolkit-inquiry.md`. Start there. This document governs what happens after the invitation has been accepted and the person is ready to go deeper.
 
 ---
 

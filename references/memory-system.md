@@ -12,20 +12,25 @@ Because Satori runs across local CLI agents, IDE workspaces, and sandboxed web c
 
 | Priority | Environment | Storage Location & Mechanism | How Satori Reads / Writes |
 |---|---|---|---|
-| **Tier 1: Workspace Vault** | Project / Personal Vault Directory | `./.satori/memory/` (auto-protected by `.satori/.gitignore`) | Run `python scripts/satori_memory.py status` at session start; log durable signals via `log-signal`; delete via `forget` or `purge`. |
-| **Tier 2: Global User Vault** | CLI / IDE Agents (Antigravity, Claude Code, Codex, Cursor, Windsurf, OpenCode, Hermes) | `~/.satori/memory/` (`0700` dir / `0600` files on POSIX; user-SID ACL via `icacls` on Windows) | Automatically used by `scripts/satori_memory.py` when no local `./.satori/memory/` vault exists in the current working directory. |
-| **Tier 3: Platform Memory + Portable Capsule** | Sandboxed Web UIs (Claude.ai, ChatGPT, Gemini Web — no local shell/filesystem) | Native platform memory + user-owned **Portable Session Capsule** (`export-capsule`) | Rely on native platform memory if enabled, or offer a 6-line **Portable Continuity Capsule** at the end of deep sessions that the user can save or paste into future chats. |
+| **Tier 1: Global User Vault (Default)** | CLI / IDE Agents (Antigravity, Claude Code, Codex, Cursor, Windsurf, OpenCode, Hermes) | `~/.satori/memory/` (`0700` dir / `0600` files on POSIX; user-SID ACL via `icacls` on Windows) | **Default vault location**. Sits outside workspaces to prevent accidental Git repository commits. Runs `python scripts/satori_memory.py status`. |
+| **Tier 2: Workspace Vault (Explicit Local)** | Project / Personal Vault Directory | `./.satori/memory/` (auto-protected by `.satori/.gitignore`) | Activated only when `--local` is explicitly passed to `scripts/satori_memory.py`. |
+| **Tier 3: Platform Memory & Continuity Note** | Sandboxed Web UIs (Claude.ai, ChatGPT, Gemini Web — no local shell/filesystem) | Native platform memory + user-owned **Continuity Note** (`SATORI_NOTE v6.5`) | Rely on native platform memory if enabled, or offer a data-only Continuity Note (`export-note`, $\le 600$ chars) that the user can save or paste across chat surfaces. |
+
+### Cloud-Sync Safety Prohibition
+To prevent sensitive emotional and psychological reflections from being silently mirrored to corporate cloud providers, `scripts/satori_memory.py` automatically checks for cloud sync markers (`OneDrive`, `Dropbox`, `Google Drive`, `iCloudDrive`, `Box`). Initialization strictly halts with an error unless the user explicitly passes `--allow-synced`.
 
 ### CLI Quick Reference (`scripts/satori_memory.py`)
 When shell execution is available and the user has not requested ephemeral mode:
 - **Check existing memory**: `python scripts/satori_memory.py status`
-- **Initialize vault**: `python scripts/satori_memory.py init [--local | --global]`
+- **Initialize vault**: `python scripts/satori_memory.py init [--local | --global] [--allow-synced]`
 - **Record a structural signal/pattern**: `python scripts/satori_memory.py log-signal --theme "<theme>" --layer [signal|theme|pattern|dream] --summary "<structural pattern <=500 chars>"`
 - **Search longitudinal history**: `python scripts/satori_memory.py search --query "<keyword>" --limit 5`
 - **User-initiated deletion (Right to be Forgotten)**:
-  - Single theme/session/ID: `python scripts/satori_memory.py forget --theme "<substring>"` (executes `PRAGMA secure_delete = ON` + `VACUUM`)
+  - Single theme/session/ID: `python scripts/satori_memory.py forget --theme "<substring>"` (executes `PRAGMA secure_delete = ON` + `PRAGMA wal_checkpoint(TRUNCATE)` + `VACUUM`)
   - Full vault wipe: `python scripts/satori_memory.py purge --all --confirm`
-- **Export portable web capsule**: `python scripts/satori_memory.py export-capsule`
+- **Export Continuity Note**: `python scripts/satori_memory.py export-note`
+- **Import Continuity Note**: `python scripts/satori_memory.py import-note --file <path>`
+- **Migrate legacy local vault**: `python scripts/satori_memory.py migrate`
 
 ---
 

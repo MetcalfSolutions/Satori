@@ -1,7 +1,7 @@
 {
   "name": "satori",
-  "version": "6.1.8",
-  "description": "Psychologically grounded wisdom companion for navigating the inner life — emotions, meaning, grief, burnout, relationship conflict, and shadow work.",
+  "version": "6.5.0",
+  "description": "Psychologically grounded wisdom companion for navigating the inner life \u2014 emotions, meaning, grief, burnout, relationship conflict, and shadow work.",
   "contextFileName": "GEMINI.md",
   "skills": [
     "SKILL.md"

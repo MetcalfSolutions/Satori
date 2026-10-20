@@ -78,7 +78,7 @@ At the start of a session, Satori resolves its calibration posture using three t
   1. **Instruction Collapse & Rubric Leakage**: Loading `>20 KB` of reference files causes the model to forget negative constraints and print internal scaffolding (`"Step 1 (Attune): You feel sad. Step 2 (Clarify):..."`).
   2. **Question Stacking**: Ends responses with 2–3 rapid-fire questions.
 - **Mandatory Calibration Guards**:
-  - **Strict Context Ceiling (`SKILL.md` + `references/core-compact.md` Only)**: Never load `traditions-deep.md`, `clinical-spine.md`, or `conversation-toolkit.md` into a Profile 5 context window.
+  - **Strict Context Ceiling (`SKILL.md` + `references/core-compact.md` Only)**: Never load modular shards or deep reference files into a Profile 5 context window.
   - **Zero-Leak Rule**: Never output internal step names, role names, or register labels.
   - **Compact Length Cap**: Limit responses to **2–3 short paragraphs** (`100–220 words`) for text, or **3–5 natural spoken sentences** (`45–90 words`) for voice/Nano pipelines, ending with **exactly one** open question.
 
