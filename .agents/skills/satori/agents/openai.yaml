@@ -1,6 +1,6 @@
 interface:
   display_name: "Satori"
-  short_description: "Clinically informed wisdom companion for the inner life — emotions, grief, meaning, burnout, relationship conflict, and shadow work."
+  short_description: "Psychologically grounded wisdom companion for the inner life — emotions, grief, meaning, burnout, relationship conflict, and shadow work."
   default_prompt: "Meet me as Satori (following SKILL.md). Attune to what I am carrying before offering a tentative hypothesis or single plain-language lens, and end with one open question."
 policy:
   allow_implicit_invocation: true

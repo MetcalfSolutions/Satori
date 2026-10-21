@@ -9,7 +9,7 @@ All notable changes to Satori are documented here.
 - **Dual Release Packaging (Full vs. Compact)**:
   - Engineered dual distribution channels via `scripts/build_release.py`:
     - `SatoriSkill-Full-v6.5.0.zip`: Full progressive disclosure edition (`<8 KB` initial entry) with 15 on-demand modular reference shards, longitudinal formulation, and local memory for Claude.ai, Gemini Web, and agent harnesses.
-    - `SatoriSkill-Compact-v6.5.0.zip` / `compact/SKILL.md`: Self-contained compact edition strictly $\le 7,800$ characters for ChatGPT Custom GPT instructions and local open-weights runners (`<32B` via Ollama, LM Studio, Jan, vLLM) with 100% safety parity.
+    - `SatoriSkill-Compact-v6.5.0.zip` / `compact/SKILL.md`: Self-contained compact edition strictly ≤ 7,800 characters for ChatGPT Custom GPT instructions and local open-weights runners (`<32B` via Ollama, LM Studio, Jan, vLLM) with 100% safety parity.
     - Backwards-compatible `SatoriSkill-v6.5.0.zip` release archive alias.
 - **Progressive Disclosure & Modular Reference Shards**:
   - Sharded monolithic reference libraries into granular on-demand modules: `references/toolkit-inquiry.md`, `references/toolkit-somatic.md`, `references/traditions-stoic.md`, `references/traditions-eastern.md`, and `references/traditions-african-sufi.md`.
@@ -19,8 +19,8 @@ All notable changes to Satori are documented here.
   - Built-in detection and blocking of cloud-synchronized storage folders (OneDrive, iCloud, Dropbox, Google Drive, Box) to prevent involuntary private reflection leakage.
   - Ephemeral session gating (`--ephemeral` / `SATORI_EPHEMERAL=1`) and granular data erasure (`forget --id <ID>`, `forget --all`, `purge`).
 - **350-Case Trigger Boundary Benchmark (`evals/trigger_boundary_350.jsonl`)**:
-  - Expanded trigger boundary suite across 4 strata: Positives (60 cases, 100% recall), Negatives (200 cases, 98.0% non-activation, 95% Wilson CI `[95.0%, 99.2%]`), Hybrids (50 cases, 98.0% quality), and Acute Safety (40 cases, 100% hard gate).
-  - Integrated truth-in-advertising reporting standardizing on $\ge 95\%$ non-activation across pure-technical prompts.
+  - Expanded trigger boundary suite across 4 strata: Positives (60 cases, 100% recall), Negatives (200 cases, 98.0% non-activation, 95% Wilson CI `[94.97%, 99.22%]`), Hybrids (50 cases, 98.0% quality), and Safety (20 acute cases at 100% hard gate, 20 dark night cases at ≥90% gate).
+  - Integrated truth-in-advertising reporting standardizing on ≥ 95% non-activation across pure-technical prompts.
 - **Ecosystem Support & Multi-Platform Matrix (16 Environments)**:
   - Validated across 10 agent harnesses and 6 web chat surfaces categorized into Tier A (Verified), Tier B (Community), and Tier C (Experimental).
   - Synchronized October 2026 model calibration profiles across Claude Fable 5.1, Gemini 4 Argon, GPT-6 Astra, and Grok 4.7.

@@ -27,7 +27,7 @@ import run_evals  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.1.0 Judge Red-Team Calibration Suite")
+    parser = argparse.ArgumentParser(description="Satori v6.5.0 Judge Red-Team Calibration Suite")
     parser.add_argument(
         "--mode",
         choices=["auto", "lint", "live"],

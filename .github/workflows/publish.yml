@@ -38,8 +38,23 @@ jobs:
           node-version: 24
           registry-url: https://registry.npmjs.org/
 
-      - name: Run Satori validator (21/21 gate)
+      - name: Run Satori static validator gate
         run: python scripts/validate_skill.py
 
       - name: Publish to npm (trusted publisher + provenance)
         run: npm publish --provenance --access public
+
+      - name: Verify publication on npm registry
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Verifying @metcalfsolutions/satori@$VERSION on npm registry..."
+          for i in {1..12}; do
+            if npm view "@metcalfsolutions/satori@$VERSION" version 2>/dev/null | grep -q "^$VERSION$"; then
+              echo "Package @metcalfsolutions/satori@$VERSION is verified live on npm registry."
+              exit 0
+            fi
+            echo "Waiting for npm registry to reflect new version (attempt $i/12)..."
+            sleep 10
+          done
+          echo "ERROR: Package @metcalfsolutions/satori@$VERSION did not appear on registry within 120s"
+          exit 1

@@ -1,5 +1,5 @@
 ---
-description: Launch or invoke the Satori clinically informed wisdom companion
+description: Launch or invoke the Satori psychologically grounded wisdom companion
 ---
 
 # Satori — OpenCode Command Pointer (`/satori`)

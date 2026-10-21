@@ -46,12 +46,12 @@ submit_behisecc() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the appropriate section and add this entry (alphabetically):"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner.'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner.'
   echo ""
   read -p "Press Enter after editing README.md..."
 
   git add README.md
-  git commit -m "Add Satori - clinically informed wisdom companion"
+  git commit -m "Add Satori - psychologically grounded wisdom companion"
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion Claude skill" \
@@ -80,7 +80,7 @@ submit_majiayu000() {
   "name": "satori",
   "repo": "MetcalfSolutions/Satori",
   "path": ".",
-  "description": "Clinically informed wisdom companion blending clinical psychology and eight philosophical traditions into a structured thinking partner with Shadow Work, Dark Night protocol, and guided onboarding.",
+  "description": "Psychologically grounded wisdom companion blending clinical psychology and eight philosophical traditions into a structured thinking partner with Shadow Work, Dark Night protocol, and guided onboarding.",
   "category": "personal-development",
   "tags": ["mental-health", "psychology", "wisdom", "philosophy", "ifs", "stoicism", "jungian", "conversation"],
   "author": "MetcalfSolutions",
@@ -96,7 +96,7 @@ JSONEOF
   git push -u origin add-satori
   gh pr create \
     --title "Add satori to registry" \
-    --body "Adding Satori, a clinically informed wisdom companion.
+    --body "Adding Satori, a psychologically grounded wisdom companion.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0"
@@ -123,7 +123,7 @@ submit_karanb192() {
   read -p "Press Enter after editing README.md..."
 
   git add README.md
-  git commit -m "Add Satori - clinically informed wisdom companion"
+  git commit -m "Add Satori - psychologically grounded wisdom companion"
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion Claude skill" \
@@ -178,7 +178,7 @@ submit_antigravity() {
   cat > skills/satori/SKILL.md <<'SKILLEOF'
 ---
 name: satori
-description: "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner"
+description: "Psychologically grounded wisdom companion blending psychology and philosophy into a structured thinking partner"
 category: personal-development
 risk: safe
 source: community
@@ -190,7 +190,7 @@ tools: [claude]
 
 ## Overview
 
-Satori is a clinically informed AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
+Satori is a psychologically grounded AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
 
 ## When to Use
 
@@ -243,7 +243,7 @@ SKILLEOF
   git push -u origin add-satori
   gh pr create \
     --title "feat: add satori wisdom companion skill" \
-    --body "Adding Satori, a clinically informed wisdom companion.
+    --body "Adding Satori, a psychologically grounded wisdom companion.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0
@@ -274,15 +274,15 @@ submit_composiohq() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Add under Productivity & Organization (alphabetically):"
-  echo '- [satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner.'
+  echo '- [satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending psychology and philosophy into a structured thinking partner.'
   echo ""
   read -p "Press Enter after editing README.md..."
 
   git add README.md
-  git commit -m "Add Satori - clinically informed wisdom companion"
+  git commit -m "Add Satori - psychologically grounded wisdom companion"
   git push -u origin add-satori
   gh pr create \
-    --title "Add Satori - clinically informed wisdom companion skill" \
+    --title "Add Satori - psychologically grounded wisdom companion skill" \
     --body "$PR_BODY_STANDARD"
 
   echo "✓ ComposioHQ PR created"
@@ -309,7 +309,7 @@ submit_travisvn() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Individual Skills table under Community Skills and add:"
-  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner |'
+  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner |'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -343,11 +343,11 @@ submit_e2b() {
   read -p "Press Enter after editing README.md..."
 
   git add README.md
-  git commit -m "Add Satori - clinically informed wisdom companion agent"
+  git commit -m "Add Satori - psychologically grounded wisdom companion agent"
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion cognitive agent" \
-    --body "Adding Satori, a clinically informed AI wisdom companion that operates as a cognitive agent with 211k+ characters of structured reference architecture.
+    --body "Adding Satori, a psychologically grounded AI wisdom companion that operates as a cognitive agent with 211k+ characters of structured reference architecture.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0"
@@ -370,16 +370,16 @@ submit_kyrolabs() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Conversational/General Agents section and add:"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner for Claude. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner for Claude. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
   echo ""
   read -p "Press Enter after editing README.md..."
 
   git add README.md
-  git commit -m "Add Satori - clinically informed wisdom companion"
+  git commit -m "Add Satori - psychologically grounded wisdom companion"
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion agent" \
-    --body "Adding Satori, a clinically informed AI wisdom companion.
+    --body "Adding Satori, a psychologically grounded AI wisdom companion.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0"

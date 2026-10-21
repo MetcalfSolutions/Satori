@@ -178,8 +178,11 @@ def classify_trigger_decision_lint(prompt: str, skill_text: str) -> str:
     return "ACTIVATE"
 
 
-def run_trigger_suite(mode: str, model: str | None = None) -> int:
-    skill_text = (ROOT_DIR / "SKILL.md").read_text(encoding="utf-8")
+def run_trigger_suite(mode: str, model: str | None = None, skill_target: str = "SKILL.md") -> int:
+    target_path = ROOT_DIR / skill_target
+    if not target_path.exists():
+        raise FileNotFoundError(f"Target skill file not found: {target_path}")
+    skill_text = target_path.read_text(encoding="utf-8")
     cases_350 = EVALS_DIR / "trigger_boundary_350.jsonl"
     cases_path = cases_350 if cases_350.exists() else (EVALS_DIR / "trigger_boundary.jsonl")
     cases = [json.loads(line) for line in cases_path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -233,8 +236,12 @@ def run_trigger_suite(mode: str, model: str | None = None) -> int:
 
     all_passed = passed_pos and passed_neg and passed_hyb and passed_acute and passed_dark
 
+    is_compact = "compact" in skill_target.lower()
+    report_filename = "trigger_benchmark_compact_report.json" if is_compact else "trigger_benchmark_report.json"
+
     report = {
         "suite": "trigger",
+        "skill_target": skill_target,
         "benchmark_file": cases_path.name,
         "mode": mode,
         "total_cases": len(cases),
@@ -280,9 +287,8 @@ def run_trigger_suite(mode: str, model: str | None = None) -> int:
         "status": "PASSED" if all_passed else "FAILED",
     }
 
-    # Write execution report to live_calibration_report.json
     try:
-        (EVALS_DIR / "live_calibration_report.json").write_text(
+        (EVALS_DIR / report_filename).write_text(
             json.dumps(report, indent=2), encoding="utf-8"
         )
     except Exception:
@@ -290,8 +296,6 @@ def run_trigger_suite(mode: str, model: str | None = None) -> int:
 
     print(json.dumps(report, indent=2))
     return 0 if all_passed else 1
-    print(json.dumps(report, indent=2))
-    return 0 if passed else 1
 
 
 def get_env_var(name: str) -> str | None:
@@ -570,9 +574,10 @@ def pairwise_compare_debiased(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.1.0 Evaluation & Trigger Suite Runner")
+    parser = argparse.ArgumentParser(description="Satori v6.5.0 Evaluation & Trigger Suite Runner")
     parser.add_argument("--suite", choices=["trigger", "response"], default="trigger")
     parser.add_argument("--mode", choices=["auto", "lint", "live"], default="lint")
+    parser.add_argument("--skill", default="SKILL.md", help="Path to target skill file (e.g. SKILL.md or compact/SKILL.md)")
     parser.add_argument("--model", default="claude-4.5-opus", help="Target or Judge model identifier")
     parser.add_argument("--temperature", type=float, default=0.0)
     args = parser.parse_args(argv)
@@ -580,7 +585,11 @@ def main(argv: list[str] | None = None) -> int:
     effective_mode = "live" if (args.mode == "live" or (args.mode == "auto" and has_any_api_key())) else "lint"
 
     if args.suite == "trigger":
-        return run_trigger_suite(mode=effective_mode if args.mode != "auto" else "lint", model=args.model)
+        return run_trigger_suite(
+            mode=effective_mode if args.mode != "auto" else "lint",
+            model=args.model,
+            skill_target=args.skill,
+        )
 
     anchors_path = EVALS_DIR / "gold_anchors.jsonl"
     anchors = [json.loads(line) for line in anchors_path.read_text(encoding="utf-8").splitlines() if line.strip()]

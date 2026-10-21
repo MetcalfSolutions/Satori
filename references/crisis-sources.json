@@ -11,26 +11,33 @@
         {
           "name": "988 Suicide & Crisis Lifeline",
           "number": "988",
-          "availability": "24/7, free, confidential"
+          "availability": "24/7, free, confidential",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "988 Suicide & Crisis Lifeline",
           "number": "988",
-          "instruction": "Text 988"
+          "instruction": "Text 988",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         },
         {
           "name": "Crisis Text Line (US)",
           "number": "741741",
-          "instruction": "Text HOME to 741741"
+          "instruction": "Text HOME to 741741",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://988lifeline.org",
         "https://www.crisistextline.org"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "CA",
@@ -40,26 +47,33 @@
         {
           "name": "Suicide Crisis Helpline (Canada)",
           "number": "988",
-          "availability": "24/7, bilingual (English & French)"
+          "availability": "24/7, bilingual (English & French)",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "Suicide Crisis Helpline (Canada)",
           "number": "988",
-          "instruction": "Text 988"
+          "instruction": "Text 988",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         },
         {
           "name": "Crisis Text Line (Canada)",
           "number": "686868",
-          "instruction": "Text CONNECT to 686868"
+          "instruction": "Text CONNECT to 686868",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://988.ca",
         "https://www.crisistextline.ca"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "UK",
@@ -69,26 +83,33 @@
         {
           "name": "NHS Mental Health Services",
           "number": "111",
-          "availability": "24/7 (call 111 and select the mental health option)"
+          "availability": "24/7 (call 111 and select the mental health option)",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         },
         {
           "name": "Samaritans (UK & Ireland)",
           "number": "116 123",
-          "availability": "24/7, free"
+          "availability": "24/7, free",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "Shout (UK)",
           "number": "85258",
-          "instruction": "Text SHOUT to 85258"
+          "instruction": "Text SHOUT to 85258",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://www.nhs.uk/nhs-services/mental-health-services/",
         "https://www.samaritans.org"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "IE",
@@ -98,21 +119,26 @@
         {
           "name": "Samaritans Ireland",
           "number": "116 123",
-          "availability": "24/7, free"
+          "availability": "24/7, free",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "Text About It (Ireland)",
           "number": "50808",
-          "instruction": "Text HELLO to 50808"
+          "instruction": "Text HELLO to 50808",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://www.samaritans.org/ireland/",
         "https://text50808.ie"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "AU",
@@ -122,20 +148,25 @@
         {
           "name": "Lifeline Australia",
           "number": "13 11 14",
-          "availability": "24/7"
+          "availability": "24/7",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "Lifeline Australia Text",
           "number": "0477 13 11 14",
-          "instruction": "Text 0477 13 11 14"
+          "instruction": "Text 0477 13 11 14",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://www.lifeline.org.au"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "NZ",
@@ -145,20 +176,25 @@
         {
           "name": "1737 Need to Talk?",
           "number": "1737",
-          "availability": "24/7, free call or text"
+          "availability": "24/7, free call or text",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [
         {
           "name": "1737 Need to Talk?",
           "number": "1737",
-          "instruction": "Text 1737"
+          "instruction": "Text 1737",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "primarySources": [
         "https://1737.org.nz"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "IN",
@@ -168,19 +204,24 @@
         {
           "name": "Tele-MANAS (Ministry of Health & Family Welfare)",
           "number": "14416",
-          "availability": "24/7, toll-free, multi-language"
+          "availability": "24/7, toll-free, multi-language",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         },
         {
           "name": "Tele-MANAS Toll-Free Alternate",
           "number": "1800-891-4416",
-          "availability": "24/7, toll-free"
+          "availability": "24/7, toll-free",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [],
       "primarySources": [
         "https://telemanas.mohfw.gov.in"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "EU",
@@ -190,14 +231,17 @@
         {
           "name": "EU Emotional Support Helpline (Participating Member States)",
           "number": "116 123",
-          "availability": "Harmonized EU emotional support number where active"
+          "availability": "Harmonized EU emotional support number where active",
+          "last_verified": "2026-10-20",
+          "lastVerified": "2026-10-20"
         }
       ],
       "textLines": [],
       "primarySources": [
         "https://digital-strategy.ec.europa.eu/en/policies/116-helplines"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     },
     {
       "id": "GLOBAL",
@@ -213,7 +257,8 @@
         "https://findahelpline.com",
         "https://www.iasp.info/resources/Crisis_Centres/"
       ],
-      "lastVerified": "2026-10-20"
+      "lastVerified": "2026-10-20",
+      "last_verified": "2026-10-20"
     }
   ],
   "requiredTokensInDocs": [
@@ -233,5 +278,6 @@
     "112",
     "findahelpline.com",
     "iasp.info/resources/Crisis_Centres/"
-  ]
+  ],
+  "last_verified": "2026-10-20"
 }

@@ -1,5 +1,6 @@
 {
   "suite": "trigger",
+  "skill_target": "compact/SKILL.md",
   "benchmark_file": "trigger_boundary_350.jsonl",
   "mode": "lint",
   "total_cases": 350,

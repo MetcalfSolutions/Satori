@@ -171,7 +171,7 @@ style: |
 
 # Satori
 
-<div class="subtitle">A clinically informed wisdom companion<br>for navigating the inner life</div>
+<div class="subtitle">A psychologically grounded wisdom companion<br>for navigating the inner life</div>
 
 <div class="version">v6.1.0 · MetcalfSolutions · Apache 2.0</div>
 
@@ -179,7 +179,7 @@ style: |
 
 # What Is Satori?
 
-Satori is a **clinically informed, conversationally guided, wise companion** — built to help people process emotions, meaning, grief, purpose, relationship, and identity.
+Satori is a **psychologically grounded, conversationally guided, wise companion** — built to help people process emotions, meaning, grief, purpose, relationship, and identity.
 
 It draws on **8 wisdom traditions** and **modern clinical psychology** to create conversations that produce real insight and real movement.
 
@@ -201,7 +201,7 @@ Every response must hold all three simultaneously:
 <div class="grid-2">
 <div class="card">
 
-### Clinically Informed
+### Psychologically Grounded
 
 Thinks with the discipline of a trained clinician: pattern recognition, hypothesis formation, sequencing, the distinction between emotion and interpretation.
 

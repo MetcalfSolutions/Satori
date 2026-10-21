@@ -204,18 +204,45 @@ def main() -> int:
         errors.append("Missing references/crisis-sources.json primary-source crisis manifest")
     else:
         manifest = json.loads(crisis_manifest_path.read_text(encoding="utf-8"))
-        last_verified_str = manifest.get("lastVerified")
-        if last_verified_str:
-            import datetime as dt
+        last_verified_str = manifest.get("lastVerified") or manifest.get("last_verified")
+        staleness_days = facts.get("crisis_governance", {}).get("staleness_warning_days", 120)
+        import datetime as dt
+
+        if not last_verified_str:
+            errors.append("crisis-sources.json missing top-level lastVerified / last_verified timestamp")
+        else:
             try:
                 lv_date = dt.date.fromisoformat(last_verified_str)
                 age_days = (dt.date.today() - lv_date).days
-                if age_days > 120:
-                    errors.append(f"crisis-sources.json lastVerified date {last_verified_str} is stale ({age_days} days old > 120 days)")
+                if age_days > staleness_days:
+                    errors.append(f"crisis-sources.json lastVerified date {last_verified_str} is stale ({age_days} days old > {staleness_days} days)")
                 else:
                     checks_passed += 1
             except Exception as e:
                 errors.append(f"Invalid lastVerified date format in crisis-sources.json: {e}")
+
+        # Per-helpline verification check
+        helpline_errors: list[str] = []
+        for r in manifest.get("regions", []):
+            reg_id = r.get("id", "UNKNOWN")
+            for line_type in ("callLines", "textLines"):
+                for hl in r.get(line_type, []):
+                    hl_name = hl.get("name", "Unknown helpline")
+                    hl_lv = hl.get("last_verified") or hl.get("lastVerified")
+                    if not hl_lv:
+                        helpline_errors.append(f"[{reg_id}] {hl_name} missing last_verified timestamp")
+                    else:
+                        try:
+                            hl_date = dt.date.fromisoformat(hl_lv)
+                            age = (dt.date.today() - hl_date).days
+                            if age > staleness_days:
+                                helpline_errors.append(f"[{reg_id}] {hl_name} timestamp {hl_lv} is stale ({age} days > {staleness_days})")
+                        except Exception as e:
+                            helpline_errors.append(f"[{reg_id}] {hl_name} invalid date format: {e}")
+        if helpline_errors:
+            errors.extend(helpline_errors)
+        else:
+            checks_passed += 1
 
         required_tokens: list[str] = manifest.get("requiredTokensInDocs", [])
         for doc_path in CRISIS_DOC_TARGETS:
@@ -287,7 +314,7 @@ def main() -> int:
         errors.append("Missing openclaw.plugin.json")
     else:
         oc_data = json.loads(openclaw_path.read_text(encoding="utf-8"))
-        oc_version = oc_data.get("version", "6.1.0")
+        openclaw_version = oc_data.get("version", "6.5.0")
         recorded_hash = oc_data.get("integrity", {}).get("files", {}).get("references/SOUL.md")
         actual_hash = sha256_file(soul_path)
         if recorded_hash != actual_hash:
@@ -295,6 +322,57 @@ def main() -> int:
                 f"SOUL.md SHA-256 mismatch in openclaw.plugin.json: {recorded_hash} != {actual_hash}"
             )
         else:
+            checks_passed += 1
+
+    # 8. Manifest Version Parity and Banned Term Check
+    pkg_path = ROOT_DIR / "package.json"
+    canonical_version = "6.5.0"
+    if not pkg_path.exists():
+        errors.append("Missing root package.json for version parity baseline")
+    else:
+        canonical_version = json.loads(pkg_path.read_text(encoding="utf-8")).get("version", "6.5.0")
+        manifest_paths = [
+            ROOT_DIR / "plugin.json",
+            ROOT_DIR / "openclaw.plugin.json",
+            ROOT_DIR / "marketplace.json",
+            ROOT_DIR / "gemini-extension.json",
+            ROOT_DIR / ".claude-plugin" / "plugin.json",
+            ROOT_DIR / ".codex-plugin" / "plugin.json",
+            ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+        ]
+        manifest_parity_ok = True
+        for mp in manifest_paths:
+            if not mp.exists():
+                errors.append(f"Missing manifest file for version parity check: {mp.relative_to(ROOT_DIR)}")
+                manifest_parity_ok = False
+                continue
+            m_ver = json.loads(mp.read_text(encoding="utf-8")).get("version")
+            if m_ver != canonical_version:
+                errors.append(
+                    f"Manifest version parity mismatch in {mp.relative_to(ROOT_DIR)}: '{m_ver}' != package.json '{canonical_version}'"
+                )
+                manifest_parity_ok = False
+        if manifest_parity_ok:
+            checks_passed += 1
+
+        banned_terms = ["Clinically informed", "clinically informed", "9 agent ecosystems"]
+        banned_ok = True
+        scan_targets = [
+            *manifest_paths,
+            ROOT_DIR / "references" / "SOUL.md",
+            ROOT_DIR / ".opencode" / "command" / "satori.md",
+            ROOT_DIR / ".cursor" / "rules" / "satori.mdc",
+        ]
+        for target_file in scan_targets:
+            if target_file.exists():
+                text = target_file.read_text(encoding="utf-8")
+                for term in banned_terms:
+                    if term.lower() in text.lower():
+                        errors.append(
+                            f"Banned term '{term}' detected in {target_file.relative_to(ROOT_DIR)}"
+                        )
+                        banned_ok = False
+        if banned_ok:
             checks_passed += 1
 
     if errors:
@@ -306,8 +384,8 @@ def main() -> int:
             {
                 "status": "PASSED",
                 "checks_passed": checks_passed,
-                "version": f"v{oc_version}",
-                "message": f"All Satori v{oc_version} static, size, pointer-stub, mirror-SHA256, crisis-table, and hygiene checks passed.",
+                "version": f"v{canonical_version}",
+                "message": f"All Satori v{canonical_version} static, size, pointer-stub, mirror-SHA256, crisis-table, manifest-parity, and hygiene checks passed.",
             },
             indent=2,
         )

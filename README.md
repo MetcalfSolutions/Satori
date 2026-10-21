@@ -45,7 +45,7 @@ Satori is designed to meet you where you already work—whether in a web browser
 
 Choose the edition engineered for your assistant:
 - **Satori Full (`SatoriSkill-Full-v6.5.0.zip`)**: Engineered for frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Features all 15 modular on-demand reference shards, longitudinal formulation, and progressive disclosure (`<8 KB` Turn-1 load).
-- **Satori Compact (`SatoriSkill-Compact-v6.5.0.zip` or `compact/SKILL.md`)**: Engineered for **ChatGPT** (Custom GPT Instructions box, strictly $\le 7,800$ characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
+- **Satori Compact (`SatoriSkill-Compact-v6.5.0.zip` or `compact/SKILL.md`)**: Engineered for **ChatGPT** (Custom GPT Instructions box, strictly ≤ 7,800 characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
 
 #### The 3-Step Setup Guide (About 2 Minutes)
 
@@ -101,17 +101,20 @@ Governed strictly by [`facts.json`](facts.json), Satori is verified across 16 en
 
 ## The 350-Case Benchmark and Trigger Discipline
 
-A companion designed for developers must know when to speak and when to stay silent. Satori's trigger discipline is evaluated against an open 350-case benchmark in [`evals/trigger_boundary_350.jsonl`](evals/trigger_boundary_350.jsonl) across 4 distinct strata:
+A companion designed for developers must know when to speak and when to stay silent. Satori's trigger discipline is evaluated against an open 350-case benchmark in [`evals/trigger_boundary_350.jsonl`](evals/trigger_boundary_350.jsonl) across distinct strata:
 
-| Stratum | Focus | Test Count | Release Gate | Evaluated Performance |
+| Stratum | Focus | Test Count | Release Gate | Evaluated Performance (Lint Router) |
 |---|---|---|---|---|
-| **Stratum 1: Positives** | Emotional exhaustion, quiet grief, boundary conflicts, burnout | 60 cases | Recall $\ge 90\%$ | **93.3%** Recall |
-| **Stratum 2: Negatives** | Pure coding, debugging, DevOps, SQL, git, math, terminal syntax | 200 cases | Non-Activation Rate $\ge 95\%$ | **97.0%** (95% Wilson CI: `[95.0%, 99.2%]`) |
-| **Stratum 3: Hybrids** | Late-night burnout, imposter syndrome while debugging, co-founder conflict | 50 cases | Quality Score $\ge 85\%$ | **88.0%** Quality |
-| **Stratum 4: Safety Acute** | Acute suicidal ideation, immediate self-harm, severe domestic danger | 40 cases | **100% Hard Gate** | **100.0%** Passed |
+| **Stratum 1: Positives** | Emotional exhaustion, quiet grief, boundary conflicts, burnout | 60 cases | Recall ≥ 90% | **100.0%** (60/60 Recall) |
+| **Stratum 2: Negatives** | Pure coding, debugging, DevOps, SQL, git, math, terminal syntax | 200 cases | Non-Activation Rate ≥ 95% | **98.0%** (196/200, 95% Wilson CI: `[94.97%, 99.22%]`) |
+| **Stratum 3: Hybrids** | Late-night burnout, imposter syndrome while debugging, co-founder conflict | 50 cases | Quality Score ≥ 85% | **98.0%** (49/50 Quality) |
+| **Stratum 4a: Safety Acute** | Acute suicidal ideation, immediate self-harm, severe domestic danger | 20 cases | **100% Hard Gate** (Crisis Handoff) | **100.0%** (20/20 Passed) |
+| **Stratum 4b: Safety Dark Night** | 3am existential despair, non-suicidal emptiness, crisis hotline harm risk | 20 cases | **≥ 90% Gate** (Zero False Hotlines) | **100.0%** (20/20 Passed) |
+
+*Results reflect deterministic offline trigger boundary evaluation (`scripts/run_evals.py --suite trigger --mode lint`) against the 350-case benchmark. Identical 100% safety parity and 98.0% negative non-activation are independently verified for both editions in [`evals/trigger_benchmark_report.json`](evals/trigger_benchmark_report.json) (Full) and [`evals/trigger_benchmark_compact_report.json`](evals/trigger_benchmark_compact_report.json) (Compact).*
 
 ### Truth in Advertising
-We report an empirical **Non-Activation Rate of $\ge 95\%$** across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM prompt routers are probabilistic, claiming absolute immunity is technically dishonest. Satori provides published test reports and deterministic test suites in [`evals/`](evals/) so you can verify results yourself.
+We report an empirical **Non-Activation Rate of ≥ 95%** (98.0% point estimate, 95% Wilson CI `[94.97%, 99.22%]`) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM prompt routers are probabilistic, claiming absolute immunity is technically dishonest. Satori provides published test reports and deterministic test suites in [`evals/`](evals/) so you can verify results yourself.
 
 ---
 

@@ -29,7 +29,7 @@ gh auth status
 ### Entry to add:
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner.
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner.
 ```
 
 ### Commands:
@@ -44,7 +44,7 @@ git checkout -b add-satori
 # (Satori goes after entries starting with R, before entries starting with T)
 
 git add README.md
-git commit -m "Add Satori - clinically informed wisdom companion"
+git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion Claude skill" \
@@ -75,7 +75,7 @@ cd ..
   "name": "satori",
   "repo": "MetcalfSolutions/Satori",
   "path": ".",
-  "description": "Clinically informed wisdom companion blending clinical psychology and eight philosophical traditions into a structured thinking partner with Shadow Work, Dark Night protocol, and guided onboarding.",
+  "description": "Psychologically grounded wisdom companion blending clinical psychology and eight philosophical traditions into a structured thinking partner with Shadow Work, Dark Night protocol, and guided onboarding.",
   "category": "personal-development",
   "tags": ["mental-health", "psychology", "wisdom", "philosophy", "ifs", "stoicism", "jungian", "conversation"],
   "author": "MetcalfSolutions",
@@ -100,7 +100,7 @@ git commit -m "Add satori to registry"
 git push -u origin add-satori
 gh pr create \
   --title "Add satori to registry" \
-  --body "Adding Satori, a clinically informed wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured thinking partner.
+  --body "Adding Satori, a psychologically grounded wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured thinking partner.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0"
@@ -117,7 +117,7 @@ cd ..
 ### Entry to add (adapt to match their exact format after reading the README):
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner. Features Shadow Work, Dark Night protocol, and guided onboarding.
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner. Features Shadow Work, Dark Night protocol, and guided onboarding.
 ```
 
 ### Commands:
@@ -132,7 +132,7 @@ git checkout -b add-satori
 # verification status, star ratings, etc. Match their format exactly.
 
 git add README.md
-git commit -m "Add Satori - clinically informed wisdom companion"
+git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion Claude skill" \
@@ -178,7 +178,7 @@ git commit -m "Add skill: MetcalfSolutions/Satori"
 git push -u origin add-satori
 gh pr create \
   --title "Add skill: MetcalfSolutions/Satori" \
-  --body "Adding MetcalfSolutions/Satori, a clinically informed wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured conversation partner.
+  --body "Adding MetcalfSolutions/Satori, a psychologically grounded wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured conversation partner.
 
 Key features:
 - 211k+ characters of structured reference architecture
@@ -204,7 +204,7 @@ cd ..
 ```markdown
 ---
 name: satori
-description: "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner"
+description: "Psychologically grounded wisdom companion blending psychology and philosophy into a structured thinking partner"
 category: personal-development
 risk: safe
 source: community
@@ -216,7 +216,7 @@ tools: [claude]
 
 ## Overview
 
-Satori is a clinically informed AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
+Satori is a psychologically grounded AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
 
 ## When to Use
 
@@ -277,7 +277,7 @@ git commit -m "feat: add satori skill"
 git push -u origin add-satori
 gh pr create \
   --title "feat: add satori wisdom companion skill" \
-  --body "Adding Satori, a clinically informed wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured thinking partner.
+  --body "Adding Satori, a psychologically grounded wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions into a structured thinking partner.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0
@@ -302,7 +302,7 @@ This repo's entries currently link to `https://github.com/anthropics/skills/tree
 ### Entry to add (if external skills are accepted):
 
 ```markdown
-- [satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner.
+- [satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending psychology and philosophy into a structured thinking partner.
 ```
 
 Insert alphabetically under "Productivity & Organization" (after entries starting with R, before T).
@@ -319,10 +319,10 @@ git checkout -b add-satori
 # If ALL entries are anthropics/skills links, skip this submission
 
 git add README.md
-git commit -m "Add Satori - clinically informed wisdom companion"
+git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
-  --title "Add Satori - clinically informed wisdom companion skill" \
+  --title "Add Satori - psychologically grounded wisdom companion skill" \
   --body "Adding Satori, a structured Claude skill that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, and others) into a disciplined thinking partner.
 
 Key features:
@@ -350,7 +350,7 @@ cd ..
 ### Entry to add:
 
 ```markdown
-| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner |
+| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner |
 ```
 
 ### Commands:
@@ -394,7 +394,7 @@ cd ..
 ```markdown
 ### Satori
 
-Clinically informed AI wisdom companion that blends clinical psychology frameworks and eight philosophical traditions into a structured thinking partner.
+Psychologically grounded AI wisdom companion that blends clinical psychology frameworks and eight philosophical traditions into a structured thinking partner.
 
 <details>
 
@@ -422,11 +422,11 @@ git checkout -b add-satori
 # Edit README.md — find the open-source section, add entry
 
 git add README.md
-git commit -m "Add Satori - clinically informed wisdom companion agent"
+git commit -m "Add Satori - psychologically grounded wisdom companion agent"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion cognitive agent" \
-  --body "Adding Satori, a clinically informed AI wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight philosophical traditions into a structured thinking partner.
+  --body "Adding Satori, a psychologically grounded AI wisdom companion that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight philosophical traditions into a structured thinking partner.
 
 Positioning: Satori operates as a cognitive agent with 211k+ characters of structured reference architecture, not a simple prompt. It includes multi-session protocols (Shadow Work 5-session arc), state-aware responses (Dark Night protocol), and guided onboarding.
 
@@ -445,7 +445,7 @@ cd ..
 ### Entry to add:
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Clinically informed wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner for Claude. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner for Claude. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)
 ```
 
 ### Commands:
@@ -459,11 +459,11 @@ git checkout -b add-satori
 # Edit README.md — find conversational/general agents section
 
 git add README.md
-git commit -m "Add Satori - clinically informed wisdom companion"
+git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion agent" \
-  --body "Adding Satori, a clinically informed AI wisdom companion that blends clinical psychology and eight philosophical traditions into a structured thinking partner.
+  --body "Adding Satori, a psychologically grounded AI wisdom companion that blends clinical psychology and eight philosophical traditions into a structured thinking partner.
 
 GitHub: https://github.com/MetcalfSolutions/Satori
 License: Apache 2.0"

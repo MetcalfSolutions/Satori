@@ -35,6 +35,16 @@ MIRROR_SKILL_PATHS = [
     ROOT_DIR / ".hermes" / "skills" / "satori" / "SKILL.md",
 ]
 
+MANIFEST_PATHS = [
+    ROOT_DIR / "plugin.json",
+    ROOT_DIR / "openclaw.plugin.json",
+    ROOT_DIR / "marketplace.json",
+    ROOT_DIR / "gemini-extension.json",
+    ROOT_DIR / ".claude-plugin" / "plugin.json",
+    ROOT_DIR / ".codex-plugin" / "plugin.json",
+    ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+]
+
 FULL_ZIP_FILES = [
     "SKILL.md",
     "README.md",
@@ -59,7 +69,49 @@ def sha256_file(path: pathlib.Path) -> str:
     return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
-def sync_mirrors_and_hashes() -> dict[str, str]:
+def sync_manifest_versions(version: str) -> list[str]:
+    updated: list[str] = []
+    for manifest_path in MANIFEST_PATHS:
+        if not manifest_path.exists():
+            continue
+        data = json.loads(manifest_path.read_text(encoding="utf-8"))
+        changed = False
+        if data.get("version") != version:
+            data["version"] = version
+            changed = True
+        if manifest_path.name == "marketplace.json":
+            dl = data.get("download", {})
+            target_url = f"https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v{version}.zip"
+            target_fn = f"SatoriSkill-v{version}.zip"
+            if dl.get("url") != target_url:
+                dl["url"] = target_url
+                changed = True
+            if dl.get("filename") != target_fn:
+                dl["filename"] = target_fn
+                changed = True
+            for m in data.get("installMethods", []):
+                if m.get("platform") == "claude.ai":
+                    m["description"] = f"Build or download SatoriSkill-v{version}.zip and upload in Claude.ai Customize -> Skills"
+                    m["steps"] = [
+                        f"Run `python scripts/build_release.py --sync` (or download `SatoriSkill-v{version}.zip` from Releases)",
+                        "Open claude.ai and click Customize in the left sidebar",
+                        "Click Skills, then the + button, then Upload a skill",
+                        f"Drop `dist/SatoriSkill-v{version}.zip` into the upload area",
+                    ]
+                    changed = True
+        if changed:
+            manifest_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+            updated.append(str(manifest_path.relative_to(ROOT_DIR)))
+    return updated
+
+
+def sync_mirrors_and_hashes() -> dict[str, str | list[str]]:
+    pkg_path = ROOT_DIR / "package.json"
+    pkg_data = json.loads(pkg_path.read_text(encoding="utf-8"))
+    version = pkg_data.get("version", "6.5.0")
+
+    synced_manifests = sync_manifest_versions(version)
+
     canonical_skill = ROOT_DIR / "SKILL.md"
     if not canonical_skill.exists():
         raise FileNotFoundError(f"Canonical SKILL.md not found at {canonical_skill}")
@@ -98,6 +150,7 @@ def sync_mirrors_and_hashes() -> dict[str, str]:
     return {
         "skill_sha256": sha256_file(canonical_skill),
         "soul_sha256": soul_hash,
+        "synced_manifests": synced_manifests,
     }
 
 
