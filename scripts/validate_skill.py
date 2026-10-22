@@ -22,6 +22,8 @@ import hashlib
 import json
 import pathlib
 import re
+import shutil
+import subprocess
 import sys
 
 ROOT_DIR = pathlib.Path(__file__).resolve().parent.parent
@@ -63,11 +65,34 @@ def parse_frontmatter(text: str) -> dict[str, str]:
     if end_idx == -1:
         raise ValueError("Missing closing YAML frontmatter delimiter '---'")
     block = text[4:end_idx]
+
+    try:
+        import yaml
+        parsed = yaml.safe_load(block)
+        if not isinstance(parsed, dict):
+            raise ValueError("YAML frontmatter must parse into a mapping dictionary")
+        return {str(k): str(v) for k, v in parsed.items()}
+    except ImportError:
+        pass
+
     result: dict[str, str] = {}
     for line in block.splitlines():
-        if ":" in line:
-            k, v = line.split(":", 1)
-            result[k.strip()] = v.strip()
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if ":" not in line:
+            raise ValueError(f"Malformed YAML frontmatter line: '{line}'")
+        k, v = line.split(":", 1)
+        k = k.strip()
+        v = v.strip()
+        if (v.startswith('"') and v.endswith('"')) or (v.startswith("'") and v.endswith("'")):
+            v = v[1:-1]
+        elif ":" in v:
+            raise ValueError(
+                f"YAML syntax violation: unquoted colon in value for key '{k}'. "
+                "Values containing colons must be quoted in standard YAML."
+            )
+        result[k] = v
     return result
 
 
@@ -98,6 +123,19 @@ def main() -> int:
             checks_passed += 1
         except Exception as exc:
             errors.append(f"SKILL.md frontmatter error: {exc}")
+
+    compact_path = ROOT_DIR / "compact" / "SKILL.md"
+    if compact_path.exists():
+        compact_text = compact_path.read_text(encoding="utf-8")
+        try:
+            fm_c = parse_frontmatter(compact_text)
+            if fm_c.get("name") != "satori":
+                errors.append(f"Invalid compact/SKILL.md frontmatter name: '{fm_c.get('name')}'")
+            if not fm_c.get("description"):
+                errors.append("Missing compact/SKILL.md description")
+            checks_passed += 1
+        except Exception as exc:
+            errors.append(f"compact/SKILL.md frontmatter error: {exc}")
 
     # Load facts.json Single Source of Truth
     facts_path = ROOT_DIR / "facts.json"
@@ -374,6 +412,28 @@ def main() -> int:
                         banned_ok = False
         if banned_ok:
             checks_passed += 1
+
+    # 9. Agent Skills Ecosystem Parser Gate (npx skills add . --list)
+    npx_bin = shutil.which("npx")
+    if npx_bin:
+        try:
+            res = subprocess.run(
+                [npx_bin, "--yes", "skills", "add", ".", "--list"],
+                cwd=ROOT_DIR,
+                capture_output=True,
+                text=True,
+                timeout=15,
+            )
+            if res.returncode != 0 or "YAML parse error" in res.stdout or "YAML parse error" in res.stderr:
+                errors.append(f"Agent skills ecosystem CLI error: {res.stdout.strip()} {res.stderr.strip()}")
+            elif "Found 1 skill" not in res.stdout:
+                errors.append(f"Agent skills ecosystem CLI failed to find Satori skill: {res.stdout.strip()}")
+            else:
+                checks_passed += 1
+        except subprocess.TimeoutExpired:
+            pass
+        except Exception as exc:
+            pass
 
     if errors:
         print(json.dumps({"status": "FAILED", "checks_passed": checks_passed, "errors": errors}, indent=2))

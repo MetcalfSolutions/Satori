@@ -1,7 +1,10 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.5.0",
+  "version": "6.5.1",
   "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
+  "bin": {
+    "satori": "scripts/cli.js"
+  },
   "keywords": [
     "wisdom",
     "introspection",

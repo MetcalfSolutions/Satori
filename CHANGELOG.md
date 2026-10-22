@@ -4,7 +4,21 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.5.0: Dual Release Packaging, Progressive Disclosure & Local Privacy Vault (Current)
+## v6.5.1: Agent Skills Ecosystem Support & YAML Frontmatter Hardening (Current)
+
+- **Agent Skills Ecosystem Packaging (`npx skills add`)**:
+  - Quoted and strictly validated `description` YAML frontmatter scalar in `SKILL.md` and `compact/SKILL.md`, resolving `js-yaml` nested mapping parser errors.
+  - Enabled one-command cross-agent installation via `npx skills add MetcalfSolutions/Satori` for Claude Code, Cursor, Windsurf, Antigravity, and Codex.
+  - Added native Node.js zero-dependency CLI executable (`scripts/cli.js`) exposed via `package.json` `"bin": { "satori": "scripts/cli.js" }` for `npx @metcalfsolutions/satori`.
+- **Validation Suite Hardening (`scripts/validate_skill.py`)**:
+  - Upgraded frontmatter parser from naive line splitting to strict YAML parsing (`yaml.safe_load`) with resilient fallback detection for unquoted colons.
+  - Added `compact/SKILL.md` frontmatter validation and automated `npx skills add . --list` ecosystem discovery gate.
+- **Documentation & Quick Start Optimization**:
+  - Streamlined `README.md` to surface `npx skills add MetcalfSolutions/Satori` as the primary, zero-friction above-the-fold installation method for coding agents.
+
+---
+
+## v6.5.0: Dual Release Packaging, Progressive Disclosure & Local Privacy Vault
 
 - **Dual Release Packaging (Full vs. Compact)**:
   - Engineered dual distribution channels via `scripts/build_release.py`:

@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.0"><img src="https://img.shields.io/badge/Release-v6.5.0-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.0 Release" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.1"><img src="https://img.shields.io/badge/Release-v6.5.1-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.1 Release" /></a>
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark" /></a>
@@ -28,7 +28,7 @@
   <a href="docs/architecture.md">Full Architecture Matrix</a>
 </p>
 
-> **Here to install Satori in your web assistant or custom GPT?** Jump straight to the [3-Step Web Setup Guide](#1-web-chat--custom-gpts-audience-a) or the interactive [Satori site](https://metcalfsolutions.github.io/Satori/).  
+> **Here to install Satori in your coding agent?** Run `npx skills add MetcalfSolutions/Satori`. For web assistants or custom GPTs, jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudai-chatgpt-gemini-web) or the interactive [Satori site](https://metcalfsolutions.github.io/Satori/).  
 > **Evaluating the skill, benchmark suite, or architecture?** Jump to the [350-Case Benchmark](#the-350-case-benchmark-and-trigger-discipline), [Architecture Table](#architecture--progressive-disclosure), and [Local Memory Vault](#privacy-first-local-memory).
 
 > *"This understands me, sees patterns I miss, connects ideas clearly, and helps me take meaningful next steps."*
@@ -39,24 +39,35 @@ Understanding, pattern recognition, connection, movement. All four. A response t
 
 ## Quick Start & Installation
 
-Satori is designed to meet you where you already work—whether in a web browser, a terminal agent harness, or inside your code editor.
+### 1. AI Coding Agents (Claude Code, Cursor, Windsurf, Antigravity, Codex)
 
-### 1. Web Chat & Custom GPTs (Audience A)
+Install Satori instantly into any detected agent harness in seconds with zero manual configuration:
+
+```bash
+npx skills add MetcalfSolutions/Satori
+```
+
+> **Global install**: Add `-g` to make Satori available across all your projects: `npx skills add -g MetcalfSolutions/Satori`  
+> **Direct npm runner**: You can also run `npx @metcalfsolutions/satori install` or install the package via `npm install @metcalfsolutions/satori`.
+
+---
+
+### 2. Web Chat & Custom GPTs (Claude.ai, ChatGPT, Gemini Web)
 
 Choose the edition engineered for your assistant:
-- **Satori Full (`SatoriSkill-Full-v6.5.0.zip`)**: Engineered for frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Features all 15 modular on-demand reference shards, longitudinal formulation, and progressive disclosure (`<8 KB` Turn-1 load).
-- **Satori Compact (`SatoriSkill-Compact-v6.5.0.zip` or `compact/SKILL.md`)**: Engineered for **ChatGPT** (Custom GPT Instructions box, strictly ≤ 7,800 characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
+- **Satori Full (`SatoriSkill-Full-v6.5.1.zip`)**: Engineered for frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Features all 15 modular on-demand reference shards, longitudinal formulation, and progressive disclosure (`<8 KB` Turn-1 load).
+- **Satori Compact (`SatoriSkill-Compact-v6.5.1.zip` or `compact/SKILL.md`)**: Engineered for **ChatGPT** (Custom GPT Instructions box, strictly ≤ 7,800 characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
 
 #### The 3-Step Setup Guide (About 2 Minutes)
 
 1. **Step 1: Download or Copy Your Edition**:
-   - **For Claude.ai & Gemini**: Download [`dist/SatoriSkill-Full-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.0.zip).
-   - **For ChatGPT & Local Models**: Download [`dist/SatoriSkill-Compact-v6.5.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.0.zip) or copy the single-file prompt [`compact/SKILL.md`](compact/SKILL.md).
+   - **For Claude.ai & Gemini**: Download [`dist/SatoriSkill-Full-v6.5.1.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.1.zip).
+   - **For ChatGPT & Local Models**: Download [`dist/SatoriSkill-Compact-v6.5.1.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.1.zip) or copy the single-file prompt [`compact/SKILL.md`](compact/SKILL.md).
 
 2. **Step 2: Upload to Your Platform**:
-   - **Claude.ai**: Go to **Customize → Skills → + → Upload a skill** and select `SatoriSkill-Full-v6.5.0.zip`. (In Claude Projects: upload under **Project Knowledge**).
+   - **Claude.ai**: Go to **Customize → Skills → + → Upload a skill** and select `SatoriSkill-Full-v6.5.1.zip`. (In Claude Projects: upload under **Project Knowledge**).
    - **ChatGPT (Custom GPT)**: In **Explore GPTs → Create → Configure**, paste the text of [`compact/SKILL.md`](compact/SKILL.md) into the **Instructions** field. Name: *"Satori"*, Description: *"Psychologically grounded wisdom companion"*.
-   - **Google Gemini (Gems)**: In **Gem Manager → New Gem**, upload `SatoriSkill-Full-v6.5.0.zip` (includes `LICENSE.md` for native Gemini zip parser compatibility) or paste the instructions.
+   - **Google Gemini (Gems)**: In **Gem Manager → New Gem**, upload `SatoriSkill-Full-v6.5.1.zip` (includes `LICENSE.md` for native Gemini zip parser compatibility) or paste the instructions.
    - **Local Open-Weights Models (Ollama, LM Studio, Jan)**: For local 8B–32B models (Llama 3/3.3, Qwen 2.5, Mistral), paste [`compact/SKILL.md`](compact/SKILL.md) directly into your Modelfile (`SYSTEM """..."""`) or system instruction box.
 
 3. **Step 3: Start Talking & Verify Active Presence**:
@@ -65,15 +76,16 @@ Choose the edition engineered for your assistant:
 
 ---
 
-### 2. CLI & IDE Agent Harnesses (Audiences B & C)
+### 3. Manual Repository Clone & Per-Agent Files
 
-Satori is auto-discovered by major agent harnesses via native plugins, rules, and pointer stubs:
+If you prefer cloning the source repository directly rather than using `npx skills add`:
 
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
 ```
 
+Satori is auto-discovered across platforms via native configuration files:
 - **Claude Code**: Run `claude` inside the directory (reads `.claude-plugin/plugin.json` and `CLAUDE.md`). Install from official directory via `/plugin install satori@claude-plugins-official`.
 - **Google Antigravity & Gemini CLI**: Auto-discovered via `GEMINI.md`, `.agents/plugins/satori/plugin.json`, and `.agents/skills/satori/SKILL.md`. Copy to `~/.gemini/skills/satori/` for global workspace availability.
 - **Cursor**: Reads `.cursor/skills/satori/SKILL.md` and `.cursor/rules/satori.mdc` (`alwaysApply: false` so Satori never hijacks coding sessions).
