@@ -424,10 +424,12 @@ def main() -> int:
                 text=True,
                 timeout=15,
             )
-            if res.returncode != 0 or "YAML parse error" in res.stdout or "YAML parse error" in res.stderr:
-                errors.append(f"Agent skills ecosystem CLI error: {res.stdout.strip()} {res.stderr.strip()}")
-            elif "Found 1 skill" not in res.stdout:
-                errors.append(f"Agent skills ecosystem CLI failed to find Satori skill: {res.stdout.strip()}")
+            clean_out = re.sub(r"\x1b\[[0-9;]*[a-zA-Z]", "", res.stdout)
+            clean_err = re.sub(r"\x1b\[[0-9;]*[a-zA-Z]", "", res.stderr)
+            if res.returncode != 0 or "YAML parse error" in clean_out or "YAML parse error" in clean_err:
+                errors.append(f"Agent skills ecosystem CLI error: {clean_out.strip()} {clean_err.strip()}")
+            elif not re.search(r"Found\s+1\s+skill", clean_out, re.IGNORECASE):
+                errors.append(f"Agent skills ecosystem CLI failed to find Satori skill: {clean_out.strip()}")
             else:
                 checks_passed += 1
         except subprocess.TimeoutExpired:
