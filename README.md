@@ -31,8 +31,8 @@
 </p>
 
 > **Audience Routing — Start Here:**
-> - **End-Users (Web Chat & Custom GPTs):** Want a perceptive conversation partner in Claude.ai, ChatGPT, or Gemini without touching a terminal? Jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudeai-chatgpt-gemini-web---recommended-for-end-users) or visit the [interactive Satori site](https://metcalfsolutions.github.io/Satori/).
-> - **Developers & Founders (CLI & IDE Agents):** Run `npx skills add MetcalfSolutions/Satori` in [Quick Start & Installation](#1-ai-coding-agents-claude-code-cursor-windsurf-antigravity-codex---recommended-for-developers) to add Satori to Claude Code, Cursor, Windsurf, Antigravity, or Codex in seconds.
+> - **End-Users (Web Chat & Custom GPTs):** Want a perceptive conversation partner in Claude.ai, ChatGPT, or Gemini without touching a terminal? Jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudeai-chatgpt-gemini-web--recommended-for-end-users) or visit the [interactive Satori site](https://metcalfsolutions.github.io/Satori/).
+> - **Developers & Founders (CLI & IDE Agents):** Run `npx skills add MetcalfSolutions/Satori` in [Quick Start & Installation](#1-ai-coding-agents-claude-code-cursor-windsurf-antigravity-codex--recommended-for-developers) to add Satori to Claude Code, Cursor, Windsurf, Antigravity, or Codex in seconds.
 > - **Evaluators & Skill Builders:** Reviewing trigger boundaries, progressive disclosure, or privacy engineering? Jump to the [350-Case Benchmark](#the-350-case-benchmark-and-trigger-discipline), [Architecture & Editions](#architecture-editions--progressive-disclosure), and [Local Memory Vault](#privacy-first-local-memory).
 
 **Table of Contents**
@@ -123,7 +123,7 @@ Choose the declared edition engineered for your assistant:
 If you prefer cloning the source repository directly or installing via native harness registries:
 
 ```bash
-git clone [https://github.com/MetcalfSolutions/Satori.git](https://github.com/MetcalfSolutions/Satori.git)
+git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
 ```
 
@@ -154,7 +154,7 @@ Run this test prompt in your agent or chat window:
    - *Fix:* Upload the pre-built release archive [`SatoriSkill-Full-v6.5.1.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.1.zip) (or build it locally via `python scripts/build_release.py --sync`), which strips hidden directories and uses `LICENSE.md`.
 3. **Failure Mode 3 — `satori_memory.py init` Halts with Exit Code 1:**
    - *Cause:* Your target directory or home folder is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`), triggering Threat Mitigation `T6` to protect private reflections.
-   - *Fix:* Initialize the vault in an unsynced local path (`python scripts/satori_memory.py init --vault-dir /local/path/.satori`) or explicitly pass `--allow-synced` if you accept cloud synchronization.
+   - *Fix:* Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/path/.satori init`) or explicitly pass `--allow-synced` if you accept cloud synchronization.
 
 ---
 
@@ -275,11 +275,11 @@ Turn 1 in Satori Full loads strictly under `8,000 bytes` (`<2,000 tokens`). Refe
 | **Constitutional Identity** | [`references/SOUL.md`](references/SOUL.md) | `~13 KB` | Voice philosophy, 7 Immovables, drift detection (`SHA-256` locked) | Turn 2+ (Profiles 1–4) |
 | **Clinical Spine** | [`references/clinical-spine.md`](references/clinical-spine.md) | `<20 KB` | 6-step model, 3×6 Role/Register matrix, Three-Tier Risk Model | Turn 2+ (Profiles 1–4) |
 | **Traditions QuickRef** | [`references/traditions-quickref.md`](references/traditions-quickref.md) | `~18 KB` | Lens Fit selection matrix across traditions and psychological lenses | When selecting a lens |
-| **Eastern Traditions** | [`references/traditions-eastern.md`](references/traditions-eastern.md) | `~16 KB` | Taoism, Buddhism, Zen, Hindu, and Confucian inquiry | On demand (Eastern lens) |
-| **Stoic & Existential** | [`references/traditions-stoic.md`](references/traditions-stoic.md) | `~12 KB` | Stoicism, Existentialism, Logotherapy, and modern psychological lenses | On demand (Stoic/Psych lens) |
-| **African, Sufi & Indigenous** | [`references/traditions-african-sufi.md`](references/traditions-african-sufi.md) | `~14 KB` | Ubuntu, Kemetic *Ma'at*, Akan *Sankofa*, Sufism, Indigenous reciprocity | On demand (African/Sufi lens) |
-| **Inquiry Toolkit** | [`references/toolkit-inquiry.md`](references/toolkit-inquiry.md) | `~20 KB` | Socratic tension-mapping, Motivational Interviewing, narrative identity | On demand (Inquiry) |
-| **Somatic Toolkit** | [`references/toolkit-somatic.md`](references/toolkit-somatic.md) | `~14 KB` | Nervous system grounding, distress tolerance, tactical empathy | On demand (Somatic) |
+| **Eastern Traditions** | [`references/traditions-eastern.md`](references/traditions-eastern.md) | `~7 KB` | Taoism, Buddhism, Zen, Hindu, and Confucian inquiry | On demand (Eastern lens) |
+| **Stoic & Existential** | [`references/traditions-stoic.md`](references/traditions-stoic.md) | `~6 KB` | Stoicism, Existentialism, Logotherapy, and modern psychological lenses | On demand (Stoic/Psych lens) |
+| **African, Sufi & Indigenous** | [`references/traditions-african-sufi.md`](references/traditions-african-sufi.md) | `~6 KB` | Ubuntu, Kemetic *Ma'at*, Akan *Sankofa*, Sufism, Indigenous reciprocity | On demand (African/Sufi lens) |
+| **Inquiry Toolkit** | [`references/toolkit-inquiry.md`](references/toolkit-inquiry.md) | `~6 KB` | Socratic tension-mapping, Motivational Interviewing, narrative identity | On demand (Inquiry) |
+| **Somatic Toolkit** | [`references/toolkit-somatic.md`](references/toolkit-somatic.md) | `~5 KB` | Nervous system grounding, distress tolerance, tactical empathy | On demand (Somatic) |
 | **Specialized Protocols** | [`references/onboarding.md`](references/onboarding.md)<br>[`references/grief-protocol.md`](references/grief-protocol.md)<br>[`references/darknight-protocol.md`](references/darknight-protocol.md)<br>[`references/shadow-work-protocol.md`](references/shadow-work-protocol.md)<br>[`references/relationship-protocol.md`](references/relationship-protocol.md) | `<24 KB` each | First-run resonance onboarding (with Context-First Bypass), bereavement/ambiguous loss, 3am Dark Night, Jungian shadow arcs, relational rupture | On semantic signal |
 | **Voice & Tone Guide** | [`references/tone-and-voice.md`](references/tone-and-voice.md) | `<24 KB` | Before/after worked voice calibration examples and anti-slop discipline | On demand |
 | **Local Memory Spec** | [`references/memory-system.md`](references/memory-system.md) | `~9 KB` | Vault conventions, SQLite FTS5 schema, cloud-sync guard, `SATORI_NOTE v6.5` | When reading/writing memory |
@@ -293,7 +293,7 @@ Full architecture diagrams and token budgets: [`docs/architecture.md`](docs/arch
 
 Rather than relying on fragile model-name strings, Satori calibrates behavior using runtime capability sensing across **5 Behavioral Profiles** (illustrated with October 2026 production checkpoints):
 
-1. **Tier 1 — Explicit Environment Override:** Honors `SATORI_EDITION=full|compact` or `SATORI_MODEL_PROFILE=1..5`.
+1. **Tier 1 — Explicit Environment Override:** Honors `SATORI_MODEL_PROFILE=1..5`, or explicit loading of `references/core-compact.md` by the host harness.
 2. **Tier 2 — Capability-Based Calibration Across 5 Behavioral Profiles:**
    - **Profile 1 (Extended Reasoning / CoT Models):** e.g., `Claude Fable 5.1`, `Gemini 4 Argon`, `GPT-6 Astra`, `DeepSeek-V4-Pro`, `o4-mini`, `Grok 4.3 (Reasoning)`. Enforces the CoT Empathy Gate and prunes internal hypotheses to the single truest reading before responding.
    - **Profile 2 (Literary & Constitutional Frontier Models):** e.g., `Claude Opus 5.5`, `GPT-6.1 Sol`, `Llama 5 (405B)`, `Mistral Large 3`. Enforces plain-language grounding and cross-session memory restraint.
