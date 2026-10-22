@@ -3,7 +3,7 @@
   "version": "6.5.1",
   "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
   "bin": {
-    "satori": "scripts/cli.js"
+    "satori": "./scripts/cli.js"
   },
   "keywords": [
     "wisdom",
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetcalfSolutions/Satori.git"
+    "url": "git+https://github.com/MetcalfSolutions/Satori.git"
   },
   "license": "Apache-2.0",
   "author": {

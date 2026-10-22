@@ -11,3 +11,5 @@ docs/
 # Local tooling
 *.log
 *.tmp
+__pycache__/
+*.pyc
