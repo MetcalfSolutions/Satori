@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220" role="img" aria-label="Satori v6.5.0 — Psychologically Grounded Wisdom Companion for the Inner Life">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220" role="img" aria-label="Satori v6.5.1 — Psychologically Grounded Wisdom Companion for the Inner Life">
   <defs>
     <radialGradient id="heroGlow" cx="78%" cy="50%" r="55%">
       <stop offset="0%" stop-color="#2a1f4d"/>
@@ -24,7 +24,7 @@
   <!-- Eyebrow tag -->
   <rect x="44" y="34" width="370" height="24" rx="12" fill="rgba(124,106,247,0.14)" stroke="rgba(124,106,247,0.4)" stroke-width="1"/>
   <text x="229" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="600" fill="#a599ff" letter-spacing="0.08em">
-    SATORI v6.5.0 · WORKS ACROSS CLI, IDE &amp; WEB CHAT
+    SATORI v6.5.1 · WORKS ACROSS CLI, IDE &amp; WEB CHAT
   </text>
 
   <!-- Title & Subtitle -->
