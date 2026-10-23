@@ -1,6 +1,6 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.5.1",
+  "version": "6.5.2",
   "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
   "bin": {
     "satori": "./scripts/cli.js"
@@ -79,7 +79,8 @@
     "build": "python scripts/build_release.py --sync",
     "validate": "python scripts/validate_skill.py",
     "test:memory": "python scripts/satori_memory.py self-test",
-    "test:evals": "python scripts/test_judge_calibration.py && python scripts/run_evals.py --suite trigger --mode lint"
+    "test:evals": "python scripts/test_judge_calibration.py && python scripts/run_evals.py --suite trigger --mode lint",
+    "test": "npm run validate && npm run test:memory && npm run test:evals"
   },
   "publishConfig": {
     "access": "public"

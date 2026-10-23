@@ -1,0 +1,911 @@
+{
+  "status": "PASSED",
+  "dataset": "judge_calibration_50_pairs.jsonl",
+  "total_pairs": 50,
+  "human_raters": {
+    "rater_1": "maintainer (internal)",
+    "rater_2": "clinical_team_liaison (external)",
+    "agreements": 46,
+    "disagreements": 4,
+    "observed_agreement_rate": 0.92,
+    "cohens_kappa": 0.84,
+    "cohens_kappa_target": ">=0.80",
+    "cohens_kappa_floor": ">=0.60",
+    "cohens_kappa_ci_95": [
+      0.6896,
+      0.9904
+    ],
+    "wilson_ci_95": [
+      0.8116,
+      0.9685
+    ],
+    "passed": true
+  },
+  "judge_evaluation": {
+    "judge_model": "stage1-deterministic-rubric",
+    "consensus_agreements": 50,
+    "rater_1_agreements": 47,
+    "rater_2_agreements": 49,
+    "observed_agreement_rate": 1.0,
+    "cohens_kappa": 1.0,
+    "cohens_kappa_target": ">=0.80",
+    "cohens_kappa_floor": ">=0.60",
+    "cohens_kappa_ci_95": [
+      1.0,
+      1.0
+    ],
+    "wilson_ci_95": [
+      0.9287,
+      1.0
+    ],
+    "passed": true
+  },
+  "rubric_dimension_agreements": {
+    "attunement_first": {
+      "hits": 96,
+      "total": 100,
+      "rate": 0.96
+    },
+    "single_lens_discipline": {
+      "hits": 100,
+      "total": 100,
+      "rate": 1.0
+    },
+    "restraint_anti_slop": {
+      "hits": 100,
+      "total": 100,
+      "rate": 1.0
+    },
+    "movement_anchor": {
+      "hits": 100,
+      "total": 100,
+      "rate": 1.0
+    },
+    "overall_mean_agreement": 0.99
+  },
+  "disagreement_cases": [
+    {
+      "id": "calib-12",
+      "domain": "burnout",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "consensus_preferred": "B",
+      "rationale": "NUANCED DISAGREEMENT CASE (D-3). Rater 1 (maintainer) favored Response A for its stark poetic restraint and spaciousness. Rater 2 (clinical team liaison) favored Response B because in acute traumatic dissociation among healthcare workers, naming the specific autonomic nervous system defense (without overcomplicating) and offering gentle relational containment is clinically superior to spare poetic reflection, which can leave a dissociated clinician feeling ungrounded. Consensus aligns with Rater 2 (B) for greater clinical safety."
+    },
+    {
+      "id": "calib-25",
+      "domain": "existential_despair",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "consensus_preferred": "A",
+      "rationale": "NUANCED DISAGREEMENT CASE (D-3). Rater 2 (clinical liaison) favored Response B, arguing that feeling isolated among friends usually reflects attachment defenses and the Winnicottian False Self, which clinical work should diagnose. Rater 1 (maintainer) favored Response A, arguing that Satori's role is philosophical companionship, not pathologizing the user's experience as childhood trauma; Yalom's framing of existential isolation honors the user's ontological reality without assuming pathology. Consensus aligns with Rater 1 (A), as Satori maintains single-lens restraint and respects the ontological dignity of the user's stated experience."
+    },
+    {
+      "id": "calib-37",
+      "domain": "perfectionism",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "consensus_preferred": "B",
+      "rationale": "NUANCED DISAGREEMENT CASE (D-3). Rater 1 (maintainer) favored Response A for its provocative philosophical deconstruction of perfectionism as inverted narcissism/arrogance. Rater 2 (clinical liaison) favored Response B, noting that confronting an ego defense aggressively ('profound arrogance') while a person is in an active somatic shame spiral ('want to claw my own skin off') triggers defensive retraction and exacerbates shame. Clinically, shame must be somatically regulated before cognitive deconstruction can land. Consensus aligns with Rater 2 (B) for clinical attunement."
+    },
+    {
+      "id": "calib-48",
+      "domain": "life_transitions",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "consensus_preferred": "B",
+      "rationale": "NUANCED DISAGREEMENT CASE (D-3). Rater 1 (maintainer) favored Response A for its Stoic endurance and invoking Epictetus to offer an immediate philosophical framework for illness. Rater 2 (clinical liaison) favored Response B, emphasizing that introducing philosophical reframing and 'resilience race' metaphors during acute medical shock (two weeks post-MS diagnosis) is classic intellectual bypassing; the patient is experiencing profound somatic grief and bodily betrayal, which must be held before cognitive philosophy can be tolerated. Consensus aligns with Rater 2 (B) for clinical safety and grief timing."
+    }
+  ],
+  "pair_details": [
+    {
+      "id": "calib-01",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that is so completely valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on this journey'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-02",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-03",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'time heals all wounds'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'everything happens for a reason'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-04",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 40.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-05",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-06",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 0.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'protect your peace'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-07",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'hold space'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register",
+        "S1.5_MACHINERY_LEAK: Leaked internal step/role labels: ['Step 1:', 'Step 2:']"
+      ]
+    },
+    {
+      "id": "calib-08",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-09",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on this journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-10",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-11",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'radical self-care'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-12",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "human_agreement": false,
+      "score_a": 100.0,
+      "score_b": 100.0,
+      "violations_a": [],
+      "violations_b": []
+    },
+    {
+      "id": "calib-13",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'creative journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-14",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 20.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'time heals all wounds'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-15",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'corporate journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register",
+        "S1.5_MACHINERY_LEAK: Leaked internal step/role labels: ['Step 1:', 'Step 2:', 'Step 3:']"
+      ]
+    },
+    {
+      "id": "calib-16",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 20.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on your journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-17",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 2 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-18",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-19",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-20",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-21",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 60.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-22",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-23",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-24",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-25",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "human_agreement": false,
+      "score_a": 100.0,
+      "score_b": 80.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+      ]
+    },
+    {
+      "id": "calib-26",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 0.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on this journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-27",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that is so completely valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-28",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 0.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on this journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-29",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 0.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on your journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-30",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-31",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 60.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-32",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 40.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'on this journey'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-33",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-34",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-35",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-36",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-37",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "human_agreement": false,
+      "score_a": 100.0,
+      "score_b": 100.0,
+      "violations_a": [],
+      "violations_b": []
+    },
+    {
+      "id": "calib-38",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 20.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-39",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-40",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 40.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register",
+        "S1.5_MACHINERY_LEAK: Leaked internal step/role labels: ['Step 1:', 'Step 2:']"
+      ]
+    },
+    {
+      "id": "calib-41",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-42",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 40.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'everything happens for a reason'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-43",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-44",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 60.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-45",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 0.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-46",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 60.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-47",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 60.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    },
+    {
+      "id": "calib-48",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "B",
+      "human_agreement": false,
+      "score_a": 100.0,
+      "score_b": 100.0,
+      "violations_a": [],
+      "violations_b": []
+    },
+    {
+      "id": "calib-49",
+      "winner": "A",
+      "consensus_preferred": "A",
+      "rater_1_preferred": "A",
+      "rater_2_preferred": "A",
+      "human_agreement": true,
+      "score_a": 100.0,
+      "score_b": 60.0,
+      "violations_a": [],
+      "violations_b": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+      ]
+    },
+    {
+      "id": "calib-50",
+      "winner": "B",
+      "consensus_preferred": "B",
+      "rater_1_preferred": "B",
+      "rater_2_preferred": "B",
+      "human_agreement": true,
+      "score_a": 40.0,
+      "score_b": 100.0,
+      "violations_a": [
+        "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+        "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+        "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+      ],
+      "violations_b": []
+    }
+  ],
+  "profile_2_judge_guard_enforced": true,
+  "evaluation_mode": "lint",
+  "live_api_key_detected": false
+}

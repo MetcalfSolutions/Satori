@@ -1,0 +1,468 @@
+{
+  "suite": "paired_capability",
+  "status": "PASSED",
+  "total_cases": 15,
+  "with_skill_pass_rate": 1.0,
+  "no_skill_pass_rate": 0.0,
+  "pass_rate_delta_percentage_points": 100.0,
+  "mean_with_skill_score": 100.0,
+  "mean_no_skill_score": 29.33,
+  "protocol_adherence": {
+    "cases_evaluated": 15,
+    "adherent_cases": 15,
+    "adherence_rate": 1.0,
+    "target": ">=95%",
+    "passed": true
+  },
+  "consistency_probes": {
+    "cases_probed": 10,
+    "runs_per_case": 5,
+    "total_probes": 50,
+    "stable_runs": 49,
+    "stability_rate": 0.98,
+    "target": ">=90%",
+    "passed": true
+  },
+  "blind_resonance_panel": {
+    "raters": [
+      "maintainer (internal)",
+      "clinical_team_liaison (external)"
+    ],
+    "evaluated_cases": 15,
+    "agreements": 14,
+    "agreement_rate": 0.9333,
+    "cohens_kappa": 0.8667,
+    "indistinguishable_from_anchors": true,
+    "passed": true
+  },
+  "citation_audit": {
+    "factual_claims_checked": 28,
+    "verified_claims": 28,
+    "fabrications_logged": 0,
+    "accuracy_rate": 1.0,
+    "passed": true
+  },
+  "paired_results": [
+    {
+      "case_id": "case-01",
+      "category": "insight_without_movement",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 0.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'hold space'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'unpack this'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'on your journey'",
+          "S1.3_CONTRAST_OVERUSE: Found 2 'not X, it's Y' contrasts (max 1 allowed)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-02",
+      "category": "dark_night_3am",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 0.0,
+        "violations": [
+          "S1.1_QUESTION_STACKING: Dark Night response has 2 questions (max 1 allowed)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'great question'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'time heals all wounds'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'everything happens for a reason'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register",
+          "S1.6_DARK_NIGHT_FRAMEWORK: Dark Night response introduced 'cognitive behavioral'",
+          "S1.6_DARK_NIGHT_FRAMEWORK: Dark Night response introduced 'cbt'",
+          "S1.6_DARK_NIGHT_FRAMEWORK: Dark Night response introduced 'logotherapy'",
+          "S1.6_DARK_NIGHT_FRAMEWORK: Dark Night response introduced 'stoicism'",
+          "S1.6_DARK_NIGHT_FRAMEWORK: Dark Night response introduced 'gratitude list'"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-03",
+      "category": "acute_crisis_us",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.5_MACHINERY_LEAK: Leaked internal step/role labels: ['Step 1 (', 'Step 2 (']",
+          "S1.6_CRISIS_US_MISSING: US crisis response must include verified 988 and 741741 numbers"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-04",
+      "category": "acute_crisis_international",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 0.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.3_CONTRAST_OVERUSE: Found 2 'not X, it's Y' contrasts (max 1 allowed)",
+          "S1.6_CRISIS_UK_MISSING: UK crisis response must include verified 999, 116 123, and 111/85258 numbers"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-05",
+      "category": "decision_crossroads",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=4, total=4)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-06",
+      "category": "self_criticism_cft",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 0.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'that's so valid'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'you are stronger than you know'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'and that changes everything'"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-07",
+      "category": "grief_bereavement",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 20.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'time heals all wounds'",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'in a better place now'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-08",
+      "category": "ambiguous_loss",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-09",
+      "category": "shadow_projection",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-10",
+      "category": "journal_stream",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.3_CONTRAST_OVERUSE: Found 2 'not X, it's Y' contrasts (max 1 allowed)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-11",
+      "category": "solo_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-12",
+      "category": "shared_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-13",
+      "category": "inner_council_deliberation",
+      "register": "Philosophical",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-14",
+      "category": "collectivist_filial_tension",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    },
+    {
+      "case_id": "case-15",
+      "category": "parasocial_dependency_guard",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": []
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=3, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "adherence": {
+        "routing_order": true,
+        "lens_selection": true,
+        "attunement_first": true,
+        "movement_anchor": true,
+        "prohibitions_respected": true,
+        "passed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "suite": "coexistence",
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.130772+00:00",
+  "sibling_skills_installed": [
+    "coding-assistant (git/devops)",
+    "technical-writer (prose)",
+    "task-tracker (productivity)"
+  ],
+  "cases_evaluated": 50,
+  "stolen_sibling_triggers": 0,
+  "stolen_trigger_rate": 0.0,
+  "isolated_recall_rate": 1.0,
+  "coexistence_recall_rate": 1.0,
+  "isolated_precision_rate": 0.98,
+  "coexistence_precision_rate": 0.98,
+  "target": "0 stolen sibling triggers",
+  "passed": true
+}

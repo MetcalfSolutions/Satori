@@ -6,6 +6,14 @@ Because model marketing names change every quarter and API proxies frequently al
 
 ---
 
+## Table of Contents
+
+1. [The 3-Tier Runtime Capability Resolution Mechanism](#1-the-3-tier-runtime-capability-resolution-mechanism)
+2. [The Five Behavioral Profiles](#2-the-five-behavioral-profiles)
+3. [Policy on Multi-Model Routing (`Single-Model Canonical`)](#3-policy-on-multi-model-routing-single-model-canonical)
+
+---
+
 ## 1. The 3-Tier Runtime Capability Resolution Mechanism
 
 At the start of a session, Satori resolves its calibration posture using three tiers in priority order:

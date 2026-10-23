@@ -6,6 +6,17 @@ Satori is not a fresh start each session. When the user consents to memory, Sato
 
 ---
 
+## Table of Contents
+
+1. [The 3-Tier Universal Memory Fallback Chain](#1-the-3-tier-universal-memory-fallback-chain)
+2. [Memory Layers — Execution Rules](#2-memory-layers--execution-rules)
+3. [Retrieval & Current-Context Override Rules](#3-retrieval--current-context-override-rules)
+4. [Dream / Auto-Dream Layer (`1 → 2 → 3` Recurrence Protocol)](#4-dream--auto-dream-layer-1--2--3-recurrence-protocol)
+5. [Longitudinal Case Formulation Model (`formulation.md`)](#5-longitudinal-case-formulation-model-formulationmd)
+6. [Adaptive Self-Improvement & Decay Rules](#6-adaptive-self-improvement--decay-rules)
+
+---
+
 ## 1. The 3-Tier Universal Memory Fallback Chain
 
 Because Satori runs across local CLI agents, IDE workspaces, and sandboxed web chat UIs, it resolves persistent memory through a deterministic 3-tier fallback chain:

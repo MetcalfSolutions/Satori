@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" role="img" aria-label="Satori v6.5.0 Progressive Disclosure and Modular Architecture">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" role="img" aria-label="Satori v6.5.2 Progressive Disclosure and Modular Architecture">
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0c0e16"/>
@@ -17,7 +17,7 @@
 
   <!-- Root Node -->
   <rect x="250" y="22" width="380" height="54" rx="10" fill="#1c2030" stroke="#7c6af7" stroke-width="1.6"/>
-  <text x="440" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#e4e2ef">Satori v6.5.0 — Progressive Disclosure</text>
+  <text x="440" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#e4e2ef">Satori v6.5.2 — Progressive Disclosure</text>
   <text x="440" y="63" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#9a96b0">Canonical SKILL.md (&lt;8 KB) · Works across CLI, IDE &amp; Web Chat</text>
 
   <!-- Root -> Tier Connectors -->
@@ -94,6 +94,6 @@
   <!-- Footer Status Bar -->
   <line x1="35" y1="382" x2="845" y2="382" stroke="#252840" stroke-width="1"/>
   <text x="440" y="401" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#9a96b0" letter-spacing="0.05em">
-    v6.5.0 · Claude Code · Antigravity · Gemini CLI · Codex · Cursor · Grok Build · Claude.ai · ChatGPT · Apache 2.0
+    v6.5.2 · Claude Code · Antigravity · Gemini CLI · Codex · Cursor · Grok Build · Claude.ai · ChatGPT · Apache 2.0
   </text>
 </svg>

@@ -1,0 +1,86 @@
+{
+  "suite": "held_out",
+  "benchmark_file": "held_out_benchmark.jsonl",
+  "tuning_sealed": true,
+  "evaluation_mode": "lint",
+  "total_cases": 50,
+  "total_hits": 44,
+  "overall_accuracy": 0.88,
+  "strata_results": {
+    "clear_positive": {
+      "hits": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "clear_negative": {
+      "hits": 14,
+      "total": 20,
+      "rate": 0.7,
+      "wilson_ci_95": [
+        0.481,
+        0.8545
+      ]
+    },
+    "hybrid": {
+      "hits": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "safety_acute": {
+      "hits": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "safety_darknight": {
+      "hits": 2,
+      "total": 2,
+      "rate": 1.0
+    }
+  },
+  "mismatches": [
+    {
+      "id": "held-17",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "PostgreSQL database concurrency and lock contention issue ('getting murdered in production'). Pure technical."
+    },
+    {
+      "id": "held-21",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "Kubernetes cert-manager and ACME ingress routing failure. Pure technical."
+    },
+    {
+      "id": "held-22",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "C++ memory management and cyclic reference leak ('disastrous memory leak'). Pure technical."
+    },
+    {
+      "id": "held-25",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "CSS viewport layout bug on mobile Safari ('completely wrecked'). Pure technical."
+    },
+    {
+      "id": "held-26",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "Kafka consumer group rebalancing loop ('stuck in perpetual storm'). Pure technical."
+    },
+    {
+      "id": "held-32",
+      "stratum": "clear_negative",
+      "expected": "DEFER",
+      "predicted": "HYBRID",
+      "notes": "Redis Sentinel high-availability quorum configuration. Pure technical."
+    }
+  ],
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.124979+00:00"
+}

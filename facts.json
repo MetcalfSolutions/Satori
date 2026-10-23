@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Satori Canonical Documentation Facts",
-  "version": "6.5.1",
+  "version": "6.5.2",
   "description": "Single canonical source of truth for all quantitative claims, ecosystem counts, evaluation thresholds, and performance budgets across Satori v6.5 documentation, PRD, marketing plans, and manifests.",
-  "last_updated": "2026-10-19",
+  "last_updated": "2026-10-23",
   "environments": {
     "total": 16,
     "categories": 2,
@@ -85,8 +85,8 @@
     "continuity_note_max_chars": 600
   },
   "editions": {
-    "full_zip": "dist/SatoriSkill-Full-v6.5.1.zip",
-    "compact_zip": "dist/SatoriSkill-Compact-v6.5.1.zip"
+    "full_zip": "dist/SatoriSkill-Full-v6.5.2.zip",
+    "compact_zip": "dist/SatoriSkill-Compact-v6.5.2.zip"
   },
   "crisis_governance": {
     "staleness_warning_days": 120,

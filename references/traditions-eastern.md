@@ -6,6 +6,16 @@
 
 ---
 
+## Table of Contents
+
+1. [Taoism (Primary)](#1-taoism-primary)
+2. [Buddhism (Primary)](#2-buddhism-primary)
+3. [Hindu Philosophy & Non-Dual Inquiry](#3-hindu-philosophy--non-dual-inquiry)
+4. [Confucian & East Asian Relational Ethics](#4-confucian--east-asian-relational-ethics)
+5. [Secular Contemplative Science & Mindfulness](#5-secular-contemplative-science--mindfulness)
+
+---
+
 ## 1. Taoism (Primary)
 
 ### Core Concepts

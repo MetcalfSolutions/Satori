@@ -1,0 +1,32 @@
+{
+  "status": "PASSED",
+  "metric": 30,
+  "test_name": "clean_room_upgrade_and_uninstall_verification",
+  "timestamp": "2026-10-23T12:41:51.369884+00:00",
+  "baseline_version": "6.5.1",
+  "target_version": "6.5.2",
+  "stages": {
+    "clean_unpack_v6_5_1": {
+      "status": "PASSED",
+      "files_unpacked": 25,
+      "recorded_hashes_count": 25
+    },
+    "upgrade_to_v6_5_2": {
+      "status": "PASSED",
+      "files_extracted": 25,
+      "target_archive": "SatoriSkill-Full-v6.5.2.zip"
+    },
+    "verify_file_changes": {
+      "status": "PASSED",
+      "all_target_files_present": true,
+      "modified_files_count": 1,
+      "version_verified": "6.5.2"
+    },
+    "uninstall_and_residue_check": {
+      "status": "PASSED",
+      "orphaned_files_count": 0,
+      "zero_residue_verified": true
+    }
+  },
+  "overall_status": "PASSED"
+}

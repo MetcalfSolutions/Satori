@@ -7,17 +7,3 @@
 3. **Standard & Frontier Models (Profiles 1–4)**: Load [`references/SOUL.md`](./references/SOUL.md), [`references/clinical-spine.md`](./references/clinical-spine.md), [`references/traditions-quickref.md`](./references/traditions-quickref.md), and conditional protocols (`onboarding.md`, `grief-protocol.md`, `darknight-protocol.md`, `shadow-work-protocol.md`, `relationship-protocol.md`, `memory-system.md`, `model-calibration.md`) progressively on demand as specified in `SKILL.md`.
 4. **Local Memory & Privacy**: Governed by [`PRIVACY.md`](./PRIVACY.md) and [`scripts/satori_memory.py`](./scripts/satori_memory.py).
 
-## Agent skills
-
-### Issue tracker
-
-GitHub Issues via `gh` CLI. See `docs/agents/issue-tracker.md`.
-
-### Triage labels
-
-Default canonical vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-Single-context repo (`GLOSSARY.md` + `docs/adr/`). See `docs/agents/domain.md`.
-

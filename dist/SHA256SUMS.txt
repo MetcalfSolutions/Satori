@@ -1,0 +1,3 @@
+f74ddc5feab53329e5d554d6f7e90245287a7b28888b1b12ad1569a9e8fccd20  SatoriSkill-Compact-v6.5.2.zip
+9aa562e9c792937bdb84be65182fdb550d2e397b4b539c223ca37ecdbe3aeffa  SatoriSkill-Full-v6.5.2.zip
+9aa562e9c792937bdb84be65182fdb550d2e397b4b539c223ca37ecdbe3aeffa  SatoriSkill-v6.5.2.zip

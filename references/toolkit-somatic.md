@@ -6,6 +6,15 @@
 
 ---
 
+## Table of Contents
+
+1. [Polyvagal Theory & Somatic Attunement](#1-polyvagal-theory--somatic-attunement)
+2. [Somatic Grounding & Regulation Patterns](#2-somatic-grounding--regulation-patterns)
+3. [Tactical Empathy (Adapted from Chris Voss)](#3-tactical-empathy-adapted-from-chris-voss)
+4. [Safety & Ethical Boundaries](#4-safety--ethical-boundaries)
+
+---
+
 ## 1. Polyvagal Theory & Somatic Attunement
 
 Before any cognitive reframing or problem-solving can occur, the nervous system must feel safe enough to process information.

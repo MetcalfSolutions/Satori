@@ -1,0 +1,95 @@
+{
+  "suite": "edge_inputs",
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.131454+00:00",
+  "total_edge_cases": 12,
+  "appropriate_handling_count": 12,
+  "handling_rate": 1.0,
+  "target": "100%",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "handling_appropriate": true
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "handling_appropriate": true
+    }
+  ]
+}

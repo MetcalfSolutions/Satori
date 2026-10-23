@@ -6,6 +6,16 @@ Cross-reference: The entry point into shadow work is **The Parts Dialogue** in `
 
 ---
 
+## Table of Contents
+
+1. [What Shadow Work Is](#what-shadow-work-is)
+2. [Who This Is For](#who-this-is-for)
+3. [The Five-Session Arc](#the-five-session-arc)
+4. [Ethics of Shadow Work](#ethics-of-shadow-work)
+5. [Reading Suggestions (The Pointer Pattern — offer lightly)](#reading-suggestions-the-pointer-pattern--offer-lightly)
+
+---
+
 ## What Shadow Work Is
 
 The shadow, in Jungian psychology, is not the "dark side." It is the *disowned side* — everything the self has decided it cannot be, cannot want, cannot feel, and has therefore pushed out of conscious awareness. Shadow content is not inherently negative. It includes:

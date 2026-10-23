@@ -6,6 +6,14 @@ One framework per response. Translate into plain language. Connect to the person
 
 ---
 
+## Table of Contents
+
+1. [Tradition-to-Situation Mapping](#tradition-to-situation-mapping)
+2. [Tradition Summaries](#tradition-summaries)
+3. [Selection Discipline](#selection-discipline)
+
+---
+
 ## Tradition-to-Situation Mapping
 
 | Situation | Primary Framework | Key Concept |

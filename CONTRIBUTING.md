@@ -8,7 +8,7 @@ Before contributing, read this document. Contributions that don't meet the quali
 
 ## Developer Setup & Process Guards
 
-After cloning the repository, install the local Git pre-commit hook so that every commit automatically runs the 21-point static verification suite (`python scripts/validate_skill.py`):
+After cloning the repository, install the local Git pre-commit hook so that every commit automatically runs the 47-point static verification suite (`python scripts/validate_skill.py`):
 
 ```bash
 # Option A: Cross-platform Python installer (Windows / macOS / Linux)
@@ -21,7 +21,7 @@ sh scripts/install-hooks.sh
 
 Running `python scripts/build_release.py` also automatically installs `.git/hooks/pre-commit` whenever `.git/hooks` is present.
 
-**What the pre-commit hook enforces (`python scripts/validate_skill.py`: 21/21 checks):**
+**What the pre-commit hook enforces (`python scripts/validate_skill.py`: 47/47 checks):**
 - Progressive disclosure character budget (`SKILL.md` <= 9,500 chars, zero `alwaysLoad` bloat).
 - Category A pointer-stub integrity across 6 IDE rule files and byte-for-byte SHA-256 sync across 4 Category B `SKILL.md` mirrors.
 - `references/SOUL.md` SHA-256 integrity verification against `openclaw.plugin.json`.
@@ -33,7 +33,7 @@ Running `python scripts/build_release.py` also automatically installs `.git/hook
 ## What Contributions Are Welcome
 
 ### Wisdom Traditions
-New tradition entries for `references/traditions-deep.md` or `references/traditions-quickref.md`. Priority:
+New tradition entries for `references/traditions-stoic.md`, `references/traditions-eastern.md`, `references/traditions-african-sufi.md`, or `references/traditions-quickref.md`. Priority:
 - African philosophical traditions (Ubuntu, Akan thought, Kemetic wisdom)
 - Indigenous wisdom traditions (with appropriate cultural care : see below)
 - Lesser-represented Asian traditions (Daoism beyond Lao Tzu, Confucian ethics in practice, Zen vs. Pure Land distinctions)
@@ -47,7 +47,7 @@ New or expanded entries for clinical/psychological frameworks. Must:
 - Include a clear "when to use" and "failure mode" section
 
 ### Conversation Patterns
-New patterns for `references/conversation-toolkit.md`. Must meet the same quality bar as existing patterns (see below).
+New patterns for `references/toolkit-inquiry.md` and `references/toolkit-somatic.md`. Must meet the same quality bar as existing patterns (see below).
 
 ### Protocol Documents
 New reference documents in the `references/` directory : following the pattern of `darknight-protocol.md` or `shadow-work-protocol.md`. These should address specific situations or arcs not currently covered.

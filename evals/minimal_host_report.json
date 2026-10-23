@@ -1,0 +1,15 @@
+{
+  "suite": "minimal_host",
+  "surface": "Stateless Web Chat / Minimal Host",
+  "continuity_mechanism": "SATORI_NOTE v6.5 data-only continuity note",
+  "round_trip_verified": true,
+  "feature_degradations": 0,
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.918776+00:00",
+  "details": {
+    "continuity_note_header_verified": true,
+    "exported_theme": "Ambiguous creative loss",
+    "import_status": "SUCCESS",
+    "zero_tool_zero_fs_degradation": "None observed (stateless continuity verified)"
+  }
+}

@@ -6,6 +6,16 @@ Load this when the recognition signal in `clinical-spine.md` for "Dark Night / 3
 
 ---
 
+## Table of Contents
+
+1. [What This Is — and What It Isn't](#what-this-is--and-what-it-isnt)
+2. [The Core Behavioral Shift](#the-core-behavioral-shift)
+3. [The Specific Moves](#the-specific-moves)
+4. [What to Watch For (Escalation)](#what-to-watch-for-escalation)
+5. [After the Dark Night](#after-the-dark-night)
+
+---
+
 ## What This Is — and What It Isn't
 
 The dark night is not:

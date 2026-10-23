@@ -6,6 +6,16 @@ This document governs Satori's behavior in **Relationship & Conflict Hold Mode**
 
 ---
 
+## Table of Contents
+
+1. [The Core Philosophy: Multi-Partiality Over False Neutrality](#1-the-core-philosophy-multi-partiality-over-false-neutrality)
+2. [Mode A: Solo Relational Conflict (One Person Present)](#2-mode-a-solo-relational-conflict-one-person-present)
+3. [Mode B: Shared Two-Person Session (Both People Present)](#3-mode-b-shared-two-person-session-both-people-present)
+4. [Clinical & Philosophical Lenses for Relational Work](#4-clinical--philosophical-lenses-for-relational-work)
+5. [Hard Safety Boundary: Domestic Abuse, Coercive Control & Intimate Partner Violence](#5-hard-safety-boundary-domestic-abuse-coercive-control--intimate-partner-violence)
+
+---
+
 ## 1. The Core Philosophy: Multi-Partiality Over False Neutrality
 
 When people bring relationship conflict to an AI, standard models fail in one of two ways:

@@ -9,7 +9,7 @@ const path = require('path');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PKG_PATH = path.join(ROOT_DIR, 'package.json');
-let pkgVersion = '6.5.1';
+let pkgVersion = '6.5.2';
 try {
   pkgVersion = JSON.parse(fs.readFileSync(PKG_PATH, 'utf8')).version || pkgVersion;
 } catch (e) {}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Satori Build-Time Static Validator (scripts/validate_skill.py).
 
-Verifies:
-1. Canonical SKILL.md YAML frontmatter compliance (name <=64, description <=1024,
+Verifies 52+ automated checks across:
+1. Canonical SKILL.md YAML frontmatter compliance (name <=64, description <=500 chars / <=125 tokens,
    explicit negative coding triggers + hybrid routing, no "When in doubt, activate").
 2. File size budgets (SKILL.md <8 KB, core-compact.md <12 KB, clinical-spine.md <24,000 bytes
    per Antigravity's docs/rules.md cap).
@@ -14,6 +14,15 @@ Verifies:
    SKILL.md, references/clinical-spine.md, and references/core-compact.md.
 6. Relative Markdown link integrity, .gitignore protection for .satori/, and SOUL.md SHA-256
    verification in openclaw.plugin.json.
+7. Manifest Version Parity and Banned Term Check.
+8. Agent Skills Ecosystem Parser Gate (npx skills add . --list).
+9. Check A: Repo-Wide Stale Version-String Scan (no stale v6.5.0/v6.5.1 in active surfaces).
+10. Check B: Repo-Wide Dangling File-Pointer Scan.
+11. Check C: Frontmatter Description Token Budget (<=500 chars, <=125 estimated tokens).
+12. Check D: Reference Table of Contents Check (valid anchor links for all references/*.md > 100 lines).
+13. Check E: Release Checksum Integrity (dist/SHA256SUMS.txt).
+14. Check F: Slides Directory Retirement Check (D-5).
+15. Check G: Evidence Bundle Completeness (Appendix B JSON reports in evals/).
 """
 
 from __future__ import annotations
@@ -364,11 +373,11 @@ def main() -> int:
 
     # 8. Manifest Version Parity and Banned Term Check
     pkg_path = ROOT_DIR / "package.json"
-    canonical_version = "6.5.0"
+    canonical_version = facts.get("version", "6.5.2")
     if not pkg_path.exists():
         errors.append("Missing root package.json for version parity baseline")
     else:
-        canonical_version = json.loads(pkg_path.read_text(encoding="utf-8")).get("version", "6.5.0")
+        canonical_version = json.loads(pkg_path.read_text(encoding="utf-8")).get("version", canonical_version)
         manifest_paths = [
             ROOT_DIR / "plugin.json",
             ROOT_DIR / "openclaw.plugin.json",
@@ -436,6 +445,264 @@ def main() -> int:
             pass
         except Exception as exc:
             pass
+
+    # 10. Check A: Repo-Wide Stale Version-String Scan
+    expected_version = facts.get("version", canonical_version)
+    stale_scan_targets = [
+        ROOT_DIR / "package.json",
+        ROOT_DIR / "facts.json",
+        ROOT_DIR / "marketplace.json",
+        ROOT_DIR / "plugin.json",
+        ROOT_DIR / "openclaw.plugin.json",
+        ROOT_DIR / "gemini-extension.json",
+        ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+        ROOT_DIR / ".claude-plugin" / "plugin.json",
+        ROOT_DIR / ".codex-plugin" / "plugin.json",
+        ROOT_DIR / "docs" / "architecture.md",
+        ROOT_DIR / "docs" / "sitemap.xml",
+        ROOT_DIR / "README.md",
+        ROOT_DIR / "docs" / "index.html",
+        ROOT_DIR / "docs" / "assets" / "satori-hero-v6.svg",
+        ROOT_DIR / "docs" / "assets" / "satori-architecture-v6.svg",
+    ]
+    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[01]\b")
+    stale_errors: list[str] = []
+    for target in stale_scan_targets:
+        if not target.exists():
+            stale_errors.append(f"Missing file for stale version scan: {target.relative_to(ROOT_DIR)}")
+            continue
+        content = target.read_text(encoding="utf-8")
+        stale_matches = stale_version_pat.findall(content)
+        if stale_matches:
+            stale_errors.append(
+                f"Stale version string(s) {stale_matches} found in {target.relative_to(ROOT_DIR)} (must match v{expected_version})"
+            )
+    if stale_errors:
+        errors.extend(stale_errors)
+    else:
+        checks_passed += 1
+
+    # 11. Check B: Repo-Wide Dangling File-Pointer Scan
+    pointer_scan_targets = [
+        ROOT_DIR / "plugin.json",
+        ROOT_DIR / "marketplace.json",
+        ROOT_DIR / "package.json",
+        ROOT_DIR / "CONTRIBUTING.md",
+        ROOT_DIR / "README.md",
+        ROOT_DIR / "docs" / "architecture.md",
+        ROOT_DIR / "SKILL.md",
+        ROOT_DIR / "compact" / "SKILL.md",
+        *CATEGORY_A_POINTER_STUBS,
+    ]
+    dangling_errors: list[str] = []
+    md_link_pat = re.compile(r"\[[^\]]+\]\(([^)#\s]+)")
+    path_ref_pat = re.compile(r"(?:references|docs|scripts|compact)/[A-Za-z0-9_.-]+(?:\.[a-zA-Z0-9]+)?")
+
+    for target_doc in pointer_scan_targets:
+        if not target_doc.exists():
+            continue
+        content = target_doc.read_text(encoding="utf-8")
+        # Check relative markdown links
+        for match in md_link_pat.finditer(content):
+            target = match.group(1).strip()
+            if target.startswith(("http://", "https://", "mailto:")):
+                continue
+            clean_target = target.split("#", 1)[0]
+            if not clean_target:
+                continue
+            p_parent = (target_doc.parent / clean_target).resolve()
+            p_root = (ROOT_DIR / clean_target).resolve()
+            if not p_parent.exists() and not p_root.exists():
+                dangling_errors.append(
+                    f"Dangling link in {target_doc.relative_to(ROOT_DIR)}: '{target}'"
+                )
+
+        # Check inline path references to repository folders
+        for match in path_ref_pat.finditer(content):
+            ref = match.group(0).rstrip(".,:;)\"']")
+            p_parent = (target_doc.parent / ref).resolve()
+            p_root = (ROOT_DIR / ref).resolve()
+            if not p_parent.exists() and not p_root.exists():
+                if not ref.startswith("dist/"):
+                    dangling_errors.append(
+                        f"Dangling path reference in {target_doc.relative_to(ROOT_DIR)}: '{ref}'"
+                    )
+
+    if dangling_errors:
+        errors.extend(dangling_errors)
+    else:
+        checks_passed += 1
+
+    # 12. Check C: Frontmatter Description Token Budget
+    budget_errors: list[str] = []
+    for label, target_p in [("SKILL.md", skill_path), ("compact/SKILL.md", compact_path)]:
+        if not target_p.exists():
+            budget_errors.append(f"Missing {label} for description token budget check")
+            continue
+        try:
+            fm = parse_frontmatter(target_p.read_text(encoding="utf-8"))
+            desc = fm.get("description", "")
+            char_count = len(desc)
+            est_tokens = max(char_count // 4, round(len(desc.split()) * 1.33))
+            if char_count > 500:
+                budget_errors.append(
+                    f"{label} description character budget exceeded: {char_count} chars > 500 ceiling"
+                )
+            if est_tokens > 125:
+                budget_errors.append(
+                    f"{label} description token budget exceeded: {est_tokens} est tokens > 125 ceiling"
+                )
+        except Exception as exc:
+            budget_errors.append(f"{label} frontmatter parsing error in budget check: {exc}")
+
+    if budget_errors:
+        errors.extend(budget_errors)
+    else:
+        checks_passed += 1
+
+    # 13. Check D: Reference Table of Contents Check
+    def _slugify(s: str) -> set[str]:
+        s_clean = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)
+        s_clean = re.sub(r"[`*~]", "", s_clean).lower().strip()
+        s_alnum = re.sub(r"[^\w\s-]", "", s_clean)
+        slug_literal = s_alnum.replace(" ", "-")
+        slug_collapsed = re.sub(r"-+", "-", slug_literal)
+        slug_hyphen_under = slug_literal.replace("_", "-")
+        slug_hyphen_under_collapsed = re.sub(r"-+", "-", slug_hyphen_under)
+        return {slug_literal, slug_collapsed, slug_hyphen_under, slug_hyphen_under_collapsed}
+
+    toc_errors: list[str] = []
+    refs_directory = ROOT_DIR / "references"
+    for ref_md in sorted(refs_directory.glob("*.md")):
+        text = ref_md.read_text(encoding="utf-8")
+        lines = text.splitlines()
+        if len(lines) <= 100:
+            continue
+
+        if "## Table of Contents" not in text:
+            toc_errors.append(
+                f"{ref_md.relative_to(ROOT_DIR)} ({len(lines)} lines) missing '## Table of Contents'"
+            )
+            continue
+
+        headings = []
+        for line in lines:
+            m = re.match(r"^(#{1,6})\s+(.*)$", line)
+            if m:
+                headings.append(m.group(2).strip())
+
+        valid_slugs: set[str] = set()
+        for h in headings:
+            valid_slugs.update(_slugify(h))
+
+        in_toc = False
+        toc_lines = []
+        for line in lines:
+            if "## Table of Contents" in line:
+                in_toc = True
+                continue
+            if in_toc:
+                if line.startswith("## ") or line.startswith("---"):
+                    break
+                toc_lines.append(line)
+
+        toc_anchors = re.findall(r"\[[^\]]+\]\(#([^)]+)\)", "\n".join(toc_lines))
+        if not toc_anchors:
+            toc_errors.append(
+                f"{ref_md.relative_to(ROOT_DIR)} has '## Table of Contents' but contains no anchor links"
+            )
+        for anchor in toc_anchors:
+            if anchor not in valid_slugs:
+                toc_errors.append(
+                    f"{ref_md.relative_to(ROOT_DIR)} TOC anchor '#{anchor}' does not match any heading in document"
+                )
+
+    if toc_errors:
+        errors.extend(toc_errors)
+    else:
+        checks_passed += 1
+
+    # 14. Check E: Release Checksum Integrity
+    checksums_file = ROOT_DIR / "dist" / "SHA256SUMS.txt"
+    if checksums_file.exists():
+        checksum_errors: list[str] = []
+        sums_text = checksums_file.read_text(encoding="utf-8")
+        parsed_sums: dict[str, str] = {}
+        for line in sums_text.splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = line.split(None, 1)
+            if len(parts) == 2:
+                digest, fname = parts
+                parsed_sums[fname.strip()] = digest.strip()
+
+        required_archives = [
+            f"SatoriSkill-Full-v{expected_version}.zip",
+            f"SatoriSkill-Compact-v{expected_version}.zip",
+            f"SatoriSkill-v{expected_version}.zip",
+        ]
+        for arc_name in required_archives:
+            if arc_name not in parsed_sums:
+                checksum_errors.append(f"dist/SHA256SUMS.txt missing entry for required archive '{arc_name}'")
+            else:
+                arc_path = ROOT_DIR / "dist" / arc_name
+                if not arc_path.exists():
+                    checksum_errors.append(f"Archive '{arc_name}' listed in SHA256SUMS.txt does not exist in dist/")
+                else:
+                    actual_hash = sha256_file(arc_path)
+                    if actual_hash != parsed_sums[arc_name]:
+                        checksum_errors.append(
+                            f"Checksum mismatch for '{arc_name}': expected {parsed_sums[arc_name]}, got {actual_hash}"
+                        )
+        if checksum_errors:
+            errors.extend(checksum_errors)
+        else:
+            checks_passed += 1
+    else:
+        checks_passed += 1
+
+    # 15. Check F: Slides Directory Retirement Check (D-5)
+    slides_path = ROOT_DIR / "slides"
+    if slides_path.exists():
+        errors.append("Legacy 'slides/' directory still exists in repository root (must be retired per D-5)")
+    else:
+        checks_passed += 1
+
+    # 16. Check G: Evidence Bundle Completeness (Appendix B)
+    appendix_b_reports = [
+        "live_calibration_report.json",
+        "trigger_benchmark_report.json",
+        "trigger_benchmark_compact_report.json",
+        "paired_capability_report.json",
+        "judge_calibration_report.json",
+        "held_out_report.json",
+        "coexistence_report.json",
+        "fault_injection_report.json",
+        "edge_inputs_report.json",
+        "cost_and_economy_report.json",
+        "loader_validation_matrix.json",
+        "minimal_host_report.json",
+        "safety_certification_report.json",
+        "upgrade_test_report.json",
+    ]
+    evidence_errors: list[str] = []
+    for rep_name in appendix_b_reports:
+        rep_path = ROOT_DIR / "evals" / rep_name
+        if not rep_path.exists():
+            evidence_errors.append(f"Missing Appendix B evidence report: evals/{rep_name}")
+        else:
+            try:
+                parsed_rep = json.loads(rep_path.read_text(encoding="utf-8"))
+                if not isinstance(parsed_rep, dict):
+                    evidence_errors.append(f"Evidence report evals/{rep_name} is not a valid JSON object")
+            except Exception as exc:
+                evidence_errors.append(f"Malformed JSON in Appendix B report evals/{rep_name}: {exc}")
+
+    if evidence_errors:
+        errors.extend(evidence_errors)
+    else:
+        checks_passed += 1
 
     if errors:
         print(json.dumps({"status": "FAILED", "checks_passed": checks_passed, "errors": errors}, indent=2))

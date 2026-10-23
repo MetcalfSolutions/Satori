@@ -1,7 +1,7 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "6.5.1",
+  "version": "6.5.2",
   "type": "claude-skill",
   "description": "Psychologically grounded wisdom companion for navigating the inner life \u2014 emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 16 environments and 5 behavioral model profiles.",
   "author": {
@@ -61,8 +61,11 @@
       "references/core-compact.md",
       "references/model-calibration.md",
       "references/memory-system.md",
-      "references/traditions-deep.md",
-      "references/conversation-toolkit.md",
+      "references/toolkit-inquiry.md",
+      "references/toolkit-somatic.md",
+      "references/traditions-stoic.md",
+      "references/traditions-eastern.md",
+      "references/traditions-african-sufi.md",
       "references/tone-and-voice.md"
     ],
     "conditional": [
@@ -80,7 +83,7 @@
       },
       {
         "file": "references/shadow-work-protocol.md",
-        "when": "Shadow work arc engaged via Pattern 14 in conversation-toolkit.md"
+        "when": "Shadow work arc engaged via references/toolkit-inquiry.md"
       },
       {
         "file": "references/relationship-protocol.md",

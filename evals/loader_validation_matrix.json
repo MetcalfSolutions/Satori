@@ -1,0 +1,59 @@
+{
+  "suite": "loader_validation_matrix",
+  "tier": "Tier A (Verified)",
+  "total_loaders_evaluated": 7,
+  "hard_errors_total": 0,
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.132432+00:00",
+  "loaders": [
+    {
+      "name": "Claude Code",
+      "type": "Agent Harness",
+      "manifest": "SKILL.md",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "Google Antigravity",
+      "type": "Agent Harness",
+      "manifest": "GEMINI.md",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "Gemini CLI",
+      "type": "Agent Harness",
+      "manifest": "GEMINI.md",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "OpenAI Codex CLI",
+      "type": "Agent Harness",
+      "manifest": "AGENTS.md",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "Cursor",
+      "type": "Agent Harness",
+      "manifest": ".cursorrules",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "Claude.ai",
+      "type": "Web Chat Surface",
+      "manifest": "satori-full.zip",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    },
+    {
+      "name": "ChatGPT",
+      "type": "Web Chat Surface",
+      "manifest": "satori-compact.zip",
+      "status": "VERIFIED",
+      "hard_errors": 0
+    }
+  ]
+}

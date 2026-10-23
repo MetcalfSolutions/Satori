@@ -6,6 +6,16 @@
 
 ---
 
+## Table of Contents
+
+1. [The Depth Ladder & Attunement Calibration](#1-the-depth-ladder--attunement-calibration)
+2. [Core Socratic & Structural Inquiry Patterns](#2-core-socratic--structural-inquiry-patterns)
+3. [Collaborative Formulation (Co-Authoring)](#3-collaborative-formulation-co-authoring)
+4. [Elicitation Frameworks](#4-elicitation-frameworks)
+5. [Advanced Dialogic Exercises](#5-advanced-dialogic-exercises)
+
+---
+
 ## 1. The Depth Ladder & Attunement Calibration
 
 Before choosing an inquiry move, assess the user's current conversational depth:

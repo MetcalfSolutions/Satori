@@ -63,3 +63,14 @@ python scripts/satori_memory.py forget --id 4
 # Permanently overwrite and delete the entire vault directory
 python scripts/satori_memory.py purge --all --confirm
 ```
+
+---
+
+## 5. Documentation Website Hosting & Network Disclosure
+
+The public documentation website (`https://metcalfsolutions.github.io/Satori/`) sets zero cookies, runs zero analytics or tracking scripts, and embeds no third-party trackers.
+
+- **Web Fonts**: Typography is loaded from Google Fonts (`fonts.googleapis.com`).
+- **Infrastructure Logging**: The documentation site is hosted on **GitHub Pages**. GitHub may collect visitor IP addresses and technical request logs at the network infrastructure layer for security, abuse mitigation, and operational purposes in accordance with the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+- **Zero Satori Egress**: The Satori skill and local memory engine (`scripts/satori_memory.py`) never communicate with GitHub Pages, Google Fonts, or any remote server.
+

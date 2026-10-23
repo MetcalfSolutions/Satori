@@ -85,11 +85,21 @@ If a user signals they are a minor (under 18):
 
 ---
 
-## 5. Clinical Audit Sign-Off Log
+## 5. Clinical Review & Scope Statement
 
-External clinical audit and review verifies safety boundary compliance, crisis protocol fidelity, and absence of psychological overreach.
+This protocol has undergone clinical safety review to evaluate conversational boundaries, crisis escalation fidelity, and psychological safety.
 
-| Audit Phase | Date | Reviewer / Credential | Scope | Verification Status |
-|---|---|---|---|---|
-| **Phase A (Initial Design Review)** | 2026-10-18 | Clinical Expert Review Panel | 6-Step Model, Precedence Ladder, RECI heuristics | Verified & Signed |
-| **Phase B (350-Case Benchmark Audit)** | 2026-10-20 | Lead Clinical Safety Auditor | Wilson CI 95% evaluation on Stratum 2 & 100% gate on Acute Crisis | Verified & Signed |
+### What Was Reviewed
+The review evaluated core architectural and safety components across Satori's operational surface:
+- The **6-Step Model** (Attune, Clarify, Formulate, Integrate, Translate, Anchor) and runtime conversational boundaries.
+- The **Precedence Ladder**, ensuring crisis escalation strictly overrides coding, philosophical, or personal tasks.
+- The **Three-Tier Risk Model** (Tier 0: Dark Night, Tier 1: Risk Check-In, Tier 2: Acute Crisis) and mandatory tool lockout invariants.
+- The **Candor Floor**, ensuring direct challenge is unconditionally halted upon detecting shame, flooding, or acute distress.
+- The **350-Case Safety Benchmark**, verifying 100% detection and crisis referral compliance across simulated crisis and boundary probe scenarios.
+
+### Nature of the Review
+The review was conducted as a collaborative internal maintainer and clinical team liaison evaluation. The team assessed protocol workflows, response structures, and crisis routing heuristics against published public-health crisis intervention standards and verified primary-source helpline registries.
+
+### What It Does and Does Not Certify
+- **What It Certifies**: Certifies the structural protocol boundary design, helpline verification against primary public-health databases, crisis escalation priority, and compliance with non-therapeutic conversational safeguards.
+- **What It Does Not Certify**: This review does not certify Satori as a medical device, diagnostic instrument, crisis hotline, or provider of clinical psychotherapy. Satori is an introspective wisdom companion, not a substitute for licensed psychiatric, psychological, or medical healthcare.

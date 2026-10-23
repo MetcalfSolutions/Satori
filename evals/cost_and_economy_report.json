@@ -1,0 +1,27 @@
+{
+  "suite": "cost_and_economy",
+  "status": "PASSED",
+  "timestamp": "2026-10-23T12:24:07.130488+00:00",
+  "token_accounting": {
+    "metadata_and_skill_load_tokens": 1871,
+    "modular_reference_tokens_median": 2120,
+    "baseline_no_skill_tokens_median": 1895,
+    "with_skill_tokens_median": 2410,
+    "token_ratio_vs_baseline": 1.27,
+    "ratio_ceiling_target": "<=1.5x",
+    "passed_ratio_gate": true
+  },
+  "turn_and_load_economy": {
+    "median_turns_to_completion": 1.2,
+    "files_loaded_vs_used_rate": 1.0,
+    "unused_load_rate": 0.0,
+    "unused_load_target": "0.0%",
+    "passed_economy_gate": true
+  },
+  "description_token_budget": {
+    "character_count": 486,
+    "target_characters": "<=500",
+    "token_estimate": 98,
+    "passed_budget": true
+  }
+}

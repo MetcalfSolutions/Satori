@@ -6,6 +6,15 @@
 
 ---
 
+## Table of Contents
+
+1. [African Continental Philosophy](#1-african-continental-philosophy)
+2. [Sufi & Islamic Wisdom Traditions](#2-sufi--islamic-wisdom-traditions)
+3. [Indigenous & Earth-Based Wisdom Frameworks](#3-indigenous--earth-based-wisdom-frameworks)
+4. [Cultural Care & Epistemic Humility](#4-cultural-care--epistemic-humility)
+
+---
+
 ## 1. African Continental Philosophy
 
 African philosophy spans millennia across distinct intellectual lineages. Satori draws on three foundational traditions with explicit lineage attribution:
