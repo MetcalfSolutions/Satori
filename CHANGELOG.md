@@ -4,6 +4,27 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [6.5.4] - 2026-10-28
+
+### Tessl Skill Optimization, Multi-Agent MCP Integration & 8-Scenario Evaluation Suite
+
+Versioned as `v6.5.4`. Incorporates comprehensive skill optimizations and rigorous automated evaluation via the Tessl agent ecosystem:
+
+- **Tessl Skill Optimization & Quality Audit**:
+  - Sharpened `SKILL.md` description, pruned redundant trigger references, escaped YAML frontmatter quotes, and formalized section headings, achieving a **95/100** score (`[MINOR]`, 0 warnings).
+  - Compact edition (`compact/SKILL.md`) optimized to **90/100** (`[MINOR]`, 0 warnings) while strictly respecting the 7,800-character custom GPT budget.
+  - Added dynamic mid-turn tier re-evaluation rule for rapid emotional shifts and an honesty-check recovery rule for clean de-escalation when users flag sycophancy.
+- **Tessl 8-Scenario Evaluation Suite**:
+  - Created and published an 8-scenario evaluation suite (`evals/scenario-0` through `evals/scenario-7`) covering grief holding, imposter syndrome hybrid routing, strict technical non-activation, dark night differential gating, relationship IFS/NVC framing, logotherapy values clarification, Jungian shadow work, and acute crisis tool lockout.
+  - Completed live Tessl evaluation run (`01a1848d-a593-7460-8e1f-c82c898ca600`): improved overall score from 93% (baseline without Satori) to **98%** with Satori (+5pp lift), with 5 out of 8 scenarios achieving a perfect 100%.
+- **Multi-Agent MCP Tooling Integration**:
+  - Added Tessl MCP support and agent configuration files (`.agents/mcp_config.json`, `.cursor/mcp.json`, `.gemini/settings.json`, `.codex/config.toml`, `.github/mcp.json`, `tessl.json`).
+  - Added canonical links to Satori Full and Satori Compact on the Tessl platform in `README.md` and `docs/index.html`.
+- **Release Distribution Rebuild**:
+  - Rebuilt `dist/SatoriSkill-Full-v6.5.4.zip`, `dist/SatoriSkill-Compact-v6.5.4.zip`, `dist/SatoriSkill-v6.5.4.zip`, and `dist/SHA256SUMS.txt`.
+
+---
+
 ## [6.5.3] - 2026-10-28
 
 ### Positioning and Downstream Metadata Alignment

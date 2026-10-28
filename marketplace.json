@@ -2,9 +2,9 @@
   "id": "metcalfsolutions/satori",
   "name": "Satori",
   "slug": "satori",
-  "version": "6.5.3",
-  "description": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
-  "longDescription": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.\n\nFull zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention.",
+  "version": "6.5.4",
+  "description": "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
+  "longDescription": "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.\n\nFull zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention.",
   "author": {
     "name": "Matthew Metcalf",
     "github": "MetcalfSolutions",
@@ -70,8 +70,8 @@
   "entryPoint": "SKILL.md",
   "pluginConfig": ".claude-plugin/plugin.json",
   "download": {
-    "url": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.5.3.zip",
-    "filename": "SatoriSkill-v6.5.3.zip",
+    "url": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v6.5.4.zip",
+    "filename": "SatoriSkill-v6.5.4.zip",
     "type": "skill-zip"
   },
   "installMethods": [
@@ -79,13 +79,13 @@
       "type": "skill-zip",
       "platform": "claude.ai",
       "label": "Claude.ai Skill Upload",
-      "description": "Build or download SatoriSkill-v6.5.3.zip and upload in Claude.ai Customize -> Skills",
+      "description": "Build or download SatoriSkill-v6.5.4.zip and upload in Claude.ai Customize -> Skills",
       "recommended": true,
       "steps": [
-        "Run `python scripts/build_release.py --sync` (or download `SatoriSkill-v6.5.3.zip` from Releases)",
+        "Run `python scripts/build_release.py --sync` (or download `SatoriSkill-v6.5.4.zip` from Releases)",
         "Open claude.ai and click Customize in the left sidebar",
         "Click Skills, then the + button, then Upload a skill",
-        "Drop `dist/SatoriSkill-v6.5.3.zip` into the upload area"
+        "Drop `dist/SatoriSkill-v6.5.4.zip` into the upload area"
       ]
     },
     {

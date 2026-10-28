@@ -20,6 +20,6 @@
 ## October 17, 2026 Audit Summary
 
 1. **Third-Party Metric Audit**: Requested correction of any third-party scraper caches showing inflated star numbers. Repo URL (`https://github.com/MetcalfSolutions/Satori`) provided as canonical polling endpoint.
-2. **Canonical Description**: Standardized all directory descriptions to match the canonical one-line description: *"Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown."*
+2. **Canonical Description**: Standardized all directory descriptions to match the canonical one-line description: *"Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown."*
 3. **Package Distribution**: Documented the live npm install path (`npm install @metcalfsolutions/satori`) for developer and programmatic agent pipelines.
 4. **Follow-Up Schedule**: Re-check all 9 directory PRs and external listings on October 31, 2026.

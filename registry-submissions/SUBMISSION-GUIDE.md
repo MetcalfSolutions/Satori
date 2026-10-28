@@ -29,7 +29,7 @@ gh auth status
 ### Entry to add:
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
 ```
 
 ### Commands:
@@ -48,7 +48,7 @@ git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion Claude skill" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -68,7 +68,7 @@ cd ..
   "name": "satori",
   "repo": "MetcalfSolutions/Satori",
   "path": ".",
-  "description": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
+  "description": "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "category": "personal-development",
   "tags": ["mental-health", "psychology", "wisdom", "philosophy", "ifs", "stoicism", "jungian", "conversation"],
   "author": "MetcalfSolutions",
@@ -93,7 +93,7 @@ git commit -m "Add satori to registry"
 git push -u origin add-satori
 gh pr create \
   --title "Add satori to registry" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -109,7 +109,7 @@ cd ..
 ### Entry to add (adapt to match their exact format after reading the README):
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
 ```
 
 ### Commands:
@@ -128,7 +128,7 @@ git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion Claude skill" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -145,7 +145,7 @@ cd ..
 ### Entry to add:
 
 ```markdown
-- **[MetcalfSolutions/Satori](https://github.com/MetcalfSolutions/Satori)** - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
+- **[MetcalfSolutions/Satori](https://github.com/MetcalfSolutions/Satori)** - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
 ```
 
 ### Commands:
@@ -163,7 +163,7 @@ git commit -m "Add skill: MetcalfSolutions/Satori"
 git push -u origin add-satori
 gh pr create \
   --title "Add skill: MetcalfSolutions/Satori" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -194,7 +194,7 @@ tools: [claude]
 
 ## Overview
 
-Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 ## When to Use
 
@@ -255,7 +255,7 @@ git commit -m "feat: add satori skill"
 git push -u origin add-satori
 gh pr create \
   --title "feat: add satori wisdom companion skill" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -277,7 +277,7 @@ This repo's entries currently link to `https://github.com/anthropics/skills/tree
 ### Entry to add (if external skills are accepted):
 
 ```markdown
-- [satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
+- [satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.
 ```
 
 Insert alphabetically under "Productivity & Organization" (after entries starting with R, before T).
@@ -298,7 +298,7 @@ git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - psychologically grounded wisdom companion skill" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -318,7 +318,7 @@ cd ..
 ### Entry to add:
 
 ```markdown
-| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. |
+| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. |
 ```
 
 ### Commands:
@@ -337,7 +337,7 @@ git commit -m "Add Satori - wisdom companion Claude skill"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion Claude skill" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -355,13 +355,13 @@ cd ..
 ```markdown
 ### Satori
 
-Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 <details>
 
 **Category:** Conversational, Personal Development
 
-- Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+- Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 - Free, open-source (Apache 2.0)
 
 [GitHub](https://github.com/MetcalfSolutions/Satori)
@@ -384,7 +384,7 @@ git commit -m "Add Satori - psychologically grounded wisdom companion agent"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion cognitive agent" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
@@ -400,7 +400,7 @@ cd ..
 ### Entry to add:
 
 ```markdown
-- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)
+- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)
 ```
 
 ### Commands:
@@ -418,7 +418,7 @@ git commit -m "Add Satori - psychologically grounded wisdom companion"
 git push -u origin add-satori
 gh pr create \
   --title "Add Satori - wisdom companion agent" \
-  --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+  --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 cd ..
