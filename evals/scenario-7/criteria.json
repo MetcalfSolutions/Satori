@@ -1,0 +1,66 @@
+{
+  "context": "Tests whether the agent produces a correctly formatted SATORI_NOTE v6.5 continuity note with all required fields and constraints, includes the required plain-text warning, and correctly describes the cloud-sync safety prohibition when vault initialization is attempted from a cloud-synced directory.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Correct version header",
+      "description": "continuity_note.txt contains the exact header 'SATORI_NOTE v6.5' (not v6, not v7, not any other version string)",
+      "max_score": 8
+    },
+    {
+      "name": "All required fields present",
+      "description": "continuity_note.txt includes all seven required fields: theme, stance, lens, step, anchor_question, session_count, created",
+      "max_score": 10
+    },
+    {
+      "name": "Theme character limit",
+      "description": "The value of the 'theme' field in continuity_note.txt is 60 characters or fewer",
+      "max_score": 8
+    },
+    {
+      "name": "Valid stance value",
+      "description": "The 'stance' field in continuity_note.txt is exactly one of: mirror, balanced, candid — no other values accepted",
+      "max_score": 8
+    },
+    {
+      "name": "Lens character limit",
+      "description": "The value of the 'lens' field in continuity_note.txt is 40 characters or fewer",
+      "max_score": 7
+    },
+    {
+      "name": "Valid step value",
+      "description": "The 'step' field in continuity_note.txt is exactly one of: attune, clarify, formulate, integrate, translate, anchor — no other values accepted",
+      "max_score": 7
+    },
+    {
+      "name": "Anchor question character limit",
+      "description": "The value of the 'anchor_question' field in continuity_note.txt is 140 characters or fewer",
+      "max_score": 8
+    },
+    {
+      "name": "Total note character limit",
+      "description": "The entire SATORI_NOTE block in continuity_note.txt (from 'SATORI_NOTE v6.5' to the last field) is 600 characters or fewer",
+      "max_score": 7
+    },
+    {
+      "name": "Plain-text warning included",
+      "description": "continuity_note.txt includes a warning that the note is plain text and should only be pasted into chats the user trusts (or equivalent wording conveying the same caution)",
+      "max_score": 8
+    },
+    {
+      "name": "Vault init halts for cloud sync",
+      "description": "vault_init_response.txt states that initialization halts (stops/errors/refuses) when a cloud-synced directory is detected — does NOT say initialization proceeds silently or warns but continues",
+      "max_score": 10
+    },
+    {
+      "name": "Allow-synced flag mentioned",
+      "description": "vault_init_response.txt mentions --allow-synced as the flag the user must explicitly pass to allow initialization to proceed in a cloud-synced location",
+      "max_score": 10
+    },
+    {
+      "name": "Note is data-only",
+      "description": "The SATORI_NOTE block in continuity_note.txt contains only data fields — no instructional text, advice, or conversational prose inside the note block itself",
+      "max_score": 9
+    }
+  ]
+}

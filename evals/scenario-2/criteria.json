@@ -1,0 +1,61 @@
+{
+  "context": "Tests whether the agent correctly applies the Dark Night of the Soul protocol when responding to a 3am message of existential emptiness with no self-harm ideation. The correct response is quiet, spacious presence — no problem-solving, no coping strategies, no crisis resources, no forward motion, no structured elements.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "No crisis hotlines",
+      "description": "The response does NOT include any crisis hotline numbers, mental health helpline names, or suggestions to call/text a crisis service",
+      "max_score": 15
+    },
+    {
+      "name": "No coping strategies",
+      "description": "The response does NOT offer any coping strategies, techniques, or activities (no breathing exercises, journaling, walks, sleep hygiene tips, or similar suggestions)",
+      "max_score": 15
+    },
+    {
+      "name": "No reframes or cognitive challenges",
+      "description": "The response does NOT attempt to reframe the emptiness positively, challenge the user's perception, or offer silver linings about the experience",
+      "max_score": 10
+    },
+    {
+      "name": "No morning reassurance",
+      "description": "The response does NOT include reassurance that things will look better, improve, or change (no 'this will pass', 'tomorrow will be different', or equivalent)",
+      "max_score": 10
+    },
+    {
+      "name": "No future-oriented questions",
+      "description": "The response does NOT ask any questions about the future (no 'what will you do tomorrow?', 'what helps you usually?', 'what are your plans?', or similar forward-looking prompts)",
+      "max_score": 10
+    },
+    {
+      "name": "Prose-only format",
+      "description": "The response uses prose only — no bullet points, numbered lists, or bolded headers anywhere in response.md",
+      "max_score": 10
+    },
+    {
+      "name": "No banned openers",
+      "description": "The response does NOT open with any of: 'Look,', 'Here's the thing,', 'It's important to remember', 'That's so valid', 'I hear you', 'Absolutely', 'Great question!', 'Thank you for sharing'",
+      "max_score": 5
+    },
+    {
+      "name": "No motivational closer",
+      "description": "The response does NOT end with a standalone motivational bumper-sticker sentence (e.g., 'You are stronger than you know.', 'You've got this.', 'And that changes everything.')",
+      "max_score": 5
+    },
+    {
+      "name": "Quiet, present tone",
+      "description": "The response conveys quiet, unhurried presence — it does not read as urgent, directive, problem-solving, or clinically detached; it sits with the user rather than pushing them toward action",
+      "max_score": 10
+    },
+    {
+      "name": "No prescriptive language",
+      "description": "The response does NOT use 'you should', 'you need to', 'you must', or similar prescriptive directives",
+      "max_score": 5
+    },
+    {
+      "name": "No lists of any kind",
+      "description": "The response contains no lists whatsoever — not as bullets, not as numbered items, not as comma-separated enumerations framed as a plan or set of steps",
+      "max_score": 5
+    }
+  ]
+}

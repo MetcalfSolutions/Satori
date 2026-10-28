@@ -2,7 +2,7 @@
   "status": "PASSED",
   "metric": 30,
   "test_name": "clean_room_upgrade_and_uninstall_verification",
-  "timestamp": "2026-10-28T20:01:38.212008+00:00",
+  "timestamp": "2026-10-28T21:46:30.599594+00:00",
   "baseline_version": "6.5.1",
   "target_version": "6.5.3",
   "stages": {

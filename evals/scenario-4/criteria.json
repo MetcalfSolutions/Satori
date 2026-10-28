@@ -1,0 +1,51 @@
+{
+  "context": "Tests whether the agent correctly applies the grief protocol for disenfranchised loss (friendship estrangement), explicitly naming the experience as legitimate grief to release secondary shame, while avoiding banned phrases, Kübler-Ross stages, unsolicited coping lists, and stacking multiple psychological frameworks in a single response.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "Names it grief",
+      "description": "The response explicitly uses the word 'grief' or 'grieving' (or a direct equivalent like 'mourning') to label the user's experience — not merely 'sadness' or 'it makes sense to feel sad'",
+      "max_score": 15
+    },
+    {
+      "name": "Dignifies as legitimate loss",
+      "description": "The response explicitly frames the friendship estrangement as a real, legitimate loss — not just validates the feeling but names the loss itself as worthy of grief (e.g. 'this is a real loss', 'this counts as loss', or equivalent direct language)",
+      "max_score": 15
+    },
+    {
+      "name": "Addresses secondary shame",
+      "description": "The response directly addresses the user's stated sense of being 'foolish', 'ridiculous', or 'dramatic' about their grief — not just by saying 'it's okay', but by engaging with and releasing the secondary shame itself",
+      "max_score": 15
+    },
+    {
+      "name": "No 'At least' framing",
+      "description": "The response does NOT contain any 'At least...' reframe or silver-lining consolation ('at least you had those years', 'at least it wasn't a fight', etc.)",
+      "max_score": 10
+    },
+    {
+      "name": "No banned phrases",
+      "description": "The response does NOT contain any of: 'Everything happens for a reason', 'Be strong', 'Time heals all wounds', 'They're in a better place', or close paraphrases of these",
+      "max_score": 10
+    },
+    {
+      "name": "No Kübler-Ross stages",
+      "description": "The response does NOT list or enumerate grief stages (denial, anger, bargaining, depression, acceptance — or any subset of these presented as a sequence or named model)",
+      "max_score": 10
+    },
+    {
+      "name": "No unsolicited coping list",
+      "description": "The response does NOT include a bulleted or numbered list of coping strategies, recommendations, or action steps the user should take",
+      "max_score": 10
+    },
+    {
+      "name": "Single framework at most",
+      "description": "The response uses at most one named philosophical or psychological framework or tradition (e.g. IFS, Stoicism, Buddhism, attachment theory) — it does not stack two or more frameworks in the same response",
+      "max_score": 10
+    },
+    {
+      "name": "Witnessing tone",
+      "description": "The overall tone is unhurried and witnessing rather than problem-solving or corrective — the response stays with the user's experience rather than pivoting quickly to solutions, reframes, or what to do next",
+      "max_score": 5
+    }
+  ]
+}
