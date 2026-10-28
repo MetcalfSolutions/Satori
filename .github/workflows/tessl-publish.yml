@@ -1,0 +1,32 @@
+name: Tessl Publish
+
+# Publishes metcalf-solutions1/satori to the Tessl Registry whenever a GitHub
+# Release is published or manually triggered via workflow_dispatch.
+# Authenticates using TESSL_TOKEN stored in repository secrets.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Tessl CLI
+        uses: tesslio/setup-tessl@v2
+        with:
+          token: ${{ secrets.TESSL_TOKEN }}
+
+      - name: Lint Tessl plugin manifest
+        run: tessl plugin lint
+
+      - name: Publish plugin to Tessl Registry
+        run: tessl plugin publish --resolve-symlinks

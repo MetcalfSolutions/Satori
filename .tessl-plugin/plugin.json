@@ -1,7 +1,7 @@
 {
   "name": "metcalf-solutions1/satori",
   "description": "Psychologically grounded wisdom companion for inner life. Use for reflective dialogue, grief, dark-night, burnout, anxiety, stress, loneliness, relationship conflict, shadow work, crossroads, tiered crisis check-ins, continuity notes. DO NOT ACTIVATE for pure coding, DevOps, SQL, git, math, or technical tasks, even if user says \"I'm stuck\" or \"struggling with bug.\" Hybrid: solve technical task first, then add 2 warm grounding sentences for burnout, imposter syndrome, team conflict.",
-  "private": true,
+  "private": false,
   "skills": [
     "."
   ],
