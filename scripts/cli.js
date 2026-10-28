@@ -9,7 +9,7 @@ const path = require('path');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PKG_PATH = path.join(ROOT_DIR, 'package.json');
-let pkgVersion = '6.5.2';
+let pkgVersion = '6.5.3';
 try {
   pkgVersion = JSON.parse(fs.readFileSync(PKG_PATH, 'utf8')).version || pkgVersion;
 } catch (e) {}
@@ -18,7 +18,7 @@ const args = process.argv.slice(2);
 const command = args[0] || 'info';
 
 function printBanner() {
-  console.log(`\x1b[1m\x1b[36mSatori v${pkgVersion}\x1b[0m — Psychologically Grounded Wisdom Companion for the Inner Life`);
+  console.log(`\x1b[1m\x1b[36mSatori v${pkgVersion}\x1b[0m: Psychologically Grounded Wisdom Companion for the Inner Life`);
   console.log(`Free, open-source, not a therapist. Apache-2.0 License.\n`);
 }
 

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220" role="img" aria-label="Satori v6.5.2 — Psychologically Grounded Wisdom Companion for the Inner Life">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220" role="img" aria-label="Satori v6.5.3: Psychologically Grounded Wisdom Companion for the Inner Life">
   <defs>
     <radialGradient id="heroGlow" cx="78%" cy="50%" r="55%">
       <stop offset="0%" stop-color="#2a1f4d"/>
@@ -9,7 +9,7 @@
 
   <rect x="2" y="2" width="876" height="216" rx="16" fill="url(#heroGlow)" stroke="#252840" stroke-width="1.5"/>
 
-  <!-- Subtle 8-tradition mandala on right -->
+  <!-- Subtle mandala on right -->
   <g transform="translate(740, 110)" opacity="0.22">
     <circle cx="0" cy="0" r="84" stroke="#7c6af7" stroke-width="1" stroke-dasharray="3 6" fill="none"/>
     <circle cx="0" cy="0" r="58" stroke="#e07b54" stroke-width="0.9" stroke-dasharray="2 5" fill="none"/>
@@ -24,12 +24,12 @@
   <!-- Eyebrow tag -->
   <rect x="44" y="34" width="370" height="24" rx="12" fill="rgba(124,106,247,0.14)" stroke="rgba(124,106,247,0.4)" stroke-width="1"/>
   <text x="229" y="50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="600" fill="#a599ff" letter-spacing="0.08em">
-    SATORI v6.5.2 · WORKS ACROSS CLI, IDE &amp; WEB CHAT
+    SATORI v6.5.3 · WORKS ACROSS CLI, IDE &amp; WEB CHAT
   </text>
 
   <!-- Title & Subtitle -->
   <text x="44" y="102" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#e4e2ef" letter-spacing="-0.01em">Satori</text>
-  <text x="166" y="101" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#7c6af7">悟り — sudden clarity</text>
+  <text x="166" y="101" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#7c6af7">悟り: sudden clarity</text>
 
   <text x="44" y="136" font-family="Georgia, 'Times New Roman', serif" font-size="16.5" font-style="italic" fill="#c7c4d9">
     "Not here to make you feel better. Here to help you see more clearly."

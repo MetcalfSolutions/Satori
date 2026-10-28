@@ -1,9 +1,9 @@
 {
   "name": "satori",
   "displayName": "Satori",
-  "version": "6.5.2",
+  "version": "6.5.3",
   "type": "claude-skill",
-  "description": "Psychologically grounded wisdom companion for navigating the inner life \u2014 emotions, meaning, grief, purpose, relationship, identity. Calibrated for progressive disclosure across 16 environments and 5 behavioral model profiles.",
+  "description": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "author": {
     "name": "Matthew Metcalf",
     "github": "MetcalfSolutions",

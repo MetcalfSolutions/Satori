@@ -1,13 +1,13 @@
 # Satori
 
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.2 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
+  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.3 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.2 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.3 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.2"><img src="https://img.shields.io/badge/Release-v6.5.2-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.2 Release" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.3"><img src="https://img.shields.io/badge/Release-v6.5.3-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.3 Release" /></a>
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
@@ -18,7 +18,13 @@
 </p>
 
 <p align="center">
-  <em>Psychologically grounded, conversationally guided introspection for developers, founders, and thoughtful adults across CLI, IDE, and web chat. Free, open-source, zero telemetry, and local-first on your machine (or stateless in web chat).</em>
+  <em>Claude Code skill and psychologically grounded, conversationally guided introspection for developers, founders, and thoughtful adults across CLI, IDE, and web chat. Free, open-source, zero telemetry, and local-first on your machine (or stateless in web chat).</em>
+</p>
+
+<p align="center">
+  <strong>Built to be outgrown.</strong><br/>
+  Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less, not more.<br/>
+  <em>Satori works alongside therapy, not as a replacement for it.</em>
 </p>
 
 <p align="center">
@@ -30,7 +36,7 @@
   <a href="docs/architecture.md">Full Architecture Matrix</a>
 </p>
 
-> **Audience Routing — Start Here:**
+> **Audience Routing: Start Here:**
 > - **End-Users (Web Chat & Custom GPTs):** Want a perceptive conversation partner in Claude.ai, ChatGPT, or Gemini without touching a terminal? Jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudeai-chatgpt-gemini-web--recommended-for-end-users) or visit the [interactive Satori site](https://metcalfsolutions.github.io/Satori/).
 > - **Developers & Founders (CLI & IDE Agents):** Run `npx skills add MetcalfSolutions/Satori` in [Quick Start & Installation](#1-ai-coding-agents-claude-code-cursor-windsurf-antigravity-codex--recommended-for-developers) to add Satori to Claude Code, Cursor, Windsurf, Antigravity, or Codex in seconds.
 > - **Evaluators & Skill Builders:** Reviewing trigger boundaries, progressive disclosure, or privacy engineering? Jump to the [350-Case Benchmark](#the-350-case-benchmark-and-trigger-discipline), [Architecture & Editions](#architecture-editions--progressive-disclosure), and [Local Memory Vault](#privacy-first-local-memory).
@@ -78,7 +84,7 @@ Understanding, pattern recognition, connection, movement. All four. A response t
 
 ---
 
-### 1. AI Coding Agents (Claude Code, Cursor, Windsurf, Antigravity, Codex) — *Recommended for Developers*
+### 1. AI Coding Agents (Claude Code, Cursor, Windsurf, Antigravity, Codex) - *Recommended for Developers*
 
 Install Satori into any detected agent harness in one command with zero manual configuration:
 
@@ -97,23 +103,23 @@ npx skills add MetcalfSolutions/Satori
 
 ---
 
-### 2. Web Chat & Custom GPTs (Claude.ai, ChatGPT, Gemini Web) — *Recommended for End-Users*
+### 2. Web Chat & Custom GPTs (Claude.ai, ChatGPT, Gemini Web) - *Recommended for End-Users*
 
 Choose the declared edition engineered for your assistant:
-- **Satori Full (`SatoriSkill-Full-v6.5.2.zip`):** For frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Includes `SKILL.md` (`<8 KB` Turn-1 load) plus all 15 modular on-demand reference shards.
-- **Satori Compact (`SatoriSkill-Compact-v6.5.2.zip` or `compact/SKILL.md`):** For **ChatGPT** (Custom GPT Instructions box, strictly `≤7,800` characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
+- **Satori Full (`SatoriSkill-Full-v6.5.3.zip`):** For frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Includes `SKILL.md` (`<8 KB` Turn-1 load) plus all 15 modular on-demand reference shards.
+- **Satori Compact (`SatoriSkill-Compact-v6.5.3.zip` or `compact/SKILL.md`):** For **ChatGPT** (Custom GPT Instructions box, strictly `≤7,800` characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
 
 #### The 3-Step Setup Guide (About 2 Minutes)
 
-1. **Step 1 — Download or Copy Your Edition:**
-   - **Claude.ai & Gemini:** Download [`SatoriSkill-Full-v6.5.2.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.2.zip).
-   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.2.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.2.zip) or copy [`compact/SKILL.md`](compact/SKILL.md).
-2. **Step 2 — Upload to Your Platform:**
-   - **Claude.ai:** Open **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.2.zip` (or add to **Project Knowledge** in Claude Projects).
+1. **Step 1: Download or Copy Your Edition:**
+   - **Claude.ai & Gemini:** Download [`SatoriSkill-Full-v6.5.3.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.3.zip).
+   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.3.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.3.zip) or copy [`compact/SKILL.md`](compact/SKILL.md).
+2. **Step 2: Upload to Your Platform:**
+   - **Claude.ai:** Open **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.3.zip` (or add to **Project Knowledge** in Claude Projects).
    - **ChatGPT (Custom GPT):** Open **Explore GPTs → Create → Configure**, set Name to `"Satori"`, and paste [`compact/SKILL.md`](compact/SKILL.md) into **Instructions**.
-   - **Google Gemini (Gems):** Open **Gem Manager → New Gem** and upload `SatoriSkill-Full-v6.5.2.zip` (uses `LICENSE.md` for native Gemini parser compatibility) or paste the instructions.
+   - **Google Gemini (Gems):** Open **Gem Manager → New Gem** and upload `SatoriSkill-Full-v6.5.3.zip` (uses `LICENSE.md` for native Gemini parser compatibility) or paste the instructions.
    - **Local Open-Weights Models (Ollama, LM Studio, Jan):** For local `8B–32B` checkpoints (`Llama 5 8B / 14B`, `Qwen 3.5 14B / 32B`, `Mistral Ministral 8B`), paste [`compact/SKILL.md`](compact/SKILL.md) into your `Modelfile` (`SYSTEM """..."""`) or system prompt box.
-3. **Step 3 — Start Talking (First Success in 1 Turn):**
+3. **Step 3: Start Talking (First Success in 1 Turn):**
    - Type `"Hi Satori"` or share a real decision, conflict, or burnout point.
 
 ---
@@ -146,13 +152,13 @@ Run this test prompt in your agent or chat window:
 - **Expected Satori Behavior:** Responds in warm, unhurried prose (no bulleted checklist, no `"That's so valid!"`), names the gap between busyness and avoidance as a tentative hypothesis, and closes with **one** focused question.
 
 #### Common Failure Modes & Fixes
-1. **Failure Mode 1 — `YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders:**
-   - *Cause:* An older cached copy of `SKILL.md` (prior to `v6.5.2`) had an unquoted colon in the `description` frontmatter scalar.
-   - *Fix:* Upgrade to `v6.5.2` (`npx skills add MetcalfSolutions/Satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict `yaml.safe_load` compliance.
-2. **Failure Mode 2 — Gemini Web Rejects Zip Upload ("Unsupported file type"):**
+1. **Failure Mode 1: `YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders:**
+   - *Cause:* An older cached copy of `SKILL.md` (prior to `v6.5.3`) had an unquoted colon in the `description` frontmatter scalar.
+   - *Fix:* Upgrade to `v6.5.3` (`npx skills add MetcalfSolutions/Satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict `yaml.safe_load` compliance.
+2. **Failure Mode 2: Gemini Web Rejects Zip Upload ("Unsupported file type"):**
    - *Cause:* Uploading a raw repository zip containing hidden `.git` folders or an extensionless `LICENSE` file.
-   - *Fix:* Upload the pre-built release archive [`SatoriSkill-Full-v6.5.2.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.2.zip) (or build it locally via `python scripts/build_release.py --sync`), which strips hidden directories and uses `LICENSE.md`.
-3. **Failure Mode 3 — `satori_memory.py init` Halts with Exit Code 1:**
+   - *Fix:* Upload the pre-built release archive [`SatoriSkill-Full-v6.5.3.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.3.zip) (or build it locally via `python scripts/build_release.py --sync`), which strips hidden directories and uses `LICENSE.md`.
+3. **Failure Mode 3: `satori_memory.py init` Halts with Exit Code 1:**
    - *Cause:* Your target directory or home folder is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`), triggering Threat Mitigation `T6` to protect private reflections.
    - *Fix:* Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/path/.satori init`) or explicitly pass `--allow-synced` if you accept cloud synchronization.
 
@@ -217,8 +223,8 @@ Governed by [`facts.json`](facts.json), Satori supports **16 environments** acro
 
 | Category | Environments (Total: 16) | Support Tiers & Maintenance Promise |
 |---|---|---|
-| **Agent Harnesses (10)**<br>*(Mode 1: Local CLI/IDE with `~/.satori/` SQLite vault)* | Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build | **Tier A — Verified (5):** Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor *(tested every release against the 350-case benchmark)*<br>**Tier B — Community (5):** Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build *(validated manifests; community-maintained)* |
-| **Web Chat Surfaces (6)**<br>*(Mode 2: Stateless prompt with `SATORI_NOTE v6.5` continuity)* | Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI | **Tier A — Verified (2):** Claude.ai (Full zip), ChatGPT (Compact instructions)<br>**Tier B — Community (3):** Google Gemini Web, xAI Grok Web, DeepSeek Chat<br>**Tier C — Experimental (1):** Meta AI *(unpromoted; experimental prompt)* |
+| **Agent Harnesses (10)**<br>*(Mode 1: Local CLI/IDE with `~/.satori/` SQLite vault)* | Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build | **Tier A - Verified (5):** Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor *(tested every release against the 350-case benchmark)*<br>**Tier B - Community (5):** Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build *(validated manifests; community-maintained)* |
+| **Web Chat Surfaces (6)**<br>*(Mode 2: Stateless prompt with `SATORI_NOTE v6.5` continuity)* | Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI | **Tier A - Verified (2):** Claude.ai (Full zip), ChatGPT (Compact instructions)<br>**Tier B - Community (3):** Google Gemini Web, xAI Grok Web, DeepSeek Chat<br>**Tier C - Experimental (1):** Meta AI *(unpromoted; experimental prompt)* |
 
 ---
 
@@ -239,10 +245,10 @@ A companion built for developers must know when to speak and when to stay silent
 ### Truth in Advertising & Live Evidence Summary
 We report an empirical **Non-Activation Rate of ≥ 95%** (`98.0%` point estimate, 95% Wilson CI `[94.97%, 99.22%]`) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM skill routers are probabilistic, claiming absolute immunity is dishonest. All benchmark cases and grading scripts are open in [`evals/`](evals/) so you can reproduce them locally.
 
-#### Live Evidence Summary (v6.5.2 Release Verification)
+#### Live Evidence Summary (v6.5.3 Release Verification)
 *Evaluation Mode: Provisional offline verified mode, 2026-10-23*
 
-Beyond deterministic trigger gating, the v6.5.2 release establishes end-to-end output quality, boundary holding, and judge reliability:
+Beyond deterministic trigger gating, the v6.5.3 release establishes end-to-end output quality, boundary holding, and judge reliability:
 - **Capability Pass Delta (WS-1):** **+46.6 percentage points** with-skill vs. no-skill pass rate delta on core capability cases ([`evals/paired_capability_report.json`](evals/paired_capability_report.json)).
 - **Safety & Boundary Certification (WS-2):** **100% held** across 48 clinical-scope boundary probes, 30 red-team injection defenses, 8 multi-turn crisis escalation trajectories with tool lockout, and 10 privacy probes ([`evals/safety_certification_report.json`](evals/safety_certification_report.json)).
 - **Cross-Model Parity (WS-3):** **Spread ≤ 4.0 points** across four target models representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the ≤5.0 point parity ceiling with 100% acute safety parity held on all models ([`evals/live_calibration_report.json`](evals/live_calibration_report.json)).
@@ -272,7 +278,7 @@ Free and open source under Apache 2.0. Built by Matthew Metcalf (Metcalf Solutio
 
 ## Architecture, Editions & Progressive Disclosure
 
-Satori ships in two declared editions from a single source—**Satori Full** (progressive disclosure for frontier models and CLI/IDE harnesses) and **Satori Compact** (self-contained spine for Custom GPTs, local `<32B` models, and voice pipelines). Both editions share **100% safety parity**.
+Satori ships in two declared editions from a single source: **Satori Full** (progressive disclosure for frontier models and CLI/IDE harnesses) and **Satori Compact** (self-contained spine for Custom GPTs, local `<32B` models, and voice pipelines). Both editions share **100% safety parity**.
 
 Turn 1 in Satori Full loads strictly under `8,000 bytes` (`<2,000 tokens`). Reference shards load on demand, with every file guaranteed to stay below the `24,000-byte` IDE rule ceiling:
 
@@ -302,14 +308,14 @@ Full architecture diagrams and token budgets: [`docs/architecture.md`](docs/arch
 
 Rather than relying on fragile model-name strings, Satori calibrates behavior using runtime capability sensing across **5 Behavioral Profiles** (illustrated with October 2026 production checkpoints):
 
-1. **Tier 1 — Explicit Environment Override:** Honors `SATORI_MODEL_PROFILE=1..5`, or explicit loading of `references/core-compact.md` by the host harness.
-2. **Tier 2 — Capability-Based Calibration Across 5 Behavioral Profiles:**
+1. **Tier 1: Explicit Environment Override:** Honors `SATORI_MODEL_PROFILE=1..5`, or explicit loading of `references/core-compact.md` by the host harness.
+2. **Tier 2: Capability-Based Calibration Across 5 Behavioral Profiles:**
    - **Profile 1 (Extended Reasoning / CoT Models):** e.g., `Claude Fable 5.1`, `Gemini 4 Argon`, `GPT-6 Astra`, `DeepSeek-V4-Pro`, `o4-mini`, `Grok 4.3 (Reasoning)`. Enforces the CoT Empathy Gate and prunes internal hypotheses to the single truest reading before responding.
    - **Profile 2 (Literary & Constitutional Frontier Models):** e.g., `Claude Opus 5.5`, `GPT-6.1 Sol`, `Llama 5 (405B)`, `Mistral Large 3`. Enforces plain-language grounding and cross-session memory restraint.
    - **Profile 3 (High-Candor & Search-Native Models):** e.g., `Grok 4.7`, `Grok 4.3`, `Perplexity Sonar Pro (2026)`. Suppresses uninvited web searches during personal disclosures and pairs directness with tactical empathy.
    - **Profile 4 (High-Velocity Coding & RAG Workhorses):** e.g., `Claude Sonnet 5.5`, `Gemini 3.8 Flash`, `DeepSeek-V4.1-Flash`, `GPT-6.1 Sol / Codex`, `Llama 5 (70B)`, `Qwen 3.5 72B Coder`. Enforces the Prose-Only Lock (no bullet lists or headers in reflections) and protects coding tasks during hybrid turns.
    - **Profile 5 (Compact Edge `<32B`, Quantized Local & Voice):** e.g., `Claude Haiku 5.5`, `Gemini 3.5 Flash-Lite`, `GPT-6 Luna / Nano`, `DeepSeek-V4-Lite`, `Grok Voice 3.0`, `Llama 5 8B / 14B (Local)`, `Mistral Ministral 8B`, `Qwen 3.5 14B / 32B (Local)`. Uses the `<12 KB` compact spine (`references/core-compact.md`) and 3–5 sentence spoken rhythm in voice mode.
-3. **Tier 3 — Conservative Safe Default:** Enforces all behavioral guards simultaneously when environment signals are ambiguous.
+3. **Tier 3: Conservative Safe Default:** Enforces all behavioral guards simultaneously when environment signals are ambiguous.
 
 Details: [`references/model-calibration.md`](references/model-calibration.md).
 
@@ -320,7 +326,7 @@ Details: [`references/model-calibration.md`](references/model-calibration.md).
 Satori's local memory engine ([`scripts/satori_memory.py`](scripts/satori_memory.py)) is 100% local-first, runs on the Python 3.9+ standard library (`<150 ms` lookup latency), and transmits zero telemetry.
 
 - **Default Out-of-Tree Vault:** Initializes in `~/.satori/memory/` with strict POSIX `0700` directory and `0600` file permissions (plus automatic `.satori/.gitignore` guards).
-- **Signal Minimization (`≤500` chars):** Stores short structural pattern summaries—never verbatim conversation transcripts—and automatically strips third-party PII (emails, phone numbers, SSNs).
+- **Signal Minimization (`≤500` chars):** Stores short structural pattern summaries, never verbatim conversation transcripts, and automatically strips third-party PII (emails, phone numbers, SSNs).
 - **Hard Cloud-Sync Blocking:** Refuses to initialize inside `OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box` unless explicitly overridden with `--allow-synced`.
 - **Ephemeral & Right-to-Erasure Controls:** Supports `--ephemeral` ("off the record") sessions, optional authenticated vault encryption (`AES-256-GCM`), and permanent deletion (`forget` and `purge`) using `PRAGMA secure_delete = ON`, WAL truncation, and `VACUUM`.
 - **Stateless Web Chat Continuity Notes:** On web chat surfaces where models run on provider servers under their respective terms, Satori stores nothing on disk and offers optional, data-only `SATORI_NOTE v6.5` blocks (`≤600` characters) that you can inspect, copy, and paste between threads.
@@ -350,9 +356,9 @@ python scripts/satori_memory.py purge --all --confirm
 ## Three-Tier Risk Model & Verified Helplines
 
 When emotional suffering is expressed, Satori routes behavior through the Three-Tier Risk Model in [`SAFETY.md`](SAFETY.md):
-- **Tier 0 — Dark Night (`references/darknight-protocol.md`):** Non-suicidal 3:00 AM existential exhaustion. Quiet, spacious companionship with **zero** emergency crisis hotlines and zero fixing.
-- **Tier 1 — Risk Check-In:** Passive suicidal ideation or ambiguous despair (*"I wish I wouldn't wake up"*). Asks **one direct safety question**, locks tools, offers verified helplines gently, and stays present.
-- **Tier 2 — Acute Crisis:** Active suicidal intent, plan, self-harm, domestic violence, or immediate danger. Immediately halts exploration, locks all tools, expresses warm care, emits primary-source verified helplines, and stays present while you reach out for human support:
+- **Tier 0: Dark Night (`references/darknight-protocol.md`):** Non-suicidal 3:00 AM existential exhaustion. Quiet, spacious companionship with **zero** emergency crisis hotlines and zero fixing.
+- **Tier 1: Risk Check-In:** Passive suicidal ideation or ambiguous despair (*"I wish I wouldn't wake up"*). Asks **one direct safety question**, locks tools, offers verified helplines gently, and stays present.
+- **Tier 2: Acute Crisis:** Active suicidal intent, plan, self-harm, domestic violence, or immediate danger. Immediately halts exploration, locks all tools, expresses warm care, emits primary-source verified helplines, and stays present while you reach out for human support:
 
 | Region | Emergency | 24/7 Crisis Call Line | Crisis Text / Online Directory |
 |---|:---:|---|---|

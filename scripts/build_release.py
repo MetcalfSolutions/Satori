@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py) — v6.5.2.
+"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.5.3.
 
 1. Reads `version` dynamically from `package.json`.
 2. Cleans up any stale v6.5.1 or older zip archives from `dist/`.
@@ -376,7 +376,7 @@ def main(argv: list[str] | None = None) -> int:
 
     pkg_path = ROOT_DIR / "package.json"
     pkg_data = json.loads(pkg_path.read_text(encoding="utf-8")) if pkg_path.exists() else {}
-    version = pkg_data.get("version", "6.5.2")
+    version = pkg_data.get("version", "6.5.3")
 
     stale_removed, v651_bytes = cleanup_stale_dist_zips(version)
     hashes = sync_mirrors_and_hashes()

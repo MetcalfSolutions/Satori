@@ -1,8 +1,8 @@
 {
   "name": "satori",
   "displayName": "Satori Wisdom Companion",
-  "version": "6.5.2",
-  "description": "Psychologically grounded wisdom companion for navigating emotions, grief, meaning, burnout, relationship conflict, and shadow work.",
+  "version": "6.5.3",
+  "description": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "author": "Matthew Metcalf",
   "license": "Apache-2.0",
   "entry": "SKILL.md",

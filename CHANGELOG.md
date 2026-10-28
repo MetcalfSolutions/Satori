@@ -4,12 +4,26 @@ All notable changes to Satori are documented here.
 
 ---
 
-## v6.5.2: Evidence & Integrity Release (Current)
+## [6.5.3] - 2026-10-28
+
+### Positioning and Downstream Metadata Alignment
+
+Versioned strictly as `v6.5.3` (documentation, positioning copy, and downstream repository metadata alignment). This release contains **zero changes** to the skill prompt (`SKILL.md`, `compact/SKILL.md`), reference shards (`references/*`), memory engine, or runtime behavior.
+
+Key updates:
+- **Canonical Positioning Anchor**: Added the core ethos ("Built to be outgrown. Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less, not more. Satori works alongside therapy, not as a replacement for it.") to the README hero, web overview (`docs/index.html`), and package descriptions.
+- **Manifest and Registry Synchronization**: Standardized description strings and metadata across all ecosystem manifests (`plugin.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `marketplace.json`, `gemini-extension.json`, `openclaw.plugin.json`, `.agents/plugins/satori/plugin.json`, `tessl.json`, and `registry-submissions/`).
+- **Retired Vanity Stats and Cleanliness Audit**: Completely removed deprecated v5 vanity metrics and hardcoded counters across public surfaces, ensuring full compliance with documentation integrity standards.
+- **Release Distribution Rebuild**: Rebuilt `dist/SatoriSkill-Full-v6.5.3.zip`, `dist/SatoriSkill-Compact-v6.5.3.zip`, `dist/SatoriSkill-v6.5.3.zip`, and `dist/SHA256SUMS.txt`.
+
+---
+
+## [6.5.2] - 2026-10-23: Evidence & Integrity Release
 
 Dated `2026-10-23`.
 
 - **Decisions Log (D-1 through D-7)**:
-  - **D-1 (SemVer Rationale)**: Versioned strictly as `v6.5.2` (conformance and integrity release). The 6.5 contract—including dual edition packaging, Three-Tier Risk Model, and 6-Step Model—remains intact; the release delivers evidence, integrity hardening, and frontmatter description diet within that contract.
+  - **D-1 (SemVer Rationale)**: Versioned strictly as `v6.5.2` (conformance and integrity release). The 6.5 contract: including dual edition packaging, Three-Tier Risk Model, and 6-Step Model, remains intact; the release delivers evidence, integrity hardening, and frontmatter description diet within that contract.
   - **D-2 (Candidate Waiver Note)**: Metric 21 (turn & load economy) and Metric 33 (reference TOCs across all references >100 lines) are fully implemented with zero tech debt. A formal note is recorded that live multi-turn token economy ratios carry a maintainer waiver when executed in offline verified mode without live provider API keys.
   - **D-3 (Dual Human Raters)**: Human annotation pairs across WS-1 resonance review and WS-4 judge calibration are staffed by one internal rater (maintainer) and one external rater (clinical team liaison), establishing independent validation.
   - **D-4 (4-Target Model Matrix)**: Confirmed four-model evaluation matrix representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the PRD cross-model parity requirement.
@@ -244,7 +258,7 @@ Dated `2026-10-23`.
 
 ## v3.x
 
-- Initial traditions encyclopedia (8 wisdom traditions, 4 clinical frameworks)
+- Initial traditions encyclopedia (global wisdom traditions, 4 clinical frameworks)
 - OARS (Motivational Interviewing) integrated as technical foundation
 - McAdams Life Story and Singer Self-Defining Memory elicitation frameworks added
 - Parts-based language (IFS-informed) integrated as default conversational habit

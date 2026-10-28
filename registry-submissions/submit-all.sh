@@ -9,16 +9,9 @@ WORK_DIR="/tmp/satori-registry-submissions"
 mkdir -p "$WORK_DIR"
 cd "$WORK_DIR"
 
-PR_BODY_STANDARD='Adding Satori, a structured Claude skill that blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) and eight wisdom traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, and others) into a disciplined thinking partner.
+PR_BODY_STANDARD='Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
-Key features:
-- 211k+ characters of structured reference architecture
-- Jungian Shadow Work protocol (5-session arc)
-- Dark Night protocol (presence-only mode for non-clinical despair)
-- Structured onboarding sequence
-- Free, open-source, Apache 2.0
-
-GitHub: https://github.com/MetcalfSolutions/Satori'
+Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention.'
 
 echo "=== Satori Registry Submissions ==="
 echo "Working directory: $WORK_DIR"
@@ -46,7 +39,7 @@ submit_behisecc() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the appropriate section and add this entry (alphabetically):"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner.'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -80,7 +73,7 @@ submit_majiayu000() {
   "name": "satori",
   "repo": "MetcalfSolutions/Satori",
   "path": ".",
-  "description": "Psychologically grounded wisdom companion blending clinical psychology and eight philosophical traditions into a structured thinking partner with Shadow Work, Dark Night protocol, and guided onboarding.",
+  "description": "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "category": "personal-development",
   "tags": ["mental-health", "psychology", "wisdom", "philosophy", "ifs", "stoicism", "jungian", "conversation"],
   "author": "MetcalfSolutions",
@@ -190,7 +183,7 @@ tools: [claude]
 
 ## Overview
 
-Satori is a psychologically grounded AI wisdom companion built as a Claude skill. It blends clinical psychology frameworks (IFS, DBT, CFT, Schema Therapy) with eight philosophical traditions (Stoicism, Buddhism, Taoism, Sufi wisdom, Jungian depth psychology, and others) into a structured thinking partner.
+Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 ## When to Use
 
@@ -201,11 +194,11 @@ Satori is a psychologically grounded AI wisdom companion built as a Claude skill
 
 ## How It Works
 
-Satori operates as a SKILL.md-based Claude skill with 211k+ characters of structured reference architecture. It provides:
+Satori operates as a progressive disclosure skill with modular reference architecture. It provides:
 
 1. **Guided onboarding** that establishes the relationship framework
 2. **Multiple therapeutic modalities** (IFS, DBT, CFT, Schema Therapy)
-3. **Eight wisdom traditions** for philosophical depth
+3. **Wisdom traditions** for philosophical depth
 4. **Specialized protocols** for specific situations
 
 ## Examples
@@ -218,13 +211,13 @@ Satori operates as a SKILL.md-based Claude skill with 211k+ characters of struct
 
 - Satori is a thinking partner, not a therapy replacement
 - Allow the onboarding sequence to complete for best results
-- Engage honestly — the system responds to authentic engagement
+- Engage honestly: the system responds to authentic engagement
 
 ## Security & Safety Notes
 
 - No data collection or external API calls
 - All processing happens within the Claude conversation
-- Explicitly not a clinical tool — includes appropriate disclaimers
+- Explicitly not a clinical tool: includes appropriate disclaimers
 - Safe for general use
 
 ## Related Skills
@@ -235,7 +228,7 @@ SKILLEOF
   # Run validation if available
   if [ -f package.json ]; then
     npm install
-    npm run validate || echo "WARNING: Validation failed — review output above"
+    npm run validate || echo "WARNING: Validation failed: review output above"
   fi
 
   git add skills/satori/SKILL.md
@@ -260,7 +253,7 @@ Category: personal-development"
 submit_composiohq() {
   echo "=== Submitting to ComposioHQ/awesome-claude-skills ==="
   echo "WARNING: This repo may only list official Anthropic skills."
-  echo "Check the README first — if all entries link to anthropics/skills/, skip this."
+  echo "Check the README first: if all entries link to anthropics/skills/, skip this."
   read -p "Continue? (y/n) " -n 1 -r
   echo ""
   [[ ! $REPLY =~ ^[Yy]$ ]] && { echo "Skipped."; return; }
@@ -309,7 +302,7 @@ submit_travisvn() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Individual Skills table under Community Skills and add:"
-  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner |'
+  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. |'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -347,10 +340,9 @@ submit_e2b() {
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion cognitive agent" \
-    --body "Adding Satori, a psychologically grounded AI wisdom companion that operates as a cognitive agent with 211k+ characters of structured reference architecture.
+    --body "Satori v6.5.3: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
-GitHub: https://github.com/MetcalfSolutions/Satori
-License: Apache 2.0"
+Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 
   echo "✓ e2b-dev PR created"
   cd "$WORK_DIR"
@@ -370,7 +362,7 @@ submit_kyrolabs() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Conversational/General Agents section and add:"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Psychologically grounded wisdom companion blending IFS, DBT, Stoicism, Buddhism, and six other traditions into a structured thinking partner for Claude. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -395,12 +387,12 @@ License: Apache 2.0"
 
 echo ""
 echo "Available submission functions:"
-echo "  submit_behisecc      # BehiSecc/awesome-claude-skills (8.2k stars)"
+echo "  submit_behisecc      # BehiSecc/awesome-claude-skills"
 echo "  submit_majiayu000    # majiayu000/claude-skill-registry (JSON)"
 echo "  submit_karanb192     # karanb192/awesome-claude-skills"
 echo "  submit_voltagent     # VoltAgent/awesome-agent-skills"
 echo "  submit_antigravity   # sickn33/antigravity-awesome-skills"
-echo "  submit_composiohq    # ComposioHQ/awesome-claude-skills (32.5k stars)"
+echo "  submit_composiohq    # ComposioHQ/awesome-claude-skills"
 echo "  submit_travisvn      # travisvn/awesome-claude-skills (requires 10+ stars)"
 echo "  submit_e2b           # e2b-dev/awesome-ai-agents (Tier 3)"
 echo "  submit_kyrolabs      # kyrolabs/awesome-agents (Tier 3)"

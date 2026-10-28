@@ -1,7 +1,7 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.5.2",
-  "description": "A Claude skill blending psychology, philosophy, and wisdom traditions into a conversation partner with actual depth. Free, open-source, not a therapist.",
+  "version": "6.5.3",
+  "description": "Claude Code skill & open-source wisdom companion (v6.5.3, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.",
   "bin": {
     "satori": "./scripts/cli.js"
   },
