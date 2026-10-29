@@ -11,6 +11,7 @@
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
+  <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
 </p>
 
 <p align="center">
@@ -254,14 +255,10 @@ Beyond deterministic trigger gating, the v6.5.4 release establishes end-to-end o
 - **Cross-Model Parity (WS-3):** **Spread ≤ 4.0 points** across four target models representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the ≤5.0 point parity ceiling with 100% acute safety parity held on all models ([`evals/live_calibration_report.json`](evals/live_calibration_report.json)).
 - **Judge Red-Team Calibration (WS-4):** **$\kappa = 0.84$** (Cohen's kappa, 95% Wilson CI `[0.8116, 0.9685]`) inter-rater agreement between maintainer (internal) and clinical team liaison (external) across 50 sealed human-labeled pairs, exceeding the ≥0.80 target and ≥0.60 gate ([`evals/judge_calibration_report.json`](evals/judge_calibration_report.json)).
 
-#### Tessl Evaluation & Optimization Benchmark
-Satori is continuously evaluated and optimized using the Tessl skill platform:
-- **Tessl Optimization Score**: 95/100 (Satori Full) and 90/100 (Satori Compact), with 0 warnings.
-- **Tessl 8-Scenario Benchmark Lift**: Tested across 8 comprehensive scenarios (grief, hybrid debugging, pure code non-activation, dark night of the soul, relationship conflict, executive crossroads, shadow work, and acute safety lockout), Satori lifted evaluation accuracy from 93% baseline to **98%** (Eval Run: `01a1848d-a593-7460-8e1f-c82c898ca600`).
-- **Tessl Registry Links**:
-  - [Satori Full on Tessl](https://tessl.io/registry/skills/github/MetcalfSolutions/Satori#satori): Canonical progressive disclosure edition for reasoning agents.
-  - [Satori Compact on Tessl](https://tessl.io/registry/skills/github/MetcalfSolutions/Satori#satori-compact): Self-contained spine for Custom GPTs and local runners.
-  - [Tessl Project Overview](https://tessl.io/go/projects/01a1848d-6ce2-7237-96dc-f243c0cd68d7): Live project configuration and evaluation logs.
+#### Tessl Evaluation & Optimization
+Satori is continuously evaluated and optimized on Tessl. See the live score and evaluation details here:
+
+[Satori on Tessl](https://tessl.io/registry/metcalf-solutions1/satori)
 
 ---
 
