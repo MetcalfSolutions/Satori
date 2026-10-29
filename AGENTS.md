@@ -7,3 +7,6 @@
 3. **Standard & Frontier Models (Profiles 1–4)**: Load [`references/SOUL.md`](./references/SOUL.md), [`references/clinical-spine.md`](./references/clinical-spine.md), [`references/traditions-quickref.md`](./references/traditions-quickref.md), and conditional protocols (`onboarding.md`, `grief-protocol.md`, `darknight-protocol.md`, `shadow-work-protocol.md`, `relationship-protocol.md`, `memory-system.md`, `model-calibration.md`) progressively on demand as specified in `SKILL.md`.
 4. **Local Memory & Privacy**: Governed by [`PRIVACY.md`](./PRIVACY.md) and [`scripts/satori_memory.py`](./scripts/satori_memory.py).
 
+# Agent Rules <!-- tessl-managed -->
+
+@.tessl/RULES.md follow the [instructions](.tessl/RULES.md)
