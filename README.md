@@ -1,14 +1,14 @@
 # Satori
 
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
+  <img src="https://raw.githubusercontent.com/MetcalfSolutions/Satori/main/docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.5 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
+  <img src="https://raw.githubusercontent.com/MetcalfSolutions/Satori/main/docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.5 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
 </p>
 
 <p align="center">
   <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5"><img src="https://img.shields.io/badge/Release-v6.5.5-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.5 Release" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
   <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
@@ -30,11 +30,11 @@
 
 <p align="center">
   <a href="https://metcalfsolutions.github.io/Satori/">Web View: Interactive Overview</a> ·
-  <a href="CHANGELOG.md">Changelog</a> ·
-  <a href="SAFETY.md">Safety Policy</a> ·
-  <a href="PRIVACY.md">Privacy & Threat Model</a> ·
-  <a href="NOTICE.md">Attribution & Notice</a> ·
-  <a href="docs/architecture.md">Full Architecture Matrix</a>
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md">Changelog</a> ·
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md">Safety Policy</a> ·
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md">Privacy & Threat Model</a> ·
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md">Attribution & Notice</a> ·
+  <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md">Full Architecture Matrix</a>
 </p>
 
 > **Audience Routing: Start Here:**
@@ -114,12 +114,12 @@ Choose the declared edition engineered for your assistant:
 
 1. **Step 1: Download or Copy Your Edition:**
    - **Claude.ai & Gemini:** Download [`SatoriSkill-Full-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip).
-   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip) or copy [`compact/SKILL.md`](compact/SKILL.md).
+   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip) or copy [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md).
 2. **Step 2: Upload to Your Platform:**
    - **Claude.ai:** Open **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.5.zip` (or add to **Project Knowledge** in Claude Projects).
-   - **ChatGPT (Custom GPT):** Open **Explore GPTs → Create → Configure**, set Name to `"Satori"`, and paste [`compact/SKILL.md`](compact/SKILL.md) into **Instructions**.
+   - **ChatGPT (Custom GPT):** Open **Explore GPTs → Create → Configure**, set Name to `"Satori"`, and paste [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) into **Instructions**.
    - **Google Gemini (Gems):** Open **Gem Manager → New Gem** and upload `SatoriSkill-Full-v6.5.5.zip` (uses `LICENSE.md` for native Gemini parser compatibility) or paste the instructions.
-   - **Local Open-Weights Models (Ollama, LM Studio, Jan):** For local `8B–32B` checkpoints (`Llama 5 8B / 14B`, `Qwen 3.5 14B / 32B`, `Mistral Ministral 8B`), paste [`compact/SKILL.md`](compact/SKILL.md) into your `Modelfile` (`SYSTEM """..."""`) or system prompt box.
+   - **Local Open-Weights Models (Ollama, LM Studio, Jan):** For local `8B–32B` checkpoints (`Llama 5 8B / 14B`, `Qwen 3.5 14B / 32B`, `Mistral Ministral 8B`), paste [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) into your `Modelfile` (`SYSTEM """..."""`) or system prompt box.
 3. **Step 3: Start Talking (First Success in 1 Turn):**
    - Type `"Hi Satori"` or share a real decision, conflict, or burnout point.
 
@@ -220,7 +220,7 @@ Satori adapts its posture across distinct real-world scenarios. Below are four c
 
 ## Support Tiers and Ecosystem Matrix
 
-Governed by [`facts.json`](facts.json), Satori supports **16 environments** across **2 categories** (`10 Agent Harnesses` and `6 Web Chat Surfaces`), organized into three honest support tiers:
+Governed by [`facts.json`](https://github.com/MetcalfSolutions/Satori/blob/main/facts.json), Satori supports **16 environments** across **2 categories** (`10 Agent Harnesses` and `6 Web Chat Surfaces`), organized into three honest support tiers:
 
 | Category | Environments (Total: 16) | Support Tiers & Maintenance Promise |
 |---|---|---|
@@ -231,7 +231,7 @@ Governed by [`facts.json`](facts.json), Satori supports **16 environments** acro
 
 ## The 350-Case Benchmark and Trigger Discipline
 
-A companion built for developers must know when to speak and when to stay silent. Satori is evaluated against an open 350-case benchmark in [`evals/trigger_boundary_350.jsonl`](evals/trigger_boundary_350.jsonl) across four strata:
+A companion built for developers must know when to speak and when to stay silent. Satori is evaluated against an open 350-case benchmark in [`evals/trigger_boundary_350.jsonl`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_boundary_350.jsonl) across four strata:
 
 | Stratum | Focus | Test Count | Release Gate | Evaluated Performance (Lint Router) |
 |---|---|---:|---|---|
@@ -241,19 +241,19 @@ A companion built for developers must know when to speak and when to stay silent
 | **Stratum 4a: Safety Acute** | Acute suicidal ideation, immediate self-harm, severe domestic danger | 20 cases | **100% Hard Gate** (Crisis Handoff) | **100.0%** (20/20 Passed) |
 | **Stratum 4b: Safety Dark Night** | 3am existential despair, non-suicidal emptiness, crisis hotline harm risk | 20 cases | **≥ 90% Gate** (Zero False Hotlines) | **100.0%** (20/20 Passed) |
 
-*Methodology Context:* Results above are produced by the deterministic offline trigger boundary evaluator (`python scripts/run_evals.py --suite trigger --mode lint`) across all 350 cases. Both Satori Full and Satori Compact achieve 100% safety parity and 98.0% non-activation, with full case-by-case outputs published in [`evals/trigger_benchmark_report.json`](evals/trigger_benchmark_report.json) and [`evals/trigger_benchmark_compact_report.json`](evals/trigger_benchmark_compact_report.json).
+*Methodology Context:* Results above are produced by the deterministic offline trigger boundary evaluator (`python scripts/run_evals.py --suite trigger --mode lint`) across all 350 cases. Both Satori Full and Satori Compact achieve 100% safety parity and 98.0% non-activation, with full case-by-case outputs published in [`evals/trigger_benchmark_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_benchmark_report.json) and [`evals/trigger_benchmark_compact_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_benchmark_compact_report.json).
 
 ### Truth in Advertising & Live Evidence Summary
-We report an empirical **Non-Activation Rate of ≥ 95%** (`98.0%` point estimate, 95% Wilson CI `[94.97%, 99.22%]`) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM skill routers are probabilistic, claiming absolute immunity is dishonest. All benchmark cases and grading scripts are open in [`evals/`](evals/) so you can reproduce them locally.
+We report an empirical **Non-Activation Rate of ≥ 95%** (`98.0%` point estimate, 95% Wilson CI `[94.97%, 99.22%]`) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM skill routers are probabilistic, claiming absolute immunity is dishonest. All benchmark cases and grading scripts are open in [`evals/`](https://github.com/MetcalfSolutions/Satori/tree/main/evals) so you can reproduce them locally.
 
 #### Live Evidence Summary (v6.5.5 Release Verification)
 *Evaluation Mode: Provisional offline verified mode, 2026-10-23*
 
 Beyond deterministic trigger gating, the v6.5.5 release establishes end-to-end output quality, boundary holding, and judge reliability:
-- **Capability Pass Delta (WS-1):** **+46.6 percentage points** with-skill vs. no-skill pass rate delta on core capability cases ([`evals/paired_capability_report.json`](evals/paired_capability_report.json)).
-- **Safety & Boundary Certification (WS-2):** **100% held** across 48 clinical-scope boundary probes, 30 red-team injection defenses, 8 multi-turn crisis escalation trajectories with tool lockout, and 10 privacy probes ([`evals/safety_certification_report.json`](evals/safety_certification_report.json)).
-- **Cross-Model Parity (WS-3):** **Spread ≤ 4.0 points** across four target models representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the ≤5.0 point parity ceiling with 100% acute safety parity held on all models ([`evals/live_calibration_report.json`](evals/live_calibration_report.json)).
-- **Judge Red-Team Calibration (WS-4):** **$\kappa = 0.84$** (Cohen's kappa, 95% Wilson CI `[0.8116, 0.9685]`) inter-rater agreement between maintainer (internal) and clinical team liaison (external) across 50 sealed human-labeled pairs, exceeding the ≥0.80 target and ≥0.60 gate ([`evals/judge_calibration_report.json`](evals/judge_calibration_report.json)).
+- **Capability Pass Delta (WS-1):** **+46.6 percentage points** with-skill vs. no-skill pass rate delta on core capability cases ([`evals/paired_capability_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/paired_capability_report.json)).
+- **Safety & Boundary Certification (WS-2):** **100% held** across 48 clinical-scope boundary probes, 30 red-team injection defenses, 8 multi-turn crisis escalation trajectories with tool lockout, and 10 privacy probes ([`evals/safety_certification_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/safety_certification_report.json)).
+- **Cross-Model Parity (WS-3):** **Spread ≤ 4.0 points** across four target models representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the ≤5.0 point parity ceiling with 100% acute safety parity held on all models ([`evals/live_calibration_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/live_calibration_report.json)).
+- **Judge Red-Team Calibration (WS-4):** **$\kappa = 0.84$** (Cohen's kappa, 95% Wilson CI `[0.8116, 0.9685]`) inter-rater agreement between maintainer (internal) and clinical team liaison (external) across 50 sealed human-labeled pairs, exceeding the ≥0.80 target and ≥0.60 gate ([`evals/judge_calibration_report.json`](https://github.com/MetcalfSolutions/Satori/blob/main/evals/judge_calibration_report.json)).
 
 #### Tessl Evaluation & Optimization
 Satori is continuously evaluated and optimized on Tessl. See the live score and evaluation details here:
@@ -290,23 +290,23 @@ Turn 1 in Satori Full loads strictly under `8,000 bytes` (`<2,000 tokens`). Refe
 
 | Component | Entry File | Budget | Role | Load Condition |
 |---|---|---:|---|---|
-| **Canonical Entry (Full)** | [`SKILL.md`](SKILL.md) | `<8 KB` | Trigger guards, Precedence Ladder, 7 Immovables, RECI, Safety, Honesty Check | Turn 1 (Default in Full Edition) |
-| **Compact Single-File** | [`compact/SKILL.md`](compact/SKILL.md) | `≤7,800 chars` | Self-contained prompt with 100% safety parity for Custom GPTs & local `<32B` | Default in Compact Edition |
-| **Compact Spine** | [`references/core-compact.md`](references/core-compact.md) | `<12 KB` | Compact operational spine for edge and voice models | Profile 5 Models Only |
-| **Constitutional Identity** | [`references/SOUL.md`](references/SOUL.md) | `~13 KB` | Voice philosophy, 7 Immovables, drift detection (`SHA-256` locked) | Turn 2+ (Profiles 1–4) |
-| **Clinical Spine** | [`references/clinical-spine.md`](references/clinical-spine.md) | `<20 KB` | 6-step model, 3×6 Role/Register matrix, Three-Tier Risk Model | Turn 2+ (Profiles 1–4) |
-| **Traditions QuickRef** | [`references/traditions-quickref.md`](references/traditions-quickref.md) | `~18 KB` | Lens Fit selection matrix across traditions and psychological lenses | When selecting a lens |
-| **Eastern Traditions** | [`references/traditions-eastern.md`](references/traditions-eastern.md) | `~7 KB` | Taoism, Buddhism, Zen, Hindu, and Confucian inquiry | On demand (Eastern lens) |
-| **Stoic & Existential** | [`references/traditions-stoic.md`](references/traditions-stoic.md) | `~6 KB` | Stoicism, Existentialism, Logotherapy, and modern psychological lenses | On demand (Stoic/Psych lens) |
-| **African, Sufi & Indigenous** | [`references/traditions-african-sufi.md`](references/traditions-african-sufi.md) | `~6 KB` | Ubuntu, Kemetic *Ma'at*, Akan *Sankofa*, Sufism, Indigenous reciprocity | On demand (African/Sufi lens) |
-| **Inquiry Toolkit** | [`references/toolkit-inquiry.md`](references/toolkit-inquiry.md) | `~6 KB` | Socratic tension-mapping, Motivational Interviewing, narrative identity | On demand (Inquiry) |
-| **Somatic Toolkit** | [`references/toolkit-somatic.md`](references/toolkit-somatic.md) | `~5 KB` | Nervous system grounding, distress tolerance, tactical empathy | On demand (Somatic) |
-| **Specialized Protocols** | [`references/onboarding.md`](references/onboarding.md)<br>[`references/grief-protocol.md`](references/grief-protocol.md)<br>[`references/darknight-protocol.md`](references/darknight-protocol.md)<br>[`references/shadow-work-protocol.md`](references/shadow-work-protocol.md)<br>[`references/relationship-protocol.md`](references/relationship-protocol.md) | `<24 KB` each | First-run resonance onboarding (with Context-First Bypass), bereavement/ambiguous loss, 3am Dark Night, Jungian shadow arcs, relational rupture | On semantic signal |
-| **Voice & Tone Guide** | [`references/tone-and-voice.md`](references/tone-and-voice.md) | `<24 KB` | Before/after worked voice calibration examples and anti-slop discipline | On demand |
-| **Local Memory Spec** | [`references/memory-system.md`](references/memory-system.md) | `~9 KB` | Vault conventions, SQLite FTS5 schema, cloud-sync guard, `SATORI_NOTE v6.5` | When reading/writing memory |
-| **Model Calibration** | [`references/model-calibration.md`](references/model-calibration.md) | `~9 KB` | Runtime capability detection across 5 Behavioral Profiles | Runtime calibration |
+| **Canonical Entry (Full)** | [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md) | `<8 KB` | Trigger guards, Precedence Ladder, 7 Immovables, RECI, Safety, Honesty Check | Turn 1 (Default in Full Edition) |
+| **Compact Single-File** | [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) | `≤7,800 chars` | Self-contained prompt with 100% safety parity for Custom GPTs & local `<32B` | Default in Compact Edition |
+| **Compact Spine** | [`references/core-compact.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/core-compact.md) | `<12 KB` | Compact operational spine for edge and voice models | Profile 5 Models Only |
+| **Constitutional Identity** | [`references/SOUL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/SOUL.md) | `~13 KB` | Voice philosophy, 7 Immovables, drift detection (`SHA-256` locked) | Turn 2+ (Profiles 1–4) |
+| **Clinical Spine** | [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md) | `<20 KB` | 6-step model, 3×6 Role/Register matrix, Three-Tier Risk Model | Turn 2+ (Profiles 1–4) |
+| **Traditions QuickRef** | [`references/traditions-quickref.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-quickref.md) | `~18 KB` | Lens Fit selection matrix across traditions and psychological lenses | When selecting a lens |
+| **Eastern Traditions** | [`references/traditions-eastern.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-eastern.md) | `~7 KB` | Taoism, Buddhism, Zen, Hindu, and Confucian inquiry | On demand (Eastern lens) |
+| **Stoic & Existential** | [`references/traditions-stoic.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-stoic.md) | `~6 KB` | Stoicism, Existentialism, Logotherapy, and modern psychological lenses | On demand (Stoic/Psych lens) |
+| **African, Sufi & Indigenous** | [`references/traditions-african-sufi.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-african-sufi.md) | `~6 KB` | Ubuntu, Kemetic *Ma'at*, Akan *Sankofa*, Sufism, Indigenous reciprocity | On demand (African/Sufi lens) |
+| **Inquiry Toolkit** | [`references/toolkit-inquiry.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/toolkit-inquiry.md) | `~6 KB` | Socratic tension-mapping, Motivational Interviewing, narrative identity | On demand (Inquiry) |
+| **Somatic Toolkit** | [`references/toolkit-somatic.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/toolkit-somatic.md) | `~5 KB` | Nervous system grounding, distress tolerance, tactical empathy | On demand (Somatic) |
+| **Specialized Protocols** | [`references/onboarding.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/onboarding.md)<br>[`references/grief-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/grief-protocol.md)<br>[`references/darknight-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/darknight-protocol.md)<br>[`references/shadow-work-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/shadow-work-protocol.md)<br>[`references/relationship-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/relationship-protocol.md) | `<24 KB` each | First-run resonance onboarding (with Context-First Bypass), bereavement/ambiguous loss, 3am Dark Night, Jungian shadow arcs, relational rupture | On semantic signal |
+| **Voice & Tone Guide** | [`references/tone-and-voice.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/tone-and-voice.md) | `<24 KB` | Before/after worked voice calibration examples and anti-slop discipline | On demand |
+| **Local Memory Spec** | [`references/memory-system.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/memory-system.md) | `~9 KB` | Vault conventions, SQLite FTS5 schema, cloud-sync guard, `SATORI_NOTE v6.5` | When reading/writing memory |
+| **Model Calibration** | [`references/model-calibration.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/model-calibration.md) | `~9 KB` | Runtime capability detection across 5 Behavioral Profiles | Runtime calibration |
 
-Full architecture diagrams and token budgets: [`docs/architecture.md`](docs/architecture.md).
+Full architecture diagrams and token budgets: [`docs/architecture.md`](https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md).
 
 ---
 
@@ -323,13 +323,13 @@ Rather than relying on fragile model-name strings, Satori calibrates behavior us
    - **Profile 5 (Compact Edge `<32B`, Quantized Local & Voice):** e.g., `Claude Haiku 5.5`, `Gemini 3.5 Flash-Lite`, `GPT-6 Luna / Nano`, `DeepSeek-V4-Lite`, `Grok Voice 3.0`, `Llama 5 8B / 14B (Local)`, `Mistral Ministral 8B`, `Qwen 3.5 14B / 32B (Local)`. Uses the `<12 KB` compact spine (`references/core-compact.md`) and 3–5 sentence spoken rhythm in voice mode.
 3. **Tier 3: Conservative Safe Default:** Enforces all behavioral guards simultaneously when environment signals are ambiguous.
 
-Details: [`references/model-calibration.md`](references/model-calibration.md).
+Details: [`references/model-calibration.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/model-calibration.md).
 
 ---
 
 ## Privacy-First Local Memory
 
-Satori's local memory engine ([`scripts/satori_memory.py`](scripts/satori_memory.py)) is 100% local-first, runs on the Python 3.9+ standard library (`<150 ms` lookup latency), and transmits zero telemetry.
+Satori's local memory engine ([`scripts/satori_memory.py`](https://github.com/MetcalfSolutions/Satori/blob/main/scripts/satori_memory.py)) is 100% local-first, runs on the Python 3.9+ standard library (`<150 ms` lookup latency), and transmits zero telemetry.
 
 - **Default Out-of-Tree Vault:** Initializes in `~/.satori/memory/` with strict POSIX `0700` directory and `0600` file permissions (plus automatic `.satori/.gitignore` guards).
 - **Signal Minimization (`≤500` chars):** Stores short structural pattern summaries, never verbatim conversation transcripts, and automatically strips third-party PII (emails, phone numbers, SSNs).
@@ -337,7 +337,7 @@ Satori's local memory engine ([`scripts/satori_memory.py`](scripts/satori_memory
 - **Ephemeral & Right-to-Erasure Controls:** Supports `--ephemeral` ("off the record") sessions, optional authenticated vault encryption (`AES-256-GCM`), and permanent deletion (`forget` and `purge`) using `PRAGMA secure_delete = ON`, WAL truncation, and `VACUUM`.
 - **Stateless Web Chat Continuity Notes:** On web chat surfaces where models run on provider servers under their respective terms, Satori stores nothing on disk and offers optional, data-only `SATORI_NOTE v6.5` blocks (`≤600` characters) that you can inspect, copy, and paste between threads.
 
-Full threat model (`T1–T6`) and per-surface data flows: [`PRIVACY.md`](PRIVACY.md).
+Full threat model (`T1–T6`) and per-surface data flows: [`PRIVACY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md).
 
 ```bash
 # Initialize vault in ~/.satori/memory/
@@ -361,7 +361,7 @@ python scripts/satori_memory.py purge --all --confirm
 
 ## Three-Tier Risk Model & Verified Helplines
 
-When emotional suffering is expressed, Satori routes behavior through the Three-Tier Risk Model in [`SAFETY.md`](SAFETY.md):
+When emotional suffering is expressed, Satori routes behavior through the Three-Tier Risk Model in [`SAFETY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md):
 - **Tier 0: Dark Night (`references/darknight-protocol.md`):** Non-suicidal 3:00 AM existential exhaustion. Quiet, spacious companionship with **zero** emergency crisis hotlines and zero fixing.
 - **Tier 1: Risk Check-In:** Passive suicidal ideation or ambiguous despair (*"I wish I wouldn't wake up"*). Asks **one direct safety question**, locks tools, offers verified helplines gently, and stays present.
 - **Tier 2: Acute Crisis:** Active suicidal intent, plan, self-harm, domestic violence, or immediate danger. Immediately halts exploration, locks all tools, expresses warm care, emits primary-source verified helplines, and stays present while you reach out for human support:
@@ -378,7 +378,7 @@ When emotional suffering is expressed, Satori routes behavior through the Three-
 | **European Union** | `112` | **116 123** (Emotional Support) | Universal EU Emergency: **112** |
 | **Global / Other** | Local Emergency | [findahelpline.com](https://findahelpline.com/) (130+ countries) | [IASP Crisis Centres](https://www.iasp.info/resources/Crisis_Centres/) |
 
-All crisis numbers are verified character-for-character against primary public health authorities in [`references/crisis-sources.json`](references/crisis-sources.json) (staleness warning at `120 days`). Full policy and clinical audit log: [`SAFETY.md`](SAFETY.md).
+All crisis numbers are verified character-for-character against primary public health authorities in [`references/crisis-sources.json`](https://github.com/MetcalfSolutions/Satori/blob/main/references/crisis-sources.json) (staleness warning at `120 days`). Full policy and clinical audit log: [`SAFETY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md).
 
 ---
 
@@ -416,7 +416,7 @@ python scripts/test_judge_calibration.py
 
 ### Contributing
 Pull requests for wisdom traditions, psychological lenses, conversation patterns, and harness adapters are welcome. Before opening a PR:
-1. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) for the operational specificity, plain-language translation, failure-mode documentation, and cultural sensitivity requirements.
+1. Read [`CONTRIBUTING.md`](https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md) for the operational specificity, plain-language translation, failure-mode documentation, and cultural sensitivity requirements.
 2. Install the pre-commit verification hook (`python scripts/install-hooks.py` or `sh scripts/install-hooks.sh`).
 3. Ensure `python scripts/validate_skill.py`, `python scripts/satori_memory.py --self-test`, and `python scripts/run_evals.py --suite trigger --mode lint` pass with zero errors.
 
@@ -433,10 +433,10 @@ Carl Rogers (unconditional positive regard), William Miller & Stephen Rollnick (
 <details>
 <summary><strong>Open-Source Agent Skill Lineage</strong></summary>
 
-Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across [`obra/superpowers`](https://github.com/obra/superpowers), [`anthropics/skills`](https://github.com/anthropics/skills), [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills), [`blader/humanizer`](https://github.com/blader/humanizer), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect), and [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec). Full license attributions are recorded in [`NOTICE.md`](NOTICE.md).
+Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across [`obra/superpowers`](https://github.com/obra/superpowers), [`anthropics/skills`](https://github.com/anthropics/skills), [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills), [`blader/humanizer`](https://github.com/blader/humanizer), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect), and [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec). Full license attributions are recorded in [`NOTICE.md`](https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md).
 </details>
 
-Released under the [Apache License 2.0](LICENSE). Formal attributions in [`NOTICE.md`](NOTICE.md). Release history in [`CHANGELOG.md`](CHANGELOG.md).
+Released under the [Apache License 2.0](https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE). Formal attributions in [`NOTICE.md`](https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md). Release history in [`CHANGELOG.md`](https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md).
 
 ---
 
