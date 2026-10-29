@@ -38,8 +38,8 @@
 </p>
 
 > **Audience Routing: Start Here:**
-> - **End-Users (Web Chat & Custom GPTs):** Want a perceptive conversation partner in Claude.ai, ChatGPT, or Gemini without touching a terminal? Jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudeai-chatgpt-gemini-web--recommended-for-end-users) or visit the [interactive Satori site](https://metcalfsolutions.github.io/Satori/).
-> - **Developers & Founders (CLI & IDE Agents):** Run `npx skills add MetcalfSolutions/Satori` in [Quick Start & Installation](#1-ai-coding-agents-claude-code-cursor-windsurf-antigravity-codex--recommended-for-developers) to add Satori to Claude Code, Cursor, Windsurf, Antigravity, or Codex in seconds.
+> - **End-Users (Web Chat & Custom GPTs):** Want a perceptive conversation partner in Claude.ai, ChatGPT, or Gemini without touching a terminal? Jump straight to the [3-Step Web Setup Guide](#2-web-chat--custom-gpts-claudeai-chatgpt-gemini-web---recommended-for-end-users) or visit the [interactive Satori site](https://metcalfsolutions.github.io/Satori/).
+> - **Developers & Founders (CLI & IDE Agents):** Run `npx skills add MetcalfSolutions/Satori` in [Quick Start & Installation](#1-ai-coding-agents-claude-code-cursor-windsurf-antigravity-codex---recommended-for-developers) to add Satori to Claude Code, Cursor, Windsurf, Antigravity, or Codex in seconds.
 > - **Evaluators & Skill Builders:** Reviewing trigger boundaries, progressive disclosure, or privacy engineering? Jump to the [350-Case Benchmark](#the-350-case-benchmark-and-trigger-discipline), [Architecture & Editions](#architecture-editions--progressive-disclosure), and [Local Memory Vault](#privacy-first-local-memory).
 
 **Table of Contents**
