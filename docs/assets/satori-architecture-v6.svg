@@ -89,7 +89,7 @@
 
   <rect x="605" y="330" width="240" height="36" rx="6" fill="#151826" stroke="#4ecdc4" stroke-width="1"/>
   <text x="725" y="346" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#e4e2ef">validate_skill &amp; run_evals.py</text>
-  <text x="725" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">42/42 Static Gates · 350-Case 4-Strata Benchmark</text>
+  <text x="725" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.8" fill="#8b879f">54/54 Static Gates · 350-Case 4-Strata Benchmark</text>
 
   <!-- Footer Status Bar -->
   <line x1="35" y1="382" x2="845" y2="382" stroke="#252840" stroke-width="1"/>
