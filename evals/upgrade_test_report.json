@@ -2,9 +2,9 @@
   "status": "PASSED",
   "metric": 30,
   "test_name": "clean_room_upgrade_and_uninstall_verification",
-  "timestamp": "2026-10-28T22:39:37.375679+00:00",
+  "timestamp": "2026-10-29T10:58:54.697096+00:00",
   "baseline_version": "6.5.1",
-  "target_version": "6.5.4",
+  "target_version": "6.5.5",
   "stages": {
     "clean_unpack_v6_5_1": {
       "status": "PASSED",
@@ -14,13 +14,13 @@
     "upgrade_to_v6_5_2": {
       "status": "PASSED",
       "files_extracted": 25,
-      "target_archive": "SatoriSkill-Full-v6.5.4.zip"
+      "target_archive": "SatoriSkill-Full-v6.5.5.zip"
     },
     "verify_file_changes": {
       "status": "PASSED",
       "all_target_files_present": true,
       "modified_files_count": 1,
-      "version_verified": "6.5.4"
+      "version_verified": "6.5.5"
     },
     "uninstall_and_residue_check": {
       "status": "PASSED",

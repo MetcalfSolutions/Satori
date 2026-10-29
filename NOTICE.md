@@ -43,4 +43,4 @@ Satori's conversational methodologies, formulation models, and philosophical tra
 
 ## 3. License
 
-Satori is distributed under the Apache License, Version 2.0. See [`LICENSE.md`](./LICENSE.md) for full terms.
+Satori is distributed under the Apache License, Version 2.0. See [`LICENSE`](./LICENSE) for full terms.

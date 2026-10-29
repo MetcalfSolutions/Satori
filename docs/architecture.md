@@ -1,4 +1,4 @@
-# Satori Architecture & Progressive Disclosure (v6.5.4)
+# Satori Architecture & Progressive Disclosure (v6.5.5)
 
 Satori eliminates prompt bloat with an uncompromising progressive disclosure architecture. [`SKILL.md`](../SKILL.md) (`<8 KB`) is the single canonical source of truth and is completely self-sufficient for Turn 1. Reference modules load progressively on demand, with every markdown reference file guaranteed to be under the 24,000-byte context ceiling.
 
@@ -45,8 +45,8 @@ Large encyclopedic references have been sharded into focused, modular reference 
 
 ### 3. Dual Declared Editions
 Satori ships in two synchronized editions:
-- **Satori Full (`dist/SatoriSkill-Full-v6.5.4.zip`)**: Designed for frontier reasoning models (Claude 3.7/Opus, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
-- **Satori Compact (`dist/SatoriSkill-Compact-v6.5.4.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters) and small open-weights models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
+- **Satori Full (`dist/SatoriSkill-Full-v6.5.5.zip`)**: Designed for frontier reasoning models (Claude 3.7/Opus, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
+- **Satori Compact (`dist/SatoriSkill-Compact-v6.5.5.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters) and small open-weights models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
 
 ### 4. Constitutional Integrity
 The SHA-256 hash of `references/SOUL.md` is locked in `openclaw.plugin.json` and verified at build time by `scripts/validate_skill.py`. Any modification to the core constitutional identity breaks CI.

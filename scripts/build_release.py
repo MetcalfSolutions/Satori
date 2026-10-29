@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.5.4.
+"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.5.5.
 
 1. Reads `version` dynamically from `package.json`.
 2. Cleans up any stale v6.5.1 or older zip archives from `dist/`.
@@ -55,7 +55,7 @@ FULL_ZIP_FILES = [
     "PRIVACY.md",
     "SAFETY.md",
     "NOTICE.md",
-    "LICENSE.md",
+    ("LICENSE", "LICENSE.md"),
 ]
 
 COMPACT_ZIP_FILES = [
@@ -64,7 +64,7 @@ COMPACT_ZIP_FILES = [
     ("README.md", "README.md"),
     ("PRIVACY.md", "PRIVACY.md"),
     ("SAFETY.md", "SAFETY.md"),
-    ("LICENSE.md", "LICENSE.md"),
+    ("LICENSE", "LICENSE.md"),
 ]
 
 
@@ -313,11 +313,12 @@ def build_full_zip() -> tuple[pathlib.Path, pathlib.Path]:
 
     for target_zip in (full_zip_path, compat_zip_path):
         with zipfile.ZipFile(target_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-            for rel_name in FULL_ZIP_FILES:
-                src = ROOT_DIR / rel_name
+            for entry in FULL_ZIP_FILES:
+                src_rel, arc_name = entry if isinstance(entry, tuple) else (entry, entry)
+                src = ROOT_DIR / src_rel
                 if src.exists():
                     content = src.read_bytes().replace(b"\r\n", b"\n")
-                    zf.writestr(rel_name, content)
+                    zf.writestr(arc_name, content)
 
             refs_dir = ROOT_DIR / "references"
             for ref_file in sorted(refs_dir.iterdir()):
@@ -376,7 +377,7 @@ def main(argv: list[str] | None = None) -> int:
 
     pkg_path = ROOT_DIR / "package.json"
     pkg_data = json.loads(pkg_path.read_text(encoding="utf-8")) if pkg_path.exists() else {}
-    version = pkg_data.get("version", "6.5.4")
+    version = pkg_data.get("version", "6.5.5")
 
     stale_removed, v651_bytes = cleanup_stale_dist_zips(version)
     hashes = sync_mirrors_and_hashes()

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Satori Evaluation Judge Red-Team Calibration Suite (scripts/test_judge_calibration.py).
 
-Implements WS-4 (Judge Calibration) per Satori v6.5.4 PRD:
+Implements WS-4 (Judge Calibration) per Satori v6.5.5 PRD:
 1. Evaluates human-annotated 50 calibration pairs (evals/judge_calibration_50_pairs.jsonl)
    labeled against the 4-dimension rubric (attunement_first, single_lens_discipline,
    restraint_anti_slop, movement_anchor) by dual human raters:
@@ -344,7 +344,7 @@ def evaluate_gold_anchors(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.5.4 Judge Red-Team Calibration Suite")
+    parser = argparse.ArgumentParser(description="Satori v6.5.5 Judge Red-Team Calibration Suite")
     parser.add_argument(
         "--mode",
         choices=["auto", "lint", "live"],

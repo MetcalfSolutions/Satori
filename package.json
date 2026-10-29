@@ -1,7 +1,7 @@
 {
   "name": "@metcalfsolutions/satori",
-  "version": "6.5.4",
-  "description": "Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.",
+  "version": "6.5.5",
+  "description": "Claude Code skill & open-source wisdom companion (v6.5.5, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.",
   "bin": {
     "satori": "./scripts/cli.js"
   },
@@ -73,7 +73,7 @@
     ".windsurf/",
     ".opencode/",
     ".hermes/",
-    "LICENSE.md"
+    "LICENSE"
   ],
   "scripts": {
     "build": "python scripts/build_release.py --sync",

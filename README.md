@@ -1,14 +1,14 @@
 # Satori
 
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.4 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
+  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
   <br/><br/>
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.4 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.5 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, 15 on-demand reference shards, and local SQLite memory vault" width="820" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.4"><img src="https://img.shields.io/badge/Release-v6.5.4-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.4 Release" /></a>
-  <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5"><img src="https://img.shields.io/badge/Release-v6.5.5-7c6af7.svg?style=for-the-badge" alt="Satori v6.5.5 Release" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
   <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
@@ -107,18 +107,18 @@ npx skills add MetcalfSolutions/Satori
 ### 2. Web Chat & Custom GPTs (Claude.ai, ChatGPT, Gemini Web) - *Recommended for End-Users*
 
 Choose the declared edition engineered for your assistant:
-- **Satori Full (`SatoriSkill-Full-v6.5.4.zip`):** For frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Includes `SKILL.md` (`<8 KB` Turn-1 load) plus all 15 modular on-demand reference shards.
-- **Satori Compact (`SatoriSkill-Compact-v6.5.4.zip` or `compact/SKILL.md`):** For **ChatGPT** (Custom GPT Instructions box, strictly `≤7,800` characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
+- **Satori Full (`SatoriSkill-Full-v6.5.5.zip`):** For frontier reasoning models (**Claude.ai**, **Google Gemini Web**, **Claude Projects**). Includes `SKILL.md` (`<8 KB` Turn-1 load) plus all 15 modular on-demand reference shards.
+- **Satori Compact (`SatoriSkill-Compact-v6.5.5.zip` or `compact/SKILL.md`):** For **ChatGPT** (Custom GPT Instructions box, strictly `≤7,800` characters), **local open-weights runners** (`<32B` via Ollama, LM Studio, Jan, vLLM), and voice interfaces. Single self-contained prompt with 100% safety parity.
 
 #### The 3-Step Setup Guide (About 2 Minutes)
 
 1. **Step 1: Download or Copy Your Edition:**
-   - **Claude.ai & Gemini:** Download [`SatoriSkill-Full-v6.5.4.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.4.zip).
-   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.4.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.4.zip) or copy [`compact/SKILL.md`](compact/SKILL.md).
+   - **Claude.ai & Gemini:** Download [`SatoriSkill-Full-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip).
+   - **ChatGPT & Local Models:** Download [`SatoriSkill-Compact-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip) or copy [`compact/SKILL.md`](compact/SKILL.md).
 2. **Step 2: Upload to Your Platform:**
-   - **Claude.ai:** Open **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.4.zip` (or add to **Project Knowledge** in Claude Projects).
+   - **Claude.ai:** Open **Customize → Skills → + → Upload a skill** and upload `SatoriSkill-Full-v6.5.5.zip` (or add to **Project Knowledge** in Claude Projects).
    - **ChatGPT (Custom GPT):** Open **Explore GPTs → Create → Configure**, set Name to `"Satori"`, and paste [`compact/SKILL.md`](compact/SKILL.md) into **Instructions**.
-   - **Google Gemini (Gems):** Open **Gem Manager → New Gem** and upload `SatoriSkill-Full-v6.5.4.zip` (uses `LICENSE.md` for native Gemini parser compatibility) or paste the instructions.
+   - **Google Gemini (Gems):** Open **Gem Manager → New Gem** and upload `SatoriSkill-Full-v6.5.5.zip` (uses `LICENSE.md` for native Gemini parser compatibility) or paste the instructions.
    - **Local Open-Weights Models (Ollama, LM Studio, Jan):** For local `8B–32B` checkpoints (`Llama 5 8B / 14B`, `Qwen 3.5 14B / 32B`, `Mistral Ministral 8B`), paste [`compact/SKILL.md`](compact/SKILL.md) into your `Modelfile` (`SYSTEM """..."""`) or system prompt box.
 3. **Step 3: Start Talking (First Success in 1 Turn):**
    - Type `"Hi Satori"` or share a real decision, conflict, or burnout point.
@@ -154,11 +154,11 @@ Run this test prompt in your agent or chat window:
 
 #### Common Failure Modes & Fixes
 1. **Failure Mode 1: `YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders:**
-   - *Cause:* An older cached copy of `SKILL.md` (prior to `v6.5.4`) had an unquoted colon in the `description` frontmatter scalar.
-   - *Fix:* Upgrade to `v6.5.4` (`npx skills add MetcalfSolutions/Satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict `yaml.safe_load` compliance.
+   - *Cause:* An older cached copy of `SKILL.md` (prior to `v6.5.5`) had an unquoted colon in the `description` frontmatter scalar.
+   - *Fix:* Upgrade to `v6.5.5` (`npx skills add MetcalfSolutions/Satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict `yaml.safe_load` compliance.
 2. **Failure Mode 2: Gemini Web Rejects Zip Upload ("Unsupported file type"):**
    - *Cause:* Uploading a raw repository zip containing hidden `.git` folders or an extensionless `LICENSE` file.
-   - *Fix:* Upload the pre-built release archive [`SatoriSkill-Full-v6.5.4.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.4.zip) (or build it locally via `python scripts/build_release.py --sync`), which strips hidden directories and uses `LICENSE.md`.
+   - *Fix:* Upload the pre-built release archive [`SatoriSkill-Full-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip) (or build it locally via `python scripts/build_release.py --sync`), which strips hidden directories and uses `LICENSE.md`.
 3. **Failure Mode 3: `satori_memory.py init` Halts with Exit Code 1:**
    - *Cause:* Your target directory or home folder is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`), triggering Threat Mitigation `T6` to protect private reflections.
    - *Fix:* Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/path/.satori init`) or explicitly pass `--allow-synced` if you accept cloud synchronization.
@@ -246,10 +246,10 @@ A companion built for developers must know when to speak and when to stay silent
 ### Truth in Advertising & Live Evidence Summary
 We report an empirical **Non-Activation Rate of ≥ 95%** (`98.0%` point estimate, 95% Wilson CI `[94.97%, 99.22%]`) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM skill routers are probabilistic, claiming absolute immunity is dishonest. All benchmark cases and grading scripts are open in [`evals/`](evals/) so you can reproduce them locally.
 
-#### Live Evidence Summary (v6.5.4 Release Verification)
+#### Live Evidence Summary (v6.5.5 Release Verification)
 *Evaluation Mode: Provisional offline verified mode, 2026-10-23*
 
-Beyond deterministic trigger gating, the v6.5.4 release establishes end-to-end output quality, boundary holding, and judge reliability:
+Beyond deterministic trigger gating, the v6.5.5 release establishes end-to-end output quality, boundary holding, and judge reliability:
 - **Capability Pass Delta (WS-1):** **+46.6 percentage points** with-skill vs. no-skill pass rate delta on core capability cases ([`evals/paired_capability_report.json`](evals/paired_capability_report.json)).
 - **Safety & Boundary Certification (WS-2):** **100% held** across 48 clinical-scope boundary probes, 30 red-team injection defenses, 8 multi-turn crisis escalation trajectories with tool lockout, and 10 privacy probes ([`evals/safety_certification_report.json`](evals/safety_certification_report.json)).
 - **Cross-Model Parity (WS-3):** **Spread ≤ 4.0 points** across four target models representing Profiles 1, 2, 3, and 5 (`claude-fable-5-1`, `claude-opus-5-5`, `grok-4-7`, `llama-5-8b-instruct`), satisfying the ≤5.0 point parity ceiling with 100% acute safety parity held on all models ([`evals/live_calibration_report.json`](evals/live_calibration_report.json)).
@@ -436,7 +436,7 @@ Carl Rogers (unconditional positive regard), William Miller & Stephen Rollnick (
 Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across [`obra/superpowers`](https://github.com/obra/superpowers), [`anthropics/skills`](https://github.com/anthropics/skills), [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills), [`blader/humanizer`](https://github.com/blader/humanizer), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect), and [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec). Full license attributions are recorded in [`NOTICE.md`](NOTICE.md).
 </details>
 
-Released under the [Apache License 2.0](LICENSE.md). Formal attributions in [`NOTICE.md`](NOTICE.md). Release history in [`CHANGELOG.md`](CHANGELOG.md).
+Released under the [Apache License 2.0](LICENSE). Formal attributions in [`NOTICE.md`](NOTICE.md). Release history in [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 

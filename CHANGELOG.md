@@ -4,6 +4,20 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [6.5.5] - 2026-10-29
+
+### Extensionless Root LICENSE & Resilient Gemini Zip Packaging Hotfix
+
+Versioned as `v6.5.5`. Hotfix resolving ecosystem licensing admission requirements and Gemini parser compatibility:
+
+- **Extensionless Root LICENSE for Downstream Registries**:
+  - Renamed `LICENSE.md` to extensionless `LICENSE` at repository root to satisfy Agentic Awesome Skills (AAS) and strict downstream registry admission policies requiring an upstream bounded root `LICENSE`.
+  - Updated all manifest files (`package.json`, `plugin.json`, `.claude-plugin/plugin.json`), documentation badge links (`README.md`, `docs/index.html`), and `NOTICE.md` to reference `LICENSE`.
+- **Gemini-Compatible Zip Archive Builder**:
+  - Updated `scripts/build_release.py` so that root `LICENSE` is packaged as `LICENSE.md` inside both Full and Compact release zips (`FULL_ZIP_FILES` and `COMPACT_ZIP_FILES`), ensuring zero extensionless files enter release archives and preventing Google Gemini web parser rejection.
+- **Release Distribution Rebuild**:
+  - Rebuilt `dist/SatoriSkill-Full-v6.5.5.zip`, `dist/SatoriSkill-Compact-v6.5.5.zip`, `dist/SatoriSkill-v6.5.5.zip`, and `dist/SHA256SUMS.txt`.
+
 ## [6.5.4] - 2026-10-28
 
 ### Tessl Skill Optimization, Multi-Agent MCP Integration & 8-Scenario Evaluation Suite

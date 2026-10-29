@@ -9,7 +9,7 @@ WORK_DIR="/tmp/satori-registry-submissions"
 mkdir -p "$WORK_DIR"
 cd "$WORK_DIR"
 
-PR_BODY_STANDARD='Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+PR_BODY_STANDARD='Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention.'
 
@@ -39,7 +39,7 @@ submit_behisecc() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the appropriate section and add this entry (alphabetically):"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.5, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -73,7 +73,7 @@ submit_majiayu000() {
   "name": "satori",
   "repo": "MetcalfSolutions/Satori",
   "path": ".",
-  "description": "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
+  "description": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "category": "personal-development",
   "tags": ["mental-health", "psychology", "wisdom", "philosophy", "ifs", "stoicism", "jungian", "conversation"],
   "author": "MetcalfSolutions",
@@ -183,7 +183,7 @@ tools: [claude]
 
 ## Overview
 
-Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 ## When to Use
 
@@ -302,7 +302,7 @@ submit_travisvn() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Individual Skills table under Community Skills and add:"
-  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. |'
+  echo '| **[Satori](https://github.com/MetcalfSolutions/Satori)** | Claude Code skill & open-source wisdom companion (v6.5.5, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. |'
   echo ""
   read -p "Press Enter after editing README.md..."
 
@@ -340,7 +340,7 @@ submit_e2b() {
   git push -u origin add-satori
   gh pr create \
     --title "Add Satori - wisdom companion cognitive agent" \
-    --body "Satori v6.5.4: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
+    --body "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.
 
 Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention."
 
@@ -362,7 +362,7 @@ submit_kyrolabs() {
   echo ""
   echo ">>> MANUAL STEP: Edit README.md"
   echo ">>> Find the Conversational/General Agents section and add:"
-  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.4, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
+  echo '- [Satori](https://github.com/MetcalfSolutions/Satori) - Claude Code skill & open-source wisdom companion (v6.5.5, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown. ![GitHub stars](https://img.shields.io/github/stars/MetcalfSolutions/Satori?style=social)'
   echo ""
   read -p "Press Enter after editing README.md..."
 

@@ -465,7 +465,7 @@ def main() -> int:
         ROOT_DIR / "docs" / "assets" / "satori-hero-v6.svg",
         ROOT_DIR / "docs" / "assets" / "satori-architecture-v6.svg",
     ]
-    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[0123]\b")
+    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[01234]\b")
     stale_errors: list[str] = []
     for target in stale_scan_targets:
         if not target.exists():
