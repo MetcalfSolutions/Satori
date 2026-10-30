@@ -50,6 +50,10 @@ scripts/run_hybrid_evals.py
 evals/hybrid_cases.jsonl
 evals/generate_eval_datasets.py
 
+# Internal registry tracking & submission logs
+registry-submissions/
+registry-submissions/**
+
 # Ignored directory and recursive contents
 ignored/
 ignored/**
