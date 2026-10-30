@@ -2,7 +2,6 @@
   "name": "satori",
   "displayName": "Satori",
   "version": "6.5.5",
-  "type": "claude-skill",
   "description": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
   "author": {
     "name": "Matthew Metcalf",
@@ -33,63 +32,5 @@
     "jungian",
     "ikigai",
     "dream-analysis"
-  ],
-  "category": "wellness",
-  "main": "SKILL.md",
-  "skills": [
-    "./"
-  ],
-  "files": [
-    "SKILL.md",
-    "PRIVACY.md",
-    "references/",
-    "scripts/",
-    "marketplace.json",
-    "plugin.json",
-    ".claude-plugin/plugin.json",
-    "LICENSE"
-  ],
-  "claude": {
-    "skillEntry": "SKILL.md",
-    "alwaysLoad": [
-      "SKILL.md"
-    ],
-    "onDemand": [
-      "references/SOUL.md",
-      "references/clinical-spine.md",
-      "references/traditions-quickref.md",
-      "references/core-compact.md",
-      "references/model-calibration.md",
-      "references/memory-system.md",
-      "references/toolkit-inquiry.md",
-      "references/toolkit-somatic.md",
-      "references/traditions-stoic.md",
-      "references/traditions-eastern.md",
-      "references/traditions-african-sufi.md",
-      "references/tone-and-voice.md"
-    ],
-    "conditional": [
-      {
-        "file": "references/onboarding.md",
-        "when": "New user arriving without an immediate specific struggle"
-      },
-      {
-        "file": "references/darknight-protocol.md",
-        "when": "Dark night / 3am existential despair signal detected (non-suicidal)"
-      },
-      {
-        "file": "references/grief-protocol.md",
-        "when": "Bereavement, disenfranchised loss, or ambiguous loss is central"
-      },
-      {
-        "file": "references/shadow-work-protocol.md",
-        "when": "Shadow work arc engaged via references/toolkit-inquiry.md"
-      },
-      {
-        "file": "references/relationship-protocol.md",
-        "when": "Two-person shared conflict session or solo acute relational rupture"
-      }
-    ]
-  },
-  "strict": false
+  ]
 }

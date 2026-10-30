@@ -1,0 +1,38 @@
+{
+  "name": "metcalfsolutions",
+  "description": "Official plugins and wisdom companion skills from Metcalf Solutions.",
+  "owner": {
+    "name": "Matthew Metcalf",
+    "url": "https://github.com/MetcalfSolutions"
+  },
+  "plugins": [
+    {
+      "name": "satori",
+      "description": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
+      "version": "6.5.5",
+      "source": "./",
+      "category": "wellness",
+      "homepage": "https://github.com/MetcalfSolutions/Satori",
+      "repository": "https://github.com/MetcalfSolutions/Satori",
+      "license": "Apache-2.0",
+      "keywords": [
+        "wisdom",
+        "introspection",
+        "mental-health",
+        "coaching",
+        "stoicism",
+        "buddhism",
+        "taoism",
+        "ifs",
+        "dbt",
+        "cft",
+        "psychology",
+        "self-reflection",
+        "companion",
+        "shadow-work",
+        "grief"
+      ]
+    }
+  ],
+  "version": "6.5.5"
+}
