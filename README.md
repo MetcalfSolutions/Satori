@@ -1,5 +1,7 @@
 # Satori
 
+[![HOL Guard](https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease)](https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&utm_medium=plugins_badge&utm_campaign=plugins&utm_content=metcalfsolutions%2Fsatori)
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/MetcalfSolutions/Satori/main/docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
   <br/><br/>
