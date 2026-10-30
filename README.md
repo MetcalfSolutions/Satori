@@ -11,7 +11,9 @@
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="Apache 2.0 License" /></a>
   <a href="#support-tiers-and-ecosystem-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=for-the-badge" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#the-350-case-benchmark-and-trigger-discipline"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=for-the-badge" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
-  <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a> [![HOL Guard](https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease)](https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&utm_medium=plugins_badge&utm_campaign=plugins&utm_content=metcalfsolutions%2Fsatori)
+  <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
+  <a href="https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&utm_medium=plugins_badge&utm_campaign=plugins&utm_content=metcalfsolutions%2Fsatori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease" alt="HOL Guard"></a>
+    
 </p>
 
 <p align="center">
