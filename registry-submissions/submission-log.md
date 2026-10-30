@@ -18,11 +18,11 @@
 
 ---
 
-## Phase 2 Rollout Submissions (14 High-Impact Target Repositories)
+## Phase 2 Rollout Submissions (14 Premier Target Repositories)
 
 | # | Registry | Stars | Category / Section | PR / Status | Submission Notes |
 |---|----------|-------|--------------------|-------------|------------------|
-| 1 | hesreallyhim/awesome-claude-code | 56,866 | Skills | Form Ready (Branch `add-satori` pushed) | PRs restricted (`collaborators_only`). Maintainer strictly mandates submitting via Web UI issue template (`recommend-resource.yml`). Payload and URL prepared. |
+| 1 | hesreallyhim/awesome-claude-code | 56,866 | Skills | Form Ready (Branch `add-satori` pushed) | PRs restricted (`collaborators_only`). Maintainer strictly mandates submitting via Web UI issue template (`recommend-resource.yml`). Branch `add-satori` (commit `29944bdb`) ready. |
 | 2 | composio-community/awesome-codex-skills | 17,121 | Productivity & Collaboration | https://github.com/composio-community/awesome-codex-skills/pull/395 | PR #395 opened. Canonical v6.5.5 entry. |
 | 3 | travisvn/awesome-claude-skills | 15,627 | Community Skills > Individual Skills | https://github.com/travisvn/awesome-claude-skills/pull/1385 | PR #1385 opened. Formatted per Individual Skills table pattern. |
 | 4 | heilcheng/awesome-agent-skills | 6,324 | Productivity and Collaboration | https://github.com/heilcheng/awesome-agent-skills/pull/637 | PR #637 opened. Strict adherence to AGENTS.md (<100 char description, verified checklist). |
@@ -32,18 +32,17 @@
 | 8 | skillmatic-ai/awesome-agent-skills | 690 | Ready-to-Use Skill Libraries > Popular Collections | https://github.com/skillmatic-ai/awesome-agent-skills/pull/224 | PR #224 opened. Verified section name and alphabetical placement. |
 | 9 | ai-boost/awesome-prompts | 9,149 | Agent Ecosystem > Agent Skills | https://github.com/ai-boost/awesome-prompts/pull/98 | PR #98 opened. Table entry with live star shield. |
 | 10 | humanloop/awesome-chatgpt | 8,206 | Example prompts | https://github.com/humanloop/awesome-chatgpt/pull/312 | PR #312 opened. "stateless" removed per audit. |
-| 11 | dontriskit/awesome-ai-system-prompts | 6,270 | System Prompts | Copy Ready (Pending Fork Cooldown) | System prompt case studies collection. Entry ready for fork cooldown window. |
-| 12 | langgptai/awesome-claude-prompts | 5,552 | 2026 Update: Claude Skills | Copy Ready (Pending Fork Cooldown) | Prepared entry for 2026 Claude Skills update section. |
-| 13 | taishi-i/awesome-ChatGPT-repositories | 3,334 | Prompts | Copy Ready (Pending Fork Cooldown) | Prepared entry for Prompts repository section. |
-| 14 | langgptai/awesome-grok-prompts | 520 | 2026 note | Copy Ready (Pending Fork Cooldown) | Softened Grok claim per audit (no Grok-specific calibration assertion). |
+| 11 | dontriskit/awesome-ai-system-prompts | 6,270 | Notes on Other Systems | https://github.com/dontriskit/awesome-ai-system-prompts/pull/66 | PR #66 opened. Notes on other systems case study insertion. |
+| 12 | langgptai/awesome-claude-prompts | 5,552 | 2026 Update: Claude Skills | https://github.com/langgptai/awesome-claude-prompts/pull/70 | PR #70 opened. Canonical 2026 Claude Skills update entry. |
+| 13 | taishi-i/awesome-ChatGPT-repositories | 3,334 | Prompts | https://github.com/taishi-i/awesome-ChatGPT-repositories/pull/303 | PR #303 opened. Direct repository listing in Prompts section. |
+| 14 | langgptai/awesome-grok-prompts | 520 | 2026 note | https://github.com/langgptai/awesome-grok-prompts/pull/4 | PR #4 opened. Softened Grok claim per audit (no Grok-specific calibration assertion). |
 
 ---
 
 ## Audit Trail & Re-Check Cadence
 
 1. **Phase 1 Remediation Pass**: Completed 2026-10-29. Stripped banned terms and stale character counts across all existing PRs; re-opened fresh v6.5.5 submissions on closed repos.
-2. **Phase 2 Wave 1 PR Execution**: Completed 2026-10-29. Opened 8 new PRs across developer and prompt hubs. Pushed fork branches for 2 collaborator-gated repos.
-3. **Phase 2 Wave 2 (Remaining 4 Targets)**: Scheduled as soon as GitHub's rolling secondary rate limit on fork creation expires.
-4. **Phase 4 Audits Scheduled**:
+2. **Phase 2 Complete Execution**: Completed 2026-10-29. Successfully submitted PRs to all 12 open repositories, pushed branches to the 2 collaborator-gated repositories, and prepared issue form payloads.
+3. **Phase 4 Audits Scheduled**:
    - Pass 1: November 11, 2026 (track triage feedback, review comments, and merge events).
    - Pass 2: November 28, 2026 (full ecosystem sync and directory health check).
