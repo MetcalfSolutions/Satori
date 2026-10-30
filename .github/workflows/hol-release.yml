@@ -1,0 +1,25 @@
+name: HOL Plugin Release
+
+# Scans each published release with HOL Guard, checks it with the Plugin Kit,
+# attests the evidence on GitHub and records it on the plugin's HOL listing.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  release:
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+      security-events: write
+    uses: hashgraph-online/hol-guard/.github/workflows/plugin-release.yml@b9337b304f29c16bcb0fc44ac3c8bb44ca914a68
+    with:
+      plugin_dir: "."
+      fail_on_severity: critical
+      upload_sarif: false
+      visibility: public
