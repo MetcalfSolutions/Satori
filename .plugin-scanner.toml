@@ -1,0 +1,8 @@
+[plugin_kit]
+exclude_paths = [
+  ".agents/**",
+  ".cursor/**",
+  ".hermes/**",
+  ".opencode/**",
+  "compact/**"
+]
