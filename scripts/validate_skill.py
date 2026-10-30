@@ -384,7 +384,9 @@ def main() -> int:
             ROOT_DIR / "marketplace.json",
             ROOT_DIR / "gemini-extension.json",
             ROOT_DIR / ".claude-plugin" / "plugin.json",
+            ROOT_DIR / ".claude-plugin" / "marketplace.json",
             ROOT_DIR / ".codex-plugin" / "plugin.json",
+            ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
             ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
         ]
         manifest_parity_ok = True
@@ -455,8 +457,10 @@ def main() -> int:
         ROOT_DIR / "plugin.json",
         ROOT_DIR / "openclaw.plugin.json",
         ROOT_DIR / "gemini-extension.json",
+        ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
         ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
         ROOT_DIR / ".claude-plugin" / "plugin.json",
+        ROOT_DIR / ".claude-plugin" / "marketplace.json",
         ROOT_DIR / ".codex-plugin" / "plugin.json",
         ROOT_DIR / "docs" / "architecture.md",
         ROOT_DIR / "docs" / "sitemap.xml",
