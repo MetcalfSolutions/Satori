@@ -1,7 +1,7 @@
 # Satori
 
 <p align="center">
-  <img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" />
+  <a href="https://metcalfsolutions.github.io/Satori/"><img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" /></a>
 </p>
 
 <p align="center">
@@ -16,7 +16,8 @@
 <p align="center">
   <strong>Psychologically Grounded Wisdom Companion for Inner Life</strong><br/>
   <em>18 Philosophical &amp; Contemplative Traditions · 6-Step Reflective Model · 8 Immovables · Local SQLite Memory Vault</em><br/>
-  <em>Built to be outgrown: the measure of Satori's success is that you need it less over time, not more.</em>
+  <em>Built to be outgrown: the measure of Satori's success is that you need it less over time, not more.</em><br/>
+  <a href="https://metcalfsolutions.github.io/Satori/">Take the 2-minute tour and see what Satori feels like</a>
 </p>
 
 ```bash
