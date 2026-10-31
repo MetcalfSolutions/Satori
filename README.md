@@ -10,15 +10,12 @@
   <a href="#installation--16-environment-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=flat-square" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#benchmark--verification-proof"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=flat-square" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
   <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
-  <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/badge/Tessl_Eval-100%25_(%2B52%25_Lift)-2ea44f?style=flat-square" alt="Tessl Eval 100% (+52% Lift)" /></a>
-  <a href="https://tessl.io/registry/metcalf-solutions1/satori"><img src="https://img.shields.io/badge/Skill_Spec-96%25_(100%25_Impl)-0969da?style=flat-square" alt="Skill Spec 96% (100% Impl)" /></a>
   <a href="https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&utm_medium=plugins_badge&utm_campaign=plugins&utm_content=metcalfsolutions%2Fsatori"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease" alt="HOL Guard" /></a>
-  <a href="#verification-contributing--lineage"><img src="https://img.shields.io/badge/Validator-58%20Checks%20Passed-2ea44f.svg?style=flat-square" alt="Validator: 58 checks passed" /></a>
 </p>
 
 <p align="center">
   <strong>Psychologically Grounded Wisdom Companion for Inner Life</strong><br/>
-  <em>18 Philosophical &amp; Contemplative Traditions · 6-Step Reflective Model · 8 Immovables · Local SQLite Memory Vault · Universal Cross-Platform Edition</em><br/>
+  <em>18 Philosophical &amp; Contemplative Traditions · 6-Step Reflective Model · 8 Immovables · Local SQLite Memory Vault</em><br/>
   <em>Built to be outgrown: the measure of Satori's success is that you need it less over time, not more.</em>
 </p>
 
@@ -37,7 +34,7 @@ git clone https://github.com/MetcalfSolutions/Satori.git
 </p>
 
 <p align="center">
-  <a href="https://metcalfsolutions.github.io/Satori/">Interactive Overview</a> ·
+  <a href="https://metcalfsolutions.github.io/Satori/"><B>Interactive Overview</B></a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md">Changelog</a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md">Safety Policy</a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md">Privacy &amp; Threat Model</a> ·
@@ -159,13 +156,8 @@ Satori's trigger discipline, output quality, and safety boundaries are verified 
 
 ### Tessl Evaluation & Optimization
 
-Satori is continuously evaluated and optimized on Tessl. See the live score and evaluation details here:
+Satori is continuously evaluated and optimized on Tessl. [See the live score and evaluation details here.](https://tessl.io/registry/metcalf-solutions1/satori)
 
-[Satori on Tessl](https://tessl.io/registry/metcalf-solutions1/satori)
-
-- **Scenario Evaluation**: 100% (+52% lift over baseline) across evaluation scenarios.
-- **Skill Specification Quality**: 96% (100% implementation quality score) via `tessl skill review`.
-- **Registry Installation**: `npx tessl install metcalf-solutions1/satori`
 
 ---
 
@@ -304,16 +296,16 @@ Satori is engineered with strict size and latency budgets from [`facts.json`](ht
 
 | Component | File Path | Budget Ceiling | Verified Size | Load Policy |
 |---|---|---|---|---|
-| **Entry File (Full Edition)** | [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md) | `&lt; 8,000 bytes` | `7,719 bytes` | Turn 1 default load (`&lt; 2,000 tokens`) |
-| **Compact Spine (Edge & Voice)** | [`references/core-compact.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/core-compact.md) | `&lt; 12,000 bytes` | `11,700 bytes` | Loaded only for Profile 5 edge/voice models |
-| **Clinical Spine** | [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md) | `&lt; 20,000 bytes` | `18,485 bytes` | Turn 2+ on-demand for deep introspection |
-| **Reference Shard Ceiling** | `references/*.md` (17 files total) | `&lt; 24,000 bytes` | All `&lt; 20 KB` | 12 on-demand modules + 5 conditional protocols |
-| **Compact Single-File Prompt** | [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) | `&lt;= 7,800 chars` | `7,404 chars` | Self-contained for ChatGPT and edge runners |
-| **Category A Pointer Stubs** | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, etc. | `&lt;= 15 lines` | 13–15 lines | Root routing pointers without duplicated rules |
-| **Memory Lookup Latency** | `scripts/satori_memory.py` | `&lt; 150 ms` | `&lt; 40 ms` | Local Python stdlib SQLite FTS5 query |
-| **Hook Initialization Latency** | Pre-command harness hook | `&lt; 250 ms` | `&lt; 85 ms` | Fast startup on session initiation |
-| **Signal Length Cap** | Theme summary in local vault | `&lt;= 500 chars` | Enforced | Structural pattern signals, no transcripts |
-| **Continuity Note Cap** | Stateless `SATORI_NOTE v6.5` | `&lt;= 600 chars` | Enforced | Plain-text data block for web chat |
+| **Entry File (Full Edition)** | [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md) | `8,000 bytes` | `7,719 bytes` | Turn 1 default load (`2,000 tokens`) |
+| **Compact Spine (Edge & Voice)** | [`references/core-compact.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/core-compact.md) | `12,000 bytes` | `11,700 bytes` | Loaded only for Profile 5 edge/voice models |
+| **Clinical Spine** | [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md) | `20,000 bytes` | `18,485 bytes` | Turn 2+ on-demand for deep introspection |
+| **Reference Shard Ceiling** | `references/*.md` (17 files total) | `24,000 bytes` | All `20 KB` | 12 on-demand modules + 5 conditional protocols |
+| **Compact Single-File Prompt** | [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) | `7,800 chars` | `7,404 chars` | Self-contained for ChatGPT and edge runners |
+| **Category A Pointer Stubs** | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, etc. | `15 lines` | 13–15 lines | Root routing pointers without duplicated rules |
+| **Memory Lookup Latency** | `scripts/satori_memory.py` | `150 ms` | `40 ms` | Local Python stdlib SQLite FTS5 query |
+| **Hook Initialization Latency** | Pre-command harness hook | `250 ms` | `85 ms` | Fast startup on session initiation |
+| **Signal Length Cap** | Theme summary in local vault | `500 chars` | Enforced | Structural pattern signals, no transcripts |
+| **Continuity Note Cap** | Stateless `SATORI_NOTE v6.5` | `600 chars` | Enforced | Plain-text data block for web chat |
 
 For complete architectural specifications, token load models, and progressive loading diagrams, see the [Full Architecture Matrix](https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md).
 
