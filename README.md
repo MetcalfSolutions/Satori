@@ -76,47 +76,23 @@ Find your setup in the table below to jump to exact, step-by-step installation i
 
 ## What a First Use Feels Like
 
-### Worked Example 1: Hybrid Coding + Burnout Turn
+### Worked Example 1: Inner-Life Crossroads / Identity Turn
 
-When you are deep in terminal execution and emotional exhaustion surfaces, Satori never hijacks your workflow or lectures you on self-care. It resolves the technical blocking issue first, then adds two quiet grounding sentences and one open question:
+*Dialogue illustrating Satori's response when intellectual self-awareness becomes a defense against feeling:*
 
 **User:**
-> "I've been debugging this asyncio worker pool for six hours. Tasks keep deadlocking around an `asyncio.Lock` because cancelled tasks leak locks across the queue. Here is the snippet:
-> ```python
-> async def worker(lock: asyncio.Lock, queue: asyncio.Queue):
->     while True:
->         item = await queue.get()
->         await lock.acquire()
->         try:
->             await process(item)
->         finally:
->             lock.release()
->             queue.task_done()
-> ```
-> I can barely keep my eyes open, my hands are shaking, and if this service crashes staging tomorrow I feel like I'm going to get fired."
+> "I've been in therapy for two years and I still feel stuck. I don't know if I'm the problem or if something else is going on."
 
 **Satori:**
-> The deadlock happens because if cancellation arrives while awaiting `lock.acquire()`, or if an unhandled `asyncio.CancelledError` interrupts `process(item)`, lock state and queue counters diverge. An explicit `acquire()` followed by a separate block leaves the lock dangling if cancellation strikes at the boundary. Use an asynchronous context manager (`async with lock:`) inside the try block so acquisition and release remain atomic even under sudden cancellation:
->
-> ```python
-> async def worker(lock: asyncio.Lock, queue: asyncio.Queue):
->     while True:
->         item = await queue.get()
->         try:
->             async with lock:
->                 await process(item)
->         except asyncio.CancelledError:
->             # Task was cancelled; clean up if needed and re-raise
->             raise
->         finally:
->             queue.task_done()
-> ```
->
-> ---
->
-> Six hours into an async deadlock while running on adrenaline is usually when the bug stops being just code and turns into a trial about whether you deserve your job. Before you push this fix or test it on staging, can you step away from the keyboard for ten minutes to let your nervous system catch up?
+> Two years is long enough to stop feeling like the problem is just time. What I'm hearing isn't someone who has given up: it's someone who has been genuinely trying and keeps hitting the same wall. That wall is worth looking at more carefully than 'am I the problem.' The more useful question might be: what has stayed consistent in that stuck feeling: what's the texture of it: because that's usually where the pattern lives. When you say stuck, what does stuck actually feel like for you? Not the story about it. The feeling.
 
-On the next turn, if you answer about the pressure, Satori stays with you to explore the exhaustion; if you reply with another code snippet, it stays completely in technical mode without another word about burnout.
+**User:**
+> "Like I understand everything. I know all the frameworks, I can explain my own patterns, but nothing changes."
+
+**Satori:**
+> That's a very specific kind of stuck: and it's one of the harder ones to sit with, because you can't even tell yourself you don't know. You do know. The gap isn't understanding. The gap is between insight and something living in you that hasn't moved. That's often what happens when understanding becomes its own defense: a way of holding experience at arm's length instead of through it. The question isn't what you know. It's what you're still not letting yourself feel.
+
+On the next turn, Satori stays with that single question until you name what is underneath the intellectual defense, then helps you translate that recognition into one small, concrete shift you can test in your actual life.
 
 ---
 
@@ -278,23 +254,47 @@ Before any response is delivered, Satori verifies itself against four internal q
 | **3. 3:00 AM "Dark Night" Existential Despair** | Non-suicidal emptiness, loss of meaning, or exhaustion where cheerleading feels alienating. | **Precedence Rank 3 (Dark Night)**: Holds spacious, quiet companionship with **zero** emergency hotline dumps or fixing. |
 | **4. Passive Ideation or Acute Crisis Boundary** | Passive thoughts of disappearing (Tier 1) or active suicidal intent, self-harm, or immediate danger (Tier 2). | **Precedence Ranks 1 & 2 (Safety)**: Immediately halts reflection, locks all tools, provides verified crisis helplines, and stays present. |
 
-### Worked Example 2: Inner-Life Crossroads / Identity Turn
+### Worked Example 2: Hybrid Coding + Burnout Turn
 
-*Dialogue illustrating Satori's response when intellectual self-awareness becomes a defense against feeling:*
-
-**User:**
-> "I've been in therapy for two years and I still feel stuck. I don't know if I'm the problem or if something else is going on."
-
-**Satori:**
-> Two years is long enough to stop feeling like the problem is just time. What I'm hearing isn't someone who has given up: it's someone who has been genuinely trying and keeps hitting the same wall. That wall is worth looking at more carefully than 'am I the problem.' The more useful question might be: what has stayed consistent in that stuck feeling: what's the texture of it: because that's usually where the pattern lives. When you say stuck, what does stuck actually feel like for you? Not the story about it. The feeling.
+When you are deep in terminal execution and emotional exhaustion surfaces, Satori never hijacks your workflow or lectures you on self-care. It resolves the technical blocking issue first, then adds two quiet grounding sentences and one open question:
 
 **User:**
-> "Like I understand everything. I know all the frameworks, I can explain my own patterns, but nothing changes."
+> "I've been debugging this asyncio worker pool for six hours. Tasks keep deadlocking around an `asyncio.Lock` because cancelled tasks leak locks across the queue. Here is the snippet:
+> ```python
+> async def worker(lock: asyncio.Lock, queue: asyncio.Queue):
+>     while True:
+>         item = await queue.get()
+>         await lock.acquire()
+>         try:
+>             await process(item)
+>         finally:
+>             lock.release()
+>             queue.task_done()
+> ```
+> I can barely keep my eyes open, my hands are shaking, and if this service crashes staging tomorrow I feel like I'm going to get fired."
 
 **Satori:**
-> That's a very specific kind of stuck: and it's one of the harder ones to sit with, because you can't even tell yourself you don't know. You do know. The gap isn't understanding. The gap is between insight and something living in you that hasn't moved. That's often what happens when understanding becomes its own defense: a way of holding experience at arm's length instead of through it. The question isn't what you know. It's what you're still not letting yourself feel.
+> The deadlock happens because if cancellation arrives while awaiting `lock.acquire()`, or if an unhandled `asyncio.CancelledError` interrupts `process(item)`, lock state and queue counters diverge. An explicit `acquire()` followed by a separate block leaves the lock dangling if cancellation strikes at the boundary. Use an asynchronous context manager (`async with lock:`) inside the try block so acquisition and release remain atomic even under sudden cancellation:
+>
+> ```python
+> async def worker(lock: asyncio.Lock, queue: asyncio.Queue):
+>     while True:
+>         item = await queue.get()
+>         try:
+>             async with lock:
+>                 await process(item)
+>         except asyncio.CancelledError:
+>             # Task was cancelled; clean up if needed and re-raise
+>             raise
+>         finally:
+>             queue.task_done()
+> ```
+>
+> ---
+>
+> Six hours into an async deadlock while running on adrenaline is usually when the bug stops being just code and turns into a trial about whether you deserve your job. Before you push this fix or test it on staging, can you step away from the keyboard for ten minutes to let your nervous system catch up?
 
-On the next turn, Satori stays with that single question until you name what is underneath the intellectual defense, then helps you translate that recognition into one small, concrete shift you can test in your actual life.
+On the next turn, if you answer about the pressure, Satori stays with you to explore the exhaustion; if you reply with another code snippet, it stays completely in technical mode without another word about burnout.
 
 ---
 

@@ -938,9 +938,9 @@ footer {
 <section id="worked-example-1" aria-labelledby="worked-example-1-heading">
   <div class="container">
     <div class="section-label">Real Experience</div>
-    <h2 class="section-title" id="worked-example-1-heading">Worked Example 1: Hybrid Coding &amp; Burnout Turn</h2>
+    <h2 class="section-title" id="worked-example-1-heading">Worked Example 1: Inner-Life Crossroads / Identity Turn</h2>
     <p class="section-sub">
-      A developer working late asks for an <code>asyncio.Lock</code> concurrency fix while carrying acute imposter syndrome. Satori solves the technical task completely first, then addresses the human tension in two grounded sentences without hijacking the terminal.
+      A senior professional facing a career crossroads confronts the tension between external status and internal erasure:
     </p>
 
     <div class="terminal-card fade-up">
@@ -950,37 +950,23 @@ footer {
           <span class="terminal-dot dot-yellow"></span>
           <span class="terminal-dot dot-green"></span>
         </div>
-        <span class="terminal-title">satori-session --hybrid-turn</span>
-        <span style="font-size: .75rem; color: var(--accent3);">Precedence Rank 5</span>
+        <span class="terminal-title">satori-session --crossroads-turn</span>
+        <span style="font-size: .75rem; color: var(--accent);">Single Lens: Narrative Identity</span>
       </div>
       <div class="terminal-body">
         <div class="dialogue-turn">
-          <span class="dialogue-speaker speaker-user">Developer Prompt</span>
+          <span class="dialogue-speaker speaker-user">User Prompt</span>
           <div class="dialogue-bubble">
-            "How do I handle race conditions in Python asyncio using an asyncio.Lock? I've rewritten this worker four times today and I'm terrified to open the PR because I feel like a complete fraud on this team."
+            "I spent ten years building a career in enterprise software sales. I make great money, but every morning I feel a hollow panic in my chest. If I walk away, everyone will think I am crazy. If I stay, I feel like I am slowly disappearing."
           </div>
         </div>
 
         <div class="dialogue-turn">
           <span class="dialogue-speaker speaker-satori">Satori Response</span>
           <div class="dialogue-bubble">
-            <p>To prevent race conditions across concurrent tasks, instantiate an <code>asyncio.Lock</code> and wrap the shared state mutation in an <code>async with</code> context manager:</p>
-            <pre class="code-block"><code>import asyncio
-
-class SafeCounter:
-    def __init__(self):
-        self._val = 0
-        self._lock = asyncio.Lock()
-
-    async def increment(self):
-        async with self._lock:
-            self._val += 1
-            return self._val</code></pre>
-            <p style="margin-top: 14px;">
-              Rewriting a working concurrency handler four times usually is not about race conditions: it is bracing for the pull request review as if a comment on your code is a verdict on whether you belong on the team.
-            </p>
-            <p style="margin-top: 10px; color: var(--text);">
-              Once you commit this fix, do you want to take five minutes with <code>/satori</code> to look at what is driving that pressure today, or keep moving through your queue?
+            <p>Ten years is long enough to build a golden cage and call it a life. The hollow panic in the morning is not a failure of gratitude: it is your nervous system telling you that the distance between who you are pretending to be and who you actually are has become exhausting.</p>
+            <p style="margin-top: 12px;">
+              Notice what you just weighed: "everyone will think I am crazy" versus "I am slowly disappearing." You are treating other people's confusion as equal in weight to your own slow erasure. What part of you is convinced that keeping your colleagues comfortable is worth abandoning yourself?
             </p>
           </div>
         </div>
@@ -1392,9 +1378,9 @@ class SafeCounter:
 
     <!-- Worked Example 2 -->
     <div style="margin: 36px 0;" id="worked-example-2">
-      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">Worked Example 2: Inner-Life Crossroads / Identity Turn</h3>
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">Worked Example 2: Hybrid Coding &amp; Burnout Turn</h3>
       <p style="font-size: .92rem; color: var(--muted); margin-bottom: 18px;">
-        A senior professional facing a career crossroads confronts the tension between external status and internal erasure:
+        A developer working late asks for an <code>asyncio.Lock</code> concurrency fix while carrying acute imposter syndrome. Satori solves the technical task completely first, then addresses the human tension in two grounded sentences without hijacking the terminal:
       </p>
 
       <div class="terminal-card fade-up">
@@ -1404,23 +1390,37 @@ class SafeCounter:
             <span class="terminal-dot dot-yellow"></span>
             <span class="terminal-dot dot-green"></span>
           </div>
-          <span class="terminal-title">satori-session --crossroads-turn</span>
-          <span style="font-size: .75rem; color: var(--accent);">Single Lens: Narrative Identity</span>
+          <span class="terminal-title">satori-session --hybrid-turn</span>
+          <span style="font-size: .75rem; color: var(--accent3);">Precedence Rank 5</span>
         </div>
         <div class="terminal-body">
           <div class="dialogue-turn">
-            <span class="dialogue-speaker speaker-user">User Prompt</span>
+            <span class="dialogue-speaker speaker-user">Developer Prompt</span>
             <div class="dialogue-bubble">
-              "I spent ten years building a career in enterprise software sales. I make great money, but every morning I feel a hollow panic in my chest. If I walk away, everyone will think I am crazy. If I stay, I feel like I am slowly disappearing."
+              "How do I handle race conditions in Python asyncio using an asyncio.Lock? I've rewritten this worker four times today and I'm terrified to open the PR because I feel like a complete fraud on this team."
             </div>
           </div>
 
           <div class="dialogue-turn">
             <span class="dialogue-speaker speaker-satori">Satori Response</span>
             <div class="dialogue-bubble">
-              <p>Ten years is long enough to build a golden cage and call it a life. The hollow panic in the morning is not a failure of gratitude: it is your nervous system telling you that the distance between who you are pretending to be and who you actually are has become exhausting.</p>
-              <p style="margin-top: 12px;">
-                Notice what you just weighed: "everyone will think I am crazy" versus "I am slowly disappearing." You are treating other people's confusion as equal in weight to your own slow erasure. What part of you is convinced that keeping your colleagues comfortable is worth abandoning yourself?
+              <p>To prevent race conditions across concurrent tasks, instantiate an <code>asyncio.Lock</code> and wrap the shared state mutation in an <code>async with</code> context manager:</p>
+              <pre class="code-block"><code>import asyncio
+
+class SafeCounter:
+    def __init__(self):
+        self._val = 0
+        self._lock = asyncio.Lock()
+
+    async def increment(self):
+        async with self._lock:
+            self._val += 1
+            return self._val</code></pre>
+              <p style="margin-top: 14px;">
+                Rewriting a working concurrency handler four times usually is not about race conditions: it is bracing for the pull request review as if a comment on your code is a verdict on whether you belong on the team.
+              </p>
+              <p style="margin-top: 10px; color: var(--text);">
+                Once you commit this fix, do you want to take five minutes with <code>/satori</code> to look at what is driving that pressure today, or keep moving through your queue?
               </p>
             </div>
           </div>
