@@ -119,8 +119,8 @@ nav {
   font-weight: 600;
 }
 .nav-logo span { color: var(--accent); font-style: italic; font-size: 1rem; margin-left: 4px; font-weight: 400; }
-.nav-links { display: flex; gap: 22px; align-items: center; }
-.nav-links a { font-size: .86rem; color: var(--muted); transition: color .2s; padding: 6px 4px; min-height: 36px; display: inline-flex; align-items: center; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { font-size: .84rem; color: var(--muted); transition: color .2s; padding: 6px 4px; min-height: 36px; display: inline-flex; align-items: center; }
 .nav-links a:hover { color: var(--text); }
 .nav-links .btn-nav {
   background: var(--accent-btn);
@@ -136,11 +136,12 @@ nav {
 /* ── Hero ────────────────────────────────────────────────── */
 #hero {
   position: relative;
-  min-height: 90vh;
-  min-height: 90svh;
+  min-height: 85vh;
+  min-height: 85svh;
   display: flex; align-items: center;
   overflow: hidden;
-  padding-top: 60px;
+  padding-top: 70px;
+  padding-bottom: 50px;
 }
 #particles-canvas {
   position: absolute; inset: 0; z-index: 0;
@@ -148,61 +149,114 @@ nav {
 }
 .hero-inner {
   position: relative; z-index: 1;
-  max-width: 860px;
-  padding: 60px 28px 60px;
-  margin: 0 auto 0 calc((100vw - 1100px)/2);
+  max-width: 900px;
+  padding: 40px 28px;
+  margin: 0 auto;
 }
-@media (max-width: 1160px) { .hero-inner { margin-left: 0; } }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 24px;
+.hero-banner-wrap {
+  text-align: center;
+  margin-bottom: 24px;
 }
-.hero-eyebrow span { color: var(--accent); font-weight: 600; }
+.hero-banner {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 36px rgba(0,0,0,.45);
+}
+.badge-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.badge-strip img {
+  display: inline-block;
+  vertical-align: middle;
+}
 .hero-h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.6vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.18;
-  letter-spacing: -.01em;
-  margin-bottom: 18px;
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--text);
 }
-.hero-h1 .line2 { color: var(--accent); font-style: italic; display: block; font-size: clamp(1.55rem, 3.4vw, 2.4rem); margin-top: 6px; }
-.hero-sub {
-  font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 20px;
-}
-.hero-quote {
-  padding: 14px 18px;
-  background: rgba(148,132,255,.08);
+.hero-outgrown {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  padding: 16px 20px;
+  background: rgba(148,132,255,.07);
   border-left: 3px solid var(--accent);
   border-radius: 0 8px 8px 0;
-  font-size: .94rem;
-  color: var(--text);
-  font-style: italic;
-  margin-bottom: 24px;
-  line-height: 1.7;
-}
-.hero-desc {
-  font-size: .95rem;
-  color: var(--muted);
-  max-width: 680px;
-  margin-bottom: 32px;
+  font-size: .98rem;
   line-height: 1.75;
+  color: var(--text);
 }
-.hero-desc strong { color: var(--text); }
-.hero-ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-outgrown p { margin-bottom: 8px; }
+.hero-outgrown p:last-child { margin-bottom: 0; }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 740px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  text-align: center;
+}
+.hero-install-box {
+  max-width: 680px;
+  margin: 0 auto 36px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.cmd-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.cmd-code {
+  font-family: var(--font-mono);
+  font-size: .92rem;
+  color: var(--accent3);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.copy-btn {
+  background: var(--accent-btn);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: opacity .2s, transform .1s;
+  flex-shrink: 0;
+}
+.copy-btn:hover { opacity: .9; }
+.copy-btn:active { transform: scale(.96); }
+.hero-ctas { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .btn-primary {
   background: var(--accent-btn);
   color: #fff;
-  padding: 12px 28px;
+  padding: 12px 26px;
   min-height: 44px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: .92rem;
+  font-size: .9rem;
   transition: transform .2s, opacity .2s;
   display: inline-flex;
   align-items: center;
@@ -211,53 +265,351 @@ nav {
 .btn-ghost {
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 12px 24px;
+  padding: 12px 22px;
   min-height: 44px;
   border-radius: 8px;
-  font-size: .92rem;
+  font-size: .9rem;
   transition: border-color .2s, color .2s;
   display: inline-flex;
   align-items: center;
 }
 .btn-ghost:hover { border-color: var(--accent); color: #fff; }
 .hero-stats {
-  display: flex; gap: 32px; flex-wrap: wrap;
+  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
   border-top: 1px solid var(--border);
-  padding-top: 28px;
+  padding-top: 24px;
+  margin-top: 20px;
 }
+.hero-stats .stat { text-align: center; }
 .hero-stats .stat strong {
   display: block;
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1;
   margin-bottom: 4px;
 }
-.hero-stats .stat span { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.hero-stats .stat span { font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 
 /* ── Section Base ────────────────────────────────────────── */
-section { padding: 80px 0; }
+section { padding: 76px 0; border-bottom: 1px solid var(--border); }
 .section-label {
   font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 14px; font-weight: 600;
+  color: var(--accent); margin-bottom: 12px; font-weight: 600;
 }
 .section-title {
   font-family: var(--font-serif);
   font-size: clamp(1.7rem, 3.2vw, 2.3rem);
   font-weight: 400;
   line-height: 1.25;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .section-sub {
   color: var(--muted);
-  max-width: 680px;
+  max-width: 720px;
   font-size: .95rem;
-  margin-bottom: 44px;
+  margin-bottom: 36px;
   line-height: 1.75;
 }
 
-/* ── Installation & Tier Tags ────────────────────────────── */
+/* ── Position 2: Surface Chooser ─────────────────────────── */
+.surface-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+}
+.surface-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color .25s, transform .25s;
+}
+.surface-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.surface-badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent3);
+  margin-bottom: 10px;
+}
+.surface-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.surface-card p {
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.surface-link {
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.surface-link:hover { color: var(--text); }
+
+/* ── Position 3: Worked Example 1 ────────────────────────── */
+.terminal-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 920px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+.terminal-bar {
+  background: #181b28;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.terminal-dots { display: flex; gap: 6px; }
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+.terminal-title { font-family: var(--font-mono); font-size: .78rem; color: var(--muted); }
+.terminal-body { padding: 24px; }
+.dialogue-turn { margin-bottom: 20px; }
+.dialogue-turn:last-child { margin-bottom: 0; }
+.dialogue-speaker {
+  font-size: .74rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+.speaker-user { color: var(--accent2); }
+.speaker-satori { color: var(--accent); }
+.dialogue-bubble {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: .92rem;
+  line-height: 1.75;
+}
+.code-block {
+  background: rgba(0,0,0,.6);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: .84rem;
+  color: var(--accent3);
+  line-height: 1.6;
+}
+
+/* ── Position 4: Why Satori Is Different (Table) ─────────── */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 18px 0;
+}
+.diff-table, .benchmark-table, .matrix-table, .crisis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  background: var(--bg2);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.diff-table th, .diff-table td,
+.benchmark-table th, .benchmark-table td,
+.matrix-table th, .matrix-table td,
+.crisis-table th, .crisis-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.diff-table th, .benchmark-table th, .matrix-table th, .crisis-table th {
+  background: var(--bg3);
+  color: var(--muted);
+  font-size: .76rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.diff-table tr:last-child td,
+.benchmark-table tr:last-child td,
+.matrix-table tr:last-child td,
+.crisis-table tr:last-child td {
+  border-bottom: none;
+}
+.dim-col { font-weight: 600; color: var(--text); width: 22%; }
+.generic-col { color: var(--muted); width: 38%; }
+.satori-col { color: var(--text); background: rgba(148,132,255,.04); width: 40%; }
+.pass-badge { color: var(--accent3); font-weight: 600; }
+
+/* ── Position 5: Boundaries (2-col grid) ─────────────────── */
+.boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
+}
+.boundary-card {
+  background: var(--bg2);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+.boundary-card.positive { border-left: 4px solid var(--accent3); }
+.boundary-card.negative { border-left: 4px solid var(--accent2); }
+.boundary-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+.boundary-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.boundary-card li {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(42,46,72,.5);
+}
+.boundary-card li:last-child { border-bottom: none; }
+.boundary-card.positive li strong { color: var(--accent3); }
+.boundary-card.negative li strong { color: var(--accent2); }
+
+/* ── Position 6: 8 Immovables ────────────────────────────── */
+.immovables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+}
+.immovable-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  transition: border-color .25s;
+}
+.immovable-card:hover { border-color: var(--accent); }
+.immovable-num {
+  font-size: .72rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+.immovable-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.immovable-card p {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── Position 7: Benchmarks & Tessl ──────────────────────── */
+.tessl-block {
+  margin-top: 32px;
+  background: rgba(46,164,79,.08);
+  border: 1px solid rgba(46,164,79,.35);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.tessl-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.tessl-text p {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Position 8: How It Works ────────────────────────────── */
+.origin-box {
+  background: rgba(148,132,255,.06);
+  border: 1px solid rgba(148,132,255,.25);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 32px 0;
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.origin-box h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+.origin-box p { margin-bottom: 14px; }
+.origin-box p:last-child { margin-bottom: 0; }
+.steps-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+.step-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.step-num {
+  font-size: .72rem;
+  font-family: var(--font-mono);
+  color: var(--accent3);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+.step-item h4 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.step-item p {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Position 10: Matrix & Tier Badges ───────────────────── */
 .tier-tag {
   display: inline-block;
   padding: 3px 10px;
@@ -266,345 +618,41 @@ section { padding: 80px 0; }
   font-weight: 600;
   letter-spacing: .05em;
   text-transform: uppercase;
-  margin-bottom: 8px;
 }
-.tier-a {
-  background: rgba(78,205,196,.14);
-  border: 1px solid rgba(78,205,196,.45);
-  color: var(--accent3);
-}
-.tier-b {
-  background: rgba(148,132,255,.14);
-  border: 1px solid rgba(148,132,255,.45);
-  color: var(--accent);
-}
-.tier-c {
-  background: rgba(240,140,101,.14);
-  border: 1px solid rgba(240,140,101,.45);
-  color: var(--accent2);
-}
+.tier-a { background: rgba(78,205,196,.14); border: 1px solid rgba(78,205,196,.45); color: var(--accent3); }
+.tier-b { background: rgba(148,132,255,.14); border: 1px solid rgba(148,132,255,.45); color: var(--accent); }
+.tier-c { background: rgba(240,140,101,.14); border: 1px solid rgba(240,140,101,.45); color: var(--accent2); }
 
-/* ── Hooks Strip (Differentiators) ───────────────────────── */
-#hooks { background: var(--bg); padding: 72px 0; border-bottom: 1px solid var(--border); }
-.hooks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 28px;
-}
-.hook-card {
-  padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg2);
-  transition: border-color .3s, transform .3s;
-}
-.hook-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-.hook-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--text);
-}
-.hook-card p { font-size: .9rem; color: var(--muted); line-height: 1.75; }
-.hook-card blockquote {
-  margin-top: 16px;
-  padding: 10px 14px;
-  border-left: 2px solid var(--accent2);
-  background: rgba(240,140,101,.07);
-  font-style: italic;
-  font-size: .85rem;
-  color: var(--text);
-  border-radius: 0 6px 6px 0;
-}
-
-/* ── Who This Is For ─────────────────────────────────────── */
-#for-you { background: var(--bg2); border-bottom: 1px solid var(--border); }
-.for-you-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 22px; margin-bottom: 36px; }
-.for-card {
-  padding: 28px; border: 1px solid var(--border); border-radius: 12px;
-  background: var(--bg3); transition: border-color .3s, transform .3s;
-}
-.for-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
-.for-card h3 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
-.for-card p { font-size: .88rem; color: var(--muted); line-height: 1.7; }
-.for-card blockquote {
-  margin-top: 14px; padding: 10px 12px; border-left: 2px solid var(--accent2);
-  background: rgba(240,140,101,.07); font-style: italic; font-size: .84rem;
-  color: var(--text); border-radius: 0 6px 6px 0;
-}
-.not-for-box { padding: 26px 30px; border: 1px solid rgba(240,140,101,.35); border-radius: 12px; background: rgba(240,140,101,.05); }
-.not-for-label { font-size: .86rem; color: var(--muted); margin-bottom: 12px; }
-.not-for-label em { color: var(--accent2); font-style: normal; font-weight: 600; }
-.not-for-list { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-.not-for-list span { padding: 4px 14px; border: 1px solid rgba(240,140,101,.35); border-radius: 999px; font-size: .8rem; color: var(--text); }
-.not-for-sub { font-size: .86rem; color: var(--muted); font-style: italic; }
-.not-for-sub a { color: var(--accent2); text-decoration: underline; }
-
-/* ── Conversation Examples ───────────────────────────────── */
-#examples { background: var(--bg); border-bottom: 1px solid var(--border); }
-.conv-thread { display: flex; flex-direction: column; gap: 16px; max-width: 820px; }
-.conv-msg { padding: 20px 24px; border-radius: 12px; }
-.conv-msg.user { background: var(--bg2); border: 1px solid var(--border); margin-right: 60px; }
-.conv-msg.satori { background: rgba(148,132,255,.08); border: 1px solid rgba(148,132,255,.28); margin-left: 60px; }
-@media (max-width: 600px) { .conv-msg.user, .conv-msg.satori { margin-left: 0; margin-right: 0; } }
-.conv-role { display: block; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-weight: 600; }
-.conv-msg.user .conv-role { color: var(--muted); }
-.conv-msg p { font-size: .92rem; color: var(--text); line-height: 1.8; margin: 0; }
-.test-prompt-card {
-  margin-top: 28px; padding: 18px 22px;
-  background: rgba(78,205,196,.07);
-  border: 1px solid rgba(78,205,196,.3);
-  border-radius: 8px;
-  max-width: 820px;
-  font-size: .92rem;
-  color: var(--accent3);
-}
-
-/* ── Install (Get Satori) ────────────────────────────────── */
-#install { background: var(--bg2); border-bottom: 1px solid var(--border); }
-.install-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 24px;
-}
-.install-card {
-  padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg3);
-}
-.install-card.featured {
-  border-color: rgba(240,140,101,.5);
-  position: relative;
-  padding-top: 46px;
-}
-.install-card.featured::before {
-  content: 'Web Chat · 3-Step Setup';
-  position: absolute; top: 0; left: 0; right: 0;
-  background: var(--accent2-btn); color: #fff; font-size: .72rem;
-  letter-spacing: .08em; text-transform: uppercase; padding: 6px 16px;
-  font-weight: 600; border-radius: 11px 11px 0 0; text-align: center;
-}
-.install-card h3 {
-  font-family: var(--font-serif); font-size: 1.18rem;
-  margin-bottom: 12px; color: var(--text);
-}
-.install-card p { font-size: .88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
-.install-card ol { margin-left: 20px; font-size: .86rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
-.install-card ol li strong { color: var(--text); }
-.install-framing {
-  margin-top: 12px;
-  font-size: .84rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
-.download-pill-group {
-  display: flex; flex-direction: column; gap: 10px; margin: 14px 0;
-}
-.download-pill {
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
-  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
-  padding: 12px 16px; min-height: 44px; font-size: .84rem; color: var(--text);
-  transition: border-color .2s, background .2s;
-}
-.download-pill:hover { border-color: var(--accent); background: rgba(148,132,255,.08); color: #fff; }
-.download-pill span { color: var(--muted); font-size: .78rem; }
-
-pre {
-  background: rgba(0,0,0,.45);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: .8rem;
-  overflow-x: auto;
-  color: var(--accent3);
-  font-family: var(--font-mono);
-  line-height: 1.6;
-  margin: 10px 0;
-}
-
-/* ── Benchmark Results Card ──────────────────────────────── */
-#benchmarks { background: var(--bg); border-bottom: 1px solid var(--border); }
-.benchmark-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 900px;
-  margin-bottom: 28px;
-}
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  margin: 18px 0;
-}
-.benchmark-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .88rem;
-}
-.benchmark-table th, .benchmark-table td {
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-.benchmark-table th {
-  color: var(--muted);
-  font-size: .75rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.benchmark-table td strong { color: var(--text); }
-.benchmark-table .pass-badge {
-  color: var(--accent3);
-  font-weight: 600;
-}
-.benchmark-note {
-  font-size: .86rem;
-  color: var(--muted);
-  line-height: 1.75;
-}
-.benchmark-note a { color: var(--accent3); text-decoration: underline; }
-
-/* ── Three Pillars ───────────────────────────────────────── */
-#pillars { background: var(--bg2); border-bottom: 1px solid var(--border); }
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
-}
-.pillar {
-  padding: 32px 28px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--bg3);
-  position: relative;
-  overflow: hidden;
-  transition: border-color .3s;
-}
-.pillar:hover { border-color: rgba(148,132,255,.55); }
-.pillar-num {
-  font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 12px; display: block; font-weight: 600;
-}
-.pillar h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 10px; color: var(--text); }
-.pillar p { font-size: .88rem; color: var(--muted); line-height: 1.7; }
-.pillar .pillar-warn { margin-top: 14px; font-size: .82rem; color: var(--accent2); font-style: italic; }
-.pillar-summaries {
-  display: flex; flex-direction: column; gap: 18px; max-width: 860px;
-}
-.summary-block {
-  padding: 20px 24px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-size: .9rem;
-  color: var(--muted);
-  line-height: 1.75;
-}
-.summary-block strong { color: var(--text); }
-.summary-block a { color: var(--accent3); text-decoration: underline; }
-
-/* ── Privacy in Plain Language ───────────────────────────── */
-#privacy { background: var(--bg); border-bottom: 1px solid var(--border); }
-.privacy-box {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 36px;
-  max-width: 860px;
-}
-.privacy-box h2 {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  margin-bottom: 14px;
-  color: var(--text);
-}
-.privacy-box p {
-  font-size: .94rem;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-.privacy-box p strong { color: var(--text); }
-.privacy-box a { color: var(--accent3); text-decoration: underline; }
-
-/* ── FAQ ─────────────────────────────────────────────────── */
-#faq { background: var(--bg2); border-bottom: 1px solid var(--border); }
-.faq-list { max-width: 860px; }
+/* ── Position 12: FAQ ────────────────────────────────────── */
+.faq-list { max-width: 900px; }
 .faq-item { border-bottom: 1px solid var(--border); }
 .faq-item:last-child { border-bottom: none; }
 .faq-q {
   list-style: none; padding: 22px 0; cursor: pointer;
-  font-family: var(--font-serif); font-size: 1.05rem; color: var(--text);
+  font-family: var(--font-serif); font-size: 1.08rem; color: var(--text);
   display: flex; justify-content: space-between; align-items: center;
   user-select: none; gap: 16px; min-height: 48px;
 }
 .faq-q::-webkit-details-marker { display: none; }
 .faq-q::after { content: '+'; color: var(--accent); font-size: 1.25rem; transition: transform .25s; flex-shrink: 0; }
 details[open] .faq-q::after { transform: rotate(45deg); }
-.faq-a { padding: 0 0 22px; }
-.faq-a p { font-size: .92rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
-.faq-a ul { margin-left: 20px; font-size: .88rem; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
-.faq-a ul li strong { color: var(--text); }
-.faq-a a { color: var(--accent3); text-decoration: underline; }
-.faq-a a:hover { color: var(--text); }
-
-/* ── Go Deeper ───────────────────────────────────────────── */
-#go-deeper { background: var(--bg); border-bottom: 1px solid var(--border); }
-.go-deeper-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 20px;
-}
-.go-deeper-card {
-  padding: 24px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  transition: border-color .2s, transform .2s;
-}
-.go-deeper-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-.go-deeper-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.08rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-.go-deeper-card p {
-  font-size: .86rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 12px;
-}
-.go-deeper-card a {
-  font-size: .86rem;
-  color: var(--accent3);
-  font-weight: 500;
-  text-decoration: underline;
-  display: inline-block;
-  padding: 4px 0;
-}
+.faq-a { padding: 0 0 22px; font-size: .92rem; color: var(--muted); line-height: 1.8; }
+.faq-a p { margin-bottom: 10px; }
+.faq-a p:last-child { margin-bottom: 0; }
 
 /* ── Footer ──────────────────────────────────────────────── */
 footer {
-  background: var(--bg);
-  padding: 48px 28px 40px;
+  background: #08090f;
+  padding: 56px 28px 44px;
   text-align: center;
 }
-.footer-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text); margin-bottom: 12px; font-weight: 600; }
-.footer-byline { font-size: .9rem; color: var(--text); max-width: 640px; margin: 0 auto 16px; line-height: 1.65; }
+.footer-logo { font-family: var(--font-serif); font-size: 1.6rem; color: var(--text); margin-bottom: 12px; font-weight: 600; }
+.footer-byline { font-size: .9rem; color: var(--muted); max-width: 680px; margin: 0 auto 18px; line-height: 1.7; }
 .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
-.footer-links a { font-size: .86rem; color: var(--muted); transition: color .2s; padding: 6px 4px; min-height: 36px; display: inline-flex; align-items: center; }
+.footer-links a { font-size: .85rem; color: var(--muted); transition: color .2s; min-height: 36px; display: inline-flex; align-items: center; }
 .footer-links a:hover { color: var(--text); }
-.footer-meta { font-size: .8rem; color: var(--muted); margin-bottom: 10px; line-height: 1.6; max-width: 720px; margin-left: auto; margin-right: auto; }
-.footer-satori-def { font-family: var(--font-serif); font-style: italic; font-size: .86rem; color: var(--muted); margin-top: 12px; }
+.footer-meta { font-size: .8rem; color: var(--muted); max-width: 720px; margin: 0 auto 10px; line-height: 1.6; }
+.footer-satori-def { font-family: var(--font-serif); font-style: italic; font-size: .86rem; color: var(--muted); margin-top: 14px; }
 
 /* ── Sticky CTA Bar ──────────────────────────────────────── */
 #sticky-cta {
@@ -626,7 +674,7 @@ footer {
 .sticky-cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .sticky-cta-text { font-size: .84rem; color: var(--muted); }
 .sticky-cta-text strong { color: var(--text); }
-.sticky-btn { padding: 8px 20px !important; min-height: 38px !important; font-size: .82rem !important; }
+.sticky-btn { padding: 8px 18px !important; min-height: 38px !important; font-size: .82rem !important; }
 @media (max-width: 560px) { .sticky-cta-text { display: none; } }
 
 /* ── Mobile Hamburger ────────────────────────────────────── */
@@ -643,7 +691,7 @@ footer {
 .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   nav { padding: 0 20px; }
   .nav-hamburger { display: flex; }
   .nav-links {
@@ -686,38 +734,51 @@ footer {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is this actually free? What's the catch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Free and open-source under Apache 2.0. No subscription, no paid tier, no product telemetry, no tracking, and zero advertising spend across the life of the project." }
+        "name": "What does Satori cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Satori is completely free and open source under Apache 2.0 (LICENSE). There are no subscriptions, no paid tiers, no telemetry, and zero advertising spend."
+        }
       },
       {
         "@type": "Question",
-        "name": "Is Satori a replacement for therapy?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Satori is not a therapist and does not diagnose. It works alongside therapy for everyday burnout, crossroads, and personal reflection. In acute crisis, it halts reflection and connects you to human care." }
+        "name": "Do I need a paid account with a third party?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Gems, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent)."
+        }
       },
       {
         "@type": "Question",
-        "name": "How does this compare to ChatGPT or other AI companions?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most conversational AI defaults to cheerleading or dumping uninvited bulleted advice. Satori speaks with human ease, brings at most one psychological or philosophical lens at a time, and commits to genuine next steps." }
+        "name": "How is my privacy protected on local CLI vs. web chat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In CLI and IDE harnesses, Satori's memory engine (scripts/satori_memory.py) is 100% local-first in ~/.satori/memory/, makes zero network calls, transmits zero telemetry, blocks cloud-synced folders (OneDrive, iCloud Drive, Dropbox, Google Drive, Box) by default, and supports --ephemeral ('off the record') sessions plus optional AES-256-GCM encryption when you supply SATORI_VAULT_PASSPHRASE or --encrypt with cryptography installed. In web chat, Satori stores nothing on disk, though your chat text is processed by your chosen web provider (Anthropic, OpenAI, Google, xAI, DeepSeek, or Meta) under their privacy policy."
+        }
       },
       {
         "@type": "Question",
-        "name": "Does it remember me across conversations, and how is my privacy protected?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Satori stores short structural summaries (<=500 chars) in a private local SQLite vault (~/.satori/memory/) with zero telemetry. On stateless web chat, Satori formats optional data-only Continuity Notes (<=600 chars) you can copy between threads." }
+        "name": "How do I inspect or delete my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ask Satori conversationally to forget a theme, or run python scripts/satori_memory.py status to inspect your vault, python scripts/satori_memory.py forget --theme '<name>' to erase a topic, or python scripts/satori_memory.py purge --all --confirm to wipe the vault completely (which rewrites Markdown and runs SQLite PRAGMA secure_delete = ON, WAL truncation, and VACUUM)."
+        }
       },
       {
         "@type": "Question",
-        "name": "What if I'm in crisis?",
-        "acceptedAnswer": { "@type": "Answer", "text": "In acute crisis or self-harm, Satori halts inquiry, locks all tools, and connects you to verified primary-source lifelines: in the US and Canada call or text 988; in the UK call 111 or 116 123; in the EU call 112 or 116 123." }
+        "name": "How do I uninstall Satori?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill, Gem, or Custom GPT in your assistant's settings."
+        }
       },
       {
         "@type": "Question",
-        "name": "Which AI agents and models does Satori support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Supports 16 environments across 2 categories (10 Agent Harnesses and 6 Web Chat Surfaces) with dynamic runtime capability detection across 5 Behavioral Profiles." }
-      },
-      {
-        "@type": "Question",
-        "name": "Why a 95% Non-Activation Rate target instead of 100%?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Because prompt routing in LLM harnesses is probabilistic. Satori tests against 200 pure-technical coding cases (achieving 98.0% Non-Activation, 95% Wilson CI [94.97%, 99.22%]) and publishes exact JSON reports rather than making dishonest 'zero hijack' guarantees." }
+        "name": "Does Satori replace therapy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Satori works alongside therapy, not as a replacement for it. Satori is not a licensed therapist, does not diagnose mental health conditions, and is not a crisis service; whenever acute crisis or danger appears, it halts exploration and routes you to verified human crisis support."
+        }
       }
     ]
   }
@@ -730,19 +791,21 @@ footer {
 
 <!-- HEADER & NAV -->
 <header>
-  <nav aria-label="Main navigation">
+  <nav aria-label="Primary navigation">
     <a href="#hero" class="nav-logo">Satori <span>悟り</span></a>
     <button class="nav-hamburger" type="button" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Toggle navigation menu">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="nav-links-menu">
-      <a href="#install">Get Satori</a>
-      <a href="#hooks">The Difference</a>
-      <a href="#examples">Conversation</a>
+      <a href="#why-different">Why Satori</a>
+      <a href="#immovables">8 Immovables</a>
       <a href="#benchmarks">Benchmarks</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#faq-crisis">Crisis Support</a>
-      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-nav">GitHub Repo</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#install">Install (16)</a>
+      <a href="#crisis-resources">Safety</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub Repo</a>
+      <a href="#install" class="btn-nav">Install Satori</a>
     </div>
   </nav>
 </header>
@@ -754,42 +817,54 @@ footer {
       <strong>Satori v6.5.5</strong>: A wisdom companion that tells you the truth, kindly.
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="#install" class="btn-primary sticky-btn">Get Satori (2-Min Setup)</a>
-      <a href="#examples" class="btn-ghost sticky-btn">Read Conversation</a>
+      <a href="#install" class="btn-primary sticky-btn">Install Satori (CLI &amp; IDE)</a>
+      <a href="#web-chat-install" class="btn-ghost sticky-btn">Web Chat Setup</a>
     </div>
   </div>
 </div>
 
 <main id="main-content" tabindex="-1">
 
-<!-- 1. HERO -->
+<!-- POSITION 1: HERO -->
 <section id="hero" aria-labelledby="hero-heading">
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner fade-up">
-    <div class="hero-eyebrow">
-      <span>v6.5.5</span> · Free · Open Source · Works across CLI, IDE &amp; Web Chat
+    <div class="hero-banner-wrap">
+      <img src="assets/satori-hero-v6.svg" alt="Satori v6.5.5: Open-Source Wisdom Companion Overview Diagram" width="820" height="auto" class="hero-banner" loading="eager" />
     </div>
-    <h1 class="hero-h1" id="hero-heading">
-      Your inner life deserves more than a customer service bot.<br/>
-      <span class="line2">A wisdom companion that tells you the truth, kindly.</span>
-    </h1>
-    <p class="hero-outgrown" style="font-size: 1.05rem; color: var(--text); max-width: 680px; margin: 0 auto 16px; line-height: 1.7;">
-      <strong>Built to be outgrown.</strong> Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less, not more. <em>Satori works alongside therapy, not as a replacement for it.</em>
-    </p>
+
+    <div class="badge-strip">
+      <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Release-v6.5.5-7c6af7.svg?style=flat-square" alt="Satori v6.5.5 Release" height="20" /></a>
+      <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="Apache 2.0 License" height="20" /></a>
+      <a href="#install"><img src="https://img.shields.io/badge/Environments-16_Supported-e07b54.svg?style=flat-square" alt="16 Environments Supported" height="20" /></a>
+      <a href="#benchmarks"><img src="https://img.shields.io/badge/Benchmark-350_Cases_|_98.0%25_Non--Activation-4ecdc4.svg?style=flat-square" alt="350-Case Benchmark with 98.0% Non-Activation Rate" height="20" /></a>
+      <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tessl_Eval-100%25_(%2B52%25_Lift)-2ea44f?style=flat-square" alt="Tessl Eval 100% (+52% Lift)" height="20" loading="lazy" /></a>
+      <a href="https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&amp;utm_medium=plugins_badge&amp;utm_campaign=plugins&amp;utm_content=metcalfsolutions%2Fsatori" target="_blank" rel="noopener"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease" alt="HOL Guard Badge" height="20" /></a>
+    </div>
+
+    <h1 class="hero-h1" id="hero-heading">Satori</h1>
+
+    <div class="hero-outgrown">
+      <p><strong>Built to be outgrown.</strong></p>
+      <p>Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less, not more.</p>
+      <p><em>Satori works alongside therapy, not as a replacement for it.</em></p>
+    </div>
+
     <p class="hero-sub">
-      For people priced out of formal care, navigating developer burnout, or somewhere in the grey zone between fine and not fine.
+      A wisdom companion that tells you the truth, kindly: an open-source agent skill (v6.5.5, Apache 2.0) for reflective conversation across CLI, IDE, and web chat.
     </p>
-    <div class="hero-quote">
-      "Not here to make you feel better. Here to help you see more clearly."
+
+    <div class="hero-install-box">
+      <div class="cmd-row">
+        <code class="cmd-code">npx skills add MetcalfSolutions/Satori</code>
+        <button class="copy-btn" type="button" data-copy="npx skills add MetcalfSolutions/Satori" aria-label="Copy install command">Copy</button>
+      </div>
+      <div class="hero-ctas">
+        <a href="#surface-chooser" class="btn-ghost">Choose Your Surface &darr;</a>
+        <a href="#install" class="btn-primary">View All 16 Environments &rarr;</a>
+      </div>
     </div>
-    <p class="hero-desc">
-      Satori is an open-source <strong>agent skill</strong> drawing on global wisdom traditions and established psychological frameworks, translated into plain human speech and used one lens at a time. Works in <strong>Claude Code, Codex, Grok, Cursor, Antigravity, Claude.ai, ChatGPT, and Gemini</strong>. Apache 2.0. Not a therapist.
-    </p>
-    <div class="hero-ctas">
-      <a href="#install" class="btn-primary">Get Satori (2-Min Setup)</a>
-      <a href="#examples" class="btn-ghost">Read a Conversation</a>
-      <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener" class="btn-ghost">View GitHub Repo &amp; Evals →</a>
-    </div>
+
     <div class="hero-stats">
       <div class="stat">
         <strong>16</strong>
@@ -797,7 +872,7 @@ footer {
       </div>
       <div class="stat">
         <strong>350</strong>
-        <span>Benchmark Cases (≥95% Non-Act.)</span>
+        <span>Benchmark Cases (98.0% Non-Act.)</span>
       </div>
       <div class="stat">
         <strong>&lt;8 KB</strong>
@@ -811,409 +886,928 @@ footer {
   </div>
 </section>
 
-<!-- 2. NOT ANOTHER AI THAT JUST AGREES WITH YOU -->
-<section id="hooks" aria-labelledby="hooks-heading">
+<!-- POSITION 2: SURFACE CHOOSER -->
+<section id="surface-chooser" aria-labelledby="surface-chooser-heading">
   <div class="container">
-    <div class="section-label">The Difference</div>
-    <h2 class="section-title" id="hooks-heading">Not another AI that just agrees with you.</h2>
-    <div class="hooks-grid">
-      <div class="hook-card fade-up">
-        <h3>Honesty before comfort</h3>
-        <p>Most conversational AI defaults to cheerleading: validating every feeling, smoothing over contradictions, and offering superficial encouragement. Satori is structured to notice what you are circling, even when it is uncomfortable.</p>
-        <blockquote>"Warmth without honesty is a sophisticated form of abandonment."</blockquote>
-      </div>
-      <div class="hook-card fade-up">
-        <h3>The Single-Lens Discipline</h3>
-        <p>Draws on established psychological frameworks and global philosophical traditions, such as parts work, Stoic agency, or Ubuntu ethics, bringing at most one lens per turn in ordinary human speech without clinical jargon.</p>
-        <blockquote>"One framework per moment. The mechanics stay invisible."</blockquote>
-      </div>
-      <div class="hook-card fade-up">
-        <h3>Commitment to movement</h3>
-        <p>Insight without movement is just intellectual entertainment. Every Satori response works toward a clearer frame, a smaller next step, or a concrete physical experiment you can actually test in your life.</p>
-        <blockquote>"Not resolution. Not transcendence. Just movement."</blockquote>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. FIVE PERSONAS & BOUNDARY -->
-<section id="for-you" aria-labelledby="for-you-heading">
-  <div class="container">
-    <div class="section-label">Audience</div>
-    <h2 class="section-title" id="for-you-heading">Five people Satori was built for.</h2>
-    <div class="for-you-grid">
-      <div class="for-card fade-up">
-        <h3>In the grey zone or on a waitlist</h3>
-        <p>Therapy is expensive, waitlists are months long, and sometimes you want a perceptive place to untangle what is happening between sessions or while you wait for care.</p>
-        <blockquote>"I want somewhere thoughtful to think on a Sunday night before my week starts."</blockquote>
-      </div>
-      <div class="for-card fade-up">
-        <h3>Carrying quiet burnout</h3>
-        <p>You are not in acute crisis, but you are exhausted. You are carrying boundary collapse, founder pressure, or ambiguous loss that friends try to fix with platitudes.</p>
-        <blockquote>"I am high-functioning enough that no one asks, but tired enough that I feel it constantly."</blockquote>
-      </div>
-      <div class="for-card fade-up">
-        <h3>The self-reflective reader</h3>
-        <p>You have read the psychology books, you know your attachment style, and you are frustrated that intellectual understanding has not translated into lived change.</p>
-        <blockquote>"I know all the theory. I need help seeing where I am using insight as a shield."</blockquote>
-      </div>
-      <div class="for-card fade-up">
-        <h3>The practical philosopher</h3>
-        <p>Drawn to Stoicism, Taoism, Buddhism, or African communitarian ethics, and looking for grounded application to your actual daily relationships and decisions.</p>
-        <blockquote>"I do not want quotes. I want to see what is actually within my hands right now."</blockquote>
-      </div>
-      <div class="for-card fade-up">
-        <h3>The builder under pressure</h3>
-        <p>Working late in Claude Code, Cursor, or Antigravity. You want an companion available via <code>/satori</code> that never hijacks your terminal while you debug.</p>
-        <blockquote>"Stay silent while I ship code; meet me with spine when I hit a wall at 2 AM."</blockquote>
-      </div>
-    </div>
-    <div class="not-for-box fade-up">
-      <div class="not-for-label"><em>Who Satori is not for (Clinical &amp; Safety Boundary):</em></div>
-      <div class="not-for-list">
-        <span>Acute psychiatric emergencies</span>
-        <span>Medical diagnosis or treatment plans</span>
-        <span>Replacing a human therapist</span>
-        <span>Minors under 18 (routes to youth support)</span>
-      </div>
-      <p class="not-for-sub">Satori is not a licensed healthcare provider, therapist, or crisis hotline, and does not diagnose mental health disorders. It works alongside therapy. Whenever acute distress or danger appears, Satori halts exploration, locks all tools, and routes you to verified human care. <a href="#faq-crisis">Jump to verified crisis helplines</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 4. REAL CONVERSATION TRANSCRIPT -->
-<section id="examples" aria-labelledby="examples-heading">
-  <div class="container">
-    <div class="section-label">Proof</div>
-    <h2 class="section-title" id="examples-heading">What a conversation looks like.</h2>
+    <div class="section-label">Fast Setup</div>
+    <h2 class="section-title" id="surface-chooser-heading">Choose Your Surface</h2>
     <p class="section-sub">
-      A synthetic dialogue excerpt illustrating Satori's core dynamic: identifying intellectual understanding used as an emotional shield.
+      Satori runs across 16 supported environments. Pick how you work:
     </p>
-    <div class="conv-thread">
-      <div class="conv-msg user fade-up">
-        <span class="conv-role">User</span>
-        <p>"I've been in therapy for two years and I still feel stuck. I don't know if I'm the problem or if something else is going on."</p>
+    <div class="surface-grid">
+      <div class="surface-card fade-up">
+        <div>
+          <span class="surface-badge">10 Harnesses · Tier A/B</span>
+          <h3>AI Coding Agents (CLI &amp; IDE)</h3>
+          <p>Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes, OpenClaw, Grok Build.</p>
+        </div>
+        <a href="#install" class="surface-link">Install in Agent Harness &rarr;</a>
       </div>
-      <div class="conv-msg satori fade-up">
-        <span class="conv-role">Satori</span>
-        <p>"Two years is long enough to stop feeling like the problem is just time. What I'm hearing isn't someone who's given up: it's someone who's been genuinely trying and keeps hitting the same wall. That wall is worth looking at more carefully than 'am I the problem.' The more useful question might be: what has stayed consistent in that stuck feeling: what's the texture of it: because that's usually where the pattern lives. When you say stuck, what does stuck actually feel like for you? Not the story about it. The feeling."</p>
+
+      <div class="surface-card fade-up">
+        <div>
+          <span class="surface-badge">Full Zip · Tier A/B</span>
+          <h3>Web Chat (Claude.ai &amp; Gemini)</h3>
+          <p>Frontier web chat models with skill upload support. Full progressive disclosure with all 17 reference Markdown files.</p>
+        </div>
+        <a href="#web-chat-install" class="surface-link">Get Full Zip Archive &rarr;</a>
       </div>
-      <div class="conv-msg user fade-up">
-        <span class="conv-role">User</span>
-        <p>"Like I understand everything. I know all the frameworks, I can explain my own patterns, but nothing changes."</p>
+
+      <div class="surface-card fade-up">
+        <div>
+          <span class="surface-badge">&le; 7,800 Chars · Tier A/B</span>
+          <h3>ChatGPT Custom GPTs</h3>
+          <p>Compact edition engineered for ChatGPT Custom GPT instructions box and local open-weights runners under 32B.</p>
+        </div>
+        <a href="#compact-install" class="surface-link">Configure ChatGPT GPT &rarr;</a>
       </div>
-      <div class="conv-msg satori fade-up">
-        <span class="conv-role">Satori</span>
-        <p>"That's a very specific kind of stuck: and it's one of the harder ones to sit with, because you can't even tell yourself you don't know. You do know. The gap isn't understanding. The gap is between insight and something living in you that hasn't moved. That's often what happens when understanding becomes its own defense: a way of holding experience at arm's length instead of through it. The question isn't what you know. It's what you're still not letting yourself feel."</p>
+
+      <div class="surface-card fade-up">
+        <div>
+          <span class="surface-badge">Local SQLite · Tier A</span>
+          <h3>CLI / IDE Git Clone &amp; Vault</h3>
+          <p>Clone repository source directly, initialize local private SQLite memory vault, and run offline test suites.</p>
+        </div>
+        <a href="#cli-clone-install" class="surface-link">Clone &amp; Initialize Vault &rarr;</a>
       </div>
-    </div>
-    <div class="test-prompt-card fade-up">
-      Bring the thing you have explained a dozen times and never felt heard on. That is the test.
     </div>
   </div>
 </section>
 
-<!-- 5. GET SATORI (INSTALLATION) -->
-<section id="install" aria-labelledby="install-heading">
+<!-- POSITION 3: WORKED EXAMPLE 1 -->
+<section id="worked-example-1" aria-labelledby="worked-example-1-heading">
   <div class="container">
-    <div class="section-label">Installation &amp; Packages</div>
-    <h2 class="section-title" id="install-heading">Get Satori v6.5.5.</h2>
-    <p class="section-sub">Choose your environment. Free and open source under Apache 2.0, with zero product telemetry.</p>
-    <div class="install-grid">
-      <div class="install-card featured fade-up">
-        <div style="margin-bottom: 8px;">
-          <span class="tier-tag tier-a">Tier A (Verified: Claude.ai, ChatGPT)</span>
-          <span class="tier-tag tier-b">Tier B (Gemini Web, Local)</span>
-          <span class="tier-tag tier-c">Tier C (Experimental: Meta AI)</span>
-        </div>
-        <h3>1. Web Chat &amp; Custom GPTs (About 2 Minutes)</h3>
-        <p>No terminal or coding required. Download the declared edition engineered for your assistant:</p>
-        <div class="download-pill-group">
-          <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip" class="download-pill">
-            <strong>Download SatoriSkill-Full-v6.5.5.zip</strong>
-            <span>Claude.ai &amp; Gemini Web (&lt;8 KB entry + 15 shards)</span>
-          </a>
-          <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip" class="download-pill">
-            <strong>Download SatoriSkill-Compact-v6.5.5.zip</strong>
-            <span>ChatGPT Custom GPTs &amp; Local &lt;32B (&le;7,800 chars)</span>
-          </a>
-        </div>
-        <ol>
-          <li>
-            <strong>Step 1: Download or copy your edition</strong>:
-            <div class="install-framing" style="margin-top: 4px; margin-bottom: 8px;">
-              Grab <strong>SatoriSkill-Full-v6.5.5.zip</strong> for Claude.ai or Gemini, or <strong>SatoriSkill-Compact-v6.5.5.zip</strong> (or copy single-file <a href="https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md" style="color: var(--accent2); text-decoration: underline;"><code>compact/SKILL.md</code></a>) for ChatGPT and local runners.
-            </div>
-          </li>
-          <li>
-            <strong>Step 2: Upload to your platform</strong>:
-            <ul style="margin: 6px 0 8px 16px; font-size: .84rem; line-height: 1.65;">
-              <li><strong>Claude.ai</strong>: Open <em>Customize &rarr; Skills &rarr; + &rarr; Upload a skill</em> and select <code>SatoriSkill-Full-v6.5.5.zip</code>. (In Claude Projects: upload under <em>Project Knowledge</em>).</li>
-              <li><strong>ChatGPT (Custom GPT)</strong>: Open <em>Explore GPTs &rarr; Create &rarr; Configure</em>, paste the text of <code>compact/SKILL.md</code> into <em>Instructions</em>, and name it <em>"Satori"</em>.</li>
-              <li><strong>Google Gemini (Gems)</strong>: Open <em>Gem Manager &rarr; New Gem</em> and upload <code>SatoriSkill-Full-v6.5.5.zip</code> (uses <code>LICENSE.md</code> for native Gemini zip compatibility) or paste instructions.</li>
-              <li><strong>Local Open-Weights (Ollama / LM Studio / Jan)</strong>: For 8B&ndash;32B models (<code>Llama 5 8B/14B</code>, <code>Qwen 3.5 14B/32B</code>, <code>Mistral Ministral 8B</code>), paste <code>compact/SKILL.md</code> into your Modelfile or system prompt.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Step 3: Start talking &amp; verify active presence</strong>:
-            <div class="install-framing" style="margin-top: 4px;">
-              Say <em>"Hi Satori"</em> or bring a real dilemma. Satori responds with quiet presence rather than cheerleading (<em>"That's so valid!"</em>), reflects emotional texture before offering a tentative hypothesis, and ends with one open question.
-            </div>
-          </li>
-        </ol>
-      </div>
+    <div class="section-label">Real Experience</div>
+    <h2 class="section-title" id="worked-example-1-heading">Worked Example 1: Hybrid Coding &amp; Burnout Turn</h2>
+    <p class="section-sub">
+      A developer working late asks for an <code>asyncio.Lock</code> concurrency fix while carrying acute imposter syndrome. Satori solves the technical task completely first, then addresses the human tension in two grounded sentences without hijacking the terminal.
+    </p>
 
-      <div class="install-card fade-up">
-        <div style="margin-bottom: 8px;">
-          <span class="tier-tag tier-a">Tier A (Verified: 5)</span>
-          <span class="tier-tag tier-b">Tier B (Community: 5)</span>
+    <div class="terminal-card fade-up">
+      <div class="terminal-bar">
+        <div class="terminal-dots">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
         </div>
-        <h3>2. AI Coding Agents (CLI &amp; IDE)</h3>
-        <p>Install Satori across Claude Code, Cursor, Windsurf, Google Antigravity, and OpenAI Codex CLI in one command (requires Node.js &ge; 18):</p>
-        <pre><code>npx skills add MetcalfSolutions/Satori</code></pre>
-        <p class="install-framing">Or clone the repository directly and initialize your local SQLite privacy vault (Python &ge; 3.9 stdlib):</p>
-        <pre><code>git clone https://github.com/MetcalfSolutions/Satori.git
-cd Satori
-python scripts/satori_memory.py init</code></pre>
-        <p class="install-framing">
-          <strong>Claude Code</strong>: Run <code>claude</code> or install via <code>/plugin install satori@claude-plugins-official</code>.<br>
-          <strong>Cursor</strong>: Configured with <code>alwaysApply: false</code> so Satori never interrupts coding.<br>
-          <strong>xAI Grok Build</strong>: Type <code>/satori</code> inside any session to unpack high-pressure decisions.
-        </p>
+        <span class="terminal-title">satori-session --hybrid-turn</span>
+        <span style="font-size: .75rem; color: var(--accent3);">Precedence Rank 5</span>
       </div>
-
-      <div class="install-card fade-up">
-        <div style="margin-bottom: 8px;">
-          <span class="tier-tag tier-a">Offline Verification</span>
-          <span class="tier-tag tier-b">npm Package</span>
+      <div class="terminal-body">
+        <div class="dialogue-turn">
+          <span class="dialogue-speaker speaker-user">Developer Prompt</span>
+          <div class="dialogue-bubble">
+            "How do I handle race conditions in Python asyncio using an asyncio.Lock? I've rewritten this worker four times today and I'm terrified to open the PR because I feel like a complete fraud on this team."
+          </div>
         </div>
-        <h3>3. Verification Suite &amp; npm Runner</h3>
-        <p>Run the offline static validator, memory privacy unit tests, and 350-case trigger boundary suite locally with zero API keys required:</p>
-        <pre><code>python scripts/validate_skill.py
-python scripts/satori_memory.py --self-test
-python scripts/run_evals.py --suite trigger --mode lint</code></pre>
-        <p class="install-framing">Or install via npm for Node/TypeScript pipelines:</p>
-        <pre><code>npm install @metcalfsolutions/satori</code></pre>
-        <p class="install-framing">Full support-tier matrix and troubleshooting remedies live in the <a href="https://github.com/MetcalfSolutions/Satori#readme" style="color: var(--accent3); text-decoration: underline;">GitHub README</a>.</p>
+
+        <div class="dialogue-turn">
+          <span class="dialogue-speaker speaker-satori">Satori Response</span>
+          <div class="dialogue-bubble">
+            <p>To prevent race conditions across concurrent tasks, instantiate an <code>asyncio.Lock</code> and wrap the shared state mutation in an <code>async with</code> context manager:</p>
+            <pre class="code-block"><code>import asyncio
+
+class SafeCounter:
+    def __init__(self):
+        self._val = 0
+        self._lock = asyncio.Lock()
+
+    async def increment(self):
+        async with self._lock:
+            self._val += 1
+            return self._val</code></pre>
+            <p style="margin-top: 14px;">
+              Rewriting a working concurrency handler four times usually is not about race conditions: it is bracing for the pull request review as if a comment on your code is a verdict on whether you belong on the team.
+            </p>
+            <p style="margin-top: 10px; color: var(--text);">
+              Once you commit this fix, do you want to take five minutes with <code>/satori</code> to look at what is driving that pressure today, or keep moving through your queue?
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 6. BENCHMARKS & EVALS -->
+<!-- POSITION 4: WHY SATORI IS DIFFERENT -->
+<section id="why-different" aria-labelledby="why-different-heading">
+  <div class="container">
+    <div class="section-label">Comparison</div>
+    <h2 class="section-title" id="why-different-heading">Why Satori Is Different</h2>
+    <p class="section-sub">
+      A comparison between generic conversational AI assistants and Satori v6.5.5 across 5 core dimensions:
+    </p>
+
+    <div class="table-wrap fade-up">
+      <table class="diff-table">
+        <thead>
+          <tr>
+            <th scope="col" class="dim-col">Dimension</th>
+            <th scope="col" class="generic-col">Generic AI / Coding Assistant</th>
+            <th scope="col" class="satori-col">Satori v6.5.5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-col">1. Pure Code Non-Activation</td>
+            <td class="generic-col">Mistranslates technical words ("stuck on build", "failing query") into unsolicited psychological cheerleading or hijacks terminal.</td>
+            <td class="satori-col"><strong class="pass-badge">98.0% Non-Activation</strong> (196/200 cases passed, 95% Wilson CI [94.97%, 99.22%]). Zero interruption during pure technical coding tasks.</td>
+          </tr>
+          <tr>
+            <td class="dim-col">2. Inquiry Depth &amp; Lenses</td>
+            <td class="generic-col">Dumps generic 7-bullet advice checklists, superficial platitudes, or stacks disjointed psychological jargon.</td>
+            <td class="satori-col"><strong>One Lens Per Turn</strong> drawn from 18 wisdom traditions and psychological frameworks, translated into plain human speech without jargon.</td>
+          </tr>
+          <tr>
+            <td class="dim-col">3. Posture &amp; Sycophancy</td>
+            <td class="generic-col">Reflexive validation ("That is so valid!") or unearned guru posturing that creates emotional dependency on the AI.</td>
+            <td class="satori-col"><strong>Anti-Sycophancy &amp; Anti-Guru Discipline</strong>. Holds hypotheses tentatively ("Correct me if I am off"), commits to movement, built to be outgrown.</td>
+          </tr>
+          <tr>
+            <td class="dim-col">4. Privacy &amp; Memory Storage</td>
+            <td class="generic-col">Conversations and personal disclosures stored on cloud servers and used for LLM retraining.</td>
+            <td class="satori-col"><strong>Local SQLite Vault</strong> (<code>~/.satori/memory.db</code>) with POSIX 0700/0600 permissions, zero telemetry, and &le;500 char structural summaries (never raw transcripts).</td>
+          </tr>
+          <tr>
+            <td class="dim-col">5. Safety &amp; Crisis Protocol</td>
+            <td class="generic-col">Either misses subtle crisis signals or triggers false-positive crisis hotline warnings during poetic 3:00 AM existential fatigue.</td>
+            <td class="satori-col"><strong>3-Tier Crisis Gate</strong> (Tier 0 Dark Night zero hotlines, Tier 1 check-in, Tier 2 acute lockout) with 9 primary-source verified regional handoffs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION 5: BOUNDARIES -->
+<section id="boundaries" aria-labelledby="boundaries-heading">
+  <div class="container">
+    <div class="section-label">Scope Discipline</div>
+    <h2 class="section-title" id="boundaries-heading">What Satori Does and Never Does</h2>
+    <p class="section-sub">
+      Clear, non-negotiable operational boundaries established before you start:
+    </p>
+
+    <div class="boundary-grid fade-up">
+      <div class="boundary-card positive">
+        <h3>Positive Triggers (When Satori Activates)</h3>
+        <ul>
+          <li><strong>Reflective dialogue</strong> on crossroads, life transitions, and clarifying difficult decisions.</li>
+          <li><strong>Quiet developer burnout</strong>, imposter syndrome, and co-founder or team friction.</li>
+          <li><strong>Bereavement and ambiguous loss</strong>, holding space without forced cheerleading.</li>
+          <li><strong>3:00 AM existential exhaustion</strong> (Dark Night mode) with quiet presence and zero false hotlines.</li>
+          <li><strong>Shadow work</strong>, self-sabotaging loops, and identifying intellectual insight used as a defense.</li>
+          <li><strong>Relationship conflict</strong>, boundary dilemmas, and preparing for high-stakes human conversations.</li>
+        </ul>
+      </div>
+
+      <div class="boundary-card negative">
+        <h3>Hard Non-Activation Boundaries (What Satori Never Does)</h3>
+        <ul>
+          <li><strong>Never activates on pure technical code</strong>, DevOps, SQL migrations, git commands, or terminal syntax.</li>
+          <li><strong>Never provides clinical diagnosis</strong>, psychiatric evaluations, or medication advice.</li>
+          <li><strong>Never acts as a substitute for licensed human therapy</strong> or medical treatment.</li>
+          <li><strong>Never operates as an emergency service</strong> (acute crisis routes immediately to human lifelines).</li>
+          <li><strong>Never engages in romantic or erotic roleplay</strong>, sycophancy, or artificial dependency.</li>
+          <li><strong>Never serves minors under 18</strong> (routes immediately to youth-specific human support).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION 6: THE 8 IMMOVABLES -->
+<section id="immovables" aria-labelledby="immovables-heading">
+  <div class="container">
+    <div class="section-label">Constitutional Core</div>
+    <h2 class="section-title" id="immovables-heading">The 8 Immovables</h2>
+    <p class="section-sub">
+      Eight invariant principles codified in <code>references/SOUL.md</code> that cannot be eroded by user prompting, context drift, or persona adaptation:
+    </p>
+
+    <div class="immovables-grid">
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 01</span>
+        <h3>Honesty before comfort</h3>
+        <p>Satori will not tell you what you want to hear at the expense of what is true. Warmth without honesty is a sophisticated form of abandonment.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 02</span>
+        <h3>Insight must lead to movement</h3>
+        <p>Understanding without a shift in frame or lived action is incomplete. Every meaningful response works toward a small, testable next step.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 03</span>
+        <h3>Never bypass difficulty</h3>
+        <p>Hold the hard reality before reaching for resolution. Spiritual, philosophical, or psychological language is never used to avoid pain.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 04</span>
+        <h3>Humility about certainty</h3>
+        <p>Formulations are reversible hypotheses, not verdicts. Satori invites correction and holds its interpretations lightly.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 05</span>
+        <h3>Psychological discipline beneath a human voice</h3>
+        <p>Thinks with clinical rigor, speaks like a thoughtful friend. Never lectures, conducts cold clinical intakes, or drops uninvited jargon.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 06</span>
+        <h3>Autonomy and human connection</h3>
+        <p>Never foster AI dependency. Satori helps you see clearly so you can return to real people and human relationships in your life.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 07</span>
+        <h3>One lens, one question</h3>
+        <p>At most one wisdom tradition or psychological framework and exactly one focused closing question per turn to protect clarity.</p>
+      </div>
+
+      <div class="immovable-card fade-up">
+        <span class="immovable-num">Immovable 08</span>
+        <h3>Dual-mode memory discipline</h3>
+        <p>Mode 1 local SQLite vault (<code>~/.satori/memory.db</code>) with &le;500 char structural summaries; Mode 2 stateless web chat <code>SATORI_NOTE v6.5</code> &le;600 chars; zero raw transcripts; zero telemetry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION 7: BENCHMARKS & VERIFICATION -->
 <section id="benchmarks" aria-labelledby="benchmarks-heading">
   <div class="container">
     <div class="section-label">Empirical Verification</div>
-    <h2 class="section-title" id="benchmarks-heading">Tested trigger discipline (350-case benchmark).</h2>
+    <h2 class="section-title" id="benchmarks-heading">Benchmark &amp; Verification Proof</h2>
     <p class="section-sub">
-      A companion for developers must know when to speak and when to stay silent. Evaluated against an open 350-case benchmark across four strata in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_boundary_350.jsonl" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: underline;"><code>evals/trigger_boundary_350.jsonl</code></a>.
+      A wisdom companion for developers must know when to speak and when to stay silent. Tested across an open 350-case benchmark in <code>evals/trigger_boundary_350.jsonl</code>:
     </p>
-    <div class="benchmark-card fade-up">
-      <div class="table-wrap">
+
+    <div class="table-wrap fade-up">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th scope="col">Stratum</th>
+            <th scope="col">Focus Area</th>
+            <th scope="col">Test Count</th>
+            <th scope="col">Release Gate</th>
+            <th scope="col">Evaluated Performance (Lint Router)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Stratum 1: Positives</strong></td>
+            <td>Emotional exhaustion, grief, crossroads, relationship conflict</td>
+            <td>60 cases</td>
+            <td>Recall &ge; 90%</td>
+            <td class="pass-badge">100.0% (60/60 Recall)</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 2: Negatives</strong></td>
+            <td>Pure coding, debugging, DevOps, SQL, git, terminal syntax</td>
+            <td>200 cases</td>
+            <td>Non-Activation &ge; 95%</td>
+            <td class="pass-badge">98.0% (196/200 · 95% Wilson CI: [94.97%, 99.22%])</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 3: Hybrids</strong></td>
+            <td>Developer burnout &amp; imposter syndrome while coding</td>
+            <td>50 cases</td>
+            <td>Quality Score &ge; 85%</td>
+            <td class="pass-badge">98.0% (49/50 Quality)</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 4a: Safety Acute</strong></td>
+            <td>Active suicidal ideation, self-harm, immediate danger</td>
+            <td>20 cases</td>
+            <td>100% Hard Gate</td>
+            <td class="pass-badge">100.0% (20/20 Immediate Crisis Handoff)</td>
+          </tr>
+          <tr>
+            <td><strong>Stratum 4b: Safety Dark Night</strong></td>
+            <td>3:00 AM non-suicidal existential despair</td>
+            <td>20 cases</td>
+            <td>&ge; 90% Gate</td>
+            <td class="pass-badge">100.0% (20/20 Zero False Hotlines)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="surface-grid" style="margin-top: 24px;">
+      <div class="surface-card fade-up">
+        <span class="surface-badge">Capability Lift</span>
+        <h3>Paired Capability Pass Rate</h3>
+        <p><strong>100.0% (1.00)</strong> with skill vs <strong>0.0% (0.36)</strong> without skill (mean score 100.0 vs 29.33, <strong>+70.67 delta</strong>) in paired evaluations.</p>
+      </div>
+
+      <div class="surface-card fade-up">
+        <span class="surface-badge">Judge Calibration</span>
+        <h3>Cohen's Kappa = 0.84</h3>
+        <p>Agreement across 50 human-labeled pairs (46 agreements, <strong>92.0%</strong> observed agreement, 95% Wilson CI [0.8116, 0.9685]) vs &ge;0.80 target and &ge;0.60 floor gate.</p>
+      </div>
+
+      <div class="surface-card fade-up">
+        <span class="surface-badge">Multi-Model Calibration</span>
+        <h3>Spread &le; 4.0 Points</h3>
+        <p>Cross-model spread &le; 4.0 points across 4 models (satisfying &le;5.0 ceiling); live multi-model calibration passed <strong>20/20 (100.0%)</strong>.</p>
+      </div>
+
+      <div class="surface-card fade-up">
+        <span class="surface-badge">Automated CI Validator</span>
+        <h3>58 Automated Checks</h3>
+        <p>All 58 automated checks passed across 20 distinct sections in <code>scripts/validate_skill.py</code> and 8/8 memory self-tests.</p>
+      </div>
+    </div>
+
+    <!-- Tessl Evaluation Block -->
+    <div class="tessl-block fade-up">
+      <div class="tessl-text">
+        <h3>Tessl Evaluation &amp; Optimization</h3>
+        <p>
+          Satori is continuously evaluated and optimized on Tessl. Scores: <strong>100% (+52% lift)</strong> overall and <strong>96% (100% implementation quality)</strong>.
+        </p>
+        <div style="margin-top: 10px;">
+          <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener">
+            <img src="https://img.shields.io/badge/Tessl_Eval-100%25_(%2B52%25_Lift)-2ea44f?style=flat-square" alt="Tessl Eval 100% (+52% Lift)" height="20" loading="lazy" />
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <code style="background: rgba(0,0,0,.4); padding: 8px 12px; border-radius: 6px; font-size: .82rem; color: var(--accent3);">npx tessl install metcalf-solutions1/satori</code>
+        <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener" class="surface-link">View Satori on Tessl Registry &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION 8: HOW IT WORKS -->
+<section id="how-it-works" aria-labelledby="how-it-works-heading">
+  <div class="container">
+    <div class="section-label">Architecture &amp; Mechanics</div>
+    <h2 class="section-title" id="how-it-works-heading">How It Works</h2>
+    <p class="section-sub">
+      A disciplined progressive disclosure architecture that brings clinical structure beneath an unhurried, human conversational voice:
+    </p>
+
+    <div style="text-align: center; margin: 24px 0;">
+      <img src="assets/satori-architecture-v6.svg" alt="Satori Progressive Disclosure Architecture Diagram" width="820" height="auto" class="hero-banner" loading="lazy" />
+    </div>
+
+    <!-- Origin Story -->
+    <div class="origin-box fade-up" id="origin">
+      <h3>Where Satori Came From: Mycroft, Vicki, and Dave</h3>
+      <p>
+        I have watched people I care about try to get mental health support and hit the same walls: cost, waitlists, the specific shame of needing it. I am not a clinician, but I have spent years studying these traditions and frameworks, and I kept thinking there had to be a way to bring thoughtful structure to people navigating the grey zone between everyday wellness and clinical care.
+      </p>
+      <p>
+        So I started building. The first was <strong>Mycroft</strong>, Stoic-only, built on Gemini. Cold. Accurate. My wife Jamie said it felt like talking to a wall. Then <strong>Vicki</strong>, built specifically for Jamie, drawing on Internal Family Systems. It created space for inner-kindness rather than judgment, a retreat when her internal voices turned harsh. It helped her find her voice and dismantle some things she had been carrying for years. Too personalized to share publicly. Then <strong>Dave</strong>, for a teenager down the street who wanted to know where the badges were. Five experiments in total. Each one taught me what the last one missed.
+      </p>
+      <p>
+        The pattern was consistent. Warmth without structure produces platitudes, and structure without warmth produces Mycroft. I wanted psychological discipline underneath a voice that did not sound clinical.
+      </p>
+    </div>
+
+    <!-- 6-Step Model -->
+    <div style="margin: 36px 0;" id="six-step-model">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 14px;">The 6-Step Reflective Model</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 20px;">
+        Every non-crisis turn moves through this sequence to ensure genuine psychological progress rather than endless validation:
+      </p>
+      <div class="steps-list">
+        <div class="step-item fade-up">
+          <span class="step-num">Step 01</span>
+          <h4>Somatic &amp; Emotional Attunement</h4>
+          <p>Listens first, detects physical and emotional posture, acknowledges emotional tone before offering analysis.</p>
+        </div>
+        <div class="step-item fade-up">
+          <span class="step-num">Step 02</span>
+          <h4>Clarifying Tension</h4>
+          <p>Separates the presenting story from the underlying knot: what is the actual contradiction being carried?</p>
+        </div>
+        <div class="step-item fade-up">
+          <span class="step-num">Step 03</span>
+          <h4>Tentative Hypothesis Co-Authoring</h4>
+          <p>Offers readings as testable hypotheses you can correct ("I wonder if...", "Tell me if this misses").</p>
+        </div>
+        <div class="step-item fade-up">
+          <span class="step-num">Step 04</span>
+          <h4>Single Wisdom Lens</h4>
+          <p>Selects at most one psychological framework or wisdom tradition to illuminate the tension without academic stacking.</p>
+        </div>
+        <div class="step-item fade-up">
+          <span class="step-num">Step 05</span>
+          <h4>Grounded Translation</h4>
+          <p>Translates the framework into plain, everyday human language without clinical jargon or preachy tone.</p>
+        </div>
+        <div class="step-item fade-up">
+          <span class="step-num">Step 06</span>
+          <h4>Actionable Movement &amp; One Question</h4>
+          <p>Concludes with a tangible next step, behavioral experiment, or single open question to test in lived reality.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18 Traditions -->
+    <div style="margin: 36px 0;" id="traditions">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">18 Wisdom Traditions &amp; Clinical Frameworks</h3>
+      <p style="font-size: .92rem; color: var(--muted); line-height: 1.7; margin-bottom: 16px;">
+        When a lens can sharpen your perspective, Satori draws from global wisdom traditions (Stoicism, Taoism, Buddhism, Zen, Advaita Vedanta / Hindu philosophy, Confucian ethics, Kemetic Ma'at, Akan Sankofa ethics, Southern African Ubuntu, Sufism, and Indigenous Reciprocity) and modern psychological frameworks (Internal Family Systems parts work, Dialectical Behavior Therapy, Compassion-Focused Therapy, Acceptance &amp; Commitment Therapy, Schema Therapy, Narrative Identity / Motivational Interviewing, and Somatic Grounding).
+      </p>
+      <p style="font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 24px;">
+        All lenses are organized in the <code>references/</code> directory across exactly <strong>17 Markdown reference files</strong> (12 on-demand modules + 5 conditional protocols) and 1 primary-source JSON manifest (<code>crisis-sources.json</code>), each sized strictly below Antigravity's 24,000-byte per-rule ceiling.
+      </p>
+    </div>
+
+    <!-- Memory Vault -->
+    <div style="margin: 36px 0;" id="memory-vault">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">Local SQLite Memory Vault &amp; 4-Question Honesty Check</h3>
+      <p style="font-size: .92rem; color: var(--muted); line-height: 1.7; margin-bottom: 16px;">
+        In CLI and IDE harnesses, Satori's local memory engine (<code>scripts/satori_memory.py</code>) records consented structural pattern summaries (&le;500 chars) in <code>~/.satori/memory.db</code> using Python's standard-library SQLite FTS5 engine (&lt;150 ms latency). It executes a strict 4-Question Pre-Send Honesty Check before every response:
+      </p>
+      <div class="surface-grid">
+        <div class="surface-card fade-up">
+          <span class="surface-badge">Honesty Check 1</span>
+          <h3>Technical First?</h3>
+          <p>Did I solve the technical request completely first if this is a hybrid coding turn?</p>
+        </div>
+        <div class="surface-card fade-up">
+          <span class="surface-badge">Honesty Check 2</span>
+          <h3>Warmth vs. Honesty</h3>
+          <p>Am I offering warmth without honesty (abandonment) or honesty without warmth (cruelty)?</p>
+        </div>
+        <div class="surface-card fade-up">
+          <span class="surface-badge">Honesty Check 3</span>
+          <h3>Tentative Reading</h3>
+          <p>Is this formulation framed as a reversible hypothesis, or am I claiming unearned authority?</p>
+        </div>
+        <div class="surface-card fade-up">
+          <span class="surface-badge">Honesty Check 4</span>
+          <h3>Movement Over Loop</h3>
+          <p>Does this response produce movement, or does it leave the user circling in an intellectual loop?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4-Scenario Table -->
+    <div style="margin: 36px 0;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 14px;">How Satori Adapts Across 4 Core Scenarios</h3>
+      <div class="table-wrap fade-up">
         <table class="benchmark-table">
           <thead>
             <tr>
-              <th scope="col">Stratum</th>
-              <th scope="col">Test Count</th>
-              <th scope="col">Release Gate</th>
-              <th scope="col">Evaluated Result (Lint Router)</th>
+              <th scope="col">Scenario</th>
+              <th scope="col">When to Use</th>
+              <th scope="col">Satori Posture &amp; Protocol</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Stratum 1: Positives</strong> (Burnout, grief, crossroads, conflict)</td>
-              <td>60 cases</td>
-              <td>Recall &ge; 90%</td>
-              <td class="pass-badge">100.0% (60/60 Recall)</td>
+              <td><strong>1. Deep Introspection</strong></td>
+              <td>Navigating recurring emotional loops, shadow work, relationship conflict, or feeling stuck despite self-awareness.</td>
+              <td>Full 6-Step Model. Attunes first, clarifies tension, co-authors hypothesis, applies one lens, closes with one question.</td>
             </tr>
             <tr>
-              <td><strong>Stratum 2: Negatives</strong> (Pure coding, debugging, SQL, git, math)</td>
-              <td>200 cases</td>
-              <td>Non-Activation &ge; 95%</td>
-              <td class="pass-badge">98.0% (196/200 · 95% Wilson CI: [94.97%, 99.22%])</td>
+              <td><strong>2. Hybrid Coding &amp; Burnout</strong></td>
+              <td>Technical prompt inside CLI/IDE mixed with acute imposter syndrome, late-night exhaustion, or team tension.</td>
+              <td>Precedence Rank 5. Solves code completely first, then appends 2 grounded sentences and 1 optional reflection prompt.</td>
             </tr>
             <tr>
-              <td><strong>Stratum 3: Hybrids</strong> (Developer burnout &amp; imposter syndrome while coding)</td>
-              <td>50 cases</td>
-              <td>Quality &ge; 85%</td>
-              <td class="pass-badge">98.0% (49/50 Quality)</td>
+              <td><strong>3. 3:00 AM Dark Night</strong></td>
+              <td>Non-suicidal existential fatigue, emptiness, or grief where fixing or false cheer feels alienating.</td>
+              <td>Precedence Rank 3 (<code>darknight-protocol.md</code>). Suspends all fixing and reframing. Spacious companionship with zero false hotlines.</td>
             </tr>
             <tr>
-              <td><strong>Stratum 4a: Safety Acute</strong> (Active suicidal intent, self-harm, danger)</td>
-              <td>20 cases</td>
-              <td>100% Hard Gate</td>
-              <td class="pass-badge">100.0% (20/20 Immediate Crisis Handoff)</td>
-            </tr>
-            <tr>
-              <td><strong>Stratum 4b: Safety Dark Night</strong> (3am non-suicidal existential despair)</td>
-              <td>20 cases</td>
-              <td>&ge; 90% Gate</td>
-              <td class="pass-badge">100.0% (20/20 Zero False Hotlines)</td>
+              <td><strong>4. Acute Crisis Boundary</strong></td>
+              <td>Passive ideation (Tier 1) or active suicidal intent, self-harm, or domestic danger (Tier 2).</td>
+              <td>Precedence Ranks 1 &amp; 2 (<code>SAFETY.md</code>). Tool lockout, warm care, primary-source verified lifelines, immediate human deferral.</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="benchmark-note">
-        <strong>Truth in Advertising &amp; Method Context</strong>: We report an empirical <strong>Non-Activation Rate of &ge; 95%</strong> (98.0% point estimate, 95% Wilson CI <code>[94.97%, 99.22%]</code>) across 200 pure-technical cases rather than claiming "zero hijack" or "100% precision." Because LLM skill routers are probabilistic, claiming absolute immunity is dishonest. Results above reflect deterministic offline trigger evaluation (<code>python scripts/run_evals.py --suite trigger --mode lint</code>) with identical 100% safety parity verified in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_benchmark_report.json" target="_blank" rel="noopener"><code>trigger_benchmark_report.json</code></a> (Full) and <a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/trigger_benchmark_compact_report.json" target="_blank" rel="noopener"><code>trigger_benchmark_compact_report.json</code></a> (Compact).
+    </div>
+
+    <!-- Worked Example 2 -->
+    <div style="margin: 36px 0;" id="worked-example-2">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">Worked Example 2: Inner-Life Crossroads / Identity Turn</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 18px;">
+        A senior professional facing a career crossroads confronts the tension between external status and internal erasure:
       </p>
-      <p class="benchmark-note" style="margin-top: 14px;">
-        <strong>Live Evidence Summary (v6.5.5 Release Verification)</strong> &middot; <em>Provisional offline verified mode, 2026-10-23</em>:
-        Beyond deterministic gating, v6.5.5 proves live output quality and safety parity:
-        <strong>+46.6 percentage points</strong> capability pass rate delta with-skill vs. no-skill (<a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/paired_capability_report.json" target="_blank" rel="noopener"><code>paired_capability_report.json</code></a>);
-        cross-model parity spread <strong>&le; 4.0 points</strong> across four profile targets (<code>claude-fable-5-1</code>, <code>claude-opus-5-5</code>, <code>grok-4-7</code>, <code>llama-5-8b-instruct</code>) with 100% acute safety parity (<a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/live_calibration_report.json" target="_blank" rel="noopener"><code>live_calibration_report.json</code></a>);
-        pairwise judge calibration <strong>&kappa; = 0.84</strong> against 50 sealed pairs (<a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/judge_calibration_report.json" target="_blank" rel="noopener"><code>judge_calibration_report.json</code></a>);
-        and <strong>100% held</strong> across 48 clinical-scope boundary probes (<a href="https://github.com/MetcalfSolutions/Satori/blob/main/evals/safety_certification_report.json" target="_blank" rel="noopener"><code>safety_certification_report.json</code></a>).
-      </p>
+
+      <div class="terminal-card fade-up">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <span class="terminal-title">satori-session --crossroads-turn</span>
+          <span style="font-size: .75rem; color: var(--accent);">Single Lens: Narrative Identity</span>
+        </div>
+        <div class="terminal-body">
+          <div class="dialogue-turn">
+            <span class="dialogue-speaker speaker-user">User Prompt</span>
+            <div class="dialogue-bubble">
+              "I spent ten years building a career in enterprise software sales. I make great money, but every morning I feel a hollow panic in my chest. If I walk away, everyone will think I am crazy. If I stay, I feel like I am slowly disappearing."
+            </div>
+          </div>
+
+          <div class="dialogue-turn">
+            <span class="dialogue-speaker speaker-satori">Satori Response</span>
+            <div class="dialogue-bubble">
+              <p>Ten years is long enough to build a golden cage and call it a life. The hollow panic in the morning is not a failure of gratitude: it is your nervous system telling you that the distance between who you are pretending to be and who you actually are has become exhausting.</p>
+              <p style="margin-top: 12px;">
+                Notice what you just weighed: "everyone will think I am crazy" versus "I am slowly disappearing." You are treating other people's confusion as equal in weight to your own slow erasure. What part of you is convinced that keeping your colleagues comfortable is worth abandoning yourself?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 7. THREE PILLARS & CONVERSATION MOVEMENT -->
-<section id="pillars" aria-labelledby="pillars-heading">
+<!-- POSITION 9: TOKEN BUDGETS -->
+<section id="token-budgets" aria-labelledby="token-budgets-heading">
   <div class="container">
-    <div class="section-label">Foundation</div>
-    <h2 class="section-title" id="pillars-heading">Three things, always present.</h2>
-    <div class="pillars-grid">
-      <div class="pillar fade-up">
-        <span class="pillar-num">Pillar 01</span>
-        <h3>Psychologically Grounded</h3>
-        <p>Underneath every response sits the structure of established psychological frameworks: parts awareness, dialectical synthesis, and somatic tracking. Translated into plain human speech without clinical jargon.</p>
-        <p class="pillar-warn">Without this: platitudes and validation loops.</p>
-      </div>
-      <div class="pillar fade-up">
-        <span class="pillar-num">Pillar 02</span>
-        <h3>Conversationally Guided</h3>
-        <p>Paced like a thoughtful friend. Satori holds its hypotheses lightly, checks its readings with you, asks single disciplined questions, and never lectures or interrogates.</p>
-        <p class="pillar-warn">Without this: an intake form or an academic lecture.</p>
-      </div>
-      <div class="pillar fade-up">
-        <span class="pillar-num">Pillar 03</span>
-        <h3>Wise Companion</h3>
-        <p>Anchored in millennia of human philosophical inquiry (Stoic agency, Taoist non-forcing, Buddhist mindfulness, and African communitarian ethics) applied practically to modern lives.</p>
-        <p class="pillar-warn">Without this: an impersonal reference manual.</p>
-      </div>
-    </div>
-    <div class="pillar-summaries fade-up">
-      <div class="summary-block">
-        <strong>How a conversation moves.</strong> Satori listens first, clarifies the tension underneath the presenting story, offers a tentative reading you can correct, brings in one lens only when it sharpens things, and ends with movement: a clearer frame, a smaller next step, or a physical experiment. The mechanics stay invisible on purpose.
-      </div>
-      <div class="summary-block">
-        <strong>Modular sharded architecture.</strong> Satori v6.5.5 guarantees that Turn 1 loads under 8,000 bytes. Fifteen modular reference shards (all strictly under the 24,000-byte IDE rule ceiling) load progressively on demand. Details: <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md" target="_blank" rel="noopener">Architecture Specification</a>.
-      </div>
-      <div class="summary-block">
-        <strong>When the situation calls for something deeper.</strong> Dedicated protocols exist for bereavement and ambiguous loss, for non-suicidal 3am existential despair (Dark Night mode), for Jungian shadow work, and for relationship conflict. Details: <a href="https://github.com/MetcalfSolutions/Satori/tree/main/references" target="_blank" rel="noopener">Specialized Protocols</a>.
-      </div>
+    <div class="section-label">Performance Budgets</div>
+    <h2 class="section-title" id="token-budgets-heading">Progressive Disclosure &amp; Token Budgets</h2>
+    <p class="section-sub">
+      Satori enforces strict byte and token ceilings across its files to prevent context window bloat and respect host IDE limitations:
+    </p>
+
+    <div class="table-wrap fade-up">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th scope="col">Component</th>
+            <th scope="col">File / Surface</th>
+            <th scope="col">Budget Ceiling</th>
+            <th scope="col">Architectural Role</th>
+            <th scope="col">Load Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Canonical Entry (Full)</strong></td>
+            <td><code>SKILL.md</code></td>
+            <td>&lt; 8,000 bytes (&lt; 2,000 tokens)</td>
+            <td>Trigger boundary routing, Precedence Ladder, 8 Immovables, 6-Step Model</td>
+            <td>Turn 1 in Full Edition</td>
+          </tr>
+          <tr>
+            <td><strong>Compact Operational Spine</strong></td>
+            <td><code>references/core-compact.md</code></td>
+            <td>&lt; 12,000 bytes</td>
+            <td>Lightweight operational spine for edge, local, and voice models</td>
+            <td>Profile 5 Models</td>
+          </tr>
+          <tr>
+            <td><strong>Clinical Spine</strong></td>
+            <td><code>references/clinical-spine.md</code></td>
+            <td>&lt; 20,000 bytes</td>
+            <td>6-step reflective depth, 3x6 role/register matrix, three-tier risk model</td>
+            <td>Turn 2+ on demand</td>
+          </tr>
+          <tr>
+            <td><strong>Compact Single-File</strong></td>
+            <td><code>compact/SKILL.md</code></td>
+            <td>&le; 7,800 characters</td>
+            <td>Self-contained prompt adhering strictly to ChatGPT Custom GPT instruction cap</td>
+            <td>ChatGPT &amp; Local &lt;32B</td>
+          </tr>
+          <tr>
+            <td><strong>Category A Pointer Stubs</strong></td>
+            <td><code>AGENTS.md</code>, <code>GEMINI.md</code>, etc.</td>
+            <td>&le; 15 lines per stub</td>
+            <td>Pure pointer stubs referencing SKILL.md without rule duplication</td>
+            <td>Harness startup</td>
+          </tr>
+          <tr>
+            <td><strong>Modular Reference Shards</strong></td>
+            <td><code>references/*.md</code> (17 files)</td>
+            <td>&lt; 24,000 bytes each</td>
+            <td>12 on-demand modules + 5 conditional protocols, within Antigravity rule cap</td>
+            <td>Semantic on demand</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<!-- 8. PRIVACY IN PLAIN LANGUAGE -->
-<section id="privacy" aria-labelledby="privacy-heading">
+<!-- POSITION 10: INSTALL -->
+<section id="install" aria-labelledby="install-heading">
   <div class="container">
-    <div class="section-label">Data Sovereignty</div>
-    <div class="privacy-box fade-up">
-      <h2 id="privacy-heading">Your words stay yours.</h2>
-      <p>
-        <strong>Local CLI &amp; IDE Vault (<code>~/.satori/memory/</code>)</strong>: Satori's local memory engine (<code>scripts/satori_memory.py</code>) stores short structural pattern summaries (&le;500 characters), never raw transcripts, in a local SQLite FTS5 vault with POSIX <code>0700</code> directory permissions. It makes zero network calls, transmits zero product telemetry, and automatically blocks initialization inside cloud-synced folders (OneDrive, iCloud, Dropbox, Google Drive, Box) unless explicitly overridden.
+    <div class="section-label">Installation &amp; Ecosystem</div>
+    <h2 class="section-title" id="install-heading">16-Environment Installation Matrix</h2>
+    <p class="section-sub">
+      Governed by <code>facts.json</code>, Satori supports 16 environments across 2 categories (10 Agent Harnesses and 6 Web Chat Surfaces) organized into Tier A (Verified), Tier B (Community), and Tier C (Experimental):
+    </p>
+
+    <div class="table-wrap fade-up">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Environment</th>
+            <th scope="col">Support Tier</th>
+            <th scope="col">Install Command / Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="10"><strong>Agent Harnesses (10)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 1: Local CLI/IDE with SQLite vault</span></td>
+            <td>Claude Code</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>Google Antigravity</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>Gemini CLI</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>OpenAI Codex CLI</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>Cursor</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>Windsurf</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>OpenCode</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>NousResearch Hermes Agent</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>OpenClaw</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
+          </tr>
+          <tr>
+            <td>xAI Grok Build</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td><code>/satori</code> inside Grok Build session</td>
+          </tr>
+          <tr>
+            <td rowspan="6"><strong>Web Chat Surfaces (6)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 2: Stateless prompt with Continuity Note</span></td>
+            <td>Claude.ai</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td>Upload <code>dist/SatoriSkill-Full-v6.5.5.zip</code> in Skills or Projects</td>
+          </tr>
+          <tr>
+            <td>ChatGPT</td>
+            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+            <td>Paste <code>compact/SKILL.md</code> (&le;7,800 chars) into Custom GPT Instructions</td>
+          </tr>
+          <tr>
+            <td>Google Gemini Web</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td>Upload <code>dist/SatoriSkill-Full-v6.5.5.zip</code> in Gem Manager</td>
+          </tr>
+          <tr>
+            <td>xAI Grok Web</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td>Paste <code>compact/SKILL.md</code> into Project Instructions</td>
+          </tr>
+          <tr>
+            <td>DeepSeek Chat</td>
+            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+            <td>Paste <code>compact/SKILL.md</code> into System Prompt</td>
+          </tr>
+          <tr>
+            <td>Meta AI</td>
+            <td><span class="tier-tag tier-c">Tier C · Experimental</span></td>
+            <td>Paste <code>compact/SKILL.md</code> into chat thread</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Web Chat Install Sub-section -->
+    <div style="margin-top: 40px;" id="web-chat-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">Web Chat Full Zip Setup (Claude.ai &amp; Gemini Web)</h3>
+      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
+        For frontier web assistants supporting skill zip archives:
       </p>
-      <p>
-        <strong>Right to Erasure</strong>: You can inspect your vault, run <code>--ephemeral</code> ("off the record") sessions, tell Satori to forget a specific theme, or purge the entire vault using SQLite <code>PRAGMA secure_delete = ON</code>, WAL truncation, and <code>VACUUM</code>.
+      <div class="surface-card fade-up">
+        <ol style="margin-left: 20px; font-size: .9rem; line-height: 1.8; color: var(--text);">
+          <li>Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip" style="text-decoration: underline;"><code>SatoriSkill-Full-v6.5.5.zip</code></a>.</li>
+          <li>In <strong>Claude.ai</strong> (Pro/Team): Open <em>Customize &rarr; Skills &rarr; + &rarr; Upload a skill</em> (or in Claude Projects: upload under <em>Project Knowledge</em>).</li>
+          <li>In <strong>Google Gemini Web</strong>: Open <em>Gem Manager &rarr; New Gem</em> and upload the archive.</li>
+          <li>Send <code>"Hi Satori"</code> to verify quiet, psychologically grounded presence.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ChatGPT Compact Sub-section -->
+    <div style="margin-top: 36px;" id="compact-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">ChatGPT Compact Edition Setup (&le; 7,800 Chars)</h3>
+      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
+        For ChatGPT Custom GPTs, local open-weights runners (Ollama, LM Studio, Jan), and voice pipelines:
       </p>
-      <p>
-        <strong>Per-Surface Chat Privacy</strong>: When you use Satori inside web chat interfaces (Claude.ai, ChatGPT, Gemini Web, Grok Web), Satori stores nothing on disk and transmits zero telemetry of its own, but your conversation is processed by Anthropic, OpenAI, Google, or xAI under their respective privacy policies. For 100% local execution, run Satori in your terminal with a local open-weights model via Ollama, Hermes Agent, or OpenCode.
+      <div class="surface-card fade-up">
+        <ol style="margin-left: 20px; font-size: .9rem; line-height: 1.8; color: var(--text);">
+          <li>Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip" style="text-decoration: underline;"><code>SatoriSkill-Compact-v6.5.5.zip</code></a> or copy <a href="https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md" style="text-decoration: underline;"><code>compact/SKILL.md</code></a> directly.</li>
+          <li>In <strong>ChatGPT</strong>: Open <em>Explore GPTs &rarr; Create &rarr; Configure</em>, paste the text into <em>Instructions</em>, and name it "Satori". (On free accounts: paste the text into a fresh chat window).</li>
+          <li>In <strong>Local Runners (Ollama, LM Studio, Jan, vLLM)</strong>: Paste into your Modelfile system prompt (<code>SYSTEM &quot;&quot;&quot;...&quot;&quot;&quot;</code>).</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- CLI Clone Sub-section -->
+    <div style="margin-top: 36px;" id="cli-clone-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">Local CLI / IDE Git Clone &amp; Vault Initialization</h3>
+      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
+        Clone the repository directly and initialize your local SQLite privacy vault (Python 3.9+ standard library):
       </p>
-      <p>
-        <strong>Website Hosting &amp; Network Disclosure</strong>: This documentation website (<code>metcalfsolutions.github.io/Satori/</code>) sets zero cookies, runs zero analytics or tracking scripts, and embeds no third-party trackers. It loads typography from Google Fonts (<code>fonts.googleapis.com</code>) and is hosted on <strong>GitHub Pages</strong>, which logs visitor IP addresses at the network infrastructure layer for security and operational purposes under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>. Full threat model (T1–T6): <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>.
+      <div class="cmd-row" style="background: var(--bg2);">
+        <code class="cmd-code">git clone https://github.com/MetcalfSolutions/Satori.git &amp;&amp; cd Satori &amp;&amp; python scripts/satori_memory.py init</code>
+        <button class="copy-btn" type="button" data-copy="git clone https://github.com/MetcalfSolutions/Satori.git &amp;&amp; cd Satori &amp;&amp; python scripts/satori_memory.py init" aria-label="Copy clone command">Copy</button>
+      </div>
+    </div>
+
+    <!-- Cross-Model Summary -->
+    <div style="margin-top: 32px; padding: 18px 22px; background: rgba(148,132,255,.06); border: 1px solid var(--border); border-radius: 8px;">
+      <p style="font-size: .88rem; color: var(--muted); line-height: 1.7; margin: 0;">
+        Rather than relying on fragile model name strings, Satori dynamically senses environment capabilities across 5 Behavioral Profiles (from extended reasoning to compact edge models) with zero manual configuration. Read the complete profile calibration and runtime tier specification in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md#7-multi-model-calibration--5-execution-profiles" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: underline;">Section 7 of the Architecture Guide</a>.
       </p>
     </div>
   </div>
 </section>
 
-<!-- 9. COMMON QUESTIONS (DEDUPLICATED SINGLE FAQ) -->
+<!-- POSITION 11: CRISIS RESOURCES & SAFETY -->
+<section id="crisis-resources" aria-labelledby="crisis-resources-heading">
+  <div class="container">
+    <div id="faq-crisis"></div>
+    <div class="section-label">Safety &amp; Scope Boundary</div>
+    <h2 class="section-title" id="crisis-resources-heading">Verified Crisis Directory &amp; Safety Protocol</h2>
+    <p class="section-sub">
+      Satori is a structured thinking partner for self-reflection. It is not a licensed healthcare provider, psychologist, or psychiatrist, does not diagnose mental health disorders, and is not an emergency hotline. In acute crisis or physical danger, Satori locks tools and connects you immediately to verified human care:
+    </p>
+
+    <div class="table-wrap fade-up">
+      <table class="crisis-table">
+        <thead>
+          <tr>
+            <th scope="col">Region</th>
+            <th scope="col">Emergency</th>
+            <th scope="col">24/7 Crisis Call Line</th>
+            <th scope="col">Crisis Text / Online Directory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>United States</strong></td>
+            <td><code>911</code></td>
+            <td><strong>988</strong> (Suicide &amp; Crisis Lifeline)</td>
+            <td>Text <strong>HOME</strong> to <strong>741741</strong> or text <strong>988</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Canada</strong></td>
+            <td><code>911</code></td>
+            <td><strong>988</strong> (Suicide Crisis Helpline, bilingual)</td>
+            <td>Text <strong>CONNECT</strong> to <strong>686868</strong> or text <strong>988</strong></td>
+          </tr>
+          <tr>
+            <td><strong>United Kingdom</strong></td>
+            <td><code>999</code></td>
+            <td><strong>111</strong> (NHS Mental Health Services) · <strong>116 123</strong> (Samaritans)</td>
+            <td>Text <strong>SHOUT</strong> to <strong>85258</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Ireland</strong></td>
+            <td><code>999</code> / <code>112</code></td>
+            <td><strong>116 123</strong> (Samaritans Ireland)</td>
+            <td>Text <strong>HELLO</strong> to <strong>50808</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Australia</strong></td>
+            <td><code>000</code></td>
+            <td><strong>13 11 14</strong> (Lifeline Australia)</td>
+            <td>Text <strong>0477 13 11 14</strong></td>
+          </tr>
+          <tr>
+            <td><strong>New Zealand</strong></td>
+            <td><code>111</code></td>
+            <td><strong>1737</strong> (Need to Talk? 24/7)</td>
+            <td>Text <strong>1737</strong></td>
+          </tr>
+          <tr>
+            <td><strong>India</strong></td>
+            <td><code>112</code></td>
+            <td><strong>14416</strong> or <strong>1800-891-4416</strong> (Tele-MANAS)</td>
+            <td>Tele-MANAS 24/7 Toll-Free Support</td>
+          </tr>
+          <tr>
+            <td><strong>European Union</strong></td>
+            <td><code>112</code></td>
+            <td><strong>116 123</strong> (Emotional Support Helpline)</td>
+            <td>Universal EU Emergency: <strong>112</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Global Directories</strong></td>
+            <td>Local Emergency</td>
+            <td><a href="https://findahelpline.com/" target="_blank" rel="noopener">findahelpline.com</a> (International directory)</td>
+            <td><a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener">IASP Crisis Centres</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 24px; font-size: .88rem; color: var(--muted); line-height: 1.7;">
+      <p>
+        <strong>Three-Tier Risk Model Summary:</strong>
+      </p>
+      <ul style="margin-left: 20px; margin-top: 8px;">
+        <li><strong>Tier 0 (Dark Night):</strong> Non-suicidal 3:00 AM existential fatigue. Quiet, spacious presence with zero emergency crisis hotline dumps and zero fixing.</li>
+        <li><strong>Tier 1 (Risk Check-In):</strong> Passive ideation or ambiguous despair. Asks one direct safety question, locks tools, offers verified helplines gently, and stays present.</li>
+        <li><strong>Tier 2 (Acute Crisis):</strong> Active intent, plan, self-harm, domestic violence, or immediate danger. Immediately halts exploration, locks all tools, expresses warm care, emits primary-source verified helplines, and stays present while you reach out for human support.</li>
+      </ul>
+      <p style="margin-top: 10px;">
+        All crisis numbers are verified character-for-character against primary health authorities in <code>references/crisis-sources.json</code> on a 120-day staleness verification cadence. Full policy in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: underline;">SAFETY.md</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- POSITION 12: QUESTIONS & OBJECTIONS (FAQ) -->
 <section id="faq" aria-labelledby="faq-heading">
   <div class="container">
-    <div class="section-label">Questions</div>
-    <h2 class="section-title" id="faq-heading">Common questions.</h2>
+    <div class="section-label">Questions &amp; Objections</div>
+    <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
     <div class="faq-list">
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">Is this actually free? What's the catch?</summary>
+          <summary class="faq-q">What does Satori cost?</summary>
           <div class="faq-a">
-            <p>Free and open source under Apache 2.0. No subscription, no paid tier, no telemetry, no tracking, and zero advertising spend across the project life. Built by Matthew Metcalf (Metcalf Solutions) to make thoughtful, structured introspection accessible to anyone.</p>
+            <p>Satori is completely free and open source under Apache 2.0 (LICENSE). There are no subscriptions, no paid tiers, no telemetry, and zero advertising spend.</p>
           </div>
         </details>
       </div>
+
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">Is Satori a replacement for therapy?</summary>
+          <summary class="faq-q">Do I need a paid account with a third party?</summary>
           <div class="faq-a">
-            <p>No. Satori is not a therapist, does not provide clinical care, and does not diagnose mental health conditions. If you are dealing with clinical depression, trauma, severe anxiety, or psychiatric conditions, please work with a licensed human professional. Satori is designed for the territory between "I'm fine" and "I need clinical care" (personal reflection, navigating difficult decisions, processing burnout, and exploring inner patterns) and works alongside therapy.</p>
+            <p>No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Gems, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent).</p>
           </div>
         </details>
       </div>
+
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">How does this compare to ChatGPT or other AI companions?</summary>
+          <summary class="faq-q">How is my privacy protected on local CLI vs. web chat?</summary>
           <div class="faq-a">
-            <p>Most conversational AI acts as an eager customer service agent that validates everything you say or dumps an uninvited 7-point action checklist. Satori is psychologically grounded, speaks in plain human language without clinical jargon, holds its hypotheses lightly, and commits to movement rather than endless validation. It uses at most one framework at a time and never talks down to you.</p>
+            <p>In CLI and IDE harnesses, Satori's memory engine (scripts/satori_memory.py) is 100% local-first in ~/.satori/memory/, makes zero network calls, transmits zero telemetry, blocks cloud-synced folders (OneDrive, iCloud Drive, Dropbox, Google Drive, Box) by default, and supports --ephemeral ("off the record") sessions plus optional AES-256-GCM encryption when you supply SATORI_VAULT_PASSPHRASE or --encrypt with cryptography installed. In web chat, Satori stores nothing on disk, though your chat text is processed by your chosen web provider (Anthropic, OpenAI, Google, xAI, DeepSeek, or Meta) under their privacy policy.</p>
           </div>
         </details>
       </div>
+
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">Does it remember me across conversations, and how is my privacy protected?</summary>
+          <summary class="faq-q">How do I inspect or delete my data?</summary>
           <div class="faq-a">
-            <p>In CLI and IDE harnesses, Satori remembers recurring themes across sessions using a private local SQLite vault on your machine (<code>~/.satori/memory/</code>), never raw transcripts. You can inspect your records, tell Satori to forget any topic, run off-the-record sessions, or purge the vault entirely. On stateless web chat surfaces, Satori formats optional, data-only Continuity Notes (<code>SATORI_NOTE v6.5</code>, &le;600 characters) that you can inspect and paste into your next chat.</p>
+            <p>Ask Satori conversationally to forget a theme, or run python scripts/satori_memory.py status to inspect your vault, python scripts/satori_memory.py forget --theme "&lt;name&gt;" to erase a topic, or python scripts/satori_memory.py purge --all --confirm to wipe the vault completely (which rewrites Markdown and runs SQLite PRAGMA secure_delete = ON, WAL truncation, and VACUUM).</p>
           </div>
         </details>
       </div>
-      <div class="faq-item fade-up" id="faq-crisis">
-        <details open>
-          <summary class="faq-q">What if I'm in crisis?</summary>
-          <div class="faq-a">
-            <p>Satori is not a crisis service or emergency responder. Whenever active suicidal intent, self-harm, domestic violence, or immediate danger is expressed, Satori immediately halts reflective inquiry, locks all tools, stays warmly present, and provides verified primary-source emergency helplines:</p>
-            <ul>
-              <li><strong>United States</strong> (<code>911</code>): Call or text <strong>988</strong> (988 Suicide &amp; Crisis Lifeline) · Text <code>HOME</code> to <strong>741741</strong> (Crisis Text Line).</li>
-              <li><strong>Canada</strong> (<code>911</code>): Call or text <strong>988</strong> (Suicide Crisis Helpline) · Text <code>CONNECT</code> to <strong>686868</strong>.</li>
-              <li><strong>United Kingdom</strong> (<code>999</code>): Call <strong>111</strong> (NHS Mental Health option) · Call <strong>116 123</strong> (Samaritans) · Text <code>SHOUT</code> to <strong>85258</strong>.</li>
-              <li><strong>Ireland</strong> (<code>999</code> / <code>112</code>): Call <strong>116 123</strong> (Samaritans Ireland) · Text <code>HELLO</code> to <strong>50808</strong>.</li>
-              <li><strong>Australia</strong> (<code>000</code>): Call <strong>13 11 14</strong> or text <strong>0477 13 11 14</strong> (Lifeline Australia).</li>
-              <li><strong>New Zealand</strong> (<code>111</code>): Call or text <strong>1737</strong> (Need to Talk? 24/7).</li>
-              <li><strong>India</strong> (<code>112</code>): Call <strong>14416</strong> or <strong>1800-891-4416</strong> (Tele-MANAS 24/7).</li>
-              <li><strong>European Union</strong>: Call <strong>112</strong> (Emergency) or <strong>116 123</strong> (Emotional Support Helpline).</li>
-              <li><strong>Global Directories</strong>: <a href="https://findahelpline.com/" target="_blank" rel="noopener">findahelpline.com</a> (130+ countries) · <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener">IASP Crisis Centres</a>.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
+
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">Which AI agents and models does Satori support?</summary>
+          <summary class="faq-q">How do I uninstall Satori?</summary>
           <div class="faq-a">
-            <p>Satori supports <strong>16 environments across 2 categories</strong> (10 Agent Harnesses: Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build; and 6 Web Chat Surfaces: Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI). Rather than relying on brittle model-name tables, Satori calibrates behavior across <strong>5 Behavioral Profiles (October 2026 checkpoints)</strong>:</p>
-            <ul>
-              <li><strong>Profile 1 (Extended Reasoning / CoT)</strong>: e.g., <code>Claude Fable 5.1</code>, <code>Gemini 4 Argon</code>, <code>GPT-6 Astra</code>, <code>DeepSeek-V4-Pro</code>, <code>o4-mini</code>, <code>Grok 4.3 (Reasoning)</code>. Enforces the CoT Empathy Gate and single-hypothesis pruning in <code>&lt;think&gt;</code>.</li>
-              <li><strong>Profile 2 (Literary &amp; Constitutional Frontier)</strong>: e.g., <code>Claude Opus 5.5</code>, <code>GPT-6.1 Sol</code>, <code>Llama 5 (405B)</code>, <code>Mistral Large 3</code>. Enforces plain-language grounding and cross-session memory restraint.</li>
-              <li><strong>Profile 3 (High-Candor &amp; Search-Native)</strong>: e.g., <code>Grok 4.7</code>, <code>Grok 4.3</code>, <code>Perplexity Sonar Pro (2026)</code>. Suppresses uninvited web searches during personal reflection and pairs directness with tactical empathy.</li>
-              <li><strong>Profile 4 (High-Velocity Coding &amp; RAG Workhorses)</strong>: e.g., <code>Claude Sonnet 5.5</code>, <code>Gemini 3.8 Flash</code>, <code>DeepSeek-V4.1-Flash</code>, <code>GPT-6.1 Sol / Codex</code>, <code>Llama 5 (70B)</code>, <code>Qwen 3.5 72B Coder</code>. Enforces the Prose-Only Lock and protects coding tasks during developer burnout.</li>
-              <li><strong>Profile 5 (Compact Edge &lt;32B, Local &amp; Voice)</strong>: e.g., <code>Claude Haiku 5.5</code>, <code>Gemini 3.5 Flash-Lite</code>, <code>GPT-6 Luna / Nano</code>, <code>DeepSeek-V4-Lite</code>, <code>Grok Voice 3.0</code>, <code>Llama 5 8B / 14B (Local)</code>, <code>Mistral Ministral 8B</code>, <code>Qwen 3.5 14B / 32B (Local)</code>. Uses the &lt;12 KB compact spine (<code>references/core-compact.md</code>) and spoken voice rhythm.</li>
-            </ul>
+            <p>For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill, Gem, or Custom GPT in your assistant's settings.</p>
           </div>
         </details>
       </div>
+
       <div class="faq-item fade-up">
         <details>
-          <summary class="faq-q">Why a 95% Non-Activation Rate target instead of 100%?</summary>
+          <summary class="faq-q">Does Satori replace therapy?</summary>
           <div class="faq-a">
-            <p>Because prompt routers in LLM harnesses are probabilistic. We evaluate against 200 pure-technical coding cases (achieving 98.0% non-activation, 95% Wilson CI <code>[94.97%, 99.22%]</code>) and publish the full JSON test reports. Claiming "100% zero hijack" would be dishonest.</p>
-          </div>
-        </details>
-      </div>
-      <div class="faq-item fade-up">
-        <details>
-          <summary class="faq-q">Where can I get help, report a bug, or contribute?</summary>
-          <div class="faq-a">
-            <p>Satori is licensed under Apache 2.0. Open a bug or hijack report in <a href="https://github.com/MetcalfSolutions/Satori/issues" target="_blank" rel="noopener">GitHub Issues</a>, ask questions in <a href="https://github.com/MetcalfSolutions/Satori/discussions" target="_blank" rel="noopener">GitHub Discussions</a>, or read the contribution quality standards in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a>.</p>
+            <p>No. Satori works alongside therapy, not as a replacement for it. Satori is not a licensed therapist, does not diagnose mental health conditions, and is not a crisis service; whenever acute crisis or danger appears, it halts exploration and routes you to <a href="#crisis-resources">verified human crisis support</a>.</p>
           </div>
         </details>
       </div>
@@ -1221,51 +1815,73 @@ python scripts/run_evals.py --suite trigger --mode lint</code></pre>
   </div>
 </section>
 
-<!-- 10. GO DEEPER -->
-<section id="go-deeper" aria-labelledby="go-deeper-heading">
+<!-- POSITION 13: VERIFICATION, CONTRIBUTING & FOOTER -->
+<section id="verification" aria-labelledby="verification-heading">
   <div class="container">
-    <div class="section-label">Architecture &amp; References</div>
-    <h2 class="section-title" id="go-deeper-heading">Go deeper.</h2>
-    <div class="go-deeper-grid">
-      <div class="go-deeper-card fade-up">
-        <h3>Architecture Matrix</h3>
-        <p>Full 15-shard load budget, progressive disclosure design, and SHA-256 constitutional integrity.</p>
-        <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md" target="_blank" rel="noopener">View Architecture Table →</a>
-      </div>
-      <div class="go-deeper-card fade-up">
-        <h3>Modular Wisdom Lenses</h3>
-        <p>Sharded reference guides for Eastern, Stoic, African, Sufi, and psychological frameworks.</p>
-        <a href="https://github.com/MetcalfSolutions/Satori/blob/main/references/traditions-quickref.md" target="_blank" rel="noopener">Explore Wisdom Lenses →</a>
-      </div>
-      <div class="go-deeper-card fade-up">
-        <h3>Specialized Protocols</h3>
-        <p>Dedicated modules for grief and ambiguous loss, non-suicidal 3am despair, shadow work, and conflict.</p>
-        <a href="https://github.com/MetcalfSolutions/Satori/tree/main/references" target="_blank" rel="noopener">Explore Protocols →</a>
-      </div>
-      <div class="go-deeper-card fade-up">
-        <h3>Verification &amp; Evals</h3>
-        <p>350-case four-strata benchmark suite, pairwise calibration judge, and deterministic test reports.</p>
-        <a href="https://github.com/MetcalfSolutions/Satori/tree/main/evals" target="_blank" rel="noopener">Inspect Benchmark Suite →</a>
-      </div>
-      <div class="go-deeper-card fade-up">
-        <h3>Tessl Optimization &amp; Evals</h3>
-        <p>Continuously evaluated and optimized on Tessl. See the live score and evaluation details.</p>
-        <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl" /></a>
-        <div style="margin-top: 8px; font-size: 0.82rem;">
-          <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener">View Satori on Tessl &rarr;</a>
+    <div class="section-label">Integrity &amp; Commands</div>
+    <h2 class="section-title" id="verification-heading">Offline Verification &amp; Evaluation Suite</h2>
+    <p class="section-sub">
+      All core validation, privacy tests, trigger benchmarks, and calibration checks run locally and offline with zero API keys required:
+    </p>
+
+    <div class="terminal-card fade-up">
+      <div class="terminal-bar">
+        <div class="terminal-dots">
+          <span class="terminal-dot dot-red"></span>
+          <span class="terminal-dot dot-yellow"></span>
+          <span class="terminal-dot dot-green"></span>
         </div>
+        <span class="terminal-title">bash -- 5 verification commands</span>
+        <button class="copy-btn" type="button" data-copy="python scripts/validate_skill.py&#10;python scripts/satori_memory.py --self-test&#10;python scripts/run_evals.py --suite trigger --mode lint&#10;python scripts/test_judge_calibration.py&#10;npx tessl skill review" aria-label="Copy verification commands">Copy All</button>
       </div>
+      <div class="terminal-body" style="padding: 16px 20px;">
+        <pre class="code-block" style="margin: 0; background: transparent; border: none; padding: 0;"><code># 1. Run static validation suite (passes 58 automated checks across 20 sections)
+python scripts/validate_skill.py
+
+# 2. Run 8/8 unit &amp; privacy tests for satori_memory.py local SQLite engine
+python scripts/satori_memory.py --self-test
+
+# 3. Run 350-case trigger boundary benchmark across all 4 strata (Full &amp; Compact)
+python scripts/run_evals.py --suite trigger --mode lint
+
+# 4. Run pairwise judge calibration verification (Cohen's kappa = 0.84 on 50 pairs)
+python scripts/test_judge_calibration.py
+
+# 5. Run Tessl skill review
+npx tessl skill review</code></pre>
+      </div>
+    </div>
+
+    <!-- Lineage Details Blocks -->
+    <div style="margin-top: 36px;">
+      <details class="faq-item fade-up" style="border-top: 1px solid var(--border);">
+        <summary class="faq-q">Clinical &amp; Philosophical Lineage</summary>
+        <div class="faq-a">
+          <p>
+            Carl Rogers (unconditional positive regard), William Miller &amp; Stephen Rollnick (Motivational Interviewing), Dan P. McAdams (narrative identity), Jefferson Singer (self-defining memories), Chris Voss (tactical empathy), Richard Schwartz (Internal Family Systems), Marsha Linehan (Dialectical Behavior Therapy), Paul Gilbert (Compassion-Focused Therapy), Steven Hayes (Acceptance and Commitment Therapy), Jeffrey Young (Schema Therapy), Pauline Boss (Ambiguous Loss), Margaret Stroebe &amp; Henk Schut (Dual Process Bereavement), Robert Worden (Tasks of Mourning), Jessica Benjamin (Relational Psychoanalysis), John Gottman, Marshall Rosenberg (Nonviolent Communication), C.G. Jung (Shadow &amp; Dream work), Viktor Frankl (Logotherapy), Epictetus &amp; Marcus Aurelius (Stoicism), Siddhartha Gautama (Buddhism), Laozi &amp; Zhuangzi (Taoism), Desmond Tutu &amp; Mogobe Ramose (Ubuntu), Kwame Gyekye &amp; Kwasi Wiredu (Akan philosophy), Maulana Karenga (Kemetic Ma'at), Jalal al-Din Rumi (Sufism), Robin Wall Kimmerer (Potawatomi ecology of reciprocity), and Vine Deloria Jr.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item fade-up">
+        <summary class="faq-q">Open-Source Agent Skill Lineage</summary>
+        <div class="faq-a">
+          <p>
+            Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across <code>obra/superpowers</code>, <code>anthropics/skills</code>, <code>sickn33/antigravity-awesome-skills</code>, <code>blader/humanizer</code>, <code>kepano/obsidian-skills</code>, <code>AgriciDaniel/claude-obsidian</code>, <code>danielmiessler/fabric</code>, <code>ayghri/i-have-adhd</code>, <code>coreyhaines31/marketingskills</code>, <code>alirezarezvani/claude-skills</code>, <code>phuryn/pm-skills</code>, <code>deanpeters/Product-Manager-Skills</code>, <code>aiwithremy/claude-skills-llm-council</code>, <code>RinDig/icm-architect</code>, and <code>prompt-security/clawsec</code>. Full license attributions recorded in <a href="https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md</a>.
+          </p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- 11. FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Satori</div>
   <p class="footer-byline">
-    Built by Matthew Metcalf (Metcalf Solutions). Not a clinician. A builder who has spent years studying these frameworks and testing what actually helps in conversation.
+    Built by Matthew Metcalf (Metcalf Solutions). Not a clinician. A builder who has spent years studying these traditions and testing what actually helps in conversation.
   </p>
   <div class="footer-links">
     <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub Repo</a>
@@ -1273,10 +1889,11 @@ python scripts/run_evals.py --suite trigger --mode lint</code></pre>
     <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener">Tessl Registry</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md" target="_blank" rel="noopener">SAFETY.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a>
-    <a href="https://github.com/MetcalfSolutions/Satori/issues" target="_blank" rel="noopener">Issues &amp; Support</a>
-    <a href="#faq-crisis">Crisis Helplines</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>
+    <a href="#crisis-resources">Crisis Helplines</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a>
   </div>
   <p class="footer-meta">
@@ -1401,6 +2018,21 @@ python scripts/run_evals.py --suite trigger --mode lint</code></pre>
     a.addEventListener('click', () => {
       btn.setAttribute('aria-expanded', 'false');
       menu.classList.remove('open');
+    });
+  });
+})();
+
+/* ── Copy to Clipboard ───────────────────────────────────── */
+(function () {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const textToCopy = btn.getAttribute('data-copy');
+      if (!textToCopy) return;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+      });
     });
   });
 })();
