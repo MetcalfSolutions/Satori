@@ -67,6 +67,23 @@ CRISIS_DOC_TARGETS = [
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
+def is_gitignored(path: pathlib.Path) -> bool:
+    """Return True if path is gitignored local state or untracked cache."""
+    try:
+        try:
+            rel = path.resolve().relative_to(ROOT_DIR)
+        except ValueError:
+            rel = path
+        res = subprocess.run(
+            ["git", "check-ignore", "-q", str(rel)],
+            cwd=ROOT_DIR,
+            capture_output=True,
+        )
+        return res.returncode == 0
+    except Exception:
+        return False
+
+
 def sha256_file(path: pathlib.Path) -> str:
     return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
@@ -340,7 +357,9 @@ def main() -> int:
                 # Also check relative to repo root for inline table references
                 root_resolved = (ROOT_DIR / clean_target).resolve()
                 if not root_resolved.exists():
-                    errors.append(f"Broken relative link in {md_file.relative_to(ROOT_DIR)}: '{target}'")
+                    # Skip intentional links to gitignored local-state files (e.g. .tessl/RULES.md)
+                    if not is_gitignored(resolved) and not is_gitignored(root_resolved):
+                        errors.append(f"Broken relative link in {md_file.relative_to(ROOT_DIR)}: '{target}'")
     checks_passed += 1
 
     # 7. Check git hygiene (.gitignore, legacy zip removal, SOUL.md SHA-256 in openclaw.plugin.json)
@@ -522,9 +541,11 @@ def main() -> int:
             p_parent = (target_doc.parent / clean_target).resolve()
             p_root = (ROOT_DIR / clean_target).resolve()
             if not p_parent.exists() and not p_root.exists():
-                dangling_errors.append(
-                    f"Dangling link in {target_doc.relative_to(ROOT_DIR)}: '{target}'"
-                )
+                # Skip intentional links to gitignored local-state files (e.g. .tessl/RULES.md)
+                if not is_gitignored(p_parent) and not is_gitignored(p_root):
+                    dangling_errors.append(
+                        f"Dangling link in {target_doc.relative_to(ROOT_DIR)}: '{target}'"
+                    )
 
         # Check inline path references to repository folders
         for match in path_ref_pat.finditer(content):
