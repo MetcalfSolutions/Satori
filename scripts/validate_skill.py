@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Satori Build-Time Static Validator (scripts/validate_skill.py).
 
-Verifies 52+ automated checks across:
+Verifies 58+ automated checks across:
 1. Canonical SKILL.md YAML frontmatter compliance (name <=64, description <=500 chars / <=125 tokens,
    explicit negative coding triggers + hybrid routing, no "When in doubt, activate").
 2. File size budgets (SKILL.md <8 KB, core-compact.md <12 KB, clinical-spine.md <24,000 bytes
@@ -12,17 +12,21 @@ Verifies 52+ automated checks across:
    root SKILL.md byte-for-byte via SHA-256.
 5. Primary-Source Crisis Table Verification against references/crisis-sources.json across
    SKILL.md, references/clinical-spine.md, and references/core-compact.md.
-6. Relative Markdown link integrity, .gitignore protection for .satori/, and SOUL.md SHA-256
-   verification in openclaw.plugin.json.
-7. Manifest Version Parity and Banned Term Check.
-8. Agent Skills Ecosystem Parser Gate (npx skills add . --list).
-9. Check A: Repo-Wide Stale Version-String Scan (no stale v6.5.0/v6.5.1 in active surfaces).
-10. Check B: Repo-Wide Dangling File-Pointer Scan.
-11. Check C: Frontmatter Description Token Budget (<=500 chars, <=125 estimated tokens).
-12. Check D: Reference Table of Contents Check (valid anchor links for all references/*.md > 100 lines).
-13. Check E: Release Checksum Integrity (dist/SHA256SUMS.txt).
-14. Check F: Slides Directory Retirement Check (D-5).
-15. Check G: Evidence Bundle Completeness (Appendix B JSON reports in evals/).
+6. Relative Markdown link integrity across documentation and reference files.
+7. Git hygiene (.gitignore, legacy zip removal, openclaw SOUL.md SHA-256 integrity).
+8. Manifest Version Parity and Banned Term Check.
+9. Agent Skills Ecosystem Parser Gate (npx skills add . --list).
+10. Check A: Repo-Wide Stale Version-String Scan (no stale v6.5.0/v6.5.1 in active surfaces).
+11. Check B: Repo-Wide Dangling File-Pointer Scan.
+12. Check C: Frontmatter Description Token Budget (<=500 chars, <=125 estimated tokens).
+13. Check D: Reference Table of Contents Check (valid anchor links for all references/*.md > 100 lines).
+14. Check E: Release Checksum Integrity (dist/SHA256SUMS.txt).
+15. Check F: Slides Directory Retirement Check (D-5).
+16. Check G: Evidence Bundle Completeness (Appendix B JSON reports in evals/).
+17. Check 17: HOL Supply-Chain Hygiene Files (SECURITY.md, dependabot.yml, package-lock.json, .codexignore).
+18. Check 18: Zero Em-Dash Gate (no Unicode em dashes or HTML mdash entities across key surfaces).
+19. Check 19: HOL T-01 Marketplace & T-02 Plugin Interface Schema Gate.
+20. Check 20: HOL T-04 Workflow Action SHA Pinning Gate (uses: lines pinned to 40-char lowercase hex commit SHAs).
 """
 
 from __future__ import annotations
@@ -181,10 +185,11 @@ def main() -> int:
 
     # Compact single-file prompt character limit check (ChatGPT Custom GPT <=8,000 char ceiling)
     compact_skill = ROOT_DIR / "compact" / "SKILL.md"
+    compact_chars_ceiling = facts.get("budgets", {}).get("compact_prompt_max_chars", 7800)
     if compact_skill.exists():
         compact_chars = len(compact_skill.read_text(encoding="utf-8"))
-        if compact_chars > 7800:
-            errors.append(f"Compact SKILL.md character ceiling exceeded: {compact_chars} chars > 7800 chars")
+        if compact_chars > compact_chars_ceiling:
+            errors.append(f"Compact SKILL.md character ceiling exceeded: {compact_chars} chars > {compact_chars_ceiling} chars")
         else:
             checks_passed += 1
 
@@ -705,6 +710,224 @@ def main() -> int:
 
     if evidence_errors:
         errors.extend(evidence_errors)
+    else:
+        checks_passed += 1
+
+    # 17. Check 17 (HOL Supply-Chain Hygiene Files)
+    supply_chain_files = [
+        ROOT_DIR / "SECURITY.md",
+        ROOT_DIR / ".github" / "dependabot.yml",
+        ROOT_DIR / "package-lock.json",
+        ROOT_DIR / ".codexignore",
+    ]
+    missing_supply_chain = [str(p.relative_to(ROOT_DIR)) for p in supply_chain_files if not p.exists()]
+    if missing_supply_chain:
+        errors.append(f"Missing HOL supply-chain hygiene file(s): {', '.join(missing_supply_chain)}")
+    else:
+        checks_passed += 1
+
+    # 18. Check 18 (Zero Em-Dash Gate)
+    em_dash_targets = [
+        ROOT_DIR / "README.md",
+        ROOT_DIR / "docs" / "index.html",
+        ROOT_DIR / "docs" / "architecture.md",
+        ROOT_DIR / "CONTRIBUTING.md",
+        ROOT_DIR / "SECURITY.md",
+    ]
+    em_dash_errors: list[str] = []
+    em_dash_char = chr(0x2014)
+    html_mdash_entity = "&" + "mdash;"
+    for target in em_dash_targets:
+        if target.exists():
+            content = target.read_text(encoding="utf-8")
+            if em_dash_char in content or html_mdash_entity in content:
+                em_dash_errors.append(
+                    f"Forbidden em dash (\\u2014 or HTML mdash entity) found in {target.relative_to(ROOT_DIR)}"
+                )
+    if em_dash_errors:
+        errors.extend(em_dash_errors)
+    else:
+        checks_passed += 1
+
+    # 19. Check 19 (HOL T-01 Marketplace & T-02 Plugin Interface Schema Gate)
+    t01_t02_errors: list[str] = []
+
+    # T-01 Marketplace schemas
+    marketplace_files = [
+        ROOT_DIR / ".claude-plugin" / "marketplace.json",
+        ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
+    ]
+    for mp in marketplace_files:
+        if not mp.exists():
+            t01_t02_errors.append(f"Missing marketplace manifest: {mp.relative_to(ROOT_DIR)}")
+            continue
+        try:
+            mp_data = json.loads(mp.read_text(encoding="utf-8"))
+            plugins = mp_data.get("plugins")
+            if not isinstance(plugins, list) or not plugins:
+                t01_t02_errors.append(f"{mp.relative_to(ROOT_DIR)} missing non-empty 'plugins' list")
+                continue
+            p0 = plugins[0]
+            p0_source = p0.get("source")
+            if not isinstance(p0_source, dict):
+                t01_t02_errors.append(f"{mp.relative_to(ROOT_DIR)} plugins[0].source must be a dict")
+            else:
+                if p0_source.get("source") != "local":
+                    t01_t02_errors.append(
+                        f"{mp.relative_to(ROOT_DIR)} plugins[0].source.source must be 'local', got '{p0_source.get('source')}'"
+                    )
+                rel_path = p0_source.get("path", "")
+                resolved_root = (ROOT_DIR / rel_path).resolve()
+                resolved_manifest = (mp.parent / rel_path).resolve()
+                target_dir = None
+                if resolved_root.is_dir():
+                    target_dir = resolved_root
+                elif resolved_manifest.is_dir():
+                    target_dir = resolved_manifest
+
+                if target_dir is None:
+                    t01_t02_errors.append(
+                        f"{mp.relative_to(ROOT_DIR)} plugins[0].source.path '{rel_path}' does not resolve to an existing directory"
+                    )
+                else:
+                    try:
+                        target_dir.relative_to(ROOT_DIR)
+                    except ValueError:
+                        t01_t02_errors.append(
+                            f"{mp.relative_to(ROOT_DIR)} plugins[0].source.path '{rel_path}' resolves outside ROOT_DIR"
+                        )
+
+            p0_policy = p0.get("policy", {})
+            if not isinstance(p0_policy, dict):
+                t01_t02_errors.append(f"{mp.relative_to(ROOT_DIR)} plugins[0].policy must be a dict")
+            else:
+                if p0_policy.get("installation") != "AVAILABLE":
+                    t01_t02_errors.append(
+                        f"{mp.relative_to(ROOT_DIR)} plugins[0].policy.installation must be 'AVAILABLE', got '{p0_policy.get('installation')}'"
+                    )
+                if p0_policy.get("authentication") != "ON_INSTALL":
+                    t01_t02_errors.append(
+                        f"{mp.relative_to(ROOT_DIR)} plugins[0].policy.authentication must be 'ON_INSTALL', got '{p0_policy.get('authentication')}'"
+                    )
+            if p0.get("category") != "wellness":
+                t01_t02_errors.append(
+                    f"{mp.relative_to(ROOT_DIR)} plugins[0].category must be 'wellness', got '{p0.get('category')}'"
+                )
+        except Exception as exc:
+            t01_t02_errors.append(f"{mp.relative_to(ROOT_DIR)} parse error: {exc}")
+
+    # T-02 Plugin interface schemas
+    plugin_manifests = [
+        ROOT_DIR / "plugin.json",
+        ROOT_DIR / ".codex-plugin" / "plugin.json",
+        ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+    ]
+    for pm in plugin_manifests:
+        if not pm.exists():
+            t01_t02_errors.append(f"Missing plugin manifest: {pm.relative_to(ROOT_DIR)}")
+            continue
+        try:
+            pm_data = json.loads(pm.read_text(encoding="utf-8"))
+            if not pm_data.get("author"):
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} missing 'author'")
+            if not pm_data.get("homepage"):
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} missing 'homepage'")
+            keywords = pm_data.get("keywords")
+            if not isinstance(keywords, list) or not keywords:
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} missing non-empty 'keywords' list")
+
+            iface = pm_data.get("interface")
+            if not isinstance(iface, dict):
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} missing 'interface' dict")
+                continue
+
+            if not iface.get("displayName"):
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} interface missing 'displayName'")
+            if iface.get("developerName") != "Matthew Metcalf":
+                t01_t02_errors.append(
+                    f"{pm.relative_to(ROOT_DIR)} interface developerName must be 'Matthew Metcalf', got '{iface.get('developerName')}'"
+                )
+
+            short_desc = iface.get("shortDescription", "")
+            if not isinstance(short_desc, str) or len(short_desc) != 255:
+                t01_t02_errors.append(
+                    f"{pm.relative_to(ROOT_DIR)} interface shortDescription length is {len(short_desc)} (must be exactly 255 chars)"
+                )
+            long_desc = iface.get("longDescription", "")
+            if not isinstance(long_desc, str) or not long_desc:
+                t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} interface missing 'longDescription'")
+            if iface.get("category") != "wellness":
+                t01_t02_errors.append(
+                    f"{pm.relative_to(ROOT_DIR)} interface category must be 'wellness', got '{iface.get('category')}'"
+                )
+            if iface.get("capabilities") != ["Interactive", "Read", "Write"]:
+                t01_t02_errors.append(
+                    f"{pm.relative_to(ROOT_DIR)} interface capabilities must be ['Interactive', 'Read', 'Write'], got '{iface.get('capabilities')}'"
+                )
+
+            # Asset verification
+            assets_to_check: list[tuple[str, str]] = []
+            if "composerIcon" in iface:
+                assets_to_check.append(("composerIcon", str(iface["composerIcon"])))
+            if "logo" in iface:
+                assets_to_check.append(("logo", str(iface["logo"])))
+            screenshots = iface.get("screenshots")
+            if isinstance(screenshots, list):
+                for s in screenshots:
+                    assets_to_check.append(("screenshot", str(s)))
+            elif isinstance(screenshots, str):
+                assets_to_check.append(("screenshot", screenshots))
+
+            manifest_plugin_root = (
+                ROOT_DIR
+                if pm.name == "plugin.json" or pm.parent.name == ".codex-plugin"
+                else pm.parent
+            )
+            for label, asset_ref in assets_to_check:
+                if asset_ref.startswith("https://"):
+                    continue
+                res_manifest = (manifest_plugin_root / asset_ref).resolve()
+                res_root = (ROOT_DIR / asset_ref).resolve()
+                if not res_manifest.exists() and not res_root.exists():
+                    t01_t02_errors.append(
+                        f"{pm.relative_to(ROOT_DIR)} interface {label} asset not found: '{asset_ref}'"
+                    )
+        except Exception as exc:
+            t01_t02_errors.append(f"{pm.relative_to(ROOT_DIR)} parse error: {exc}")
+
+    if t01_t02_errors:
+        errors.extend(t01_t02_errors)
+    else:
+        checks_passed += 1
+
+    # 20. Check 20 (HOL T-04 Workflow Action SHA Pinning Gate)
+    workflow_files = [
+        ROOT_DIR / ".github" / "workflows" / "publish.yml",
+        ROOT_DIR / ".github" / "workflows" / "tessl-publish.yml",
+    ]
+    workflow_errors: list[str] = []
+    sha_pin_pattern = re.compile(r"@[0-9a-f]{40}$")
+
+    for wf in workflow_files:
+        if not wf.exists():
+            workflow_errors.append(f"Missing workflow file for SHA pinning check: {wf.relative_to(ROOT_DIR)}")
+            continue
+        wf_lines = wf.read_text(encoding="utf-8").splitlines()
+        for line_no, line in enumerate(wf_lines, start=1):
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            m = re.search(r"\buses:\s*([^\s#]+)", stripped)
+            if m:
+                action_spec = m.group(1).strip().strip("\"'")
+                if not sha_pin_pattern.search(action_spec):
+                    workflow_errors.append(
+                        f"Unpinned action in {wf.relative_to(ROOT_DIR)}:{line_no}: '{action_spec}' "
+                        "(must end with @<40-char lowercase hex SHA>)"
+                    )
+
+    if workflow_errors:
+        errors.extend(workflow_errors)
     else:
         checks_passed += 1
 

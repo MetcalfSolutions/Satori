@@ -40,6 +40,27 @@
     "dream-analysis"
   ],
   "category": "wellness",
+  "interface": {
+    "displayName": "Satori",
+    "developerName": "Matthew Metcalf",
+    "shortDescription": "Claude Code skill & open-source wisdom companion (v6.5.5, Apache 2.0) for CLI, IDE, and web chat. One lens per turn, local SQLite vault, 350-case benchmark (98.0% code non-activation). Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown.",
+    "longDescription": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more. Full zip for Claude.ai and Gemini, Compact edition for ChatGPT, crisis handoff on every surface. Canonical repo: github.com/MetcalfSolutions/Satori. Satori is a structured thinking partner for self-reflection. It is not a substitute for professional therapy, medical advice, or crisis intervention.",
+    "category": "wellness",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://metcalfsolutions.github.io/Satori/",
+    "privacyPolicyURL": "https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE",
+    "composerIcon": "./docs/assets/satori-hero-v6.svg",
+    "logo": "./docs/assets/satori-hero-v6.svg",
+    "screenshots": [
+      "./docs/assets/satori-hero-v6.png",
+      "./docs/assets/satori-architecture-v6.svg"
+    ]
+  },
   "main": "SKILL.md",
   "skills": [
     "./"
