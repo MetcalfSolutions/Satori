@@ -1,0 +1,24 @@
+# Generated assets and build artifacts
+dist/
+*.zip
+__pycache__/
+*.py[cod]
+*$py.class
+node_modules/
+npm-debug.log*
+
+# Local state and non-distribution folders
+.satori/
+**/.satori/
+.tessl/
+ignored/
+registry-submissions/
+.git/
+
+# Secret paths and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx

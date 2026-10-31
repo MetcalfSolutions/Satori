@@ -10,7 +10,14 @@
       "name": "satori",
       "description": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
       "version": "6.5.5",
-      "source": "./",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
       "category": "wellness",
       "homepage": "https://github.com/MetcalfSolutions/Satori",
       "repository": "https://github.com/MetcalfSolutions/Satori",
