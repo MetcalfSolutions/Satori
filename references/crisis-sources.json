@@ -251,14 +251,14 @@
       "textLines": [],
       "directories": [
         "https://findahelpline.com",
-        "https://www.iasp.info/resources/Crisis_Centres/"
+        "https://www.iasp.info/crisis-centres-helplines/"
       ],
       "primarySources": [
         "https://findahelpline.com",
-        "https://www.iasp.info/resources/Crisis_Centres/"
+        "https://www.iasp.info/crisis-centres-helplines/"
       ],
-      "lastVerified": "2026-10-20",
-      "last_verified": "2026-10-20"
+      "lastVerified": "2026-11-01",
+      "last_verified": "2026-11-01"
     }
   ],
   "requiredTokensInDocs": [
@@ -277,7 +277,7 @@
     "1800-891-4416",
     "112",
     "findahelpline.com",
-    "iasp.info/resources/Crisis_Centres/"
+    "iasp.info/crisis-centres-helplines/"
   ],
-  "last_verified": "2026-10-20"
+  "last_verified": "2026-11-01"
 }

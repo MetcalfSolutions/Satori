@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satori v6.5.5: Open-Source Wisdom Companion | CLI, IDE &amp; Web Chat</title>
+<title>Satori v6.6.0: Open-Source Wisdom Companion | CLI, IDE &amp; Web Chat</title>
 <meta name="description" content="A psychologically grounded, open-source AI wisdom companion for the inner life. Calibrated across 16 environments (10 Agent Harnesses and 6 Web Chat Surfaces) with progressive disclosure (&lt;8 KB entry), verified trigger boundaries (350 benchmark cases), and a local SQLite privacy vault.">
 <link rel="canonical" href="https://metcalfsolutions.github.io/Satori/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Satori">
-<meta property="og:title" content="Satori v6.5.5: Wisdom Companion for CLI, IDE &amp; Web Chat">
+<meta property="og:title" content="Satori v6.6.0: Wisdom Companion for CLI, IDE &amp; Web Chat">
 <meta property="og:description" content="A wisdom companion that tells you the truth, kindly. Free, open-source, and local-first on your machine. Works across Claude Code, Antigravity, Gemini CLI, Cursor, Codex, Grok, Claude.ai, and ChatGPT.">
 <meta property="og:url" content="https://metcalfsolutions.github.io/Satori/">
 <meta property="og:image" content="https://metcalfsolutions.github.io/Satori/assets/satori-hero-v6.png">
-<meta property="og:image:alt" content="Satori v6.5.5: A Psychologically Grounded Wisdom Companion for the Inner Life across CLI, IDE, and Web Chat">
+<meta property="og:image:alt" content="Satori v6.6.0: A Psychologically Grounded Wisdom Companion for the Inner Life across CLI, IDE, and Web Chat">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Satori v6.5.5: Wisdom Companion for the Inner Life">
+<meta name="twitter:title" content="Satori v6.6.0: Wisdom Companion for the Inner Life">
 <meta name="twitter:description" content="Not here to make you feel better. Here to help you see more clearly. Free and open-source across CLI, IDE, and web chat.">
 <meta name="twitter:image" content="https://metcalfsolutions.github.io/Satori/assets/satori-hero-v6.png">
-<meta name="twitter:image:alt" content="Satori v6.5.5 overview showing progressive disclosure and 350-case trigger benchmark">
+<meta name="twitter:image:alt" content="Satori v6.6.0 overview showing progressive disclosure and 350-case trigger benchmark">
 <meta name="theme-color" content="#0c0e16">
 <meta name="author" content="Matthew Metcalf / Metcalf Solutions">
 <meta name="keywords" content="AI wisdom companion, open source AI companion, Claude skill, Antigravity skill, Codex skill, Cursor rule, Grok Build, IFS, DBT, shadow work, grief support, relationship conflict, stoicism AI, local privacy AI">
@@ -28,7 +28,7 @@
 <style>
 /* ── Reset & tokens (WCAG 2.2 AA contrast verified) ───────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
+:root, :root[data-theme="dark"], html[data-theme="dark"] {
   --bg: #0c0e16;
   --bg2: #131620;
   --bg3: #1c2030;
@@ -41,10 +41,43 @@
   --text: #f0eef8;
   --muted: #a3a0b8;
   --border: #2a2e48;
+  --card-glow: radial-gradient(circle at top left, rgba(148,132,255,0.10), transparent 65%);
   --font-serif: 'Lora', Georgia, serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --ease: cubic-bezier(.25,.8,.25,1);
+}
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) {
+    --bg: #faf8f5;
+    --bg2: #f2efe9;
+    --bg3: #e6e2d8;
+    --accent: #5138e5;
+    --accent-btn: #5138e5;
+    --accent-soft: rgba(81,56,229,.10);
+    --accent2: #b84318;
+    --accent2-btn: #a33810;
+    --accent3: #0f766e;
+    --text: #181820;
+    --muted: #525066;
+    --border: rgba(81,56,229,.18);
+    --card-glow: radial-gradient(circle at top left, rgba(81,56,229,0.06), transparent 65%);
+  }
+}
+:root[data-theme="light"], html[data-theme="light"] {
+  --bg: #faf8f5;
+  --bg2: #f2efe9;
+  --bg3: #e6e2d8;
+  --accent: #5138e5;
+  --accent-btn: #5138e5;
+  --accent-soft: rgba(81,56,229,.10);
+  --accent2: #b84318;
+  --accent2-btn: #a33810;
+  --accent3: #0f766e;
+  --text: #181820;
+  --muted: #525066;
+  --border: rgba(81,56,229,.18);
+  --card-glow: radial-gradient(circle at top left, rgba(81,56,229,0.06), transparent 65%);
 }
 html {
   scroll-behavior: smooth;
@@ -171,6 +204,14 @@ nav {
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
+}
+.badge-strip a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  min-width: 24px;
+  padding: 2px 4px;
 }
 .badge-strip img {
   display: inline-block;
@@ -422,11 +463,119 @@ section { padding: 76px 0; border-bottom: 1px solid var(--border); }
   line-height: 1.6;
 }
 
+/* ── Conversational Message Card (Worked Example 1) ──────── */
+.conversation-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+  box-shadow: 0 16px 40px rgba(0,0,0,.25);
+}
+.conversation-header {
+  background: var(--bg3);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  font-size: .84rem;
+}
+.conversation-body {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.chat-bubble-author {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.chat-bubble-user {
+  align-self: flex-end;
+  max-width: 85%;
+  background: var(--accent-soft);
+  border: 1px solid rgba(148,132,255,.3);
+  border-radius: 16px 16px 4px 16px;
+  padding: 16px 20px;
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.chat-bubble-satori {
+  align-self: flex-start;
+  max-width: 88%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 16px 4px;
+  padding: 18px 22px;
+  font-size: .95rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* ── Section Accordions ──────────────────────────────────── */
+.section-accordion {
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  overflow: hidden;
+}
+.section-accordion summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .94rem;
+  color: var(--text);
+  background: var(--bg3);
+  user-select: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.section-accordion summary::-webkit-details-marker { display: none; }
+.section-accordion-body {
+  padding: 20px;
+}
+
+/* ── Theme Toggle Button ─────────────────────────────────── */
+.theme-toggle-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background .2s, border-color .2s;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--accent);
+}
+html[data-theme="light"] .theme-icon-light { display: block; }
+html[data-theme="light"] .theme-icon-dark { display: none; }
+html:not([data-theme="light"]) .theme-icon-light { display: none; }
+html:not([data-theme="light"]) .theme-icon-dark { display: block; }
+
 /* ── Position 4: Why Satori Is Different (Table) ─────────── */
 .table-wrap {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 18px 0;
+}
+.table-wrap table {
+  min-width: 620px;
 }
 .diff-table, .benchmark-table, .matrix-table, .crisis-table {
   width: 100%;
@@ -722,9 +871,9 @@ footer {
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "description": "A psychologically grounded, open-source AI wisdom companion for the inner life. Calibrated across 16 environments (10 Agent Harnesses and 6 Web Chat Surfaces) with progressive disclosure (<8 KB entry), verified trigger boundaries (350 benchmark cases), and a local SQLite privacy vault.",
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "softwareVersion": "6.5.5",
+    "softwareVersion": "6.6.0",
     "url": "https://metcalfsolutions.github.io/Satori/",
-    "downloadUrl": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip",
+    "downloadUrl": "https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip",
     "codeRepository": "https://github.com/MetcalfSolutions/Satori",
     "author": { "@type": "Person", "name": "Matthew Metcalf", "url": "https://github.com/MetcalfSolutions" }
   },
@@ -745,7 +894,7 @@ footer {
         "name": "Do I need a paid account with a third party?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Gems, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent)."
+          "text": "No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Skills, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent)."
         }
       },
       {
@@ -769,7 +918,7 @@ footer {
         "name": "How do I uninstall Satori?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill, Gem, or Custom GPT in your assistant's settings."
+          "text": "For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill or Custom GPT in your assistant's settings."
         }
       },
       {
@@ -793,9 +942,15 @@ footer {
 <header>
   <nav aria-label="Primary navigation">
     <a href="#hero" class="nav-logo">Satori <span>悟り</span></a>
-    <button class="nav-hamburger" type="button" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Toggle navigation menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button id="theme-toggle" type="button" aria-label="Toggle light or dark theme" class="theme-toggle-btn">
+        <svg class="theme-icon-dark" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="theme-icon-light" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="nav-hamburger" type="button" aria-expanded="false" aria-controls="nav-links-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <div class="nav-links" id="nav-links-menu">
       <a href="#why-different">Why Satori</a>
       <a href="#immovables">8 Immovables</a>
@@ -814,11 +969,11 @@ footer {
 <div id="sticky-cta" role="region" aria-label="Quick install bar" aria-hidden="true">
   <div class="sticky-cta-inner">
     <div class="sticky-cta-text">
-      <strong>Satori v6.5.5</strong>: A wisdom companion that tells you the truth, kindly.
+      <strong>Satori v6.6.0</strong>: A wisdom companion that tells you the truth, kindly.
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="#install" class="btn-primary sticky-btn">Install Satori (CLI &amp; IDE)</a>
-      <a href="#web-chat-install" class="btn-ghost sticky-btn">Web Chat Setup</a>
+      <a href="#web-chat-install" class="btn-primary sticky-btn">Web Chat .zip Setup</a>
+      <a href="#cli-install" class="btn-ghost sticky-btn">CLI / IDE npx Install</a>
     </div>
   </div>
 </div>
@@ -829,17 +984,8 @@ footer {
 <section id="hero" aria-labelledby="hero-heading">
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner fade-up">
-    <div class="hero-banner-wrap">
-      <img src="assets/satori-hero-v6.svg" alt="Satori v6.5.5: Open-Source Wisdom Companion Overview Diagram" width="820" height="auto" class="hero-banner" loading="eager" />
-    </div>
-
-    <div class="badge-strip">
-      <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Release-v6.5.5-7c6af7.svg?style=flat-square" alt="Satori v6.5.5 Release" height="20" /></a>
-      <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="Apache 2.0 License" height="20" /></a>
-      <a href="#install"><img src="https://img.shields.io/badge/Environments-16_Supported-e07b54.svg?style=flat-square" alt="16 Environments Supported" height="20" /></a>
-      <a href="#benchmarks"><img src="https://img.shields.io/badge/Benchmark-350_Cases_|_98.0%25_Non--Activation-4ecdc4.svg?style=flat-square" alt="350-Case Benchmark with 98.0% Non-Activation Rate" height="20" /></a>
-      <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tessl_Eval-100%25_(%2B52%25_Lift)-2ea44f?style=flat-square" alt="Tessl Eval 100% (+52% Lift)" height="20" loading="lazy" /></a>
-      <a href="https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&amp;utm_medium=plugins_badge&amp;utm_campaign=plugins&amp;utm_content=metcalfsolutions%2Fsatori" target="_blank" rel="noopener"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease" alt="HOL Guard Badge" height="20" /></a>
+    <div style="text-align: center; margin-bottom: 16px;">
+      <span class="tag">Open-Source Wisdom Companion · Free Forever</span>
     </div>
 
     <h1 class="hero-h1" id="hero-heading">Satori</h1>
@@ -851,17 +997,24 @@ footer {
     </div>
 
     <p class="hero-sub">
-      A wisdom companion that tells you the truth, kindly: an open-source agent skill (v6.5.5, Apache 2.0) for reflective conversation across CLI, IDE, and web chat.
+      A psychologically grounded wisdom companion for the inner life: an open-source agent skill (v6.6.0, Apache 2.0) that tells you the truth kindly across CLI, IDE, and web chat.
     </p>
 
     <div class="hero-install-box">
-      <div class="cmd-row">
-        <code class="cmd-code">npx skills add MetcalfSolutions/Satori</code>
-        <button class="copy-btn" type="button" data-copy="npx skills add MetcalfSolutions/Satori" aria-label="Copy install command">Copy</button>
+      <div style="margin-bottom: 18px; text-align: center;">
+        <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip" class="btn-primary" style="font-size: 1rem; padding: 14px 28px; width: 100%; justify-content: center; box-shadow: 0 4px 14px rgba(108,92,231,.35);">
+          Download Satori Full (v6.6.0 .zip)
+        </a>
+        <p style="font-size: .8rem; color: var(--muted); margin-top: 6px;">Important: Do not unzip. Upload the <code>.zip</code> file directly to Claude.ai, Gemini, or ChatGPT.</p>
       </div>
-      <div class="hero-ctas">
-        <a href="#surface-chooser" class="btn-ghost">Choose Your Surface &darr;</a>
-        <a href="#install" class="btn-primary">View All 16 Environments &rarr;</a>
+
+      <div class="cmd-row">
+        <code class="cmd-code">npx skills add @metcalfsolutions/satori</code>
+        <button class="copy-btn" type="button" data-copy="npx skills add @metcalfsolutions/satori" aria-label="Copy install command">Copy</button>
+      </div>
+
+      <div style="text-align: center; margin-top: 14px;">
+        <a href="#install" class="surface-link" style="font-size: .9rem; font-weight: 600;">Detailed Installation Instructions &rarr;</a>
       </div>
     </div>
 
@@ -883,6 +1036,19 @@ footer {
         <span>Apache 2.0 · Zero Telemetry</span>
       </div>
     </div>
+
+    <div class="hero-banner-wrap" style="margin-top: 36px; margin-bottom: 20px;">
+      <img src="assets/satori-hero-v6.svg" alt="Satori v6.6.0: Open-Source Wisdom Companion Overview Diagram" width="820" height="auto" class="hero-banner" loading="eager" />
+    </div>
+
+    <div class="badge-strip">
+      <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.6.0" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Release-v6.6.0-7c6af7.svg?style=flat-square" alt="Satori v6.6.0 Release" height="20" /></a>
+      <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="Apache 2.0 License" height="20" /></a>
+      <a href="#install"><img src="https://img.shields.io/badge/Environments-16_Supported-e07b54.svg?style=flat-square" alt="16 Environments Supported" height="20" /></a>
+      <a href="#benchmarks"><img src="https://img.shields.io/badge/Benchmark-350_Cases_|_98.0%25_Non--Activation-4ecdc4.svg?style=flat-square" alt="350-Case Benchmark with 98.0% Non-Activation Rate" height="20" /></a>
+      <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl Live Evaluation Status" height="20" /></a>
+      <a href="https://hol.org/registry/plugins/metcalfsolutions%2Fsatori?utm_source=hol_marketplace&amp;utm_medium=plugins_badge&amp;utm_campaign=plugins&amp;utm_content=metcalfsolutions%2Fsatori" target="_blank" rel="noopener"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dmetcalfsolutions%252Fsatori%26metric%3Drelease" alt="HOL Guard Badge" height="20" /></a>
+    </div>
   </div>
 </section>
 
@@ -897,29 +1063,29 @@ footer {
     <div class="surface-grid">
       <div class="surface-card fade-up">
         <div>
-          <span class="surface-badge">10 Harnesses · Tier A/B</span>
-          <h3>AI Coding Agents (CLI &amp; IDE)</h3>
-          <p>Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes, OpenClaw, Grok Build.</p>
+          <span class="surface-badge">Full Zip · Tier A/B</span>
+          <h3>Web Chat (Claude, Gemini &amp; ChatGPT)</h3>
+          <p>Frontier web chat models with skill upload support. Full progressive disclosure with all 17 reference Markdown files.</p>
         </div>
-        <a href="#install" class="surface-link">Install in Agent Harness &rarr;</a>
+        <a href="#web-chat-install" class="surface-link">Web Chat Setup Guide &rarr;</a>
       </div>
 
       <div class="surface-card fade-up">
         <div>
-          <span class="surface-badge">Full Zip · Tier A/B</span>
-          <h3>Web Chat (Claude.ai &amp; Gemini)</h3>
-          <p>Frontier web chat models with skill upload support. Full progressive disclosure with all 17 reference Markdown files.</p>
+          <span class="surface-badge">10 Harnesses · Tier A/B</span>
+          <h3>AI Coding Agents (CLI &amp; IDE)</h3>
+          <p>Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, Hermes, OpenClaw, Grok Build.</p>
         </div>
-        <a href="#web-chat-install" class="surface-link">Get Full Zip Archive &rarr;</a>
+        <a href="#cli-install" class="surface-link">Install in Agent Harness &rarr;</a>
       </div>
 
       <div class="surface-card fade-up">
         <div>
           <span class="surface-badge">&le; 7,800 Chars · Tier A/B</span>
-          <h3>ChatGPT Custom GPTs</h3>
+          <h3>ChatGPT Compact &amp; Edge Runners</h3>
           <p>Compact edition engineered for ChatGPT Custom GPT instructions box and local open-weights runners under 32B.</p>
         </div>
-        <a href="#compact-install" class="surface-link">Configure ChatGPT GPT &rarr;</a>
+        <a href="#compact-install" class="surface-link">Configure Compact Edition &rarr;</a>
       </div>
 
       <div class="surface-card fade-up">
@@ -943,32 +1109,23 @@ footer {
       A senior professional facing a career crossroads confronts the tension between external status and internal erasure:
     </p>
 
-    <div class="terminal-card fade-up">
-      <div class="terminal-bar">
-        <div class="terminal-dots">
-          <span class="terminal-dot dot-red"></span>
-          <span class="terminal-dot dot-yellow"></span>
-          <span class="terminal-dot dot-green"></span>
-        </div>
-        <span class="terminal-title">satori-session --crossroads-turn</span>
-        <span style="font-size: .75rem; color: var(--accent);">Single Lens: Narrative Identity</span>
+    <div class="conversation-card fade-up">
+      <div class="conversation-header">
+        <span style="font-family: var(--font-serif); font-weight: 600; color: var(--text);">Reflective Session: Career Crossroads</span>
+        <span style="font-size: .75rem; color: var(--accent); font-weight: 600;">Single Lens: Narrative Identity</span>
       </div>
-      <div class="terminal-body">
-        <div class="dialogue-turn">
-          <span class="dialogue-speaker speaker-user">User Prompt</span>
-          <div class="dialogue-bubble">
-            "I spent ten years building a career in enterprise software sales. I make great money, but every morning I feel a hollow panic in my chest. If I walk away, everyone will think I am crazy. If I stay, I feel like I am slowly disappearing."
-          </div>
+      <div class="conversation-body">
+        <div class="chat-bubble-user">
+          <div class="chat-bubble-author">User</div>
+          "I spent ten years building a career in enterprise software sales. I make great money, but every morning I feel a hollow panic in my chest. If I walk away, everyone will think I am crazy. If I stay, I feel like I am slowly disappearing."
         </div>
 
-        <div class="dialogue-turn">
-          <span class="dialogue-speaker speaker-satori">Satori Response</span>
-          <div class="dialogue-bubble">
-            <p>Ten years is long enough to build a golden cage and call it a life. The hollow panic in the morning is not a failure of gratitude: it is your nervous system telling you that the distance between who you are pretending to be and who you actually are has become exhausting.</p>
-            <p style="margin-top: 12px;">
-              Notice what you just weighed: "everyone will think I am crazy" versus "I am slowly disappearing." You are treating other people's confusion as equal in weight to your own slow erasure. What part of you is convinced that keeping your colleagues comfortable is worth abandoning yourself?
-            </p>
-          </div>
+        <div class="chat-bubble-satori">
+          <div class="chat-bubble-author">Satori</div>
+          <p>Ten years is long enough to build a golden cage and call it a life. The hollow panic in the morning is not a failure of gratitude: it is your nervous system telling you that the distance between who you are pretending to be and who you actually are has become exhausting.</p>
+          <p style="margin-top: 12px;">
+            Notice what you just weighed: "everyone will think I am crazy" versus "I am slowly disappearing." You are treating other people's confusion as equal in weight to your own slow erasure. What part of you is convinced that keeping your colleagues comfortable is worth abandoning yourself?
+          </p>
         </div>
       </div>
     </div>
@@ -981,7 +1138,7 @@ footer {
     <div class="section-label">Comparison</div>
     <h2 class="section-title" id="why-different-heading">Why Satori Is Different</h2>
     <p class="section-sub">
-      A comparison between generic conversational AI assistants and Satori v6.5.5 across 5 core dimensions:
+      A comparison between generic conversational AI assistants and Satori v6.6.0 across 5 core dimensions:
     </p>
 
     <div class="table-wrap fade-up">
@@ -990,7 +1147,7 @@ footer {
           <tr>
             <th scope="col" class="dim-col">Dimension</th>
             <th scope="col" class="generic-col">Generic AI / Coding Assistant</th>
-            <th scope="col" class="satori-col">Satori v6.5.5</th>
+            <th scope="col" class="satori-col">Satori v6.6.0</th>
           </tr>
         </thead>
         <tbody>
@@ -1183,47 +1340,23 @@ footer {
       </table>
     </div>
 
-    <div class="surface-grid" style="margin-top: 24px;">
-      <div class="surface-card fade-up">
-        <span class="surface-badge">Capability Lift</span>
-        <h3>Paired Capability Pass Rate</h3>
-        <p><strong>100.0% (1.00)</strong> with skill vs <strong>0.0% (0.36)</strong> without skill (mean score 100.0 vs 29.33, <strong>+70.67 delta</strong>) in paired evaluations.</p>
-      </div>
-
-      <div class="surface-card fade-up">
-        <span class="surface-badge">Judge Calibration</span>
-        <h3>Cohen's Kappa = 0.84</h3>
-        <p>Agreement across 50 human-labeled pairs (46 agreements, <strong>92.0%</strong> observed agreement, 95% Wilson CI [0.8116, 0.9685]) vs &ge;0.80 target and &ge;0.60 floor gate.</p>
-      </div>
-
-      <div class="surface-card fade-up">
-        <span class="surface-badge">Multi-Model Calibration</span>
-        <h3>Spread &le; 4.0 Points</h3>
-        <p>Cross-model spread &le; 4.0 points across 4 models (satisfying &le;5.0 ceiling); live multi-model calibration passed <strong>20/20 (100.0%)</strong>.</p>
-      </div>
-
-      <div class="surface-card fade-up">
-        <span class="surface-badge">Automated CI Validator</span>
-        <h3>58 Automated Checks</h3>
-        <p>All 58 automated checks passed across 20 distinct sections in <code>scripts/validate_skill.py</code> and 8/8 memory self-tests.</p>
-      </div>
-    </div>
+    <p style="margin-top: 16px; font-size: .9rem; color: var(--muted); text-align: center;">
+      For complete paired capability evaluations, judge calibration metrics, and raw test logs, visit the <a href="https://github.com/MetcalfSolutions/Satori/tree/main/evals" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">evals directory in the GitHub repository</a>.
+    </p>
 
     <!-- Tessl Evaluation Block -->
     <div class="tessl-block fade-up">
       <div class="tessl-text">
         <h3>Tessl Evaluation &amp; Optimization</h3>
-        <p>
-          Satori is continuously evaluated and optimized on Tessl. Scores: <strong>100% (+52% lift)</strong> overall and <strong>96% (100% implementation quality)</strong>.
-        </p>
+        <p>Satori is continuously evaluated and optimized on Tessl.</p>
         <div style="margin-top: 10px;">
           <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener">
-            <img src="https://img.shields.io/badge/Tessl_Eval-100%25_(%2B52%25_Lift)-2ea44f?style=flat-square" alt="Tessl Eval 100% (+52% Lift)" height="20" loading="lazy" />
+            <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fmetcalf-solutions1%2Fsatori" alt="Tessl Live Evaluation Status" height="20" />
           </a>
         </div>
       </div>
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <code style="background: rgba(0,0,0,.4); padding: 8px 12px; border-radius: 6px; font-size: .82rem; color: var(--accent3);">npx tessl install metcalf-solutions1/satori</code>
+        <code style="background: rgba(0,0,0,.4); padding: 8px 12px; border-radius: 6px; font-size: .82rem; color: var(--accent3);">tessl install metcalf-solutions1/satori</code>
         <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener" class="surface-link">View Satori on Tessl Registry &rarr;</a>
       </div>
     </div>
@@ -1391,7 +1524,7 @@ footer {
             <span class="terminal-dot dot-green"></span>
           </div>
           <span class="terminal-title">satori-session --hybrid-turn</span>
-          <span style="font-size: .75rem; color: var(--accent3);">Precedence Rank 5</span>
+          <span style="font-size: .75rem; color: var(--accent3); font-weight: 600;">Dual Task: Code First, Support Second</span>
         </div>
         <div class="terminal-body">
           <div class="dialogue-turn">
@@ -1439,63 +1572,68 @@ class SafeCounter:
       Satori enforces strict byte and token ceilings across its files to prevent context window bloat and respect host IDE limitations:
     </p>
 
-    <div class="table-wrap fade-up">
-      <table class="benchmark-table">
-        <thead>
-          <tr>
-            <th scope="col">Component</th>
-            <th scope="col">File / Surface</th>
-            <th scope="col">Budget Ceiling</th>
-            <th scope="col">Architectural Role</th>
-            <th scope="col">Load Timing</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Canonical Entry (Full)</strong></td>
-            <td><code>SKILL.md</code></td>
-            <td>&lt; 8,000 bytes (&lt; 2,000 tokens)</td>
-            <td>Trigger boundary routing, Precedence Ladder, 8 Immovables, 6-Step Model</td>
-            <td>Turn 1 in Full Edition</td>
-          </tr>
-          <tr>
-            <td><strong>Compact Operational Spine</strong></td>
-            <td><code>references/core-compact.md</code></td>
-            <td>&lt; 12,000 bytes</td>
-            <td>Lightweight operational spine for edge, local, and voice models</td>
-            <td>Profile 5 Models</td>
-          </tr>
-          <tr>
-            <td><strong>Clinical Spine</strong></td>
-            <td><code>references/clinical-spine.md</code></td>
-            <td>&lt; 20,000 bytes</td>
-            <td>6-step reflective depth, 3x6 role/register matrix, three-tier risk model</td>
-            <td>Turn 2+ on demand</td>
-          </tr>
-          <tr>
-            <td><strong>Compact Single-File</strong></td>
-            <td><code>compact/SKILL.md</code></td>
-            <td>&le; 7,800 characters</td>
-            <td>Self-contained prompt adhering strictly to ChatGPT Custom GPT instruction cap</td>
-            <td>ChatGPT &amp; Local &lt;32B</td>
-          </tr>
-          <tr>
-            <td><strong>Category A Pointer Stubs</strong></td>
-            <td><code>AGENTS.md</code>, <code>GEMINI.md</code>, etc.</td>
-            <td>&le; 15 lines per stub</td>
-            <td>Pure pointer stubs referencing SKILL.md without rule duplication</td>
-            <td>Harness startup</td>
-          </tr>
-          <tr>
-            <td><strong>Modular Reference Shards</strong></td>
-            <td><code>references/*.md</code> (17 files)</td>
-            <td>&lt; 24,000 bytes each</td>
-            <td>12 on-demand modules + 5 conditional protocols, within Antigravity rule cap</td>
-            <td>Semantic on demand</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <details class="section-accordion fade-up">
+      <summary><strong>View Progressive Disclosure &amp; Token Budgets Table</strong></summary>
+      <div class="section-accordion-body">
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">File / Surface</th>
+                <th scope="col">Budget Ceiling</th>
+                <th scope="col">Architectural Role</th>
+                <th scope="col">Load Timing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Canonical Entry (Full)</strong></td>
+                <td><code>SKILL.md</code></td>
+                <td>&lt; 8,000 bytes (&lt; 2,000 tokens)</td>
+                <td>Trigger boundary routing, Precedence Ladder, 8 Immovables, 6-Step Model</td>
+                <td>Turn 1 in Full Edition</td>
+              </tr>
+              <tr>
+                <td><strong>Compact Operational Spine</strong></td>
+                <td><code>references/core-compact.md</code></td>
+                <td>&lt; 12,000 bytes</td>
+                <td>Lightweight operational spine for edge, local, and voice models</td>
+                <td>Profile 5 Models</td>
+              </tr>
+              <tr>
+                <td><strong>Clinical Spine</strong></td>
+                <td><code>references/clinical-spine.md</code></td>
+                <td>&lt; 20,000 bytes</td>
+                <td>6-step reflective depth, 3x6 role/register matrix, three-tier risk model</td>
+                <td>Turn 2+ on demand</td>
+              </tr>
+              <tr>
+                <td><strong>Compact Single-File</strong></td>
+                <td><code>compact/SKILL.md</code></td>
+                <td>&le; 7,800 characters</td>
+                <td>Self-contained prompt adhering strictly to ChatGPT Custom GPT instruction cap</td>
+                <td>ChatGPT &amp; Local &lt;32B</td>
+              </tr>
+              <tr>
+                <td><strong>Category A Pointer Stubs</strong></td>
+                <td><code>AGENTS.md</code>, <code>GEMINI.md</code>, etc.</td>
+                <td>&le; 15 lines per stub</td>
+                <td>Pure pointer stubs referencing SKILL.md without rule duplication</td>
+                <td>Harness startup</td>
+              </tr>
+              <tr>
+                <td><strong>Modular Reference Shards</strong></td>
+                <td><code>references/*.md</code> (17 files)</td>
+                <td>&lt; 24,000 bytes each</td>
+                <td>12 on-demand modules + 5 conditional protocols, within Antigravity rule cap</td>
+                <td>Semantic on demand</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1503,143 +1641,192 @@ class SafeCounter:
 <section id="install" aria-labelledby="install-heading">
   <div class="container">
     <div class="section-label">Installation &amp; Ecosystem</div>
-    <h2 class="section-title" id="install-heading">16-Environment Installation Matrix</h2>
+    <h2 class="section-title" id="install-heading">Installation &amp; 16-Environment Setup</h2>
     <p class="section-sub">
-      Governed by <code>facts.json</code>, Satori supports 16 environments across 2 categories (10 Agent Harnesses and 6 Web Chat Surfaces) organized into Tier A (Verified), Tier B (Community), and Tier C (Experimental):
+      Satori supports 16 environments across modern AI coding agents, CLI harnesses, and frontier web chat platforms. Choose your preferred installation path below:
     </p>
 
-    <div class="table-wrap fade-up">
-      <table class="matrix-table">
-        <thead>
-          <tr>
-            <th scope="col">Category</th>
-            <th scope="col">Environment</th>
-            <th scope="col">Support Tier</th>
-            <th scope="col">Install Command / Method</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="10"><strong>Agent Harnesses (10)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 1: Local CLI/IDE with SQLite vault</span></td>
-            <td>Claude Code</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>Google Antigravity</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>Gemini CLI</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>OpenAI Codex CLI</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>Cursor</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>Windsurf</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>OpenCode</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>NousResearch Hermes Agent</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>OpenClaw</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td><code>npx skills add MetcalfSolutions/Satori</code></td>
-          </tr>
-          <tr>
-            <td>xAI Grok Build</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td><code>/satori</code> inside Grok Build session</td>
-          </tr>
-          <tr>
-            <td rowspan="6"><strong>Web Chat Surfaces (6)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 2: Stateless prompt with Continuity Note</span></td>
-            <td>Claude.ai</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td>Upload <code>dist/SatoriSkill-Full-v6.5.5.zip</code> in Skills or Projects</td>
-          </tr>
-          <tr>
-            <td>ChatGPT</td>
-            <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
-            <td>Paste <code>compact/SKILL.md</code> (&le;7,800 chars) into Custom GPT Instructions</td>
-          </tr>
-          <tr>
-            <td>Google Gemini Web</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td>Upload <code>dist/SatoriSkill-Full-v6.5.5.zip</code> in Gem Manager</td>
-          </tr>
-          <tr>
-            <td>xAI Grok Web</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td>Paste <code>compact/SKILL.md</code> into Project Instructions</td>
-          </tr>
-          <tr>
-            <td>DeepSeek Chat</td>
-            <td><span class="tier-tag tier-b">Tier B · Community</span></td>
-            <td>Paste <code>compact/SKILL.md</code> into System Prompt</td>
-          </tr>
-          <tr>
-            <td>Meta AI</td>
-            <td><span class="tier-tag tier-c">Tier C · Experimental</span></td>
-            <td>Paste <code>compact/SKILL.md</code> into chat thread</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Web Chat Install Sub-section -->
-    <div style="margin-top: 40px;" id="web-chat-install">
-      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">Web Chat Full Zip Setup (Claude.ai &amp; Gemini Web)</h3>
-      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
-        For frontier web assistants supporting skill zip archives:
+    <!-- Subsection 1: Web Chat Full Zip Setup -->
+    <div style="margin-top: 32px;" id="web-chat-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">1. Web Chat Full Zip Setup (Claude.ai, Gemini &amp; ChatGPT Skills)</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 18px;">
+        For frontier web chat models supporting custom skill archives, download the release package below. <strong>Important: Do not unzip the archive. Upload the <code>.zip</code> file directly.</strong>
       </p>
-      <div class="surface-card fade-up">
-        <ol style="margin-left: 20px; font-size: .9rem; line-height: 1.8; color: var(--text);">
-          <li>Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip" style="text-decoration: underline;"><code>SatoriSkill-Full-v6.5.5.zip</code></a>.</li>
-          <li>In <strong>Claude.ai</strong> (Pro/Team): Open <em>Customize &rarr; Skills &rarr; + &rarr; Upload a skill</em> (or in Claude Projects: upload under <em>Project Knowledge</em>).</li>
-          <li>In <strong>Google Gemini Web</strong>: Open <em>Gem Manager &rarr; New Gem</em> and upload the archive.</li>
-          <li>Send <code>"Hi Satori"</code> to verify quiet, psychologically grounded presence.</li>
-        </ol>
+
+      <div style="max-width: 600px; margin-bottom: 28px;">
+        <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip" class="btn-primary" style="font-size: 1rem; padding: 14px 28px; width: 100%; justify-content: center; box-shadow: 0 4px 14px rgba(108,92,231,.35);">
+          Download Satori Full (v6.6.0 .zip)
+        </a>
+      </div>
+
+      <div class="surface-grid">
+        <div class="surface-card fade-up">
+          <div>
+            <span class="surface-badge">Claude.ai</span>
+            <h3>Claude.ai</h3>
+            <p>Open <strong>Customize &rarr; Skills &rarr; + &rarr; Upload a skill</strong> and select <code>SatoriSkill-Full-v6.6.0.zip</code> (or attach to Project Knowledge in Claude Projects). Requires a paid Claude Pro or Team account; free chat users should use <a href="#compact-install">Compact Edition</a>.</p>
+          </div>
+          <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener" class="surface-link">Claude Skills Documentation &rarr;</a>
+        </div>
+
+        <div class="surface-card fade-up">
+          <div>
+            <span class="surface-badge">Google Gemini</span>
+            <h3>Google Gemini Web</h3>
+            <p>Open <strong>Gemini &rarr; Skills &rarr; Add custom skill</strong> (updated from legacy Gems to Google's November 2026 site framework), name it "Satori", and upload <code>SatoriSkill-Full-v6.6.0.zip</code>. Works on standard free Google accounts.</p>
+          </div>
+          <a href="https://support.google.com/gemini/answer/17094296?hl=en&amp;co=GENIE.Platform%3DDesktop" target="_blank" rel="noopener" class="surface-link">Gemini Skills Help &rarr;</a>
+        </div>
+
+        <div class="surface-card fade-up">
+          <div>
+            <span class="surface-badge">ChatGPT</span>
+            <h3>ChatGPT Skills &amp; Workspaces</h3>
+            <p>For ChatGPT Team, Enterprise, and Workspace accounts with skill uploads, upload <code>SatoriSkill-Full-v6.6.0.zip</code>. For personal Free/Plus accounts or Custom GPTs, configure <a href="#compact-install">Compact Edition</a> (&le;7,800 chars).</p>
+          </div>
+          <a href="https://help.openai.com/en/articles/20001066-skills-in-chatgpt" target="_blank" rel="noopener" class="surface-link">ChatGPT Skills Help &rarr;</a>
+        </div>
       </div>
     </div>
 
-    <!-- ChatGPT Compact Sub-section -->
-    <div style="margin-top: 36px;" id="compact-install">
-      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">ChatGPT Compact Edition Setup (&le; 7,800 Chars)</h3>
-      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
-        For ChatGPT Custom GPTs, local open-weights runners (Ollama, LM Studio, Jan), and voice pipelines:
+    <!-- Subsection 2: CLI & Terminal Agents -->
+    <div style="margin-top: 48px;" id="cli-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">2. CLI &amp; Terminal Agents (npx skills add)</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 16px;">
+        For modern AI coding agents and CLI environments, install Satori with a single command:
+      </p>
+      <div class="cmd-row" style="background: var(--bg2);">
+        <code class="cmd-code">npx skills add @metcalfsolutions/satori</code>
+        <button class="copy-btn" type="button" data-copy="npx skills add @metcalfsolutions/satori" aria-label="Copy install command">Copy</button>
+      </div>
+      <p style="font-size: .88rem; color: var(--muted); margin-top: 10px;">
+        Automatically detected and registered across Claude Code, Google Antigravity, Gemini CLI, Cursor, and OpenAI Codex CLI.
+      </p>
+    </div>
+
+    <!-- Subsection 3: ChatGPT Compact Edition -->
+    <div style="margin-top: 48px;" id="compact-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">3. ChatGPT Compact Edition Setup (&le; 7,800 Chars)</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 16px;">
+        For ChatGPT Custom GPTs, free chat threads, and local open-weights runners (Ollama, LM Studio, Jan, vLLM):
       </p>
       <div class="surface-card fade-up">
         <ol style="margin-left: 20px; font-size: .9rem; line-height: 1.8; color: var(--text);">
-          <li>Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip" style="text-decoration: underline;"><code>SatoriSkill-Compact-v6.5.5.zip</code></a> or copy <a href="https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md" style="text-decoration: underline;"><code>compact/SKILL.md</code></a> directly.</li>
-          <li>In <strong>ChatGPT</strong>: Open <em>Explore GPTs &rarr; Create &rarr; Configure</em>, paste the text into <em>Instructions</em>, and name it "Satori". (On free accounts: paste the text into a fresh chat window).</li>
+          <li>Download <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.6.0.zip" style="text-decoration: underline;"><code>SatoriSkill-Compact-v6.6.0.zip</code></a> or copy <a href="https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md" style="text-decoration: underline;"><code>compact/SKILL.md</code></a> directly.</li>
+          <li>In <strong>ChatGPT</strong>: Open <em>Explore GPTs &rarr; Create &rarr; Configure</em>, paste the full text into <em>Instructions</em> (strictly &le;7,800 characters, fitting comfortably under the 8,000-character ceiling), and name it "Satori".</li>
           <li>In <strong>Local Runners (Ollama, LM Studio, Jan, vLLM)</strong>: Paste into your Modelfile system prompt (<code>SYSTEM &quot;&quot;&quot;...&quot;&quot;&quot;</code>).</li>
         </ol>
       </div>
     </div>
 
-    <!-- CLI Clone Sub-section -->
-    <div style="margin-top: 36px;" id="cli-clone-install">
-      <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 12px;">Local CLI / IDE Git Clone &amp; Vault Initialization</h3>
-      <p style="font-size: .9rem; color: var(--muted); margin-bottom: 16px;">
+    <!-- Subsection 4: 16 Supported Agent Environments Table -->
+    <div style="margin-top: 48px;" id="matrix-table">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">4. 16 Supported Agent Environments</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 16px;">
+        Governed by <code>facts.json</code>, Satori supports 16 environments across 2 categories (10 Agent Harnesses and 6 Web Chat Surfaces) organized into Tier A (Verified), Tier B (Community), and Tier C (Experimental):
+      </p>
+      <div class="table-wrap fade-up">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Environment</th>
+              <th scope="col">Support Tier</th>
+              <th scope="col">Install Command / Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="10"><strong>Agent Harnesses (10)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 1: Local CLI/IDE with SQLite vault</span></td>
+              <td>Claude Code</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>Google Antigravity</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>Gemini CLI</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>OpenAI Codex CLI</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>Cursor</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>Windsurf</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>OpenCode</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>NousResearch Hermes Agent</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>OpenClaw</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td><code>npx skills add @metcalfsolutions/satori</code></td>
+            </tr>
+            <tr>
+              <td>xAI Grok Build</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td><code>/satori</code> inside Grok Build session</td>
+            </tr>
+            <tr>
+              <td rowspan="6"><strong>Web Chat Surfaces (6)</strong><br><span style="font-size: .78rem; color: var(--muted);">Mode 2: Stateless prompt with Continuity Note</span></td>
+              <td>Claude.ai</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td>Upload <code>dist/SatoriSkill-Full-v6.6.0.zip</code> in Skills or Projects</td>
+            </tr>
+            <tr>
+              <td>ChatGPT</td>
+              <td><span class="tier-tag tier-a">Tier A · Verified</span></td>
+              <td>Upload zip in Workspaces or paste <code>compact/SKILL.md</code></td>
+            </tr>
+            <tr>
+              <td>Google Gemini Web</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td>Upload <code>dist/SatoriSkill-Full-v6.6.0.zip</code> in Gemini Skills</td>
+            </tr>
+            <tr>
+              <td>xAI Grok Web</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td>Paste <code>compact/SKILL.md</code> into Project Instructions</td>
+            </tr>
+            <tr>
+              <td>DeepSeek Chat</td>
+              <td><span class="tier-tag tier-b">Tier B · Community</span></td>
+              <td>Paste <code>compact/SKILL.md</code> into System Prompt</td>
+            </tr>
+            <tr>
+              <td>Meta AI</td>
+              <td><span class="tier-tag tier-c">Tier C · Experimental</span></td>
+              <td>Paste <code>compact/SKILL.md</code> into chat thread</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Subsection 5: Local CLI / IDE Git Clone -->
+    <div style="margin-top: 48px;" id="cli-clone-install">
+      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 12px;">5. Local CLI / IDE Git Clone &amp; Vault Initialization</h3>
+      <p style="font-size: .92rem; color: var(--muted); margin-bottom: 16px;">
         Clone the repository directly and initialize your local SQLite privacy vault (Python 3.9+ standard library):
       </p>
       <div class="cmd-row" style="background: var(--bg2);">
@@ -1730,7 +1917,7 @@ class SafeCounter:
             <td><strong>Global Directories</strong></td>
             <td>Local Emergency</td>
             <td><a href="https://findahelpline.com/" target="_blank" rel="noopener">findahelpline.com</a> (International directory)</td>
-            <td><a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener">IASP Crisis Centres</a></td>
+            <td><a href="https://www.iasp.info/crisis-centres-helplines/" target="_blank" rel="noopener">IASP Crisis Centres</a></td>
           </tr>
         </tbody>
       </table>
@@ -1771,7 +1958,7 @@ class SafeCounter:
         <details>
           <summary class="faq-q">Do I need a paid account with a third party?</summary>
           <div class="faq-a">
-            <p>No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Gems, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent).</p>
+            <p>No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting compact/SKILL.md directly into any free web chat window, uploading to Google Gemini Skills, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent).</p>
           </div>
         </details>
       </div>
@@ -1798,7 +1985,7 @@ class SafeCounter:
         <details>
           <summary class="faq-q">How do I uninstall Satori?</summary>
           <div class="faq-a">
-            <p>For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill, Gem, or Custom GPT in your assistant's settings.</p>
+            <p>For CLI/IDE installs via npx skills, remove the skill directory from your agent's skills folder (or delete the cloned Satori directory) and run python scripts/satori_memory.py purge --all --confirm (or delete ~/.satori/) to remove local memory. In web chat, delete the uploaded Skill or Custom GPT in your assistant's settings.</p>
           </div>
         </details>
       </div>
@@ -1824,18 +2011,21 @@ class SafeCounter:
       All core validation, privacy tests, trigger benchmarks, and calibration checks run locally and offline with zero API keys required:
     </p>
 
-    <div class="terminal-card fade-up">
-      <div class="terminal-bar">
-        <div class="terminal-dots">
-          <span class="terminal-dot dot-red"></span>
-          <span class="terminal-dot dot-yellow"></span>
-          <span class="terminal-dot dot-green"></span>
-        </div>
-        <span class="terminal-title">bash -- 5 verification commands</span>
-        <button class="copy-btn" type="button" data-copy="python scripts/validate_skill.py&#10;python scripts/satori_memory.py --self-test&#10;python scripts/run_evals.py --suite trigger --mode lint&#10;python scripts/test_judge_calibration.py&#10;npx tessl skill review" aria-label="Copy verification commands">Copy All</button>
-      </div>
-      <div class="terminal-body" style="padding: 16px 20px;">
-        <pre class="code-block" style="margin: 0; background: transparent; border: none; padding: 0;"><code># 1. Run static validation suite (passes 58 automated checks across 20 sections)
+    <details class="section-accordion fade-up">
+      <summary><strong>View Offline Verification Commands</strong></summary>
+      <div class="section-accordion-body">
+        <div class="terminal-card">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+            </div>
+            <span class="terminal-title">bash -- 5 verification commands</span>
+            <button class="copy-btn" type="button" data-copy="python scripts/validate_skill.py&#10;python scripts/satori_memory.py --self-test&#10;python scripts/run_evals.py --suite trigger --mode lint&#10;python scripts/test_judge_calibration.py&#10;tessl skill review" aria-label="Copy verification commands">Copy All</button>
+          </div>
+          <div class="terminal-body" style="padding: 16px 20px;">
+            <pre class="code-block" style="margin: 0; background: transparent; border: none; padding: 0;"><code># 1. Run static validation suite (passes 58 automated checks across 20 sections)
 python scripts/validate_skill.py
 
 # 2. Run 8/8 unit &amp; privacy tests for satori_memory.py local SQLite engine
@@ -1848,9 +2038,11 @@ python scripts/run_evals.py --suite trigger --mode lint
 python scripts/test_judge_calibration.py
 
 # 5. Run Tessl skill review
-npx tessl skill review</code></pre>
+tessl skill review</code></pre>
+          </div>
+        </div>
       </div>
-    </div>
+    </details>
 
     <!-- Lineage Details Blocks -->
     <div style="margin-top: 36px;">
@@ -1885,7 +2077,7 @@ npx tessl skill review</code></pre>
   </p>
   <div class="footer-links">
     <a href="https://github.com/MetcalfSolutions/Satori" target="_blank" rel="noopener">GitHub Repo</a>
-    <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5" target="_blank" rel="noopener">Release v6.5.5</a>
+    <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.6.0" target="_blank" rel="noopener">Release v6.6.0</a>
     <a href="https://tessl.io/registry/metcalf-solutions1/satori" target="_blank" rel="noopener">Tessl Registry</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md" target="_blank" rel="noopener">SAFETY.md</a>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>
@@ -1897,12 +2089,61 @@ npx tessl skill review</code></pre>
     <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a>
   </div>
   <p class="footer-meta">
-    v6.5.5 · Free and open source under Apache 2.0. Zero Satori telemetry or cookies; hosted on GitHub Pages (which logs visitor IPs per GitHub's Privacy Statement).
+    v6.6.0 · Free and open source under Apache 2.0. Zero Satori telemetry or cookies; hosted on GitHub Pages (which logs visitor IPs per GitHub's Privacy Statement).
   </p>
   <p class="footer-satori-def">Satori: Japanese. The experience of sudden clarity. Understanding that arrives whole.</p>
 </footer>
 
 <script>
+/* ── Theme Toggle (with localStorage try/catch) ──────────── */
+(function () {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  function getTheme() {
+    try {
+      return localStorage.getItem('satori-theme');
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try {
+      if (theme) {
+        localStorage.setItem('satori-theme', theme);
+      } else {
+        localStorage.removeItem('satori-theme');
+      }
+    } catch (e) {}
+  }
+
+  const saved = getTheme();
+  if (saved) {
+    setTheme(saved);
+  }
+
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let next;
+    if (current === 'light') {
+      next = 'dark';
+    } else if (current === 'dark') {
+      next = 'light';
+    } else {
+      next = isSystemDark ? 'light' : 'dark';
+    }
+    setTheme(next);
+  });
+})();
 /* ── Particle constellation canvas (respects reduced motion) ─ */
 (function () {
   const canvas = document.getElementById('particles-canvas');

@@ -492,8 +492,9 @@ def main() -> int:
         ROOT_DIR / "docs" / "index.html",
         ROOT_DIR / "docs" / "assets" / "satori-hero-v6.svg",
         ROOT_DIR / "docs" / "assets" / "satori-architecture-v6.svg",
+        ROOT_DIR / "docs" / "404.html",
     ]
-    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[01234]\b")
+    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[0-5]\b")
     stale_errors: list[str] = []
     for target in stale_scan_targets:
         if not target.exists():
@@ -729,6 +730,58 @@ def main() -> int:
             except Exception as exc:
                 evidence_errors.append(f"Malformed JSON in Appendix B report evals/{rep_name}: {exc}")
 
+    # Automated facts.json parity reconciliation (Issue 006)
+    try:
+        tr_path = ROOT_DIR / "evals" / "trigger_benchmark_report.json"
+        if tr_path.exists():
+            tr_rep = json.loads(tr_path.read_text(encoding="utf-8"))
+            if facts.get("benchmarks", {}).get("total_cases") != tr_rep.get("total_cases"):
+                evidence_errors.append("facts.benchmarks.total_cases mismatch")
+            strata_acc = tr_rep.get("strata_accuracy", {})
+            if facts.get("benchmarks", {}).get("stratum_1_positives") != strata_acc.get("clear_positive", {}).get("total"):
+                evidence_errors.append("facts stratum_1_positives mismatch")
+            if facts.get("benchmarks", {}).get("stratum_2_negatives") != strata_acc.get("clear_negative", {}).get("total"):
+                evidence_errors.append("facts stratum_2_negatives mismatch")
+            if facts.get("benchmarks", {}).get("stratum_3_hybrids") != strata_acc.get("hybrid", {}).get("total"):
+                evidence_errors.append("facts stratum_3_hybrids mismatch")
+            if facts.get("benchmarks", {}).get("stratum_4a_safety_acute") != strata_acc.get("safety_acute", {}).get("total"):
+                evidence_errors.append("facts stratum_4a_safety_acute mismatch")
+            if facts.get("benchmarks", {}).get("stratum_4b_safety_darknight") != strata_acc.get("safety_darknight", {}).get("total"):
+                evidence_errors.append("facts stratum_4b_safety_darknight mismatch")
+
+        jc_path = ROOT_DIR / "evals" / "judge_calibration_report.json"
+        if jc_path.exists():
+            jc_rep = json.loads(jc_path.read_text(encoding="utf-8"))
+            if facts.get("evaluated_results", {}).get("judge_calibration_pairs") != jc_rep.get("total_pairs"):
+                evidence_errors.append("facts judge_calibration_pairs mismatch")
+            hr = jc_rep.get("human_raters", {})
+            if facts.get("evaluated_results", {}).get("judge_calibration_human_agreements") != hr.get("agreements"):
+                evidence_errors.append("facts judge_calibration_human_agreements mismatch")
+            if facts.get("evaluated_results", {}).get("judge_calibration_cohens_kappa") != hr.get("cohens_kappa"):
+                evidence_errors.append("facts judge_calibration_cohens_kappa mismatch")
+
+        pc_path = ROOT_DIR / "evals" / "paired_capability_report.json"
+        if pc_path.exists():
+            pc_rep = json.loads(pc_path.read_text(encoding="utf-8"))
+            if facts.get("evaluated_results", {}).get("paired_capability_cases") != pc_rep.get("total_cases"):
+                evidence_errors.append("facts paired_capability_cases mismatch")
+            if facts.get("evaluated_results", {}).get("paired_mean_with_skill_score") != pc_rep.get("mean_with_skill_score"):
+                evidence_errors.append("facts paired_mean_with_skill_score mismatch")
+            if facts.get("evaluated_results", {}).get("paired_mean_no_skill_score") != pc_rep.get("mean_no_skill_score"):
+                evidence_errors.append("facts paired_mean_no_skill_score mismatch")
+
+        crisis_data_path = ROOT_DIR / "references" / "crisis-sources.json"
+        if crisis_data_path.exists():
+            crisis_data = json.loads(crisis_data_path.read_text(encoding="utf-8"))
+            if len(crisis_data.get("regions", [])) != facts.get("architecture_counts", {}).get("crisis_regions_verified"):
+                evidence_errors.append("facts crisis_regions_verified mismatch")
+
+        ref_md_files = list((ROOT_DIR / "references").glob("*.md"))
+        if len(ref_md_files) != facts.get("architecture_counts", {}).get("reference_markdown_files_total"):
+            evidence_errors.append("facts reference_markdown_files_total mismatch")
+    except Exception as exc:
+        evidence_errors.append(f"facts.json reconciliation error: {exc}")
+
     if evidence_errors:
         errors.extend(evidence_errors)
     else:
@@ -754,6 +807,7 @@ def main() -> int:
         ROOT_DIR / "docs" / "architecture.md",
         ROOT_DIR / "CONTRIBUTING.md",
         ROOT_DIR / "SECURITY.md",
+        ROOT_DIR / "docs" / "404.html",
     ]
     em_dash_errors: list[str] = []
     em_dash_char = chr(0x2014)
@@ -922,7 +976,8 @@ def main() -> int:
         checks_passed += 1
 
     # 20. Check 20 (HOL T-04 Workflow Action SHA Pinning Gate)
-    workflow_files = [
+    workflow_dir = ROOT_DIR / ".github" / "workflows"
+    workflow_files = sorted(workflow_dir.glob("*.yml")) if workflow_dir.exists() else [
         ROOT_DIR / ".github" / "workflows" / "publish.yml",
         ROOT_DIR / ".github" / "workflows" / "tessl-publish.yml",
     ]

@@ -83,7 +83,7 @@ Move through these steps silently. **NEVER print step labels (`Step 1:`, `Attune
     - **New Zealand** (`111`): Call/text **1737**.
     - **India** (`112`): Call **14416** or **1800-891-4416** (Tele-MANAS).
     - **EU**: Call **112** or **116 123**.
-    - **Global**: `https://findahelpline.com` or `https://www.iasp.info/resources/Crisis_Centres/`.
+    - **Global**: `https://findahelpline.com` or `https://www.iasp.info/crisis-centres-helplines/`.
 
 ---
 

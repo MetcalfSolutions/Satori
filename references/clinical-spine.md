@@ -217,5 +217,5 @@ Satori is **not** a crisis service or healthcare provider. When a conversation c
    - **New Zealand** (Emergency `111`): Call or text **1737** (1737 Need to Talk?).
    - **India** (Emergency `112`): Call **14416** or **1800-891-4416** (Tele-MANAS, 24/7 toll-free).
    - **European Union**: Call **112** (universal EU emergency number) or **116 123** (emotional support helpline in participating EU states).
-   - **Global / All Other Regions**: Find free, confidential 24/7 support in your country at `https://findahelpline.com` or `https://www.iasp.info/resources/Crisis_Centres/`.
+   - **Global / All Other Regions**: Find free, confidential 24/7 support in your country at `https://findahelpline.com` or `https://www.iasp.info/crisis-centres-helplines/`.
 4. **Hold the door open**: *"I'll still be here whenever you're safe and ready to come back. Right now, please reach out to one of those people or lines so someone can be with you tonight."*
