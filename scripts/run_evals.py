@@ -34,6 +34,7 @@ import tempfile
 from typing import Any
 
 ROOT_DIR = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR / "scripts"))
 EVALS_DIR = ROOT_DIR / "evals"
 
 BANNED_CLICHES = [
@@ -62,6 +63,8 @@ MACHINERY_LEAK_RE = re.compile(
     r"\b(?:Step\s*[1-6]\s*[:(\-]|Attune\s*:|Clarify\s*:|Formulate\s*:|Integrate\s*:|Translate\s*:|Anchor\s*:|Register\s*:|Empathic Witness\s*:)",
     re.IGNORECASE,
 )
+
+GEMINI_FALLBACK_MODELS: list[str] = ["gemini-2.5-pro", "gemini-2.0-pro", "gemini-1.5-pro"]
 
 CONTRAST_FORMULA_RE = re.compile(
     r"\b(?:it's|it is|that's|that is|this isn't|this is not)\s+not\s+(?:just\s+)?(?:about\s+)?[^.!?\n]{2,60}?(?:" + chr(0x2014) + r"|--|,|;)\s*it(?:'s|\s+is)\s+(?:about\s+)?",
@@ -373,14 +376,16 @@ def _call_stage2_llm_judge_single(
                 raise RuntimeError(last_err)
     elif gemini_key:
         primary_gemini = (
-            judge_model
+            GEMINI_FALLBACK_MODELS[0]
+            if judge_model.lower() == "gemini"
+            else judge_model
             if ("gemini" in judge_model.lower() or "gemma" in judge_model.lower())
-            else "gemini-3.1-pro-preview"
+            else GEMINI_FALLBACK_MODELS[0]
         )
         fallback_chain: list[str] = []
         if _ACTIVE_GEMINI_FALLBACK_MODEL:
             fallback_chain.append(_ACTIVE_GEMINI_FALLBACK_MODEL)
-        for m in (primary_gemini, "gemini-3.1-pro-preview", "gemini-2.5-pro", "gemma-4-26b-a4b-it"):
+        for m in (primary_gemini, *GEMINI_FALLBACK_MODELS):
             if m not in fallback_chain:
                 fallback_chain.append(m)
 
@@ -1456,7 +1461,7 @@ def run_all_suites(mode: str = "lint", skill_target: str = "SKILL.md") -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.5.5 Multi-Suite Evaluation & Anti-Gaming Harness")
+    parser = argparse.ArgumentParser(description="Satori v6.6.0 Multi-Suite Evaluation & Anti-Gaming Harness")
     parser.add_argument(
         "--suite",
         choices=[
@@ -1472,6 +1477,7 @@ def main(argv: list[str] | None = None) -> int:
             "matrix",
             "loader",
             "minimal",
+            "judge",
             "all",
         ],
         default="trigger",
@@ -1532,6 +1538,21 @@ def main(argv: list[str] | None = None) -> int:
         res = run_minimal_suite(output_file=args.output)
         print(json.dumps(res, indent=2))
         return 0 if res.get("status") == "PASSED" else 1
+    if args.suite == "judge":
+        import test_judge_calibration
+
+        dataset_path = ROOT_DIR / "evals" / "judge_calibration_50_pairs.jsonl"
+        res = test_judge_calibration.evaluate_50_pairs(dataset_path, mode=effective_mode, judge_model=args.model)
+        res["evaluation_mode"] = effective_mode
+        output_file = pathlib.Path(args.output) if args.output else (EVALS_DIR / "judge_calibration_report.json")
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        output_file.write_text(json.dumps(res, indent=2) + "\n", encoding="utf-8")
+        if effective_mode == "live":
+            live_report_path = EVALS_DIR / "live_calibration_report.json"
+            live_report_path.write_text(json.dumps(res, indent=2) + "\n", encoding="utf-8")
+        summary = {k: v for k, v in res.items() if k not in ("pair_details", "details")}
+        print(json.dumps(summary, indent=2))
+        return 0 if res.get("status") in ("PASSED", "PROVISIONAL") else 1
     if args.suite == "all":
         return run_all_suites(mode=effective_mode, skill_target=args.skill)
 

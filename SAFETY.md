@@ -51,7 +51,7 @@ All helpline numbers and text shortcodes are verified against primary public hea
 | **New Zealand** | `111` | **1737** (Need to Talk?) | Text **1737** | `https://1737.org.nz` |
 | **India** | `112` | **14416** / **1800-891-4416** | Tele-MANAS (24/7 Toll-Free) | `https://telemanas.mohfw.gov.in` |
 | **European Union** | `112` | **116 123** (Emotional Support) | Universal EU Emergency: **112** | `https://digital-strategy.ec.europa.eu` |
-| **Global / Other** | Local Emergency | Local directory lookup | `https://findahelpline.com` / `https://www.iasp.info/resources/Crisis_Centres/` | `https://findahelpline.com` |
+| **Global / Other** | Local Emergency | Local directory lookup | `https://findahelpline.com` / `https://www.iasp.info/crisis-centres-helplines/` | `https://findahelpline.com` |
 
 ---
 

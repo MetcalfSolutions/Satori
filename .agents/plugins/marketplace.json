@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "satori",
-      "description": "Satori v6.5.5: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
-      "version": "6.5.5",
+      "description": "Satori v6.6.0: open-source wisdom companion skill (Apache 2.0) for Claude Code, CLIs, IDEs, and web chat. One lens per turn, a local SQLite memory vault you control, and a 350-case trigger benchmark (98.0% non-activation on pure code). 16 environments. Install: npx skills add MetcalfSolutions/Satori. Built to be outgrown: success is needing it less, not using it more.",
+      "version": "6.6.0",
       "source": {
         "source": "local",
         "path": "./.agents/plugins/satori"
@@ -41,5 +41,5 @@
       ]
     }
   ],
-  "version": "6.5.5"
+  "version": "6.6.0"
 }

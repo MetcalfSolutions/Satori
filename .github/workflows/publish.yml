@@ -31,6 +31,16 @@ jobs:
     steps:
       - name: Check out release commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Verify Tag Immutability (Standing Rule 4)
+        run: |
+          git fetch --tags --prune
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$PREV_TAG" ]; then
+            git merge-base --is-ancestor "$PREV_TAG" HEAD || { echo "Tag not fast-forward descendant of previous release"; exit 1; }
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0

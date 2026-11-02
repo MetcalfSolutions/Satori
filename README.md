@@ -1,11 +1,11 @@
 # Satori
 
 <p align="center">
-  <a href="https://metcalfsolutions.github.io/Satori/"><img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.5.5 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" /></a>
+  <a href="https://metcalfsolutions.github.io/Satori/" aria-label="Take the Satori interactive tour"><img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.6.0 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.5.5"><img src="https://img.shields.io/badge/Release-v6.5.5-7c6af7.svg?style=flat-square" alt="Satori v6.5.5 Release" /></a>
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/tag/v6.6.0"><img src="https://img.shields.io/badge/Release-v6.6.0-7c6af7.svg?style=flat-square" alt="Satori v6.6.0 Release" /></a>
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square" alt="Apache 2.0 License" /></a>
   <a href="#installation--16-environment-matrix"><img src="https://img.shields.io/badge/Compatibility-Works%20across%20CLI%2C%20IDE%20%26%20Web%20Chat-e07b54.svg?style=flat-square" alt="Works across CLI, IDE & Web Chat" /></a>
   <a href="#benchmark--verification-proof"><img src="https://img.shields.io/badge/Benchmark-350%20Cases%20%7C%20%E2%89%A595%25%20Non--Activation-4ecdc4.svg?style=flat-square" alt="350 Cases Benchmark with >=95% Non-Activation Rate" /></a>
@@ -20,9 +20,14 @@
   <a href="https://metcalfsolutions.github.io/Satori/">Take the 2-minute tour and see what Satori feels like</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip"><strong>Download Satori Full (v6.6.0 .zip)</strong></a> · 
+  <a href="https://metcalfsolutions.github.io/Satori/#install">Web Chat Setup Guide</a>
+</p>
+
 ```bash
 # Install Satori across CLI & IDE agent harnesses
-npx skills add MetcalfSolutions/Satori
+npx skills add @metcalfsolutions/satori
 
 # Or clone directly into your project or agent configuration
 git clone https://github.com/MetcalfSolutions/Satori.git
@@ -66,9 +71,9 @@ Find your setup in the table below to jump to exact, step-by-step installation i
 | Environment | Supported Platforms | Recommended Edition | Quick Setup Link |
 |---|---|---|---|
 | **AI Coding Agents (CLI & IDE)** | Claude Code, Cursor, Windsurf, Google Antigravity, Gemini CLI, OpenAI Codex CLI, OpenCode, Hermes Agent, OpenClaw, Grok Build | Full Repository / `npx skills` | [Jump to Agent Matrix & Install](#installation--16-environment-matrix) |
-| **Frontier Web Chat** | Claude.ai (Pro/Team/Projects), Google Gemini Web (Gems) | Satori Full Release Archive (`SatoriSkill-Full-v6.5.5.zip`) | [Jump to Web Chat Zip Guide](#claudeai--gemini-web-chat-full-zip-upload) |
-| **Edge & Custom GPTs** | ChatGPT (Plus/Team Custom GPTs or free chat), xAI Grok Web, DeepSeek Chat, Meta AI | Satori Compact (`compact/SKILL.md` &lt;= 7,800 chars) | [Jump to ChatGPT Compact Guide](#chatgpt--custom-gpts-compact-edition) |
-| **Direct Git Clone & Local Runners** | Ollama, LM Studio, Jan, vLLM, manual Git installations | Full Source or Compact Modelfile | [Jump to Direct Clone Guide](#local-cli--ide-agents-direct-clone) |
+| **Frontier Web Chat** | Claude.ai (Pro/Team/Projects), Google Gemini Web (Skills) | Satori Full Release Archive (`SatoriSkill-Full-v6.6.0.zip`) | [Jump to Web Chat Zip Guide](#1-web-chat-full-zip-setup-claudeai--gemini-web) |
+| **Edge & Custom GPTs** | ChatGPT (Plus/Team Custom GPTs or free chat), xAI Grok Web, DeepSeek Chat, Meta AI | Satori Compact (`compact/SKILL.md` &lt;= 7,800 chars) | [Jump to ChatGPT Compact Guide](#3-chatgpt-compact-edition-setup--7800-chars) |
+| **Direct Git Clone & Local Runners** | Ollama, LM Studio, Jan, vLLM, manual Git installations | Full Source or Compact Modelfile | [Jump to Direct Clone Guide](#5-local-cli--ide-git-clone--vault-initialization) |
 
 ---
 
@@ -98,7 +103,7 @@ On the next turn, Satori stays with that single question until you name what is 
 
 Most conversational AI oscillates between cheerleading sycophancy in web chats and unsolicited therapy hijack in code editors. Satori is engineered specifically for thoughtful adults, developers, and founders who need honest depth without interference:
 
-| Comparison Dimension | Generic AI Chat / Default Coding Assistant | Satori v6.5.5 |
+| Comparison Dimension | Generic AI Chat / Default Coding Assistant | Satori v6.6.0 |
 |---|---|---|
 | **1. Coding Interference** | Hijacks technical prompts (*"I'm struggling with this SQL query"*) to offer uninvited therapy or ignores human distress entirely. | **98.0% non-activation** across 200 pure-code benchmark cases (Wilson 95% CI: `[94.97%, 99.22%]`). Solves hybrid technical tasks first without derailment. |
 | **2. Advice vs. Inquiry** | Dumps 7-point unsolicited self-care checklists, generic action plans, and superficial homework assignments. | **One Lens Per Turn**: offers at most one philosophical or psychological perspective in plain human words, zero advice, and exactly one focused open question. |
@@ -142,6 +147,9 @@ Every Satori interaction is governed by 8 constitutional rules defined in [`SKIL
 
 Satori's trigger discipline, output quality, and safety boundaries are verified through automated test suites and live evaluation reports:
 
+<details>
+<summary><strong>View Benchmark &amp; Verification Proof Details</strong></summary>
+
 | Evaluation Suite | Methodology & Scope | Target Gate | Evaluated Performance |
 |---|---|---|---|
 | **Stratum 1: Positives** | 60 cases of emotional exhaustion, grief, boundary friction, and burnout | Recall &gt;= 90% | **100.0%** (60/60 recall) |
@@ -155,6 +163,8 @@ Satori's trigger discipline, output quality, and safety boundaries are verified 
 | **Live Multi-Model Calibration** | 20 scenarios evaluated across 5 behavioral profiles | 100% pass rate | **100.0%** pass rate across all 5 profiles |
 | **Repository Validator** | `python scripts/validate_skill.py` static, size, mirror, and crisis checks | 100% passing | **58 automated checks passed** across 20 validation sections |
 
+</details>
+
 ### Tessl Evaluation & Optimization
 
 Satori is continuously evaluated and optimized on Tessl. [See the live score and evaluation details here.](https://tessl.io/registry/metcalf-solutions1/satori)
@@ -165,7 +175,7 @@ Satori is continuously evaluated and optimized on Tessl. [See the live score and
 ## How Satori Works
 
 <p align="center">
-  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.5.5 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, reference modules, and local SQLite memory vault" width="820" />
+  <img src="docs/assets/satori-architecture-v6.svg" alt="Satori v6.6.0 progressive disclosure architecture diagram illustrating the SKILL.md entry file, Precedence Ladder, reference modules, and local SQLite memory vault" width="820" />
 </p>
 
 ### Where Satori Came From
@@ -295,18 +305,23 @@ On the next turn, if you answer about the pressure, Satori stays with you to exp
 
 Satori is engineered with strict size and latency budgets from [`facts.json`](https://github.com/MetcalfSolutions/Satori/blob/main/facts.json) so it never bloats context windows or slows down agent response loops:
 
+<details>
+<summary><strong>View Progressive Disclosure &amp; Token Budgets Table</strong></summary>
+
 | Component | File Path | Budget Ceiling | Verified Size | Load Policy |
 |---|---|---|---|---|
 | **Entry File (Full Edition)** | [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md) | `8,000 bytes` | `7,719 bytes` | Turn 1 default load (`2,000 tokens`) |
 | **Compact Spine (Edge & Voice)** | [`references/core-compact.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/core-compact.md) | `12,000 bytes` | `11,700 bytes` | Loaded only for Profile 5 edge/voice models |
 | **Clinical Spine** | [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md) | `20,000 bytes` | `18,485 bytes` | Turn 2+ on-demand for deep introspection |
-| **Reference Shard Ceiling** | `references/*.md` (17 files total) | `24,000 bytes` | All `20 KB` | 12 on-demand modules + 5 conditional protocols |
+| **Reference Shard Ceiling** | `references/*.md` (17 files total) | `24,000 bytes` | All `<20 KB` | 12 on-demand modules + 5 conditional protocols |
 | **Compact Single-File Prompt** | [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) | `7,800 chars` | `7,404 chars` | Self-contained for ChatGPT and edge runners |
-| **Category A Pointer Stubs** | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, etc. | `15 lines` | 13–15 lines | Root routing pointers without duplicated rules |
+| **Category A Pointer Stubs** | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, etc. | `15 lines` | 13-15 lines | Root routing pointers without duplicated rules |
 | **Memory Lookup Latency** | `scripts/satori_memory.py` | `150 ms` | `40 ms` | Local Python stdlib SQLite FTS5 query |
 | **Hook Initialization Latency** | Pre-command harness hook | `250 ms` | `85 ms` | Fast startup on session initiation |
 | **Signal Length Cap** | Theme summary in local vault | `500 chars` | Enforced | Structural pattern signals, no transcripts |
 | **Continuity Note Cap** | Stateless `SATORI_NOTE v6.5` | `600 chars` | Enforced | Plain-text data block for web chat |
+
+</details>
 
 For complete architectural specifications, token load models, and progressive loading diagrams, see the [Full Architecture Matrix](https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md).
 
@@ -316,31 +331,46 @@ For complete architectural specifications, token load models, and progressive lo
 
 Satori supports **16 environments** across **2 categories** (`10 Agent Harnesses` and `6 Web Chat Surfaces`), classified into three honest support tiers:
 
+### 1. Web Chat Full Zip Setup (Claude.ai & Gemini Web)
+
+Download the release archive [`dist/SatoriSkill-Full-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip) (also available as `dist/SatoriSkill-v6.6.0.zip`).
+
+1. **Claude.ai**: Open **Customize -> Skills -> + -> Upload a skill** and select `SatoriSkill-Full-v6.6.0.zip` (requires a paid Pro or Team plan; for free tier web chat, paste [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) directly into your conversation). You can also attach it to **Project Knowledge** inside Claude Projects. See official documentation: [Claude Skills Guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+2. **Google Gemini Web**: Open **Gemini -> Skills -> Add custom skill** (updated from legacy Gems to Google's November 2026 Skills site framework), title it "Satori", and upload `SatoriSkill-Full-v6.6.0.zip` (native parser compatibility is ensured via `LICENSE.md`). Works on standard free Google accounts. See official documentation: [Gemini Skills Help](https://support.google.com/gemini/answer/17094296?hl=en&co=GENIE.Platform%3DDesktop).
+
+### 2. CLI & Terminal Agents (npx skills add)
+
+For modern AI coding agents and CLI environments, install Satori with a single command:
+
+```bash
+npx skills add @metcalfsolutions/satori
+```
+
+This single command automatically registers Satori across detected harnesses including Claude Code, Google Antigravity, Gemini CLI, Cursor, and OpenAI Codex CLI.
+
+### 3. ChatGPT Compact Edition Setup (<= 7,800 Chars)
+
+1. Download [`dist/SatoriSkill-Compact-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.6.0.zip) or open [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md).
+2. In **ChatGPT**, open **Explore GPTs -> Create -> Configure**.
+3. Name the assistant "Satori", leave description brief, and paste the entire contents of `compact/SKILL.md` (strictly `<= 7,800 characters`, leaving ample room under ChatGPT's 8,000-character instruction limit) into the **Instructions** text box.
+4. **ChatGPT Enterprise / Workspace**: For workspaces supporting skill package uploads, upload `SatoriSkill-Full-v6.6.0.zip` per [OpenAI Skills Help](https://help.openai.com/en/articles/20001066-skills-in-chatgpt). Personal Free/Plus web chats should use `compact/SKILL.md`.
+5. **Local Open-Weights Models (Ollama, LM Studio, Jan, vLLM)**: Copy `compact/SKILL.md` into your `Modelfile` (`SYSTEM """..."""`) or system prompt box. Recommended for local models including Llama 3/4/5, Qwen 2.5/3.5, and Mistral.
+
+### 4. 16 Supported Agent Environments
+
 | Surface Category | Environments (Total: 16) | Support Tier Classification |
 |---|---|---|
 | **Agent Harnesses (10)**<br>*(Local CLI & IDE with `~/.satori/` SQLite vault)* | Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build | **Tier A (Verified - 5)**: Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor *(tested against the 350-case benchmark on every release)*<br>**Tier B (Community - 5)**: Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build *(validated schemas and configs)* |
 | **Web Chat Surfaces (6)**<br>*(Stateless chat with `SATORI_NOTE v6.5` continuity)* | Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI | **Tier A (Verified - 2)**: Claude.ai (Full zip), ChatGPT (Compact edition)<br>**Tier B (Community - 3)**: Google Gemini Web, xAI Grok Web, DeepSeek Chat<br>**Tier C (Experimental - 1)**: Meta AI *(unpromoted experimental prompt)* |
 
-### Claude.ai & Gemini Web Chat (Full Zip Upload)
-
-1. Download the release archive [`dist/SatoriSkill-Full-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.5.5.zip) (also available as `dist/SatoriSkill-v6.5.5.zip`).
-2. **Claude.ai**: Open **Customize -> Skills -> + -> Upload a skill** and select `SatoriSkill-Full-v6.5.5.zip` (requires a paid Pro or Team plan; for free tier web chat, paste [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) directly into your conversation). You can also attach it to **Project Knowledge** inside Claude Projects.
-3. **Google Gemini Web**: Open **Gem Manager -> New Gem**, title it "Satori", and upload `SatoriSkill-Full-v6.5.5.zip` (native parser compatibility is ensured via `LICENSE.md`). Works on standard free Google accounts.
-
-### ChatGPT & Custom GPTs (Compact Edition)
-
-1. Download [`dist/SatoriSkill-Compact-v6.5.5.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.5.5.zip) or open [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md).
-2. In **ChatGPT**, open **Explore GPTs -> Create -> Configure**.
-3. Name the assistant "Satori", leave description brief, and paste the entire contents of `compact/SKILL.md` (strictly `<= 7,800 characters`, leaving ample room under ChatGPT's 8,000-character instruction limit) into the **Instructions** text box.
-4. **Local Open-Weights Models (Ollama, LM Studio, Jan, vLLM)**: Copy `compact/SKILL.md` into your `Modelfile` (`SYSTEM """..."""`) or system prompt box. Recommended for local models including Llama 3/4/5, Qwen 2.5/3.5, and Mistral.
-
-### Local CLI & IDE Agents (Direct Clone)
+### 5. Local CLI / IDE Git Clone & Vault Initialization
 
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
 cd Satori
 ```
 
+- **Initialize Memory Vault**: `python scripts/satori_memory.py init` (creates local `~/.satori/memory/` with POSIX `0700`/`0600` permissions and cloud-sync guards).
 - **Claude Code**: Auto-detects `.claude-plugin/plugin.json` and `CLAUDE.md` in the repository root.
 - **Google Antigravity & Gemini CLI**: Discovered via `GEMINI.md` and `.agents/skills/satori/SKILL.md`, or copy `.agents/skills/satori` to `~/.gemini/skills/satori/`.
 - **Cursor**: Uses `.cursor/skills/satori/SKILL.md` and `.cursor/rules/satori.mdc` (`alwaysApply: false` so coding is undisturbed).
@@ -350,8 +380,8 @@ cd Satori
 
 ### Troubleshooting Recovery
 
-1. **`YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders**: Upgrade to `v6.5.5` (`npx skills add MetcalfSolutions/Satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict YAML frontmatter formatting.
-2. **Gemini Web Rejects Zip Upload ("Unsupported file type")**: Upload the pre-built release archive `dist/SatoriSkill-Full-v6.5.5.zip` (which packages root `LICENSE` as `LICENSE.md` and strips `.git` folders).
+1. **`YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders**: Upgrade to `v6.6.0` (`npx skills add @metcalfsolutions/satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict YAML frontmatter formatting.
+2. **Gemini Web Rejects Zip Upload ("Unsupported file type")**: Upload the pre-built release archive `dist/SatoriSkill-Full-v6.6.0.zip` (which packages root `LICENSE` as `LICENSE.md` and strips `.git` folders).
 3. **`satori_memory.py init` Halts with Exit Code 1**: Your target directory is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`). Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/unsynced/path/.satori init`) or pass `--allow-synced`.
 
 ### Cross-Model Compatibility
@@ -384,7 +414,7 @@ All crisis lines below are verified character-for-character against primary publ
 | **New Zealand** | `111` | **1737** (Need to Talk? 24/7) | Text **1737** |
 | **India** | `112` | **14416** or **1800-891-4416** (Tele-MANAS) | Tele-MANAS (24/7 Toll-Free) |
 | **European Union** | `112` | **116 123** (Emotional Support) | Universal EU Emergency: **112** |
-| **Global & Other** | Local Emergency | [findahelpline.com](https://findahelpline.com/) (Global directory in local languages) | [IASP Crisis Centres](https://www.iasp.info/resources/Crisis_Centres/) |
+| **Global & Other** | Local Emergency | [findahelpline.com](https://findahelpline.com/) (Global directory in local languages) | [IASP Crisis Centres](https://www.iasp.info/crisis-centres-helplines/) |
 
 ---
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.5.5.
+"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.6.0.
 
 1. Reads `version` dynamically from `package.json`.
 2. Cleans up any stale v6.5.1 or older zip archives from `dist/`.
@@ -23,6 +23,7 @@ import hashlib
 import json
 import os
 import pathlib
+import re
 import shutil
 import stat
 import subprocess
@@ -44,7 +45,9 @@ MANIFEST_PATHS = [
     ROOT_DIR / "marketplace.json",
     ROOT_DIR / "gemini-extension.json",
     ROOT_DIR / ".claude-plugin" / "plugin.json",
+    ROOT_DIR / ".claude-plugin" / "marketplace.json",
     ROOT_DIR / ".codex-plugin" / "plugin.json",
+    ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
     ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
 ]
 
@@ -82,6 +85,52 @@ def sync_manifest_versions(version: str) -> list[str]:
         if data.get("version") != version:
             data["version"] = version
             changed = True
+
+        if "interface" in data and isinstance(data["interface"], dict):
+            if "shortDescription" in data["interface"]:
+                old_desc = data["interface"]["shortDescription"]
+                new_desc = re.sub(r"\bv?6\.\d+\.\d+\b", f"v{version}", old_desc)
+                if len(new_desc) != 255:
+                    raise ValueError(
+                        f"shortDescription length in {manifest_path} is {len(new_desc)}, must be exactly 255"
+                    )
+                if new_desc != old_desc:
+                    data["interface"]["shortDescription"] = new_desc
+                    changed = True
+            if "longDescription" in data["interface"]:
+                old_desc = data["interface"]["longDescription"]
+                new_desc = re.sub(r"\bv?6\.\d+\.\d+\b", f"v{version}", old_desc)
+                if new_desc != old_desc:
+                    data["interface"]["longDescription"] = new_desc
+                    changed = True
+
+        if "plugins" in data and isinstance(data["plugins"], list):
+            for plugin in data["plugins"]:
+                if isinstance(plugin, dict):
+                    if plugin.get("version") != version:
+                        plugin["version"] = version
+                        changed = True
+                    if "description" in plugin:
+                        old_pdesc = plugin["description"]
+                        new_pdesc = re.sub(r"\bv?6\.\d+\.\d+\b", f"v{version}", old_pdesc)
+                        if new_pdesc != old_pdesc:
+                            plugin["description"] = new_pdesc
+                            changed = True
+
+        if "description" in data and isinstance(data["description"], str):
+            old_desc = data["description"]
+            new_desc = re.sub(r"\bv?6\.\d+\.\d+\b", f"v{version}", old_desc)
+            if new_desc != old_desc:
+                data["description"] = new_desc
+                changed = True
+
+        if "longDescription" in data and isinstance(data["longDescription"], str):
+            old_desc = data["longDescription"]
+            new_desc = re.sub(r"\bv?6\.\d+\.\d+\b", f"v{version}", old_desc)
+            if new_desc != old_desc:
+                data["longDescription"] = new_desc
+                changed = True
+
         if manifest_path.name == "marketplace.json":
             dl = data.get("download", {})
             target_url = f"https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-v{version}.zip"
@@ -193,14 +242,14 @@ def generate_sha256sums(archives: list[pathlib.Path]) -> pathlib.Path:
 
 def run_cleanroom_upgrade_test(
     v651_bytes: bytes | None,
-    v652_full_zip: pathlib.Path,
+    target_full_zip: pathlib.Path,
     current_version: str,
 ) -> dict:
     """Clean-room upgrade and uninstall verification test (Metric 30).
 
     In a temporary directory, simulates:
-    (a) clean unpack of v6.5.1 archive,
-    (b) upgrade to v6.5.2,
+    (a) clean unpack of baseline archive,
+    (b) upgrade to target version,
     (c) verify file changes,
     (d) uninstall/removal and verify zero orphaned residue.
     Writes results to evals/upgrade_test_report.json.
@@ -212,12 +261,13 @@ def run_cleanroom_upgrade_test(
     import datetime
     import tempfile
 
+    baseline_version = "6.5.5"
     report = {
         "status": "PASSED",
         "metric": 30,
         "test_name": "clean_room_upgrade_and_uninstall_verification",
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "baseline_version": "6.5.1",
+        "baseline_version": baseline_version,
         "target_version": current_version,
         "stages": {},
     }
@@ -226,7 +276,7 @@ def run_cleanroom_upgrade_test(
         install_dir = pathlib.Path(td) / "satori_installed"
         install_dir.mkdir()
 
-        # Stage (a): Clean unpack of v6.5.1 archive
+        # Stage (a): Clean unpack of baseline archive
         v651_unpacked_count = 0
         if v651_bytes is not None:
             import io
@@ -235,34 +285,34 @@ def run_cleanroom_upgrade_test(
                 zf.extractall(install_dir)
                 v651_unpacked_count = len(zf.namelist())
         else:
-            with zipfile.ZipFile(v652_full_zip, "r") as zf:
+            with zipfile.ZipFile(target_full_zip, "r") as zf:
                 zf.extractall(install_dir)
                 v651_unpacked_count = len(zf.namelist())
             for mock_file in ("SKILL.md", "README.md"):
                 mp = install_dir / mock_file
                 if mp.exists():
-                    mp.write_text(mp.read_text(encoding="utf-8").replace(current_version, "6.5.1"), encoding="utf-8")
+                    mp.write_text(mp.read_text(encoding="utf-8").replace(current_version, baseline_version), encoding="utf-8")
 
         v651_hashes = {
             str(p.relative_to(install_dir)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in install_dir.rglob("*")
             if p.is_file()
         }
-        report["stages"]["clean_unpack_v6_5_1"] = {
+        report["stages"][f"clean_unpack_v{baseline_version.replace('.', '_')}"] = {
             "status": "PASSED",
             "files_unpacked": v651_unpacked_count,
             "recorded_hashes_count": len(v651_hashes),
         }
 
-        # Stage (b): Upgrade to v6.5.2
-        with zipfile.ZipFile(v652_full_zip, "r") as zf:
+        # Stage (b): Upgrade to target version
+        with zipfile.ZipFile(target_full_zip, "r") as zf:
             zf.extractall(install_dir)
-            v652_names = zf.namelist()
+            target_names = zf.namelist()
 
-        report["stages"]["upgrade_to_v6_5_2"] = {
+        report["stages"][f"upgrade_to_v{current_version.replace('.', '_')}"] = {
             "status": "PASSED",
-            "files_extracted": len(v652_names),
-            "target_archive": v652_full_zip.name,
+            "files_extracted": len(target_names),
+            "target_archive": target_full_zip.name,
         }
 
         # Stage (c): Verify file changes
@@ -279,7 +329,7 @@ def run_cleanroom_upgrade_test(
         modified_files = [rel for rel, h in v652_hashes.items() if h != v651_hashes.get(rel)]
         report["stages"]["verify_file_changes"] = {
             "status": "PASSED",
-            "all_target_files_present": all((install_dir / n).exists() for n in v652_names),
+            "all_target_files_present": all((install_dir / n).exists() for n in target_names),
             "modified_files_count": len(modified_files),
             "version_verified": current_version,
         }

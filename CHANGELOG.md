@@ -4,6 +4,35 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [6.6.0] - 2026-11-02
+
+### Landing Page Overhaul, Modern Web Chat Skills Ecosystem & Release Engineering Hardening
+
+Versioned as `v6.6.0`. Major landing page redesign, modern Web Chat Skills ecosystem integration, full release engineering hardening, and closure of open reference items:
+
+- **Landing Page & Web Presence Overhaul (`docs/index.html` & `docs/404.html`)**:
+  - Complete visual redesign supporting mobile and desktop viewers equally with an adaptive WCAG 2.2 AA compliant dark/light theme engine, CSS custom properties, and inline SVG theme toggle button with `localStorage` persistence.
+  - Editorial hero section with eyebrow badge, canonical "Built to be outgrown." callout, dual-track install card with Full Release zip download top billing and `npx skills add @metcalfsolutions/satori` copy bar, 4-column metric strip, and responsive hero banner.
+  - Reordered 4-card Surface Chooser and conversational Worked Example 1 card (`.conversation-card`) with speaker labels and role-aligned message bubbles.
+  - Replaced 4 old benchmark cards with clean narrative directing readers to the GitHub `evals/` test suite and live Tessl endpoint badge (retiring all hardcoded vanity score cards).
+  - Overhauled 5-subsection Installation guide featuring 3 visual Web Chat Skills cards for Claude.ai, Google Gemini Web, and ChatGPT with official November 2026 documentation links.
+  - Added accessible `<details>` / `<summary>` accordions for Token Budgets and Offline Verification suites, table scroll floors (`min-width: 620px`), and 24px/44px touch targets.
+  - Fully styled, responsive, standalone `docs/404.html` with zero em dashes and canonical navigation.
+- **Crisis Safety Routing Parity**:
+  - Atomically replaced deprecated IASP directory URL with canonical `https://www.iasp.info/crisis-centres-helplines/` across all 15 locations in 13 files (`SKILL.md`, `compact/SKILL.md`, `references/clinical-spine.md`, `references/core-compact.md`, `references/crisis-sources.json`, and all Category B mirrors).
+- **Release Pipeline, Manifest Parity & CI Automation**:
+  - Hardened `scripts/build_release.py` to track all 9 manifests across the repository (`marketplace.json`, `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`, `package.json`, `plugin.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `openclaw.plugin.json`, `.agents/plugins/satori/plugin.json`), enforcing exact 255-character descriptions, synchronized `plugins[0]["version"]`, and updating `dist/SHA256SUMS.txt`.
+  - Hardened `scripts/validate_skill.py` with Check 16 automated manifest parity assertions and dynamic GitHub Actions workflow scanning for 40-character SHA pinning in Check 20.
+  - Added automated external link and homepage redirect validation engine (`scripts/check_external_links.py`) with weekly GitHub Actions workflow (`.github/workflows/link-check.yml`).
+  - Added fast-forward tag immutability check (`git merge-base --is-ancestor`) to `.github/workflows/publish.yml`.
+- **Evaluation Harness & Decision D-2 Closeout**:
+  - Added Gemini Pro fallback chain (`gemini-2.5-pro` -> `gemini-2.0-pro` -> `gemini-1.5-pro`) and `judge` suite CLI argument to `scripts/run_evals.py`.
+  - Closed out Decision D-2 waiver from v6.5.2 PRD: token economy ratios and offline verification suites run fully verified under automated CI gates.
+- **Release Distribution Rebuild**:
+  - Rebuilt `dist/SatoriSkill-Full-v6.6.0.zip`, `dist/SatoriSkill-Compact-v6.6.0.zip`, `dist/SatoriSkill-v6.6.0.zip`, and `dist/SHA256SUMS.txt`.
+
+---
+
 ## [6.5.5] - 2026-10-29
 
 ### Extensionless Root LICENSE & Resilient Gemini Zip Packaging Hotfix

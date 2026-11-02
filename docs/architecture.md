@@ -1,4 +1,4 @@
-# Satori Architecture & Progressive Disclosure (v6.5.5)
+# Satori Architecture & Progressive Disclosure (v6.6.0)
 
 Satori eliminates prompt bloat with an uncompromising progressive disclosure architecture. [`SKILL.md`](../SKILL.md) (`<8 KB`, strictly below the 8,000-byte budget) is the single canonical source of truth and is completely self-sufficient for Turn 1. Reference modules load progressively on demand, with all 17 markdown reference files guaranteed to remain under the 24,000-byte IDE and harness rule ceiling.
 
@@ -41,15 +41,15 @@ The repository maintains exactly **17 Markdown reference files** in `references/
 ## Architecture Principles
 
 ### 1. Zero Turn-1 Load Tax
-In earlier iterations, loading an entire wisdom companion injected over 63 KB into the system prompt on Turn 1. Satori v6.5 guarantees that Turn 1 loads strictly under 8,000 bytes (`budgets.skill_entry_max_bytes: 8000`) and consumes fewer than 2,000 tokens (`budgets.turn_1_token_load_tax_max: 2000`). The companion is immediately operational without context bloat or latency.
+In earlier iterations, loading an entire wisdom companion injected over 63 KB into the system prompt on Turn 1. Satori v6.6 guarantees that Turn 1 loads strictly under 8,000 bytes (`budgets.skill_entry_max_bytes: 8000`) and consumes fewer than 2,000 tokens (`budgets.turn_1_token_load_tax_max: 2000`). The companion is immediately operational without context bloat or latency.
 
 ### 2. Universal Sharded Ceiling (`<24 KB`)
 Large reference texts have been organized into 17 modular markdown reference files (12 `onDemand` modules and 5 `conditional` protocols). Every single markdown file in `references/` is verified by automated CI checks to remain strictly under the 24,000-byte rule ceiling (`budgets.reference_rule_ceiling_bytes: 24000`) required by agent harnesses such as Google Antigravity.
 
 ### 3. Dual Declared Editions
 Satori ships in two synchronized editions:
-- **Satori Full (`dist/SatoriSkill-Full-v6.5.5.zip`)**: Designed for frontier reasoning and constitutional models (Claude Opus/Sonnet, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
-- **Satori Compact (`dist/SatoriSkill-Compact-v6.5.5.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters per `budgets.compact_prompt_max_chars: 7800`) and small open-weights or local models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
+- **Satori Full (`dist/SatoriSkill-Full-v6.6.0.zip`)**: Designed for frontier reasoning and constitutional models (Claude Opus/Sonnet, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
+- **Satori Compact (`dist/SatoriSkill-Compact-v6.6.0.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters per `budgets.compact_prompt_max_chars: 7800`) and small open-weights or local models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
 
 ### 4. Constitutional Integrity, 8 Immovables & Honesty Check
 The `SHA-256` hash of `references/SOUL.md` is locked in `openclaw.plugin.json` and verified at build time by `scripts/validate_skill.py`. Any unauthorized modification to the constitutional identity breaks CI.
@@ -96,7 +96,7 @@ The 9 verified regional crisis rows cover:
 6. **New Zealand**: `111` (Emergency) | **1737** (Need to Talk?) | Text **1737**
 7. **India**: `112` (Emergency) | **14416** / **1800-891-4416** (Tele-MANAS 24/7)
 8. **European Union**: `112` (Emergency) | **116 123** (Emotional Support Helpline)
-9. **Global & International Directories**: Local Emergency Services | International directories via `https://findahelpline.com` and `https://www.iasp.info/resources/Crisis_Centres/`
+9. **Global & International Directories**: Local Emergency Services | International directories via `https://findahelpline.com` and `https://www.iasp.info/crisis-centres-helplines/`
 
 All numbers are verified against primary public health sources on a strict 120-day verification cadence (`crisis_governance.staleness_warning_days: 120`).
 
