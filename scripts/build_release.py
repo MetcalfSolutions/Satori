@@ -49,6 +49,8 @@ MANIFEST_PATHS = [
     ROOT_DIR / ".codex-plugin" / "plugin.json",
     ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
     ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+    ROOT_DIR / "tessl.json",
+    ROOT_DIR / ".tessl-plugin" / "plugin.json",
 ]
 
 FULL_ZIP_FILES = [

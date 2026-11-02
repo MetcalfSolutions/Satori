@@ -412,6 +412,8 @@ def main() -> int:
             ROOT_DIR / ".codex-plugin" / "plugin.json",
             ROOT_DIR / ".agents" / "plugins" / "marketplace.json",
             ROOT_DIR / ".agents" / "plugins" / "satori" / "plugin.json",
+            ROOT_DIR / "tessl.json",
+            ROOT_DIR / ".tessl-plugin" / "plugin.json",
         ]
         manifest_parity_ok = True
         for mp in manifest_paths:

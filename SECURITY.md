@@ -6,10 +6,10 @@ The table below indicates which versions of Satori are currently supported with 
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 6.5.5   | :white_check_mark: |
-| <= 6.5.4| :x:                |
+| 6.6.0   | :white_check_mark: |
+| <= 6.5.5| :x:                |
 
-If you are running a version older than `6.5.5`, please upgrade immediately via `npx skills add MetcalfSolutions/Satori` or `git pull`.
+If you are running a version older than `6.6.0`, please upgrade immediately via `npx skills add MetcalfSolutions/Satori` or `git pull`.
 
 ## Reporting a Vulnerability Privately
 
