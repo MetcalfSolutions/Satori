@@ -90,7 +90,7 @@ def evaluate_50_pairs(
 
     pair_details: list[dict[str, Any]] = []
 
-    for pair in pairs:
+    for pair_idx, pair in enumerate(pairs):
         pid = pair["id"]
         prompt = pair.get("prompt", "")
         resp_a = pair["response_a"]
@@ -140,16 +140,18 @@ def evaluate_50_pairs(
         winner = comp["winner"]
 
         # If deterministic score tied but rubric dimensions differ, tie-break by dimension count
-        if winner == "TIE" and mode == "lint":
+        if winner == "TIE":
             score_dim_a = sum(1 for v in dims_a.values() if v)
             score_dim_b = sum(1 for v in dims_b.values() if v)
             if score_dim_a > score_dim_b:
                 winner = "A"
             elif score_dim_b > score_dim_a:
                 winner = "B"
-            else:
+            elif mode == "lint":
                 # If both are fully clean, fall back to consensus alignment
                 winner = c_pref
+
+        print(f"[{pair_idx + 1}/{total_pairs}] Evaluated {pid}: winner={winner} (consensus={c_pref})", file=sys.stderr, flush=True)
 
         if winner == c_pref:
             judge_agreements_consensus += 1

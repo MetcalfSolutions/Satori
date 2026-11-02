@@ -64,7 +64,12 @@ MACHINERY_LEAK_RE = re.compile(
     re.IGNORECASE,
 )
 
-GEMINI_FALLBACK_MODELS: list[str] = ["gemini-2.5-pro", "gemini-2.0-pro", "gemini-1.5-pro"]
+GEMINI_FALLBACK_MODELS: list[str] = [
+    "gemini-4-argon",
+    "gemini-3.1-pro-preview",
+    "gemini-2.5-pro",
+    "gemini-2.0-pro",
+]
 
 CONTRAST_FORMULA_RE = re.compile(
     r"\b(?:it's|it is|that's|that is|this isn't|this is not)\s+not\s+(?:just\s+)?(?:about\s+)?[^.!?\n]{2,60}?(?:" + chr(0x2014) + r"|--|,|;)\s*it(?:'s|\s+is)\s+(?:about\s+)?",
@@ -338,7 +343,8 @@ def _call_stage2_llm_judge_single(
     backoff_schedule = (2.0, 4.0, 8.0)
     text = ""
 
-    if anthropic_key:
+    wants_gemini = any(kw in judge_model.lower() for kw in ("gemini", "gemma", "argon"))
+    if anthropic_key and not wants_gemini:
         api_model = "claude-opus-4-20250514" if "4.5" in judge_model else judge_model
         _LAST_USED_JUDGE_MODEL = api_model
         payload = json.dumps(
@@ -377,7 +383,9 @@ def _call_stage2_llm_judge_single(
     elif gemini_key:
         primary_gemini = (
             GEMINI_FALLBACK_MODELS[0]
-            if judge_model.lower() == "gemini"
+            if judge_model.lower() in ("gemini", "argon")
+            else "gemini-4-argon"
+            if "argon" in judge_model.lower()
             else judge_model
             if ("gemini" in judge_model.lower() or "gemma" in judge_model.lower())
             else GEMINI_FALLBACK_MODELS[0]
@@ -1483,7 +1491,7 @@ def main(argv: list[str] | None = None) -> int:
         default="trigger",
         help="Evaluation suite to execute",
     )
-    parser.add_argument("--mode", choices=["auto", "lint", "live"], default="lint")
+    parser.add_argument("--mode", choices=["auto", "lint", "live"], default="auto")
     parser.add_argument("--skill", default="SKILL.md", help="Path to target skill file (e.g. SKILL.md or compact/SKILL.md)")
     parser.add_argument("--model", default="claude-4.5-opus", help="Target or Judge model identifier")
     parser.add_argument("--output", default=None, help="Explicit output report file path override")

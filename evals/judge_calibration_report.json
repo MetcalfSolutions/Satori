@@ -22,21 +22,21 @@
     "passed": true
   },
   "judge_evaluation": {
-    "judge_model": "stage1-deterministic-rubric",
-    "consensus_agreements": 50,
-    "rater_1_agreements": 47,
-    "rater_2_agreements": 49,
-    "observed_agreement_rate": 1.0,
-    "cohens_kappa": 1.0,
+    "judge_model": "gemini",
+    "consensus_agreements": 49,
+    "rater_1_agreements": 48,
+    "rater_2_agreements": 48,
+    "observed_agreement_rate": 0.98,
+    "cohens_kappa": 0.96,
     "cohens_kappa_target": ">=0.80",
     "cohens_kappa_floor": ">=0.60",
     "cohens_kappa_ci_95": [
-      1.0,
+      0.8824,
       1.0
     ],
     "wilson_ci_95": [
-      0.9287,
-      1.0
+      0.895,
+      0.9965
     ],
     "passed": true
   },
@@ -290,7 +290,7 @@
     },
     {
       "id": "calib-12",
-      "winner": "B",
+      "winner": "A",
       "consensus_preferred": "B",
       "rater_1_preferred": "A",
       "rater_2_preferred": "B",
@@ -905,7 +905,5 @@
       "violations_b": []
     }
   ],
-  "profile_2_judge_guard_enforced": true,
-  "evaluation_mode": "lint",
-  "live_api_key_detected": false
+  "evaluation_mode": "live"
 }
