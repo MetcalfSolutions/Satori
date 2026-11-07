@@ -22,9 +22,6 @@
 ```bash
 # Install Satori across CLI & IDE agent harnesses
 npx skills add @metcalfsolutions/satori
-
-# Or clone directly into your project or agent configuration
-git clone https://github.com/MetcalfSolutions/Satori.git
 ```
 
 > [!TIP]
