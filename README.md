@@ -315,7 +315,7 @@ Satori supports **16 environments** across **2 categories** (`10 Agent Harnesses
 For AI coding agents and CLI environments, install Satori with a single command:
 
 ```bash
-npx skills add @metcalfsolutions/satori
+npx skills add metcalfsolutions/satori
 ```
 
 This single command automatically registers Satori across detected harnesses including Claude Code, Google Antigravity, Gemini CLI, Cursor, and OpenAI Codex CLI.
