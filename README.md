@@ -21,7 +21,7 @@
 
 ```bash
 # Install Satori across CLI & IDE agent harnesses
-npx skills add @metcalfsolutions/satori
+npx skills add metcalfsolutions/satori
 ```
 
 > [!TIP]
