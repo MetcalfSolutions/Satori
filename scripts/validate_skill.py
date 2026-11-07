@@ -650,6 +650,34 @@ def main() -> int:
                     f"{ref_md.relative_to(ROOT_DIR)} TOC anchor '#{anchor}' does not match any heading in document"
                 )
 
+    readme_file = ROOT_DIR / "README.md"
+    if readme_file.exists():
+        readme_text = readme_file.read_text(encoding="utf-8")
+        readme_headings = []
+        for line in readme_text.splitlines():
+            m = re.match(r"^(#{1,6})\s+(.*)$", line)
+            if m:
+                readme_headings.append(m.group(2).strip())
+
+        valid_slugs = set()
+        for h in readme_headings:
+            valid_slugs.update(_slugify(h))
+
+        for html_id in re.findall(r'id="([^"]+)"', readme_text):
+            valid_slugs.add(html_id)
+        for html_name in re.findall(r'name="([^"]+)"', readme_text):
+            valid_slugs.add(html_name)
+
+        readme_anchors: list[str] = []
+        readme_anchors.extend(re.findall(r"\[[^\]]+\]\(#([^)\s]+)\)", readme_text))
+        readme_anchors.extend(re.findall(r'href="#([^"\s]+)"', readme_text))
+
+        for anchor in readme_anchors:
+            if anchor not in valid_slugs:
+                toc_errors.append(
+                    f"README.md intra-document anchor '#{anchor}' does not match any heading or id in README.md"
+                )
+
     if toc_errors:
         errors.extend(toc_errors)
     else:

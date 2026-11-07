@@ -16,13 +16,7 @@
 <p align="center">
   <strong>Psychologically Grounded Wisdom Companion for Inner Life</strong><br/>
   <em>18 Philosophical &amp; Contemplative Traditions · 6-Step Reflective Model · 8 Immovables · Local SQLite Memory Vault</em><br/>
-  <em>Built to be outgrown: the measure of Satori's success is that you need it less over time, not more.</em><br/>
-  <a href="https://metcalfsolutions.github.io/Satori/">Take the 2-minute tour and see what Satori feels like</a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip"><strong>Download Satori Full (v6.6.0 .zip)</strong></a> · 
-  <a href="https://metcalfsolutions.github.io/Satori/#install">Web Chat Setup Guide</a>
+  <strong>Built to be outgrown:</strong> Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less over time, not more. <em>Works alongside therapy, not as a replacement for it.</em>
 </p>
 
 ```bash
@@ -33,14 +27,11 @@ npx skills add @metcalfsolutions/satori
 git clone https://github.com/MetcalfSolutions/Satori.git
 ```
 
-<p align="center">
-  <strong>Built to be outgrown.</strong><br/>
-  Satori helps you see clearly enough to return to human relationships and human care. If it works, you will need it less, not more.<br/>
-  <em>Satori works alongside therapy, not as a replacement for it.</em>
-</p>
+> [!TIP]
+> **Looking for the visual interactive tour, web chat guides, or one-click zip downloads? [Visit Satori on GitHub Pages ->](https://metcalfsolutions.github.io/Satori/)**
 
 <p align="center">
-  <a href="https://metcalfsolutions.github.io/Satori/"><B>Interactive Overview</B></a> ·
+  <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip"><strong>Download Satori Full (v6.6.0 .zip)</strong></a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md">Changelog</a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md">Safety Policy</a> ·
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md">Privacy &amp; Threat Model</a> ·
@@ -48,32 +39,26 @@ git clone https://github.com/MetcalfSolutions/Satori.git
   <a href="https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md">Full Architecture Matrix</a>
 </p>
 
-### Table of Contents
-- [Choose Your Surface](#choose-your-surface)
-- [What a First Use Feels Like](#what-a-first-use-feels-like)
-- [Why Satori Is Different](#why-satori-is-different)
-- [What Satori Does (and Never Does)](#what-satori-does-and-never-does)
-- [The 8 Immovables](#the-8-immovables)
-- [Benchmark & Verification Proof](#benchmark--verification-proof)
-- [How Satori Works](#how-satori-works)
-- [Progressive Disclosure & Token Budgets](#progressive-disclosure--token-budgets)
-- [Installation & 16-Environment Matrix](#installation--16-environment-matrix)
-- [Safety, Scope & Global Crisis Resources](#safety-scope--global-crisis-resources)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Verification, Contributing & Lineage](#verification-contributing--lineage)
+## Table of Contents
+
+| Section Group | Direct Section Links |
+|---|---|
+| **1. Getting Started & Core Identity** | [Choose Your Surface](#choose-your-surface) · [First Use Example](#what-a-first-use-feels-like) · [Why Satori Is Different](#why-satori-is-different) · [What Satori Does](#what-satori-does-and-never-does) · [The 8 Immovables](#the-8-immovables) |
+| **2. Architecture & Clinical Spine** | [How Satori Works](#how-satori-works) · [6-Step Model](#the-6-step-reflective-model) · [18 Wisdom Traditions](#the-18-wisdom-traditions) · [Pre-Send Honesty Check](#the-4-question-pre-send-honesty-check) · [Local SQLite Memory Vault](#local-sqlite-memory-vault) · [Token Budgets](#progressive-disclosure--token-budgets) |
+| **3. Setup, Safety & Verification** | [Installation & 16 Environments](#installation--16-environment-matrix) · [Crisis Safety & Global Helplines](#safety-scope--global-crisis-resources) · [Benchmark Proof](#benchmark--verification-proof) · [FAQ](#frequently-asked-questions) · [Verification & Contributing](#verification-contributing--lineage) |
 
 ---
 
 ## Choose Your Surface
 
-Find your setup in the table below to jump to exact, step-by-step installation instructions:
+Find your setup in the table below to jump to step-by-step installation instructions:
 
 | Environment | Supported Platforms | Recommended Edition | Quick Setup Link |
 |---|---|---|---|
-| **AI Coding Agents (CLI & IDE)** | Claude Code, Cursor, Windsurf, Google Antigravity, Gemini CLI, OpenAI Codex CLI, OpenCode, Hermes Agent, OpenClaw, Grok Build | Full Repository / `npx skills` | [Jump to Agent Matrix & Install](#installation--16-environment-matrix) |
-| **Frontier Web Chat** | Claude.ai (Pro/Team/Projects), Google Gemini Web (Skills) | Satori Full Release Archive (`SatoriSkill-Full-v6.6.0.zip`) | [Jump to Web Chat Zip Guide](#1-web-chat-full-zip-setup-claudeai--gemini-web) |
-| **Edge & Custom GPTs** | ChatGPT (Plus/Team Custom GPTs or free chat), xAI Grok Web, DeepSeek Chat, Meta AI | Satori Compact (`compact/SKILL.md` &lt;= 7,800 chars) | [Jump to ChatGPT Compact Guide](#3-chatgpt-compact-edition-setup--7800-chars) |
-| **Direct Git Clone & Local Runners** | Ollama, LM Studio, Jan, vLLM, manual Git installations | Full Source or Compact Modelfile | [Jump to Direct Clone Guide](#5-local-cli--ide-git-clone--vault-initialization) |
+| **AI Coding Agents (CLI & IDE)** | Claude Code, Cursor, Windsurf, Google Antigravity, Gemini CLI, OpenAI Codex CLI, OpenCode, Hermes Agent, OpenClaw, Grok Build | Full Repository / `npx skills` | [Jump to CLI & Terminal Install](#1-cli--terminal-agents-npx-skills-add) |
+| **Direct Git Clone & Local Vault** | Local CLI/IDE checkout with `~/.satori/memory/` SQLite vault | Full Repository (`git clone`) | [Jump to Direct Clone Guide](#2-local-cli--ide-git-clone--vault-initialization) |
+| **Frontier Web Chat** | Claude.ai (Pro/Team/Projects), Google Gemini Web (Skills) | Satori Full Release Archive (`SatoriSkill-Full-v6.6.0.zip`) | [Jump to Web Chat Zip Guide](#3-web-chat-full-zip-setup-claudeai--gemini-web) |
+| **Edge, Custom GPTs & Open-Weights** | ChatGPT (Plus/Team Custom GPTs or free chat), xAI Grok Web, DeepSeek Chat, Meta AI, Ollama, LM Studio, Jan, vLLM | Satori Compact (`compact/SKILL.md` &lt;= 7,800 chars) | [Jump to Compact & Local Models Guide](#4-chatgpt-compact-edition--local-open-weights-setup--7800-chars) |
 
 ---
 
@@ -130,7 +115,7 @@ Satori enforces a strict operational perimeter so users always know what to expe
 
 ## The 8 Immovables
 
-Every Satori interaction is governed by 8 constitutional rules defined in [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md):
+Every Satori interaction is governed by 8 constitutional rules defined in [`SKILL.md`](SKILL.md):
 
 1. **Built to Be Outgrown (Anti-Guru Principle)**: Satori exists to return you to human relationships and human care. Needing it less over time is the metric of success.
 2. **No Advice or Homework (Anti-Advice Architecture)**: Satori never prescribes action steps, assigns homework, or hands out unsolicited self-help checklists.
@@ -148,7 +133,7 @@ Every Satori interaction is governed by 8 constitutional rules defined in [`SKIL
 Satori's trigger discipline, output quality, and safety boundaries are verified through automated test suites and live evaluation reports:
 
 <details>
-<summary><strong>View Benchmark &amp; Verification Proof Details</strong></summary>
+<summary><strong>View Benchmark &amp; Verification Proof Details (350 Cases · 10 Evaluation Suites)</strong></summary>
 
 | Evaluation Suite | Methodology & Scope | Target Gate | Evaluated Performance |
 |---|---|---|---|
@@ -169,7 +154,6 @@ Satori's trigger discipline, output quality, and safety boundaries are verified 
 
 Satori is continuously evaluated and optimized on Tessl. [See the live score and evaluation details here.](https://tessl.io/registry/metcalf-solutions1/satori)
 
-
 ---
 
 ## How Satori Works
@@ -188,7 +172,7 @@ The pattern was consistent: warmth without structure produces hollow platitudes,
 
 ### The 6-Step Reflective Model
 
-Every reflective dialogue follows the 6-step turn model specified in [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md):
+Every reflective dialogue follows the 6-step turn model specified in [`references/clinical-spine.md`](references/clinical-spine.md):
 
 1. **Receive**: Attune deeply to the user's emotional state and situational context before interpreting.
 2. **Clarify**: Separate the immediate triggering event from the underlying recurring emotional theme.
@@ -203,54 +187,52 @@ When a perspective can illuminate what you are facing, Satori brings in at most 
 
 ### The 18 Wisdom Traditions
 
-Satori's modular reference architecture in `references/` contains `17` Markdown files (`12` `onDemand` reference modules + `5` `conditional` protocol files) and `1` primary-source JSON crisis manifest (`references/crisis-sources.json`):
+Satori's modular reference library in `references/` contains `17` Markdown files (`12` `onDemand` reference modules + `5` `conditional` protocol files) and `1` primary-source JSON crisis manifest ([`references/crisis-sources.json`](references/crisis-sources.json)). The 18 philosophical, contemplative, and psychological traditions are organized into four domains, loaded progressively on Turn 2+ via [`references/traditions-quickref.md`](references/traditions-quickref.md):
 
-| Tradition / Framework | Cultural & Clinical Grounding | Focus & Application | Reference Module |
+| Tradition Domain | Traditions & Key Lineages | Core Reflective Focus & Application | Reference Modules |
 |---|---|---|---|
-| **Stoicism** | Epictetus, Marcus Aurelius | Dichotomy of control; separating events from our judgments of them | `references/traditions-stoic.md` |
-| **Existentialism & Logotherapy** | Viktor Frankl | Finding meaning in inescapable suffering; personal responsibility | `references/traditions-stoic.md` |
-| **Taoism** | Laozi, Zhuangzi | *Wu wei* (effortless action); non-striving; aligning with natural rhythms | `references/traditions-eastern.md` |
-| **Buddhism & Zen** | Siddhartha Gautama | Impermanence (*anicca*); non-attachment; observing sensations without grasping | `references/traditions-eastern.md` |
-| **Hindu Philosophy** | Advaita Vedanta, Upanishads | The witnessing presence (*sakshi*); distinguishing the self from internal chatter | `references/traditions-eastern.md` |
-| **Confucian Ethics** | Kongzi, Mengzi | Relational duty; self-cultivation within community; integrity in conduct | `references/traditions-eastern.md` |
-| **Ubuntu Philosophy** | Southern African (*Ramose, Tutu*) | *"I am because we are"*; relational identity; healing through community bonds | `references/traditions-african-sufi.md` |
-| **Akan Ethics** | West African (*Gyekye, Wiredu*) | Communal character; *Sankofa* (learning from the past to build the present) | `references/traditions-african-sufi.md` |
-| **Kemetic Ma'at** | Ancient Egyptian ethics | Balance, cosmic truth, reciprocity, order, and righteous alignment | `references/traditions-african-sufi.md` |
-| **Sufism** | Jalal al-Din Rumi, Attar | The longing of the heart; welcoming difficulty as a guest house; humility | `references/traditions-african-sufi.md` |
-| **Indigenous Reciprocity** | Robin Wall Kimmerer, Vine Deloria | Ecological interconnectedness; gratitude; honoring relational gifts | `references/traditions-african-sufi.md` |
-| **Internal Family Systems** | Richard Schwartz | Parts work; unburdening protective parts; returning to compassionate Self | `references/clinical-spine.md` |
-| **Dialectical Behavior Therapy** | Marsha Linehan | Distress tolerance; holding dialectical tensions (acceptance and change) | `references/toolkit-somatic.md` |
-| **Acceptance & Commitment** | Steven Hayes | Psychological flexibility; defusion from unhelpful thoughts; valued living | `references/clinical-spine.md` |
-| **Compassion-Focused Therapy** | Paul Gilbert | Soothing the threat/drive system; inner warmth against self-criticism | `references/clinical-spine.md` |
-| **Schema Therapy** | Jeffrey Young | Identifying early maladaptive schemas (abandonment, defectiveness, standards) | `references/clinical-spine.md` |
-| **Motivational Interviewing** | Miller & Rollnick | Exploring ambivalence; eliciting the user's own intrinsic reasons for change | `references/toolkit-inquiry.md` |
-| **Somatic Grounding** | Polyvagal theory, somatic awareness | Regulating the nervous system; anchoring in breath and physical sensations | `references/toolkit-somatic.md` |
+| **1. Eastern & Contemplative Philosophy (4)** | • **Taoism** (*Laozi, Zhuangzi*)<br>• **Buddhism & Zen** (*Siddhartha Gautama*)<br>• **Hindu Philosophy** (*Advaita Vedanta, Upanishads*)<br>• **Confucian Ethics** (*Kongzi, Mengzi*) | • *Wu wei* (non-forcing) and releasing over-control<br>• Impermanence (*anicca*) and non-attachment to passing states<br>• The witnessing presence (*sakshi*) beneath mental chatter<br>• Relational integrity and role-ethics within community | [`references/traditions-eastern.md`](references/traditions-eastern.md)<br>[`references/traditions-quickref.md`](references/traditions-quickref.md) |
+| **2. Western & Existential Philosophy (2)** | • **Stoicism** (*Epictetus, Marcus Aurelius*)<br>• **Existentialism & Logotherapy** (*Viktor Frankl*) | • Dichotomy of control: separating external events from judgments<br>• Choosing one's stance and meaning amidst unavoidable difficulty | [`references/traditions-stoic.md`](references/traditions-stoic.md)<br>[`references/traditions-quickref.md`](references/traditions-quickref.md) |
+| **3. African, Sufi & Indigenous Wisdom (5)** | • **Ubuntu Philosophy** (*Ramose, Tutu*)<br>• **Akan Ethics** (*Gyekye, Wiredu*)<br>• **Kemetic Ma'at** (*Ancient Egyptian ethics*)<br>• **Sufism** (*Jalal al-Din Rumi, Attar*)<br>• **Indigenous Reciprocity** (*Kimmerer, Deloria*) | • *"I am because we are"*: healing isolation through relational bonds<br>• *Sankofa*: retrieving forgotten wisdom from the past to move forward<br>• Cosmic balance, truth, reciprocity, and righteous alignment<br>• Welcoming sorrow and longing as honored guests of the heart<br>• Ecological interconnectedness, gratitude, and mutual care | [`references/traditions-african-sufi.md`](references/traditions-african-sufi.md)<br>[`references/traditions-quickref.md`](references/traditions-quickref.md) |
+| **4. Modern Clinical & Somatic Modalities (7)** | • **Internal Family Systems (IFS)** (*Schwartz*)<br>• **Acceptance & Commitment (ACT)** (*Hayes*)<br>• **Compassion-Focused (CFT)** (*Gilbert*)<br>• **Schema Therapy** (*Jeffrey Young*)<br>• **Dialectical Behavior (DBT)** (*Linehan*)<br>• **Motivational Interviewing (MI)** (*Miller & Rollnick*)<br>• **Somatic Grounding** (*Polyvagal awareness*) | • Unblending from protective parts and speaking from compassionate Self<br>• Cognitive defusion and anchoring in chosen life values<br>• Soothing the threat/drive system when inner criticism turns harsh<br>• Recognizing early maladaptive schemas (defectiveness, abandonment)<br>• Holding dialectical tensions (both acceptance and change at once)<br>• Exploring ambivalence and eliciting intrinsic motivation<br>• Regulating nervous-system arousal through breath and sensation | [`references/clinical-spine.md`](references/clinical-spine.md)<br>[`references/toolkit-somatic.md`](references/toolkit-somatic.md)<br>[`references/toolkit-inquiry.md`](references/toolkit-inquiry.md) |
 
-These are complemented by five specialized conditional protocols:
-- **Onboarding Protocol** ([`references/onboarding.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/onboarding.md)): First-run attunement with Context-First Bypass.
-- **Grief Protocol** ([`references/grief-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/grief-protocol.md)): Bereavement, ambiguous loss, and non-linear mourning.
-- **Dark Night Protocol** ([`references/darknight-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/darknight-protocol.md)): 3:00 AM existential despair without suicidal ideation.
-- **Shadow Work Protocol** ([`references/shadow-work-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/shadow-work-protocol.md)): Projective triggers, disowned traits, and unvoiced resentment.
-- **Relationship Protocol** ([`references/relationship-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/relationship-protocol.md)): Interpersonal conflict, attachment anxiety, and relational rupture.
+These four tradition domains work alongside five conditional clinical-boundary protocols loaded on demand:
+- **Onboarding Protocol** ([`references/onboarding.md`](references/onboarding.md)): First-run attunement with Context-First Bypass when a user arrives in immediate distress.
+- **Grief Protocol** ([`references/grief-protocol.md`](references/grief-protocol.md)): Bereavement, ambiguous loss, and non-linear mourning without silver-lining clichés.
+- **Dark Night Protocol** ([`references/darknight-protocol.md`](references/darknight-protocol.md)): 3:00 AM existential despair without suicidal ideation (zero false crisis dumps).
+- **Shadow Work Protocol** ([`references/shadow-work-protocol.md`](references/shadow-work-protocol.md)): Projective triggers, disowned traits, and unvoiced resentment.
+- **Relationship Protocol** ([`references/relationship-protocol.md`](references/relationship-protocol.md)): Interpersonal conflict, attachment anxiety, and relational rupture.
 
-### Local SQLite Memory Vault
+### The 4-Question Pre-Send Honesty Check
 
-In CLI and IDE agent harnesses, Satori provides an optional, 100% local memory engine (`scripts/satori_memory.py`):
-- **Local SQLite FTS5 Storage**: Located in `~/.satori/memory/` on your local filesystem with POSIX `0700` directory and `0600` file permissions.
-- **Signal Minimization**: Stores short thematic summaries capped at 500 characters, never verbatim conversation transcripts.
-- **Cloud-Sync Blocking**: Automatically halts if initialized inside cloud-synced folders (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, `Box`) to prevent accidental leaks.
-- **Stateless Web Chat**: On web chat surfaces, Satori runs completely statelessly and offers optional data-only Continuity Notes (`SATORI_NOTE v6.5`, `<=600` characters) that you control.
-
-#### The 4-Question Pre-Send Honesty Check
-Before any response is delivered, Satori verifies itself against four internal questions:
+Before any response is delivered on any surface (CLI, IDE, or Web Chat), Satori verifies its draft against four internal gates defined in [`SKILL.md`](SKILL.md):
 1. *Did I attune to the user's emotional reality before offering any perspective?*
 2. *Am I offering at most one lens, explained in plain language without jargon?*
 3. *Did I ask at most one open question, with zero unsolicited advice or homework?*
 4. *Am I speaking as an equal partner, without sycophancy, moral superiority, or guru posturing?*
 
+### Local SQLite Memory Vault
+
+In CLI and IDE agent harnesses, Satori includes an optional, zero-dependency Python 3.9+ stdlib memory engine ([`scripts/satori_memory.py`](scripts/satori_memory.py), governed by [`references/memory-system.md`](references/memory-system.md) and [`PRIVACY.md`](PRIVACY.md)):
+- **100% Local-First & Cloud-Sync Guarded**: Defaults to `~/.satori/memory/` with POSIX `0700`/`0600` permissions and halts automatically if pointed at `OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`.
+- **Structural Signal Minimization (`<=500` chars)**: Stores short thematic summaries and Dream-Layer recurrence counters (`1 -> 2 -> 3`), never raw conversation transcripts, with automatic PII scrubbing.
+- **Stateless Web Chat Continuity (`<=600` chars)**: On stateless web chat surfaces, Satori stores nothing on disk and offers optional plain-text Continuity Notes (`SATORI_NOTE v6.5`) that you copy and control.
+
+| Action | CLI Command (`python scripts/satori_memory.py ...`) |
+|---|---|
+| **Initialize Vault** | `python scripts/satori_memory.py init` *(or add `--encrypt` with `SATORI_VAULT_PASSPHRASE`)* |
+| **Inspect Status** | `python scripts/satori_memory.py status` |
+| **Log Pattern Signal** | `python scripts/satori_memory.py log-signal --theme "<name>" --layer pattern --summary "<text>"` |
+| **Search FTS5 Vault** | `python scripts/satori_memory.py search --query "<keyword>"` |
+| **Delete One Theme** | `python scripts/satori_memory.py forget --theme "<name>"` |
+| **Wipe Entire Vault** | `python scripts/satori_memory.py purge --all --confirm` *(runs `secure_delete`, WAL truncate, & `VACUUM`)* |
+| **Export / Import Note** | `python scripts/satori_memory.py export-note` · `python scripts/satori_memory.py import-note --file note.txt` |
+
 ### Core Scenarios & Transcripts
 
-| Scenario | When to Use | Satori Posture & Protocol |
+Satori arbitrates every incoming prompt through a strict **5-Rank Precedence Ladder** (`Rank 1: Tier 2 Acute Crisis` -> `Rank 2: Tier 1 Ambiguous Risk` -> `Rank 3: Tier 0 Dark Night` -> `Rank 4: Pure Coding Silence` -> `Rank 5: Hybrid Technical + Burnout`):
+
+| Scenario | When to Use | Satori Posture & Precedence Rank |
 |---|---|---|
 | **1. Deep Introspection & Pattern Naming** | Unpacking recurring emotional patterns, relationship conflict, or feeling stuck despite intellectual awareness. | **Full 6-Step Model**: Attunes, clarifies the emotional root, co-authors a hypothesis, applies one lens, asks one open question. |
 | **2. Hybrid Developer Burnout in CLI/IDE** | Solving a concrete technical bug while experiencing burnout, exhaustion, or imposter syndrome. | **Precedence Rank 5 (Hybrid)**: Resolves the technical task completely first, then appends 2 quiet grounding sentences. |
@@ -303,27 +285,27 @@ On the next turn, if you answer about the pressure, Satori stays with you to exp
 
 ## Progressive Disclosure & Token Budgets
 
-Satori is engineered with strict size and latency budgets from [`facts.json`](https://github.com/MetcalfSolutions/Satori/blob/main/facts.json) so it never bloats context windows or slows down agent response loops:
+Satori is engineered with strict size and latency budgets from [`facts.json`](facts.json) so it never bloats context windows or slows down agent response loops:
 
 <details>
 <summary><strong>View Progressive Disclosure &amp; Token Budgets Table</strong></summary>
 
 | Component | File Path | Budget Ceiling | Verified Size | Load Policy |
 |---|---|---|---|---|
-| **Entry File (Full Edition)** | [`SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SKILL.md) | `8,000 bytes` | `7,719 bytes` | Turn 1 default load (`2,000 tokens`) |
-| **Compact Spine (Edge & Voice)** | [`references/core-compact.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/core-compact.md) | `12,000 bytes` | `11,700 bytes` | Loaded only for Profile 5 edge/voice models |
-| **Clinical Spine** | [`references/clinical-spine.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/clinical-spine.md) | `20,000 bytes` | `18,485 bytes` | Turn 2+ on-demand for deep introspection |
+| **Entry File (Full Edition)** | [`SKILL.md`](SKILL.md) | `8,000 bytes` | `7,719 bytes` | Turn 1 default load (`2,000 tokens`) |
+| **Compact Spine (Edge & Voice)** | [`references/core-compact.md`](references/core-compact.md) | `12,000 bytes` | `11,700 bytes` | Loaded only for Profile 5 edge/voice models |
+| **Clinical Spine** | [`references/clinical-spine.md`](references/clinical-spine.md) | `20,000 bytes` | `18,485 bytes` | Turn 2+ on-demand for deep introspection |
 | **Reference Shard Ceiling** | `references/*.md` (17 files total) | `24,000 bytes` | All `<20 KB` | 12 on-demand modules + 5 conditional protocols |
-| **Compact Single-File Prompt** | [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) | `7,800 chars` | `7,404 chars` | Self-contained for ChatGPT and edge runners |
+| **Compact Single-File Prompt** | [`compact/SKILL.md`](compact/SKILL.md) | `7,800 chars` | `7,404 chars` | Self-contained for ChatGPT and edge runners |
 | **Category A Pointer Stubs** | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, etc. | `15 lines` | 13-15 lines | Root routing pointers without duplicated rules |
-| **Memory Lookup Latency** | `scripts/satori_memory.py` | `150 ms` | `40 ms` | Local Python stdlib SQLite FTS5 query |
+| **Memory Lookup Latency** | [`scripts/satori_memory.py`](scripts/satori_memory.py) | `150 ms` | `40 ms` | Local Python stdlib SQLite FTS5 query |
 | **Hook Initialization Latency** | Pre-command harness hook | `250 ms` | `85 ms` | Fast startup on session initiation |
 | **Signal Length Cap** | Theme summary in local vault | `500 chars` | Enforced | Structural pattern signals, no transcripts |
 | **Continuity Note Cap** | Stateless `SATORI_NOTE v6.5` | `600 chars` | Enforced | Plain-text data block for web chat |
 
 </details>
 
-For complete architectural specifications, token load models, and progressive loading diagrams, see the [Full Architecture Matrix](https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md).
+For complete architectural specifications, token load models, and progressive loading diagrams, see the [Full Architecture Matrix](docs/architecture.md).
 
 ---
 
@@ -331,16 +313,9 @@ For complete architectural specifications, token load models, and progressive lo
 
 Satori supports **16 environments** across **2 categories** (`10 Agent Harnesses` and `6 Web Chat Surfaces`), classified into three honest support tiers:
 
-### 1. Web Chat Full Zip Setup (Claude.ai & Gemini Web)
+### 1. CLI & Terminal Agents (npx skills add)
 
-Download the release archive [`dist/SatoriSkill-Full-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip) (also available as `dist/SatoriSkill-v6.6.0.zip`).
-
-1. **Claude.ai**: Open **Customize -> Skills -> + -> Upload a skill** and select `SatoriSkill-Full-v6.6.0.zip` (requires a paid Pro or Team plan; for free tier web chat, paste [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) directly into your conversation). You can also attach it to **Project Knowledge** inside Claude Projects. See official documentation: [Claude Skills Guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
-2. **Google Gemini Web**: Open **Gemini -> Skills -> Add custom skill** (updated from legacy Gems to Google's November 2026 Skills site framework), title it "Satori", and upload `SatoriSkill-Full-v6.6.0.zip` (native parser compatibility is ensured via `LICENSE.md`). Works on standard free Google accounts. See official documentation: [Gemini Skills Help](https://support.google.com/gemini/answer/17094296?hl=en&co=GENIE.Platform%3DDesktop).
-
-### 2. CLI & Terminal Agents (npx skills add)
-
-For modern AI coding agents and CLI environments, install Satori with a single command:
+For AI coding agents and CLI environments, install Satori with a single command:
 
 ```bash
 npx skills add @metcalfsolutions/satori
@@ -348,22 +323,7 @@ npx skills add @metcalfsolutions/satori
 
 This single command automatically registers Satori across detected harnesses including Claude Code, Google Antigravity, Gemini CLI, Cursor, and OpenAI Codex CLI.
 
-### 3. ChatGPT Compact Edition Setup (<= 7,800 Chars)
-
-1. Download [`dist/SatoriSkill-Compact-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.6.0.zip) or open [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md).
-2. In **ChatGPT**, open **Explore GPTs -> Create -> Configure**.
-3. Name the assistant "Satori", leave description brief, and paste the entire contents of `compact/SKILL.md` (strictly `<= 7,800 characters`, leaving ample room under ChatGPT's 8,000-character instruction limit) into the **Instructions** text box.
-4. **ChatGPT Enterprise / Workspace**: For workspaces supporting skill package uploads, upload `SatoriSkill-Full-v6.6.0.zip` per [OpenAI Skills Help](https://help.openai.com/en/articles/20001066-skills-in-chatgpt). Personal Free/Plus web chats should use `compact/SKILL.md`.
-5. **Local Open-Weights Models (Ollama, LM Studio, Jan, vLLM)**: Copy `compact/SKILL.md` into your `Modelfile` (`SYSTEM """..."""`) or system prompt box. Recommended for local models including Llama 3/4/5, Qwen 2.5/3.5, and Mistral.
-
-### 4. 16 Supported Agent Environments
-
-| Surface Category | Environments (Total: 16) | Support Tier Classification |
-|---|---|---|
-| **Agent Harnesses (10)**<br>*(Local CLI & IDE with `~/.satori/` SQLite vault)* | Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build | **Tier A (Verified - 5)**: Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor *(tested against the 350-case benchmark on every release)*<br>**Tier B (Community - 5)**: Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build *(validated schemas and configs)* |
-| **Web Chat Surfaces (6)**<br>*(Stateless chat with `SATORI_NOTE v6.5` continuity)* | Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI | **Tier A (Verified - 2)**: Claude.ai (Full zip), ChatGPT (Compact edition)<br>**Tier B (Community - 3)**: Google Gemini Web, xAI Grok Web, DeepSeek Chat<br>**Tier C (Experimental - 1)**: Meta AI *(unpromoted experimental prompt)* |
-
-### 5. Local CLI / IDE Git Clone & Vault Initialization
+### 2. Local CLI / IDE Git Clone & Vault Initialization
 
 ```bash
 git clone https://github.com/MetcalfSolutions/Satori.git
@@ -378,6 +338,33 @@ cd Satori
 - **Windsurf, OpenCode, Hermes Agent, OpenClaw**: Configured via `.windsurf/rules/satori.md`, `.opencode/skills/satori/SKILL.md`, `.hermes/skills/satori/SKILL.md`, and `openclaw.plugin.json` (with SHA-256 verification of `references/SOUL.md`).
 - **xAI Grok Build**: Type `/satori` inside any Grok Build session to step back from execution.
 
+### 3. Web Chat Full Zip Setup (Claude.ai & Gemini Web)
+
+Download the release archive [`dist/SatoriSkill-Full-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip) (also available as `dist/SatoriSkill-v6.6.0.zip`).
+
+1. **Claude.ai**: Open **Customize -> Skills -> + -> Upload a skill** and select `SatoriSkill-Full-v6.6.0.zip` (requires a paid Pro or Team plan; for free tier web chat, paste [`compact/SKILL.md`](compact/SKILL.md) directly into your conversation). You can also attach it to **Project Knowledge** inside Claude Projects. See official documentation: [Claude Skills Guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+2. **Google Gemini Web**: Open **Gemini -> Skills -> Add custom skill** (updated from legacy Gems to Google's November 2026 Skills site framework), title it "Satori", and upload `SatoriSkill-Full-v6.6.0.zip` (native parser compatibility is ensured via `LICENSE.md`). Works on standard free Google accounts. See official documentation: [Gemini Skills Help](https://support.google.com/gemini/answer/17094296?hl=en&co=GENIE.Platform%3DDesktop).
+
+### 4. ChatGPT Compact Edition & Local Open-Weights Setup (<= 7,800 Chars)
+
+1. Download [`dist/SatoriSkill-Compact-v6.6.0.zip`](https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Compact-v6.6.0.zip) or open [`compact/SKILL.md`](compact/SKILL.md).
+2. In **ChatGPT**, open **Explore GPTs -> Create -> Configure**.
+3. Name the assistant "Satori", leave description brief, and paste the entire contents of `compact/SKILL.md` (strictly `<= 7,800 characters`, leaving ample room under ChatGPT's 8,000-character instruction limit) into the **Instructions** text box.
+4. **ChatGPT Enterprise / Workspace**: For workspaces supporting skill package uploads, upload `SatoriSkill-Full-v6.6.0.zip` per [OpenAI Skills Help](https://help.openai.com/en/articles/20001066-skills-in-chatgpt). Personal Free/Plus web chats should use `compact/SKILL.md`.
+5. **Local Open-Weights Models (Ollama, LM Studio, Jan, vLLM)**: Copy `compact/SKILL.md` into your `Modelfile` (`SYSTEM """..."""`) or system prompt box. Recommended for local models including Llama 3/4/5, Qwen 2.5/3.5, and Mistral.
+
+### 5. 16 Supported Agent Environments
+
+<details>
+<summary><strong>View Full 16-Environment Support Matrix (10 Agent Harnesses &amp; 6 Web Chat Surfaces)</strong></summary>
+
+| Surface Category | Environments (Total: 16) | Support Tier Classification |
+|---|---|---|
+| **Agent Harnesses (10)**<br>*(Local CLI & IDE with `~/.satori/` SQLite vault)* | Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor, Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build | **Tier A (Verified - 5)**: Claude Code, Google Antigravity, Gemini CLI, OpenAI Codex CLI, Cursor *(tested against the 350-case benchmark on every release)*<br>**Tier B (Community - 5)**: Windsurf, OpenCode, NousResearch Hermes Agent, OpenClaw, xAI Grok Build *(validated schemas and configs)* |
+| **Web Chat Surfaces (6)**<br>*(Stateless chat with `SATORI_NOTE v6.5` continuity)* | Claude.ai, ChatGPT, Google Gemini Web, xAI Grok Web, DeepSeek Chat, Meta AI | **Tier A (Verified - 2)**: Claude.ai (Full zip), ChatGPT (Compact edition)<br>**Tier B (Community - 3)**: Google Gemini Web, xAI Grok Web, DeepSeek Chat<br>**Tier C (Experimental - 1)**: Meta AI *(unpromoted experimental prompt)* |
+
+</details>
+
 ### Troubleshooting Recovery
 
 1. **`YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders**: Upgrade to `v6.6.0` (`npx skills add @metcalfsolutions/satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict YAML frontmatter formatting.
@@ -385,24 +372,31 @@ cd Satori
 3. **`satori_memory.py init` Halts with Exit Code 1**: Your target directory is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`). Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/unsynced/path/.satori init`) or pass `--allow-synced`.
 
 ### Cross-Model Compatibility
-Rather than relying on model-name strings, Satori senses environment capability across 5 Behavioral Profiles and 3 detection tiers to adjust reasoning, token budgets, and output formatting dynamically. See the full multi-model capability calibration table in the [Architecture Specification](https://github.com/MetcalfSolutions/Satori/blob/main/docs/architecture.md#7-multi-model-calibration--5-execution-profiles).
+
+Rather than relying on brittle model-name strings, Satori senses environment capability across **5 Behavioral Profiles** (`Profile 1: Claude 4.5/4.6` · `Profile 2: GPT-5/5.4 & o-series` · `Profile 3: Gemini 2.5/3.1 Pro` · `Profile 4: Open-Weights 32B+` · `Profile 5: Compact/Edge <32B & Voice`) and 3 detection tiers to adjust reasoning, token budgets, and output formatting dynamically. See the full multi-model capability calibration table in [`references/model-calibration.md`](references/model-calibration.md) and the [Architecture Specification](docs/architecture.md#7-multi-model-calibration--5-execution-profiles).
 
 ---
 
 ## Safety, Scope & Global Crisis Resources
 
-Satori operates under a strict, non-negotiable safety policy defined in [`SAFETY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SAFETY.md). Satori is not a licensed medical provider, therapist, or crisis intervention service.
+Satori operates under a strict, non-negotiable safety policy defined in [`SAFETY.md`](SAFETY.md). Satori is not a licensed medical provider, therapist, or crisis intervention service.
 
 ### Three-Tier Risk Model
 
 When emotional suffering appears, Satori routes behavior through three distinct risk tiers:
-- **Tier 0: Dark Night Despair ([`references/darknight-protocol.md`](https://github.com/MetcalfSolutions/Satori/blob/main/references/darknight-protocol.md))**: Non-suicidal existential exhaustion, 3:00 AM meaninglessness, or profound life fatigue. Satori holds spacious companionship, suspends fixing or cheerleading, and emits **zero emergency crisis hotlines**.
+- **Tier 0: Dark Night Despair ([`references/darknight-protocol.md`](references/darknight-protocol.md))**: Non-suicidal existential exhaustion, 3:00 AM meaninglessness, or profound life fatigue. Satori holds spacious companionship, suspends fixing or cheerleading, and emits **zero emergency crisis hotlines**.
 - **Tier 1: Ambiguous Despair & Risk Check-In**: Passive ideation or ambiguous statements (*"I wish I wouldn't wake up"*). Satori asks **one direct safety question**, locks tool execution, offers verified helplines gently, and stays present.
 - **Tier 2: Acute Crisis & Immediate Danger**: Active suicidal intent, self-harm, domestic violence, or medical emergency. Satori immediately halts reflective conversation, locks all tools, expresses warm human care, emits primary-source verified crisis helplines, and stays present while you connect with human care.
 
 ### Primary-Source Verified Global Crisis Helplines
 
-All crisis lines below are verified character-for-character against primary public health authorities in [`references/crisis-sources.json`](https://github.com/MetcalfSolutions/Satori/blob/main/references/crisis-sources.json) (120-day verification cadence):
+> [!IMPORTANT]
+> **Immediate 24/7 Crisis Support:** **US & Canada:** Call or text **988** (or text `HOME` to `741741` in US / `CONNECT` to `686868` in CA) · **UK:** Call **111** or **116 123** (Emergency: **999**, Text `SHOUT` to `85258`) · **EU & Ireland:** Call **112** or **116 123** (IE Text: `50808`) · **Australia:** Call **13 11 14** · **New Zealand:** Call or text **1737** · **India:** Call **14416** or **1800-891-4416** · **Global Directory:** [findahelpline.com](https://findahelpline.com/)
+
+All crisis lines below are verified character-for-character against primary public health authorities in [`references/crisis-sources.json`](references/crisis-sources.json) (120-day verification cadence):
+
+<details>
+<summary><strong>View All 9 Regional Primary-Source Crisis Helplines (US/CA: 988 · UK: 111 / 116 123 · EU: 112 · AU: 13 11 14 · IN: 14416 · Global: findahelpline.com)</strong></summary>
 
 | Region | Emergency | 24/7 Crisis Call Line | Crisis Text / Online Directory |
 |---|:---:|---|---|
@@ -415,6 +409,8 @@ All crisis lines below are verified character-for-character against primary publ
 | **India** | `112` | **14416** or **1800-891-4416** (Tele-MANAS) | Tele-MANAS (24/7 Toll-Free) |
 | **European Union** | `112` | **116 123** (Emotional Support) | Universal EU Emergency: **112** |
 | **Global & Other** | Local Emergency | [findahelpline.com](https://findahelpline.com/) (Global directory in local languages) | [IASP Crisis Centres](https://www.iasp.info/crisis-centres-helplines/) |
+
+</details>
 
 ---
 
@@ -429,13 +425,13 @@ Satori is completely free and open source under the Apache 2.0 licence. There ar
 <details>
 <summary><strong>Do I need a paid account with a third party?</strong></summary>
 
-No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting [`compact/SKILL.md`](https://github.com/MetcalfSolutions/Satori/blob/main/compact/SKILL.md) directly into any free web chat window, uploading to Google Gemini Gems on a standard Google account, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent).
+No paid account is required to use Satori itself. While uploading a skill zip in Claude.ai or creating a saved Custom GPT in ChatGPT may require a paid plan from Anthropic or OpenAI, you can use Satori at zero cost by pasting [`compact/SKILL.md`](compact/SKILL.md) directly into any free web chat window, uploading to Google Gemini Skills on a standard Google account, or running Satori locally with free open-source tools (Ollama, LM Studio, Jan, OpenCode, or Hermes Agent).
 </details>
 
 <details>
 <summary><strong>How is my privacy protected on local CLI vs. web chat?</strong></summary>
 
-In CLI and IDE harnesses, Satori's memory engine (`scripts/satori_memory.py`) is 100% local-first in `~/.satori/memory/`, makes zero network calls, transmits zero telemetry, blocks cloud-synced folders (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, `Box`) by default, and supports `--ephemeral` (off-the-record) sessions plus optional `AES-256-GCM` encryption when you supply `SATORI_VAULT_PASSPHRASE` or `--encrypt` with `cryptography` installed. In web chat, Satori stores nothing on disk, though your chat text is processed by your chosen web provider (Anthropic, OpenAI, Google, xAI, DeepSeek, or Meta) under their respective privacy policies. See [`PRIVACY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md) for full threat mitigations.
+In CLI and IDE harnesses, Satori's memory engine (`scripts/satori_memory.py`) is 100% local-first in `~/.satori/memory/`, makes zero network calls, transmits zero telemetry, blocks cloud-synced folders (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, `Box`) by default, and supports `--ephemeral` (off-the-record) sessions plus optional `AES-256-GCM` encryption when you supply `SATORI_VAULT_PASSPHRASE` or `--encrypt` with `cryptography` installed. In web chat, Satori stores nothing on disk, though your chat text is processed by your chosen web provider (Anthropic, OpenAI, Google, xAI, DeepSeek, or Meta) under their respective privacy policies. See [`PRIVACY.md`](PRIVACY.md) for full threat mitigations.
 </details>
 
 <details>
@@ -450,7 +446,7 @@ You can ask Satori conversationally to forget a theme, or run CLI commands direc
 <details>
 <summary><strong>How do I uninstall Satori?</strong></summary>
 
-For CLI and IDE installations via `npx skills`, remove the `satori` skill folder from your agent's skills directory (or delete the cloned `Satori` directory) and run `python scripts/satori_memory.py purge --all --confirm` (or delete `~/.satori/`) to erase local memory. In web chat, delete the uploaded Skill, Gem, or Custom GPT in your provider assistant settings.
+For CLI and IDE installations via `npx skills`, remove the `satori` skill folder from your agent's skills directory (or delete the cloned `Satori` directory) and run `python scripts/satori_memory.py purge --all --confirm` (or delete `~/.satori/`) to erase local memory. In web chat, delete the uploaded Skill or Custom GPT in your provider assistant settings.
 </details>
 
 <details>
@@ -485,14 +481,15 @@ tessl skill review
 ```
 
 ### Contributing to Satori
+
 Contributions of new wisdom traditions, psychological frameworks, conversational patterns, and agent adapters are welcome. Before opening a pull request:
-1. Review [`CONTRIBUTING.md`](https://github.com/MetcalfSolutions/Satori/blob/main/CONTRIBUTING.md) for plain-language requirements, operational specificity, and cultural attribution standards.
-2. Review [`SECURITY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/SECURITY.md) for vulnerability disclosure guidelines.
-3. Review [`PRIVACY.md`](https://github.com/MetcalfSolutions/Satori/blob/main/PRIVACY.md) for data boundary and zero-telemetry constraints.
-4. Ensure `python scripts/validate_skill.py` passes all 58 automated checks with zero errors.
+1. Review [`CONTRIBUTING.md`](CONTRIBUTING.md) for plain-language requirements, operational specificity, and cultural attribution standards.
+2. Review [`SECURITY.md`](SECURITY.md) for vulnerability disclosure guidelines.
+3. Review [`PRIVACY.md`](PRIVACY.md) for data boundary and zero-telemetry constraints.
+4. Ensure `python scripts/validate_skill.py` passes all automated checks with zero errors.
 
 <details>
-<summary><strong>Clinical & Philosophical Lineage</strong></summary>
+<summary><strong>Clinical &amp; Philosophical Lineage</strong></summary>
 
 Carl Rogers (unconditional positive regard), William Miller &amp; Stephen Rollnick (Motivational Interviewing), Dan P. McAdams (narrative identity), Jefferson Singer (self-defining memories), Chris Voss (tactical empathy), Richard Schwartz (Internal Family Systems), Marsha Linehan (Dialectical Behavior Therapy), Paul Gilbert (Compassion-Focused Therapy), Steven Hayes (Acceptance and Commitment Therapy), Jeffrey Young (Schema Therapy), Pauline Boss (Ambiguous Loss), Margaret Stroebe &amp; Henk Schut (Dual Process Bereavement), Robert Worden (Tasks of Mourning), Jessica Benjamin (Relational Psychoanalysis), John Gottman, Marshall Rosenberg (Nonviolent Communication), C.G. Jung (Shadow &amp; Dream work), Viktor Frankl (Logotherapy), Epictetus &amp; Marcus Aurelius (Stoicism), Siddhartha Gautama (Buddhism), Laozi &amp; Zhuangzi (Taoism), Desmond Tutu &amp; Mogobe Ramose (Ubuntu), Kwame Gyekye &amp; Kwasi Wiredu (Akan philosophy), Maulana Karenga (Kemetic *Ma'at*), Jalal al-Din Rumi (Sufism), Robin Wall Kimmerer (Potawatomi ecology of reciprocity), and Vine Deloria Jr.
 </details>
@@ -500,10 +497,10 @@ Carl Rogers (unconditional positive regard), William Miller &amp; Stephen Rollni
 <details>
 <summary><strong>Open-Source Agent Skill Lineage</strong></summary>
 
-Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across [`obra/superpowers`](https://github.com/obra/superpowers), [`anthropics/skills`](https://github.com/anthropics/skills), [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills), [`blader/humanizer`](https://github.com/blader/humanizer), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect), and [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec). Full license attributions are recorded in [`NOTICE.md`](https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md).
+Satori's progressive disclosure, anti-slop voice gates, and evaluation harness were informed by open-source agent skill engineering across [`obra/superpowers`](https://github.com/obra/superpowers), [`anthropics/skills`](https://github.com/anthropics/skills), [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills), [`blader/humanizer`](https://github.com/blader/humanizer), [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills), [`AgriciDaniel/claude-obsidian`](https://github.com/AgriciDaniel/claude-obsidian), [`danielmiessler/fabric`](https://github.com/danielmiessler/fabric), [`ayghri/i-have-adhd`](https://github.com/ayghri/i-have-adhd), [`coreyhaines31/marketingskills`](https://github.com/coreyhaines31/marketingskills), [`alirezarezvani/claude-skills`](https://github.com/alirezarezvani/claude-skills), [`phuryn/pm-skills`](https://github.com/phuryn/pm-skills), [`deanpeters/Product-Manager-Skills`](https://github.com/deanpeters/Product-Manager-Skills), [`aiwithremy/claude-skills-llm-council`](https://github.com/aiwithremy/claude-skills-llm-council), [`RinDig/icm-architect`](https://github.com/RinDig/icm-architect), and [`prompt-security/clawsec`](https://github.com/prompt-security/clawsec). Full license attributions are recorded in [`NOTICE.md`](NOTICE.md).
 </details>
 
-Released under the [Apache License 2.0](https://github.com/MetcalfSolutions/Satori/blob/main/LICENSE). Formal attributions in [`NOTICE.md`](https://github.com/MetcalfSolutions/Satori/blob/main/NOTICE.md). Release history in [`CHANGELOG.md`](https://github.com/MetcalfSolutions/Satori/blob/main/CHANGELOG.md).
+Released under the [Apache License 2.0](LICENSE). Formal attributions in [`NOTICE.md`](NOTICE.md). Release history in [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
