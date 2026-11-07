@@ -25,7 +25,7 @@ npx skills add @metcalfsolutions/satori
 ```
 
 > [!TIP]
-> **Looking for the visual interactive tour, web chat guides, or one-click zip downloads? [Visit Satori on GitHub Pages ->](https://metcalfsolutions.github.io/Satori/)**
+> **Find the interactive tour, web chat guides, or one-click zip downloads: [Visit Satori on GitHub Pages ->](https://metcalfsolutions.github.io/Satori/)**
 
 <p align="center">
   <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip"><strong>Download Satori Full (v6.6.0 .zip)</strong></a> ·
