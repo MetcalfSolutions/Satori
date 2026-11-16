@@ -1,7 +1,7 @@
 # Satori
 
 <p align="center">
-  <a href="https://metcalfsolutions.github.io/Satori/" aria-label="Take the Satori interactive tour"><img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.6.0 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" /></a>
+  <a href="https://metcalf.solutions/satori/" aria-label="Take the Satori interactive tour"><img src="docs/assets/satori-hero-v6.svg" alt="Satori v6.6.0 overview diagram showing a psychologically grounded wisdom companion working across CLI, IDE, and Web Chat with a sub-8 KB Turn-1 load and 350-case trigger benchmark" width="820" /></a>
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@ npx skills add metcalfsolutions/satori
 ```
 
 > [!TIP]
-> **Find the interactive tour, web chat guides, or one-click zip downloads: [Visit Satori on GitHub Pages ->](https://metcalfsolutions.github.io/Satori/)**
+> **Find the interactive tour, web chat guides, or one-click zip downloads: [Visit Satori Website ->](https://metcalf.solutions/satori/)**
 
 <p align="center">
   <a href="https://github.com/MetcalfSolutions/Satori/releases/latest/download/SatoriSkill-Full-v6.6.0.zip"><strong>Download Satori Full (v6.6.0 .zip)</strong></a> ·
