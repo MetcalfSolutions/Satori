@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Satori GitHub Pages sitemap.
-     Commit this file to docs/sitemap.xml (the Pages publishing directory),
-     so it is served at https://metcalfsolutions.github.io/Satori/sitemap.xml.
-     Live and verified. Last content update: 2026-11-02. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.1"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://metcalfsolutions.github.io/Satori/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <loc>https://metcalf.solutions/satori/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

@@ -1,9 +1,7 @@
 # Satori GitHub Pages robots.txt
-# Commit this file to docs/robots.txt (the Pages publishing directory),
-# so it is served at https://metcalfsolutions.github.io/Satori/robots.txt.
-# Last verified as missing: 2026-10-18 ~21:25 CDT.
+# Canonical destination is https://metcalf.solutions/satori/
 
 User-agent: *
 Allow: /
 
-Sitemap: https://metcalfsolutions.github.io/Satori/sitemap.xml
+Sitemap: https://metcalf.solutions/satori/sitemap.xml
