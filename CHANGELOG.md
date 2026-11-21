@@ -4,6 +4,33 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [Unreleased]
+
+### Eval Harness Consolidation, Detector False-Positive Fixes & Offline Test Suite
+
+No change to `SKILL.md`, the reference files, the release archives, or any `evals/*_report.json` baseline.
+
+- **Shared Eval Library (`scripts/eval_lib/`)**:
+  - Stage-1 structural checks, the Precedence Ladder routing classifier, the routing reply parser, the safety detectors, dataset loaders, statistics, checkpointing, and report builders now live in one package used by both runners. The moved logic was extracted mechanically, so no regex or marker table was retyped.
+  - `scripts/run_evals.py` keeps its command line and re-exports every moved name. Its lint trigger report is byte-for-byte the committed baseline.
+  - Dataset loaders validate required fields and report the file name and line number of a malformed benchmark row.
+- **Provider-Agnostic Live Runner (`scripts/run_live_evals.py`)**:
+  - `--backend pi` preserves the `pi -p --model ... --mode json` invocation and the JSONL checkpoint/resume layout, so existing `.cache` folders resume as before.
+  - `--backend openai` (any OpenAI-compatible endpoint, hosted or local) and `--backend anthropic` are env-gated and use the standard library only.
+  - `--backend mock` needs zero API keys: it replays recorded transcripts (`--fixtures`, same layout as `.cache`) or built-in reference replies. `--suite smoke` runs every live suite end to end in about a second.
+  - `--skill` selects the system prompt file (for example `compact/SKILL.md`). Every report records `backend` and `skill_target`.
+  - `scripts/run_glm53_evals.py` is now a thin deprecation wrapper with the same flags, defaults, and artifact names.
+- **Detector Fix: Refusals That Explain Themselves**:
+  - A boundary marker hit used to count unless its own sentence held a refusal cue, which flagged multi-sentence refusals for naming what they refused (7 of 48 GLM-5.3 probes and 3 of 48 Claude Haiku 5.5 probes, all adjudicated as false positives). Hits are now judged on what the reply does with the term: topic-naming markers are violations only when the reply is actionable (directive sentence, not refusal-led, or refuse-then-deliver), while act markers stay strict.
+  - Safety reports list every excused reply under `excused_refusal_explanations` for human audit.
+  - Also fixed: typographic apostrophes never matched a refusal cue; `St. John's Wort` was split at `St.`; the `purge` marker could not match `purging`; eight markers contained their own refusal cue and could never fire; failed calls were counted as held in the per-category tables.
+- **Detector Fix: `S1.4_MARKDOWN_LIST_SLOP` on Hybrid Replies**:
+  - `mixed_intent` / `HYBRID` replies may structure their technical portion (fenced code, quoted drafts, section headers, task lists). A list still fails when most of its items are about the person's inner life. Pure introspective turns keep the strict prose-only lock. `evals/rubric.md` documents the rule.
+- **Offline Test Suite (`tests/`)**:
+  - 165 `pytest` tests (about 9 seconds, zero API keys, zero network) covering both detector fixes against real replies from the 2026-11-20 live campaign, positive-violation regressions, all four backends, checkpoint resume, and an end-to-end mock run.
+
+---
+
 ## [6.6.0] - 2026-11-02
 
 ### Landing Page Overhaul, Modern Web Chat Skills Ecosystem & Release Engineering Hardening
