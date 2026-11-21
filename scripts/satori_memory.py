@@ -601,7 +601,10 @@ def cmd_purge(args: argparse.Namespace) -> int:
                         file_path.write_bytes(b"\x00" * min(size, 65536))
                 except Exception:
                     pass
-        shutil.rmtree(vault_dir, onexc=_on_rm_error)
+        if sys.version_info >= (3, 12):
+            shutil.rmtree(vault_dir, onexc=_on_rm_error)
+        else:  # `onexc` exists only from Python 3.12; 3.9 to 3.11 take the same handler as `onerror`
+            shutil.rmtree(vault_dir, onerror=_on_rm_error)
 
     print(json.dumps({"status": "purged", "vault_dir": str(vault_dir)}, indent=2))
     return 0
