@@ -36,6 +36,8 @@ When shell execution is available and the user has not requested ephemeral mode:
 - **Initialize vault**: `python scripts/satori_memory.py init [--local | --global] [--allow-synced]`
 - **Record a structural signal/pattern**: `python scripts/satori_memory.py log-signal --theme "<theme>" --layer [signal|theme|pattern|dream] --summary "<structural pattern <=500 chars>"`
 - **Search longitudinal history**: `python scripts/satori_memory.py search --query "<keyword>" --limit 5`
+- **Review what Satori remembers**: `python scripts/satori_memory.py review [--json] [--limit N]` — human-readable active themes, Dream-Layer recurrence counts, timestamps, and record IDs (data-only: no raw conversation transcripts are ever stored or printed), so the user can inspect the vault and run `forget --id <id>` on any record.
+- **Graduation Signal (arc)**: `python scripts/satori_memory.py arc [--json]` — surfaces longitudinal movement across recurring themes (emerging / shifting / stabilized / dormant) as a gentle, non-coercive Graduation Signal honoring the principle that Satori is built to be outgrown. The data-only movement counts travel with Continuity Notes via the optional `arc:` field (`export-note` / `import-note`).
 - **User-initiated deletion (Right to be Forgotten)**:
   - Single theme/session/ID: `python scripts/satori_memory.py forget --theme "<substring>"` (executes `PRAGMA secure_delete = ON` + `PRAGMA wal_checkpoint(TRUNCATE)` + `VACUUM`)
   - Full vault wipe: `python scripts/satori_memory.py purge --all --confirm`
