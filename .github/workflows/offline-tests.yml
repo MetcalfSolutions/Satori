@@ -1,0 +1,28 @@
+name: Offline Eval Tests
+
+# Runs the eval harness unit tests and an end-to-end mock run on every pull request.
+# Fully offline after the pytest install: zero API keys, zero model calls.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install pytest==8.3.4
+      - name: Run detector, backend, and runner unit tests
+        run: python -m pytest tests/ -q
+      - name: Run every live suite against the offline mock backend
+        run: python scripts/run_live_evals.py --backend mock --suite smoke
