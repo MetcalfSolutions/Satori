@@ -73,6 +73,8 @@
     ".windsurf/",
     ".opencode/",
     ".hermes/",
+    "hooks/",
+    "tests/",
     "LICENSE"
   ],
   "scripts": {
@@ -80,7 +82,8 @@
     "validate": "python scripts/validate_skill.py",
     "test:memory": "python scripts/satori_memory.py self-test",
     "test:evals": "python scripts/test_judge_calibration.py && python scripts/run_evals.py --suite trigger --mode lint",
-    "test": "npm run validate && npm run test:memory && npm run test:evals"
+    "test": "npm run validate && npm run test:memory && npm run test:evals",
+    "test:cli": "node --test tests/cli.test.js"
   },
   "publishConfig": {
     "access": "public"

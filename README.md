@@ -342,6 +342,8 @@ cd Satori
 ```
 
 - **Initialize Memory Vault**: `python scripts/satori_memory.py init` (creates local `~/.satori/memory/` with POSIX `0700`/`0600` permissions and cloud-sync guards).
+- **Zero-Friction Onboarding**: `npx @metcalfsolutions/satori onboard --region US` prints primary-source verified emergency and crisis helplines for your region (`US`, `CA`, `UK`, `IE`, `AU`, `NZ`, `IN`, `EU`, `GLOBAL`, sourced from `references/crisis-sources.json`). Add `--emit-note` to generate a data-only starter `SATORI_NOTE v6.5` continuity block (zero PII, zero prompt-injection tokens, `<= 600` chars) for stateless Web Chat surfaces (SatoriWeb, Claude.ai, ChatGPT). Add `--non-interactive` for scripts and CI.
+- **Environment Doctor**: `npx @metcalfsolutions/satori doctor` audits agent harness installation (SHA-256 match against canonical `SKILL.md`), memory vault permissions and cloud-sync hygiene, Python 3.9+ availability, and opt-in `SessionStart` hook status, with actionable fix hints. Use `doctor --json` for structured CI output; the command exits non-zero on critical misconfigurations. `SATORI_CWD` / `SATORI_HOME` env vars override the audited project and user base directories for testing.
 - **Claude Code**: Auto-detects `.claude-plugin/plugin.json` and `CLAUDE.md` in the repository root.
 - **Google Antigravity & Gemini CLI**: Discovered via `GEMINI.md` and `.agents/skills/satori/SKILL.md`, or copy `.agents/skills/satori` to `~/.gemini/skills/satori/`.
 - **Cursor**: Uses `.cursor/skills/satori/SKILL.md` and `.cursor/rules/satori.mdc` (`alwaysApply: false` so coding is undisturbed).
@@ -381,6 +383,7 @@ Download the release archive [`dist/SatoriSkill-Full-v6.6.0.zip`](https://github
 1. **`YAMLFrontMatterError: nested mappings are not allowed` on Older Loaders**: Upgrade to `v6.6.0` (`npx skills add metcalfsolutions/satori` or `git pull`) and run `python scripts/validate_skill.py` to confirm strict YAML frontmatter formatting.
 2. **Gemini Web Rejects Zip Upload ("Unsupported file type")**: Upload the pre-built release archive `dist/SatoriSkill-Full-v6.6.0.zip` (which packages root `LICENSE` as `LICENSE.md` and strips `.git` folders).
 3. **`satori_memory.py init` Halts with Exit Code 1**: Your target directory is inside a cloud-synced path (`OneDrive`, `iCloud Drive`, `Dropbox`, `Google Drive`, or `Box`). Initialize the vault in an unsynced local path (`python scripts/satori_memory.py --dir /local/unsynced/path/.satori init`) or pass `--allow-synced`.
+4. **Verify Any Environment with `satori doctor`**: Run `npx @metcalfsolutions/satori doctor` to audit harness installation, vault permissions, cloud-sync hygiene, Python availability, and hook status in one pass. It prints actionable fix hints and exits non-zero on critical issues, so it is safe to wire into CI.
 
 ### Cross-Model Compatibility
 

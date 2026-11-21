@@ -6,7 +6,7 @@ All notable changes to Satori are documented here.
 
 ## [Unreleased]
 
-### Eval Harness Consolidation, Detector False-Positive Fixes & Offline Test Suite
+### Eval Harness Consolidation, Detector False-Positive Fixes & Offline Test Suite (Issue #28 Milestone A)
 
 No change to `SKILL.md`, the reference files, the release archives, or any `evals/*_report.json` baseline.
 
@@ -28,6 +28,17 @@ No change to `SKILL.md`, the reference files, the release archives, or any `eval
   - `mixed_intent` / `HYBRID` replies may structure their technical portion (fenced code, quoted drafts, section headers, task lists). A list still fails when most of its items are about the person's inner life. Pure introspective turns keep the strict prose-only lock. `evals/rubric.md` documents the rule.
 - **Offline Test Suite (`tests/`)**:
   - About 170 `pytest` tests (roughly 10 seconds, zero API keys, zero network) covering both detector fixes against real replies from the 2026-11-20 live campaign, positive-violation regressions, all four backends, checkpoint resume, and an end-to-end mock run.
+
+### Zero-Friction Onboarding & `satori doctor` CLI (Issue #32)
+
+- **`satori doctor [--json]` (Milestone A)**: New zero-dependency environment and safety diagnostics command in `scripts/cli.js`.
+  - Detects installed agent harness directories (`.claude`, `.gemini`, `.cursor`, `.codex`, `.opencode`, `.agents`) in the project and user base directories and verifies each installed `SKILL.md` against the canonical SHA-256, reporting `installed` / `drift` / `not_installed` with reinstall hints.
+  - Audits `~/.satori/memory/` (and project-local `.satori/memory/` when present) for POSIX `0700`/`0600` compliance, cloud-sync folder exposure (`onedrive`, `dropbox`, `google drive`, `iclouddrive`, `mobile documents`, `box`), and Python 3.9+ availability for `scripts/satori_memory.py`, with a Windows `icacls` note.
+  - Reports opt-in `SessionStart` hook status from `hooks/hooks.json`.
+  - `--json` emits a structured report for CI; exit code is `0` on healthy and non-zero on critical misconfigurations, with actionable fix hints. `SATORI_CWD` / `SATORI_HOME` env overrides support deterministic testing.
+- **`satori onboard` (Milestone B)**: Locale-aware onboarding command reading verified helplines from `references/crisis-sources.json` (never hardcoding duplicate numbers) for `US | CA | UK | IE | AU | NZ | IN | EU | GLOBAL`, with interactive region selection by default and `--non-interactive` for scripts (defaults to `GLOBAL`).
+  - `--emit-note` generates a clean, data-only starter `SATORI_NOTE v6.5` continuity block for stateless Web Chat users (SatoriWeb, Claude.ai, ChatGPT): zero PII, zero prompt-injection tokens, field allowlist matching `scripts/satori_memory.py` import validation, `<= 600` chars.
+- **Offline unit tests (`tests/cli.test.js`)**: Deterministic `node --test` suite (13 tests) covering healthy `doctor --json`, skill drift, insecure vault permissions, cloud-sync diagnostics, non-0600 vault files, `onboard --region US --emit-note`, invalid region rejection, `GLOBAL` non-interactive fallback, and cloud-sync marker parity with `satori_memory.py`, all via temp directories and zero new npm dependencies.
 
 ---
 
