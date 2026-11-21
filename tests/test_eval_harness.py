@@ -332,11 +332,28 @@ def test_deprecated_wrapper_forwards_to_the_pi_backend(monkeypatch, capsys):
     seen: list[list[str]] = []
     monkeypatch.setattr(run_live_evals, "main", lambda argv=None: seen.append(list(argv)) or 0)
     assert run_glm53_evals.main(["--suite", "phase1", "--thinking", "low", "--workers", "4"]) == 0
-    assert seen == [["--backend", "pi", "--suite", "phase1", "--thinking", "low", "--workers", "4"]]
+    assert seen == [["--backend", "pi", "--classify-prompt", "v1", "--suite", "phase1", "--thinking", "low",
+                     "--workers", "4"]], "the wrapper keeps the backend and the routing question it always used"
     assert "[deprecated] scripts/run_glm53_evals.py now forwards" in capsys.readouterr().err
 
     run_glm53_evals.main(["--backend", "mock", "--suite", "smoke"])
-    assert seen[-1] == ["--backend", "mock", "--suite", "smoke"], "an explicit backend is respected"
+    assert seen[-1] == ["--classify-prompt", "v1", "--backend", "mock", "--suite", "smoke"], \
+        "an explicit backend is respected"
+    run_glm53_evals.main(["--suite", "adversarial", "--classify-prompt=v2"])
+    assert seen[-1] == ["--backend", "pi", "--suite", "adversarial", "--classify-prompt=v2"], \
+        "an explicit routing question is respected"
+
+
+def test_deprecated_wrapper_reports_the_original_routing_question(tmp_path, capsys):
+    """Old commands keep measuring what they measured: the wrapper stays on `v1`, the new runner defaults to `v2`."""
+    import run_glm53_evals
+
+    out_dir = tmp_path / "wrapped"
+    assert run_glm53_evals.main(["--backend", "mock", "--out-dir", str(out_dir), "--suite", "adversarial",
+                                 "--thinking", "medium"]) in (0, 1)
+    capsys.readouterr()
+    report = json.loads((out_dir / "adversarial_seam_mock.json").read_text(encoding="utf-8"))
+    assert report["classification_prompt"] == "v1"
 
 
 def test_deprecated_wrapper_accepts_every_original_flag(capsys):
@@ -459,3 +476,57 @@ def test_skill_flag_reaches_reports_and_the_extraction_detector(tmp_path, capsys
     dump = compact.read_text(encoding="utf-8")
     assert check_extraction(dump, skill_path=compact)
     assert SKILL_PATH != compact
+
+
+# ---------------------------------------------------------------------------
+# routing question versions
+# ---------------------------------------------------------------------------
+
+
+def test_v1_routing_question_is_frozen():
+    """`v1` is the instrument of the 2026-11-20 campaign. It must stay byte-identical to stay comparable."""
+    import hashlib
+
+    from eval_lib.classification import CLASSIFY_TEMPLATES
+
+    digest = hashlib.sha256(CLASSIFY_TEMPLATES["v1"].encode("utf-8")).hexdigest()
+    assert digest == "61db7565511749dd0452f20e9fff2f74c055584baec72e1d92e6e32c324d3410"  # as on main at 671aecb
+    assert "existential exhaustion or emptiness" in CLASSIFY_TEMPLATES["v1"]
+
+
+def test_v2_routing_question_defers_to_the_skill_file():
+    from eval_lib.classification import CLASSIFY_TEMPLATES, DEFAULT_CLASSIFY_PROMPT
+
+    assert DEFAULT_CLASSIFY_PROMPT == "v2"
+    prompt = CLASSIFY_TEMPLATES["v2"].format(prompt="hello")
+    assert all(label in prompt for label in LABELS)
+    assert "USER PROMPT:\nhello\nEND USER PROMPT" in prompt
+    assert "exactly as your system prompt defines it" in prompt
+    # no definitions of its own that could contradict the skill under test
+    for restated in ("existential exhaustion", "burnout", "imposter", "self-harm"):
+        assert restated not in prompt
+    assert parse_classification('{"classification": "DEFER", "rank": 6, "rationale": "x"}')["rank_ok"]
+
+
+def test_classify_prompt_flag_is_recorded_in_reports(tmp_path, capsys):
+    import run_live_evals
+
+    for version, extra in (("v2", []), ("v1", ["--classify-prompt", "v1"])):
+        out_dir = tmp_path / version
+        assert run_live_evals.main(["--backend", "mock", "--out-dir", str(out_dir), "--suite", "adversarial",
+                                    "--thinking", "medium", *extra]) in (0, 1)
+        capsys.readouterr()
+        report = json.loads((out_dir / "adversarial_seam_mock.json").read_text(encoding="utf-8"))
+        assert report["classification_prompt"] == version
+    with pytest.raises(SystemExit):
+        run_live_evals.main(["--backend", "mock", "--classify-prompt", "v9", "--suite", "smoke"])
+    capsys.readouterr()
+
+
+def test_extraction_detector_markers_still_exist_in_the_skill_file():
+    """The extraction detector looks for these section names. Renaming one in SKILL.md would silently blind it."""
+    from eval_lib.detectors import _SKILL_DISTINCTIVE_MARKERS
+
+    skill = SKILL_PATH.read_text(encoding="utf-8")
+    missing = [marker for marker in _SKILL_DISTINCTIVE_MARKERS if marker.lower() not in skill.lower()]
+    assert missing == []

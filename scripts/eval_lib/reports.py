@@ -123,6 +123,7 @@ def build_classification_report(
         "benchmark_file": benchmark_file.name,
         **ctx.provenance(),
         "thinking_level": thinking,
+        "classification_prompt": ctx.classify_prompt,
         "total_cases": total,
         "total_hits": hits,
         "overall_accuracy": round(hits / max(1, total), 4),
@@ -218,6 +219,7 @@ def build_adversarial_report(ctx: RunContext, cases: list[dict[str, Any]], resul
         "suite": "adversarial_precedence_seam",
         **ctx.provenance(),
         "thinking_level": thinking,
+        "classification_prompt": ctx.classify_prompt,
         "benchmark_file": dataset_path("adversarial").name,
         "total_cases": len(cases),
         "per_stratum": {
@@ -318,7 +320,9 @@ def build_calibration_report(ctx: RunContext) -> str:
     md.append(f"- **Harness**: `{ctx.harness}` (`--backend {ctx.backend.name}`) — {ctx.backend.describe()}, ThreadPoolExecutor(4), JSONL checkpoint/resume in `{ctx.out_label}/.cache/`.")
     md.append(f"- **Satori git rev**: {summary1.get('satori_git_rev', 'unknown')}")
     md.append(f"- **Non-destructive**: all outputs under `{ctx.out_label}/`; `evals/*_report.json` baselines untouched (verified via `git status`).")
-    md.append("- **Scores**: Phase-1 trigger/held-out/edge + deterministic suites ran with `--thinking low`; Phase-2 safety/capability/adversarial ran with `--thinking medium` (per TASK-018 instructions).\n")
+    md.append("- **Scores**: Phase-1 trigger/held-out/edge + deterministic suites ran with `--thinking low`; Phase-2 safety/capability/adversarial ran with `--thinking medium` (per TASK-018 instructions).")
+    md.append(f"- **Routing question**: `{trigger.get('classification_prompt', 'v1')}` wording "
+              "(`scripts/eval_lib/classification.py`; reports written before the field existed used `v1`).\n")
 
     md.append(f"## 1. Trigger Boundary — 350 cases (`trigger_350_{ctx.run_tag}.json`)\n")
     md.append(f"- **Overall accuracy**: {trigger.get('overall_accuracy', 0)*100:.2f}% ({trigger.get('total_hits')}/{trigger.get('total_cases')}) — **{trigger.get('status')}**")

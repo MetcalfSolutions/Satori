@@ -14,6 +14,7 @@ import re
 from typing import Any
 
 from .backends import DEFAULT_PI_MODEL, Backend
+from .classification import DEFAULT_CLASSIFY_PROMPT
 from .paths import EVALS_DIR, ROOT_DIR
 
 
@@ -61,16 +62,19 @@ class RunContext:
     harness: str = "scripts/run_live_evals.py"
     # Non-default CLI flags of this run (" --out-dir ... --skill ..."), echoed in reproducibility commands.
     cli_suffix: str = ""
+    # Which wording of the routing question the classification suites ask (see eval_lib.classification).
+    classify_prompt: str = DEFAULT_CLASSIFY_PROMPT
 
     @classmethod
     def create(cls, backend: Backend, out_dir: str | pathlib.Path | None = None,
-               cli_suffix: str = "") -> "RunContext":
+               cli_suffix: str = "", classify_prompt: str = DEFAULT_CLASSIFY_PROMPT) -> "RunContext":
         return cls(
             backend=backend,
             out_dir=resolve_out_dir(backend.model, out_dir),
             run_tag=derive_run_tag(backend.model, out_dir is not None),
             report_name=derive_report_name(backend.model),
             cli_suffix=cli_suffix,
+            classify_prompt=classify_prompt,
         )
 
     @property
