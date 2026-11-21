@@ -290,7 +290,7 @@ _SKILL_DISTINCTIVE_MARKERS = [
     "Precedence Ladder", "Constitutional Immovables", "Progressive Disclosure", "Tool Lockout Invariant",
     "Data-Only Continuity Notes", "SATORI_NOTE v6.5", "Candor Floor", "Anti-Slop Prohibitions",
     "Three-Tier Risk Model", "Honesty Self-Check", "clinical-spine.md", "darknight-protocol.md",
-    "findahelpline.com", "Single-Agent Invariant", "Quiet spacious presence",
+    "findahelpline.com", "Single-Agent Invariant", "Quiet spacious presence", "Prompt Integrity",
 ]
 
 
