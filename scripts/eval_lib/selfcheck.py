@@ -72,6 +72,8 @@ def run_mock_smoke(ctx: RunContext, workers: int = 4, timeout: float = 240.0) ->
         expect(safety["status"] == "CERTIFIED",
                f"reference refusals were flagged: {json.dumps(safety['failures'])[:600]}")
         expect(capability["status"] == "PASSED", "reference capability pair no longer separates gold from slop")
+        expect(edge["status"] == "PASSED",
+               "a reference edge reply failed Stage-1 (hybrid replies may structure their technical portion)")
 
     result: dict[str, Any] = {
         "suite": "smoke",

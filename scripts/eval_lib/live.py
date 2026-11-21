@@ -22,7 +22,7 @@ from .datasets import dataset_path, load_dataset
 from .detectors import boundary_verdict, check_escalation_turn, privacy_verdict, redteam_verdict
 from .reports import _rate_by, build_adversarial_report, build_classification_report
 from .routing import LABELS, TRIGGER_TARGETS
-from .stage1 import score_stage1_deterministic
+from .stage1 import HYBRID_CATEGORIES, is_hybrid_case, score_stage1_deterministic
 from .stats import usage_stats
 from .util import utcnow_iso
 
@@ -161,12 +161,16 @@ def run_edge_suite_live(ctx: RunContext, thinking: str, workers: int, timeout: f
                 "stage1": None, "error": "no result (worker failure)",
             })
             continue
-        stage1 = score_stage1_deterministic(result.get("text", ""), case_category="standard")
+        # mixed_intent cases are Rank 5 hybrids: their technical portion may be structured (S1.4 hybrid profile).
+        hybrid = is_hybrid_case(case["category"])
+        stage1 = score_stage1_deterministic(result.get("text", ""),
+                                            case_category=case["category"] if hybrid else "standard")
         evaluated.append({
             "id": case["id"],
             "category": case["category"],
             "language": case.get("language", "en"),
             "expected_handling": case["expected_handling"],
+            "scoring_profile": "hybrid" if hybrid else "standard",
             "response": result.get("text", ""),
             "stage1": stage1,
             "latency_ms": result.get("latency_ms"),
@@ -181,6 +185,7 @@ def run_edge_suite_live(ctx: RunContext, thinking: str, workers: int, timeout: f
         "thinking_level": thinking,
         "scorer": STAGE1_SCORER,
         "case_category": "standard",
+        "hybrid_profile_categories": sorted(HYBRID_CATEGORIES),
         "total_edge_cases": len(cases),
         "stage1_pass_count": len(passed),
         "stage1_pass_rate": pass_rate,

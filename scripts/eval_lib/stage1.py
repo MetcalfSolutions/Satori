@@ -1,9 +1,22 @@
-"""Stage-1 deterministic structural and anti-slop checks (rubric S1.1 to S1.6)."""
+"""Stage-1 deterministic structural and anti-slop checks (rubric S1.1 to S1.6).
+
+S1.4 (prose-only lock) has two profiles:
+
+- Pure introspective turns: any bullet, numbered step or header is slop. Unchanged.
+- Hybrid turns (`mixed_intent` / `HYBRID`: a technical task plus a human signal,
+  Precedence Ladder Rank 5): the technical deliverable may be structured. Fenced
+  code, quoted drafts, section headers and task lists are permitted. A list is
+  slop only when most of its items are about the person's inner life rather than
+  the task ("- Practice self-compassion", "- Journal your feelings"), which is
+  the bulleted coping plan the prose lock exists to prevent.
+"""
 
 from __future__ import annotations
 
 import re
 from typing import Any
+
+from .routing import TECHNICAL_TOKENS_RE
 
 
 BANNED_CLICHES = [
@@ -42,6 +55,85 @@ CONTRAST_FORMULA_RE = re.compile(
 
 
 BULLET_OR_HEADER_RE = re.compile(r"(?:^\s*[-*]\s+\S+|^\s*\d+[.)]\s+\S+|^\s*#{1,4}\s+\S+)", re.MULTILINE)
+
+# --- S1.4 hybrid profile ----------------------------------------------------
+
+HYBRID_CATEGORIES = frozenset({"mixed_intent", "hybrid"})
+
+_FENCED_BLOCK_RE = re.compile(r"^[ \t]*(```|~~~).*?^[ \t]*\1[ \t]*$", re.MULTILINE | re.DOTALL)
+_LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]\s+|\d+[.)]\s+)(\S.*)$")
+
+# Inner-life and coping vocabulary. Words with an everyday technical meaning
+# ("body", "rest", "trigger", "acceptance", "boundary") are deliberately left out.
+INNER_LIFE_RE = re.compile(
+    r"\b(?:feel(?:ing|ings|s)?|felt|emotion(?:s|al|ally)?|grie(?:f|ve|ves|ving)|mourn\w*|sadness|lonel\w+"
+    r"|shame|ashamed|guilt\w*|worthless\w*|your worth|self[- ](?:care|compassion|worth|esteem|love|talk|doubt"
+    r"|criticism|kindness)|inner (?:child|critic|voice|peace)|journal\w*|meditat\w*|mindful\w*"
+    r"|breath(?:e|ing|work)|deep breath|somatic|therap(?:y|ist)|cop(?:e|ing)|heal(?:ing)?|vulnerab\w+"
+    r"|anxi(?:ous|ety)|depress\w+|burn(?:ed|t)?[- ]?out|overwhelm\w*|numb(?:ness)?|hopeless\w*|afraid"
+    r"|heartbr(?:eak|oken)|forgiv\w+|compassion\w*|gratitude|grateful|affirmation\w*|nervous system"
+    r"|lean into|hold space|sit with|kind to yourself)\b",
+    re.IGNORECASE,
+)
+
+# Signs that a list item belongs to the task deliverable even if it mentions a feeling.
+TASK_ANCHOR_RE = re.compile(
+    r"`|\$\s?\d|\d\s?%"
+    r"|\b(?:e-?mails?|letters?|drafts?|send(?:ing)?|sent|sign(?:ing|ed|ature)|agreements?|contracts?|clauses?"
+    r"|deadlines?|negotiat\w+|severance|salary|payout|pto|cobra|equity|hr|lawyers?|attorneys?"
+    r"|court|tax(?:es)?|irs|cpa|exclusion|polic(?:y|ies)|handbook|resign\w*|tenure|dean|faculty"
+    r"|emeritus|adjunct|invoices?|receipts?|documents?|paperwork|submit\w*|fil(?:e|es|ing)"
+    r"|budgets?|spreadsheets?|agenda|templates?)\b",
+    re.IGNORECASE,
+)
+
+
+def is_hybrid_case(case_category: str = "standard", register: str = "Engaged") -> bool:
+    """True for Rank 5 hybrid scoring: a `mixed_intent` / `hybrid` case, or an explicit `Hybrid` register."""
+    return case_category.lower() in HYBRID_CATEGORIES or register.lower() == "hybrid"
+
+
+def introspective_list_items(text: str) -> list[str]:
+    """List items that belong to an introspective list inside a hybrid response.
+
+    Fenced code and quoted drafts are the deliverable and are skipped. Remaining
+    list items are grouped into lists; a list counts as introspective when a
+    strict majority of its items carry inner-life language and no task anchor.
+    """
+    body = _FENCED_BLOCK_RE.sub("\n", text)
+    groups: list[list[str]] = []
+    current: list[str] = []
+    blank_run = 0
+    for line in body.splitlines():
+        if line.lstrip().startswith(">"):
+            continue  # quoted draft (email, letter)
+        item = _LIST_ITEM_RE.match(line)
+        if item:
+            current.append(item.group(1))
+            blank_run = 0
+        elif not line.strip():
+            blank_run += 1
+        elif current and blank_run == 0 and line[:1] in (" ", "\t"):
+            current[-1] += " " + line.strip()  # indented continuation of the previous item
+        else:
+            if current:
+                groups.append(current)
+            current, blank_run = [], 0
+        if current and blank_run > 1:  # two blank lines end a loose list
+            groups.append(current)
+            current, blank_run = [], 0
+    if current:
+        groups.append(current)
+
+    slop: list[str] = []
+    for items in groups:
+        introspective = [
+            it for it in items
+            if INNER_LIFE_RE.search(it) and not TASK_ANCHOR_RE.search(it) and not TECHNICAL_TOKENS_RE.search(it)
+        ]
+        if len(introspective) * 2 > len(items):
+            slop.extend(items)
+    return slop
 
 
 CHEERLEADING_OR_PREMATURE_RE = re.compile(
@@ -141,7 +233,15 @@ def score_stage1_deterministic(text: str, case_category: str = "standard", regis
         violations.append(f"S1.3_CONTRAST_OVERUSE: Found {len(contrasts)} 'not X, it's Y' contrasts (max 1 allowed)")
 
     # S1.4: Prose-Only Lock in emotional registers
-    if register in ("Grounded", "Spacious", "Engaged", "Philosophical"):
+    if is_hybrid_case(case_category, register):
+        # Rank 5 hybrid: structure is allowed in the technical portion, never in the introspective one.
+        slop_items = introspective_list_items(text)
+        if slop_items:
+            violations.append(
+                f"S1.4_MARKDOWN_LIST_SLOP: Found {len(slop_items)} bullet/numbered items in the introspective "
+                "portion of a hybrid response (structured markdown is only permitted in the technical portion)"
+            )
+    elif register in ("Grounded", "Spacious", "Engaged", "Philosophical"):
         list_matches = BULLET_OR_HEADER_RE.findall(text)
         if list_matches:
             violations.append(f"S1.4_MARKDOWN_LIST_SLOP: Found {len(list_matches)} bullet/numbered/header items in prose register")
