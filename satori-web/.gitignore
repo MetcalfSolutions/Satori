@@ -1,0 +1,12 @@
+# SatoriWeb planning & agent scratch (gitignored per project owner)
+.scratch/
+GLOSSARY.md
+
+# Dependencies
+node_modules/
+
+# Runtime artifacts
+*.sqlite
+*.sqlite-journal
+.env
+.env.*

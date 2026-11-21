@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Satori</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23b45f3c' stroke-width='6' stroke-linecap='round' stroke-dasharray='130 33'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="sign-in" class="auth-screen">
+      <form id="auth-form" class="auth-card">
+        <span class="brand" aria-label="Satori">Satori</span>
+        <p class="auth-tagline">Sign in to your space, or create one.</p>
+        <label class="auth-field">
+          Name
+          <input id="auth-name" type="text" autocomplete="username" required />
+        </label>
+        <label class="auth-field">
+          PIN
+          <input id="auth-pin" type="password" autocomplete="current-password" required />
+        </label>
+        <label class="auth-field" id="auth-invite-field" hidden>
+          Invite code
+          <input id="auth-invite" type="text" autocomplete="off" />
+        </label>
+        <p id="auth-error" class="auth-error" hidden></p>
+        <button id="auth-signin" type="submit">Sign in</button>
+        <button id="auth-register" type="button">Create my space</button>
+      </form>
+    </div>
+
+    <div id="app" hidden>
+      <div id="drawer-backdrop" hidden></div>
+      <aside id="sidebar" class="drawer" aria-label="Conversations" aria-hidden="true" inert>
+        <div class="sidebar-head">
+          <span class="brand" aria-label="Satori">Satori</span>
+          <div class="sidebar-actions">
+            <button id="new-chat" type="button">＋ New chat</button>
+            <button id="drawer-close" type="button" aria-label="Close conversations">✕</button>
+          </div>
+        </div>
+        <nav id="conversation-list" aria-label="Conversations"></nav>
+        <button id="open-memory" type="button" class="memory-open">Memory &amp; Continuity</button>
+        <button id="sign-out" type="button" class="sign-out">Sign out</button>
+      </aside>
+
+      <aside
+        id="memory-drawer"
+        class="drawer memory"
+        aria-label="Memory and Continuity"
+        aria-hidden="true"
+        inert
+      >
+        <div class="memory-head">
+          <span class="memory-title">Memory &amp; Continuity</span>
+          <button id="memory-close" type="button" aria-label="Close memory">
+            ✕
+          </button>
+        </div>
+        <div id="memory-body" class="memory-body" aria-live="polite">
+          <p id="memory-loading" class="memory-note">Loading what Satori remembers…</p>
+        </div>
+      </aside>
+
+      <main id="chat">
+        <header class="chat-header">
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-controls="sidebar"
+            aria-expanded="false"
+            aria-label="Open conversations"
+          >
+            <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true">
+              <path
+                d="M1 1h18M1 7h18M1 13h18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <span class="brand chat-brand" aria-label="Satori">Satori</span>
+        </header>
+
+        <div id="messages" aria-live="polite">
+          <div id="empty-state" class="empty-state">
+            <h1>Take a breath.</h1>
+            <p>Whatever is on your mind, Satori is here to sit with it — and with you.</p>
+          </div>
+        </div>
+
+        <form id="composer">
+          <textarea
+            id="composer-input"
+            rows="1"
+            placeholder="Message Satori…"
+            autocomplete="off"
+          ></textarea>
+          <button id="composer-send" type="submit" aria-label="Send message">Send</button>
+        </form>
+      </main>
+    </div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

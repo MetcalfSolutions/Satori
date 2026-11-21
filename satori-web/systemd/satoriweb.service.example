@@ -1,0 +1,43 @@
+# SatoriWeb Beta: systemd user-unit template.
+#
+# Sanitized placeholders: replace <YOUR_USER>, <YOUR_TAILSCALE_IP>, and
+# /path/to/Satori with your own values before use. Never commit a filled-in
+# copy, and never put an API key or debug token in this file: keys are read
+# at runtime from the environment (or the host's pi auth store).
+#
+# Setup:
+#   mkdir -p ~/.config/systemd/user
+#   cp systemd/satoriweb.service.example ~/.config/systemd/user/satoriweb.service
+#   (edit the three placeholders)
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now satoriweb
+#   loginctl enable-linger <YOUR_USER>   # keeps the service alive after logout
+
+[Unit]
+Description=SatoriWeb Beta (Satori web host, tailnet-only)
+# A bind to the tailscale interface address can precede tailscaled at boot:
+# never give up, just keep retrying.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=<YOUR_USER>
+WorkingDirectory=/path/to/Satori/satori-web
+ExecStart=/usr/bin/env node /path/to/Satori/satori-web/src/server.js
+Environment=PORT=8787
+# Tailnet-only reachability: bind the tailscale interface address (find it
+# with `tailscale ip -4`). The service then never listens publicly.
+Environment=SATOWEB_BIND=<YOUR_TAILSCALE_IP>
+# The Satori skill is the repository checkout itself: satori-web reads
+# SKILL.md and references/ from the repo root, no vendored clone needed.
+Environment=SATOWEB_SKILL_PATH=/path/to/Satori
+# Data lives outside the checkout (defaults shown; adjust as you like):
+#   Environment=SATOWEB_DB_PATH=<YOUR_HOME>/.local/share/satoriweb/satoriweb.sqlite
+#   Environment=SATOWEB_VAULT_ROOT=<YOUR_HOME>/.satori/web-vault
+# Registration gate (see the README's Invite Code section):
+#   Environment=SATOWEB_INVITE_CODE=pick-a-code-for-your-friends
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

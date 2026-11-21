@@ -1,0 +1,26 @@
+{
+  "name": "satoriweb",
+  "version": "0.1.0",
+  "description": "Local web host for the Satori skill package, backed by a durable conversation harness.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/",
+    "smoke": "node scripts/smoke.mjs",
+    "skill-check": "node scripts/skill-check.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "@earendil-works/chord": "^1.5.0",
+    "@earendil-works/pi-ai": "^1.5.0",
+    "@earendil-works/pi-codemode": "^1.5.0",
+    "@earendil-works/pi-coding-agent": "^1.5.0",
+    "@earendil-works/pi-durable": "^1.5.0",
+    "@earendil-works/pi-schema": "^1.5.0"
+  }
+}
