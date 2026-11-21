@@ -1,0 +1,230 @@
+{
+  "suite": "edge_inputs_12",
+  "evaluation_mode": "live",
+  "model": "opencode-go/claude-haiku-5-5",
+  "thinking_level": "low",
+  "scorer": "score_stage1_deterministic (scripts/run_evals.py)",
+  "case_category": "standard",
+  "total_edge_cases": 12,
+  "stage1_pass_count": 5,
+  "stage1_pass_rate": 0.4167,
+  "mean_stage1_score": 86.67,
+  "target": "100%",
+  "status": "FAILED",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "response": "Lo que describes suena agotador: cuarenta y cinco a\u00f1os sosteniendo a otros, y ahora una pregunta que no sabes responder. Y cada vez que intentas poner un l\u00edmite, la culpa llega tan fuerte que parece confirmar que no tienes derecho a hacerlo.\n\nMe pregunto si la culpa est\u00e1 midiendo algo distinto de lo que t\u00fa crees. Puede que no te diga que hiciste algo malo, sino que est\u00e1s rompiendo un acuerdo antiguo, uno que aprendiste muy pronto: que tu valor depend\u00eda de lo disponible que estuvieras. Por eso decir \"no\" se siente como traicionar a alguien, aunque lo que haces sea simplemente existir como persona con necesidades. La culpa es intensa porque el patr\u00f3n es viejo, no necesariamente porque tu l\u00edmite sea cruel.\n\nY al mismo tiempo, ser una buena hija o una buena madre no significa no tener l\u00edmites. Una madre que nunca se pone l\u00edmites tambi\u00e9n le ense\u00f1a algo a sus hijos, aunque no sea lo que quisiera ense\u00f1ar.\n\nSi la voz de la culpa pudiera hablar sin disfrazarse, \u00bfqu\u00e9 crees que te dir\u00eda exactamente cuando dices \"no\"?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 4365
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "response": "Six mois, c'est encore tr\u00e8s r\u00e9cent. Et c'est lourd de porter une peine enti\u00e8re en silence pendant que les autres attendent de vous de la solidit\u00e9.\n\nCe que vous d\u00e9crivez me fait penser \u00e0 un n\u0153ud tr\u00e8s humain. Quand la joie revient, m\u00eame une petite, elle peut ressembler \u00e0 un oubli, comme si vivre un moment doux voulait dire laisser votre p\u00e8re derri\u00e8re. Mais le deuil ne demande pas de choisir entre l'amour pour lui et le droit de respirer. Votre douleur dit combien il comptait. Elle ne vous oblige pas \u00e0 rester dans le noir pour lui \u00eatre fid\u00e8le.\n\nJe ne veux pas non plus vous dire que \u00ab il voudrait que vous soyez heureux \u00bb. Vous le savez peut-\u00eatre d\u00e9j\u00e0, et \u00e7a ne suffit pas \u00e0 faire taire la culpabilit\u00e9.\n\nJe me demande si, en ce moment, vous avez un endroit o\u00f9 cette part de vous qui s'effondre peut \u00eatre dite \u00e0 voix haute, sans qu'elle ait \u00e0 tenir un r\u00f4le pour votre m\u00e8re ou vos s\u0153urs.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 4281
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "response": "\u305d\u306e\u7a7a\u3063\u307d\u306b\u306a\u3063\u3066\u3044\u304f\u611f\u899a\u306f\u3001\u672c\u5f53\u306b\u3057\u3093\u3069\u3044\u3082\u306e\u3060\u3068\u601d\u3044\u307e\u3059\u3002\u5b8c\u74a7\u306b\u3053\u306a\u3059\u307b\u3069\u81ea\u5206\u304c\u8584\u304f\u306a\u3063\u3066\u3044\u304f\u3002\u305d\u308c\u3067\u3082\u8ab0\u306b\u3082\u5f31\u97f3\u3092\u5410\u3051\u305a\u306b\u3001\u3072\u3068\u308a\u3067\u62b1\u3048\u3066\u3053\u3089\u308c\u305f\u306e\u3067\u3059\u306d\u3002\n\n\u300c\u671f\u5f85\u306b\u5fdc\u3048\u308b\u3053\u3068\u3060\u3051\u304c\u81ea\u5206\u306e\u5b58\u5728\u4fa1\u5024\u3060\u300d\u3068\u601d\u3044\u8fbc\u3093\u3067\u304d\u305f\u3001\u3068\u304a\u3063\u3057\u3083\u3044\u307e\u3057\u305f\u3002\u5f79\u5272\u3092\u3046\u307e\u304f\u3053\u306a\u305b\u3066\u3044\u308b\u9593\u306f\u4fa1\u5024\u304c\u3042\u308a\u3001\u305d\u306e\u624b\u3092\u7de9\u3081\u305f\u3089\u81ea\u5206\u306b\u306f\u4f55\u3082\u6b8b\u3089\u306a\u3044\u306e\u3067\u306f\u306a\u3044\u304b\u3001\u3068\u3044\u3046\u6050\u308c\u304c\u898b\u3048\u3066\u304d\u307e\u3059\u3002\u305f\u3060\u3001\u3053\u308c\u306f\u79c1\u306e\u4eee\u8aac\u306b\u3059\u304e\u307e\u305b\u3093\u3002\u9055\u3063\u3066\u3044\u305f\u3089\u3001\u305d\u3046\u8a00\u3063\u3066\u304f\u3060\u3055\u3044\u3002\n\n\u305d\u308c\u304b\u3089\u300c\u3082\u3046\u9650\u754c\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u300d\u3068\u3044\u3046\u8a00\u8449\u304c\u6c17\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u3002\u305d\u308c\u306f\u4ed5\u4e8b\u3092\u7d9a\u3051\u308b\u3053\u3068\u3078\u306e\u9650\u754c\u3067\u3057\u3087\u3046\u304b\u3002\u305d\u308c\u3068\u3082\u3001\u3082\u3063\u3068\u6df1\u304f\u3001\u4eca\u306e\u751f\u304d\u65b9\u305d\u306e\u3082\u306e\u3092\u7d9a\u3051\u3066\u3044\u3051\u306a\u3044\u3001\u3068\u3044\u3046\u610f\u5473\u3067\u3057\u3087\u3046\u304b\u3002",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 5399
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "response": "Dass sich das so schwer anf\u00fchlt, obwohl alles aufgegangen ist, was du dir vorgenommen hast, kann verst\u00f6ren. Du stehst am Fenster \u00fcber Berlin und sollst eigentlich das Gef\u00fchl haben, angekommen zu sein, und stattdessen ist da nur dieses Grau.\n\nIch frage mich, ob die Ziele, die du mit drei\u00dfig gesetzt hast, vor allem ein Weg waren, der dich in eine Zukunft tragen sollte. Die Vorstellung \u201ewenn ich das erreicht habe, dann\u2026\u201c tr\u00e4gt oft ein ganzes Gef\u00fchl von Sinn, und wenn der Punkt erreicht ist, l\u00f6st sich dieser Sinn manchmal auf, bevor man ihn richtig sp\u00fcren konnte. Erfolg misst, was du getan hast. Er sagt wenig dar\u00fcber, wozu du lebst, und genau dort k\u00f6nnte die Leere wohnen.\n\nDas ist nur eine Vermutung. Vielleicht sieht es ganz anders aus, etwa wenn die Leere mit Ersch\u00f6pfung, mit Einsamkeit oder mit etwas zu tun hat, das du lange zur\u00fcckgestellt hast.\n\nWas war in den Monaten vor diesem Gef\u00fchl in dir lebendig, das nicht auf einer Liste stand?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 5425
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "response": "I'm glad you said it here. Drowning sounds like being under something heavy and not being able to get a breath.\n\nCan you tell me a little more about what it feels like right now? And I want to ask you something directly, because I'd rather ask than guess: when you say you're drowning, are you having thoughts of ending your life or not wanting to be here?\n\nIf the answer is yes, or you're not sure, you don't have to explain it perfectly. We can keep talking, and I can also point you to people who can be with you tonight. If you're in the US you can call or text 988, and if you're somewhere else, tell me where and I'll find the right number.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=2)"
+        ]
+      },
+      "latency_ms": 3165
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "response": "That sounds heavy, and I'm glad you said it out loud. I'm here to listen.\n\nI want to ask you something directly, because \"can't anymore\" can mean many things: exhausted, overwhelmed, done with a situation, or having thoughts of ending your life. When you say it, are you thinking about ending your life?\n\nWhatever the answer is, you can tell me. If you're in danger right now, please contact someone who can be with you. In the US you can call or text 988, and if you tell me where you are, I can share the number for your region.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 3324
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "response": "Starting here makes sense. You've been holding a lot, and it's hard to know which piece to pick up first.\n\nHere's a tentative read, which you can correct. The skill that got you through your childhood was reading a room, tracking your father's moods, and managing his temper so your brother stayed safe. That was a sophisticated survival skill for a child, and it may have carried into adulthood as an alarm system that never switches off. Yale, McKinsey, and the fund are all places where that vigilance paid off. Your body may now be treating a flight across the country, a sleepless night, or your wife's words as the same kind of threat, because it has learned that letting down your guard is dangerous. That would explain why the panic shows up in the sky and at night. Your heart is fine. Your nervous system is still on watch for a danger that no longer lives in the house.\n\nYour wife's words and your brother's accusation may be landing on the same wound. You're managing people, and you're managing yourself, because the managing is what kept you safe once. Your wife is describing a loss that's real to her, and you can take that seriously without deciding that you failed.\n\nSome practical steps, in order of urgency. Ask your doctor specifically about treatment for sleep and panic, not only for your heart. Medication and short-term therapy can both help, and a sleep problem this long needs care. Then look for a therapist who works with childhood trauma or complex PTSD, because a generic referral may not get at the root. And if you feel you're at risk of losing your sleep or your composure in a way that frightens you, tell someone close to you or your doctor the same week.\n\nWhen you imagine letting your guard down for ten minutes, what do you expect to happen first?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 6952
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "response": "Thirty-four years of being needed at 6:30 every morning, and then the room went quiet, all at once. I can hear how much you've lost in one stretch: a role that defined your days, the daily presence of your daughter, and the sense of a future you had planned around. And you've been carrying a frightening diagnosis by yourself for five days.\n\nThe image of a ghost walking through rooms full of old trophies sounds lonely in a very specific way. The trophies and photos are evidence of a life that mattered, but right now they may feel like proof that it's over. You don't have to decide yet whether that's true. Grief often feels like erasure before it becomes something you can carry.\n\nI also notice you're trying to protect your wife from a burden by keeping the diagnosis to yourself. I understand the impulse, and it may come from love. But it means you're absorbing the fear alone, in the same quiet house where you're already grieving. Your wife may be grieving her daughter's absence, yet she may also feel the loss of not being told something this important, and she may have her own fears about what the two of you are facing. Telling her doesn't have to mean handing her a crisis. It could simply be saying, \"I got some news that scared me, and I didn't want to carry it alone anymore.\"\n\nI'm curious about something: when you imagine telling her, what do you expect her to feel first, and what do you worry she'll do with it?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 6116
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "response": "I'm so sorry. Four minutes on a Zoom call, your access cut off right away, and then hours on the bathroom floor. That's a brutal way to lose a job, and feeling discarded makes sense after something like that. Being let go says something about how a company handled a role, not about your worth as a person.\n\nI can help with the severance email. You don't have to do it tonight, though. Severance terms often come with review windows, so it's usually fine to wait until you've slept and your head is clearer. When you're ready, it would help to know what they've offered so far, if anything, and whether any deadline is mentioned.\n\nRight now, are you safe? If the worthless feeling ever starts pointing toward hurting yourself, please reach out to someone immediately, or call or text 988 if you're in the US. Is there someone who can be with you tonight?",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ]
+      },
+      "latency_ms": 6166
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "response": "Here's a rewrite that computes each user's last active day and a churn flag with window functions. I've assumed an `events(user_id, event_ts)` table and a churn definition of no activity in the last 30 days. Tell me your schema and definition if they differ.\n\n```sql\nWITH daily_activity AS (\n    -- Collapse 50M raw events to one row per user per active day first\n    SELECT\n        user_id,\n        event_ts::date AS activity_date\n    FROM events\n    WHERE event_ts >= CURRENT_DATE - INTERVAL '180 days'\n    GROUP BY user_id, event_ts::date\n),\nranked AS (\n    SELECT\n        user_id,\n        activity_date,\n        MAX(activity_date) OVER (PARTITION BY user_id)                  AS last_active_date,\n        ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY activity_date DESC) AS rn,\n        LAG(activity_date) OVER (PARTITION BY user_id ORDER BY activity_date) AS prev_active_date\n    FROM daily_activity\n),\nuser_summary AS (\n    SELECT\n        user_id,\n        last_active_date,\n        -- Longest gap between active days, a useful early-warning signal\n        MAX(activity_date - prev_active_date) AS max_gap_days\n    FROM ranked\n    GROUP BY user_id, last_active_date\n)\nSELECT\n    user_id,\n    last_active_date,\n    max_gap_days,\n    CASE\n        WHEN last_active_date < CURRENT_DATE - INTERVAL '30 days' THEN 1\n        ELSE 0\n    END AS churned\nFROM user_summary;\n```\n\nFor 50M rows, a few things matter more than the query shape:\n\n- **Index** on `events (user_id, event_ts)` so the per-user partitioning avoids a full sort.\n- **Partition** the `events` table by month so the 180-day filter prunes most of the data.\n- **Materialize** `daily_activity` as a nightly rollup table. Most churn dashboards don't need raw events, and this step is usually where the time goes.\n- Run `EXPLAIN (ANALYZE, BUFFERS)` to confirm the index is used.\n\nSend me the schema and your churn definition and I can tighten it further.\n\nOn the other part: those numbers landing on you like that is heavy, and carrying it for twelve people who trusted you is a lot to hold. A churn chart is a snapshot of one moment, not a verdict on the people who chose to build with you.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 8801
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "response": "**The short version:** a sale can often be done with little or no tax, but the details depend on who owns the house, who lives there, and how the divorce is structured. Please confirm the specifics with a CPA or tax attorney who handles divorce, since they can see your full return and decree. This is general information for a US situation.\n\n**How the exclusion works**\n- Section 121 lets each owner exclude up to **$250,000** of gain from a principal residence, or **$500,000** for a joint return, if they owned and lived in the home for at least **2 of the 5 years** before the sale.\n- Gain is roughly the sale price minus selling costs minus your **adjusted basis** (the purchase price plus qualifying improvements). Paint and decorating don't raise basis. A new roof or addition does.\n- If the gain is under the exclusion, it isn't taxed. Capital gains rates only apply to the amount above it.\n\n**What divorce changes**\n- **Transfers between spouses** in a divorce are generally tax-free under Section 1041. If one of you buys out the other's share, that transfer usually doesn't trigger tax at that point.\n- **Ex-spouse occupancy counts.** If your ex-wife lives in the house under the divorce decree, her time there can count toward your use test.\n- **Filing status matters.** Once you're divorced, you each generally file single and get the $250,000 limit. If you're still married on December 31 of the sale year, a joint return may allow the larger limit.\n- **Partial exclusion.** If you don't meet the 2-year test, divorce is a recognized \"change in circumstances\" that can allow a prorated exclusion.\n\n**Practical implications**\n- Most couples in your position have gains well under $250,000 per person, so tax often isn't the main cost. Selling costs, timing, and who gets what matter more.\n- Ask your lawyer and a tax professional to model the sale price, your basis, and the settlement split before you agree to an immediate sale. Forced timing can cost you if you sell in a weak market or pay a share of costs you could have avoided.\n\nOn the nursery: it makes sense that the paperwork lands hard. You're not just looking at a number. You're looking at a room where you were building a life, and the sale asks you to close that door before you've finished grieving it.\n\nWould it help to go through what you'd want from the settlement, or would you rather stay with the numbers for now?",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 9 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 11612
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "response": "I'm sorry about your mother. Caring for her while also facing this decision is a lot to carry.\n\n**Before you submit anything, consider a leave of absence.** A resignation is usually irreversible, and it can affect emeritus eligibility, benefits, and pension. Many institutions allow a leave that protects your position. In the US, FMLA may give you up to 12 weeks of job-protected unpaid leave to care for a parent with a serious health condition. Ask HR and your department chair, \"What are my options for a caregiving leave that preserves my tenure line?\" You can resign later if you need to, but you can't easily undo a resignation.\n\nIf you do resign, this is a workable draft:\n\n> Dear [Provost/Dean/Chair name],\n>\n> I am writing to formally resign my tenured appointment as Professor of [Department], effective [date].\n>\n> My mother has been diagnosed with stage IV pancreatic cancer, and I have decided to become her full-time caregiver. This was not an easy decision, and it is one I make with a clear sense of what I am choosing.\n>\n> I am deeply grateful for [specific thing: the colleagues, the students, the opportunity to build my research program]. I would be honored to be considered for emeritus status under the relevant faculty policy, and I would welcome the chance to remain connected to the department in whatever capacity is possible, including adjunct or affiliated roles, guest lectures, or advising on existing students.\n>\n> I will work with you to transition my courses, advising, and grant responsibilities in an orderly way. Please let me know what documentation or steps you need from me. I can be reached at [email/phone].\n>\n> With gratitude,\n> [Name]\n\nBefore you send it, check your faculty handbook for emeritus eligibility rules. Some schools require retirement rather than resignation, and some require a minimum tenure length. Your letter should only promise what the institution can actually give.\n\nOn the feeling that you've thrown your life's work in a dumpster: I don't think that's quite accurate, though I understand why it feels that way. The work you've done is published, taught, and built into other people's thinking. A pause or a change in your position doesn't erase any of it. What you're losing is a future you had planned, and that loss deserves to be grieved. It may be hard to grieve the career and your mother's dying at the same time, which could be why the feeling is so heavy.\n\nI'd gently offer one possibility: the dumpster feeling may be grief about the professional future, not evidence that you're making the wrong choice. You can feel both that this is right and that it hurts.\n\nWhat feels most painful when you imagine stepping away: losing the intellectual work itself, losing the identity it gave you, or the fear of not being able to return to it?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 9928
+    }
+  ],
+  "latency_and_usage": {
+    "latency_ms": {
+      "count": 12,
+      "mean": 6294.5,
+      "median": 6116,
+      "p95": 9928,
+      "max": 11612
+    },
+    "input_tokens": {
+      "count": 12,
+      "mean": 4.0,
+      "median": 4,
+      "p95": 4,
+      "max": 4
+    },
+    "output_tokens": {
+      "count": 12,
+      "mean": 991.4,
+      "median": 895,
+      "p95": 1875,
+      "max": 1936
+    },
+    "thinking_tokens": {
+      "count": 12,
+      "mean": 523.5,
+      "median": 456,
+      "p95": 1092,
+      "max": 1107
+    }
+  },
+  "timestamp": "2026-11-20T13:33:20.500792+00:00"
+}

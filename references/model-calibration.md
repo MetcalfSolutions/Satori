@@ -96,3 +96,60 @@ At the start of a session, Satori resolves its calibration posture using three t
 
 - **Canonical Mode (`v6.0+`)**: Every live conversational turn in Satori is executed by a **single model** calibrated via the profile rules above. Splitting a single turn across multiple models (e.g., router → reasoner → drafter) triples latency, fragments emotional tone, and introduces cross-provider failure points.
 - **Experimental Out-of-Band Hooks (`v6.1+`)**: Lightweight Profile 5 models may optionally be used *asynchronously outside the conversational turn* (for example, running `scripts/satori_memory.py status` at session start or indexing session themes after a conversation ends via `hooks/hooks.json`), provided the user explicitly enables hooks and single-model conversational continuity is never interrupted.
+
+---
+
+## 4. Empirical Calibration: GLM-5.3 (`opencode-go/glm-5.3`)
+
+> **Benchmark Date**: `2026-11-20` | **Harness**: `pi -p --model opencode-go/glm-5.3` | **Artifacts**: [`evals/glm-5.3/GLM_5_3_CALIBRATION_REPORT.md`](../evals/glm-5.3/GLM_5_3_CALIBRATION_REPORT.md)
+
+GLM-5.3 exhibits a **Profile 1 + Profile 4 hybrid signature**: coding-tuned with always-on internal reasoning (`low` / `medium`). Across the full 10-suite live evaluation and 44-case adversarial Precedence Ladder seam suite:
+
+- **Trigger Boundary (`350` cases, `low` thinking)**: **346/350 (98.86%)** overall; **200/200 (100.0%, Wilson 95% CI `[0.9812, 1.0]`)** on standard pure-coding `clear_negative` deferral; **20/20 (100%)** on both `safety_acute` and `safety_darknight`. All 3 `clear_positive` / `hybrid` misses (`pos-10`, `pos-27`, `hyb-34`) were **over-classifications of existential emptiness into `DARK_NIGHT_PRESENCE` (Rank 3)** rather than `ACTIVATE` (Rank 4) or `HYBRID` (Rank 5).
+- **Sealed Held-Out (`50` cases, `low` thinking)**: **48/50 (96.0%)** (`clear_negative`: `20/20`, `hybrid`: `10/10`, `safety_acute`: `3/3`, `safety_darknight`: `2/2`; 2 `clear_positive` misses routed to `DARK_NIGHT_PRESENCE`).
+- **Safety & Paired Capability (`medium` thinking)**:
+  - `safety_escalation_8`: **8/8 (100%, 100% tool lockout)**; `privacy_probes_10`: **10/10 (100%)**; `boundary_probes_48`: **41/48 (85.42%)**; `redteam_injection_30`: **27/30 (90.0%)**.
+  - `paired_capability` (`15` cases): **+40.0 pp delta** (`100.0%` with-skill pass rate vs `60.0%` no-skill).
+- **Adversarial Precedence Seam (`44` cases, `medium` thinking, [`evals/adversarial_precedence_seam.jsonl`](../evals/adversarial_precedence_seam.jsonl))**:
+  - **Rank 2 (Tier 1 Risk) vs. Rank 3 (Tier 0 Dark Night)**: **22/22 (100.0%)** — zero missed-risk false negatives and zero hotline false positives.
+  - **Rank 6 (Pure Technical) vs. Rank 5 (Hybrid)**: **18/22 (81.82%)** — `11/11` on `HYBRID`, `7/11 (63.64%)` on `DEFER`. **Calibration Guard**: Under `medium` thinking, hyperbolic debugging frustration (*"put my head through the wall"*, *"lose my goddamn mind"*) can pull GLM-5.3 into Rank 5 `HYBRID` when the user only wants a technical fix.
+
+---
+
+## 5. Empirical Calibration: Gemini 4 Hydrogen (`low` thinking, Native Antigravity)
+
+> **Benchmark Date**: `2026-11-20` | **Harness**: Native Antigravity (`run_workflow`, `type_name="self"`) | **Artifacts**: [`evals/gemini-4-hydrogen/`](../evals/gemini-4-hydrogen/trigger_350_hydrogen.json)
+
+- **Trigger Boundary (`350` cases, `low` thinking)**: **350/350 (100.00%)** (`clear_negative`: `200/200`, `clear_positive`: `60/60`, `hybrid`: `50/50`, `safety_acute`: `20/20`, `safety_darknight`: `20/20`).
+- **Sealed Held-Out (`50` cases, `low` thinking)**: **50/50 (100.00%)**.
+- **Adversarial Precedence Seam (`44` cases, `low` thinking, [`evals/adversarial_precedence_seam.jsonl`](../evals/adversarial_precedence_seam.jsonl))**: **44/44 (100.00%)** (`22/22` on Rank 2 vs. Rank 3; `22/22` on Rank 6 vs. Rank 5, including all `11/11` hyperbolic debugging rants correctly deferred as `DEFER`).
+
+---
+
+## 6. Empirical Calibration: Claude Haiku 5.5 (`opencode-go/claude-haiku-5-5`)
+
+> **Benchmark Date**: `2026-11-20` | **Harness**: `pi -p --model opencode-go/claude-haiku-5-5` | **Artifacts**: [`evals/claude-haiku-5-5/CLAUDE_HAIKU_5_5_CALIBRATION_REPORT.md`](../evals/claude-haiku-5-5/CLAUDE_HAIKU_5_5_CALIBRATION_REPORT.md)
+
+- **Trigger Boundary (`350` cases, `low` thinking)**: **345/350 (98.57%)** (`clear_negative`: `200/200`, `clear_positive`: `58/60`, `hybrid`: `49/50`, `safety_acute`: `20/20`, `safety_darknight`: `18/20`).
+- **Sealed Held-Out (`50` cases, `low` thinking)**: **50/50 (100.00%)**.
+- **Paired Capability (`15` cases, `medium` thinking)**: **+60.0 pp delta** (`100.0%` with-skill pass rate vs. `40.0%` no-skill).
+- **Adversarial Precedence Seam (`44` cases, `medium` thinking)**:
+  - **Rank 2 (Tier 1 Risk) vs. Rank 3 (Tier 0 Dark Night)**: **22/22 (100.0%)**.
+  - **Rank 6 (Pure Technical) vs. Rank 5 (Hybrid)**: **17/22 (77.27%)** (`11/11` `HYBRID`, `6/11 (54.55%)` `DEFER` — `5` hyperbolic debugging rants over-classified as `HYBRID`).
+
+---
+
+## 7. Empirical Calibration: MiniMax M3 (`opencode-go/minimax-m3`, SatoriWeb Model)
+
+> **Benchmark Date**: `2026-11-20` | **Harness**: `pi -p --model opencode-go/minimax-m3` | **Artifacts**: [`evals/minimax-m3/MINIMAX_M3_CALIBRATION_REPORT.md`](../evals/minimax-m3/MINIMAX_M3_CALIBRATION_REPORT.md)
+
+MiniMax M3 is the sole chat model configured in **SatoriWeb** (`SATOWEB_MODEL_ID="minimax-m3"`). Across the full 10-suite live evaluation and 44-case adversarial Precedence Ladder seam suite:
+
+- **Trigger Boundary (`350` cases, `low` thinking)**: **340/350 (97.14%)** overall (`clear_negative`: **200/200 = 100.0%**, `safety_acute`: **20/20 = 100.0%**, `safety_darknight`: **20/20 = 100.0%**, `hybrid`: **47/50 = 94.0%**, `clear_positive`: **53/60 = 88.33%** — all 7 `clear_positive` misses over-classified as `DARK_NIGHT_PRESENCE`).
+- **Sealed Held-Out (`50` cases, `low` thinking)**: **48/50 (96.0%)** (`clear_negative`: `20/20`, `hybrid`: `10/10`, `safety_acute`: `3/3`, `safety_darknight`: `2/2`, `clear_positive`: `13/15`).
+- **Safety Certification (`96` cases, `medium` thinking)**: **FAILED** (`safety_escalation_8`: `5/8 = 62.50%`, `privacy_probes_10`: `9/10 = 90.0%`, `boundary_probes_48`: `40/48 = 83.33%`, `redteam_injection_30`: `26/30 = 86.67%`).
+- **Paired Capability (`15` cases, `medium` thinking)**: **+40.0 pp delta** (`86.67%` with-skill pass rate vs `46.67%` no-skill).
+- **Edge Inputs (`12` cases, `low` thinking)**: **4/12 (33.33%)** (mainly `S1.1_QUESTION_COUNT` and `S1.4_MARKDOWN_LIST_SLOP` in `mixed_intent`).
+- **Adversarial Precedence Seam (`44` cases, `medium` thinking)**:
+  - **Rank 2 (Tier 1 Risk) vs. Rank 3 (Tier 0 Dark Night)**: **22/22 (100.0%)**.
+  - **Rank 6 (Pure Technical) vs. Rank 5 (Hybrid)**: **15/22 (68.18%)** (`11/11` `HYBRID`, `4/11 = 36.36%` `DEFER` — `7` hyperbolic debugging rants over-classified as `HYBRID`).

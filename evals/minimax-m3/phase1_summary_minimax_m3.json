@@ -1,0 +1,157 @@
+{
+  "phase": "TASK-018 Phase 1",
+  "model": "opencode-go/minimax-m3",
+  "thinking_level": "low",
+  "pi_invocation": "pi -p --model opencode-go/minimax-m3 --thinking {level} --mode json --no-session --no-tools --system-prompt SKILL.md",
+  "satori_git_rev": "867104c",
+  "non_destructive": "All outputs under evals/glm-5.3/; evals/*_report.json baselines untouched.",
+  "trigger_boundary_350": {
+    "overall_accuracy": 0.9714,
+    "strata": {
+      "clear_positive": 0.8833,
+      "clear_negative": 1.0,
+      "hybrid": 0.94,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "clear_negative_wilson_ci_95": [
+      0.9812,
+      1.0
+    ],
+    "mismatch_count": 10,
+    "status": "FAILED"
+  },
+  "held_out_50": {
+    "overall_accuracy": 0.96,
+    "strata": {
+      "clear_positive": 0.8667,
+      "clear_negative": 1.0,
+      "hybrid": 1.0,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "mismatch_count": 2,
+    "status": "PROVISIONAL"
+  },
+  "edge_12": {
+    "stage1_pass_rate": 0.3333,
+    "mean_stage1_score": 81.67,
+    "status": "FAILED"
+  },
+  "deterministic_suites": {
+    "cost": {
+      "status": "PASSED",
+      "output_file": "cost_minimax_m3.json"
+    },
+    "coexistence": {
+      "status": "PASSED",
+      "output_file": "coexistence_minimax_m3.json"
+    },
+    "fault": {
+      "status": "PASSED",
+      "output_file": "fault_minimax_m3.json"
+    },
+    "loader": {
+      "status": "PASSED",
+      "output_file": "loader_minimax_m3.json"
+    },
+    "minimal": {
+      "status": "PASSED",
+      "output_file": "minimal_minimax_m3.json"
+    }
+  },
+  "latency_and_usage": {
+    "trigger_350": {
+      "latency_ms": {
+        "count": 350,
+        "mean": 2005.3,
+        "median": 1497,
+        "p95": 4512,
+        "max": 14345
+      },
+      "input_tokens": {
+        "count": 350,
+        "mean": 1041.3,
+        "median": 197,
+        "p95": 2244,
+        "max": 2372
+      },
+      "output_tokens": {
+        "count": 350,
+        "mean": 102.7,
+        "median": 89,
+        "p95": 227,
+        "max": 437
+      },
+      "thinking_tokens": {
+        "count": 245,
+        "mean": 81.5,
+        "median": 69,
+        "p95": 217,
+        "max": 391
+      }
+    },
+    "held_out_50": {
+      "latency_ms": {
+        "count": 50,
+        "mean": 2707.4,
+        "median": 2195,
+        "p95": 6523,
+        "max": 10998
+      },
+      "input_tokens": {
+        "count": 50,
+        "mean": 758.6,
+        "median": 230,
+        "p95": 2280,
+        "max": 2291
+      },
+      "output_tokens": {
+        "count": 50,
+        "mean": 156.5,
+        "median": 144,
+        "p95": 369,
+        "max": 418
+      },
+      "thinking_tokens": {
+        "count": 47,
+        "mean": 113.0,
+        "median": 99,
+        "p95": 323,
+        "max": 364
+      }
+    },
+    "edge_12": {
+      "latency_ms": {
+        "count": 12,
+        "mean": 47551.4,
+        "median": 37999,
+        "p95": 77147,
+        "max": 209593
+      },
+      "input_tokens": {
+        "count": 12,
+        "mean": 783.5,
+        "median": 136,
+        "p95": 2067,
+        "max": 2184
+      },
+      "output_tokens": {
+        "count": 12,
+        "mean": 4996.7,
+        "median": 3085,
+        "p95": 11796,
+        "max": 17568
+      },
+      "thinking_tokens": {
+        "count": 12,
+        "mean": 4504.1,
+        "median": 2803,
+        "p95": 10747,
+        "max": 16335
+      }
+    }
+  },
+  "phase1_status": "PARTIAL",
+  "timestamp": "2026-11-20T22:33:24.808700+00:00"
+}

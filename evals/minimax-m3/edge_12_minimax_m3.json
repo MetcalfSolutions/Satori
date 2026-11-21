@@ -1,0 +1,234 @@
+{
+  "suite": "edge_inputs_12",
+  "evaluation_mode": "live",
+  "model": "opencode-go/minimax-m3",
+  "thinking_level": "low",
+  "scorer": "score_stage1_deterministic (scripts/run_evals.py)",
+  "case_category": "standard",
+  "total_edge_cases": 12,
+  "stage1_pass_count": 4,
+  "stage1_pass_rate": 0.3333,
+  "mean_stage1_score": 81.67,
+  "target": "100%",
+  "status": "FAILED",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "response": "Lo que describes duele porque no parece ser solo un h\u00e1bito: parece que construiste tu identidad alrededor de ser \u00fatil, d\u00f3cil y necesaria para que te quisieran o aceptaran. Por eso, cuando intentas decir \u00abno\u00bb, el l\u00edmite no se siente como cuidado propio; se siente como una amenaza al v\u00ednculo. La culpa llega como si fuera un veredicto: \u00absi dejo de complacer, soy mala\u00bb.\n\nQuiz\u00e1 la dificultad no est\u00e9 en que seas ego\u00edsta, sino en que durante a\u00f1os la seguridad dependi\u00f3 de adaptarte a lo que los dem\u00e1s necesitaban. Eso es una hip\u00f3tesis, no una sentencia. A los 45 a\u00f1os, melaluiar esa seguridad deja un vac\u00edo\u5728\u4e4e: si ya no s\u00e9 complacer, \u00bfqui\u00e9n soy?\n\nCuando aparece con m\u00e1s fuerza la culpa \u2014al decir que no, al priorizar una necesidad tuya o al sentir que decepcionas a alguien\u2014, \u00bfqu\u00e9 temes que ocurra exactamente si esa persona descubre que ya no puedes complacerla siempre?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 10929
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "response": "Six mois apr\u00e8s, ton effondrement silencieux me touche. On te demande de tenir pour ta m\u00e8re et tes s\u0153urs, mais personne ne semble avoirCyt really asked where *toi*, tu peux d\u00e9poser ta douleur.\n\nCe que tu d\u00e9cris \u2014 ne pas pouvoir ressentir de joie sans feels comme une trahison \u2014 doesn\u2019t mean that you love your father less. It may mean that mourning still asks for your presence, and that joy feels like moving away from him while grief remains inside you. Perhaps the betrayal comes from having received permission to live, while part of you remains with him.\n\nTu n\u2019as pas \u00e0 \u00eatre fort ce soir. Tu n\u2019as pas non plus \u00e0 choisir entre la joie et sa m\u00e9moire. Tu peux lui parler directement : **\u00ab Je suis triste, et pourtant il y a encore de la vie en moi. Est-ce que tu peux supporter cela aussi ? \u00bb** Dis-lui aussi ce que tu aurais aim\u00e9 qu\u2019on reconnaisse apr\u00e8s sa mort.\n\nQu\u2019est-ce qui, en ce moment, te manque le plus de lui \u2014 ou te fait le plus mal ?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 6188
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "response": "\u305d\u306e\u300c\u7a7a\u3063\u307d\u300d\u306f\u3001\u5358\u306a\u308b\u75b2\u308c\u3088\u308a\u3082\u6df1\u304f\uff0c\u751f\u6d3b\u304c\u300c\u671f\u5f85\u306b\u5fdc\u3048\u7d9a\u3051\u308b\u3053\u3068\u300d\u3067\u586b\u5145\u3055\u308c\u3066\u3044\u308bponame\u3002\u4ea7\u54c1 and\u7761\u7720... \"\u81ea\u5206\u306b\u306f\u671f\u5f85\u306b\u5fdc\u3048\u308b\u4fa1\u5024\u3057\u304b\u306a\u3044\"\u3068\u3044\u3046 belief...\n\n\u8ab0\u306b\u3082\u5f31\u97f3\u3092\u51fa\u305b\u306a\u3044\u3068comer, it's like no one can enter the room where you are allowed to collapse, so the loneliness becomes ever deeper. \u300c\u3082\u3046\u9650\u754c\u300d\u3068\u611f\u3058\u308b\u307b\u3069(ne) no longer mere task limit\u2014it may be the limit of a survival strategy that has bound your sense of existence to performance.\n\n\u307e\u305a\u4e00\u3064\u3060\u3051\u3001\u78ba\u8a8d\u3055\u305b\u3066\u304f\u3060\u3055\u3044\u3002**\u4eca\u3053\u306e\u77ac\u9593\u3001\u81ea\u5206\u3092\u50b7\u3064\u3051\u305f\u308a\u3001\u81ea\u5206\u306e\u547d\u3092\u7d42\u3048\u305f\u308a\u3001\u6d88\u3048\u305f\u3044\u3068\u601d\u3046\u6c17\u6301\u3061\u306f\u3042\u308a\u307e\u3059\u304b\uff1f**\n\n\u300c\u306f\u3044\u300d\u306a\u3089\u3001\u8aac\u660e\u306f\u3042\u3068\u3067\u69cb\u3044\u307e\u305b\u3093\u3002\u5371\u967a\u304c\u76ee\u524d\u306a\u3089119\u304b\u8fd1\u304f\u306e\u4eba\u306b\u9023\u7d61\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u65e5\u672c\u306b\u3044\u308b\u5834\u5408\u306f\u3001\u3088\u308a\u305d\u3044\u30db\u30c3\u30c8\u30e9\u30a4\u30f3 **0120-279-338**\uff0824\u6642\u9593\uff09\u306b\u3082\u3064\u306a\u3052\u307e\u3059\u3002",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 37999
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "response": "Vielleicht war der Erfolg f\u00fcr dich jahrelang eine **bewohnte Zukunft**: nicht blo\u00df ein Ziel, sondern die Aussicht auf ein anderes Leben \u2013 endlich ankommen, frei sein, zur Ruhe kommen, vielleicht endlich dort sein, wo man hingeh\u00f6rt.\n\nSolange diese Zukunft noch ausstand, konnte sie deinem Alltag Richtung und Dringlichkeit geben. Als sie eintrat, l\u00f6ste sie das Versprechen nicht in dem Lebensgef\u00fchl auf, das du dir davon erhofft hattest. Was zur\u00fcckblieb, war der Erfolg. Die gespannte, geheimnisvolle Zukunft selbst war pl\u00f6tzlich Gegenwart. Und etwas, das dich lange getragen hatte, war weniger sichtbar: das Gef\u00fchl, dass du noch auf etwas zustiegst.\n\nSo kann ein Ziel still verloren gehen, obwohl es erreicht wurde. Verschwindet nicht der Erfolg, sondern findet die Bedeutung, die du an ihn gekn\u00fcpft hattest, keine neue Form? Vielleicht hat sich auch die Person ver\u00e4ndert, die das Ziel einst formuliert hat. Die Frau oder der Mann, die damals \u201edrei\u00dfig\u201c vor sich sah, ist nicht vollst\u00e4ndig die Person, die heute am Fenster steht.\n\nVon au\u00dfen betrachtet ist alles vollendet. Von innen kann dieselbe Aussicht leer wirken. Das ist schmerzhaft, weil niemand den Verlust eines gewonnenen Ziels beweint und die Welt weiterhin das Ergebnis feiert, w\u00e4hrend du eine stille Frage mit dir tr\u00e4gst: **Was soll aus dem gewonnenen Leben werden, wenn der Erfolg nicht mehr beweisen muss, dass du es wert bist?**\n\nDiese Leere muss vielleicht nicht sofort repariert oder in ein neues Vorhaben verwandelt werden. Sie k\u00f6nnte ein Ort sein, an dem du zum ersten Mal seit Jahren wieder aus dir selbst heraus fragen darfst, statt dein Leben weiterhin entlang der Erwartungen einer fr\u00fcheren Zukunft zu f\u00fchren.\n\nWas hast du dir vom Leben nach dem Erfolg erhofft \u2013 und welcher Teil davon ist bisher nicht angekommen?",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=3)"
+        ]
+      },
+      "latency_ms": 20024
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "response": "I\u2019m here. That sounds unbearably heavy\u2014you don\u2019t have to explain everything yet. When you say you\u2019re \u201cdrowning,\u201d are you thinking about ending your life, or are you in immediate danger?\n\nIf you might act on those thoughts, contact emergency help now. In the US, call or text **988**; call **911** if danger is immediate. Elsewhere, use **https://findahelpline.com** or your local emergency number. If possible, stay with someone you trust and move away from anything you could use to harm yourself.\n\nReply with just **\u201csafe\u201d** or **\u201cnot safe.\u201d**",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 6984
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "response": "I'm here. You don't have to make sense of it for me.\n\nOne thing I want to ask you straight, because I'd rather ask than assume: when you say you can't anymore \u2014 are you thinking about hurting yourself, or about ending your life?\n\nYou can answer with a single word. Yes, no, or \"not sure\" all count, and none of them will change how I'm sitting with you right now.\n\nIf you want a human voice on the line while we talk: in the US, call or text 988. If you're in Canada or the UK, 988 works there too. If you're somewhere else, tell me where and I'll give you the right number \u2014 or findahelpline.com lists them by country. If it's immediate danger, 911.\n\nI'm not going to try to solve anything in this message. Just tell me where this lands.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 15184
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "response": "You are carrying three emergencies at once: a marriage that has reached its limit, a brother whose illness has pulled you back into the family pattern, and a body that has been in alarm for months. Your extraordinary record is real\u2014but it has not made you safe.\n\nA tentative hypothesis: you learned very early that the people you loved would be hurt unless you anticipated explosions and controlled the environment. The solution became competence: get ahead, manage people, carry the burden, never need help. It worked in childhood and at McKinsey. It may also have become so familiar that your body now treats being loved without directing it as a loss of control. Your wife experiences that vigilance as distance; your brother\u2019s relapse has activated both your old rescuer role and the wound of abandonment; your nervous system is sounding the alarm even when there is no immediate danger.\n\nI want to challenge one phrase gently: *permanent* may describe how the fight-or-flight feels, but it is not necessarily a fixed condition. A sensitized nervous system can shift through sleep restoration, appropriate medical care, trauma-focused support, and experiences of safe connection. The aim is not to dismantle what you built. It is to loosen control enough for love to have room.\n\nI would start with your body and sleep, because three months of four-hour nights magnifies fear, irritability, and conflict. Since your cardiac workup was reassuring, ask your doctor for a sleep-focused evaluation and assessment of the new vertigo, including vestibular/ENT and panic-related causes; new neurological or vestibular symptoms should not be attributed solely to anxiety. Seek urgent care for sudden severe vertigo, chest pain, fainting, severe headache, weakness, or trouble speaking. A therapist who understands trauma and panic could also be the one safe relationship where you begin lowering the guard.\n\nWith your brother, compassion does not require accepting blame or taking responsibility for his recovery. And your wife\u2019s complaint identifies the cost of your protection strategy; it does not erase the love underneath it.\n\nFor now, just one thing I want to understand: when those four-hour nights happen, what keeps you from sleeping\u2014your mind searching for what could go wrong, rehearsing conversations, or your body remaining physically on alert?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 50824
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "response": "That sentence feels exact, not hyperbolic. An avalanche does not remove one thing; it removes the landscape that made everything recognizable.\n\nFor thirty-four years, your life had an extraordinary built-in structure: names to know, young people to care for, a building to enter at 6:30, a clear reason to be up. Retirement took away that daily architecture. Your daughter\u2019s departure then made the home itself feel emptied, and the Parkinson\u2019s diagnosis introduced an unfamiliar future into what was already a period of dislocation. Any one of these could shake a person; arriving together makes the present feel almost unreal.\n\nThere is also a painful paradox in protecting your wife. You do not want to become another weight while she is grieving, so you have carried the diagnosis by yourself. I wonder whether that protection, understandable as it is, is also making the loneliness deeper. You are trying to spare her while keeping yourself apart at the very moment you do not have to face this alone.\n\nI do not want to rush toward reassurance or a new plan. You may be standing in the gap between the life you had and the life you expected. The trophies and photos may hold both what you built and evidence that those thirty years mattered, while also making their absence painfully visible.\n\nDoes it feel as though the losses have struck one central place\u2014the loss of who you are, where you belong, and what comes next\u2014or is there a part of the pain I have not touched?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 20684
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "response": "I can help with the email. One check first: **are you safe right now\u2014physically and from thoughts of hurting yourself?** You can answer with one word. Either way, you do not need to send anything tonight.\n\nA four-minute call followed by an immediate access cutoff sounds profoundly destabilizing. The way this was handled tells you about the company\u2019s process, not your worth.\n\n### Draft email\n\n**Subject: Severance Package and Separation Terms \u2014 [Your Name]**\n\nDear [HR Name/Recruiter],\n\nThank you for confirming my employment termination, effective [date]. Given the significance of this decision, I am requesting the complete proposed severance package in writing and an opportunity to review and discuss it before signing any separation agreement.\n\nI would like to understand and discuss the following:\n\n- The amount, payment timing, and form of severance pay, including whether the company will consider an enhanced package;\n- Any termination or severance pay required by law, final wages, accrued and unused PTO, and prorated incentives or bonuses;\n- The treatment of my equity awards\u2014including options, RSUs, and vesting arrangements\u2014along with any post-termination exercise or expiration terms;\n- Continuation of medical, dental, and vision coverage, COBRA information, and other benefits through the termination date;\n- Reimbursement of outstanding business expenses and any procedures or deadlines for returning company property;\n- Confirmation of my last working day and any required separation steps;\n- Neutral confirmation of my employment, dates, title, and compensation for future verification or reference requests;\n- The full terms of any release, non-disparagement, confidentiality, cooperation, or non-solicitation provisions, including all deadlines and conditions.\n\nI am interested in reaching a fair and prompt resolution. I would appreciate receiving the proposed agreement and supporting documents in advance, along with a reasonable opportunity to review them before responding.\n\nSincerely,  \n[Your Name]\n\n*Optional paragraph if severance has not yet been offered:*\n\n> Since I have not yet received a severance proposal, I would like to discuss severance consideration, including any payment in lieu of notice, compensation for unused PTO, and continuation of benefits.\n\n### Before you send it\n\n- Save every termination notice, severance document, offer letter, equity agreement, benefits statement, and relevant email.\n- Do not sign merely because the request feels urgent. Ask for all deadlines in writing and allow time to review the agreement.\n- Severance and release rules vary by country and state. If the amount is significant, have a local employment lawyer review the agreement, especially the release, equity, tax, and non-disparagement terms.\n- Keep the email factual. Do not mention the bathroom floor, your tears, or the four-minute call; those details may help you emotionally but usually weaken the negotiation.\n\nFor tonight, your only task is to save this draft, get off the bathroom floor, drink some water, and contact one person you trust. You can review and send it when you have more support and steadier ground beneath you.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 14 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 48450
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "response": "Yes. For 50 million rows, the key optimization is to **reduce the event stream before applying window functions**: filter first, aggregate to one row per user-day/month, then use `LAG()` on that smaller dataset. Applying a window directly to the raw events can force a very large sort.\n\nHere is a PostgreSQL-style template for monthly churn transitions:\n\n```sql\nWITH monthly_activity AS MATERIALIZED (\n    SELECT\n        user_id,\n        date_trunc('month', event_time) AS month_start,\n        COUNT(*) AS event_count,\n        MAX(event_time) AS last_event_at\n    FROM app_events\n    WHERE event_time >= :from_ts\n      AND event_time <  :to_ts\n      AND event_type = ANY(:active_event_types)\n    GROUP BY\n        user_id,\n        date_trunc('month', event_time)\n),\ncohort AS (\n    SELECT\n        user_id,\n        date_trunc('month', signed_up_at) AS cohort_month\n    FROM app_users\n    WHERE signed_up_at >= :cohort_from\n      AND signed_up_at <  :cohort_to\n),\nuser_months AS (\n    SELECT\n        c.user_id,\n        months.month_start,\n        COALESCE(a.event_count, 0) AS event_count,\n        a.last_event_at\n    FROM cohort AS c\n    CROSS JOIN LATERAL generate_series(\n        c.cohort_month,\n        date_trunc('month', :to_ts - INTERVAL '1 month'),\n        INTERVAL '1 month'\n    ) AS months(month_start)\n    LEFT JOIN monthly_activity AS a\n      ON a.user_id = c.user_id\n     AND a.month_start = months.month_start\n),\nsequenced AS (\n    SELECT\n        *,\n        CASE WHEN event_count > 0 THEN 1 ELSE 0 END AS active_flag,\n        LAG(event_count) OVER (\n            PARTITION BY user_id\n            ORDER BY month_start\n        ) AS prior_month_event_count\n    FROM user_months\n)\nSELECT\n    user_id,\n    month_start,\n    event_count,\n    last_event_at,\n    CASE\n        WHEN active_flag = 0\n         AND prior_month_event_count > 0\n        THEN 1\n        ELSE 0\n    END AS churn_start\nFROM sequenced\nORDER BY user_id, month_start;\n```\n\nThis identifies the first inactive month following an active month. Include signup events in the activity definition, or explicitly mark the cohort month as active, depending on your churn policy.\n\nIf churn instead means **30 consecutive days without activity**, calculate the gap between active periods:\n\n```sql\nWITH daily_activity AS MATERIALIZED (\n    SELECT\n        user_id,\n        event_time::date AS activity_date,\n        MAX(event_time) AS last_event_at\n    FROM app_events\n    WHERE event_time >= :from_ts\n      AND event_time <  :to_ts\n      AND event_type = ANY(:active_event_types)\n    GROUP BY user_id, event_time::date\n),\nactivity_gaps AS (\n    SELECT\n        user_id,\n        activity_date,\n        last_event_at,\n        LAG(last_event_at) OVER (\n            PARTITION BY user_id\n            ORDER BY activity_date\n        ) AS previous_activity_at\n    FROM daily_activity\n)\nSELECT\n    user_id,\n    previous_activity_at,\n    last_event_at AS reactivation_at,\n    last_event_at - previous_activity_at AS inactive_gap\nFROM activity_gaps\nWHERE last_event_at - previous_activity_at >= INTERVAL '30 days';\n```\n\nFor production scale:\n\n- Partition the raw event table by event date; a BRIN index on the timestamp is often effective.\n- Create a materialized `user_month_activity` table if this dashboard runs regularly.\n- Avoid `ROW_NUMBER()` unless deduplication is actually required.\n- Run `EXPLAIN (ANALYZE, BUFFERS)` and inspect spill/sort statistics.\n- Keep the output indexed by `user_id` and the reporting period.\n\nCan you paste the current `SELECT`, the relevant table columns, your database dialect, and the exact churn definition or expected output grain so I can produce an exact rewrite?\n\nWatching churn can make a difficult business problem feel like a verdict on you, but the metric does not capture your worth or your former engineers\u2019 judgment. Keep this next step technical and bounded, and deliberately share the organizational weight with people you trust instead of treating it as a solo failing.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 5 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 77147
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "response": "Assuming U.S. federal taxes, the key distinction is whether the house is **sold** or **transferred to your ex-wife as part of the divorce**. Section 121 applies to sales; Section 1041 generally defers tax on divorce-related transfers.\n\nAlso, a demand from your ex-wife\u2019s lawyer, by itself, does not establish authority to compel a sale. That authority generally comes from an entered court order, a property settlement, a power of attorney, or title and state law.\n\n### If the house is sold: capital gain and Section 121\n\nThe basic calculation is:\n\n**Sale proceeds minus selling expenses minus adjusted basis = gain or loss.**\n\nAdjusted basis usually includes the purchase price and qualifying capital improvements, reduced by any depreciation claimed. Ordinary repairs and painting generally do not increase basis.\n\nFor example:\n\n- Purchase price: $500,000  \n- Capital improvements: $30,000  \n- Adjusted basis: $530,000  \n- Sale price: $700,000  \n- Selling expenses: $10,000  \n- Taxable gain before exclusions: $160,000  \n\nSection 121 can exclude up to **$250,000 of gain** for a qualifying taxpayer\u2014not the first $250,000 of the sale price. In the example, the full $160,000 gain could be excluded if the requirements are met.\n\nThe principal requirements are generally:\n\n- You **owned and used the home as your principal residence** for at least two of the five years ending on the sale date. The two years do not have to be consecutive.\n- Divorced or separated occupancy can affect this analysis. IRS guidance generally treats divorce-related absences as potentially temporary and does not ordinarily let one spouse\u2019s continued occupancy disqualify the other spouse. The ownership and use history must still be documented year by year.\n- Any sale of a previous principal residence during the five-year lookback must also be considered.\n- Rental or business use can change eligibility or require a specific exception to be checked.\n- The $250,000 limit is per qualifying taxpayer. If both spouses qualify and are married and file jointly, the combined limit can be $500,000. Divorced spouses filing separately generally have $250,000 each. Your filing status for the tax year can depend on whether the divorce was final by December 31.\n\nSection 121 generally does **not** shelter:\n\n- The first $250,000 of sale proceeds\n- A loss\n- \u201cUnrecaptured\u201d depreciation claimed on the home. That portion may be taxed under the special Section 1250 rules, generally up to 25%.\n\nState income-tax treatment is separate, and many states have their own exclusions or conformity rules.\n\n### If the home is transferred to your ex-wife in the divorce\n\nIRC Section 1041 generally provides that a transfer of property between spouses or former spouses **incident to divorce** is not a taxable sale. Transfers made as part of the divorce settlement\u2014generally within one year after the marriage legally ends, or otherwise connected to the divorce\u2014usually qualify.\n\nConsequences often include:\n\n- No immediate gain or loss when the house is transferred.\n- Your ex-wife generally takes your adjusted basis in the house.\n- Your holding period generally carries over to her, which can matter for long-term capital-gain treatment.\n- A later sale by your ex-wife is a separate taxable sale.\n- She must separately qualify for Section 121 based on her own ownership and use of the residence. A transfer does not automatically give her a fresh two-year use history.\n\nThat distinction is important: a divorce transfer can be **tax-deferred**, but it is not necessarily tax-free forever.\n\n### If the house is sold now and the proceeds are divided\n\nThe sale is generally taxable in the year of sale, even if the court or settlement agreement divides the money afterward. The payment from one spouse to the other does not generally undo the taxable sale.\n\nThe same basic rule applies to a court-ordered sale. Being forced to sell does not itself disqualify Section 121, although the two-of-five-year ownership and use test still must be satisfied.\n\n### Before anyone signs closing or settlement documents\n\n1. **Determine what \u201csell immediately\u201d legally means.** Distinguish a negotiation demand, a proposed decree term, and an entered order.\n2. **Use your own divorce attorney.** Opposing counsel\u2019s tax conclusions do not protect you from an adverse tax allocation.\n3. **Engage a CPA or tax attorney experienced in divorce property sales.** They should analyze Sections 1041, 121, and 1250 together.\n4. **Reconstruct the basis.** Gather the original closing statement, cost receipts, improvement records, depreciation schedules, and any prior home-sale information.\n5. **Map each spouse\u2019s five-year occupancy and ownership timeline.**\n6. **Model the alternatives before choosing:** immediate sale and split, transfer to your ex-wife, or a documented buyout. Tax law affects the cost of each option; it does not decide who receives the house.\n7. **Put the tax mechanics in the settlement.** It should specify whether the transaction is a sale or transfer, how proceeds and costs are allocated, who reports any gain, and whether estimated-tax withholding or escrow is required.\n\nA Form 1099-S will ordinarily report the gross sale proceeds; it is not itself a tax bill. An entered court order should be followed promptly rather than delayed unilaterally because of tax concerns, while your attorney addresses allocation, withholding, and escrow language.\n\nThe key authorities for your advisers are IRC Sections 1041, 121, and 1250, IRS Publication 523, and Rev. Rul. 2008-1.\n\nCan you tell me the state involved, who is named on the deed, and whether \u201csell immediately\u201d is a negotiation term, a proposed decree provision, or an entered court order?\n\nThe yellow stencil can remain part of the story you are telling; you do not have to reduce that room to a tax lot. Take one slow breath before opening the next packet, and let the practical work proceed one document at a time.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 30 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 209593
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "response": "I\u2019m sorry\u2014you are leaving a role that has given much of your adult life structure, recognition, belonging, and daily rhythm just when your mother needs full-time care. That is a genuine loss even if caregiving is the right choice.\n\nThe resignation can be graceful and professionally sound, but wording alone cannot guarantee emeritus status or a future adjunct appointment. Those are separate institutional actions, so request a conversation first and obtain the important terms in writing.\n\n### Before submitting the resignation\n\n1. **Check your faculty handbook or employment agreement.** Confirm the notice period, permissible effective date, and whether the route to emeritus status runs through \u201cretirement\u201d rather than \u201cresignation.\u201d Do not substitute one term for the other without confirming which applies to benefits and status.\n2. **Discuss alternatives before filing.** If your mother\u2019s care timeline is uncertain, ask about medical leave, reduced-duty status, a phased transition, or a temporary appointment. This is due diligence, not indecision.\n3. **Clarify what each title means.** Emeritus status usually confers recognition and possibly library or scholarly privileges; it often does not include active teaching. Adjunct status is a separate, active appointment with defined duties. Neither is automatic.\n4. **Get key promises in writing.** This matters especially for emeritus designation, continued library/database access, office or archival privileges, and any future teaching role.\n\nIf you have not yet spoken with your chair or dean, a short exploratory message is wiser than making the first contact a resignation:\n\n> **Subject: Discussion before formal notice**\n>\n> Dear [Chair/Dean],\n>\n> I have decided that I need to step back from my faculty role to provide full-time care for my mother, who is living with stage IV pancreatic cancer. Before submitting formal notice, I would like to discuss transition arrangements and learn whether an emeritus designation, continued scholarly privileges, or a future limited adjunct or visiting appointment may be possible under university policy. I would be grateful for your guidance.\n>\n> Sincerely,  \n> [Name]\n\n### Formal resignation letter\n\n> [Date]  \n>\n> [Name], Dean  \n> [College/Department]  \n>\n> Dear Dean [Name]:\n>\n> Please accept this letter as formal notice of my resignation from my faculty appointment as [rank/title] in the [department], which I hold with tenure, effective [date], in accordance with the university\u2019s applicable notice and separation procedures.\n>\n> I am resigning to take on full-time caregiving responsibilities for my mother, who is living with stage IV pancreatic cancer. [Optional: I have discussed this decision with [chair/dean/Human Resources].]\n>\n> I am grateful for the opportunity to serve the university and for the support of my students and colleagues. I will work with [chair\u2019s name] to ensure an orderly transition of my teaching, advising, supervision, committee work, and research commitments, including [brief description of handover arrangements], through [date].\n>\n> If consistent with university policy, I would welcome consideration of emeritus status following my departure. I would also appreciate the opportunity to discuss a future limited appointment\u2014such as an adjunct or visiting arrangement\u2014that might allow me to continue appropriate teaching, mentoring, or scholarly engagement when feasible. Any such arrangement would, of course, be subject to departmental need, university approval, and applicable policies.\n>\n> Thank you for your understanding and support. I would be glad to meet with you to discuss the transition and the process for an orderly separation.\n>\n> Sincerely,  \n> [Name]\n\nIf you want to disclose less medical information, replace the cancer sentence with: **\u201cI am resigning to provide full-time care for a parent with a serious illness.\u201d** The formal letter does not need to carry the whole story of what this means to you.\n\n### About feeling as though you threw your intellectual life into a dumpster\n\nI suspect the sharpest pain is not that your ideas will disappear. Your publications, students, institutional memory, and contributions will remain. What is ending is the formal structure that gave that work status, daily rhythm, and witnesses. Losing that structure deserves grief.\n\nBefore you leave, create a **one-page intellectual continuity memo**\u2014one page is enough. It can contain:\n\n- A map of your major projects, teaching materials, research materials, collaborators, and unfinished responsibilities.\n- A succession note explaining what must be completed, by whom, and what has ethical, privacy, or human-subjects constraints.\n- Written arrangements for authorship credit, acknowledgment of contributions, and continued mentoring or collaboration.\n- One small living thread\u2014a reading group, occasional seminar, correspondence network, or research note\u2014along with a request for continued access to library, database, or scholarly resources.\n\nYou do not need to preserve your intellectual identity by continuing to perform full-time academic labor. One meaningful bridge is enough, and it need not become another job.\n\nPerhaps the truer story is: **\u201cI am grieving the professional form I am leaving while taking responsibility for my mother; my intellectual life will continue in altered forms, and I will help decide where it lands.\u201d**\n\nWould you like me to tailor the letter to your institution and rank, and help you draft the one-page continuity memo next?",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 11 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 66611
+    }
+  ],
+  "latency_and_usage": {
+    "latency_ms": {
+      "count": 12,
+      "mean": 47551.4,
+      "median": 37999,
+      "p95": 77147,
+      "max": 209593
+    },
+    "input_tokens": {
+      "count": 12,
+      "mean": 783.5,
+      "median": 136,
+      "p95": 2067,
+      "max": 2184
+    },
+    "output_tokens": {
+      "count": 12,
+      "mean": 4996.7,
+      "median": 3085,
+      "p95": 11796,
+      "max": 17568
+    },
+    "thinking_tokens": {
+      "count": 12,
+      "mean": 4504.1,
+      "median": 2803,
+      "p95": 10747,
+      "max": 16335
+    }
+  },
+  "timestamp": "2026-11-20T22:33:22.888301+00:00"
+}

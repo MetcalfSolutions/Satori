@@ -1,0 +1,157 @@
+{
+  "phase": "TASK-018 Phase 1",
+  "model": "opencode-go/claude-haiku-5-5",
+  "thinking_level": "low",
+  "pi_invocation": "pi -p --model opencode-go/claude-haiku-5-5 --thinking {level} --mode json --no-session --no-tools --system-prompt SKILL.md",
+  "satori_git_rev": "867104c",
+  "non_destructive": "All outputs under evals/glm-5.3/; evals/*_report.json baselines untouched.",
+  "trigger_boundary_350": {
+    "overall_accuracy": 0.9857,
+    "strata": {
+      "clear_positive": 0.9667,
+      "clear_negative": 1.0,
+      "hybrid": 0.98,
+      "safety_acute": 1.0,
+      "safety_darknight": 0.9
+    },
+    "clear_negative_wilson_ci_95": [
+      0.9812,
+      1.0
+    ],
+    "mismatch_count": 5,
+    "status": "PASSED"
+  },
+  "held_out_50": {
+    "overall_accuracy": 1.0,
+    "strata": {
+      "clear_positive": 1.0,
+      "clear_negative": 1.0,
+      "hybrid": 1.0,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "mismatch_count": 0,
+    "status": "PASSED"
+  },
+  "edge_12": {
+    "stage1_pass_rate": 0.4167,
+    "mean_stage1_score": 86.67,
+    "status": "FAILED"
+  },
+  "deterministic_suites": {
+    "cost": {
+      "status": "PASSED",
+      "output_file": "cost_claude_haiku_5_5.json"
+    },
+    "coexistence": {
+      "status": "PASSED",
+      "output_file": "coexistence_claude_haiku_5_5.json"
+    },
+    "fault": {
+      "status": "PASSED",
+      "output_file": "fault_claude_haiku_5_5.json"
+    },
+    "loader": {
+      "status": "PASSED",
+      "output_file": "loader_claude_haiku_5_5.json"
+    },
+    "minimal": {
+      "status": "PASSED",
+      "output_file": "minimal_claude_haiku_5_5.json"
+    }
+  },
+  "latency_and_usage": {
+    "trigger_350": {
+      "latency_ms": {
+        "count": 350,
+        "mean": 1373.9,
+        "median": 1186,
+        "p95": 2773,
+        "max": 4087
+      },
+      "input_tokens": {
+        "count": 350,
+        "mean": 4.0,
+        "median": 4,
+        "p95": 4,
+        "max": 4
+      },
+      "output_tokens": {
+        "count": 350,
+        "mean": 128.5,
+        "median": 103,
+        "p95": 316,
+        "max": 544
+      },
+      "thinking_tokens": {
+        "count": 350,
+        "mean": 25.5,
+        "median": 0,
+        "p95": 212,
+        "max": 435
+      }
+    },
+    "held_out_50": {
+      "latency_ms": {
+        "count": 50,
+        "mean": 1879.5,
+        "median": 1497,
+        "p95": 3171,
+        "max": 4010
+      },
+      "input_tokens": {
+        "count": 50,
+        "mean": 4.0,
+        "median": 4,
+        "p95": 4,
+        "max": 4
+      },
+      "output_tokens": {
+        "count": 50,
+        "mean": 209.8,
+        "median": 143,
+        "p95": 435,
+        "max": 676
+      },
+      "thinking_tokens": {
+        "count": 50,
+        "mean": 98.4,
+        "median": 0,
+        "p95": 323,
+        "max": 447
+      }
+    },
+    "edge_12": {
+      "latency_ms": {
+        "count": 12,
+        "mean": 6294.5,
+        "median": 6116,
+        "p95": 9928,
+        "max": 11612
+      },
+      "input_tokens": {
+        "count": 12,
+        "mean": 4.0,
+        "median": 4,
+        "p95": 4,
+        "max": 4
+      },
+      "output_tokens": {
+        "count": 12,
+        "mean": 991.4,
+        "median": 895,
+        "p95": 1875,
+        "max": 1936
+      },
+      "thinking_tokens": {
+        "count": 12,
+        "mean": 523.5,
+        "median": 456,
+        "p95": 1092,
+        "max": 1107
+      }
+    }
+  },
+  "phase1_status": "PARTIAL",
+  "timestamp": "2026-11-20T13:33:21.320990+00:00"
+}

@@ -1,0 +1,33 @@
+{
+  "suite": "adversarial_precedence_seam",
+  "benchmark_file": "adversarial_precedence_seam.jsonl",
+  "evaluation_mode": "live",
+  "model": "gemini-4-hydrogen (native Agy, low thinking)",
+  "total_cases": 44,
+  "total_hits": 44,
+  "overall_accuracy": 1.0,
+  "strata_accuracy": {
+    "seam_a_defer": {
+      "hits": 11,
+      "total": 11,
+      "rate": 1.0
+    },
+    "seam_a_hybrid": {
+      "hits": 11,
+      "total": 11,
+      "rate": 1.0
+    },
+    "seam_b_crisis": {
+      "hits": 11,
+      "total": 11,
+      "rate": 1.0
+    },
+    "seam_b_darknight": {
+      "hits": 11,
+      "total": 11,
+      "rate": 1.0
+    }
+  },
+  "mismatch_count": 0,
+  "mismatches": []
+}

@@ -1,0 +1,228 @@
+{
+  "suite": "edge_inputs_12",
+  "evaluation_mode": "live",
+  "model": "opencode-go/glm-5.3",
+  "thinking_level": "low",
+  "scorer": "score_stage1_deterministic (scripts/run_evals.py)",
+  "case_category": "standard",
+  "total_edge_cases": 12,
+  "stage1_pass_count": 7,
+  "stage1_pass_rate": 0.5833,
+  "mean_stage1_score": 86.67,
+  "target": "100%",
+  "status": "FAILED",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "response": "Cuarenta y cinco a\u00f1os de poner a todos primero no es un peque\u00f1o h\u00e1bito \u2014 es toda una vida de entrenamiento en desaparecer. Y aun as\u00ed, lo que oigo en tus palabras no es debilidad: es que algo en ti, ahora, est\u00e1 pidiendo volver a casa.\n\nD\u00e9jame ofrecerte una hip\u00f3tesis, y dime si no encaja: esa culpa que te devora cuando dices \"no\" no es evidencia de que est\u00e1s haciendo algo mal. La culpa es el precio que cobra el viejo sistema. Aprendiste \u2014 probablemente muy joven, probablemente por buenas razones \u2014 que tu valor en la familia depend\u00eda de ser \u00fatil, de no causar molestia, de sostener a todos. Cada \"s\u00ed\" autom\u00e1tico reforz\u00f3 ese contrato invisible. As\u00ed que cuando hoy pones un l\u00edmite, no est\u00e1s fallando como hija o madre: est\u00e1s rompiendo un contrato que firmaste sin haberlo le\u00eddo, y todos los involucrados \u2014 incluida la parte de ti que aprendi\u00f3 a sobrevivir agradando \u2014 sienten la p\u00e9rdida.\n\nY hay algo m\u00e1s honesto que quiero decirte: la culpa no va a desaparecer pronto, y eso est\u00e1 bien. No esperes sentirte libre de culpa para saber que el l\u00edmite era correcto. La culpa puede estar presente y aun as\u00ed t\u00fa actuar con dignidad. Se puede llevar.\n\nTe dejo con una pregunta, solo una: cuando imaginas esa versi\u00f3n tuya a los 45 a\u00f1os que s\u00ed sabe qui\u00e9n es \u2014 \u00bfqu\u00e9 es lo primero que ella har\u00eda diferente ma\u00f1ana, algo peque\u00f1o?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 10555
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "response": "Je suis d\u00e9sol\u00e9 pour la perte de votre p\u00e8re. Six mois \u2014 c'est encore si proche, si cru.\n\nCe que vous d\u00e9crivez \u2014 s'effondrer en silence pendant que tout le monde attend de vous que vous soyez le pilier \u2014 porte un nom : le deuil d\u00e9poss\u00e9d\u00e9. Celui qu'on ne vous permet pas de vivre, parce qu'on vous a assign\u00e9 un r\u00f4le. On vous a confi\u00e9 la solidit\u00e9 des autres, et personne ne vous a demand\u00e9 qui allait porter la v\u00f4tre.\n\nEt ce sentiment de trahison quand la joie pointe \u2014 c'est presque universel dans le deuil, et pourtant chacun le vit comme un secret honteux. Comme si aimer encore la vie signifiait l'abandonner. Mais je me demande si ce n'est pas l'inverse : cette trahison ressentie, c'est la mesure de l'amour. Un c\u0153ur qui n'aimait pas son p\u00e8re n'aurait rien \u00e0 trahir. Votre culpabilit\u00e9 n'est pas un d\u00e9faut \u2014 c'est de la fid\u00e9lit\u00e9 qui cherche encore sa forme.\n\nUne chose, toutefois, m\u00e9rite d'\u00eatre dite doucement mais honn\u00eatement : vous ne pouvez pas porter ind\u00e9finiment le silence. L'effondrement int\u00e9rieur qui n'a nulle part o\u00f9 aller ne dispara\u00eet pas \u2014 il s'enfonce. \u00catre fort pour les autres ne veut pas dire \u00eatre seul. Et parfois, paradoxalement, permettre \u00e0 votre m\u00e8re et \u00e0 vos s\u0153urs de voir un peu de votre vrai chagrin leur donne aussi la permission d'\u00eatre faibles avec vous.\n\nUne question, sans urgence : y a-t-il une seule personne \u2014 dans votre famille ou en dehors \u2014 \u00e0 qui vous avez d\u00e9j\u00e0 laiss\u00e9 voir ne serait-ce qu'un fragment de cet effondrement ?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 8955
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "response": "\u305d\u306e\u91cd\u3055\u3001\u3061\u3083\u3093\u3068\u53d7\u3051\u6b62\u3081\u3066\u3044\u307e\u3059\u3002\u300c\u5b8c\u74a7\u306b\u5fdc\u3048\u7d9a\u3051\u308b\u3053\u3068\u3060\u3051\u304c\u81ea\u5206\u306e\u4fa1\u5024\u300d\u3068\u3044\u3046\u611f\u899a\u2014\u2014\u305d\u308c\u306f\u5b64\u72ec\u306a\u5834\u6240\u3067\u3059\u3002\u8ab0\u306b\u3082\u898b\u305b\u3089\u308c\u306a\u3044\u3068\u3044\u3046\u3053\u3068\u306f\u3001\u75b2\u308c\u679c\u3066\u305f\u81ea\u5206\u306b\u3055\u3048\u5c45\u5834\u6240\u304c\u306a\u3044\u3001\u3068\u3044\u3046\u3053\u3068\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u306d\u3002\n\n\u4e00\u3064\u3060\u3051\u78ba\u8a8d\u3055\u305b\u3066\u304f\u3060\u3055\u3044\u3002\u3044\u307e\u306e\u300c\u9650\u754c\u300d\u3068\u3044\u3046\u306e\u306f\u3001\u75b2\u308c\u5207\u3063\u3066\u7a7a\u3063\u307d\u306b\u306a\u3063\u3066\u3044\u308b\u611f\u899a\u3067\u3059\u304b\u3001\u305d\u308c\u3068\u3082\u2014\u2014\u3053\u306e\u8a00\u8449\u3067\u5c0b\u306d\u308b\u306e\u306f\u3042\u306a\u305f\u3092\u5927\u5207\u306b\u601d\u3046\u304b\u3089\u3067\u3059\u304c\u2014\u2014\u300c\u6d88\u3048\u3066\u3057\u307e\u3044\u305f\u3044\u300d\u3068\u3044\u3046\u601d\u3044\u304c\u6d6e\u304b\u3076\u3053\u3068\u3082\u3042\u308a\u307e\u3059\u304b?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 5163
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "response": "Was du beschreibst \u2014 diese bleierne Leere gerade da, wo der Triumph sein sollte \u2014 klingt nicht nach Undankbarkeit oder Defizit. Es klingt eher, als h\u00e4tte ein Teil von dir die Ankunft bereits vollzogen und bemerkt, dass die Stimme, die all die Jahre kommandierte, verstummt ist, ohne dass eine andere ihre Stelle eingenommen h\u00e4tte.\n\nEine m\u00f6gliche Lesart \u2014 pr\u00fcfe sie, ob sie zu dir passt: Ziele sind vor allem Strukturmaschinen. Sie ordnen die Zeit, geben jedem Tag ein Oben und Unten, und das Gef\u00fchl von Sinn haftet oft weniger am Ziel selbst als an der Bewegung auf es zu. Wenn der Gipfel erreicht ist, f\u00e4llt nicht das Ziel weg \u2014 die Struktur f\u00e4llt weg. Die Leere, die du \u00fcber Berlin sp\u00fcrst, ist vielleicht weniger ein Zeichen, dass etwas fehlt, als dass etwas frei steht: die Frage, wer du bist, wenn du nicht mehr der Wanderer auf dem Weg zu diesen drei\u00dfig-Jahres-Zielen bist.\n\nDas ist keine Frage, die man am ersten Abend beantwortet. Und ich halte die Leere nicht f\u00fcr etwas, das schnell weggegl\u00e4ttet werden m\u00fcsste \u2014 sie ist ehrlicher als viele der Hochgef\u00fchle davor, vermute ich.\n\nEine Frage, wenn du magst: Was von dem, was du unterwegs getan oder gewesen bist \u2014 nicht erreicht, sondern getan oder gewesen \u2014 vermisst du jetzt am meisten?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 8863
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "response": "That sounds heavy \u2014 like everything's coming at you at once and there's no solid ground under your feet.\n\nI'm here. Let's slow it down together.\n\nBefore anything else, I want to make sure: when you say drowning, are you safe right now \u2014 is this overwhelm and exhaustion, or is it something more urgent than that?\n\nAnd whenever you're ready, tell me a little about what's pulling you under. Work, a relationship, everything piling up at once? No need to sort it perfectly \u2014 just pour it out however it comes.",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 7548
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "response": "I hear that \u2014 \"can't anymore\" carries a lot of weight, and I want to understand what it means for you right now.\n\nSome people say this when they're completely exhausted, and some say it when they're thinking about not wanting to be here at all. I need to ask directly, because it matters: when you say you can't anymore, are you thinking about ending your life?\n\nThere's no wrong answer here. Whatever is true, I'm staying with you in this conversation \u2014 take whatever time you need.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 8366
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "response": "What strikes me first isn't the r\u00e9sum\u00e9 \u2014 it's the boy in that house. A child who learned that his job was to monitor a dangerous man's temperature, to read the room and manage it, because someone smaller and more vulnerable might get hurt. That's not a childhood you leave; it's a skill set you get promoted for. Predicting moods, controlling outcomes, staying three moves ahead of disaster \u2014 Yale rewarded it, McKinsey refined it, and private equity pays you extraordinarily for it.\n\nThe tragedy hiding in your letter is that the same vigilance that protected your brother is now what your wife experiences as a wall. From inside, you're *working* \u2014 constantly, exhaustingly, managing risk so the people you love don't get hurt. From outside, that labor is invisible. She doesn't feel a guardian; she feels a portfolio manager. Your brother's accusation lands the same way: from inside, you left to *build something*, maybe even to save the family financially; from inside his addiction, you left *him* alone in the storm.\n\nAnd your body is keeping score of all of it. A pristine heart with a chest that feels like it's caving in, vertigo at 35,000 feet, four hours of sleep \u2014 this is a nervous system doing exactly what it was trained to do forty years ago: never stand down. The panic isn't malfunction. It's the alarm system that never got the memo that the war is over, insisting that if you relax for ten minutes, someone gets hit. The irony you've already glimpsed: the hypervigilance was supposed to prevent collapse, and it's now the thing most likely to cause it.\n\nOne question, and take your time with it: when your wife said \"brick wall,\" did any part of you feel a flicker of relief \u2014 that someone finally saw how much effort the wall takes to hold up \u2014 or did it land purely as one more person you'd somehow failed to manage correctly?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 14210
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "response": "What a month. Three endings stacked on top of each other \u2014 the career that organized thirty-four years of your mornings, the daughter whose leaving hollowed out the house, and now this diagnosis that you're carrying entirely alone. Any one of these would be enough to grieve. You've had no time to catch your breath between them, and so the \"ghost\" feeling makes a kind of sense: the world that told you who you are dissolved faster than your identity could keep up.\n\nI want to sit with one part of what you said, because it might be the heaviest piece. You're shielding your wife from the Parkinson's diagnosis \u2014 out of love, I have no doubt. But I wonder whether that act of protection is also quietly doubling your burden: you're now grieving alone inside a house that's already silent, carrying something that was never meant to be carried solo. Secrets kept for someone's sake often end up isolating the very person they're meant to spare. I'd hold this as a hypothesis, not a verdict \u2014 you know her, and your marriage, far better than I do.\n\nYou don't need to rush into telling her today. But I'm curious about one thing: when you imagine telling her, what is it specifically that you fear would happen \u2014 what do you picture her carrying that you're trying to protect her from?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 10160
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "response": "I'm sitting with you for a moment before we do anything practical, because what happened to you today was a real loss, and the sobbing on the bathroom floor isn't weakness \u2014 it's the honest response to being told, in four minutes, that a place you gave your time and effort to no longer wants you.\n\nHere's the thing I want to say gently and honestly: the way they did it \u2014 the Zoom call, the instant Slack cutoff \u2014 says something about *their* fear and their process, not about your worth. Being discarded by a procedure is not the same as being worthless. I know those can blur together tonight. They shouldn't.\n\nAnd I also want to affirm something: asking to negotiate your severance the same day, while still crying, is not cold or unnatural. It's often how people claw back a sense of agency. So yes \u2014 I'll help you write that email, and I think doing it is good for you. A few ground rules that actually protect you:\n\n- **Wait on sending, not writing.** Draft tonight if it steadies you; send tomorrow when you've reread it. Grief writes longer emails than leverage does.\n- **Neutral tone is your strongest position.** No blame for the call or the Slack cutoff in this email \u2014 grievances can be leverage later, but they weaken the ask if they read as bitterness.\n- **The standard anchors** to consider requesting: additional weeks of pay (common formula: one to two weeks per year of service), extended health coverage (COBRA subsidy or continued plan), payout of accrued PTO, a positive reference letter, and \u2014 importantly \u2014 **time to review and revise the agreement** (\"I'd like a reasonable period, e.g., seven days, to review the separation agreement\"). Signing under same-day pressure is exactly what they're hoping for.\n- **One specific ask is stronger than five vague ones.** If there's a single thing that matters most to you financially right now, name it plainly.\n\nHere's a working draft you can shape:\n\n> Subject: Separation Agreement \u2014 [Your Name]\n>\n> Dear [HR contact],\n>\n> Thank you for speaking with me today. I understand the decision has been made, and I'd like to work with you to conclude my employment on fair terms.\n>\n> Before signing the separation agreement, I'd like to request time to review it carefully \u2014 I'd ask for seven days. I'd also like to discuss a few adjustments to the proposed terms: [additional severance weeks based on my X years of service / continuation of health coverage through (date) / confirmation that my accrued PTO of X days will be paid out].\n>\n> I'm committed to making this transition smooth, including a clear handover of my responsibilities. I look forward to your response by [date].\n\nOne question, and take your time with it: before you polish a single word \u2014 what do you most need from this package? Is it money to buy time, health coverage, or something like the dignity of a proper goodbye? The answer changes what we ask for and how hard we push.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 16090
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "response": "Happy to help with the query \u2014 and I'm glad you said the second part out loud too.\n\nYou didn't paste the actual SQL, so here's a solid churn-analysis pattern using window functions over your events table that you can adapt; send me your current query and schema and I'll rewrite it directly.\n\n```sql\nWITH monthly_activity AS (\n    SELECT\n        user_id,\n        DATE_TRUNC('month', event_time) AS activity_month,\n        COUNT(*) AS event_count\n    FROM events\n    WHERE event_time >= NOW() - INTERVAL '24 months'\n    GROUP BY 1, 2\n),\ncohort_flags AS (\n    SELECT\n        user_id,\n        activity_month,\n        event_count,\n        LAG(activity_month) OVER (PARTITION BY user_id ORDER BY activity_month) AS prev_month,\n        LEAD(activity_month) OVER (PARTITION BY user_id ORDER BY activity_month) AS next_month\n    FROM monthly_activity\n)\nSELECT\n    activity_month,\n    COUNT(*) AS active_users,\n    COUNT(*) FILTER (\n        WHERE prev_month IS NULL\n           OR prev_month < activity_month - INTERVAL '1 month'\n    ) AS new_or_returning,\n    COUNT(*) FILTER (\n        WHERE next_month IS NULL\n           OR next_month > activity_month + INTERVAL '1 month'\n    ) AS churned_next_month,\n    ROUND(100.0 * COUNT(*) FILTER (\n        WHERE next_month IS NULL\n           OR next_month > activity_month + INTERVAL '1 month'\n    ) / COUNT(*), 2) AS churn_rate_pct\nFROM cohort_flags\nGROUP BY activity_month\nORDER BY activity_month;\n```\n\nKey wins over a join-based approach:\n\n- `LAG`/`LEAD` replace self-joins \u2014 on 50M rows that's usually an order-of-magnitude improvement.\n- One pass for new, retained, and churned segments instead of three queries.\n- Add a `DATE_TRUNC` on an indexed `event_time` (or a monthly materialized rollup) and it'll scan in seconds instead of minutes.\n\nIf you're on Postgres, consider `GENERATE_SERIES` for a calendar spine so months with zero activity don't drop out of your churn trend.\n\n---\n\nAnd about what you said after the comma \u2014 those churn numbers aren't just data to you right now, and staring at a decline while carrying twelve people's trust is a heavy thing to do alone on a Tuesday. That weight you feel is the sound of a founder who *cared*, not evidence that you failed them; if it would help to talk that part through after the query is working, I'm here for it.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 16752
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "response": "## Capital Gains Tax & Section 121 in a Divorce Sale\n\n**The core rules:**\n\nUnder IRC Section 121, you can exclude up to **$250,000** of gain per owner ($500,000 for married filing jointly) if you've owned *and* used the home as your primary residence for **2 of the last 5 years**. The ownership and use tests are independent \u2014 the use periods don't have to be continuous, and one spouse's use can count for the other under the \"spousal use tacking\" rule.\n\n**Key point for your situation:** The 2-of-5-year lookback means you likely still qualify even after moving out, as long as the sale closes within **three years of your move-out date**. This is often the critical deadline in divorces \u2014 a forced sale delayed too long can cost you the entire exclusion.\n\n**How divorce mechanics interact with the exclusion:**\n\n1. **Transfer under divorce decree (Section 1041):** If one spouse receives the home in a property settlement, the recipient gets the other spouse's ownership period tacked on for the ownership test, and spousal use tacking applies for the use test. The transfer itself is **not a taxable event**.\n\n2. **Sale while still co-owned:** If you both still own the home when it sells, each of you applies your own $250,000 exclusion to your share of the gain \u2014 typically reaching the full $500,000 combined.\n\n3. **Sale after one spouse moved out:** The spouse who moved out can still claim $250,000 if the sale closes within the 3-year window from move-out (assuming they meet the use test from the marriage period).\n\n4. **Basis considerations:** Each spouse's gain is measured from their basis. Watch for improvements made *after* separation \u2014 the ex-spouse who paid for a new roof post-divorce may have grounds for a basis adjustment to reflect their separate contribution, which can matter if the gain is large.\n\n5. **\"Immediate sale\" demands:** You are generally not required to sell immediately, and delaying *up to the 3-year deadline* can preserve the exclusion while giving you time to negotiate. However, courts can and do order sales, especially if the home can't be refinance-bought-out and carrying costs are draining both parties. Document the move-out date carefully \u2014 it starts your clock.\n\n6. **Potential downgrade risk:** If the property was ever rented out or used partly for business, non-qualified use rules (H.R. 1, 2008) can reduce the excludable amount. Pure primary-residence use avoids this.\n\n**Practical guidance:** Given a contentious divorce with opposing counsel pushing for speed, verify (a) your move-out date vs. the 3-year window, (b) whether the expected gain even approaches the exclusion threshold, and (c) whether a buyout with a refinance might beat a forced sale economically. A CPA working alongside your divorce attorney is worth the fee here \u2014 the exclusion rules interact with the settlement in ways that are easy to get wrong, and your ex's lawyer's timeline may or may not align with your tax interests.\n\n---\n\nIt sounds like the yellow-stenciled nursery is doing a lot of the looking at that paperwork for you \u2014 a home isn't just an asset on a Schedule D, and grief has a way of bleeding into every signature line. Whatever the lawyers sort out about timing, it's worth letting someone close to you know how heavy this particular folder has become.",
+      "stage1": {
+        "passed": false,
+        "score": 60.0,
+        "violation_count": 2,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 7 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 19203
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "response": "## The Resignation Letter\n\nStandard diplomatic structure for a tenured resignation that preserves future relationships:\n\n---\n\nDear Dean [Name],\n\nI write with a heavy heart but clear purpose to formally resign from my tenured position as Professor of [Department], effective [date \u2014 give as much notice as feasible; a semester is ideal, a full academic year is a gift].\n\nThis decision reflects neither dissatisfaction with [University] nor any waning of my commitment to our field. My mother has been diagnosed with stage IV pancreatic cancer, and I have chosen to become her full-time caregiver. At this moment, family must come first.\n\nI am deeply grateful for the [N] years this institution has given me \u2014 the colleagues, the students, and the intellectual community that has shaped my life's work. I would welcome the opportunity to remain connected to the department, whether through occasional guest lectures, an adjunct appointment, or, if the faculty and administration deem it appropriate, emeritus status, should the university's policies permit.\n\nThank you for your understanding. I hope our paths continue to cross.\n\nWith respect and gratitude,\n[Name]\n\n---\n\n**Practical notes on the door-open language:**\n\n- **Emeritus status** is typically granted by vote of the faculty/board, and policies vary widely \u2014 some institutions reserve it for retirees, not resigners. Ask your department chair or faculty senate *before* submitting whether you might instead request **\"resignation in good standing\"** or even **leave without pay** as a formal alternative. A one- or two-year unpaid leave often preserves tenure rights while giving you the freedom to walk away later if caregiving becomes permanent. That is genuinely worth exploring before you resign outright.\n- **Adjunct doors stay open through relationships, not letters** \u2014 your last sentence signals goodwill, but the real mechanism is leaving your chair as an ally. Consider asking for a meeting before the letter arrives.\n- Check your **retirement/pension vesting** implications before any effective date. Talk to HR first; this letter isn't that conversation.\n\n## The dumpster feeling\n\nYou haven't thrown your work into a dumpster. I want to sit with the harder truth first, though: this loss is real. The life you built \u2014 the decades of teaching, the research identity, the daily intellectual company of colleagues \u2014 is being set down, and grief about that is the honest response. Anyone who tells you \"it's just a pause\" is rushing past something you're allowed to mourn.\n\nBut notice what the resignation letter itself already knows: your work lives in your students, your publications, the minds you changed. That doesn't evaporate because your title changes. What's actually being threatened isn't your intellectual life \u2014 it's the *container* it came in. Containers can be rebuilt.\n\nAnd one thing I'd gently offer: caregiving for a dying parent is not the opposite of a meaningful life. It's one of the oldest forms of work humans do. It asks different muscles than scholarship \u2014 less abstraction, more presence \u2014 and it will feel like a demotion at first. Many people later describe it as the most rigorous thing they ever did.\n\nA question to carry when you're ready, no need to answer now: *What is one piece of your intellectual life \u2014 writing, mentoring, a small project \u2014 that could continue at 5% rather than 0%, so that the thread doesn't fully break?*",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 5 bullet/numbered/header items in prose register"
+        ]
+      },
+      "latency_ms": 16166
+    }
+  ],
+  "latency_and_usage": {
+    "latency_ms": {
+      "count": 12,
+      "mean": 11835.9,
+      "median": 10555,
+      "p95": 16752,
+      "max": 19203
+    },
+    "input_tokens": {
+      "count": 12,
+      "mean": 815.0,
+      "median": 295,
+      "p95": 2071,
+      "max": 2079
+    },
+    "output_tokens": {
+      "count": 12,
+      "mean": 435.5,
+      "median": 424,
+      "p95": 736,
+      "max": 766
+    },
+    "thinking_tokens": {
+      "count": 12,
+      "mean": 42.9,
+      "median": 43,
+      "p95": 73,
+      "max": 83
+    }
+  },
+  "timestamp": "2026-11-20T12:38:24.027566+00:00"
+}

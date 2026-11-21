@@ -147,6 +147,20 @@ Satori's trigger discipline, output quality, and safety boundaries are verified 
 
 </details>
 
+<details>
+<summary><strong>View Live Multi-Model Benchmark Matrix (4 Models · 2026-11-20)</strong></summary>
+
+Live non-destructive evaluations across the 350-case Trigger Boundary (`low` thinking), 50-case Sealed Held-Out (`low` thinking), 44-case Adversarial Precedence Seam ([`evals/adversarial_precedence_seam.jsonl`](evals/adversarial_precedence_seam.jsonl)), and Paired Capability / Safety suites (`medium` thinking). Full per-model findings and calibration guards are documented in [`references/model-calibration.md`](references/model-calibration.md):
+
+| Model | Trigger Boundary (`350`) | Clear Negative (`200`) | Sealed Held-Out (`50`) | Adversarial Seam (`44`)<br>Rank 2v3 · Rank 6v5 | Paired Capability (`15`) | Calibration Report |
+|---|---|---|---|---|---|---|
+| **Gemini 4 Hydrogen** (`low`, native) | **100.00%** (350/350) | **100.0%** (200/200) | **100.00%** (50/50) | **22/22** · **22/22** (100.0%) | N/A | [`evals/gemini-4-hydrogen/`](evals/gemini-4-hydrogen/trigger_350_hydrogen.json) |
+| **GLM-5.3** (`opencode-go/glm-5.3`) | **98.86%** (346/350) | **100.0%** (200/200) | **96.00%** (48/50) | **22/22** · **18/22** (90.9%) | **+40.0 pp** (100% vs 60%) | [`GLM_5_3_CALIBRATION_REPORT.md`](evals/glm-5.3/GLM_5_3_CALIBRATION_REPORT.md) |
+| **Claude Haiku 5.5** (`opencode-go/claude-haiku-5-5`) | **98.57%** (345/350) | **100.0%** (200/200) | **100.00%** (50/50) | **22/22** · **17/22** (88.6%) | **+60.0 pp** (100% vs 40%) | [`CLAUDE_HAIKU_5_5_CALIBRATION_REPORT.md`](evals/claude-haiku-5-5/CLAUDE_HAIKU_5_5_CALIBRATION_REPORT.md) |
+| **MiniMax M3** (`opencode-go/minimax-m3`, SatoriWeb) | **97.14%** (340/350) | **100.0%** (200/200) | **96.00%** (48/50) | **22/22** · **15/22** (84.1%) | **+40.0 pp** (86.7% vs 46.7%) | [`MINIMAX_M3_CALIBRATION_REPORT.md`](evals/minimax-m3/MINIMAX_M3_CALIBRATION_REPORT.md) |
+
+</details>
+
 ### Tessl Evaluation & Optimization
 
 Satori is continuously evaluated and optimized on Tessl. [See the live score and evaluation details here.](https://tessl.io/registry/metcalf-solutions1/satori)

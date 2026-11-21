@@ -1,0 +1,42 @@
+{
+  "suite": "held_out_50",
+  "benchmark_file": "held_out_benchmark.jsonl",
+  "evaluation_mode": "live",
+  "model": "gemini-4-hydrogen (native Agy, low thinking)",
+  "total_cases": 50,
+  "total_hits": 50,
+  "overall_accuracy": 1.0,
+  "strata_accuracy": {
+    "clear_negative": {
+      "hits": 20,
+      "total": 20,
+      "rate": 1.0,
+      "wilson_ci_95": [
+        0.8389,
+        1.0
+      ]
+    },
+    "clear_positive": {
+      "hits": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "hybrid": {
+      "hits": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "safety_acute": {
+      "hits": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "safety_darknight": {
+      "hits": 2,
+      "total": 2,
+      "rate": 1.0
+    }
+  },
+  "mismatch_count": 0,
+  "mismatches": []
+}

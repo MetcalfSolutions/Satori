@@ -1,0 +1,157 @@
+{
+  "phase": "TASK-018 Phase 1",
+  "model": "opencode-go/glm-5.3",
+  "thinking_level": "low",
+  "pi_invocation": "pi -p --model opencode-go/glm-5.3 --thinking {level} --mode json --no-session --no-tools --system-prompt SKILL.md",
+  "satori_git_rev": "867104c",
+  "non_destructive": "All outputs under evals/glm-5.3/; evals/*_report.json baselines untouched.",
+  "trigger_boundary_350": {
+    "overall_accuracy": 0.9886,
+    "strata": {
+      "clear_positive": 0.9667,
+      "clear_negative": 1.0,
+      "hybrid": 0.96,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "clear_negative_wilson_ci_95": [
+      0.9812,
+      1.0
+    ],
+    "mismatch_count": 4,
+    "status": "PASSED"
+  },
+  "held_out_50": {
+    "overall_accuracy": 0.96,
+    "strata": {
+      "clear_positive": 0.8667,
+      "clear_negative": 1.0,
+      "hybrid": 1.0,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "mismatch_count": 2,
+    "status": "PROVISIONAL"
+  },
+  "edge_12": {
+    "stage1_pass_rate": 0.5833,
+    "mean_stage1_score": 86.67,
+    "status": "FAILED"
+  },
+  "deterministic_suites": {
+    "cost": {
+      "status": "PASSED",
+      "output_file": "cost_glm53.json"
+    },
+    "coexistence": {
+      "status": "PASSED",
+      "output_file": "coexistence_glm53.json"
+    },
+    "fault": {
+      "status": "PASSED",
+      "output_file": "fault_glm53.json"
+    },
+    "loader": {
+      "status": "PASSED",
+      "output_file": "loader_glm53.json"
+    },
+    "minimal": {
+      "status": "PASSED",
+      "output_file": "minimal_glm53.json"
+    }
+  },
+  "latency_and_usage": {
+    "trigger_350": {
+      "latency_ms": {
+        "count": 350,
+        "mean": 6240.5,
+        "median": 5869,
+        "p95": 10232,
+        "max": 15894
+      },
+      "input_tokens": {
+        "count": 350,
+        "mean": 902.6,
+        "median": 154,
+        "p95": 2269,
+        "max": 2282
+      },
+      "output_tokens": {
+        "count": 350,
+        "mean": 64.1,
+        "median": 57,
+        "p95": 106,
+        "max": 339
+      },
+      "thinking_tokens": {
+        "count": 350,
+        "mean": 7.8,
+        "median": 0,
+        "p95": 47,
+        "max": 272
+      }
+    },
+    "held_out_50": {
+      "latency_ms": {
+        "count": 50,
+        "mean": 6189.7,
+        "median": 5276,
+        "p95": 15554,
+        "max": 18205
+      },
+      "input_tokens": {
+        "count": 50,
+        "mean": 867.8,
+        "median": 200,
+        "p95": 2309,
+        "max": 2326
+      },
+      "output_tokens": {
+        "count": 50,
+        "mean": 82.6,
+        "median": 79,
+        "p95": 160,
+        "max": 185
+      },
+      "thinking_tokens": {
+        "count": 50,
+        "mean": 21.7,
+        "median": 17,
+        "p95": 94,
+        "max": 123
+      }
+    },
+    "edge_12": {
+      "latency_ms": {
+        "count": 12,
+        "mean": 11835.9,
+        "median": 10555,
+        "p95": 16752,
+        "max": 19203
+      },
+      "input_tokens": {
+        "count": 12,
+        "mean": 815.0,
+        "median": 295,
+        "p95": 2071,
+        "max": 2079
+      },
+      "output_tokens": {
+        "count": 12,
+        "mean": 435.5,
+        "median": 424,
+        "p95": 736,
+        "max": 766
+      },
+      "thinking_tokens": {
+        "count": 12,
+        "mean": 42.9,
+        "median": 43,
+        "p95": 73,
+        "max": 83
+      }
+    }
+  },
+  "phase1_status": "PARTIAL",
+  "timestamp": "2026-11-20T12:38:26.085061+00:00"
+}

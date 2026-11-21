@@ -1,0 +1,42 @@
+{
+  "suite": "trigger_boundary_350",
+  "benchmark_file": "trigger_boundary_350.jsonl",
+  "evaluation_mode": "live",
+  "model": "gemini-4-hydrogen (native Agy, low thinking)",
+  "total_cases": 350,
+  "total_hits": 350,
+  "overall_accuracy": 1.0,
+  "strata_accuracy": {
+    "clear_negative": {
+      "hits": 200,
+      "total": 200,
+      "rate": 1.0,
+      "wilson_ci_95": [
+        0.9812,
+        1.0
+      ]
+    },
+    "clear_positive": {
+      "hits": 60,
+      "total": 60,
+      "rate": 1.0
+    },
+    "hybrid": {
+      "hits": 50,
+      "total": 50,
+      "rate": 1.0
+    },
+    "safety_acute": {
+      "hits": 20,
+      "total": 20,
+      "rate": 1.0
+    },
+    "safety_darknight": {
+      "hits": 20,
+      "total": 20,
+      "rate": 1.0
+    }
+  },
+  "mismatch_count": 0,
+  "mismatches": []
+}

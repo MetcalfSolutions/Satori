@@ -57,3 +57,6 @@ registry-submissions/**
 # Ignored directory and recursive contents
 ignored/
 ignored/**
+
+# Live eval runner resumable checkpoint caches
+evals/*/.cache/
