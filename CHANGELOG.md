@@ -27,7 +27,7 @@ No change to `SKILL.md`, the reference files, the release archives, or any `eval
 - **Detector Fix: `S1.4_MARKDOWN_LIST_SLOP` on Hybrid Replies**:
   - `mixed_intent` / `HYBRID` replies may structure their technical portion (fenced code, quoted drafts, section headers, task lists). A list still fails when most of its items are about the person's inner life. Pure introspective turns keep the strict prose-only lock. `evals/rubric.md` documents the rule.
 - **Offline Test Suite (`tests/`)**:
-  - 165 `pytest` tests (about 9 seconds, zero API keys, zero network) covering both detector fixes against real replies from the 2026-11-20 live campaign, positive-violation regressions, all four backends, checkpoint resume, and an end-to-end mock run.
+  - About 170 `pytest` tests (roughly 10 seconds, zero API keys, zero network) covering both detector fixes against real replies from the 2026-11-20 live campaign, positive-violation regressions, all four backends, checkpoint resume, and an end-to-end mock run.
 
 ---
 
