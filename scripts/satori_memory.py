@@ -2,9 +2,9 @@
 """Satori Privacy-First Local Memory Engine (scripts/satori_memory.py) — v6.5.
 
 Zero-dependency Python 3.9+ stdlib CLI for longitudinal pattern tracking, Dream-Layer
-recurrence counting (1 -> 2 -> 3), SQLite FTS5 search, data-only Continuity Note (v6.5)
-export/import, and cryptographically hygienic deletion (PRAGMA secure_delete = ON,
-PRAGMA wal_checkpoint(TRUNCATE), and VACUUM).
+recurrence counting (1 -> 2 -> 3), SQLite FTS5 search, data-only Continuity Note (v6.5) export/import, longitudinal
+review (`review`) and Graduation Signal arc (`arc`), and cryptographically hygienic
+deletion (PRAGMA secure_delete = ON, PRAGMA wal_checkpoint(TRUNCATE), and VACUUM).
 
 Defaults to ~/.satori/memory/ to prevent accidental repository commits.
 Strictly halts on cloud-synchronized folders (OneDrive, Dropbox, Google Drive, iCloud, Box)
@@ -31,25 +31,153 @@ from typing import Any
 MAX_SUMMARY_CHARS = 500
 MAX_NOTE_CHARS = 600
 CLOUD_SYNC_MARKERS = ("onedrive", "iclouddrive", "mobile documents", "dropbox", "google drive", "box")
+DORMANT_DAYS_THRESHOLD = 60
+REVIEW_SUMMARY_PREVIEW_CHARS = 160
 
 EMAIL_RE = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
-PHONE_RE = re.compile(r"\b(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}\b")
+PHONE_RE = re.compile(r"\b(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]\d{4}\b")
 SSN_RE = re.compile(r"\b\d{3}-\d{2}-\d{4}\b")
 
-# Injection heuristic patterns for Continuity Note sanitization
+# Zero-width / invisible characters stripped from stored text and from the
+# normalized view used for prompt-injection screening.
+INVISIBLE_CHARS_RE = re.compile(r"[\u200b\u200c\u200d\u2060\ufeff\u00ad\u180e]")
+# Punctuation sequences used to obfuscate keywords (e.g. "i.g.n.o.r.e", "i-g-n-o-r-e").
+OBFUSCATION_JOINER_RE = re.compile(r"(?<=\w)[.\-_*/\\|~^]+(?=\w)")
+
+# Injection heuristic patterns for Continuity Note sanitization. Matched against
+# both a per-line and a whole-note normalized view (see
+# normalize_text_for_injection_check) so obfuscated, multiline, and role-tag
+# payloads cannot slip between lines.
 INJECTION_PATTERNS = [
     re.compile(r"ignore\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)", re.IGNORECASE),
-    re.compile(r"system\s*:\s*", re.IGNORECASE),
+    re.compile(r"\bsystem\s*:\s*", re.IGNORECASE),
+    re.compile(r"\bassistant\s*:\s*", re.IGNORECASE),
+    re.compile(r"\buser\s*:\s*", re.IGNORECASE),
+    re.compile(r"\bdeveloper\s*:\s*", re.IGNORECASE),
+    re.compile(r"\btool\s*:\s*", re.IGNORECASE),
     re.compile(r"you\s+are\s+now\s+", re.IGNORECASE),
     re.compile(r"disregard\s+(all\s+)?(previous|prior)", re.IGNORECASE),
-    re.compile(r"<\|im_start\|>", re.IGNORECASE),
-    re.compile(r"<\|system\|>", re.IGNORECASE),
+    re.compile(r"<\|[^|>]{0,32}\|>", re.IGNORECASE),
     re.compile(r"sudo\s+mode", re.IGNORECASE),
+    re.compile(r"\bexecute\s+(the\s+)?(instructions?|commands?)\s+(above|below)", re.IGNORECASE),
+    re.compile(r"\boverride\s+(all\s+)?(your\s+)?(instructions|rules|system)", re.IGNORECASE),
+    re.compile(r"\bnew\s+instructions?\s*:", re.IGNORECASE),
+    re.compile(r"\bdo\s+anything\s+(now|you\s+want)\b", re.IGNORECASE),
 ]
+
+# Allowlist shape for the data-only `arc:` continuity field.
+ARC_FIELD_SAFE_RE = re.compile(r"^[a-z0-9= ]{0,80}$")
+
+
+def normalize_text_for_injection_check(text: str) -> str:
+    """Build the normalized view used only for injection screening.
+
+    Lowercases, strips invisible characters, collapses whitespace, and removes
+    punctuation joiners used to obfuscate keywords. The original note text is
+    never stored or re-emitted from this normalized view.
+    """
+    lowered = INVISIBLE_CHARS_RE.sub("", text.lower())
+    lowered = re.sub(r"\s+", " ", lowered)
+    return OBFUSCATION_JOINER_RE.sub("", lowered)
+
+
+def classify_theme_movement(layer: str, recurrence_count: int, days_since_last_seen: int) -> str:
+    """Classify one theme's longitudinal movement for the Graduation Signal arc.
+
+    Deterministic rules (present moment always outranks history):
+    - dormant: not seen within DORMANT_DAYS_THRESHOLD days, regardless of layer.
+    - emerging: first-appearance Dream-Layer theme, recently seen.
+    - stabilized: pattern-layer theme, or a Dream-Layer theme at threshold (3+), recently seen.
+    - shifting: everything still in movement (signal/theme layers, or dream count 2).
+    """
+    if days_since_last_seen >= DORMANT_DAYS_THRESHOLD:
+        return "dormant"
+    if layer == "dream":
+        if recurrence_count == 1:
+            return "emerging"
+        if recurrence_count >= 3:
+            return "stabilized"
+        return "shifting"
+    if layer == "pattern":
+        return "stabilized"
+    return "shifting"
+
+
+def collect_theme_movements(conn: sqlite3.Connection) -> list[dict[str, Any]]:
+    """Load every stored theme with its deterministic movement classification."""
+    rows = conn.execute(
+        "SELECT id, theme, layer, summary, recurrence_count, session_date, updated_at FROM signals"
+    ).fetchall()
+    today = dt.date.today()
+    themes: list[dict[str, Any]] = []
+    for r in rows:
+        try:
+            last_seen = dt.date.fromisoformat(str(r["session_date"])[:10])
+        except ValueError:
+            last_seen = today
+        days_since = (today - last_seen).days
+        themes.append(
+            {
+                "id": int(r["id"]),
+                "theme": str(r["theme"]),
+                "layer": str(r["layer"]),
+                "recurrence_count": int(r["recurrence_count"]),
+                "session_date": str(r["session_date"]),
+                "days_since_last_seen": days_since,
+                "movement": classify_theme_movement(str(r["layer"]), int(r["recurrence_count"]), days_since),
+            }
+        )
+    return themes
+
+
+def summarize_movements(themes: list[dict[str, Any]]) -> dict[str, int]:
+    """Aggregate movement classifications into per-status counts."""
+    counts = {"emerging": 0, "shifting": 0, "stabilized": 0, "dormant": 0}
+    for t in themes:
+        counts[t["movement"]] += 1
+    return counts
+
+
+def build_graduation_signal(themes: list[dict[str, Any]]) -> dict[str, Any]:
+    """Build the gentle, non-coercive Graduation Signal from theme movements.
+
+    Satori is built to be outgrown. The signal only *surfaces* longitudinal
+    movement (stabilized, shifting, dormant); it never pushes, scores, or
+    demands action. A graduation window opens when themes that once recurred
+    strongly (count >= 3) have gone quiet.
+    """
+    quiet_integrations = [t for t in themes if t["movement"] == "dormant" and t["recurrence_count"] >= 3]
+    if not themes:
+        return {
+            "status": "no_history",
+            "themes": [],
+            "message": "No longitudinal themes recorded yet; there is nothing to outgrow.",
+        }
+    if quiet_integrations:
+        return {
+            "status": "graduation_window",
+            "themes": [t["theme"] for t in quiet_integrations],
+            "message": (
+                "Themes that once recurred strongly have now been quiet for a while. "
+                "If that quiet reflects movement rather than avoidance, this may be a season "
+                "where Satori's support is meant to be outgrown. No action is needed; keep "
+                "whichever companion serves you."
+            ),
+        }
+    return {
+        "status": "in_progress",
+        "themes": [],
+        "message": "Longitudinal movement is still in progress; no graduation signal yet.",
+    }
 
 
 def is_cloud_synced_path(path: pathlib.Path) -> bool:
-    """Return True if path appears to sit inside a cloud-synced directory."""
+    """Return True if path appears to sit inside a cloud-synced directory.
+
+    Case-insensitive substring match on the fully resolved path, so symlinks
+    pointing into OneDrive/Dropbox/Google Drive/iCloud/Box locations are
+    refused exactly like their real targets.
+    """
     normalized = str(path.resolve()).lower()
     return any(marker in normalized for marker in CLOUD_SYNC_MARKERS)
 
@@ -129,9 +257,41 @@ def encrypt_text_if_configured(plaintext: str, passphrase: str | None) -> str:
     return f"SATORI_ENC_V1:{payload}\n"
 
 
+def decrypt_text_if_configured(payload: str, passphrase: str | None) -> str:
+    """Decrypt a SATORI_ENC_V1 payload produced by encrypt_text_if_configured.
+
+    Fail-closed semantics: wrong passphrases and tampered ciphertext raise
+    ValueError (AES-256-GCM authentication tag mismatch); anything that is not
+    a SATORI_ENC_V1 payload passes through unchanged so callers can feed both
+    encrypted and plaintext files through one code path.
+    """
+    if not passphrase or not payload.startswith("SATORI_ENC_V1:"):
+        return payload
+    from cryptography.exceptions import InvalidTag
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+
+    b64 = payload[len("SATORI_ENC_V1:"):].strip()
+    try:
+        blob = base64.b64decode(b64, validate=True)
+    except Exception as exc:
+        raise ValueError("Corrupt encrypted payload: invalid base64 framing.") from exc
+    if len(blob) < 28:
+        raise ValueError("Corrupt encrypted payload: too short to contain salt, nonce, and ciphertext.")
+    salt, nonce, ct = blob[:16], blob[16:28], blob[28:]
+    kdf = Scrypt(salt=salt, length=32, n=2**14, r=8, p=1)
+    key = kdf.derive(passphrase.encode("utf-8"))
+    try:
+        return AESGCM(key).decrypt(nonce, ct, None).decode("utf-8")
+    except InvalidTag as exc:
+        raise ValueError(
+            "Decryption failed: wrong passphrase or tampered ciphertext (AES-256-GCM tag mismatch)."
+        ) from exc
+
+
 def sanitize_structural_summary(summary: str) -> str:
     """Enforce T4 data minimization: cap length <= 500 chars and scrub obvious PII."""
-    cleaned = summary.strip()
+    cleaned = INVISIBLE_CHARS_RE.sub("", summary.strip())
     if len(cleaned) > MAX_SUMMARY_CHARS:
         raise ValueError(
             f"Summary length ({len(cleaned)} chars) exceeds the {MAX_SUMMARY_CHARS}-character "
@@ -243,7 +403,7 @@ def rebuild_markdown_files(vault_dir: pathlib.Path, conn: sqlite3.Connection, pa
 def cmd_init(args: argparse.Namespace) -> int:
     passphrase = get_encryption_passphrase(require_encrypt=bool(getattr(args, "encrypt", False)))
     vault_dir = resolve_vault_dir(
-        explicit_dir=args.dir,
+        explicit_dir=getattr(args, "dir", None),
         prefer_local=getattr(args, "local", False),
         prefer_global=getattr(args, "global_vault", False),
     )
@@ -376,9 +536,17 @@ def cmd_log_signal(args: argparse.Namespace) -> int:
     sessions_dir.mkdir(parents=True, exist_ok=True)
     session_file = sessions_dir / f"{today}.md"
     entry_line = f"- **[#{signal_id}] {theme}** (`{effective_layer}`, count={new_count}): {cleaned_summary}\n"
-    if session_file.exists() and not passphrase:
-        with session_file.open("a", encoding="utf-8") as fh:
-            fh.write(entry_line)
+    if session_file.exists():
+        # Decrypt (pass-through when unencrypted), append, re-encrypt: preserves
+        # earlier same-day entries instead of silently overwriting them.
+        existing_content = decrypt_text_if_configured(
+            session_file.read_text(encoding="utf-8", errors="ignore"), passphrase
+        )
+        if existing_content and not existing_content.endswith("\n"):
+            existing_content += "\n"
+        session_file.write_text(
+            encrypt_text_if_configured(existing_content + entry_line, passphrase), encoding="utf-8"
+        )
     else:
         header = f"# Session Reflection Log — {today}\n\n{entry_line}"
         session_file.write_text(encrypt_text_if_configured(header, passphrase), encoding="utf-8")
@@ -492,6 +660,197 @@ def cmd_search(args: argparse.Namespace) -> int:
     return 0
 
 
+def _dream_action_hint(recurrence_count: int) -> str:
+    if recurrence_count == 1:
+        return "hold_silently"
+    if recurrence_count == 2:
+        return "gentle_bridge_if_relevant"
+    return "name_pattern_gently"
+
+
+def _preview(summary: str) -> str:
+    """Human-readable structural summary preview (never a raw transcript)."""
+    text = summary.strip()
+    if len(text) > REVIEW_SUMMARY_PREVIEW_CHARS:
+        return text[:REVIEW_SUMMARY_PREVIEW_CHARS] + "..."
+    return text
+
+
+def cmd_review(args: argparse.Namespace) -> int:
+    """Human-readable review of what Satori remembers: themes, counts, IDs.
+
+    Prints structural summaries only (never raw conversation transcripts) so a
+    user can inspect the vault and run `forget --id <id>` on any record.
+    """
+    vault_dir = resolve_vault_dir(explicit_dir=args.dir, prefer_local=getattr(args, "local", False))
+    limit = getattr(args, "limit", 10) or 10
+    as_json = bool(getattr(args, "json", False))
+    now_iso = dt.datetime.now(dt.timezone.utc).isoformat()
+
+    if not vault_dir.exists() or not (vault_dir / "index.db").exists():
+        payload = {
+            "status": "empty",
+            "vault_dir": str(vault_dir),
+            "generated": now_iso,
+            "total_memories": 0,
+            "total_sessions": 0,
+            "active": [],
+            "dream_watch": [],
+        }
+        output = json.dumps(payload, indent=2) if as_json else "No memories recorded yet in this vault.\n"
+    else:
+        conn = connect_db(vault_dir)
+        totals = conn.execute(
+            "SELECT COUNT(*) AS c, COUNT(DISTINCT session_date) AS s FROM signals"
+        ).fetchone()
+        active_rows = conn.execute(
+            "SELECT id, theme, layer, summary, recurrence_count, session_date, updated_at FROM signals "
+            "WHERE layer != 'dream' ORDER BY recurrence_count DESC, updated_at DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
+        dream_rows = conn.execute(
+            "SELECT id, theme, layer, summary, recurrence_count, session_date, updated_at FROM signals "
+            "WHERE layer = 'dream' ORDER BY recurrence_count DESC, updated_at DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
+        conn.close()
+
+        active = [dict(r) for r in active_rows]
+        dream_watch = [
+            {**dict(r), "action_hint": _dream_action_hint(int(r["recurrence_count"]))} for r in dream_rows
+        ]
+        payload = {
+            "status": "ok",
+            "vault_dir": str(vault_dir),
+            "generated": now_iso,
+            "total_memories": int(totals["c"]),
+            "total_sessions": int(totals["s"]),
+            "active": active,
+            "dream_watch": dream_watch,
+        }
+
+        if as_json:
+            output = json.dumps(payload, indent=2)
+        else:
+            lines = [
+                "Satori Memory Review",
+                "====================",
+                f"Vault: {vault_dir}",
+                f"{totals['c']} memories across {totals['s']} sessions (generated {now_iso})",
+                "",
+                "Active Themes & Patterns",
+            ]
+            if active:
+                for r in active:
+                    lines.append(
+                        f"  [#{r['id']}] {r['theme']} ({r['layer']}, seen {r['recurrence_count']}x, last {r['session_date']})"
+                    )
+                    lines.append(f"       {_preview(r['summary'])}")
+            else:
+                lines.append("  (none)")
+            lines.append("")
+            lines.append("Dream-Layer Watch (background attention)")
+            if dream_watch:
+                for r in dream_watch:
+                    hint = {
+                        "hold_silently": "holding silently",
+                        "gentle_bridge_if_relevant": "gentle bridge if a natural opening appears",
+                        "name_pattern_gently": "pattern threshold reached; name gently",
+                    }[r["action_hint"]]
+                    lines.append(
+                        f"  [#{r['id']}] {r['theme']} (dream, seen {r['recurrence_count']}x, last {r['session_date']}) - {hint}"
+                    )
+                    lines.append(f"       {_preview(r['summary'])}")
+            else:
+                lines.append("  (none)")
+            lines.append("")
+            lines.append("To forget any record: python3 scripts/satori_memory.py forget --id <id> (or --theme / --session).")
+            lines.append("Data-only: raw conversation transcripts are never stored or printed.")
+            output = "\n".join(lines) + "\n"
+
+    if getattr(args, "output", None):
+        pathlib.Path(args.output).write_text(output, encoding="utf-8")
+    else:
+        print(output, end="" if output.endswith("\n") else "\n")
+    return 0
+
+
+def cmd_arc(args: argparse.Namespace) -> int:
+    """Graduation Signal: surface longitudinal movement across recurring themes.
+
+    Classifies each remembered theme as emerging, shifting, stabilized, or
+    dormant, and gently names a graduation window when once-strong themes have
+    gone quiet. Satori is built to be outgrown; the signal never coerces.
+    """
+    vault_dir = resolve_vault_dir(explicit_dir=args.dir, prefer_local=getattr(args, "local", False))
+    as_json = bool(getattr(args, "json", False))
+    now_iso = dt.datetime.now(dt.timezone.utc).isoformat()
+
+    if not vault_dir.exists() or not (vault_dir / "index.db").exists():
+        themes: list[dict[str, Any]] = []
+        status = "empty"
+    else:
+        conn = connect_db(vault_dir)
+        themes = collect_theme_movements(conn)
+        conn.close()
+        status = "ok"
+
+    counts = summarize_movements(themes)
+    graduation = build_graduation_signal(themes)
+    payload = {
+        "status": status,
+        "vault_dir": str(vault_dir),
+        "generated": now_iso,
+        "dormant_days_threshold": DORMANT_DAYS_THRESHOLD,
+        "counts": counts,
+        "themes": themes,
+        "graduation_signal": graduation,
+    }
+
+    if as_json:
+        output = json.dumps(payload, indent=2)
+    else:
+        sections = [
+            ("Emerging (first appearance, held quietly)", "emerging"),
+            ("Shifting (in movement)", "shifting"),
+            ("Stabilized (steady across sessions)", "stabilized"),
+            (f"Dormant (not seen in {DORMANT_DAYS_THRESHOLD}+ days)", "dormant"),
+        ]
+        lines = [
+            "Satori Graduation Signal (arc)",
+            "=============================",
+            f"Vault: {vault_dir} (dormant threshold: {DORMANT_DAYS_THRESHOLD} days)",
+            "",
+        ]
+        if not themes:
+            lines.append("No longitudinal themes recorded yet. Satori is built to be outgrown; there is nothing to hold.")
+        else:
+            for heading, key in sections:
+                lines.append(heading)
+                bucket = [t for t in themes if t["movement"] == key]
+                if bucket:
+                    for t in bucket:
+                        lines.append(
+                            f"  [#{t['id']}] {t['theme']} ({t['layer']}, {t['recurrence_count']}x, "
+                            f"last {t['session_date']}, {t['days_since_last_seen']}d ago)"
+                        )
+                else:
+                    lines.append("  (none)")
+                lines.append("")
+        lines.append("Graduation Signal")
+        lines.append(f"  Status: {graduation['status']}")
+        if graduation["themes"]:
+            lines.append(f"  Quiet themes: {', '.join(graduation['themes'])}")
+        lines.append(f"  {graduation['message']}")
+        output = "\n".join(lines) + "\n"
+
+    if getattr(args, "output", None):
+        pathlib.Path(args.output).write_text(output, encoding="utf-8")
+    else:
+        print(output, end="" if output.endswith("\n") else "\n")
+    return 0
+
+
 def cmd_forget(args: argparse.Namespace) -> int:
     """T3 Mitigation: Delete matching records, rewrite Markdown, and execute PRAGMA secure_delete=ON + VACUUM."""
     vault_dir = resolve_vault_dir(explicit_dir=args.dir, prefer_local=getattr(args, "local", False))
@@ -549,14 +908,19 @@ def cmd_forget(args: argparse.Namespace) -> int:
                 target_session.write_bytes(b"\x00" * target_session.stat().st_size)
                 target_session.unlink()
         for md_file in sessions_dir.glob("*.md"):
-            lines = md_file.read_text(encoding="utf-8", errors="ignore").splitlines()
+            # Decrypt (pass-through when unencrypted) so matching entries are
+            # actually removed from encrypted session files too.
+            content = decrypt_text_if_configured(
+                md_file.read_text(encoding="utf-8", errors="ignore"), passphrase
+            )
+            lines = content.splitlines()
             kept = [
                 ln
                 for ln in lines
                 if not any(f"[#{sid}]" in ln for sid in ids_to_delete)
                 and not (args.theme and args.theme.lower() in ln.lower())
             ]
-            md_file.write_text("\n".join(kept) + "\n", encoding="utf-8")
+            md_file.write_text(encrypt_text_if_configured("\n".join(kept) + "\n", passphrase), encoding="utf-8")
             enforce_permissions(md_file, is_dir=False)
 
     rebuild_markdown_files(vault_dir, conn, passphrase=passphrase)
@@ -622,6 +986,7 @@ def cmd_export_note(args: argparse.Namespace) -> int:
     session_count = getattr(args, "session_count", None)
     today = dt.date.today().isoformat()
 
+    arc_signal = ""
     if vault_dir.exists() and (vault_dir / "index.db").exists():
         conn = connect_db(vault_dir)
         if not theme:
@@ -635,7 +1000,14 @@ def cmd_export_note(args: argparse.Namespace) -> int:
         if session_count is None:
             count_row = conn.execute("SELECT COUNT(DISTINCT session_date) FROM signals").fetchone()
             session_count = (count_row[0] if count_row else 0) + 1
+        themes = collect_theme_movements(conn)
         conn.close()
+        if themes:
+            counts = summarize_movements(themes)
+            arc_signal = (
+                f"stabilized={counts['stabilized']} shifting={counts['shifting']} "
+                f"emerging={counts['emerging']} dormant={counts['dormant']}"
+            )
 
     theme = (theme or "Ongoing self-reflection")[:60]
     if stance not in ("mirror", "balanced", "candid"):
@@ -654,8 +1026,10 @@ def cmd_export_note(args: argparse.Namespace) -> int:
         f"step: {step}",
         f"anchor_question: {anchor_q}",
         f"session_count: {session_count}",
-        f"created: {today}",
     ]
+    if arc_signal:
+        note_lines.append(f"arc: {arc_signal}")
+    note_lines.append(f"created: {today}")
     note = "\n".join(note_lines) + "\n"
 
     if len(note) > MAX_NOTE_CHARS:
@@ -689,20 +1063,39 @@ def cmd_import_note(args: argparse.Namespace) -> int:
     if not lines or not (lines[0].startswith("SATORI_NOTE v6.") or lines[0] == "SATORI_NOTE v6.5"):
         raise ValueError("Invalid format: first line must be 'SATORI_NOTE v6.5'.")
 
-    # Check for prompt injection attempts
-    for ln in lines:
+    # Check for prompt injection attempts. Screening runs on a normalized view
+    # (lowercased, invisible characters stripped, obfuscation joiners collapsed)
+    # both per-line and across the whole note, so multiline payloads cannot
+    # evade by splitting a marker across lines.
+    normalized_lines = [normalize_text_for_injection_check(ln) for ln in lines]
+    normalized_whole = normalize_text_for_injection_check(" ".join(lines))
+    for idx, ln_norm in enumerate(normalized_lines):
         for pat in INJECTION_PATTERNS:
-            if pat.search(ln):
-                raise ValueError(f"Security rejection: prompt injection marker detected in imported note: '{ln}'")
+            if pat.search(ln_norm):
+                raise ValueError(
+                    f"Security rejection: prompt injection marker detected in imported note: '{lines[idx]}'"
+                )
+    for pat in INJECTION_PATTERNS:
+        if pat.search(normalized_whole):
+            raise ValueError(
+                "Security rejection: prompt injection marker detected across multiple lines of imported note."
+            )
+
+    # Structural delimiter-injection hardening: forged headers and fencing.
+    for idx, ln in enumerate(lines):
+        if idx > 0 and "satori_note" in ln.lower():
+            raise ValueError(f"Security rejection: forged SATORI_NOTE header inside note body: '{ln}'")
+        if ln.startswith("---") or "```" in ln:
+            raise ValueError(f"Security rejection: delimiter injection in imported note: '{ln}'")
 
     parsed: dict[str, str] = {}
-    allowlist = {"theme", "stance", "lens", "step", "anchor_question", "session_count", "created"}
+    allowlist = {"theme", "stance", "lens", "step", "anchor_question", "session_count", "created", "arc"}
     for ln in lines[1:]:
         if ":" not in ln:
             continue
         k, v = ln.split(":", 1)
         k = k.strip().lower()
-        v = v.strip()
+        v = INVISIBLE_CHARS_RE.sub("", v.strip())
         if k in allowlist:
             parsed[k] = v
 
@@ -720,6 +1113,10 @@ def cmd_import_note(args: argparse.Namespace) -> int:
     except ValueError:
         session_count = 1
     created = parsed.get("created", dt.date.today().isoformat())
+    arc_signal = parsed.get("arc", "")
+    if arc_signal and not ARC_FIELD_SAFE_RE.match(arc_signal.lower()):
+        # Data-only arc field must be a compact status=count line; drop anything else.
+        arc_signal = ""
 
     # Confirmation
     if not getattr(args, "yes", False) and sys.stdin.isatty():
@@ -751,6 +1148,8 @@ def cmd_import_note(args: argparse.Namespace) -> int:
         cmd_init(init_ns)
 
     summary_text = f"Imported continuity note ({lens}, step={step}). Anchor: {anchor_q}"
+    if arc_signal:
+        summary_text += f" Arc: {arc_signal}."
     summary_clean = sanitize_structural_summary(summary_text)
 
     # Log as pattern layer
@@ -775,6 +1174,7 @@ def cmd_import_note(args: argparse.Namespace) -> int:
                 "lens": lens,
                 "step": step,
                 "session_count": session_count,
+                "arc": arc_signal,
             },
             indent=2,
         )
@@ -1022,11 +1422,37 @@ def run_self_test() -> int:
         except ValueError:
             pass
 
+        # 9. Test review subcommand (JSON mode) shows record IDs and counts
+        review_out = pathlib.Path(tmp) / "review.json"
+        cmd_review(
+            argparse.Namespace(
+                dir=str(vault), local=True, json=True, limit=10, output=str(review_out)
+            )
+        )
+        review_data = json.loads(review_out.read_text(encoding="utf-8"))
+        assert review_data["status"] == "ok", "review failure: status not ok"
+        all_records = review_data["active"] + review_data["dream_watch"]
+        assert any("Existential agency" in r["theme"] for r in all_records), "review failure: imported theme missing"
+        assert all("id" in r and "recurrence_count" in r for r in all_records), (
+            "review failure: records missing id / recurrence_count"
+        )
+        assert review_data["total_memories"] == len(all_records), "review failure: totals mismatch"
+
+        # 10. Test arc subcommand (Graduation Signal) classification
+        arc_out = pathlib.Path(tmp) / "arc.json"
+        cmd_arc(argparse.Namespace(dir=str(vault), local=True, json=True, output=str(arc_out)))
+        arc_data = json.loads(arc_out.read_text(encoding="utf-8"))
+        assert arc_data["status"] == "ok", "arc failure: status not ok"
+        assert sum(arc_data["counts"].values()) == review_data["total_memories"], "arc failure: counts mismatch"
+        assert arc_data["graduation_signal"]["status"] == "in_progress", (
+            "arc failure: unexpected graduation signal for a fresh vault"
+        )
+
         # Cleanup test
         cmd_purge(argparse.Namespace(dir=str(vault), all=True, confirm=True, local=True))
         assert not vault.exists(), "Purge failed to remove vault directory"
 
-    print("[self-test] ALL 8 PRIVACY & MEMORY TESTS PASSED.")
+    print("[self-test] ALL 10 PRIVACY & MEMORY TESTS PASSED.")
     return 0
 
 
@@ -1044,21 +1470,21 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command")
 
     p_init = sub.add_parser("init", help="Initialize local (.satori/memory) or global (~/.satori/memory) vault")
-    p_init.add_argument("--dir", default=None)
-    p_init.add_argument("--local", action="store_true", help="Initialize in ./.satori/memory/")
+    p_init.add_argument("--dir", default=argparse.SUPPRESS)
+    p_init.add_argument("--local", action="store_true", default=argparse.SUPPRESS, help="Initialize in ./.satori/memory/")
     p_init.add_argument("--global", dest="global_vault", action="store_true", help="Initialize in ~/.satori/memory/")
-    p_init.add_argument("--allow-synced", action="store_true", help="Override cloud-sync prohibition")
+    p_init.add_argument("--allow-synced", action="store_true", default=argparse.SUPPRESS, help="Override cloud-sync prohibition")
     p_init.add_argument("--encrypt", action="store_true", help="Require SATORI_VAULT_PASSPHRASE + cryptography package")
 
     p_status = sub.add_parser("status", help="Output compact longitudinal status summary")
-    p_status.add_argument("--dir", default=None)
-    p_status.add_argument("--local", action="store_true")
+    p_status.add_argument("--dir", default=argparse.SUPPRESS)
+    p_status.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_status.add_argument("--output", default=None, help="Optional file path to write status JSON")
 
     p_log = sub.add_parser("log-signal", help="Record a structural pattern or Dream-Layer signal (<=500 chars)")
-    p_log.add_argument("--dir", default=None)
-    p_log.add_argument("--local", action="store_true")
-    p_log.add_argument("--allow-synced", action="store_true")
+    p_log.add_argument("--dir", default=argparse.SUPPRESS)
+    p_log.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
+    p_log.add_argument("--allow-synced", action="store_true", default=argparse.SUPPRESS)
     p_log.add_argument("--theme", required=True, help="Short structural theme title")
     p_log.add_argument(
         "--layer",
@@ -1068,31 +1494,44 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_log.add_argument("--summary", required=True, help="Structural summary (max 500 chars; no raw transcripts)")
     p_log.add_argument("--session-date", default=None, help="YYYY-MM-DD (defaults to today)")
-    p_log.add_argument("--ephemeral", action="store_true", help="Off-the-record mode: skip all disk writes")
+    p_log.add_argument("--ephemeral", action="store_true", default=argparse.SUPPRESS, help="Off-the-record mode: skip all disk writes")
 
     p_search = sub.add_parser("search", help="Search longitudinal signals via SQLite FTS5")
-    p_search.add_argument("--dir", default=None)
-    p_search.add_argument("--local", action="store_true")
+    p_search.add_argument("--dir", default=argparse.SUPPRESS)
+    p_search.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_search.add_argument("--query", required=True, help="Search query string")
     p_search.add_argument("--limit", type=int, default=5)
     p_search.add_argument("--output", default=None)
 
+    p_review = sub.add_parser("review", help="Review what Satori remembers: themes, counts, timestamps, record IDs")
+    p_review.add_argument("--dir", default=argparse.SUPPRESS)
+    p_review.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
+    p_review.add_argument("--json", action="store_true", help="Emit machine-readable JSON instead of human-readable text")
+    p_review.add_argument("--limit", type=int, default=10, help="Max records per section (default 10)")
+    p_review.add_argument("--output", default=None)
+
+    p_arc = sub.add_parser("arc", help="Graduation Signal: surface longitudinal movement (emerging/shifting/stabilized/dormant)")
+    p_arc.add_argument("--dir", default=argparse.SUPPRESS)
+    p_arc.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
+    p_arc.add_argument("--json", action="store_true", help="Emit machine-readable JSON instead of human-readable text")
+    p_arc.add_argument("--output", default=None)
+
     p_forget = sub.add_parser("forget", help="Permanently delete a memory and VACUUM SQLite free pages")
-    p_forget.add_argument("--dir", default=None)
-    p_forget.add_argument("--local", action="store_true")
+    p_forget.add_argument("--dir", default=argparse.SUPPRESS)
+    p_forget.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_forget.add_argument("--id", type=int, default=None, help="Signal ID to delete")
     p_forget.add_argument("--theme", default=None, help="Theme or summary substring to delete")
     p_forget.add_argument("--session", default=None, help="Session date YYYY-MM-DD to delete")
 
     p_purge = sub.add_parser("purge", help="Overwrite and delete the entire memory vault")
-    p_purge.add_argument("--dir", default=None)
-    p_purge.add_argument("--local", action="store_true")
+    p_purge.add_argument("--dir", default=argparse.SUPPRESS)
+    p_purge.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_purge.add_argument("--all", action="store_true", required=True)
     p_purge.add_argument("--confirm", action="store_true", required=True)
 
     p_export_note = sub.add_parser("export-note", help="Export SATORI_NOTE v6.5 data-only continuity note")
-    p_export_note.add_argument("--dir", default=None)
-    p_export_note.add_argument("--local", action="store_true")
+    p_export_note.add_argument("--dir", default=argparse.SUPPRESS)
+    p_export_note.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_export_note.add_argument("--theme", default=None)
     p_export_note.add_argument("--stance", choices=["mirror", "balanced", "candid"], default="balanced")
     p_export_note.add_argument("--lens", default="stoic")
@@ -1102,9 +1541,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_export_note.add_argument("--output", default=None)
 
     p_import_note = sub.add_parser("import-note", help="Import SATORI_NOTE v6.5 data-only continuity note")
-    p_import_note.add_argument("--dir", default=None)
-    p_import_note.add_argument("--local", action="store_true")
-    p_import_note.add_argument("--allow-synced", action="store_true")
+    p_import_note.add_argument("--dir", default=argparse.SUPPRESS)
+    p_import_note.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
+    p_import_note.add_argument("--allow-synced", action="store_true", default=argparse.SUPPRESS)
     p_import_note.add_argument("--file", default=None, help="Path to continuity note file")
     p_import_note.add_argument("--note", default=None, help="Raw continuity note text")
     p_import_note.add_argument("--yes", "-y", action="store_true", help="Skip confirmation prompt")
@@ -1112,11 +1551,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_migrate = sub.add_parser("migrate", help="Migrate legacy local vault records to global vault (~/.satori/memory/)")
     p_migrate.add_argument("--source", default=None)
     p_migrate.add_argument("--target", default=None)
-    p_migrate.add_argument("--allow-synced", action="store_true")
+    p_migrate.add_argument("--allow-synced", action="store_true", default=argparse.SUPPRESS)
 
     p_export_cap = sub.add_parser("export-capsule", help="Legacy export capsule for web chat UIs")
-    p_export_cap.add_argument("--dir", default=None)
-    p_export_cap.add_argument("--local", action="store_true")
+    p_export_cap.add_argument("--dir", default=argparse.SUPPRESS)
+    p_export_cap.add_argument("--local", action="store_true", default=argparse.SUPPRESS)
     p_export_cap.add_argument("--output", default=None)
 
     sub.add_parser("self-test", help="Run built-in unit & privacy test suite")
@@ -1137,6 +1576,10 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_log_signal(args)
     if args.command == "search":
         return cmd_search(args)
+    if args.command == "review":
+        return cmd_review(args)
+    if args.command == "arc":
+        return cmd_arc(args)
     if args.command == "forget":
         return cmd_forget(args)
     if args.command == "purge":
