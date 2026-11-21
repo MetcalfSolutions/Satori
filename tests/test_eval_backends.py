@@ -307,6 +307,17 @@ def test_openai_backend_local_server_needs_no_key(monkeypatch, stub):
     assert "authorization" not in request["headers"]
     assert request["body"] == {"model": "qwen", "messages": [{"role": "user", "content": "Hi"}],
                                "reasoning_effort": "low", "temperature": 0}
+    assert "`--thinking` sent as `reasoning_effort`" in backend.describe()
+
+
+def test_openai_backend_says_when_the_thinking_level_never_left_the_harness(monkeypatch, stub):
+    """Reports record `--thinking`. Without the opt-in the level is not sent, and the invocation line says so."""
+    fake_env(monkeypatch, openai_compat, {"OPENAI_BASE_URL": stub.url + "/v1"})
+    backend = openai_compat.OpenAICompatBackend("local-model")
+    stub.replies = [(200, CHAT_REPLY)]
+    backend.call("Hi", thinking="medium", timeout=5, with_system_prompt=False)
+    assert "reasoning_effort" not in stub.requests[0]["body"]
+    assert "`--thinking` not sent" in backend.describe()
 
 
 @pytest.mark.parametrize("message,text,thinking", [

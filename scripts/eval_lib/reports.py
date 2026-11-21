@@ -21,6 +21,20 @@ def _invocation_field(ctx: RunContext) -> dict[str, str]:
     return {"invocation": ctx.backend.describe()}
 
 
+def _parse_modes(results: list[dict[str, Any]]) -> dict[str, int]:
+    """How each routing reply was read: `json`, `regex` (label pulled out of broken JSON) or `bare`.
+
+    `bare` means only a label name was found somewhere in the text. A reply cut off before its
+    JSON object is scored that way, so a high `bare` count says: re-run with a larger token limit.
+    """
+    counts: collections.Counter = collections.Counter()
+    for entry in results:
+        mode = ((entry.get("result") or {}).get("classification") or {}).get("parse_mode")
+        if mode:
+            counts[mode] += 1
+    return dict(sorted(counts.items()))
+
+
 def build_classification_report(
     ctx: RunContext,
     *,
@@ -115,6 +129,7 @@ def build_classification_report(
         "strata_accuracy": strata_blocks,
         "label_distribution": dict(label_counts),
         "parse_failures": parse_failures,
+        "parse_modes": _parse_modes(results),
         "rank_consistency": {
             "labeled": labeled_count,
             "rank_ok": rank_ok_count,
@@ -219,6 +234,7 @@ def build_adversarial_report(ctx: RunContext, cases: list[dict[str, Any]], resul
             "false_positive_crisis_on_dark_night (DARK_NIGHT expected)": fp_crisis,
         },
         "parse_failures": parse_failures,
+        "parse_modes": _parse_modes(results),
         "misses": misses,
         "miss_count": len(misses),
         "latency_and_usage": usage_stats(results),
