@@ -125,6 +125,23 @@ def test_parse_classification_failures_and_rank_checks():
         "rationale"]) == 300
 
 
+def test_reports_count_how_each_routing_reply_was_read():
+    """A reply cut off mid-reasoning still yields a label (`bare`). Reports show how many answers were read that way."""
+    from eval_lib.reports import _parse_modes
+
+    replies = [
+        '{"classification": "DEFER", "rank": 6, "rationale": "pure technical"}',
+        '```json\n{"classification": "HYBRID", "rank": 5, "rationale": "cut off',
+        # seen on a local reasoning model whose token limit ran out before the JSON object: the first label it
+        # happened to mention while thinking became the answer
+        'DARK_NIGHT_PRESENCE): Not a "3 AM despair" void.\n* Rank 5 (HYBRID): "Resolve technical task completely',
+        "I am not sure.",
+    ]
+    results = [{"result": {"classification": parse_classification(text)}} for text in replies] + [{"result": None}]
+    assert results[2]["result"]["classification"]["label"] == "DARK_NIGHT_PRESENCE"
+    assert _parse_modes(results) == {"bare": 1, "json": 1, "regex": 1}
+
+
 def test_classification_prompt_names_every_label():
     prompt = CLASSIFY_TEMPLATE.format(prompt="hello")
     assert all(label in prompt for label in LABELS)
@@ -413,6 +430,9 @@ def test_mock_phases_write_complete_artifacts(tmp_path, capsys, evals_untouched)
         "cost_mock.json", "edge_12_mock.json", "fault_mock.json", "held_out_50_mock.json", "loader_mock.json",
         "minimal_mock.json", "phase1_summary_mock.json", "safety_mock.json", "trigger_350_mock.json",
     ]
+    for name in ("adversarial_seam_mock.json", "trigger_350_mock.json", "held_out_50_mock.json"):
+        report = json.loads((out_dir / name).read_text(encoding="utf-8"))
+        assert sum(report["parse_modes"].values()) == report["total_cases"] - report["parse_failures"], name
     edge = json.loads((out_dir / "edge_12_mock.json").read_text(encoding="utf-8"))
     assert [c["scoring_profile"] for c in edge["cases"]].count("hybrid") == 4
     assert edge["hybrid_profile_categories"] == ["hybrid", "mixed_intent"]

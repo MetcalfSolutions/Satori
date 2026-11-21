@@ -232,6 +232,13 @@ python3 scripts/run_live_evals.py --backend pi --model opencode-go/glm-5.3 --ski
 
 `scripts/run_glm53_evals.py` still works with the same flags and artifact names. It is a deprecation wrapper around `run_live_evals.py --backend pi`.
 
+**Local models (`--backend openai`).** Checked against Gemma 4 12B served by llama.cpp `llama-server`; any OpenAI-compatible server is driven the same way.
+
+- `SATORI_EVAL_OPENAI_EXTRA_BODY` is merged into every request. Use it for sampling and limits, for example `'{"temperature": 0, "seed": 42, "max_tokens": 700}'`.
+- `--thinking` is recorded in every report, but it reaches the server only with `SATORI_EVAL_OPENAI_REASONING_EFFORT=1` (sent as `reasoning_effort`). Without it the server's own reasoning setting applies. The invocation line of the calibration report says which of the two happened.
+- Give a reasoning model room. A reply cut off before its JSON object is still scored from any label it mentions, and routing reports count those answers under `parse_modes.bare`. A `bare` count above zero means: raise `max_tokens` and re-run with `--force`.
+- A server with a single slot answers one request at a time. Use `--workers 1` and a generous `--timeout`: the first call also pays for reading the system prompt.
+
 ### 4.2 Checkpoint, Resume & Offline Re-Scoring
 
 Every model reply is appended to `<out-dir>/.cache/<suite>_<thinking>.jsonl` (gitignored). Re-running a suite whose cache is complete makes zero model calls and re-scores the stored transcripts with the current detectors; `--force` reruns from zero.
