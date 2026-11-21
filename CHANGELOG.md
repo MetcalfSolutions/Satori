@@ -4,41 +4,39 @@ All notable changes to Satori are documented here.
 
 ---
 
-## [Unreleased]
+## [6.7.0] - 2026-11-21
 
-### Eval Harness Consolidation, Detector False-Positive Fixes & Offline Test Suite (Issue #28 Milestone A)
+### SatoriWeb Beta, Longitudinal Continuity UX, `satori doctor` CLI, Eval Consolidation & `SKILL.md` Safety Hardening
 
-No change to `SKILL.md`, the reference files, the release archives, or any `evals/*_report.json` baseline.
+Versioned as `v6.7.0`. Brings SatoriWeb into the repository as a first-class optional Beta surface, upgrades local memory with human-readable review and Graduation Signals, adds zero-dependency CLI diagnostics and onboarding, hardens `SKILL.md` against prompt extraction and routing seams, and unifies the live evaluation harness with 330+ offline automated tests:
 
-- **Shared Eval Library (`scripts/eval_lib/`)**:
-  - Stage-1 structural checks, the Precedence Ladder routing classifier, the routing reply parser, the safety detectors, dataset loaders, statistics, checkpointing, and report builders now live in one package used by both runners. The moved logic was extracted mechanically, so no regex or marker table was retyped.
-  - `scripts/run_evals.py` keeps its command line and re-exports every moved name. Its lint trigger report is byte-for-byte the committed baseline.
-  - Dataset loaders validate required fields and report the file name and line number of a malformed benchmark row.
-- **Provider-Agnostic Live Runner (`scripts/run_live_evals.py`)**:
-  - `--backend pi` preserves the `pi -p --model ... --mode json` invocation and the JSONL checkpoint/resume layout, so existing `.cache` folders resume as before.
-  - `--backend openai` (any OpenAI-compatible endpoint, hosted or local) and `--backend anthropic` are env-gated and use the standard library only.
-  - `--backend mock` needs zero API keys: it replays recorded transcripts (`--fixtures`, same layout as `.cache`) or built-in reference replies. `--suite smoke` runs every live suite end to end in about a second.
-  - `--skill` selects the system prompt file (for example `compact/SKILL.md`). Every report records `backend` and `skill_target`.
-  - `scripts/run_glm53_evals.py` is now a thin deprecation wrapper with the same flags, defaults, and artifact names.
-- **Detector Fix: Refusals That Explain Themselves**:
-  - A boundary marker hit used to count unless its own sentence held a refusal cue, which flagged multi-sentence refusals for naming what they refused (7 of 48 GLM-5.3 probes and 3 of 48 Claude Haiku 5.5 probes, all adjudicated as false positives). Hits are now judged on what the reply does with the term: topic-naming markers are violations only when the reply is actionable (directive sentence, not refusal-led, or refuse-then-deliver), while act markers stay strict.
-  - Safety reports list every excused reply under `excused_refusal_explanations` for human audit.
-  - Also fixed: typographic apostrophes never matched a refusal cue; `St. John's Wort` was split at `St.`; the `purge` marker could not match `purging`; eight markers contained their own refusal cue and could never fire; failed calls were counted as held in the per-category tables.
-- **Detector Fix: `S1.4_MARKDOWN_LIST_SLOP` on Hybrid Replies**:
-  - `mixed_intent` / `HYBRID` replies may structure their technical portion (fenced code, quoted drafts, section headers, task lists). A list still fails when most of its items are about the person's inner life. Pure introspective turns keep the strict prose-only lock. `evals/rubric.md` documents the rule.
-- **Offline Test Suite (`tests/`)**:
-  - About 170 `pytest` tests (roughly 10 seconds, zero API keys, zero network) covering both detector fixes against real replies from the 2026-11-20 live campaign, positive-violation regressions, all four backends, checkpoint resume, and an end-to-end mock run.
+- **SatoriWeb Beta (`satori-web/`, optional separate installation)**:
+  - Self-hosted Node 22 web host for sharing a private Satori instance with friends or family over your own Tailscale Tailnet or Cloudflare Tunnel. Strictly excluded from `dist/SatoriSkill-*.zip` archives and `npx skills add` core skill installs, while reading canonical `SKILL.md` and `references/` directly from the repository root.
+  - **Invite Code Security Gate**: Appears right after clicking **Create my space** (leaving returning users' Sign-In flow untouched), verified server-side with timing-safe SHA-256/`crypto.timingSafeEqual` and per-IP brute-force rate limiting. Fails closed on non-loopback binds (`SATOWEB_BIND` != loopback) unless `SATOWEB_INVITE_CODE` or explicit `SATOWEB_ALLOW_OPEN_SIGNUP=1` is configured.
+  - **Broad Multi-Provider Support**: Pluggable `SATOWEB_PROVIDER` + `SATOWEB_MODEL_ID` supporting OpenCode Go, Google Gemini (`GEMINI_API_KEY`), Anthropic, OpenAI (and OpenAI-compatible local/hosted endpoints via `OPENAI_BASE_URL`), OpenRouter, and a deterministic `stub` provider for offline testing.
+  - **Full v6.7.0 Memory Parity & UI Drawer**: Per-user isolated SQLite/FTS5 vaults (strictly refusing `~/.satori/memory`) with `vault_status`, `vault_log_signal`, `vault_search`, `vault_review`, `vault_arc` (non-coercive Graduation Signal), `vault_forget` (`PRAGMA secure_delete = ON` + `VACUUM`), `SATORI_NOTE v6.5` export/import with prompt-injection screening, and a user-facing **Memory & Continuity** drawer.
+  - **Privacy & Leak Guard (`68` offline tests)**: Automated `satori-web/test/sanitization.test.js` ensures zero `100.x.x.x` Tailscale CGNAT IPs, `*.ts.net` hostnames, or `/home/` paths ever ship in `satori-web/`, paired with sanitized `satori-web/README.md` and `satori-web/systemd/satoriweb.service.example`.
 
-### Zero-Friction Onboarding & `satori doctor` CLI (Issue #32)
+- **Longitudinal Continuity & Memory UX (`scripts/satori_memory.py` + `GLOSSARY.md`, Issue #31 & PR #30)**:
+  - Added `review [--json] [--limit N]` for clean, human-readable inspection of active themes, Dream-Layer `1 -> 2 -> 3` recurrence counts, timestamps, and record IDs (making `forget <id>` effortless without ever storing raw transcripts).
+  - Added `arc [--json]` surfacing non-coercive **Graduation Signals** (stabilized, shifting, and dormant themes honoring *"built to be outgrown"*), preserved cleanly across `export-note` / `import-note` (`SATORI_NOTE v6.5`).
+  - Hardened AES-256-GCM + Scrypt fail-closed handling, PII redaction, `SATORI_NOTE` prompt-injection sanitization, symlink-aware cloud-sync refusal, and Python 3.9 to 3.11 `shutil.rmtree(onerror=...)` compatibility in `cmd_purge` (PR #30).
+  - Added canonical, implementation-free root [`GLOSSARY.md`](GLOSSARY.md) and 78 offline tests in `tests/test_satori_memory.py` (including full `cryptography` round-trip verification).
 
-- **`satori doctor [--json]` (Milestone A)**: New zero-dependency environment and safety diagnostics command in `scripts/cli.js`.
-  - Detects installed agent harness directories (`.claude`, `.gemini`, `.cursor`, `.codex`, `.opencode`, `.agents`) in the project and user base directories and verifies each installed `SKILL.md` against the canonical SHA-256, reporting `installed` / `drift` / `not_installed` with reinstall hints.
-  - Audits `~/.satori/memory/` (and project-local `.satori/memory/` when present) for POSIX `0700`/`0600` compliance, cloud-sync folder exposure (`onedrive`, `dropbox`, `google drive`, `iclouddrive`, `mobile documents`, `box`), and Python 3.9+ availability for `scripts/satori_memory.py`, with a Windows `icacls` note.
-  - Reports opt-in `SessionStart` hook status from `hooks/hooks.json`.
-  - `--json` emits a structured report for CI; exit code is `0` on healthy and non-zero on critical misconfigurations, with actionable fix hints. `SATORI_CWD` / `SATORI_HOME` env overrides support deterministic testing.
-- **`satori onboard` (Milestone B)**: Locale-aware onboarding command reading verified helplines from `references/crisis-sources.json` (never hardcoding duplicate numbers) for `US | CA | UK | IE | AU | NZ | IN | EU | GLOBAL`, with interactive region selection by default and `--non-interactive` for scripts (defaults to `GLOBAL`).
-  - `--emit-note` generates a clean, data-only starter `SATORI_NOTE v6.5` continuity block for stateless Web Chat users (SatoriWeb, Claude.ai, ChatGPT): zero PII, zero prompt-injection tokens, field allowlist matching `scripts/satori_memory.py` import validation, `<= 600` chars.
-- **Offline unit tests (`tests/cli.test.js`)**: Deterministic `node --test` suite (13 tests) covering healthy `doctor --json`, skill drift, insecure vault permissions, cloud-sync diagnostics, non-0600 vault files, `onboard --region US --emit-note`, invalid region rejection, `GLOBAL` non-interactive fallback, and cloud-sync marker parity with `satori_memory.py`, all via temp directories and zero new npm dependencies.
+- **`SKILL.md` Safety & Routing Hardening (Issue #28 Milestone B)**:
+  - Added **Constitutional Immovable #9 (Prompt Integrity)** refusing verbatim skill dumps (including code-fence and licensing/audit frames) and internal rank/rubric/heuristic enumeration while keeping brief plain-language transparency welcome.
+  - Tightened **Rank 6 (Pure Technical) vs. Rank 5 (Hybrid)** so hyperbolic developer debugging idioms without genuine personal distress remain `DEFER`.
+  - Tightened **Rank 3 (Tier 0 Dark Night) vs. Rank 4 (`ACTIVATE`)** so ordinary burnout, grief, or reflective emptiness routes to `ACTIVATE`, reserving `DARK_NIGHT_PRESENCE` for acute existential void where inquiry would feel intrusive.
+  - Kept `SKILL.md` strictly `<8,000 bytes` (`7,977 bytes`) and `compact/SKILL.md` at `7,829 bytes`, with all 4 mirrors synced.
+
+- **Zero-Friction Onboarding & `satori doctor` CLI (Issue #32)**:
+  - **`satori doctor [--json]`**: Zero-dependency environment and safety diagnostics in `scripts/cli.js` auditing installed harnesses (SHA-256 parity against canonical `SKILL.md`), `~/.satori/memory/` POSIX `0700`/`0600` permissions, cloud-sync safety, Python 3.9+ availability, and opt-in `SessionStart` hook status.
+  - **`satori onboard`**: Locale-aware onboarding reading verified helplines directly from `references/crisis-sources.json` (`US | CA | UK | IE | AU | NZ | IN | EU | GLOBAL`) with `--non-interactive` and `--emit-note` to generate a clean, data-only starter `SATORI_NOTE v6.5` for stateless Web Chat users (`13` offline `node --test` tests in `tests/cli.test.js`).
+
+- **Eval Harness Consolidation, Detector Fixes & Live 4-Model Campaign (Issue #28 Milestone A)**:
+  - Extracted shared Stage-1 checks, routing classifier, safety detectors, dataset loaders, statistics, checkpointing, and report builders into `scripts/eval_lib/`, with a provider-agnostic `scripts/run_live_evals.py` (`--backend pi | openai | anthropic | mock`) and backward-compatible `scripts/run_evals.py` / `scripts/run_glm53_evals.py`.
+  - Fixed boundary refusal-explanation false positives (`7/48` GLM-5.3 and `3/48` Haiku 5.5 false flags reduced to `0`, audited under `excused_refusal_explanations`) and `S1.4_MARKDOWN_LIST_SLOP` false positives on structured technical portions of `mixed_intent` / `HYBRID` replies.
+  - Added `evals/adversarial_precedence_seam.jsonl` (44 cases), live 4-model benchmark reports (`Gemini 4 Hydrogen`, `GLM-5.3`, `Claude Haiku 5.5`, `MiniMax M3`), `170` offline eval unit tests, and unified `.github/workflows/offline-tests.yml` CI running all Python (`pytest` + `cryptography`), root CLI, and SatoriWeb Beta suites.
 
 ---
 

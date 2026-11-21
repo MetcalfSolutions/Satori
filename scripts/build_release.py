@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.6.0.
+"""Satori Release Builder & Per-Agent Skill Mirror Synchronizer (scripts/build_release.py): v6.7.0.
 
 1. Reads `version` dynamically from `package.json`.
 2. Cleans up any stale v6.5.1 or older zip archives from `dist/`.

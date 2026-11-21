@@ -6,6 +6,7 @@ The table below indicates which versions of Satori are currently supported with 
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 6.7.0   | :white_check_mark: |
 | 6.6.0   | :white_check_mark: |
 | <= 6.5.5| :x:                |
 
@@ -22,7 +23,8 @@ We take the security of Satori very seriously. If you discover a security vulner
 
 This security policy covers the following components within the repository:
 - `scripts/satori_memory.py` (Local SQLite vault, path validation, cloud-sync guard, prompt-injection sanitization in Continuity Notes, and optional AES-256-GCM encryption)
-- `scripts/cli.js`
+- `scripts/cli.js` (Environment diagnostics and onboarding CLI)
+- `satori-web/` (Optional self-hosted SatoriWeb Beta server: invite code gate, rate limiting, scrypt PIN auth, HMAC cookie sessions, per-user vault isolation, and sanitization leak guard)
 - `scripts/build_release.py`
 - `scripts/validate_skill.py`
 - GitHub Actions workflows

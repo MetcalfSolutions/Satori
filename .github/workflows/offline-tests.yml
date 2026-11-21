@@ -1,17 +1,19 @@
-name: Offline Eval Tests
+name: Offline Verification Suite
 
-# Runs the eval harness unit tests and an end-to-end mock run on every pull request.
-# Fully offline after the pytest install: zero API keys, zero model calls.
+# Runs all Python eval/memory unit tests (including cryptography), the offline mock live runner,
+# the repo validator, the root CLI tests, and the SatoriWeb Beta test suite (including leak guard).
+# Fully offline after dependency install: zero API keys, zero live model calls.
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, "release/**"]
 
 permissions:
   contents: read
 
 jobs:
-  offline-tests:
+  python-tests:
+    name: Python Eval, Memory & Validator Suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -20,9 +22,32 @@ jobs:
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.11'
-      - name: Install pytest
-        run: python -m pip install pytest==8.3.4
-      - name: Run detector, backend, and runner unit tests
+      - name: Install pytest and cryptography
+        run: python -m pip install pytest==8.3.4 cryptography==44.0.1
+      - name: Run eval, detector, backend, and memory unit tests
         run: python -m pytest tests/ -q
+      - name: Run built-in memory privacy self-test
+        run: python scripts/satori_memory.py self-test
       - name: Run every live suite against the offline mock backend
         run: python scripts/run_live_evals.py --backend mock --suite smoke
+      - name: Run Satori repository validator (58 checks)
+        run: python scripts/validate_skill.py
+
+  node-tests:
+    name: CLI & SatoriWeb Beta Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Run root CLI unit tests (doctor & onboard)
+        run: node --test tests/cli.test.js
+      - name: Install SatoriWeb Beta dependencies
+        working-directory: satori-web
+        run: npm ci --no-audit --no-fund
+      - name: Run SatoriWeb Beta suite (auth, invite gate, memory parity, leak guard)
+        working-directory: satori-web
+        run: node --test test/
