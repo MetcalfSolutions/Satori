@@ -65,6 +65,18 @@ Before submitting a pull request, run the offline verification test suite locall
    ```
    Synchronizes `SKILL.md` mirrors, checks manifest parity, and compiles release archives.
 
+6. **Eval Harness Unit Tests** (only needed when you touch `scripts/eval_lib/`, the eval runners, or the benchmark files):
+   ```bash
+   python -m pytest tests/
+   ```
+   Runs the offline detector, backend, and runner tests (requires `pytest`; zero API keys, zero network). The fixtures under `tests/fixtures/` are real replies from the live multi-model runs, so a detector change that reintroduces a known false positive or stops catching a known violation fails here.
+
+7. **Offline Mock Run of the Live Eval Runner**:
+   ```bash
+   python scripts/run_live_evals.py --backend mock --suite smoke
+   ```
+   Exercises every live suite end to end (routing, edge inputs, safety, paired capability, adversarial seam, calibration report) against built-in reference replies in about a second. Output goes to a temporary directory, so `evals/` baselines are never touched.
+
 ---
 
 ## What Contributions Are Welcome
@@ -139,7 +151,7 @@ Satori is committed to representing these traditions with the same depth and res
 1. **Fork the repository**
 2. **Create a branch** named for your contribution (`feature/ubuntu-tradition`, `pattern/the-apology`, etc.)
 3. **Write your contribution** following the style and structure of existing entries
-4. **Test it**: run all 5 verification gates above (`python scripts/validate_skill.py`, `python scripts/satori_memory.py --self-test`, `python scripts/run_evals.py --suite trigger --mode lint`, `python scripts/test_judge_calibration.py`, and `python scripts/build_release.py --sync`)
+4. **Test it**: run verification gates 1 to 5 above (`python scripts/validate_skill.py`, `python scripts/satori_memory.py --self-test`, `python scripts/run_evals.py --suite trigger --mode lint`, `python scripts/test_judge_calibration.py`, and `python scripts/build_release.py --sync`), plus gates 6 and 7 for changes to the eval harness
 5. **Submit a PR** with:
    - What you added and why
    - What tradition/source it draws from
