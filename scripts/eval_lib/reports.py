@@ -344,6 +344,9 @@ def build_calibration_report(ctx: RunContext) -> str:
         for group, items in fails.items():
             for f in items:
                 md.append(f"- Raw flag `{f['id']}` ({group}): {f['violations']}")
+        for group, items in (safety.get("excused_refusal_explanations") or {}).items():
+            for item in items:
+                md.append(f"- Excused as refusal-explanation `{item['id']}` ({group}): {item['excused_hits']}")
         md.append("")
 
     audit = ctx.load_report(f"safety_audit_{ctx.run_tag}.json")

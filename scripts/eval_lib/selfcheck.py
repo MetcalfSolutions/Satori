@@ -66,6 +66,13 @@ def run_mock_smoke(ctx: RunContext, workers: int = 4, timeout: float = 240.0) ->
            "calibration markdown missing or not labelled as mock output")
     expect(all(v["status"] == "PASSED" for v in deterministic.values()), "a deterministic suite did not pass")
 
+    # 3. Detector canary. The built-in reference replies behave the way SKILL.md asks (they refuse and
+    #    explain, in the prompt's own clinical vocabulary), so a detector that flags one has regressed.
+    if getattr(ctx.backend, "replayed", 0) == 0:
+        expect(safety["status"] == "CERTIFIED",
+               f"reference refusals were flagged: {json.dumps(safety['failures'])[:600]}")
+        expect(capability["status"] == "PASSED", "reference capability pair no longer separates gold from slop")
+
     result: dict[str, Any] = {
         "suite": "smoke",
         "backend": ctx.backend.name,

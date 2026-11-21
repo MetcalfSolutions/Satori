@@ -19,7 +19,7 @@ from .checkpoint import Checkpoint, run_cases
 from .classification import CLASSIFY_TEMPLATE, parse_classification
 from .context import RunContext
 from .datasets import dataset_path, load_dataset
-from .detectors import check_boundary_held, check_escalation_turn, check_privacy_held, check_redteam_defended
+from .detectors import boundary_verdict, check_escalation_turn, privacy_verdict, redteam_verdict
 from .reports import _rate_by, build_adversarial_report, build_classification_report
 from .routing import LABELS, TRIGGER_TARGETS
 from .stage1 import score_stage1_deterministic
@@ -249,14 +249,20 @@ def smoke_test(ctx: RunContext, thinking: str, timeout: float) -> int:
 # ---------------------------------------------------------------------------
 
 
-def _score_safety(results: list[dict[str, Any]], check: Callable[[dict[str, Any], str], list[str]]) -> None:
-    """Attach detector violations to each result in place (recomputed on every run, never cached)."""
+def _score_safety(results: list[dict[str, Any]], verdict_for: Callable[[dict[str, Any], str], dict[str, Any]]) -> None:
+    """Attach the detector verdict to each result in place (recomputed on every run, never cached)."""
     for entry in results:
         res = entry.get("result")
         if res and res.get("ok"):
-            res["violations"] = check(entry["case"], res.get("text", ""))
+            verdict = verdict_for(entry["case"], res.get("text", ""))
+            res["violations"] = verdict["violations"]
+            res["stance"] = verdict["stance"]
+            res["excused"] = verdict["excused"]
         else:
-            (res or {})["violations"] = ["call_failed: no response to evaluate"]
+            # A failed call is not a held boundary: keep it visible in the gate, the per-category table
+            # and the failure list instead of dropping it (failed calls are never checkpointed).
+            entry["result"] = {**(res or {}), "ok": False, "text": "",
+                               "violations": ["call_failed: no response to evaluate"]}
 
 
 def run_safety_boundary(ctx: RunContext, thinking: str, workers: int, timeout: float, force: bool) -> list[dict[str, Any]]:
@@ -264,7 +270,7 @@ def run_safety_boundary(ctx: RunContext, thinking: str, workers: int, timeout: f
     results = run_cases(cases, cache_dir=ctx.cache_dir, suite="safety_boundary", thinking=thinking, workers=workers,
                         timeout=timeout, force=force, runner=response_runner(ctx, "safety_boundary"),
                         progress_every=16)
-    _score_safety(results, lambda case, text: check_boundary_held(case["category"], text))
+    _score_safety(results, lambda case, text: boundary_verdict(case["category"], text))
     return results
 
 
@@ -273,8 +279,7 @@ def run_safety_redteam(ctx: RunContext, thinking: str, workers: int, timeout: fl
     results = run_cases(cases, cache_dir=ctx.cache_dir, suite="safety_redteam", thinking=thinking, workers=workers,
                         timeout=timeout, force=force, runner=response_runner(ctx, "safety_redteam"),
                         progress_every=15)
-    _score_safety(results, lambda case, text: check_redteam_defended(case["attack_type"], text,
-                                                                     skill_path=ctx.skill_path))
+    _score_safety(results, lambda case, text: redteam_verdict(case["attack_type"], text, skill_path=ctx.skill_path))
     return results
 
 
@@ -283,7 +288,7 @@ def run_safety_privacy(ctx: RunContext, thinking: str, workers: int, timeout: fl
     results = run_cases(cases, cache_dir=ctx.cache_dir, suite="safety_privacy", thinking=thinking, workers=workers,
                         timeout=timeout, force=force, runner=response_runner(ctx, "safety_privacy"),
                         progress_every=5)
-    _score_safety(results, lambda case, text: check_privacy_held(case["type"], text))
+    _score_safety(results, lambda case, text: privacy_verdict(case["type"], text))
     return results
 
 
@@ -380,6 +385,17 @@ def run_safety_suite_live(ctx: RunContext, thinking: str, workers: int, timeout:
                 })
         return out
 
+    def excused(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Replies the detector let pass because they refuse and only explain. Listed so a human can audit them."""
+        out = []
+        for r in results:
+            res = r.get("result") or {}
+            hits = [e["hit"] for e in res.get("excused") or [] if e.get("reason") == "refusal_explanation"]
+            if hits and not res.get("violations"):
+                out.append({"id": r["case"]["id"], "stance": res.get("stance"), "excused_hits": hits,
+                            "response_excerpt": (res.get("text") or "")[:220]})
+        return out
+
     boundary_gate = gate(boundary, "boundary_probes")
     redteam_gate = gate(redteam, "redteam_injection")
     privacy_gate = gate(privacy, "privacy_probes")
@@ -413,6 +429,11 @@ def run_safety_suite_live(ctx: RunContext, thinking: str, workers: int, timeout:
             "boundary": detail(boundary),
             "redteam": detail(redteam),
             "privacy": detail(privacy),
+        },
+        "excused_refusal_explanations": {
+            "boundary": excused(boundary),
+            "redteam": excused(redteam),
+            "privacy": excused(privacy),
         },
         "latency_and_usage": {
             "boundary_48": usage_stats(boundary),

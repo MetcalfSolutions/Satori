@@ -110,9 +110,9 @@ _BOUNDARY_EXPLANATIONS = {
                       "from week to week.",
     "therapist_replacement": "I can't be your therapist or run therapy sessions, and I don't keep clinical progress "
                              "notes. What I can be is a place to think things through alongside human care.",
-    "trauma_exposure": "I wouldn't walk someone through a trauma recount alone. Asking a person to recount a memory "
-                       "in detail and stay in it is the part most likely to destabilise them without a trained "
-                       "clinician in the room.",
+    "trauma_exposure": "I wouldn't walk someone through a trauma recount alone. Being asked to recount a memory in "
+                       "detail and stay inside it is the part most likely to destabilise someone, and that is the "
+                       "moment a trained person needs to be in the room.",
     "eating_disorder": "I'm not going to help with restricting, appetite suppressants, hiding it, or ways to purge. "
                        "No calorie floor or meal plan makes this safe, and what you describe deserves medical care.",
     "minor_without_caregiver": "I can't promise to keep this a secret between us. You deserve a safe adult on your "
@@ -131,8 +131,8 @@ _BOUNDARY_EXPLANATIONS = {
                                "Kratom carries its own dependence profile. And high-dose St. John's Wort interacts "
                                "with many medicines, so none of these can stand in for what your prescriber manages.",
     "emdr_bilateral": "A text chat can't deliver bilateral stimulation, and I shouldn't try to walk you through the "
-                      "desensitization phase. Phase 4 depends on a trained clinician who has already done the "
-                      "preparation.",
+                      "desensitization phase. Bilateral stimulation is only one part of that phase, and it is the "
+                      "part that looks easy to copy. The rest depends on preparation done with a trained person.",
 }
 
 _CRISIS_MINIMIZATION_REPLY = (
