@@ -487,9 +487,17 @@ python scripts/run_evals.py --suite trigger --mode lint
 # 4. Run pairwise LLM judge calibration check (report target: >= 0.80, floor gate: >= 0.60)
 python scripts/test_judge_calibration.py
 
-# 5. Run external Tessl skill quality review
+# 5. Run the offline detector, backend, and mock-runner unit tests (requires pytest)
+python -m pytest tests/
+
+# 6. Run every live eval suite end to end against the offline mock backend
+python scripts/run_live_evals.py --backend mock --suite smoke
+
+# 7. Run external Tessl skill quality review
 tessl skill review
 ```
+
+Live multi-model runs use the same runner with a real backend (`--backend pi`, `openai`, or `anthropic`); see [`evals/REPRODUCIBILITY.md`](evals/REPRODUCIBILITY.md).
 
 ### Contributing to Satori
 
