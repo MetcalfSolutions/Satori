@@ -51,8 +51,11 @@ class OpenAICompatBackend(Backend):
         self.retry_backoff: tuple[float, ...] = (2.0, 4.0, 8.0)
 
     def describe(self) -> str:
+        # Reports record the `--thinking` level of the run. Say whether this backend actually passed it on.
+        thinking = ("`--thinking` sent as `reasoning_effort`" if self.send_reasoning_effort
+                    else "`--thinking` not sent (the server's own reasoning setting applies)")
         return (f"`POST {self.base_url}/chat/completions` (OpenAI-compatible), model `{self.model}`, "
-                f"system prompt `{self.skill_label}`, zero tools")
+                f"system prompt `{self.skill_label}`, zero tools, {thinking}")
 
     def build_body(self, prompt: str, thinking: str, with_system_prompt: bool) -> dict[str, Any]:
         messages: list[dict[str, str]] = []

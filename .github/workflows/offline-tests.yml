@@ -50,4 +50,4 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Run SatoriWeb Beta suite (auth, invite gate, memory parity, leak guard)
         working-directory: satori-web
-        run: node --test test/
+        run: npm test

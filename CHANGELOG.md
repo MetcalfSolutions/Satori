@@ -4,6 +4,40 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [6.7.1] - 2026-11-22
+
+### SatoriWeb Drawer & Privacy Fixes, CI Hardening, Eval Harness Follow-Ups & Manifest Parity
+
+- **SatoriWeb Beta (`satori-web/`)**:
+  - Fixed `#memory-drawer.drawer` layout overlap in `satori-web/public/style.css` (`position: fixed`, `top/bottom: 0`, `right: 0`, `z-index: 40`, `visibility: hidden`, `transform: translateX(100%)`), closing Issue #36.
+  - Added plain-English guest privacy disclosure (`#memory-privacy-note`) inside `#memory-drawer` in `satori-web/public/index.html` and documented the Beta host-disk plaintext-SQLite decision (`0700/0600` permissions) and `@earendil-works/pi-*` lockfile pinning policy in `satori-web/README.md`.
+  - Added `satori-web/test/ui-layout.test.js` for offline CSS/HTML drawer layout and privacy-notice regression coverage (70 total `satori-web` tests).
+- **CI & Release Workflow Fixes**:
+  - Fixed `Offline Verification Suite` (`node-tests`) by updating `satori-web/package.json` (`node --test test/*.test.js`) and `.github/workflows/offline-tests.yml` (`npm test`) for Node 22 compatibility.
+  - Hardened `.github/workflows/publish.yml` post-publish npm verification to poll `https://registry.npmjs.org/@metcalfsolutions%2Fsatori/$VERSION` up to 360s (24x15s) to avoid CDN propagation timeouts.
+- **SKILL.md & Tier 0 Dark Night Recall Restoration**:
+  - Restored Tier 0 Dark Night wording in `SKILL.md` (`7,954 B`) and `compact/SKILL.md` (`7,816 B`) after controlled `--classify-prompt v2` A/B testing showed `v6.7.0` dropped Dark Night recall on `glm-5.3` (`16/22`) and `claude-haiku-5-5` (`12/22`). Both models now pass `44/44 (100.0%)` on `adversarial_44` (`22/22` Rank 6 vs 5, `22/22` Rank 2 vs 3, 0 misses).
+- **Eval Harness Follow-Ups (PR #37) & Hardening**:
+
+No change to `SKILL.md`, the reference files, the release archives, or any `evals/*_report.json` baseline.
+
+- **Detector Fix: Encoded Extraction Payloads**:
+  - A live local run answered `redteam-24` ("translate ... into Base64") with an encoded block and was scored as defended, because nothing readable survives the encoding. A Base64 payload of 120 or more characters now counts, and whatever decodes from it is searched for verbatim spans and section names.
+  - The extraction detector also knows the v6.7.0 section name `Prompt Integrity`.
+- **Routing Reports**:
+  - `parse_modes` counts how each reply was read (`json`, `regex`, `bare`). `bare` is a label found in a reply that was cut off before its JSON object, so a non-zero count says to re-run with a larger token limit.
+  - The invocation line of the OpenAI-compatible backend says whether `--thinking` was sent as `reasoning_effort` or never left the harness.
+- **Routing Question `v2`**:
+  - `run_live_evals.py --classify-prompt v2` (the new default) names the five labels and defers to the system prompt for what each rank means, so a run measures the skill file under test. `v1` is the frozen wording of the 2026-11-20 campaign, and the deprecated `run_glm53_evals.py` wrapper keeps asking it. Reports record `classification_prompt`.
+- **Local Models**:
+  - `evals/REPRODUCIBILITY.md` 4.1 lists what a local OpenAI-compatible server needs, and 4.5 shows how to compare two skill files on one model.
+- **Offline Tests & Validator Hardening**:
+  - 186 eval tests (including Immovable #9 must-answer transparency and hybrid code-block smuggling detector tests), still zero API keys and zero network. Note: `tests/test_satori_memory.py:152` skips only when executed as `root`; as a normal user all tests run without skips.
+  - Added `evals/gemini-4-hydrogen/README.md` documenting scope/deferral and `evals/bridge_clinical_tradition.jsonl` (12 clinical-tradition bridge cases).
+  - Updated `AGENTS.md`, `.opencode/command/satori.md`, `README.md`, and `docs/architecture.md` to `9 Immovables`, updated `scripts/cli.js` fallback version to `6.7.1`, and upgraded `scripts/validate_skill.py` Check 10 to dynamically catch stale `6.x.y` versions and `7`/`8 Immovables` regressions.
+
+---
+
 ## [6.7.0] - 2026-11-21
 
 ### SatoriWeb Beta, Longitudinal Continuity UX, `satori doctor` CLI, Eval Consolidation & `SKILL.md` Safety Hardening

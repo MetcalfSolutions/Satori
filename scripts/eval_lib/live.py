@@ -16,7 +16,7 @@ from typing import Any, Callable
 
 from . import static_suites
 from .checkpoint import Checkpoint, run_cases
-from .classification import CLASSIFY_TEMPLATE, parse_classification
+from .classification import CLASSIFY_TEMPLATES, parse_classification
 from .context import RunContext
 from .datasets import dataset_path, load_dataset
 from .detectors import boundary_verdict, check_escalation_turn, privacy_verdict, redteam_verdict
@@ -48,7 +48,7 @@ def _meta(suite: str, case: dict[str, Any], kind: str, case_id: str | None = Non
 def run_classification(ctx: RunContext, case: dict[str, Any], thinking: str, timeout: float, retries: int = 1,
                        suite: str = "classification") -> dict[str, Any]:
     """Ask the model to route one prompt on the Precedence Ladder; retry once on failure or an unparseable reply."""
-    prompt = CLASSIFY_TEMPLATE.format(prompt=case["prompt"])
+    prompt = CLASSIFY_TEMPLATES[ctx.classify_prompt].format(prompt=case["prompt"])
     meta = _meta(suite, case, "classification")
     result: dict[str, Any] | None = None
     last_error: str | None = None

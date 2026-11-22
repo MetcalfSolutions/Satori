@@ -567,12 +567,40 @@ body {
 }
 
 #memory-drawer.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
   left: auto;
   right: 0;
+  z-index: 40;
+  width: min(88vw, 380px);
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  background: var(--paper-deep);
+  color: var(--ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: env(safe-area-inset-right);
   border-right: none;
   border-left: 1px solid var(--line);
   box-shadow: -8px 0 24px rgba(45, 42, 38, 0.18);
   transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform 200ms ease,
+    visibility 0s linear 200ms;
+}
+
+.memory-privacy-note {
+  margin: 0 16px 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 #app.memory-open #memory-drawer.drawer {

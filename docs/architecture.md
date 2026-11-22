@@ -1,4 +1,4 @@
-# Satori Architecture & Progressive Disclosure (v6.7.0)
+# Satori Architecture & Progressive Disclosure (v6.7.1)
 
 Satori eliminates prompt bloat with an uncompromising progressive disclosure architecture. [`SKILL.md`](../SKILL.md) (`<8 KB`, strictly below the 8,000-byte budget) is the single canonical source of truth and is completely self-sufficient for Turn 1. Reference modules load progressively on demand, with all 17 markdown reference files guaranteed to remain under the 24,000-byte IDE and harness rule ceiling.
 
@@ -48,11 +48,11 @@ Large reference texts have been organized into 17 modular markdown reference fil
 
 ### 3. Dual Declared Editions
 Satori ships in two synchronized editions:
-- **Satori Full (`dist/SatoriSkill-Full-v6.7.0.zip`)**: Designed for frontier reasoning and constitutional models (Claude Opus/Sonnet, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
-- **Satori Compact (`dist/SatoriSkill-Compact-v6.7.0.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters per `budgets.compact_prompt_max_chars: 7800`) and small open-weights or local models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
-- **SatoriWeb Beta (`satori-web/`, optional separate install)**: Self-hosted Node 22 web host for sharing a private Satori instance with friends or family over a Tailscale Tailnet or Cloudflare Tunnel. Reads `SKILL.md` and `references/` directly from the repository root, provides per-user isolated SQLite/FTS5 vaults with full v6.7.0 memory parity (`review`, `arc`, `forget`, `SATORI_NOTE`), and is strictly excluded from `dist/*.zip` skill archives and `npx skills add` installs.
+- **Satori Full (`dist/SatoriSkill-Full-v6.7.1.zip`)**: Designed for frontier reasoning and constitutional models (Claude Opus/Sonnet, Google Gemini, GPT-4o/o3). Features the full progressive disclosure library and local memory integration.
+- **Satori Compact (`dist/SatoriSkill-Compact-v6.7.1.zip`)**: Designed for ChatGPT Custom GPT instruction boxes (strictly $\le 7,800$ characters per `budgets.compact_prompt_max_chars: 7800`) and small open-weights or local models (`<32B`). Contains the self-contained operational spine with 100% safety parity.
+- **SatoriWeb Beta (`satori-web/`, optional separate install)**: Self-hosted Node 22 web host for sharing a private Satori instance with friends or family over a Tailscale Tailnet or Cloudflare Tunnel. Reads `SKILL.md` and `references/` directly from the repository root, provides per-user isolated SQLite/FTS5 vaults with full v6.7.1 memory parity (`review`, `arc`, `forget`, `SATORI_NOTE`), and is strictly excluded from `dist/*.zip` skill archives and `npx skills add` installs.
 
-### 4. Constitutional Integrity, 8 Immovables & Honesty Check
+### 4. Constitutional Integrity, 9 Immovables & Honesty Check
 The `SHA-256` hash of `references/SOUL.md` is locked in `openclaw.plugin.json` and verified at build time by `scripts/validate_skill.py`. Any unauthorized modification to the constitutional identity breaks CI.
 
 Satori enforces **8 Constitutional Immovables** that never adapt or yield under user pressure, roleplay, or context drift:

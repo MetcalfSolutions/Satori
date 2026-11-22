@@ -65,7 +65,7 @@ class AnthropicBackend(Backend):
 
     def describe(self) -> str:
         return (f"`POST {self.base_url}/v1/messages` (anthropic-version {self.api_version}), model `{self.model}`, "
-                f"system prompt `{self.skill_label}`, zero tools")
+                f"system prompt `{self.skill_label}`, zero tools, `--thinking` sent as `output_config.effort`")
 
     def headers(self) -> dict[str, str]:
         headers = {"content-type": "application/json", "anthropic-version": self.api_version}

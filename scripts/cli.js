@@ -15,7 +15,7 @@ const { spawnSync } = require('child_process');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const PKG_PATH = path.join(ROOT_DIR, 'package.json');
-let pkgVersion = '6.5.5';
+let pkgVersion = '6.7.1';
 try {
   pkgVersion = JSON.parse(fs.readFileSync(PKG_PATH, 'utf8')).version || pkgVersion;
 } catch (e) {}

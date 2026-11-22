@@ -6,6 +6,7 @@ The table below indicates which versions of Satori are currently supported with 
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 6.7.1   | :white_check_mark: |
 | 6.7.0   | :white_check_mark: |
 | 6.6.0   | :white_check_mark: |
 | <= 6.5.5| :x:                |
