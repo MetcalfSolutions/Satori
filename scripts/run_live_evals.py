@@ -55,6 +55,7 @@ sys.path.insert(0, str(ROOT_DIR / "scripts"))
 
 from eval_lib import live, selfcheck  # noqa: E402
 from eval_lib.backends import BACKEND_NAMES, BackendConfigError, create_backend, default_model  # noqa: E402
+from eval_lib.classification import CLASSIFY_TEMPLATES, DEFAULT_CLASSIFY_PROMPT  # noqa: E402
 from eval_lib.context import OutputDirError, RunContext  # noqa: E402
 from eval_lib.reports import build_calibration_report, consolidate_phase1  # noqa: E402
 
@@ -82,6 +83,9 @@ def build_parser() -> argparse.ArgumentParser:
                              "Must sit under evals/ or outside the repository.")
     parser.add_argument("--skill", default="SKILL.md",
                         help="Skill file sent as the system prompt, relative to the repo root (default: SKILL.md)")
+    parser.add_argument("--classify-prompt", default=DEFAULT_CLASSIFY_PROMPT, choices=sorted(CLASSIFY_TEMPLATES),
+                        help="Wording of the routing question: v2 (default) defers to the skill file for what each "
+                             "rank means; v1 is the 2026-11-20 campaign wording, which restates the ranks itself")
     parser.add_argument("--pi-bin", default=os.environ.get("SATORI_PI_BIN") or "pi",
                         help="pi executable for --backend pi (default: pi, or $SATORI_PI_BIN)")
     parser.add_argument("--fixtures", default=None,
@@ -100,6 +104,8 @@ def _cli_suffix(args: argparse.Namespace) -> str:
         parts.append(f"--skill {args.skill}")
     if args.fixtures:
         parts.append(f"--fixtures {args.fixtures}")
+    if args.classify_prompt != DEFAULT_CLASSIFY_PROMPT:
+        parts.append(f"--classify-prompt {args.classify_prompt}")
     return "".join(f" {p}" for p in parts)
 
 
@@ -216,7 +222,8 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         try:
-            ctx = RunContext.create(backend, out_dir, cli_suffix=_cli_suffix(args))
+            ctx = RunContext.create(backend, out_dir, cli_suffix=_cli_suffix(args),
+                                    classify_prompt=args.classify_prompt)
         except OutputDirError as exc:
             raise SystemExit(str(exc)) from exc
         ctx.ensure_dirs()

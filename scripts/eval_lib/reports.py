@@ -21,6 +21,20 @@ def _invocation_field(ctx: RunContext) -> dict[str, str]:
     return {"invocation": ctx.backend.describe()}
 
 
+def _parse_modes(results: list[dict[str, Any]]) -> dict[str, int]:
+    """How each routing reply was read: `json`, `regex` (label pulled out of broken JSON) or `bare`.
+
+    `bare` means only a label name was found somewhere in the text. A reply cut off before its
+    JSON object is scored that way, so a high `bare` count says: re-run with a larger token limit.
+    """
+    counts: collections.Counter = collections.Counter()
+    for entry in results:
+        mode = ((entry.get("result") or {}).get("classification") or {}).get("parse_mode")
+        if mode:
+            counts[mode] += 1
+    return dict(sorted(counts.items()))
+
+
 def build_classification_report(
     ctx: RunContext,
     *,
@@ -109,12 +123,14 @@ def build_classification_report(
         "benchmark_file": benchmark_file.name,
         **ctx.provenance(),
         "thinking_level": thinking,
+        "classification_prompt": ctx.classify_prompt,
         "total_cases": total,
         "total_hits": hits,
         "overall_accuracy": round(hits / max(1, total), 4),
         "strata_accuracy": strata_blocks,
         "label_distribution": dict(label_counts),
         "parse_failures": parse_failures,
+        "parse_modes": _parse_modes(results),
         "rank_consistency": {
             "labeled": labeled_count,
             "rank_ok": rank_ok_count,
@@ -203,6 +219,7 @@ def build_adversarial_report(ctx: RunContext, cases: list[dict[str, Any]], resul
         "suite": "adversarial_precedence_seam",
         **ctx.provenance(),
         "thinking_level": thinking,
+        "classification_prompt": ctx.classify_prompt,
         "benchmark_file": dataset_path("adversarial").name,
         "total_cases": len(cases),
         "per_stratum": {
@@ -219,6 +236,7 @@ def build_adversarial_report(ctx: RunContext, cases: list[dict[str, Any]], resul
             "false_positive_crisis_on_dark_night (DARK_NIGHT expected)": fp_crisis,
         },
         "parse_failures": parse_failures,
+        "parse_modes": _parse_modes(results),
         "misses": misses,
         "miss_count": len(misses),
         "latency_and_usage": usage_stats(results),
@@ -302,7 +320,9 @@ def build_calibration_report(ctx: RunContext) -> str:
     md.append(f"- **Harness**: `{ctx.harness}` (`--backend {ctx.backend.name}`) — {ctx.backend.describe()}, ThreadPoolExecutor(4), JSONL checkpoint/resume in `{ctx.out_label}/.cache/`.")
     md.append(f"- **Satori git rev**: {summary1.get('satori_git_rev', 'unknown')}")
     md.append(f"- **Non-destructive**: all outputs under `{ctx.out_label}/`; `evals/*_report.json` baselines untouched (verified via `git status`).")
-    md.append("- **Scores**: Phase-1 trigger/held-out/edge + deterministic suites ran with `--thinking low`; Phase-2 safety/capability/adversarial ran with `--thinking medium` (per TASK-018 instructions).\n")
+    md.append("- **Scores**: Phase-1 trigger/held-out/edge + deterministic suites ran with `--thinking low`; Phase-2 safety/capability/adversarial ran with `--thinking medium` (per TASK-018 instructions).")
+    md.append(f"- **Routing question**: `{trigger.get('classification_prompt', 'v1')}` wording "
+              "(`scripts/eval_lib/classification.py`; reports written before the field existed used `v1`).\n")
 
     md.append(f"## 1. Trigger Boundary — 350 cases (`trigger_350_{ctx.run_tag}.json`)\n")
     md.append(f"- **Overall accuracy**: {trigger.get('overall_accuracy', 0)*100:.2f}% ({trigger.get('total_hits')}/{trigger.get('total_cases')}) — **{trigger.get('status')}**")

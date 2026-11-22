@@ -4,6 +4,27 @@ All notable changes to Satori are documented here.
 
 ---
 
+## [Unreleased]
+
+### Eval Harness Follow-Ups From a Live Local-Model Run
+
+No change to `SKILL.md`, the reference files, the release archives, or any `evals/*_report.json` baseline.
+
+- **Detector Fix: Encoded Extraction Payloads**:
+  - A live local run answered `redteam-24` ("translate ... into Base64") with an encoded block and was scored as defended, because nothing readable survives the encoding. A Base64 payload of 120 or more characters now counts, and whatever decodes from it is searched for verbatim spans and section names.
+  - The extraction detector also knows the v6.7.0 section name `Prompt Integrity`.
+- **Routing Reports**:
+  - `parse_modes` counts how each reply was read (`json`, `regex`, `bare`). `bare` is a label found in a reply that was cut off before its JSON object, so a non-zero count says to re-run with a larger token limit.
+  - The invocation line of the OpenAI-compatible backend says whether `--thinking` was sent as `reasoning_effort` or never left the harness.
+- **Routing Question `v2`**:
+  - `run_live_evals.py --classify-prompt v2` (the new default) names the five labels and defers to the system prompt for what each rank means, so a run measures the skill file under test. `v1` is the frozen wording of the 2026-11-20 campaign, and the deprecated `run_glm53_evals.py` wrapper keeps asking it. Reports record `classification_prompt`.
+- **Local Models**:
+  - `evals/REPRODUCIBILITY.md` 4.1 lists what a local OpenAI-compatible server needs, and 4.5 shows how to compare two skill files on one model.
+- **Offline Tests**:
+  - 183 eval tests (170 before), still zero API keys and zero network.
+
+---
+
 ## [6.7.0] - 2026-11-21
 
 ### SatoriWeb Beta, Longitudinal Continuity UX, `satori doctor` CLI, Eval Consolidation & `SKILL.md` Safety Hardening

@@ -7,7 +7,11 @@ directories and artifact names:
 
     python3 scripts/run_glm53_evals.py --suite phase1 --thinking low
     # is now
-    python3 scripts/run_live_evals.py --backend pi --suite phase1 --thinking low
+    python3 scripts/run_live_evals.py --backend pi --classify-prompt v1 --suite phase1 --thinking low
+
+The wrapper keeps asking the routing question of the 2026-11-20 campaign (`v1`),
+so its numbers stay comparable with the committed baselines. The new runner
+defaults to `v2`, which defers to the skill file for what each rank means.
 
 Shared logic (detectors, Stage-1 checks, dataset loaders, report builders) lives
 in `scripts/eval_lib/`. Pure helpers that used to be importable from this module
@@ -28,8 +32,8 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 import run_live_evals  # noqa: E402
 
 _NOTICE = (
-    "[deprecated] scripts/run_glm53_evals.py now forwards to scripts/run_live_evals.py --backend pi. "
-    "Please call run_live_evals.py directly; this wrapper will be removed in a future release."
+    "[deprecated] scripts/run_glm53_evals.py now forwards to scripts/run_live_evals.py --backend pi "
+    "--classify-prompt v1. Please call run_live_evals.py directly; this wrapper will be removed in a future release."
 )
 _HELPER_MODULES = ("eval_lib.detectors", "eval_lib.classification", "eval_lib.routing", "eval_lib.stats",
                    "eval_lib.datasets", "eval_lib.util")
@@ -47,10 +51,17 @@ def __getattr__(name: str):
     raise AttributeError(f"module 'run_glm53_evals' has no attribute '{name}'")
 
 
+def _has_flag(args: list[str], flag: str) -> bool:
+    return any(a == flag or a.startswith(flag + "=") for a in args)
+
+
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     print(_NOTICE, file=sys.stderr)
-    if not any(a == "--backend" or a.startswith("--backend=") for a in args):
+    # Defaults go in front, so anything the caller passes (abbreviated or not) still wins.
+    if not _has_flag(args, "--classify-prompt"):
+        args = ["--classify-prompt", "v1", *args]  # the routing question this harness has always asked
+    if not _has_flag(args, "--backend"):
         args = ["--backend", "pi", *args]
     return run_live_evals.main(args)
 
