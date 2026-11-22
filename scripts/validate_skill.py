@@ -495,19 +495,39 @@ def main() -> int:
         ROOT_DIR / "docs" / "assets" / "satori-hero-v6.svg",
         ROOT_DIR / "docs" / "assets" / "satori-architecture-v6.svg",
         ROOT_DIR / "docs" / "404.html",
+        ROOT_DIR / "facts.json",
+        ROOT_DIR / "scripts" / "cli.js",
+        ROOT_DIR / "AGENTS.md",
+        ROOT_DIR / ".opencode" / "command" / "satori.md",
     ]
-    stale_version_pat = re.compile(r"\b(?:v)?6\.5\.[0-5]\b")
+    stale_version_pat = re.compile(r"\bv?(6\.[0-7]\.\d+)\b")
     stale_errors: list[str] = []
     for target in stale_scan_targets:
         if not target.exists():
             stale_errors.append(f"Missing file for stale version scan: {target.relative_to(ROOT_DIR)}")
             continue
         content = target.read_text(encoding="utf-8")
-        stale_matches = stale_version_pat.findall(content)
+        # Allowlist SATORI_NOTE v6.5 protocol token
+        scrubbed = re.sub(r"SATORI_NOTE\s+v?6\.5", "SATORI_NOTE_TOKEN", content)
+        stale_matches = [m for m in stale_version_pat.findall(scrubbed) if m != expected_version]
         if stale_matches:
             stale_errors.append(
-                f"Stale version string(s) {stale_matches} found in {target.relative_to(ROOT_DIR)} (must match v{expected_version})"
+                f"Stale version string(s) {sorted(set(stale_matches))} found in {target.relative_to(ROOT_DIR)} (must match v{expected_version})"
             )
+    immovables_targets = [
+        ROOT_DIR / "AGENTS.md",
+        ROOT_DIR / ".opencode" / "command" / "satori.md",
+        ROOT_DIR / "README.md",
+        ROOT_DIR / "docs" / "architecture.md",
+    ]
+    immovables_pat = re.compile(r"\b(?:7|8)\s+Immovables\b", re.IGNORECASE)
+    for target in immovables_targets:
+        if target.exists():
+            m = immovables_pat.findall(target.read_text(encoding="utf-8"))
+            if m:
+                stale_errors.append(
+                    f"Stale Immovables count {m} found in {target.relative_to(ROOT_DIR)} (must be 9 Immovables)"
+                )
     if stale_errors:
         errors.extend(stale_errors)
     else:

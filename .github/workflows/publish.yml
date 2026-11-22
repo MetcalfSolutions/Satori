@@ -58,13 +58,18 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "Verifying @metcalfsolutions/satori@$VERSION on npm registry..."
-          for i in {1..12}; do
-            if npm view "@metcalfsolutions/satori@$VERSION" version 2>/dev/null | grep -q "^$VERSION$"; then
+          for i in {1..24}; do
+            HTTP_CODE=$(curl -sS -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/@metcalfsolutions%2Fsatori/$VERSION" || echo "000")
+            if [ "$HTTP_CODE" = "200" ]; then
               echo "Package @metcalfsolutions/satori@$VERSION is verified live on npm registry."
               exit 0
             fi
-            echo "Waiting for npm registry to reflect new version (attempt $i/12)..."
-            sleep 10
+            if npm view "@metcalfsolutions/satori@$VERSION" version --prefer-online 2>/dev/null | grep -q "^$VERSION$"; then
+              echo "Package @metcalfsolutions/satori@$VERSION is verified live via npm view."
+              exit 0
+            fi
+            echo "Waiting for npm registry to reflect new version (attempt $i/24, HTTP $HTTP_CODE)..."
+            sleep 15
           done
-          echo "ERROR: Package @metcalfsolutions/satori@$VERSION did not appear on registry within 120s"
+          echo "ERROR: Package @metcalfsolutions/satori@$VERSION did not appear on registry within 360s"
           exit 1

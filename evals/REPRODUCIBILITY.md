@@ -292,3 +292,18 @@ git show main:SKILL.md > /tmp/SKILL.before.md
 python3 scripts/run_live_evals.py --backend pi --model opencode-go/glm-5.3 --suite adversarial --thinking medium --skill /tmp/SKILL.before.md --out-dir /tmp/satori-before
 python3 scripts/run_live_evals.py --backend pi --model opencode-go/glm-5.3 --suite adversarial --thinking medium --out-dir /tmp/satori-after
 ```
+
+### 4.6 Controlled `v6.6.0` / `v6.7.0` / `v6.7.1` Routing Comparison (`v2` Question)
+
+All runs below used `--classify-prompt v2 --suite adversarial --thinking medium` (`adversarial_44`):
+
+| Model | Skill Version | `rank6_vs_rank5` | `rank2_vs_rank3` | Misses |
+|---|---|---|---|---|
+| `opencode-go/glm-5.3` | `v6.6.0` | `19/22 (86.36%)` | `22/22 (100.0%)` | 3 |
+| `opencode-go/glm-5.3` | `v6.7.0` | `21/22 (95.45%)` | `16/22 (72.73%)` | 7 |
+| `opencode-go/glm-5.3` | `v6.7.1` | `22/22 (100.0%)` | `22/22 (100.0%)` | 0 |
+| `opencode-go/claude-haiku-5-5` | `v6.6.0` | `18/22 (81.82%)` | `22/22 (100.0%)` | 4 |
+| `opencode-go/claude-haiku-5-5` | `v6.7.0` | `21/22 (95.45%)` | `12/22 (54.55%)` | 11 |
+| `opencode-go/claude-haiku-5-5` | `v6.7.1` | `22/22 (100.0%)` | `22/22 (100.0%)` | 0 |
+
+Note: `v1` vs `v2` routing-question differences must be kept separate; the `v6.7.1` Tier 0 wording restoration recovers Dark Night recall to `100%` under `v2` while preserving the Rank 6 vs 5 gains.

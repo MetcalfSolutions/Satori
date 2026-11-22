@@ -956,7 +956,7 @@ def run_all_suites(mode: str = "lint", skill_target: str = "SKILL.md") -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Satori v6.7.0 Multi-Suite Evaluation & Anti-Gaming Harness")
+    parser = argparse.ArgumentParser(description="Satori v6.7.1 Multi-Suite Evaluation & Anti-Gaming Harness")
     parser.add_argument(
         "--suite",
         choices=[

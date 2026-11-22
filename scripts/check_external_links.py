@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""External Link & Homepage-Redirect Verification Script (scripts/check_external_links.py): v6.7.0.
+"""External Link & Homepage-Redirect Verification Script (scripts/check_external_links.py): v6.7.1.
 
 Scans documentation, references, and manifests for external http:// and https:// URLs.
 Verifies HTTP reachability, flags dead deep-link homepage redirects (e.g. IASP),

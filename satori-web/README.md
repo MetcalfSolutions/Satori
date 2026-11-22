@@ -167,7 +167,7 @@ systemctl --user restart satoriweb
 ```bash
 cd /path/to/Satori/satori-web
 npm install --no-audit --no-fund
-node --test test/
+npm test
 ```
 
 The suite covers the full HTTP surface end to end (auth, invite gate,
@@ -186,6 +186,23 @@ into this tree.
   (token-gated) sees them.
 - This Beta ships sanitized: no real addresses, usernames, or keys appear in
   any file here, and the automated leak guard keeps it that way.
+
+### Host Access & Storage Encryption (Beta Decision)
+
+Per-user SatoriWeb Beta vaults are stored on the host machine as plaintext
+SQLite (`index.db`) and Markdown files with strict `0700`/`0600` POSIX
+permissions (unlike the local CLI's optional AES-256-GCM + Scrypt encryption).
+Because SatoriWeb Beta targets small, trusted friend/family Tailnets where
+server-side model tool calls need transparent vault access without managing
+per-user passphrases, host-disk plaintext is an intentional Beta trade-off.
+This means the host administrator has technical access to vault files on disk;
+per-user at-rest encryption is tracked for a future Beta milestone.
+
+### Dependency & Pinning Policy
+
+SatoriWeb depends on the `@earendil-works/pi-*` durable harness runtime
+packages (`^1.5.0` in `satori-web/package.json`), pinned deterministically via
+`satori-web/package-lock.json` (`npm ci`).
 
 ## License
 

@@ -1,6 +1,6 @@
 {
   "name": "metcalf-solutions1/satori",
-  "version": "6.7.0",
+  "version": "6.7.1",
   "dependencies": {
     "tessl/skill-optimizer": {
       "version": "0.16.0"
