@@ -61,7 +61,7 @@ export function parseInviteCodes(raw) {
  * - `SATOWEB_VAULT_ROOT` — root directory of the per-user memory vaults
  * - `SATOWEB_PROVIDER` — model provider id: "opencode-go", "gemini",
  *   "anthropic", "openai", "openrouter", or "stub" (offline test provider)
- * - `SATOWEB_MODEL_ID` — model id (default: "minimax-m3")
+ * - `SATOWEB_MODEL_ID` — model id (default: "deepseek-v4.1-flash")
  * - `SATOWEB_THINKING_LEVEL` — thinking level
  * - `SATOWEB_HOST_TOKEN` — host-only debug token unlocking /api/conversations/:id/log
  * - `SATOWEB_INVITE_CODE` — one invite code, or several comma-separated;

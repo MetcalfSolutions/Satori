@@ -43,7 +43,7 @@ export const PROVIDER_ENV_KEYS = /** @type {const} */ ({
 export const GEMINI_PROVIDER_ID = "google";
 
 /** The sole chat model SatoriWeb's stub provider serves. */
-export const STUB_MODEL_ID = "minimax-m3";
+export const STUB_MODEL_ID = "deepseek-v4.1-flash";
 
 /**
  * Registers a scripted stub model provider through the same registration path

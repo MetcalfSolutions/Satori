@@ -35,7 +35,7 @@ invite code.
 ## Model providers
 
 Configure with two environment variables: `SATOWEB_PROVIDER` and
-`SATOWEB_MODEL_ID` (default model: `minimax-m3`). The provider's API key is
+`SATOWEB_MODEL_ID` (default model: `deepseek-v4.1-flash`). The provider's API key is
 read from its standard environment variable.
 
 | `SATOWEB_PROVIDER` | API key variable | Notes |
@@ -62,7 +62,7 @@ All settings are environment variables; every one is optional.
 | `SATOWEB_SKILL_PATH` | `/path/to/Satori` (the repository root) | The Satori skill directory: `SKILL.md` and `references/` are read from here. |
 | `SATOWEB_VAULT_ROOT` | `~/.satori/web-vault` | Root of the per-user memory vaults. Always separate from your real `~/.satori/memory` vault (boot refuses anything inside it). |
 | `SATOWEB_PROVIDER` | `opencode-go` | See the provider table above. |
-| `SATOWEB_MODEL_ID` | `minimax-m3` | Chat model id. |
+| `SATOWEB_MODEL_ID` | `deepseek-v4.1-flash` | Chat model id. |
 | `SATOWEB_THINKING_LEVEL` | `low` | Thinking level. |
 | `SATOWEB_HOST_TOKEN` | unset | Host-only debug token; unlocks `/api/conversations/:id/log` (a Bearer header away). Leave unset in production. |
 | `SATOWEB_INVITE_CODE` | unset | One invite code, or several comma-separated. When set, **Create my space** asks for one. |

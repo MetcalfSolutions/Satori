@@ -284,7 +284,7 @@ test("an oversized request body is rejected with 413", async () => {
   }
 });
 
-test("health reports the sole configured minimax-m3 model at low thinking", async () => {
+test("health reports the sole configured deepseek-v4.1-flash model at low thinking", async () => {
   const previousKey = process.env.OPENCODE_API_KEY;
   process.env.OPENCODE_API_KEY = "dummy-key-for-registration-only";
   const server = await bootTestServer({ provider: "opencode-go" });
@@ -294,7 +294,7 @@ test("health reports the sole configured minimax-m3 model at low thinking", asyn
     const body = await res.json();
     assert.deepEqual(body.model, {
       provider: "opencode-go",
-      modelId: "minimax-m3",
+      modelId: "deepseek-v4.1-flash",
       thinkingLevel: "low",
     });
   } finally {

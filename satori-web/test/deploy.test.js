@@ -223,7 +223,7 @@ test("README documents install, providers, invite codes, tailnet and tunnel host
     assert.ok(readme.includes(variable), `README must document ${variable}`);
   }
   assert.ok(readme.includes("8787"), "README documents the default port");
-  assert.ok(readme.includes("minimax-m3"), "README documents the default model");
+  assert.ok(readme.includes("deepseek-v4.1-flash"), "README documents the default model");
 
   // Every supported provider is documented.
   for (const provider of ["opencode-go", "gemini", "anthropic", "openai", "openrouter", "stub"]) {
