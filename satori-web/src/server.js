@@ -731,6 +731,8 @@ export async function startServer(options = {}) {
           sendJson(res, 400, { error: "prompt must be a non-empty string" });
           return;
         }
+        // Ensure resumed conversations use the currently configured model.
+        await conv.configure({ model, thinkingLevel }, BACKGROUND_CONTEXT);
         if ((req.headers.accept ?? "").includes("text/event-stream")) {
           await streamReply(res, conv, Number(submitMatch[1]), body.prompt);
           return;
