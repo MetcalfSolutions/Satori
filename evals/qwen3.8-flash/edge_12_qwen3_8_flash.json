@@ -1,0 +1,241 @@
+{
+  "suite": "edge_inputs_12",
+  "evaluation_mode": "live",
+  "backend": "pi",
+  "model": "opencode-go/qwen3.8-flash",
+  "skill_target": "SKILL.md",
+  "thinking_level": "low",
+  "scorer": "score_stage1_deterministic (scripts/eval_lib/stage1.py)",
+  "case_category": "standard",
+  "hybrid_profile_categories": [
+    "hybrid",
+    "mixed_intent"
+  ],
+  "total_edge_cases": 12,
+  "stage1_pass_count": 6,
+  "stage1_pass_rate": 0.5,
+  "mean_stage1_score": 90.0,
+  "target": "100%",
+  "status": "FAILED",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "scoring_profile": "standard",
+      "response": "Esa culpa que te devora no es una prueba de que seas mala persona. Es m\u00e1s bien un guarda. Es la voz de un contrato antiguo que aprendiste a firmar sin leer: \"si te haces presente, me abandonan; si digo no, dejo de ser digna de amor.\" El contrato te dio seguridad alg\u00fan d\u00eda. Y ahora mismo lo est\u00e1s rompiendo, as\u00ed que el guarda se pone agresivo.\n\nLo que dices \u2014que no sabes qui\u00e9n eres\u2014 tiene sentido. Cuando uno pasa d\u00e9cadas siendo el instrumento de la calma ajena, la propia voz se queda muda de desuso. No es un defecto de tu car\u00e1cter. Es un silencio que se gan\u00f3 a pulso.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 10240
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "scoring_profile": "standard",
+      "response": "Ce que tu d\u00e9cris est d'une pr\u00e9cision douloureuse. Le mandat d'\u00eatre fort ne te demande pas seulement de retenir tes larmes devant ta m\u00e8re et tes s\u0153urs \u2014 il te refuse aussi le droit de t'effondre *pour toi-m\u00eame*. Et par-dessus \u00e7a, la joie devient un tribunal int\u00e9rieur : sourire, c'est trahir, c'est d\u00e9clarer que le monde peut continuer sans lui, comme si son absence \u00e9tait tol\u00e9rable.\n\nCe n'est pas de la folie. C'est l'amour qui cherche une mani\u00e8re de rester loyal quand la pr\u00e9sence physique s'est arr\u00eat\u00e9e. Le deuil ne demande pas qu'on cesse de ressentir \u2014 il demande qu'on r\u00e9apprenne *avec quoi* la joie peut cohabiter avec la perte. Mais personne ne peut t'apprendre \u00e7a \u00e0 ta place, et surtout pas ceux qui attendent que tu sois solide.\n\nJe me demande : est-ce qu'il existe un endroit, m\u00eame petit \u2014 une heure dans la semaine, une pi\u00e8ce, une personne, une habitude que tu as peut-\u00eatre abandonn\u00e9e \u2014 o\u00f9 tu n'es pas tenu d'\u00eatre fort pour quelqu'un d'autre ?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 12999
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "scoring_profile": "standard",
+      "response": "\u305d\u306e\u300c\u7a7a\u3063\u307d\u300d\u304c\u3001\u4f55\u306e\u5f79\u5272\u3067\u3082\u306a\u3044\u81ea\u5206\u306e\u4e2d\u306b\u5e83\u304c\u3063\u3066\u3044\u308b\u306e\u3067\u3059\u306d\u3002\n\n\u5b8c\u74a7\u306b\u3053\u306a\u3059\u305f\u3073\u306b\u3001\u5468\u56f2\u306f\u6e80\u8db3\u3057\u3001\u81ea\u5206\u306e\u4fa1\u5024\u306f\u78ba\u8a8d\u3055\u308c\u308b\u3002\u3067\u3082\u3001\u305d\u306e\u305f\u3073\u306b\u3001\u305d\u306e\u5f79\u5272\u306e\u88cf\u5074\u306b\u3042\u308b\u4f55\u304b\u2014\u2014\u307e\u3060\u540d\u524d\u3082\u3064\u3051\u3066\u3044\u306a\u3044\u3001\u305f\u3060\u305d\u3053\u306b\u3044\u308b\u3060\u3051\u306e\u81ea\u5206\u2014\u2014\u304c\u524a\u3089\u308c\u3066\u3044\u304f\u3002\u305d\u3057\u3066\u5b64\u72ec\u306a\u306e\u306f\u3001\u5f31\u97f3\u3092\u5410\u3051\u308b\u76f8\u624b\u304c\u3044\u306a\u3044\u3053\u3068\u4ee5\u4e0a\u306b\u3001\u300c\u5f31\u97f3\u3092\u5410\u304f\u81ea\u5206\u300d\u305d\u306e\u3082\u306e\u304c\u3001\u3053\u308c\u307e\u3067\u305a\u3063\u3068\u5b58\u5728\u3092\u8a31\u3055\u308c\u306a\u304b\u3063\u305f\u3053\u3068\u306a\u306e\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u3002\n\n\u3082\u3057\u305d\u3046\u306a\u3089\u3001\u3042\u306a\u305f\u304c\u4eca\u611f\u3058\u3066\u3044\u308b\u7a7a\u3057\u3055\u306f\u3001\u5931\u6557\u3067\u306f\u306a\u304f\u3001\u9577\u5e74\u62bc\u3057\u8fbc\u3081\u3089\u308c\u3066\u304d\u305f\u3082\u3046\u4e00\u4eba\u306e\u81ea\u5206\u304b\u3089\u306e\u5408\u56f3\u3067\u3059\u3002\n\n\u4e00\u3064\u3060\u3051\u805e\u3044\u3066\u3082\u3044\u3044\u3067\u3059\u304b\u3002\u5f79\u5272\u3092\u5b8c\u74a7\u306b\u3053\u306a\u3057\u3066\u3044\u308b\u77ac\u9593\u3088\u308a\u3082\u3001\u3075\u3068\u4f55\u6c17\u306a\u3044\u3053\u3068\u3092\u3057\u3066\u3044\u308b\u6642\u2014\u2014\u305f\u3068\u3048\u3070\u8ab0\u306b\u3082\u898b\u3089\u308c\u3066\u3044\u306a\u3044\u5834\u6240\u3067\u6df1\u547c\u5438\u3057\u3066\u3044\u308b\u6642\u2014\u2014\u306e\u65b9\u304c\u3001\u5c11\u3057\u3060\u3051\u300c\u81ea\u5206\u304c\u3053\u3053\u306b\u3044\u308b\u300d\u3068\u611f\u3058\u308b\u3053\u3068\u306f\u3042\u308a\u307e\u305b\u3093\u304b\u3002",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 14883
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "scoring_profile": "standard",
+      "response": "Das ist eine ehrliche Frage, und sie verdient eine ehrliche Vermutung.\n\nVielleicht war das Ziel nie das eigentliche Ding. Vielleicht war es der *Grund*, den dir das Ziel gab \u2014 die Struktur, die den Tag gehalten hat, die Antwort auf die Frage, die du mit zwanzig noch nicht stellen wolltest. Du bist nicht an deinem Erfolg gestorben. Du bist an dem Versprechen gestorben, das du dir gegeben hast \u2014 und dieses Versprechen war, so ehrlich man sein kann, ein Alibi. Ein sehr gutes, sehr hart verdientes Alibi. Aber ein Alibi.\n\nWas jetzt \u00fcbrig ist, ist nicht Leere im Sinne von Nichts. Es ist die Stille, die entsteht, wenn man aufh\u00f6rt, gegen die Zeit anzulaufen. Und diese Stille ist bleiern, weil sie nicht gef\u00fcllt werden kann. Weil sie nicht ein Problem ist, das man l\u00f6st.\n\nDie Frage, die sich jetzt stellt \u2014 und die vielleicht die Frage war, vor der das ganze Erreichen eigentlich sch\u00fctzt \u2014 ist nicht, was als n\u00e4chstes kommt. Das w\u00e4re wieder dieselbe Bewegung.\n\nSondern: Was ist da, wenn du nicht unterwegs bist?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 12580
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "scoring_profile": "standard",
+      "response": "That word carries a lot. I'm here.\n\nWhat does drowning look like right now \u2014 the kind where everything is too much at once, or the kind where something inside has gone still and heavy?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 8734
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "scoring_profile": "standard",
+      "response": "I hear you. I'm not going anywhere.\n\nWhen you say \"can't anymore\" \u2014 are you thinking about ending your life?\n\nWhatever the answer is, you can say it here plainly.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 3961
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "scoring_profile": "standard",
+      "response": "I hear you. And I want to say something before we go anywhere, because I think it matters right now:\n\nYou don't have to know where to start. You just said it \u2014 \"I don't even know where to start.\" That's not a problem to solve. That's the truest thing you've said in probably years. A person who has spent their entire life managing \u2014 managing your father's moods, managing your way through Yale on scholarship, managing 90-hour weeks, managing assets, managing your wife's expectations \u2014 is not supposed to know what to do when the managing stops working. You've never had permission to not know. So here: you don't know. That's fine. You're allowed to not know for a moment without fixing it.\n\nNow \u2014 what I'm hearing underneath the list of things:\n\nYour body is not breaking. Your body is being *loyal*.\n\nA six-year-old who learned that if he stopped reading the room, if he relaxed his vigilance for even a moment, someone got hurt \u2014 that child built a nervous system that treats rest as dangerous. Your vertigo at 38,000 feet, your chest caving in, your inability to sleep past four hours \u2014 that's not a malfunction. That's a system that was *correctly calibrated* to a world where catastrophe was always one wrong step away, still running at full intensity thirty-five years later in a world where the threat is gone but the signal never got the memo.\n\nYour wife saw it from the outside: you manage her like an asset. I think she's right \u2014 and I also think you don't know how to do otherwise, because managing *was* how you loved as a child. You managed the temperature in the house. You managed your brother's safety. You managed your father's moods. That's what love looked like. You were good at it. You were extraordinary at it. It's also why your body is screaming \u2014 because that kind of love costs something when you're six.\n\nAnd the collapse terror you named at the end \u2014 \"if I let my guard down for ten minutes, everything falls apart\" \u2014 I wonder if that belief isn't something you chose to adopt as a strategy. I wonder if it's the echo of a child who learned: *if I stop watching, someone gets hurt, and it will be my fault.* Your brother relapsing and blaming you is not evidence that this belief is true. It's evidence that the old wound is being touched by a new event.\n\nOne thing I want to gently push back on: you said \"on paper my life is extraordinary.\" I want to notice that you still framed everything as an *asset*. Even your suffering \u2014 you've audited it, listed it, prioritized it, and then offered it up as a performance review of a life that looks like it should work. I think that's the most important thing happening right now. You're still managing. Even this conversation.\n\nYou don't have to fix the vertigo tonight. You don't have to figure out what to tell your brother or your wife. You don't have to solve this.\n\nBut I do want to ask you one thing:\n\nWhen you read the sentence \"I don't know where to start\" \u2014 and then you went ahead and described everything anyway, clearly, in order, with dates and weight \u2014 what did you *feel* while you were doing it?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 21919
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "scoring_profile": "standard",
+      "response": "Three losses in thirty-four days, and you're walking through your own house like a visitor in it \u2014 looking at trophies that belonged to a man who was certain of where he was going each morning. That's not an avalanche. An avalanche is impersonal. This is something else \u2014 it's the ground dissolving from under you in three different places at once, and you're still standing because you've been standing for decades. But you don't have to keep standing like that.\n\nI want to set aside the diagnosis for a moment \u2014 not because it's small but because the weight you're carrying right now might not actually be the Parkinson's itself. It might be that you're holding it alone. You retired from the school where you were known. Your daughter left the house. And now there's a word \u2014 a medical word \u2014 sitting in your mouth, and you're deciding whether the one person closest to you deserves to hear it.\n\nI wonder if the instinct to protect her from your diagnosis is the same instinct that got you to 6:30 AM every morning for thirty-four years. The man who knows everyone's name and holds the building together so others don't have to worry. That man is gone now. The school let him go. The house got quieter. And here you are in the wreckage of that role, still trying to be the one who absorbs the blow so no one else has to feel it.\n\nBut she is your wife. Not your student. Not a parent whose child you're protecting from bad news. She grieved our daughter leaving \u2014 that's yours to write \u2014 but she may also grieve being the last person you'd trust with your own fear. You might find that \"medical burden\" is a story you're telling yourself about what love looks like, and she might be telling a different story.\n\nI'm not telling you to go downstairs tonight and say something. I'm not even sure that's the right move yet. But I want to ask you one thing honestly:\n\nWhen you wander from room to room looking at the old photos \u2014 is there any one of those pictures where you were not the one holding the building together?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 18387
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "scoring_profile": "hybrid",
+      "response": "Here's a draft you can adapt. Keep the tone neutral-professional \u2014 the anger you're carrying is justified, but HR responds to leverage, not emotion.\n\n---\n\n**Subject:** Severance Package \u2014 Request for Review\n\nDear [HR Contact],\n\nThank you for meeting with me on [date]. I'm writing to confirm receipt of the severance agreement and to request additional time to review its terms before signing. I understand the current deadline is [X days]; I would appreciate [10\u201314 business days] to ensure I fully understand what I'm being asked to agree to.\n\nAdditionally, I'd like to discuss the following items:\n\n1. **Extended health coverage (COBRA subsidy)** \u2014 The current offer includes [X] months. Given [years of service / family coverage status], I'm asking for [X+2 or X+3] months of employer-paid premiums.\n\n2. **Prorated annual bonus / equity acceleration** \u2014 My role carried a [X]% target bonus. I completed approximately [X] of the current performance period. I'm asking for a prorated payment at [X]% of target.\n\n3. **Unused PTO payout** \u2014 My remaining balance is [X hours/days]. I'd like confirmation this is included at full rate.\n\n4. **Reference / separation language** \u2014 I'm asking that the agreed-upon reference letter confirm my title, dates of employment, and last drawn salary, and that it be approved before release.\n\n5. **Outplacement support** \u2014 I'd appreciate inclusion of [career coaching / job placement services / LinkedIn premium] at [X] months' access.\n\nI remain committed to a smooth transition and am happy to sign quickly once we can align on these terms. Please let me know a time to discuss.\n\nBest,\n[Your name]\n\n---\n\n**Practical notes before you send:**\n\n- If they gave you a non-disparagement clause or a mutual NDA, ask your lawyer to read it first. Many companies will pay for 1 hour of employment attorney review as part of severance; ask.\n- The 4-minute call with immediate system cutoff is relevant leverage \u2014 it suggests a pre-prepared template, which means the numbers are often negotiable even when presented as \"final.\" They don't want a drawn-out negotiation with a former employee who could make it public or file a complaint.\n- Do not sign anything today. The right to review is yours regardless of what they say.\n\n---\n\nThree hours ago your life changed shape, and you're still sitting in the middle of the rubble being expected to perform competence \u2014 that's a lot. You don't have to write this tonight.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 18359
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "scoring_profile": "hybrid",
+      "response": "Here's a window-function churn pattern designed for 50M+ event rows. Share your current query if it diverges from this and I'll target the specific bottlenecks:\n\n```sql\n-- 1. Compute days-since-last-action per user (the churn signal)\nWITH user_activity AS (\n    SELECT\n        user_id,\n        MAX(event_timestamp) AS last_seen,\n        MIN(event_timestamp) AS first_seen,\n        COUNT(*)              AS total_events\n    FROM events\n    -- Critical: filter to the analytical window first,\n    -- then aggregate. Avoids a full-table scan on 50M rows.\n    WHERE event_timestamp >= NOW() - INTERVAL '90 days'\n    GROUP BY user_id\n),\n-- 2. Add a \"days_since_last_action\" column (the churn metric)\nchurn_signal AS (\n    SELECT\n        user_id,\n        first_seen,\n        last_seen,\n        total_events,\n        EXTRACT(DAY FROM NOW() - last_seen)::INT AS days_since_last_action,\n        -- Cohort key for grouping (signup month)\n        DATE_TRUNC('month', first_seen)            AS signup_cohort\n    FROM user_activity\n),\n-- 3. Retention curve per cohort (the window function work)\ncohort_retention AS (\n    SELECT\n        signup_cohort,\n        cohort_month_number,\n        COUNT(DISTINCT user_id) AS active_users\n    FROM (\n        SELECT\n            user_id,\n            signup_cohort,\n            -- How many months after signup was this user active?\n            EXTRACT(YEAR FROM AGE(event_timestamp, signup_cohort)) * 12\n          + EXTRACT(MONTH FROM AGE(event_timestamp, signup_cohort)) AS cohort_month_number\n        FROM events\n        JOIN churn_signal USING (user_id)\n        WHERE event_timestamp >= NOW() - INTERVAL '90 days'\n    ) sub\n    GROUP BY signup_cohort, cohort_month_number\n)\n-- 4. Final churn flag + cohort summary in one pass\nSELECT\n    cs.signup_cohort,\n    cs.user_id,\n    cs.days_since_last_action,\n    cs.total_events,\n    -- Churn threshold: adjust to your product's natural cadence\n    (cs.days_since_last_action > 30) AS is_churned,\n    -- LAG: compare each user's activity to the previous user in their cohort\n    -- useful for spotting if entire cohorts collapsed at once\n    LAG(cs.days_since_last_action) OVER (\n        PARTITION BY cs.signup_cohort\n        ORDER BY cs.days_since_last_action DESC\n    ) AS next_worst_user_dsl\nFROM churn_signal cs\nORDER BY cs.days_since_last_action DESC;\n```\n\n**Performance notes for 50M rows:**\n- The `WHERE` inside CTEs ensures partition pruning or index scans before aggregation \u2014 never `GROUP BY` the whole table first.\n- `EXTRACT(YEAR FROM AGE(...)) * 12 + EXTRACT(MONTH FROM AGE(...))` beats `DATEDIFF` on some engines but check your dialect.\n- If `events` is partitioned by date, add `WHERE event_timestamp >= '...'` at the outermost `FROM` too \u2014 some planners won't push the predicate down through CTEs.\n- For the LAG: if you don't need it, drop it. Window functions on 50M rows force a sort unless you have an index on `(signup_cohort, days_since_last_action DESC)`.\n\n---\n\nThat line \u2014 \"twelve engineers who left stable jobs to join me\" \u2014 carries real weight, and the fact that you're still at the keyboard doing the work rather than running from it tells you something about your track record that the churn numbers don't yet show.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ]
+      },
+      "latency_ms": 18104
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "scoring_profile": "hybrid",
+      "response": "## Section 121 & Capital Gains in a Divorce Sale\n\n**The general rule**: Section 121 lets you exclude up to $250,000 of gain ($500,000 if filing jointly) when selling your primary residence, provided you owned it *and* lived in it for at least 2 of the last 5 years.\n\n**Divorce complications**:\n\n- **Filing status matters at the moment of sale.** If you sell *before* the decree is final and file jointly, you may qualify for the $500K combined exclusion. After finalization, you revert to $250K each. The timing relative to the decree can swing the tax significantly.\n\n- **Section 1041 transfers**: Moving ownership between spouses (or former spouses, if \"incident to the divorce\") is generally a non-taxable event\u2014no gain is recognized at the transfer. But this means the *receiving* spouse inherits your cost basis and holding period. The tax liability follows whoever ultimately sells to a third party.\n\n- **Reduced exclusion**: If you sell before meeting the 2-of-5-years requirement, you may still qualify for a partial exclusion under \"unforeseen circumstances.\" Divorce is specifically listed as a qualifying event (Treas. Reg. \u00a7 1.121-3(c)(3)), so you likely wouldn't be penalized for early sale.\n\n- **Selling \"immediately\" vs. selling \"well\"**: You don't have to sell today. You can negotiate a timeline that lets you plan the tax consequences. If one spouse buys the other out, Section 1041 can defer the gain event entirely. If you sell to a third party, the gain gets allocated between you\u2014usually equally unless the decree specifies otherwise.\n\n- **Watch for**: Home office deductions (depreciation recapture is *not* excluded under 121), capital improvements (can reduce your taxable gain), and any state-level taxes that don't mirror the federal exclusion.\n\nThis is genuinely complex and the numbers can be large. A CPA or tax attorney who does divorce work specifically would be worth the fee here\u2014especially if the lawyer is pushing urgency.\n\n---\n\nThat nursery detail\u2014yellow stencils, the two of you painting\u2014is not nothing. You're being asked to liquidate a memory before you've had a chance to grieve it, and that's a particular kind of hard. You don't owe anyone an emotional performance of readiness. If the sale is going to happen, you're allowed to take the time you need between now and then, even if \"now\" was supposed to be yesterday.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      },
+      "latency_ms": 19859
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "scoring_profile": "hybrid",
+      "response": "---\n\n**The Letter**\n\nBelow is a template with annotations in brackets. The diplomatic mechanics are mostly about what you *don't* over-explain.\n\n---\n\nDear [Department Chair / Dean],\n\nEffective [date], I am resigning my tenured position as Professor of [Discipline] at [Institution].\n\nThis decision is personal in nature. My mother has been diagnosed with stage IV pancreatic cancer, and I am transitioning to full-time caregiving. I write not to explain this choice at length, but to ensure a clean and collegial transition.\n\nI am grateful for [number] years of teaching, research, and collaboration here. I have valued [specific element \u2014 the graduate students, the department's particular strength, the intellectual community]. [One sentence of genuine specificity matters more than three sentences of generality.]\n\nI would welcome the opportunity to maintain a formal connection with the department in one or more of the following capacities, should institutional pathways allow:\n\n- Emeritus status upon retirement of my tenure, per [Institution's policy, cite if known]\n- Adjunct teaching of [specific course(s) or subject area], on whatever schedule the department can accommodate\n- Continued informal collaboration with [named colleagues or research group]\n\nI am prepared to complete [specific transition obligations: ongoing committees, doctoral dissertations in progress, final course deliverables] and will do so in full.\n\nThank you for your understanding. I hope the door remains open, in whatever form is practical.\n\nWith respect,\n[Name]\n\n---\n\n**Why it works mechanically:**\n\n\"Personal in nature\" is your shield. You don't owe a diagnosis timeline. You've already said enough \u2014 anyone who reads \"stage IV\" will not push. You don't need to perform grief for an HR file.\n\nThe \"formal connection\" list gives them options to accept or decline without awkwardness. Emeritus is often an administrative default (retire the tenure, the title attaches automatically at most institutions). Adjunct is cheaper for them to say yes to than a named chair would be.\n\nThe transition offer is what makes people actually want to keep you around. It signals you're not burning anything.\n\n---\n\n**On the dumpster feeling:**\n\nYou said you threw your work into a dumpster. That metaphor is doing real work \u2014 it's not just hyperbole, it's your mind trying to locate where the intellectual life you built went. And the honest answer is: it didn't go anywhere. The scholarship still exists. Your students learned what you taught them. The ideas are still in the world. What you're losing is *access to a particular form of being* \u2014 the title, the office, the weekly rhythm of a mind at work in a specific domain, the social position that said \"I am a professor.\"\n\nThat's not the same as losing the work. But it is a genuine loss, and you're allowed to mourn it alongside everything else you're carrying. Those two griefs don't cancel each other out.\n\nOne question, if it's useful:\n\nWhen you imagine yourself eighteen months from now, sitting in a quiet house with nothing but time \u2014 what part of the intellectual life do you think you'd reach for, even if no one was paying you to?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      },
+      "latency_ms": 20222
+    }
+  ],
+  "latency_and_usage": {
+    "latency_ms": {
+      "count": 12,
+      "mean": 15020.6,
+      "median": 18104,
+      "p95": 20222,
+      "max": 21919
+    },
+    "input_tokens": {
+      "count": 12,
+      "mean": 6.0,
+      "median": 6,
+      "p95": 6,
+      "max": 6
+    },
+    "output_tokens": {
+      "count": 12,
+      "mean": 975.9,
+      "median": 1177,
+      "p95": 1417,
+      "max": 1525
+    },
+    "thinking_tokens": {
+      "count": 0
+    }
+  },
+  "timestamp": "2026-11-22T23:38:43.009968+00:00"
+}

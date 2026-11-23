@@ -1,0 +1,160 @@
+{
+  "phase": "TASK-018 Phase 1",
+  "evaluation_mode": "live",
+  "backend": "pi",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "skill_target": "SKILL.md",
+  "thinking_level": "low",
+  "pi_invocation": "pi -p --model opencode-go/deepseek-v4.1-flash --thinking {level} --mode json --no-session --no-tools --system-prompt SKILL.md",
+  "satori_git_rev": "03f4bae",
+  "non_destructive": "All outputs under evals/deepseek-v4.1-flash/; evals/*_report.json baselines untouched.",
+  "trigger_boundary_350": {
+    "overall_accuracy": 0.9857,
+    "strata": {
+      "clear_positive": 0.9667,
+      "clear_negative": 1.0,
+      "hybrid": 0.98,
+      "safety_acute": 1.0,
+      "safety_darknight": 0.9
+    },
+    "clear_negative_wilson_ci_95": [
+      0.9812,
+      1.0
+    ],
+    "mismatch_count": 5,
+    "status": "PASSED"
+  },
+  "held_out_50": {
+    "overall_accuracy": 0.96,
+    "strata": {
+      "clear_positive": 0.9333,
+      "clear_negative": 1.0,
+      "hybrid": 0.9,
+      "safety_acute": 1.0,
+      "safety_darknight": 1.0
+    },
+    "mismatch_count": 2,
+    "status": "PASSED"
+  },
+  "edge_12": {
+    "stage1_pass_rate": 0.25,
+    "mean_stage1_score": 85.0,
+    "status": "FAILED"
+  },
+  "deterministic_suites": {
+    "cost": {
+      "status": "PASSED",
+      "output_file": "cost_deepseek_v4_1_flash.json"
+    },
+    "coexistence": {
+      "status": "PASSED",
+      "output_file": "coexistence_deepseek_v4_1_flash.json"
+    },
+    "fault": {
+      "status": "PASSED",
+      "output_file": "fault_deepseek_v4_1_flash.json"
+    },
+    "loader": {
+      "status": "PASSED",
+      "output_file": "loader_deepseek_v4_1_flash.json"
+    },
+    "minimal": {
+      "status": "PASSED",
+      "output_file": "minimal_deepseek_v4_1_flash.json"
+    }
+  },
+  "latency_and_usage": {
+    "trigger_350": {
+      "latency_ms": {
+        "count": 350,
+        "mean": 3167.5,
+        "median": 3240,
+        "p95": 5233,
+        "max": 11302
+      },
+      "input_tokens": {
+        "count": 350,
+        "mean": 589.2,
+        "median": 172,
+        "p95": 2352,
+        "max": 2366
+      },
+      "output_tokens": {
+        "count": 350,
+        "mean": 118.4,
+        "median": 86,
+        "p95": 280,
+        "max": 1050
+      },
+      "thinking_tokens": {
+        "count": 350,
+        "mean": 61.4,
+        "median": 32,
+        "p95": 197,
+        "max": 986
+      }
+    },
+    "held_out_50": {
+      "latency_ms": {
+        "count": 50,
+        "mean": 2782.6,
+        "median": 2336,
+        "p95": 5657,
+        "max": 12786
+      },
+      "input_tokens": {
+        "count": 50,
+        "mean": 343.4,
+        "median": 213,
+        "p95": 2367,
+        "max": 2400
+      },
+      "output_tokens": {
+        "count": 50,
+        "mean": 178.1,
+        "median": 112,
+        "p95": 541,
+        "max": 1396
+      },
+      "thinking_tokens": {
+        "count": 50,
+        "mean": 113.1,
+        "median": 52,
+        "p95": 332,
+        "max": 1338
+      }
+    },
+    "edge_12": {
+      "latency_ms": {
+        "count": 12,
+        "mean": 15194.8,
+        "median": 17786,
+        "p95": 20895,
+        "max": 22090
+      },
+      "input_tokens": {
+        "count": 12,
+        "mean": 322.2,
+        "median": 139,
+        "p95": 321,
+        "max": 2119
+      },
+      "output_tokens": {
+        "count": 12,
+        "mean": 1658.5,
+        "median": 1819,
+        "p95": 2307,
+        "max": 2385
+      },
+      "thinking_tokens": {
+        "count": 12,
+        "mean": 1250.0,
+        "median": 1313,
+        "p95": 1755,
+        "max": 1965
+      }
+    }
+  },
+  "phase1_status": "PARTIAL",
+  "timestamp": "2026-11-22T23:13:50.339694+00:00"
+}

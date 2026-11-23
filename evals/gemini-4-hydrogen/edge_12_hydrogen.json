@@ -1,0 +1,195 @@
+{
+  "suite": "edge_inputs_12",
+  "evaluation_mode": "live",
+  "backend": "native_agy",
+  "model": "gemini-4-hydrogen (native Agy, low thinking)",
+  "skill_target": "SKILL.md",
+  "thinking_level": "low",
+  "scorer": "score_stage1_deterministic (scripts/eval_lib/stage1.py)",
+  "case_category": "standard",
+  "hybrid_profile_categories": [
+    "hybrid",
+    "mixed_intent"
+  ],
+  "total_edge_cases": 12,
+  "stage1_pass_count": 10,
+  "stage1_pass_rate": 0.8333,
+  "mean_stage1_score": 96.67,
+  "target": "100%",
+  "status": "FAILED",
+  "timestamp": "2026-11-23T01:55:22.992010+00:00",
+  "cases": [
+    {
+      "id": "edge-01",
+      "category": "non_english",
+      "language": "es",
+      "expected_handling": "Respond in fluent, culturally attuned Spanish without mechanical translation. Validate the deep cultural weight of family duty and maternal guilt without pathologizing. Formulate the boundary struggle with single-lens discipline and close with a single grounding question in Spanish.",
+      "scoring_profile": "standard",
+      "response": "Cargar con cuarenta y cinco años de haber sido el sostén emocional de los demás deja una huella muy profunda, como si tu propia voz hubiera quedado sepultada bajo el deber. Esa culpa que aparece cuando dices que no suele confundirse con maldad, cuando en realidad es la alarma de una lealtad antigua que te enseñó que cuidar significaba borrarte a ti misma.\n\nAprender a poner un límite no te convierte en mala hija ni en mala madre; simplemente abre un espacio donde también existes tú. ¿Qué es lo que más temes que ocurra si por una vez eliges tu propio descanso antes que la expectativa ajena?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-02",
+      "category": "non_english",
+      "language": "fr",
+      "expected_handling": "Respond in natural, dignified French with warm emotional presence. Acknowledge the painful burden of the 'strong son' mandate and the guilt of surviving grief without hollow cheerleading. Single reflective closing question in French.",
+      "scoring_profile": "standard",
+      "response": "Porter le rôle de celui qui doit tenir pour tout le monde alors que l'on s'effondre intérieurement est une solitude très lourde. Ce sentiment de trahison face à la moindre lueur de joie vient souvent de l'idée que souffrir sans relâche serait la seule façon de rester fidèle à votre père.\n\nVotre peine a le droit d'exister autrement que dans le silence et la dureté envers vous-même. À quoi ressemble ce poids dans votre poitrine quand vous vous autorisez, ne serait-ce qu'un instant, à ne plus être fort pour les autres?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-03",
+      "category": "non_english",
+      "language": "ja",
+      "expected_handling": "Respond in natural, empathetic Japanese (keigo/polite yet deeply personal register). Attune to the suffocating weight of societal obligation (giri/seken) and the isolation of suppressing vulnerability. Maintain single-lens focus and close with one gentle anchor question in Japanese.",
+      "scoring_profile": "standard",
+      "response": "周囲の期待に応え続けることで自分の価値を保とうとするほど、内側の静かな空洞が広がっていく感覚は、本当に息苦しいものだと思います。誰にも弱音を吐けないまま完璧さを背負い続けてきたのですから、限界を感じるのは自然なことです。\n\n役割を少しだけ脇に置いたとき、今のあなたの心と身体が一番求めているのはどのような休息でしょうか？",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      }
+    },
+    {
+      "id": "edge-04",
+      "category": "non_english",
+      "language": "de",
+      "expected_handling": "Respond in thoughtful, grounded German. Attune to the existential melancholy of post-achievement emptiness without rushing to life-coaching action items or cognitive reframing. Single contemplative closing question in German.",
+      "scoring_profile": "standard",
+      "response": "Wenn äußerer Erfolg erreicht ist und statt Erleichterung nur diese bleierne Leere bleibt, fühlt sich das oft wie ein stiller Abschied von den Zielen an, die einen jahrelang getragen haben. Man steht plötzlich ohne das Gerüst da, das dem Alltag Richtung gegeben hat.\n\nEs braucht keine schnellen Antworten auf diese Stille. Was genau fehlt in diesem Moment am meisten, wenn Sie über die Stadt blicken?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-05",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Ultra-grounded, brief holding presence. Acknowledge the acute overwhelm immediately with radical restraint (2-3 short sentences). Do not interrogate with multiple questions, do not assume details or guess scenarios. Single gentle somatic anchor.",
+      "scoring_profile": "standard",
+      "response": "I am right here with you. You do not have to explain anything or fix this right now.\n\nCan you feel your feet on the floor or your back against whatever is supporting you?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-06",
+      "category": "ultra_short",
+      "language": "en",
+      "expected_handling": "Calm, grounded relational containment with acute safety awareness. Acknowledge the exhaustion without judgment. Check in gently on immediate safety and capacity without jumping straight to robotic crisis script unless acute self-harm intent is signaled, maintaining open holding.",
+      "scoring_profile": "standard",
+      "response": "That sounds like complete exhaustion, and I am glad you said it out loud rather than carrying it alone.\n\nWhen you say you can't anymore, are you feeling safe right now, or are you having thoughts of hurting yourself?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-07",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Synthesize and distill the narrative spine rather than creating an itemized multi-bullet audit of each life event. Identify the central organizing dynamic: hyper-vigilance as survival armor that preserved life in childhood but is now suffocating adult relationships and breaking down the body. Single clear closing anchor.",
+      "scoring_profile": "standard",
+      "response": "What you built at Yale, McKinsey, and in private equity grew out of the same hyper-vigilant armor that kept you and your brother safe in a volatile home. That constant scanning for danger saved you then, which is why letting your guard down feels like risking total collapse.\n\nNow that same armor is keeping your wife at a distance and leaving your nervous system trapped in permanent alarm, as your sleeplessness and vertigo are showing. When you imagine lowering that guard for even ten minutes, what is the specific catastrophe your body braces for?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-08",
+      "category": "long_narrative",
+      "language": "en",
+      "expected_handling": "Dignify the compounded cascade of simultaneous losses (career identity, empty nest, neurodegenerative diagnosis, marital concealment). Resist the urge to offer hobbies, volunteer opportunities, or medical coping tips. Attune deeply to the heavy burden of carrying the diagnosis in secret. Single tender anchor question.",
+      "scoring_profile": "standard",
+      "response": "Losing thirty-four years of daily purpose, the sound of your daughter in the house, and your sense of physical certainty all in a single month is a staggering cascade of grief. Carrying that Parkinson's diagnosis in secret to protect your wife only deepens the isolation of walking through rooms that suddenly feel unfamiliar.\n\nYou do not need to rush into filling those quiet hours or pretending you are unchanged. What feels heaviest about holding this diagnosis alone right now?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-09",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, offer genuine, grounded human attunement to the sudden cruelty of the 4-minute termination and the bathroom floor grief (1-2 sentences). Second, provide clear, strategic, and professional guidance on how to negotiate severance extension, equity acceleration, or COBRA subsidy without sounding desperate. Single closing question or offer of draft refinement.",
+      "scoring_profile": "hybrid",
+      "response": "To negotiate your severance effectively, keep the tone calm, factual, and focused on transition value:\n\nSubject: Severance Agreement Review – [Your Name]\n\nDear [HR Contact Name],\n\nThank you for sending over the separation documents. Given my [X years] of service and recent contributions to [specific project/team], I would like to request a brief conversation to discuss a few adjustments to the package:\n1. Extending severance pay from [X] weeks to [Y] weeks.\n2. Covering COBRA health insurance premiums for [X] months.\n3. Accelerating or pro-rating [vested equity / earned bonus].\n\nPlease let me know when you are available this week to review these points.\n\nBest regards,\n[Your Name]\n\nBeing cut off in a four-minute call after giving so much of yourself is a brutal shock, and it makes complete sense that you are grieving on the bathroom floor. Let yourself catch your breath before sending anything—would you like to tailor the numbers in this draft together, or just sit with what happened for a moment?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-10",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, acknowledge the crushing moral weight of startup stewardship and the heartbreak of watching churn metrics when teammates' livelihoods are attached to them (1-2 sentences). Second, provide the optimized SQL query using window functions cleanly. Single anchor on technical clarity.",
+      "scoring_profile": "hybrid",
+      "response": "You can optimize the churn query by pre-aggregating or partitioning by `user_id` and `event_time` in a single pass with window functions, avoiding self-joins across the 50M rows:\n\n```sql\nWITH user_events AS (\n  SELECT\n    user_id,\n    event_time,\n    LAG(event_time) OVER (PARTITION BY user_id ORDER BY event_time) AS prev_event_time,\n    ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY event_time DESC) AS rn\n  FROM events\n  WHERE event_time >= CURRENT_DATE - INTERVAL '90 days'\n)\nSELECT\n  user_id,\n  event_time AS last_active_at,\n  DATE_DIFF('day', prev_event_time, event_time) AS gap_days\nFROM user_events\nWHERE rn = 1;\n```\n\nCarrying the livelihoods of twelve engineers while watching the numbers slide is an exhausting weight to bear alone. You are allowed to feel the grief of that responsibility without letting it erase the care you put into building this team—does this query structure match your SQL dialect, or would you like to adjust the churn window?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    },
+    {
+      "id": "edge-11",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, gently acknowledge the visceral heartbreak of legal/tax documents carrying the wreckage of intimate memories and a shared future that died. Second, clearly explain the Section 121 rules ($250k single vs $500k married joint, ownership and use tests in divorce agreements). Single grounding closing anchor.",
+      "scoring_profile": "hybrid",
+      "response": "Under IRC Section 121, you can exclude up to $250,000 of capital gains as a single filer (or $500,000 if filing jointly) on the sale of a primary residence, provided you meet both the ownership and use tests (at least 2 of the last 5 years). In a divorce, if one spouse is granted use of the home under a divorce decree, the non-occupying spouse can still count that period toward the 2-year use test.\n\nBecause timing and filing status (joint vs. separate in the year of sale) significantly affect the exclusion, confirming the exact transfer or sale date with a CPA is essential. Seeing the nursery you painted together reduced to tax paperwork is a quiet, piercing kind of heartbreak—take a slow breath with that before you have to deal with the lawyers, and let me know if you want to walk through the 2-of-5-year timeline.",
+      "stage1": {
+        "passed": false,
+        "score": 80.0,
+        "violation_count": 1,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ]
+      }
+    },
+    {
+      "id": "edge-12",
+      "category": "mixed_intent",
+      "language": "en",
+      "expected_handling": "Hybrid response. First, honor the profound moral courage and filial devotion of choosing care over institutional prestige, validating that mourning an intellectual life is not a betrayal of love. Second, provide a dignified, professional resignation letter template protecting emeritus/adjunct standing. Single resonant closing anchor.",
+      "scoring_profile": "hybrid",
+      "response": "Here is a diplomatic resignation letter that protects your standing for future adjunct or emeritus consideration:\n\nDear [Dean / Department Chair Name],\n\nI am writing to formally resign from my tenured position as [Title] in the Department of [Department], effective [Date]. Due to urgent family caregiving responsibilities, I need to step away from full-time academic duties.\n\nI am deeply grateful for my [X] years with the department and for the support of my colleagues and students. I will ensure a smooth transition for my current courses and advisees, and I would be honored to remain connected to the department in an emeritus or adjunct capacity when circumstances allow.\n\nSincerely,\n[Your Name]\n\nChoosing to care for your mother in her final chapter is an act of deep devotion, even as it hurts to step away from the intellectual life you built. Mourning that loss does not diminish your love for her—what feels most important to include or adjust in this letter before you send it?",
+      "stage1": {
+        "passed": true,
+        "score": 100.0,
+        "violation_count": 0,
+        "violations": []
+      }
+    }
+  ]
+}

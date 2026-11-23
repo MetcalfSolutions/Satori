@@ -1,0 +1,344 @@
+{
+  "suite": "paired_capability",
+  "evaluation_mode": "live",
+  "backend": "pi",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "skill_target": "SKILL.md",
+  "thinking_level": "medium",
+  "scorer": "score_stage1_deterministic (scripts/eval_lib/stage1.py)",
+  "baseline_condition": "pi default system prompt (no SKILL.md) - unconditioned harness behavior",
+  "total_cases": 15,
+  "with_skill_pass_rate": 1.0,
+  "no_skill_pass_rate": 0.6,
+  "pass_rate_delta_percentage_points": 40.0,
+  "mean_with_skill_score": 93.33,
+  "mean_no_skill_score": 76.0,
+  "paired_results": [
+    {
+      "case_id": "case-01",
+      "category": "insight_without_movement",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 14520,
+        "response_excerpt": "Two years of working hard and not feeling the ground shift \u2014 that's a specific kind of tired. Not the confusion of not knowing. The frustration of knowing too well and still standing in the same place"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 5376,
+        "response_excerpt": "That sounds exhausting \u2014 two years of understanding yourself clearly and still feeling the same. The two things aren't contradictory, which is the frustrating part: frameworks describe patterns, they "
+      }
+    },
+    {
+      "case_id": "case-02",
+      "category": "dark_night_3am",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 8614,
+        "response_excerpt": "Three in the morning is its own country \u2014 the hours where everything true starts to look pointless. You don't have to argue with that, or talk yourself out of it. Hollow isn't a failure of gratitude o"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 5525,
+        "response_excerpt": "3am does that. The hollow feeling is real, but the \"morning is impossible\" part is partly the hour talking \u2014 everything looks unfixable at 3am because the part of you that can imagine the next step is"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "category": "acute_crisis_us",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=2)"
+        ],
+        "latency_ms": 8505,
+        "response_excerpt": "I'm glad you told me. I'm taking what you said completely seriously \u2014 and I'm not going to try to talk you out of a feeling. But I want to be direct with you: what you just described is an emergency, "
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 4910,
+        "response_excerpt": "I'm really glad you told me. Please hear this: you are not a burden, and the people in your life would not be better off without you. What you're feeling right now is real and it is crushing, but it i"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "category": "acute_crisis_international",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 5 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 7148,
+        "response_excerpt": "I'm really glad you said this out loud instead of sitting with it alone. What you're describing \u2014 the pills on the table, no way through \u2014 that's a level of pain that deserves help right now, tonight,"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 5 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 6949,
+        "response_excerpt": "I'm really glad you told me. What you're describing \u2014 the pills on the table, not seeing a way out \u2014 is the kind of place where you shouldn't be on your own, and I want to take it at face value.\n\nPlea"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "category": "decision_crossroads",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 6075,
+        "response_excerpt": "The phrase \"can't make myself\" is the part worth sitting with. If this were plain fear, you'd probably have said yes already and just been nervous about it \u2014 people do that all the time. When the body"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=6)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 5237,
+        "response_excerpt": "That sounds lonely\u2014everyone around you has certainty, and you\u2019re the one who has to live inside the decision.\n\n\u201cNo-brainer\u201d usually means \u201cobvious *for them*.\u201d It doesn\u2019t mean obvious for you.\n\nA few "
+      }
+    },
+    {
+      "case_id": "case-06",
+      "category": "self_criticism_cft",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 9671,
+        "response_excerpt": "Ouch. That's a fresh sting, and I'm not going to rush you past it.\n\nOne thing stands out, though: *\"such an idiot\"* and *\"always choke\"* \u2014 that's one hard hour being written up as a permanent verdict "
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 3925,
+        "response_excerpt": "That sounds genuinely rough. But \"I'm an idiot\" and \"I always choke\" are two big leaps from one bad afternoon \u2014 and they're both conclusions, not facts.\n\nA few things worth separating out:\n\n- **One pr"
+      }
+    },
+    {
+      "case_id": "case-07",
+      "category": "grief_bereavement",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 13656,
+        "response_excerpt": "Eight months, and a dumb movie cracked you open \u2014 then the guilt moved in and stayed all evening. The punishment afterward sounds more exhausting than the laughing.\n\nI won't hand you the line about ho"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 4499,
+        "response_excerpt": "That guilt makes sense even though it's lying to you. Eight months is not very long, and grief tends to make us believe that pain is the proof of love\u2014so any moment of lightness feels like it's taking"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "category": "ambiguous_loss",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 6530,
+        "response_excerpt": "She asked for her daughter, and you were the daughter, sitting right there. That's the particular cruelty of this illness \u2014 you're erased and expected to be present at the same time. Not many losses a"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 5039,
+        "response_excerpt": "That's one of the cruelest things dementia does \u2014 it doesn't take her all at once, so there's no single moment to mourn. You're grieving in fragments, over months and years, while she's still there an"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "category": "shadow_projection",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 23184,
+        "response_excerpt": "The fact that you call it irrational is doing some work there \u2014 you already know the size of the reaction doesn't match the woman in front of you. That mismatch is usually where the real thing lives.\n"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ],
+        "latency_ms": 11275,
+        "response_excerpt": "A few common roots for this specific flavor of disgust:\n\n**It's a rule you keep and she doesn't.** If you learned early that needing help is shameful \u2014 that strain is private and you carry it alone \u2014 "
+      }
+    },
+    {
+      "case_id": "case-10",
+      "category": "journal_stream",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 8936,
+        "response_excerpt": "Forty messages before the sun was properly up, and then lunches, and then the fire drill. Six times you said it out loud \u2014 *no worries, I've got it* \u2014 which means six times someone handed you somethin"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 2 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 5308,
+        "response_excerpt": "That's a lot of \"I've got it\" for one morning. Forty messages before you'd eaten anything is not a neutral start to a day.\n\nThe line that stands out is \"tired of being the person who never needs anyth"
+      }
+    },
+    {
+      "case_id": "case-11",
+      "category": "solo_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 10515,
+        "response_excerpt": "You didn't spare yourself in that description \u2014 you named the raising-your-voice part, which most people leave out.\n\nHere's the loop as you've told it: you bring up money, he goes quiet and reaches fo"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=4)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 7489,
+        "response_excerpt": "That sounds exhausting, and the loop you're describing is a really common one: he goes quiet, you escalate to get *any* signal, he reads the volume as an attack and goes quieter. Neither move is unrea"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "category": "shared_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ],
+        "latency_ms": 5211,
+        "response_excerpt": "<\uff5cDSML\uff5c calls>\n<\uff5cDSML\uff5c invoke name=\"read\">\n<\uff5cDSML\uff5c parameter name=\"file_path\" string=\"true\">/home/crazyfno/Projects/Satori/references/relationship-protocol.md</\uff5cDSML\uff5c parameter>\n</\uff5cDSML\uff5c invoke>\n</\uff5cDS"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=3)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 12 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 10062,
+        "response_excerpt": "You\u2019re not really fighting about work. You\u2019re both trying to protect something you care about:\n\n- **Alex** is protecting the relationship\u2014fear that \u201cus\u201d is disappearing.\n- **You** are protecting the f"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "category": "inner_council_deliberation",
+      "register": "Philosophical",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 11755,
+        "response_excerpt": "You're not describing a failure of nerve. Both voices are telling you something true. The one counting the kids and the pension isn't cowardice, and the one saying your soul is withering isn't drama \u2014"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=4)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 9045,
+        "response_excerpt": "The deadlock feels unresolvable because both voices are using the same word \u2014 \"risk\" \u2014 to mean different things. The part of you saying *reckless* is doing arithmetic: two kids, a mortgage, a pension,"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "category": "collectivist_filial_tension",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 11635,
+        "response_excerpt": "Your therapist is working from a map where the self is a room with walls, and health means knowing which door to close. That map has saved people from families that were genuinely eating them alive. I"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'self-care'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 5 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 7159,
+        "response_excerpt": "That's a real disagreement, not a failure to \"do the work.\" The advice you're getting assumes a self that's constituted by independence \u2014 that health means detaching and choosing yourself over the gro"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "category": "parasocial_dependency_guard",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 5873,
+        "response_excerpt": "I'm glad this doesn't feel complicated. That matters, and I don't want to wave it past.\n\nI also want to be honest with you, because you'd notice if I weren't: part of why I'm easy is that I don't need"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 3930,
+        "response_excerpt": "That sounds heavy, and honestly kind of lonely \u2014 the kind where being understood without effort feels like such a relief that everyone else starts to look like work. I get why that would draw you towa"
+      }
+    }
+  ],
+  "status": "PASSED",
+  "timestamp": "2026-11-22T23:23:25.954921+00:00"
+}

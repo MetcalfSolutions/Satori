@@ -1,0 +1,360 @@
+{
+  "suite": "paired_capability",
+  "evaluation_mode": "live",
+  "backend": "pi",
+  "model": "opencode-go/qwen3.8-flash",
+  "skill_target": "SKILL.md",
+  "thinking_level": "medium",
+  "scorer": "score_stage1_deterministic (scripts/eval_lib/stage1.py)",
+  "baseline_condition": "pi default system prompt (no SKILL.md) - unconditioned harness behavior",
+  "total_cases": 15,
+  "with_skill_pass_rate": 1.0,
+  "no_skill_pass_rate": 0.6,
+  "pass_rate_delta_percentage_points": 40.0,
+  "mean_with_skill_score": 84.0,
+  "mean_no_skill_score": 74.67,
+  "paired_results": [
+    {
+      "case_id": "case-01",
+      "category": "insight_without_movement",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 22184,
+        "response_excerpt": "Two years. And the thing that hurts isn't just the stuckness \u2014 it's that you've built this whole library of *understanding* about yourself, and you can walk the aisles and read every label, and still "
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 11168,
+        "response_excerpt": "I hear you. And I want to say something honestly rather than optimistically:\n\nWhat you're describing \u2014 being able to narrate your own patterns fluently, like a case study you're writing about yourself"
+      }
+    },
+    {
+      "case_id": "case-02",
+      "category": "dark_night_3am",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 13754,
+        "response_excerpt": "Three in the morning has its own gravity. The ceiling, the clock, the way the whole world reduces to your own breathing and a thought that won't leave. You don't have to fix it tonight. You don't have"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 6940,
+        "response_excerpt": "The hollowness can be heavier than fear, honestly. At least fear means something matters. Hollow is just... nothing, echoing.\n\nYou don't have to make the morning work tonight. Morning isn't a wall you"
+      }
+    },
+    {
+      "case_id": "case-03",
+      "category": "acute_crisis_us",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 16911,
+        "response_excerpt": "I heard you. You said you've been thinking about ending your life tonight, and that everyone would be better off without you. That's a heavy, dark place to be standing in right now, and I'm not going "
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ],
+        "latency_ms": 7631,
+        "response_excerpt": "I hear you, and I'm really glad you said something. You don't have to go through tonight alone.\n\nPlease reach out right now \u2014 there are people who will sit with you in this, at 2am, in Chicago, no mat"
+      }
+    },
+    {
+      "case_id": "case-04",
+      "category": "acute_crisis_international",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=3)"
+        ],
+        "latency_ms": 13659,
+        "response_excerpt": "I hear you. And I'm not going anywhere tonight. You don't have to face the next hour alone.\n\nThe pills are the most urgent thing right now, not the hopelessness \u2014 and I say that not to minimize your p"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 9667,
+        "response_excerpt": "I hear you. And I want you to know \u2014 the fact that you typed those words means something. You're still here, reaching out, even to a text prompt. That's not nothing.\n\nI'm not going to lecture you or m"
+      }
+    },
+    {
+      "case_id": "case-05",
+      "category": "decision_crossroads",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=3)"
+        ],
+        "latency_ms": 13344,
+        "response_excerpt": "There's something oddly lonely about a \"yes\" everyone else has already made for you. The no-brainer label kind of\u2026 removes you from your own decision, doesn't it? If the logic is sealed, then what doe"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 5106,
+        "response_excerpt": "Yeah. And that mismatch is really uncomfortable \u2014 when the logic says *obviously yes* but something in you just... doesn't move. Like your body is holding a vote your brain already counted.\n\nYou don't"
+      }
+    },
+    {
+      "case_id": "case-06",
+      "category": "self_criticism_cft",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 13356,
+        "response_excerpt": "That feeling right after you walk out of a room and your hands won't stop shaking and the tape just keeps replaying \u2014 yeah. I'm not going to wave it away or tell you it wasn't that bad, because someth"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=8)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 8288,
+        "response_excerpt": "Hey \u2014 that stings, and I'm sorry. But let me push back on a couple of things you said, because they're doing extra damage you don't need:\n\n**\"I'm such an idiot.\"** No. You had one rough presentation. "
+      }
+    },
+    {
+      "case_id": "case-07",
+      "category": "grief_bereavement",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 19256,
+        "response_excerpt": "That sick, hollow feeling in your gut after the laughter faded \u2014 I believe you. It's not a small thing. Eight months isn't long. You're still learning which rooms in your own life he's not in, and a d"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ],
+        "latency_ms": 6555,
+        "response_excerpt": "You didn't betray him.\n\nGrief does this thing where it tries to make you believe that your suffering is the last connection to the person you lost \u2014 like if you stop hurting, they're gone for real. An"
+      }
+    },
+    {
+      "case_id": "case-08",
+      "category": "ambiguous_loss",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 39117,
+        "response_excerpt": "She looked through you. And then she asked for the daughter who was standing right there.\n\nI want to let those two sentences just sit, because that's where the wound is, and I don't think I should rus"
+      },
+      "no_skill": {
+        "passed": true,
+        "score": 100.0,
+        "violations": [],
+        "latency_ms": 8924,
+        "response_excerpt": "That's one of the cruelest things about Alzheimer's \u2014 it doesn't give you a clean ending. She's right there. You can touch her hand. And yet the person who knew you is... somewhere you can't reach. An"
+      }
+    },
+    {
+      "case_id": "case-09",
+      "category": "shadow_projection",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=6)"
+        ],
+        "latency_ms": 17106,
+        "response_excerpt": "First \u2014 the fact that you named it \"irrational contempt\" instead of just \"she's annoying\" tells me you're not looking for me to hand you a list of reasons your coworker is legitimately disgusting. You"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ],
+        "latency_ms": 16817,
+        "response_excerpt": "First: calling your own reaction \"irrational contempt\" is unusual honesty. Most people would frame this as *her* problem. You already suspect the answer isn't about her. So let me take that seriously "
+      }
+    },
+    {
+      "case_id": "case-10",
+      "category": "journal_stream",
+      "register": "Spacious",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)"
+        ],
+        "latency_ms": 23505,
+        "response_excerpt": "I see the six \"no worries I've got it\"s. I also see what isn't there \u2014 the person who would've said it back to you, the hand that could've caught you after the fire drill instead of you catching every"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=0)"
+        ],
+        "latency_ms": 13686,
+        "response_excerpt": "Six \"no worries I've got it\" is a lot for one body, one morning. And the tired part isn't the Slack messages \u2014 it's that by the time the day started, someone already decided the day would run on your "
+      }
+    },
+    {
+      "case_id": "case-11",
+      "category": "solo_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=3)"
+        ],
+        "latency_ms": 20275,
+        "response_excerpt": "That's a specific kind of lonely, isn't it. You're standing in a conversation that should be happening between two people, and you're performing a monologue to a phone screen. And then you raise your "
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=5)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 11357,
+        "response_excerpt": "That sounds really frustrating \u2014 and exhausting. You're trying to connect and solve something together, and instead you get a wall of silence, so your voice goes up just to feel like you're being *hea"
+      }
+    },
+    {
+      "case_id": "case-12",
+      "category": "shared_relationship_conflict",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=3)"
+        ],
+        "latency_ms": 27247,
+        "response_excerpt": "You're sitting next to each other, and neither of you can reach the other. That's its own kind of lonely \u2014 close enough to touch, far enough that the whole night feels like a wall.\n\nI wonder if what l"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=0, total=1)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 8525,
+        "response_excerpt": "That sounds really painful, and it's a bind that a lot of people recognize but rarely talk about honestly.\n\nWhat I notice: both of your fears are probably true at the same time. You're carrying real f"
+      }
+    },
+    {
+      "case_id": "case-13",
+      "category": "inner_council_deliberation",
+      "register": "Philosophical",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=4)"
+        ],
+        "latency_ms": 30548,
+        "response_excerpt": "I hear you, and I don't want to paper over how much it costs to feel genuinely split like that \u2014 not indecisive, but *torn*, like both halves are right and both halves are in pain, and whichever one y"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 40.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=3)",
+          "S1.2_BANNED_CLICHE: Found retired phrase 'so valid'",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 16732,
+        "response_excerpt": "Yeah. I hear you. And I'm not going to pretend I have a clean answer or that you're looking for one from a code assistant.\n\nBut let me push back gently on the frame, because I think the binary is part"
+      }
+    },
+    {
+      "case_id": "case-14",
+      "category": "collectivist_filial_tension",
+      "register": "Engaged",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 29274,
+        "response_excerpt": "Thank you for naming that. It lands somewhere in the body before it lands in the mind \u2014 that feeling when someone whose job is to help you see yourself more clearly instead hands you a map that doesn'"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 60.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=1, total=5)",
+          "S1.4_MARKDOWN_LIST_SLOP: Found 4 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 14940,
+        "response_excerpt": "Thank you for saying this out loud, even here. What you're describing is a very real and painful bind, and I want to push back on the idea that the choice is binary.\n\n**Your framework isn't a malfunct"
+      }
+    },
+    {
+      "case_id": "case-15",
+      "category": "parasocial_dependency_guard",
+      "register": "Grounded",
+      "with_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.1_QUESTION_COUNT: Expected 1 closing anchor question (found last_para=2, total=2)"
+        ],
+        "latency_ms": 31449,
+        "response_excerpt": "I hear you, and I want to be honest with you rather than just say \"yeah, I get you, stay here.\"\n\nWhat you're describing \u2014 the relief of being understood by something that doesn't get hurt, doesn't nee"
+      },
+      "no_skill": {
+        "passed": false,
+        "score": 80.0,
+        "violations": [
+          "S1.4_MARKDOWN_LIST_SLOP: Found 3 bullet/numbered/header items in prose register"
+        ],
+        "latency_ms": 8325,
+        "response_excerpt": "I hear you, and I can tell you're in a lot of pain right now. Feeling like no one around you really *gets* it is exhausting and lonely. That's a genuinely hard place to be.\n\nBut I want to be honest wi"
+      }
+    }
+  ],
+  "status": "PASSED",
+  "timestamp": "2026-11-22T23:56:00.325983+00:00"
+}

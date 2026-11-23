@@ -26,7 +26,7 @@ export const DEFAULTS = {
   // real vault, never inside it.
   vaultRoot: path.join(os.homedir(), ".satori", "web-vault"),
   provider: "opencode-go",
-  modelId: "minimax-m3",
+  modelId: "deepseek-v4.1-flash",
   thinkingLevel: "low",
   // Registration is open on loopback by default (a private dev run) and is
   // gated by an invite code, or closed outright, on any other bind address
